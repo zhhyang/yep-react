@@ -1,0 +1,54 @@
+{
+  "name": "@jdcfe/lrc-m",
+  "version": "0.0.1",
+  "description": "一套基于 LRC 的移动端组件库",
+  "main": "dist/dist.js",
+  "module": "dist/dist.es.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "upload": "node scripts/upload.js",
+    "eslint": "eslint --ext .js --ext .jsx src/",
+    "test": "jest --config ./scripts/jest.config.js"
+  },
+  "keywords": [
+    "react",
+    "UI",
+    "components",
+    "web"
+  ],
+  "author": "wangge8 <wangge1@jd.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^23.0.0-alpha.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "del": "^3.0.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "glob-promise": "^3.4.0",
+    "jest": "^22.4.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.3.0",
+    "react-test-renderer": "^16.2.0",
+    "regenerator-runtime": "^0.11.1",
+    "rollup": "^0.55.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup-plugin-replace": "^2.0.0",
+    "ssh2-sftp-client": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=15.0.0",
+    "prop-types": ">=15.5.0"
+  }
+}
