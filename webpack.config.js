@@ -57,6 +57,9 @@ module.exports = {
             path.resolve(__dirname, "libs")
         ],
         extensions: [".js", ".json", ".jsx", ".css"],
+        alias: {
+            '@jdcfe/lrc-m': path.join(process.cwd(), 'libs'),
+        }
     },
     devtool: "source-map",
 
