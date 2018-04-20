@@ -6,5 +6,9 @@ node_modules
 dist/*.js
 dist/*.map
 coverage/
-*.css
-libs
+src
+
+webpack.config.js
+.gitignore
+yarn.lock
+example
