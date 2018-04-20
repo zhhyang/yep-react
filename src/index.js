@@ -1,3 +1,2 @@
-import './style/common.scss'
-export { default as HelloWorld} from './HelloWorld';
-export { default as HelloWorld2} from './HelloWorld2';
+export { default as HelloWorld} from './hello-world';
+export { default as Switch} from './switch';

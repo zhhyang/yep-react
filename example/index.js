@@ -1,11 +1,10 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {HelloWorld, HelloWorld2} from "@jdcfe/lrc-m";
+import {Switch} from "@jdcfe/lrc-m"
 
-
+import './base.scss'
 render(
     <div>
-        <HelloWorld/>
-        <HelloWorld2/>
+        <Switch currentStatus={true}/>
     </div>, document.getElementById('app')
 );

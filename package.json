@@ -5,13 +5,13 @@
   "main": "dist/dist.js",
   "module": "dist/dist.es.js",
   "scripts": {
-    "watch": "babel src/ --watch --out-dir ./libs --copy-files",
+    "watch": "babel src/ --watch --out-dir ./lib --copy-files",
     "build": "node scripts/build.js",
     "upload": "node scripts/upload.js",
     "eslint": "eslint --ext .js --ext .jsx src/",
     "test": "jest --config ./scripts/jest.config.js",
     "dev": "webpack-dev-server",
-    "clean": "rimraf libs"
+    "clean": "rimraf lib"
   },
   "keywords": [
     "react",
@@ -29,6 +29,7 @@
     "babel-jest": "^23.0.0-alpha.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-import": "^1.7.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -47,6 +48,7 @@
     "node-sass": "^4.8.3",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss-loader": "^2.1.4",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.3.0",
     "react-test-renderer": "^16.2.0",
@@ -66,5 +68,8 @@
   "peerDependencies": {
     "prop-types": ">=15.5.0",
     "react": ">=15.0.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
   }
 }

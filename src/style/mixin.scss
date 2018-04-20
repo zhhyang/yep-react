@@ -1,0 +1,327 @@
+/* 一像素细线border-top-bottom */
+$border: #e0e0e0;
+$tab: #929292;
+$tab-deep: #333;
+$sub: #c09947;
+$l-black: #333;
+$black: #000;
+$l-red: #f23030;
+$d-red: #e4393c;
+$ll-black: #232326;
+$gray: #848689;
+$l-gray:#cccccc;
+
+$color-blue: #26a2ff;
+$color-white: #fff;
+$color-grey: #d9d9d9;
+$border-color: #c8c8cd;
+$success-color: #4caf50;
+$error-color: #f44336;
+$warning-color: #ffc107;
+
+/* Cell Component */
+$cell-value-color: #888;
+
+/* Header Component */
+$header-height: 40px;
+
+/* Button Component */
+$button-default-color: #656b79;
+$button-default-background-color: #f6f8fa;
+$button-default-plain-color: #5a5a5a;
+$button-default-box-shadow: 0 0 1px #b8bbbf;
+$button-primary-color: #fff;
+$button-primary-background-color: #26a2ff;
+$button-danger-color: #fff;
+$button-danger-background-color: #ef4f4f;
+
+/* Tab Item Component */
+$tab-item-font-size: 12px;
+
+/* Tabbar Component */
+$tabbar-background-color: #fafafa;
+$tabbar-tab-item-selected-background-color: #eaeaea;
+$tabbar-tab-item-selected-color: $color-blue;
+
+/* Navbar Component */
+$navbar-background-color: #fafafa;
+$tabbar-tab-item-selected-background-color: #eaeaea;
+
+/* Checklist Component */
+$checklist-title-color: #888;
+
+/* Radio Component */
+$radio-title-color: #888;
+
+/* z-index */
+$z-index-normal: 1;
+
+
+@mixin border-bottom-1px($color: $border) {
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $color;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    pointer-events: none;
+  }
+}
+
+@mixin border-top-1px($color: $border) {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: $color;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    pointer-events: none;
+  }
+}
+
+@mixin border-right-1px($color: $border) {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    left: 100%;
+    top: 0;
+    width: 1px;
+    background-color: $color;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    pointer-events: none;
+  }
+}
+@mixin border-left-1px($color: $border) {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    right: 100%;
+    top: 0;
+    width: 1px;
+    background-color: $color;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    pointer-events: none;
+  }
+}
+/*四边*/
+@mixin bd-all-1px($color: $border, $radius: 3px) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border: 1px solid $color;
+    border-radius: $radius;
+  }
+}
+
+@mixin box {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* 水平排列 */
+@mixin box-horizontal {
+  -moz-box-orient: horizontal;
+  -webkit-box-orient: horizontal;
+  box-orient: horizontal;
+}
+
+/* 垂直排列 */
+@mixin box-vertical {
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+
+/* 平均分配 */
+@mixin flex($order) {
+  -ms-flex: $order;
+  -webkit-box-flex: $order;
+  -webkit-flex: $order;
+  flex: $order;
+}
+
+/* 自定义宽度 */
+@mixin auto-flex {
+  -webkit-box-flex: 0 0 auto;
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+/* 垂直居中 */
+@mixin vertical-center {
+  box-align: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-items: center;
+
+}
+
+/* 垂直靠上 */
+@mixin vertical-top {
+  box-align: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
+
+}
+
+/* 垂直靠下 */
+@mixin vertical-end {
+  box-align: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+
+}
+
+/* 水平居中 */
+@mixin horizontal-center {
+  box-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+/* 两边对齐 */
+@mixin both-side {
+  box-pack: justify;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+@mixin box-direction-horizontal {
+  box-direction: column;
+  -moz-box-direction: column;
+  -webkit-box-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+/* 换行 */
+@mixin wrap {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+
+}
+
+@mixin sl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin _icon($width, $height,$bgsize,$bgurl,$bgpos:0 0,$display:inline-block) {
+  width: $width;
+  height: $height;
+  display: $display;
+  vertical-align: middle;
+  background: url($bgurl) no-repeat;
+  background-size: $bgsize;
+  background-position: $bgpos;
+}
+
+@mixin arrow($color,$heightAndWidth,$deg:45deg) {
+  border-right: 1px solid $color;
+  border-top: 1px solid $color;
+  height: $heightAndWidth;
+  width: $heightAndWidth;
+  margin-top: .05rem;
+  transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+@mixin check($width,$height,$color) {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background: $color;
+  line-height: 0;
+  font-size: 0;
+  vertical-align: middle;
+  -webkit-transform: rotate(55deg);
+  margin-top: $width;
+  &:after {
+    content: '/';
+    display: block;
+    width: $width*1.7;
+    height: $height;
+    background: $color;
+    -webkit-transform: rotate(-100deg) translateY(100%) translateX(50%);
+  }
+}
+
+@mixin cross($width,$height,$color:black) {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background: $color;
+  line-height: 0;
+  font-size: 0;
+  vertical-align: middle;
+  -webkit-transform: rotate(45deg);
+
+  &:after {
+    content: '/';
+    display: block;
+    width: $width;
+    height: $height;
+    background: $color;
+    -webkit-transform: rotate(-90deg);
+  }
+}
+
+
+@mixin clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility:hidden
+  }
+  display: inline-block;
+  * html & {height:1%}
+  display:block;
+  *+html &{min-height:1%}
+}

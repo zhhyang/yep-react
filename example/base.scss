@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, dialog, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block
+}
+
+/* ios默认文本框阴影 */
+input[type=text], textarea {
+  -webkit-appearance: none;
+}
+
+/* 低版本安卓文本框层级问题 */
+input:focus {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+ol, ul, li, menu {
+  list-style: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+html, body {
+  width: 100%;
+  font-size: 10px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  line-height: 1;
+  color: #303030;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: 100%
+}
+
+html {
+  font-size: 32px;/*no*/
+}
+
+@media screen and (min-width: 320px) {/*no*/
+  html {
+    font-size: calc(85.34% + 2 * (100vw - 320px) / 55);/*no*/
+    font-size: calc(42.67px + 2 * (100vw - 320px) / 55);/*no*/
+  }
+}
+
+@media screen and (min-width: 375px) {
+  html {
+    font-size: calc(100% + 2 * (100vw - 375px) / 39);/*no*/
+    font-size: calc(50px + 2 * (100vw - 375px) / 39);/*no*/
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: calc(110.4% + 4 * (100vw - 414px) / 186);/*no*/
+    font-size: calc(55.2px + 4 * (100vw - 414px) / 186);/*no*/
+  }
+}
+@media screen and (min-width: 600px) {
+  html {
+    font-size: calc(160% + 4 * (100vw - 600px) / 150);/*no*/
+    font-size: calc(80px + 4 * (100vw - 600px) / 150);/*no*/
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: calc(200% + 6 * (100vw - 1000px) / 1000);/*no*/
+    font-size: calc(100px + 6 * (100vw - 1000px) / 1000);/*no*/
+  }
+}
