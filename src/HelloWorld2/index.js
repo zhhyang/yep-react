@@ -1,3 +1,3 @@
 import HelloWorld2 from "./HelloWorld2";
-import './index.css';
+import './index.scss';
 export default HelloWorld2;

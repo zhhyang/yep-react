@@ -23,11 +23,12 @@ module.exports = {
                 loader: "babel-loader",
             },
             {
-                test: /\.css/,
+                test: /\.scss/,
                 use: [
                     'style-loader',
                     'css-loader',
-                    {loader: 'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
                         options: {
                             // Necessary for external CSS imports to work
                             // https://github.com/facebookincubator/create-react-app/issues/2677
@@ -44,8 +45,8 @@ module.exports = {
                                 }),
                             ],
                         },
-                    }
-
+                    },
+                    'sass-loader',
                 ]
             },
         ],
