@@ -7,10 +7,12 @@ export default class Switch extends PureComponent {
   static propTypes = {
     currentStatus: PropTypes.bool,
     handleSwitch: PropTypes.func,
+    disabled: PropTypes.bool,
   }
 
   static defaultProps = {
     currentStatus: false,
+    disabled: false,
     handleSwitch: () => {
     },
   }
@@ -34,11 +36,13 @@ export default class Switch extends PureComponent {
 
   render() {
 
+    const {disabled} = this.props
     const wrapperCls = classNames(
       'Yep-switch-wrapper',
       {
         'open': this.state.switchOn,
         'close': !this.state.switchOn,
+        'disabled':disabled,
       })
     const innerCls = classNames(
       'switch-inner',
@@ -48,7 +52,10 @@ export default class Switch extends PureComponent {
       })
 
     return (
-      <div className={wrapperCls} onClick={this.handleSwitch}>
+      <div
+        className={wrapperCls}
+        {...(!disabled ? {onClick: this.handleSwitch} : {})}
+      >
         <div className={innerCls}/>
       </div>
     );

@@ -16,6 +16,9 @@
     border: .03rem solid #e4e4e4;
     border-left: transparent;
   }
+  &.disabled{
+    opacity: .3;
+  }
   .switch-inner {
     width: .54rem;
     height: .54rem;
