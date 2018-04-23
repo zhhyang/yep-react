@@ -86,3 +86,51 @@ html {
     font-size: calc(100px + 6 * (100vw - 1000px) / 1000);/*no*/
   }
 }
+
+
+
+.demo-list-item{
+  position: relative;
+  display: flex;
+  padding-left: 15px;
+  min-height: 44px;
+  background-color: #fff;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: background-color .2s;
+  align-items: center;
+
+  & .demo-list-line{
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-self: stretch;
+    padding-right: 15px;
+    overflow: hidden;
+  }
+}
+
+.demo-list-item .demo-list-line .demo-list-content, .demo-list-item .demo-list-line .demo-list-extra {
+  line-height: 1.5;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.demo-list-item .demo-list-line .demo-list-content {
+  flex: 1;
+  color: #000;
+  font-size: 17px;
+  text-align: left;
+}
+
+.demo-list-item .demo-list-line .demo-list-extra {
+  flex-basis: 36%;
+  color: #888;
+  font-size: 16px;
+  text-align: right;
+}
+
