@@ -5,7 +5,6 @@ import './index.scss'
 
 export default class SwitchDemo extends PureComponent {
 
-
   render() {
     return (
       <main>
@@ -19,37 +18,39 @@ export default class SwitchDemo extends PureComponent {
               </Link>
             </h1>
             <div className="page-wrapper">
-              <div className="demo-list-item">
-                <div className="demo-list-line">
-                  <div className="demo-list-content">Off</div>
-                  <div className="demo-list-extra">
-                    <Switch currentStatus={false}/>
+              <div className="demo-list">
+                <div className="demo-list-body">
+                  <div className="demo-list-item">
+                    <div className="demo-list-line">
+                      <div className="demo-list-content">Off</div>
+                      <div className="demo-list-extra">
+                        <Switch currentStatus={false}/>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="demo-list-item">
-
-                <div className="demo-list-line">
-                  <div className="demo-list-content">On</div>
-                  <div className="demo-list-extra">
-                    <Switch currentStatus/>
+                  <div className="demo-list-item">
+                    <div className="demo-list-line">
+                      <div className="demo-list-content">On</div>
+                      <div className="demo-list-extra">
+                        <Switch currentStatus/>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="demo-list-item">
-                <div className="demo-list-line">
-                  <div className="demo-list-content">Disabled On</div>
-                  <div className="demo-list-extra">
-                    <Switch currentStatus disabled/>
+                  <div className="demo-list-item">
+                    <div className="demo-list-line">
+                      <div className="demo-list-content">Disabled On</div>
+                      <div className="demo-list-extra">
+                        <Switch currentStatus disabled/>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="demo-list-item">
-                <div className="demo-list-line">
-                  <div className="demo-list-content">Disabled Off</div>
-                  <div className="demo-list-extra">
-                    <Switch currentStatus={false} disabled/>
+                  <div className="demo-list-item">
+                    <div className="demo-list-line">
+                      <div className="demo-list-content">Disabled Off</div>
+                      <div className="demo-list-extra">
+                        <Switch currentStatus={false} disabled/>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -3,7 +3,7 @@ import {render} from 'react-dom'
 import './base.scss'
 import {Route, Switch,} from "react-router";
 import {HashRouter as Router} from "react-router-dom";
-import routes from "@jdcfe/lrc-m/example/routes/index";
+import routes from "./routes/index";
 
 render(
   <Router>

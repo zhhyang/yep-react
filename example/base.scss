@@ -52,55 +52,284 @@ html {
 }
 
 html {
-  font-size: 32px;/*no*/
+  font-size: 32px; /*no*/
 }
 
-@media screen and (min-width: 320px) {/*no*/
+@media screen and (min-width: 320px) { /*no*/
   html {
-    font-size: calc(85.34% + 2 * (100vw - 320px) / 55);/*no*/
-    font-size: calc(42.67px + 2 * (100vw - 320px) / 55);/*no*/
+    font-size: calc(85.34% + 2 * (100vw - 320px) / 55); /*no*/
+    font-size: calc(42.67px + 2 * (100vw - 320px) / 55); /*no*/
   }
 }
 
 @media screen and (min-width: 375px) {
   html {
-    font-size: calc(100% + 2 * (100vw - 375px) / 39);/*no*/
-    font-size: calc(50px + 2 * (100vw - 375px) / 39);/*no*/
+    font-size: calc(100% + 2 * (100vw - 375px) / 39); /*no*/
+    font-size: calc(50px + 2 * (100vw - 375px) / 39); /*no*/
   }
 }
+
 @media screen and (min-width: 414px) {
   html {
-    font-size: calc(110.4% + 4 * (100vw - 414px) / 186);/*no*/
-    font-size: calc(55.2px + 4 * (100vw - 414px) / 186);/*no*/
+    font-size: calc(110.4% + 4 * (100vw - 414px) / 186); /*no*/
+    font-size: calc(55.2px + 4 * (100vw - 414px) / 186); /*no*/
   }
 }
+
 @media screen and (min-width: 600px) {
   html {
-    font-size: calc(160% + 4 * (100vw - 600px) / 150);/*no*/
-    font-size: calc(80px + 4 * (100vw - 600px) / 150);/*no*/
+    font-size: calc(160% + 4 * (100vw - 600px) / 150); /*no*/
+    font-size: calc(80px + 4 * (100vw - 600px) / 150); /*no*/
   }
 }
+
 @media screen and (min-width: 750px) {
   html {
-    font-size: calc(200% + 6 * (100vw - 1000px) / 1000);/*no*/
-    font-size: calc(100px + 6 * (100vw - 1000px) / 1000);/*no*/
+    font-size: calc(200% + 6 * (100vw - 1000px) / 1000); /*no*/
+    font-size: calc(100px + 6 * (100vw - 1000px) / 1000); /*no*/
+  }
+}
+
+// html{
+//     font-size:20px;
+//     font-size:375 / 20 *100vw;
+//     @media screen and (max-width: 320px){
+//         font-size: 375 / 20 * 320px;
+//     }
+//     @media screen and (max-width: 540px){
+//         font-size: 375 / 20 * 540px;
+//     }
+// }
+
+a, button, input {
+  outline: 0 none;
+  text-decoration: none
+}
+
+img {
+  border: 0 none;
+  vertical-align: bottom;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.clr {
+  clear: both;
+}
+
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+// 整体布局 适用于SPA
+.header, .footer, .wrap-page {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+}
+
+.header, .footer {
+  height: 0.88rem;
+  line-height: 0.88rem;
+  background-color: #fff;
+  text-align: center;
+  z-index: 900;
+}
+
+.header {
+  top: 0;
+  border-bottom: 1px solid #f00;
+}
+
+.footer {
+  bottom: 0;
+  border-top: 1px solid #f00;
+}
+
+.wrap-page {
+  top: 0;
+  bottom: 0;
+}
+
+.back {
+  display: inline-block;
+  position: absolute;
+  top: 0.63rem;
+  left: 0.3rem;
+  width: 0.24rem;
+  height: 0.4rem;
+  background-size: cover;
+}
+
+// page status
+.page-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.page-prev {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.page-next {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.page-in {
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.page-out {
+  -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+  -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+  transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.page-title {
+  display: block;
+  position: relative;
+  height: 20px; /*no*/
+  line-height: 20px; /*no*/
+  font-size: 20px; /*no*/
+  margin: 20px auto; /*no*/
+  text-align: center;
+}
+
+.page-back {
+  display: inline-block;
+  position: absolute;
+  left: 20px; /*no*/
+  top: 0;
+  width: 40px; /*no*/
+  height: 40px; /*no*/
+  text-align: center;
+}
+
+.page-wrapper {
+  padding: 0 20px; /*no*/
+  //top: 50%;
+  top: 3rem !important;
+  position: absolute;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.page-wrapper > button {
+  display: block;
+  width: 100%;
+  color: #656b79;
+  background-color: #f6f8fa;
+  box-shadow: 0 0 1px #b8bbbf; /*no*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px; /*no*/
+  border: 0;
+  box-sizing: border-box;
+  font-size: 18px; /*no*/
+  height: 41px; /*no*/
+  outline: 0;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.page-wrapper > button:not(:last-child) {
+  margin-bottom: 20px; /*no*/
+}
+
+.demo-list {
+
+}
+
+.demo-list-header {
+  padding: 15px 15px 9px;
+  font-size: 14px;
+  color: #888;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-list-body {
+  position: relative;
+  /*background-color: #fff;*/
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+  html:not([data-scale]) .demo-list-body {
+    border-bottom: none;
+  }
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+  html:not([data-scale]) .demo-list-body {
+    border-top: none;
+  }
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+  html:not([data-scale]) .demo-list-body:before {
+    content: "";
+    position: absolute;
+    background-color: #ddd;
+    display: block;
+    z-index: 1;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform-origin: 50% 50%;
+    transform: scaleY(.5);
   }
 }
 
 
 
-.demo-list-item{
+.demo-list-item {
   position: relative;
   display: flex;
-  padding-left: 15px;
   min-height: 44px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   vertical-align: middle;
   overflow: hidden;
   transition: background-color .2s;
   align-items: center;
 
-  & .demo-list-line{
+  & .demo-list-line {
     position: relative;
     display: flex;
     flex: 1;

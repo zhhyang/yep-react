@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import navs from '../../routes/nav.config'
 import {Link} from "react-router-dom";
 import './index.scss'
+
 export default class Index extends PureComponent {
 
   render() {

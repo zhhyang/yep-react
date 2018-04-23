@@ -100,16 +100,6 @@
     ]
   },
   {
-    "title": "Directive",
-    "list": [
-      {
-        "path": "/touch",
-        "name": "Touch",
-        "icon": "touch"
-      }
-    ]
-  },
-  {
     "title": "CSS Components",
     "list": [
       {
