@@ -1,19 +1,19 @@
 .page-index {
-  padding-bottom: 50px; /*no*/
+  padding-bottom: 100px; /*no*/
 
   .indexicon {
-    font-size: 22px; /*no*/
+    font-size: 44px; /*no*/
     color: #26a2ff;
     display: inline-block;
-    width: 30px; /*no*/
+    width: 60px; /*no*/
     vertical-align: middle;
 
     &.icon-swipe {
-      font-size: 26px; /*no*/
+      font-size: 52px; /*no*/
     }
 
     &.icon-checklist {
-      font-size: 18px; /*no*/
+      font-size: 36px; /*no*/
     }
   }
   a {
@@ -22,22 +22,22 @@
     background-color: #fff;
     box-sizing: border-box;
     color: inherit;
-    min-height: 48px; /*no*/
-    height: 48px; /*no*/
-    line-height: 48px; /*no*/
+    min-height: 96px; /*no*/
+    height: 96px; /*no*/
+    line-height: 96px; /*no*/
     overflow: hidden;
     text-decoration: none;
-    font-size: 16px; /*no*/
+    font-size: 32px; /*no*/
     s {
       position: absolute;
       display: block;
-      border: 2px solid #c8c8cd; /*no*/
+      border: 4px solid #c8c8cd; /*no*/
       border-bottom-width: 0;
       border-left-width: 0;
-      right: 20px; /*no*/
-      top: 20px; /*no*/
-      width: 8px; /*no*/
-      height: 8px; /*no*/
+      right: 40px; /*no*/
+      top: 40px; /*no*/
+      width: 16px; /*no*/
+      height: 16px; /*no*/
       -webkit-transform: translateY(-50%) rotate(45deg);
       transform: translateY(-50%) rotate(45deg);
     }

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const pxtorem = require('postcss-pxtorem');
 const host = process.env.HOST || '0.0.0.0';
 module.exports = {
   entry: [
@@ -48,6 +49,10 @@ module.exports = {
                     'not ie < 9', // React doesn't support IE8 anyway
                   ],
                   flexbox: 'no-2009',
+                }),
+                pxtorem({
+                  rootValue: 100,
+                  propWhiteList: [],
                 }),
               ],
             },

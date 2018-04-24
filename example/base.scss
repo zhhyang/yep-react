@@ -55,38 +55,38 @@ html {
   font-size: 32px; /*no*/
 }
 
-@media screen and (min-width: 320px) { /*no*/
+@media screen and (min-width: 320PX) { /*no*/
   html {
-    font-size: calc(85.34% + 2 * (100vw - 320px) / 55); /*no*/
-    font-size: calc(42.67px + 2 * (100vw - 320px) / 55); /*no*/
+    font-size: calc(85.34% + 2 * (100vw - 320PX) / 55); /*no*/
+    font-size: calc(42.67PX + 2 * (100vw - 320PX) / 55); /*no*/
   }
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 375PX) {
   html {
-    font-size: calc(100% + 2 * (100vw - 375px) / 39); /*no*/
-    font-size: calc(50px + 2 * (100vw - 375px) / 39); /*no*/
+    font-size: calc(100% + 2 * (100vw - 375PX) / 39); /*no*/
+    font-size: calc(50PX + 2 * (100vw - 375PX) / 39); /*no*/
   }
 }
 
-@media screen and (min-width: 414px) {
+@media screen and (min-width: 414PX) {
   html {
-    font-size: calc(110.4% + 4 * (100vw - 414px) / 186); /*no*/
-    font-size: calc(55.2px + 4 * (100vw - 414px) / 186); /*no*/
+    font-size: calc(110.4% + 4 * (100vw - 414PX) / 186); /*no*/
+    font-size: calc(55.2PX + 4 * (100vw - 414PX) / 186); /*no*/
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 600PX) {
   html {
-    font-size: calc(160% + 4 * (100vw - 600px) / 150); /*no*/
-    font-size: calc(80px + 4 * (100vw - 600px) / 150); /*no*/
+    font-size: calc(160% + 4 * (100vw - 600PX) / 150); /*no*/
+    font-size: calc(80PX + 4 * (100vw - 600PX) / 150); /*no*/
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 750PX) {
   html {
-    font-size: calc(200% + 6 * (100vw - 1000px) / 1000); /*no*/
-    font-size: calc(100px + 6 * (100vw - 1000px) / 1000); /*no*/
+    font-size: calc(200% + 6 * (100vw - 1000PX) / 1000); /*no*/
+    font-size: calc(100PX + 6 * (100vw - 1000PX) / 1000); /*no*/
   }
 }
 
@@ -215,27 +215,27 @@ body {
 .page-title {
   display: block;
   position: relative;
-  height: 20px; /*no*/
-  line-height: 20px; /*no*/
-  font-size: 20px; /*no*/
-  margin: 20px auto; /*no*/
+  height: 40px; /*no*/
+  line-height: 40px; /*no*/
+  font-size: 40px; /*no*/
+  margin: 40px auto; /*no*/
   text-align: center;
 }
 
 .page-back {
   display: inline-block;
   position: absolute;
-  left: 20px; /*no*/
+  left: 40px; /*no*/
   top: 0;
-  width: 40px; /*no*/
-  height: 40px; /*no*/
+  width: 80px; /*no*/
+  height: 80px; /*no*/
   text-align: center;
 }
 
 .page-wrapper {
-  padding: 0 20px; /*no*/
+  padding: 0 40px; /*no*/
   //top: 50%;
-  top: 3rem !important;
+  top: 300px !important;
   position: absolute;
   width: 100%;
   -webkit-transform: translateY(-50%);
@@ -254,8 +254,8 @@ body {
   border-radius: 4px; /*no*/
   border: 0;
   box-sizing: border-box;
-  font-size: 18px; /*no*/
-  height: 41px; /*no*/
+  font-size: 36px; /*no*/
+  height: 82px; /*no*/
   outline: 0;
   overflow: hidden;
   position: relative;
