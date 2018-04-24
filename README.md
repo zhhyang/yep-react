@@ -10,6 +10,21 @@
 
 源码均在 [src 目录](./src)内。每个组件有自己的子目录。最终所有组件统一在 [src/index.js](./src/index.js) 中 export 出来。
 
+
+为了实现按需加载，我们在项目中使用babel-plugin-import插件，所以组件目录结构遵循以下规范：
+> 组件文件夹一律小写，实际组件名字使用大驼峰，则文件夹名字小写中间使用-分割(如 SearchBar ->  search-bar )
+
+组件目录结构：(以Switch为例)
+```
+--switch(Switch组件文件夹)
+----index.js(Switch组件)
+----style（样式文件夹）
+------index.js(样式入口js文件，在此入口js中 import './index.scss')
+------index.scss
+
+```
+
+
 #### 编辑器
 
 我们推荐使用 [Visual Studio Code](https://code.visualstudio.com/)。
@@ -29,6 +44,25 @@
 我们的单元测试使用 Facebook 开源的 [jest](https://facebook.github.io/jest/) 框架编写。如果你之前没接触过，请移步 [jest 文档](https://facebook.github.io/jest/docs/en/getting-started.html)学习。
 
 **❤作为一名靠谱的工程师，请为你提交的修改编写相应的单元测试❤**
+
+
+## 运行example示例
+
+### 在编写组件时 首先执行
+
+```
+npm run watch
+```
+此命令会实时编译src下的代码到lib文件夹下
+
+
+### 运行
+
+```
+npm run dev
+
+```
+
 
 ## 讨论 / 问题反馈 / 建议
 
