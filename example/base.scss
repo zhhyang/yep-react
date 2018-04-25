@@ -271,8 +271,8 @@ body {
 }
 
 .demo-list-header {
-  padding: 15px 15px 9px;
-  font-size: 14px;
+  padding: 30px 30px 18px;
+  font-size: 28px;
   color: #888;
   width: 100%;
   box-sizing: border-box;
@@ -322,7 +322,7 @@ body {
 .demo-list-item {
   position: relative;
   display: flex;
-  min-height: 44px;
+  min-height: 88px;
   /*background-color: #fff;*/
   vertical-align: middle;
   overflow: hidden;
@@ -334,7 +334,7 @@ body {
     display: flex;
     flex: 1;
     align-self: stretch;
-    padding-right: 15px;
+    padding-right: 30px;
     overflow: hidden;
   }
 }
@@ -345,21 +345,21 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .demo-list-item .demo-list-line .demo-list-content {
   flex: 1;
   color: #000;
-  font-size: 17px;
+  font-size: 34px;
   text-align: left;
 }
 
 .demo-list-item .demo-list-line .demo-list-extra {
   flex-basis: 36%;
   color: #888;
-  font-size: 16px;
+  font-size: 32px;
   text-align: right;
 }
 

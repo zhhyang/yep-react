@@ -158,6 +158,16 @@
         "icon": "switch"
       },
       {
+        "path": "/checkbox",
+        "name": "Checkbox",
+        "icon": "checkbox"
+      },
+      {
+        "path": "/radio",
+        "name": "radio",
+        "icon": "radio"
+      },
+      {
         "path": "/checklist",
         "name": "Checklist",
         "icon": "checklist"

@@ -68,7 +68,7 @@ npm run dev
 
 请移步 [issue 页面](http://git.jd.com/JDC-FE/lrc-m/issues)。
 
-## Waring（重要！！！）
+## Warning（重要！！！）
 
 YepUI在编写scss时使用的是rem为单位，这样不够规范，在开发本组件时，统一换算成px，最终提供给用户的样式使用的都是px单位。
 但是像border width 不需要转换的，需要使用大写  PX 为单位，这样插件会忽略

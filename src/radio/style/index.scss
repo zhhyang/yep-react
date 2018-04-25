@@ -1,0 +1,85 @@
+@import "../../style/variables";
+
+.Yep-radio {
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+
+  &-inner {
+    //position: absolute;
+    //right: 0;
+    left: 15px;
+    width: 36px;
+    height: 36px;
+    border: 1PX solid #ccc;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    box-sizing: border-box;
+    margin-right: 20px;
+
+    &:after {
+      position: absolute;
+      display: none;
+      top: -1px;
+      right: 6px;
+      z-index: 999;
+      width: 10px;
+      height: 22px;
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      content: '\0020';
+      transform: rotate(45deg);
+    }
+  }
+
+  &-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border: 0 none;
+    appearance: none;
+  }
+  &-wrapper{
+    display: flex;
+  }
+  &-horizontal{
+    flex-direction: row;
+  }
+  &-vertical{
+    flex-direction: column;
+  }
+
+  &.Yep-radio-checked {
+    .Yep-radio-inner {
+      border-color: $primary-color;
+      background: $primary-color;
+
+      &:after {
+        display: block;
+        border-color: #fff;
+      }
+    }
+  }
+
+  &.Yep-radio-disabled {
+    opacity: $opacity-disabled;
+
+    &.Yep-radio-checked {
+      .Yep-radio-inner {
+        border-color: $color-text-caption;
+        background: none;
+
+        &:after {
+          border-color: $color-text-caption;
+        }
+      }
+    }
+  }
+}
