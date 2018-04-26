@@ -9,9 +9,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -182,29 +179,22 @@ img {
 
 // page status
 .page-active {
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
 .page-prev {
-  -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
 }
 
 .page-next {
-  -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 }
 
 .page-in {
-  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
-  -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
   transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .page-out {
-  -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
-  -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
   transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
 }
 
@@ -234,12 +224,9 @@ body {
 
 .page-wrapper {
   padding: 0 40px; /*no*/
-  //top: 50%;
-  top: 300px !important;
+  top: 120px !important;
   position: absolute;
   width: 100%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .page-wrapper > button {
@@ -248,8 +235,6 @@ body {
   color: #656b79;
   background-color: #f6f8fa;
   box-shadow: 0 0 1px #b8bbbf; /*no*/
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border-radius: 4px; /*no*/
   border: 0;
