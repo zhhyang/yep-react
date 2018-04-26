@@ -3,6 +3,7 @@ import Switch from '../pages/switch';
 import Checkbox from '../pages/checkbox';
 import Radio from '../pages/radio';
 import Button from '../pages/button';
+import Popup from '../pages/popup';
 
 
 
@@ -22,4 +23,7 @@ export default [{
 },{
   path: '/button',
   component: Button
+},{
+  path: '/popup',
+  component: Popup
 },];

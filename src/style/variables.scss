@@ -1,9 +1,9 @@
-$baseFontSize:20px;
-$primary-color:#ec3838;
+$baseFontSize: 20px;
+$primary-color: #ec3838;
 // 透明度
-$opacity-disabled: 0.3;   // switch checkbox radio 等组件禁用的透明度
+$opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
 
-$color-text-caption: #888;               // 辅助描述
+$color-text-caption: #888; // 辅助描述
 
 /* 一像素细线border-top-bottom */
 $border: #e0e0e0;
@@ -16,7 +16,7 @@ $l-red: #f23030;
 $d-red: #e4393c;
 $ll-black: #232326;
 $gray: #848689;
-$l-gray:#cccccc;
+$l-gray: #cccccc;
 
 $color-blue: #26a2ff;
 $color-white: #fff;
@@ -25,7 +25,7 @@ $border-color: #c8c8cd;
 $success-color: #4caf50;
 $error-color: #f44336;
 $warning-color: #ffc107;
-$disabled-color:#eeeeee;
+$disabled-color: #eeeeee;
 /* Cell Component */
 $cell-value-color: #888;
 
@@ -42,8 +42,8 @@ $button-primary-background-color: #26a2ff;
 $button-danger-color: #fff;
 $button-danger-background-color: #ef4f4f;
 
-$button-disabled-background-color:$disabled-color;
-$button-disabled-color:#cecece;
+$button-disabled-background-color: $disabled-color;
+$button-disabled-color: #cecece;
 
 /* Tab Item Component */
 $tab-item-font-size: 12px;
@@ -65,3 +65,5 @@ $radio-title-color: #888;
 
 /* z-index */
 $z-index-normal: 1;
+$maskZIndex: 222;
+$popupZIndex: 666;

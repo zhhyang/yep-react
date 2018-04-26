@@ -1,0 +1,22 @@
+@import "../../style/variables";
+
+.Yep-mask {
+  position: fixed;
+  z-index: $maskZIndex;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+}
+
+.Yep-mask_transparent {
+  position: fixed;
+  z-index: $maskZIndex;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+}

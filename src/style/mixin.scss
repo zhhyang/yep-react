@@ -1,5 +1,9 @@
 @import "./variables";
 
+.mask-open{
+  overflow: hidden;
+}
+
 
 @mixin border-bottom-1px($color: $border) {
   position: relative;
