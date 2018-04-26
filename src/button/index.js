@@ -13,6 +13,9 @@ export default class Button extends PureComponent {
     style: PropTypes.object,
     disabled: PropTypes.bool,
     type:PropTypes.string,
+    inline:PropTypes.bool,
+    size:PropTypes.string,
+    submit:PropTypes.bool,
   }
 
   static defaultProps = {
@@ -23,7 +26,7 @@ export default class Button extends PureComponent {
 
   render() {
 
-    const {prefixCls,className,type,submit,disabled,onClick,icon,inline,children} = this.props
+    const {prefixCls,className,type,submit,disabled,onClick,icon,inline,style,size,children} = this.props
     const El = submit?'button' :'a';
 
     const cls = classNames(prefixCls,className,{
@@ -32,12 +35,16 @@ export default class Button extends PureComponent {
       'btn-ghost':type === 'ghost',
       'btn-default':type==='default',
       'btn-inline':!!inline,
+      'btn-sm': size === 'sm',
+      'btn-md':size === 'md',
     })
     return (
       <El
         className={cls}
         aria-disabled={disabled}
         onClick={disabled ? undefined : onClick}
+        style={style}
+        {...(submit?{type:submit}:{})}
       >
         {
           icon && 'icon'
