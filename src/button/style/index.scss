@@ -1,0 +1,59 @@
+@import "../../style/mixin";
+
+.Yep-btn{
+  display: block;
+  height: 68px;
+  line-height: 68px;
+  text-align: center;
+  border-radius: 5px;
+  //color: #6f6f6f;
+  font-size: 34px;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  white-space: nowrap;
+  box-sizing: border-box;
+  //margin-right: .2rem;
+
+
+  &.btn-primary{
+    background-color: $primary-color;
+    color:$color-white;
+    &.btn-disabled{
+      background-color: #ce2525;
+      //color: #ce2525;
+    }
+  }
+
+
+  &.btn-default{
+    border: 1PX solid #6f6f6f;
+    color: #6f6f6f;
+    &.btn-disabled{
+      background-color: $button-disabled-background-color;
+      color: $button-disabled-color;
+    }
+  }
+  &.btn-inline{
+    display: inline-block;
+    padding: 0 30px;
+  }
+}
+
+.Yep-btns{
+  display: flex;
+  align-items: center;
+  & .Yep-btn{
+    display: flex;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    &:last-of-type{
+      margin-right: 0;
+    }
+  }
+}
+
+
+
+
