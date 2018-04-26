@@ -21,9 +21,9 @@ export default class Demo extends PureComponent {
 
   render() {
     return (
-      <Page title="Button">
+      <Page title="Popup">
         <WhiteSpace/>
-        <Button onClick={this.handleToggleShow}>default</Button>
+        <Button type="primary" onClick={this.handleToggleShow}>显示</Button>
         <WhiteSpace/>
         <Popup show={this.state.show} onCancel={this.handleToggleShow}>
           <div className="ul">
