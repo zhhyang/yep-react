@@ -11,10 +11,25 @@ import Mask from "../mask";
 export default class Popup extends PureComponent {
 
   static propTypes = {
+    /**
+     * 是否显示
+     */
     show: PropTypes.bool,
+    /**
+     * popup弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up
+     */
     popupTransition: PropTypes.string,
+    /**
+     * mask层的动画，默认为fade
+     */
     maskTransition: PropTypes.string,
+    /**
+     * 点击遮罩层是否关闭
+     */
     maskCloseable: PropTypes.bool,
+    /**
+     * 关闭事件回调
+     */
     onCancel: PropTypes.func,
     prefixCls: PropTypes.string,
   }
