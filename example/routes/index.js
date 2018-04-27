@@ -4,6 +4,7 @@ import Checkbox from '../pages/checkbox';
 import Radio from '../pages/radio';
 import Button from '../pages/button';
 import Popup from '../pages/popup';
+import ActionSheet from '../pages/action-sheet';
 
 
 
@@ -26,4 +27,7 @@ export default [{
 },{
   path: '/popup',
   component: Popup
+},{
+  path: '/action-sheet',
+  component: ActionSheet
 },];

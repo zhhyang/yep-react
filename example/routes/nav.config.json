@@ -18,6 +18,11 @@
         "icon": "popup"
       },
       {
+        "path": "/action-sheet",
+        "name": "ActionSheet",
+        "icon": "action-sheet"
+      },
+      {
         "path": "/progress-bar",
         "name": "ProgressBar",
         "icon": "progressBar"

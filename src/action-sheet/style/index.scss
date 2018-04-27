@@ -1,0 +1,63 @@
+@import "../../style/mixin";
+
+.Yep-action-sheet{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: all .2s;
+  background-color: #fff;
+  text-align: center;
+  font-size: 14px;
+
+  &-content{
+    overflow: hidden;
+    background: #fff;
+  }
+
+  &-list {
+    list-style: none;
+  }
+
+  &-cancel span,
+  &-item,
+  &-title {
+    display: block;
+    padding: 34px 32px;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    color: #666;
+    background-color: #fff;
+  }
+
+  &-title {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    color: #333;
+    font-size: 36px;
+    @include border-bottom-1px();
+  }
+
+  &-item {
+    list-style: none;
+    user-select: none;
+    &_active {
+      color: $primary-color;
+    }
+    @include border-bottom-1px();
+  }
+
+  &-space {
+    height: 12px;
+    background-color: rgba(37,38,45,.4);
+  }
+
+  &-cancel {
+    background-color: #fff;
+  }
+}
