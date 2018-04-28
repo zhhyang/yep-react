@@ -33,17 +33,17 @@
 
 我们已经为项目配置好了基于 [Airbnb JavaScript style guide](https://github.com/airbnb/javascript) 的 [ESLint](https://eslint.org/) 检查。**⚠请务必为你的 IDE 安装对应的 ESLint 插件。⚠**
 
-#### 构建代码
+~~#### 构建代码~~
 
-执行 `npm run build`。
+~~执行 `npm run build`~~
 
-## 测试
+~~## 测试~~
 
-执行 `npm test` 运行单元测试。
+~~执行 `npm test` 运行单元测试。~~
 
-我们的单元测试使用 Facebook 开源的 [jest](https://facebook.github.io/jest/) 框架编写。如果你之前没接触过，请移步 [jest 文档](https://facebook.github.io/jest/docs/en/getting-started.html)学习。
+~~我们的单元测试使用 Facebook 开源的 [jest](https://facebook.github.io/jest/) 框架编写。如果你之前没接触过，请移步 [jest 文档](https://facebook.github.io/jest/docs/en/getting-started.html)学习。~~
 
-**❤作为一名靠谱的工程师，请为你提交的修改编写相应的单元测试❤**
+~~**❤作为一名靠谱的工程师，请为你提交的修改编写相应的单元测试❤**~~
 
 
 ## 运行example示例
