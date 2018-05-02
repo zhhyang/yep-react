@@ -1,37 +1,19 @@
 import Home from '../pages/index';
-import Switch from '../pages/switch';
-import Checkbox from '../pages/checkbox';
-import Radio from '../pages/radio';
-import Button from '../pages/button';
-import Popup from '../pages/popup';
-import ActionSheet from '../pages/action-sheet';
-import Picker from '../pages/picker';
 
+import navs from './nav.config'
 
+const routes = [];
+navs.forEach(nav => {
+  nav.list.filter(c => !c.disabled).forEach(com => {
+    routes.push({
+      path: com.path,
+      component: require(`../pages${com.path}`).default
+    })
+  })
+});
 
 export default [{
   path: '/',
   exact: true,
   component: Home
-}, {
-  path: '/switch',
-  component: Switch
-},{
-  path: '/checkbox',
-  component: Checkbox
-},{
-  path: '/radio',
-  component: Radio
-},{
-  path: '/button',
-  component: Button
-},{
-  path: '/popup',
-  component: Popup
-},{
-  path: '/action-sheet',
-  component: ActionSheet
-},{
-  path: '/picker',
-  component: Picker
-},];
+}].concat(routes);

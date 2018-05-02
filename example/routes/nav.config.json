@@ -5,12 +5,14 @@
       {
         "path": "/toast",
         "name": "Toast",
-        "icon": "toast"
+        "icon": "toast",
+        "disabled":true
       },
       {
         "path": "/confirm",
         "name": "confirm",
-        "icon": "confirm"
+        "icon": "confirm",
+        "disabled":true
       },
       {
         "path": "/popup",
@@ -30,27 +32,32 @@
       {
         "path": "/address",
         "name": "Address",
-        "icon": "address"
+        "icon": "address",
+        "disabled":true
       },
       {
         "path": "/check-num",
         "name": "Check-num",
-        "icon": "check-num"
+        "icon": "check-num",
+        "disabled":true
       },
       {
         "path": "/index-list",
         "name": "Index-list",
-        "icon": "index-list"
+        "icon": "index-list",
+        "disabled":true
       },
       {
         "path": "/load-more",
         "name": "Load-more",
-        "icon": "load-more"
+        "icon": "load-more",
+        "disabled":true
       },
       {
         "path": "/lazy-load",
         "name": "Lazy-load",
-        "icon": "lazy-load"
+        "icon": "lazy-load",
+        "disabled":true
       },
       {
         "path": "/picker",
@@ -60,47 +67,56 @@
       {
         "path": "/range",
         "name": "Range",
-        "icon": "range"
+        "icon": "range",
+        "disabled":true
       },
       {
         "path": "/totop",
         "name": "Totop",
-        "icon": "totop"
+        "icon": "totop",
+        "disabled":true
       },
       {
         "path": "/infinite-scroll",
         "name": "InfiniteScroll",
-        "icon": "infiniteScroll"
+        "icon": "infiniteScroll",
+        "disabled":true
       },
       {
         "path": "/test-test",
         "name": "test-test",
-        "icon": "test-test"
+        "icon": "test-test",
+        "disabled":true
       },
       {
         "path": "/textx",
         "name": "textx",
-        "icon": "textx"
+        "icon": "textx",
+        "disabled":true
       },
       {
         "path": "/textx",
         "name": "textx",
-        "icon": "textx"
+        "icon": "textx",
+        "disabled":true
       },
       {
         "path": "/test-test",
         "name": "test-test",
-        "icon": "test-test"
+        "icon": "test-test",
+        "disabled":true
       },
       {
         "path": "/text-t",
         "name": "text-t",
-        "icon": "text-t"
+        "icon": "text-t",
+        "disabled":true
       },
       {
         "path": "/x-test",
         "name": "x-test",
-        "icon": "x-test"
+        "icon": "x-test",
+        "disabled":true
       }
     ]
   },
@@ -115,42 +131,50 @@
       {
         "path": "/tips",
         "name": "Tips",
-        "icon": "tips"
+        "icon": "tips",
+        "disabled":true
       },
       {
         "path": "/tabbar",
         "name": "Tabbar",
-        "icon": "tabbar"
+        "icon": "tabbar",
+        "disabled":true
       },
       {
         "path": "/navbar",
         "name": "Navbar",
-        "icon": "navbar"
+        "icon": "navbar",
+        "disabled":true
       },
       {
         "path": "/cell",
         "name": "Cell",
-        "icon": "cell"
+        "icon": "cell",
+        "disabled":true
       },
       {
         "path": "/cell-swipe",
         "name": "Cell-swipe",
-        "icon": "cell-swipe"
+        "icon": "cell-swipe",
+        "disabled":true
       },
       {
         "path": "/tab-container",
         "name": "TabContainer",
-        "icon": "tabContainer"
+        "icon": "tabContainer",
+        "disabled":true
       },
       {
         "path": "/search",
         "name": "Search",
-        "icon": "search"
+        "icon": "search",
+        "disabled":true
       },
       {
         "path": "/test-test",
         "name": "test-test",
-        "icon": "test-test"
+        "icon": "test-test",
+        "disabled":true
       }
     ]
   },
@@ -175,12 +199,14 @@
       {
         "path": "/checklist",
         "name": "Checklist",
-        "icon": "checklist"
+        "icon": "checklist",
+        "disabled":true
       },
       {
         "path": "/field",
         "name": "Field",
-        "icon": "field"
+        "icon": "field",
+        "disabled":true
       }
     ]
   }
