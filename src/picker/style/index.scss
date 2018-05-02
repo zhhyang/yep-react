@@ -1,0 +1,98 @@
+@import "../../style/mixin";
+
+
+.Yep-popup-picker-wrapper{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: all .2s;
+  background-color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.Yep-popup-picker-header{
+  display: flex;
+  align-items: center;
+  border-bottom: 1PX solid $border-color;
+  &-item{
+    color: $primary-color;
+    font-size: 34px;
+    padding: 18px 30px;
+    height: 84px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-left{
+
+  }
+  &-title{
+    flex: 1;
+    text-align: center;
+    color: #000000;
+  }
+  &-right{
+    text-align: right;
+  }
+
+}
+
+.Yep-picker{
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  flex: 1;
+  height: 476px;
+  background-color: #ffffff;
+
+  &-mask{
+    top: 0;
+    height: 100%;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6))  ;
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    background-size: 100% 204px;
+  }
+  &-indicator{
+    top: 204px;
+    height: 68px;
+    box-sizing: border-box;
+    border-top: 1PX solid #ddd;
+    border-bottom: 1PX solid #ddd;
+  }
+
+  &-mask,&-indicator{
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    width: 100%;
+  }
+
+  &-content{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 204px 0;
+  }
+
+  &-item{
+    font-size: 32px;
+    height: 68px;
+    line-height: 68px;
+    padding: 0 10px;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    &-selected{
+      font-size: 36px;
+    }
+  }
+}
