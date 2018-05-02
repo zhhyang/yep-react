@@ -1,0 +1,17 @@
+@import '../../style/mixin';
+
+.Yep-common-progressbar {
+  .bar {
+    border-radius: 50px;
+    height: 10px;
+    width: 100%;
+    background: #f5f5f5;
+    overflow: hidden;
+  }
+
+  .progress {
+    height: 10px;
+    border-radius: 5px;
+    transition: width 2s;
+  }
+}
