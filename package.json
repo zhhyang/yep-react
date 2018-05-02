@@ -16,7 +16,7 @@
     "components",
     "web"
   ],
-  "author": "wangge8 <wangge1@jd.com>",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
