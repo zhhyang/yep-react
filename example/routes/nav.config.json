@@ -5,8 +5,7 @@
       {
         "path": "/toast",
         "name": "Toast",
-        "icon": "toast",
-        "disabled":true
+        "icon": "toast"
       },
       {
         "path": "/confirm",
