@@ -1,0 +1,23 @@
+@import "../../style/mixin";
+
+.Yep-toast{
+  position: fixed;
+  top: 40%;
+  left: 170px;
+  right: 170px;
+  z-index: $toastZIndex;
+  padding: 40px 20px;
+  border-radius: 3px;
+  font-size: 26px;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, .6);
+  &-message{
+    padding: 10px 30px;
+  }
+  &.bottom{
+    top: 86%;
+    padding: 10px 30px;
+  }
+}
+

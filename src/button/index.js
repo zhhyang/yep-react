@@ -16,12 +16,14 @@ export default class Button extends PureComponent {
     inline:PropTypes.bool,
     size:PropTypes.string,
     submit:PropTypes.bool,
+    onClick:PropTypes.func,
   }
 
   static defaultProps = {
     prefixCls:'Yep-btn',
     disabled:false,
     type:'default',
+    onClick:()=>{},
   }
 
   render() {
