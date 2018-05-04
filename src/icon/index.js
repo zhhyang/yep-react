@@ -9,22 +9,22 @@ export default class Icon extends PureComponent {
      * icon的type
      */
     type: PropTypes.string.isRequired,
-    prefixCls:PropTypes.string,
+    prefixCls: PropTypes.string,
     style: PropTypes.object,
+    size: PropTypes.string,
   };
 
   static defaultProps = {
     prefixCls: 'Yep_icon',
-    style:{},
+    style: {},
+    size: 'md',
   };
 
-  render(){
+  render() {
 
-    const {className,style,prefixCls,type} = this.props;
-    const cls = classNames(prefixCls,className,{
-      [`${type}`]:!!type,
-    });
-    return(
+    const {className, style, prefixCls, type, size} = this.props;
+    const cls = classNames(prefixCls, className,`${type}`,`${prefixCls}-${size}`);
+    return (
       <i className={cls} style={style}/>
     )
   }

@@ -1,0 +1,38 @@
+@import "../../style/variables";
+.Yep_icon{
+
+  font-size: $icon-size-md;
+  display: inline-block;
+  &-xxs {
+    font-size: $icon-size-xxs;
+  }
+
+  &-xs {
+    font-size: $icon-size-xs;
+  }
+
+  &-sm {
+    font-size: $icon-size-sm;
+  }
+
+  &-md {
+    font-size: $icon-size-md;
+  }
+
+  &-lg {
+    font-size: $icon-size-lg;
+  }
+
+  &.data {
+    animation: cirle-anim 1s linear infinite;
+  }
+
+  @keyframes cirle-anim {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+
+

@@ -3,27 +3,6 @@
     "title": "JS Components",
     "list": [
       {
-        "path": "/toast",
-        "name": "Toast",
-        "icon": "toast"
-      },
-      {
-        "path": "/confirm",
-        "name": "confirm",
-        "icon": "confirm",
-        "disabled":true
-      },
-      {
-        "path": "/popup",
-        "name": "Popup",
-        "icon": "popup"
-      },
-      {
-        "path": "/action-sheet",
-        "name": "ActionSheet",
-        "icon": "action-sheet"
-      },
-      {
         "path": "/progress-bar",
         "name": "ProgressBar",
         "icon": "progressBar"
@@ -179,6 +158,32 @@
         "path": "/icon",
         "name": "Icon",
         "icon": "icon"
+      }
+    ]
+  },
+  {
+    "title": "操作反馈",
+    "list": [
+      {
+        "path": "/toast",
+        "name": "Toast",
+        "icon": "toast"
+      },
+      {
+        "path": "/confirm",
+        "name": "confirm",
+        "icon": "confirm",
+        "disabled":true
+      },
+      {
+        "path": "/popup",
+        "name": "Popup",
+        "icon": "popup"
+      },
+      {
+        "path": "/action-sheet",
+        "name": "ActionSheet",
+        "icon": "action-sheet"
       }
     ]
   },

@@ -13,20 +13,22 @@ function getInstance(props, callback) {
 }
 
 function notice(message,
-                type,
+                icon,
                 duration = 3,
                 onClose: () => {}) {
   function close() {
-    onClose()
     if (messageInstance) {
-      messageInstance.destroy()
+      messageInstance.destroy();
       messageInstance = null;
+    }
+    if (onClose){
+      onClose();
     }
   }
 
   getInstance({
     message,
-    type,
+    icon,
     duration,
     onClose: close
   }, notification => {
@@ -37,43 +39,28 @@ function notice(message,
 export default {
   SHORT: 3,
   LONG: 8,
-  show(message, duration,) {
-    return notice(message, 'add-circle', duration, () => {
-    });
-  },
-  info(
-    message,
-    duration,
-    onClose: () => {},
-  ) {
-    return notice(message, 'info', duration, onClose);
+  show(message, duration,onClose) {
+    return notice(message, null, duration, onClose);
   },
   success(
     message,
     duration,
-    onClose?: () => {},
+    onClose: () => {},
   ) {
-    return notice(message, 'success', duration, onClose);
+    return notice(message, 'shop-zhengque', duration, onClose);
   },
   fail(
     message,
     duration,
-    onClose?: () => {},
+    onClose: () => {},
   ) {
-    return notice(message, 'fail', duration, onClose);
-  },
-  offline(
-    message,
-    duration,
-    onClose?: () => {},
-  ) {
-    return notice(message, 'offline', duration, onClose);
+    return notice(message, 'shop-zhuyi', duration, onClose);
   },
   loading(
     message,
     duration,
-    onClose?: () => {},
+    onClose: () => {},
   ) {
-    return notice(message, 'loading', duration, onClose);
+    return notice(message, 'data', duration, onClose);
   },
 };

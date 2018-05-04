@@ -9,13 +9,13 @@ export default class Demo extends PureComponent {
     return (
       <Page title="Toast">
         <WhiteSpace/>
-        <Button onClick={() =>{ Toast.show('123',)}}>显示</Button>
+        <Button onClick={() =>{ Toast.show('This is a toast tips !!!')}}>显示</Button>
         <WhiteSpace/>
-        <Button onClick={() =>{ Toast.show('234')}}>显示</Button>
+        <Button onClick={() =>{ Toast.fail('失败')}}>显示 fail</Button>
         <WhiteSpace/>
-        <Button onClick={() =>{ Toast.show('345')}}>显示</Button>
+        <Button onClick={() =>{ Toast.success('成功')}}>显示 success</Button>
         <WhiteSpace/>
-        <Button onClick={() =>{ Toast.show('456')}}>显示</Button>
+        <Button onClick={() =>{ Toast.loading('loading')}}>显示loading</Button>
         <WhiteSpace/>
       </Page>
     );

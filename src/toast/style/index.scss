@@ -2,22 +2,39 @@
 
 .Yep-toast{
   position: fixed;
+  width: 100%;
   top: 40%;
-  left: 170px;
-  right: 170px;
   z-index: $toastZIndex;
-  padding: 40px 20px;
-  border-radius: 3px;
   font-size: 26px;
   text-align: center;
-  color: #fff;
-  background: rgba(0, 0, 0, .6);
-  &-message{
-    padding: 10px 30px;
+
+  &.mask{
+    display: flex;
+    justify-content: center;
   }
   &.bottom{
     top: 86%;
-    padding: 10px 30px;
+  }
+  &-notice{
+    padding: 30px 30px;
+    border-radius: 3px;
+    color: #fff;
+    min-width: 120px;
+    background: rgba(0, 0, 0, .6);
+    &-message{
+
+      //padding: 10px 30px;
+    }
+  }
+  & .Yep_icon{
+    margin-bottom: 12px;
+    &.shop-zhengque{
+      color: #1aad19;
+    }
+    &.shop-zhuyi{
+      color: $primary-color;
+    }
   }
 }
+
 

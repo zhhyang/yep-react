@@ -73,7 +73,7 @@ export default class Notification extends PureComponent {
   render() {
 
     const {className, prefixCls, style, icon, message, bottom} = this.props;
-    const cls = classNames(prefixCls, className, {
+    const cls = classNames(prefixCls, className,'mask',{
       'bottom': bottom,
     });
     return (
@@ -84,11 +84,14 @@ export default class Notification extends PureComponent {
         unmountOnExit
       >
         <div className={cls} style={style}>
-          {
-            icon && <Icon type={icon} style={{display:'block'}}/>
-          }
-          <span className={`${prefixCls}-message`}>{message}</span>
+          <div className={`${prefixCls}-notice`}>
+            {
+              icon && <Icon type={icon} size="lg"/>
+            }
+            <div className={`${prefixCls}-notice-message`}>{message}</div>
+          </div>
         </div>
+
       </CSSTransition>
     )
   }
