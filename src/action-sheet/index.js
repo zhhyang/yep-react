@@ -17,6 +17,10 @@ export default class ActionSheet extends PureComponent {
      * 关闭事件回调
      */
     onCancel: PropTypes.func,
+    /**
+     * 点击事件回调
+     */
+    itemClick:PropTypes.func,
 
     prefixCls: PropTypes.string,
 
@@ -36,7 +40,7 @@ export default class ActionSheet extends PureComponent {
 
     data: PropTypes.array,
     active: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  }
+  };
 
   static defaultProps = {
     show: false,
@@ -46,11 +50,12 @@ export default class ActionSheet extends PureComponent {
     hasCancel: false,
     space: false,
     data: [],
-  }
+    itemClick:() =>{}
+  };
 
   constructor() {
-    super()
-
+    super();
+    this.onItemClick = this.onItemClick.bind(this)
   }
 
   onItemClick(e) {
