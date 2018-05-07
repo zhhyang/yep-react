@@ -69,11 +69,8 @@ export default function confirm(
     </div>;
   ReactDOM.render(
     <Dialog
-      visible
-      transparent
+      show
       title={title}
-      closable={false}
-      maskClosable={true}
       footer={footer}
       onClose={close}
     >

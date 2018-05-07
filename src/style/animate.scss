@@ -16,6 +16,28 @@
   transition: all 300ms ease-out;
 }
 
+.zoom-enter {
+  opacity: 0.01;
+  transform: scale(0);
+}
+
+.zoom-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms ease-out;
+}
+
+.zoom-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.zoom-exit-active {
+  opacity: 0.01;
+  transform: scale(0);
+  transition: all 300ms ease-out;
+}
+
 .slide-up-enter {
   transform: translateY(100%);
 }
