@@ -184,6 +184,11 @@
         "path": "/action-sheet",
         "name": "ActionSheet",
         "icon": "action-sheet"
+      },
+      {
+        "path": "/icon",
+        "name": "Icon",
+        "icon": "icon"
       }
     ]
   },

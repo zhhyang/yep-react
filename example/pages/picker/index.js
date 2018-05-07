@@ -38,11 +38,11 @@ export default class Demo extends PureComponent {
     return (
       <Page title="Picker">
         <WhiteSpace/>
-        <Button type="primary" onClick={this.handleToggleShow}>显示</Button>
+        <Button type="primary" onClick={this.handleToggleShow}>选择医生</Button>
         <WhiteSpace/>
-        <Button onClick={this.handleToggleSlideDownShow}>显示取消按钮</Button>
+        <Button onClick={this.handleToggleSlideDownShow}>选择性别</Button>
         <WhiteSpace/>
-        <Button type="primary" onClick={this.handleToggleSlideRightShow}>婚姻状况</Button>
+        <Button type="primary" onClick={this.handleToggleSlideRightShow}>选择婚姻状况</Button>
         <WhiteSpace/>
         <Picker
           show={this.state.show}
@@ -59,8 +59,8 @@ export default class Demo extends PureComponent {
           onCancel={this.handleToggleSlideDownShow}
           hasCancel
           space
-          data={['未婚', '已婚', '离异']}
-          defaultSelectedValue="已婚"
+          data={['男', '女', '保密']}
+          defaultSelectedValue="女"
           onOk={(value) => {
             alert(value)
             this.handleToggleSlideDownShow()

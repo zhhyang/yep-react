@@ -13,6 +13,12 @@ export default class Demo extends PureComponent {
         <Icon type="arrow-down-hollow"/>
         <Icon type="arrow-back "/>
         <Icon type="add"/>
+        <Icon type="add-users"/>
+        <Icon type="add-user"/>
+        <Icon type="arrow-right"/>
+        <Icon type="calendar"/>
+        <Icon type="calculator"/>
+        <Icon type="close"/>
         <WhiteSpace/>
       </Page>
     );
