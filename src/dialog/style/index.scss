@@ -1,0 +1,83 @@
+@import "../../style/mixin";
+
+.Yep-dialog{
+
+  position: relative;
+  &-transparent{
+    width: 540px;
+  }
+
+  &-content{
+    position: relative;
+    background-color: #ffffff;
+    border: 0;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &-transparent &-content{
+    border-radius: 14px;
+    padding-top: 30px;
+  }
+
+  &-header{
+    padding: 12px 30px 30px;
+  }
+  &-title{
+    margin: 0;
+    font-size: 36px;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+  }
+  &-body {
+    font-size: 30px;
+    color: #888;
+    height: 100%;
+    line-height: 1.5;
+    overflow: auto;
+  }
+  &-transparent &-content &-body{
+    padding: 0 30px 30px;
+  }
+
+  &-wrap{
+    @include box;
+    @include vertical-center;
+    @include horizontal-center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: $maskZIndex;
+  }
+
+  &-button-group-h{
+    @include box;
+  }
+  &-button-group-h &-button{
+    flex: 1;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: $primary-color;
+    color: #ffffff;
+    font-size: 36px;
+    height: 100px;
+    line-height: 100px;
+    display: block;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include border-top-1px();
+  }
+  &-button:first-child{
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+}

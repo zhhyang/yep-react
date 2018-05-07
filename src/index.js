@@ -8,3 +8,4 @@ export { default as Picker} from './picker';
 export { default as ProgressBar} from './progress-bar';
 export { default as Icon} from './icon';
 export { default as Toast} from './toast';
+export { default as Dialog} from './dialog';

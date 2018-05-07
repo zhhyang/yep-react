@@ -93,102 +93,64 @@
 }
 
 @mixin box {
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: box;
-  display: -webkit-flex;
   display: flex;
 }
 
 /* 水平排列 */
 @mixin box-horizontal {
-  -moz-box-orient: horizontal;
-  -webkit-box-orient: horizontal;
   box-orient: horizontal;
 }
 
 /* 垂直排列 */
 @mixin box-vertical {
-  -moz-box-orient: vertical;
-  -webkit-box-orient: vertical;
   box-orient: vertical;
 }
 
 /* 平均分配 */
 @mixin flex($order) {
-  -ms-flex: $order;
-  -webkit-box-flex: $order;
-  -webkit-flex: $order;
   flex: $order;
 }
 
 /* 自定义宽度 */
 @mixin auto-flex {
-  -webkit-box-flex: 0 0 auto;
-  -webkit-flex: 0 0 auto;
   flex: 0 0 auto;
 }
 
 /* 垂直居中 */
 @mixin vertical-center {
-  box-align: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-align-items: center;
 
 }
 
 /* 垂直靠上 */
 @mixin vertical-top {
-  box-align: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
   align-items: flex-start;
-  -webkit-align-items: flex-start;
 
 }
 
 /* 垂直靠下 */
 @mixin vertical-end {
-  box-align: end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
   align-items: flex-end;
-  -webkit-align-items: flex-end;
 
 }
 
 /* 水平居中 */
 @mixin horizontal-center {
-  box-pack: center;
-  -webkit-box-pack: center;
   justify-content: center;
-  -webkit-justify-content: center;
 }
 
 /* 两边对齐 */
 @mixin both-side {
-  box-pack: justify;
-  -webkit-box-pack: justify;
   justify-content: space-between;
-  -webkit-justify-content: space-between;
 }
 
 @mixin box-direction-horizontal {
-  box-direction: column;
-  -moz-box-direction: column;
-  -webkit-box-direction: column;
-  -webkit-flex-direction: column;
   flex-direction: column;
 }
 
 /* 换行 */
 @mixin wrap {
   flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-
 }
 
 @mixin sl {

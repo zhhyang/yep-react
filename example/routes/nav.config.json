@@ -186,6 +186,11 @@
         "icon": "action-sheet"
       },
       {
+        "path": "/dialog",
+        "name": "Dialog",
+        "icon": "dialog"
+      },
+      {
         "path": "/icon",
         "name": "Icon",
         "icon": "icon"
