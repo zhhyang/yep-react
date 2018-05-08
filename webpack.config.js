@@ -6,6 +6,7 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const host = process.env.HOST || '0.0.0.0';
 module.exports = {
+  mode: 'development',
   entry: [
     `webpack-dev-server/client?http://localhost:8080`,
     'webpack/hot/only-dev-server',
@@ -93,7 +94,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'example/index.html')
     }),
-    new webpack.HotModuleReplacementPlugin(),// enable HMR globally
 
     new webpack.NamedModulesPlugin(),// prints more readable module names in the browser console on HMR updates
     new OpenBrowserPlugin({url: `http://localhost:8080`})

@@ -6,5 +6,5 @@ node_modules
 dist/*.js
 dist/*.map
 coverage/
-*.css
-lib
+/lib
+

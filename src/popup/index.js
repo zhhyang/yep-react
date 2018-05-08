@@ -32,10 +32,12 @@ export default class Popup extends PureComponent {
      */
     onCancel: PropTypes.func,
     prefixCls: PropTypes.string,
+    style:PropTypes.object,
   }
 
   static defaultProps = {
     prefixCls: 'Yep-popup',
+    style:{},
     show: false,
     popupTransition: 'slide-up',
     maskTransition: 'fade',

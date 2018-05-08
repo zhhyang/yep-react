@@ -1,11 +1,25 @@
-export { default as Switch} from './switch';
-export { default as Checkbox} from './checkbox';
-export { default as Radio} from './radio';
-export { default as Button} from './button';
-export { default as Popup} from './popup';
-export { default as ActionSheet} from './action-sheet';
-export { default as Picker} from './picker';
-export { default as ProgressBar} from './progress-bar';
-export { default as Icon} from './icon';
-export { default as Toast} from './toast';
-export { default as Dialog} from './dialog';
+import Switch from './switch';
+import Checkbox from './checkbox';
+import Radio from './radio';
+import Button from './button';
+import Popup from './popup';
+import ActionSheet from './action-sheet';
+import Picker from './picker';
+import ProgressBar from './progress-bar';
+import Icon from './icon';
+import Toast from './toast';
+import Dialog from './dialog';
+
+export default {
+  ActionSheet,
+  Button,
+  Switch,
+  Checkbox,
+  Radio,
+  Popup,
+  Picker,
+  ProgressBar,
+  Icon,
+  Toast,
+  Dialog,
+};
