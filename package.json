@@ -73,9 +73,11 @@
   },
   "peerDependencies": {
     "prop-types": ">=15.5.0",
-    "react": ">=15.0.0"
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "dependencies": {
+    "@jdcfe/lrc": "^0.0.1",
     "classnames": "^2.2.5",
     "react-transition-group": "^2.3.1"
   }

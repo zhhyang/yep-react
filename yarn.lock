@@ -85,6 +85,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@jdcfe/lrc@^0.0.1":
+  version "0.0.1"
+  resolved "http://registry.m.jd.com/@jdcfe/lrc/download/@jdcfe/lrc-0.0.1.tgz#d0de0c97eaf709b831aecbf64a59ab70e8f6d6d7"
+
 "@types/events@*":
   version "1.2.0"
   resolved "http://registry.m.jd.com/@types/events/download/@types/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"

@@ -170,12 +170,6 @@
         "icon": "toast"
       },
       {
-        "path": "/confirm",
-        "name": "confirm",
-        "icon": "confirm",
-        "disabled":true
-      },
-      {
         "path": "/popup",
         "name": "Popup",
         "icon": "popup"
