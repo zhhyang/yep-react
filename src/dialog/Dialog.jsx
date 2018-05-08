@@ -17,6 +17,8 @@ export default class Dialog extends PureComponent {
     onClose: PropTypes.func,
     show: PropTypes.bool,
     maskCloseable: PropTypes.bool,
+    dialogTransition:PropTypes.string,
+    maskTransition:PropTypes.string,
   };
 
   static defaultProps = {
@@ -24,7 +26,9 @@ export default class Dialog extends PureComponent {
     style: {},
     bodyStyle: {},
     show: false,
-    maskCloseable: true,
+    maskCloseable: false,
+    maskTransition:'fade',
+    dialogTransition:'zoom',
     onClose: () => {
     },
   };
@@ -34,6 +38,22 @@ export default class Dialog extends PureComponent {
     this.renderHeader = this.renderHeader.bind(this)
     this.renderBody = this.renderBody.bind(this)
     this.renderFooter = this.renderFooter.bind(this)
+    this.close = this.close.bind(this)
+    this.onMaskClick = this.onMaskClick.bind(this)
+  }
+
+  close(e) {
+    const {onClose} = this.props;
+    if (onClose) {
+      onClose(e);
+    }
+  }
+
+  onMaskClick(e) {
+    const {maskCloseable} = this.props;
+    if (e.target === e.currentTarget && maskCloseable) {
+      this.close(e);
+    }
   }
 
   renderHeader() {
@@ -68,20 +88,28 @@ export default class Dialog extends PureComponent {
   }
 
   render() {
-    const {prefixCls, className, style, title,} = this.props;
+    const {prefixCls, className, style, title, show,maskTransition,dialogTransition} = this.props;
 
     const cls = classNames(prefixCls, className, `${prefixCls}-transparent`);
 
     return (
-      <CSSTransition
-        in={true}
-        timeout={300}
-        classNames="fade"
-        unmountOnExit
-      >
-        <div>
-          <Mask/>
-          <div className={`${prefixCls}-wrap`}>
+
+      <div>
+        <CSSTransition
+          in={show}
+          timeout={300}
+          classNames={maskTransition}
+          unmountOnExit
+        >
+          <Mask onClick={this.onMaskClick}/>
+        </CSSTransition>
+        <CSSTransition
+          in={show}
+          timeout={300}
+          classNames={dialogTransition}
+          unmountOnExit
+        >
+          <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
             <div className={cls} style={style}>
               <div className={`${prefixCls}-content`}>
                 {
@@ -96,8 +124,8 @@ export default class Dialog extends PureComponent {
               </div>
             </div>
           </div>
-        </div>
-      </CSSTransition>
+        </CSSTransition>
+      </div>
     )
   }
 }
