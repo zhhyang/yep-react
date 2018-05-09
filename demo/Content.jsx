@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react';
 import { withRouter } from 'react-router-dom';
-import marked from 'marked';
 import Prism from 'prismjs';
 import allDocData from './allDocData';
 import Demo from './Demo';
 
-
+import {Helmet} from 'react-helmet'
 import {toCamelCase} from '../site/lib/utils'
 import App from "./App";
 
@@ -27,7 +26,8 @@ const Content = ({ history, location: { pathname } }) => {
       );
     }
     return (
-      <Fragment>
+      <div className="page-wrapper">
+        <Helmet title={toCamelCase(componentName)}/>
           {
             currentComponent && currentComponent.demos ? (
               currentComponent.demos.sort((a, b) => a.order - b.order).map(demo => (
@@ -38,7 +38,7 @@ const Content = ({ history, location: { pathname } }) => {
           <style>
             { currentComponent.style || '' }
           </style>
-      </Fragment>
+      </div>
     );
   }
   return (

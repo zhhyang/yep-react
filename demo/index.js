@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {render} from 'react-dom'
 import './base.scss'
 import Content from './Content'
@@ -7,11 +7,11 @@ import {Helmet} from "react-helmet";
 import { BrowserRouter as Router } from 'react-router-dom';
 
 render(
-  <div>
+  <Fragment>
     <Helmet titleTemplate="%s - Yep-ui"/>
     <Router>
       <Content/>
     </Router>
-  </div>
+  </Fragment>
   , document.getElementById('app')
 );
