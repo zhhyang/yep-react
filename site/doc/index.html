@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.37.0/codemirror.css">
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.37.0/theme/monokai.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css" > -->
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css" >
     <style>
 
       body {
@@ -90,7 +90,6 @@
         padding: 25px 20px;
         width: 300px;
       }
-
       .l-menu .nav-item {
         height: 40px;
         line-height: 40px;
@@ -98,15 +97,73 @@
         font-size: 16px;
         font-weight: 550;
       }
+      /* ant design arrow */
+      .l-menu .nav-item .nav-title {
+        position: relative;
+        outline: 0;
+        user-select: none;
+      }
+
+      .l-menu .nav-item .nav-title i {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 10px;
+        transition: transform .3s cubic-bezier(.645,.045,.355,1),-webkit-transform .3s cubic-bezier(.645,.045,.355,1);
+      }
+
+      .l-menu .nav-item .nav-title i::before,
+      .l-menu .nav-item .nav-title i::after {
+        content: '';
+        position: absolute;
+        vertical-align: baseline;
+        background: #fff;
+        background-image: linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.65));
+        width: 6px;
+        height: 1.5px;
+        border-radius: 2px;
+        transition: background .3s cubic-bezier(.645,.045,.355,1),transform .3s cubic-bezier(.645,.045,.355,1),top .3s cubic-bezier(.645,.045,.355,1),-webkit-transform .3s cubic-bezier(.645,.045,.355,1)
+      }
+
+      .l-menu .nav-item .nav-title:hover i::before,
+      .l-menu .nav-item .nav-title:hover i::after {
+        background-image: linear-gradient(90deg,#ff686b,#ff686b);
+      }
+
+      .l-menu .nav-item.nav-open .nav-title i::before {
+        transform: rotate(45deg) translateX(2px);
+      }
+
+      .l-menu .nav-item.nav-open .nav-title i::after {
+        transform: rotate(-45deg) translateX(-2px);
+      }
+
+      .l-menu .nav-item .nav-title i::before {
+        transform: rotate(-45deg) translateX(2px);
+      }
+
+      .l-menu .nav-item .nav-title i::after {
+        transform: rotate(45deg) translateX(-2px);
+      }
 
       .l-menu .nav-item .nav-item {
-        font-size: 14px;
+        padding-left: 10px;
+        font-size: 13px;
         font-weight: 500;
+      }
+
+      .l-menu .nav-group {
+        display: none;
+      }
+
+      .l-menu .nav-open .nav-group {
+        display: block;
       }
 
       .l-menu a {
         display: block;
         color: #2d3646;
+        outline: 0;
       }
 
       .l-menu .nav-item .nav-item a:hover,
@@ -145,8 +202,11 @@
       }
 
       .component-hd {
-        padding: 30px;
-        border: 1px solid #ebebeb;
+        position: relative;
+        float: right;
+        width: 405px;
+        margin-right: -405px;
+        padding: 0 0 0 30px;
       }
 
       .component-bd {

@@ -5,7 +5,7 @@ $opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
 
 $color-text-caption: #888; // 辅助描述
 
-/* 一像素细线border-top-bottom */
+// 一像素细线border-top-bottom
 $border: #e0e0e0;
 $tab: #929292;
 $tab-deep: #333;
@@ -26,13 +26,13 @@ $success-color: #4caf50;
 $error-color: #f44336;
 $warning-color: #ffc107;
 $disabled-color: #eeeeee;
-/* Cell Component */
+// Cell Component
 $cell-value-color: #888;
 
-/* Header Component */
+// Header Component */
 $header-height: 40px;
 
-/* Button Component */
+// Button Component */
 $button-default-color: #656b79;
 $button-default-background-color: #f6f8fa;
 $button-default-plain-color: #5a5a5a;
@@ -45,25 +45,25 @@ $button-danger-background-color: #ef4f4f;
 $button-disabled-background-color: $disabled-color;
 $button-disabled-color: #cecece;
 
-/* Tab Item Component */
+// Tab Item Component */
 $tab-item-font-size: 12px;
 
-/* Tabbar Component */
+// Tabbar Component */
 $tabbar-background-color: #fafafa;
 $tabbar-tab-item-selected-background-color: #eaeaea;
 $tabbar-tab-item-selected-color: $color-blue;
 
-/* Navbar Component */
+// Navbar Component */
 $navbar-background-color: #fafafa;
 $tabbar-tab-item-selected-background-color: #eaeaea;
 
-/* Checklist Component */
+// Checklist Component */
 $checklist-title-color: #888;
 
-/* Radio Component */
+// Radio Component */
 $radio-title-color: #888;
 
-/* z-index */
+// z-index */
 $z-index-normal: 1;
 $maskZIndex: 222;
 $popupZIndex: 666;

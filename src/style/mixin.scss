@@ -1,8 +1,5 @@
 @import "./variables";
 
-
-
-
 @mixin border-bottom-1px($color: $border) {
   position: relative;
   &:before {
@@ -69,7 +66,7 @@
     pointer-events: none;
   }
 }
-/*四边*/
+//四边*/
 @mixin bd-all-1px($color: $border, $radius: 3px) {
   position: relative;
   &:after {
@@ -94,50 +91,50 @@
   display: flex;
 }
 
-/* 水平排列 */
+// 水平排列 */
 @mixin box-horizontal {
   box-orient: horizontal;
 }
 
-/* 垂直排列 */
+// 垂直排列 */
 @mixin box-vertical {
   box-orient: vertical;
 }
 
-/* 平均分配 */
+// 平均分配 */
 @mixin flex($order) {
   flex: $order;
 }
 
-/* 自定义宽度 */
+// 自定义宽度 */
 @mixin auto-flex {
   flex: 0 0 auto;
 }
 
-/* 垂直居中 */
+// 垂直居中 */
 @mixin vertical-center {
   align-items: center;
 
 }
 
-/* 垂直靠上 */
+// 垂直靠上 */
 @mixin vertical-top {
   align-items: flex-start;
 
 }
 
-/* 垂直靠下 */
+// 垂直靠下 */
 @mixin vertical-end {
   align-items: flex-end;
 
 }
 
-/* 水平居中 */
+// 水平居中 */
 @mixin horizontal-center {
   justify-content: center;
 }
 
-/* 两边对齐 */
+// 两边对齐 */
 @mixin both-side {
   justify-content: space-between;
 }
@@ -146,7 +143,7 @@
   flex-direction: column;
 }
 
-/* 换行 */
+// 换行 */
 @mixin wrap {
   flex-wrap: wrap;
 }

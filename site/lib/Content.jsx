@@ -5,6 +5,9 @@ import Prism from 'prismjs';
 import allDocData from './allDocData';
 import Demo from '../lib/Demo';
 
+
+import {toCamelCase} from './utils'
+
 const Content = ({ history, location: { pathname } }) => {
   setTimeout(() => {
     Prism.highlightAll();
@@ -30,7 +33,7 @@ const Content = ({ history, location: { pathname } }) => {
     return (
       <div className="l-content l-markdown">
         <div className="markdown-body">
-          <h1>{componentName} {currentComponent.title}</h1>
+          <h1>{toCamelCase(componentName)} {currentComponent.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: marked(contents[0]) }} />
           {
             currentComponent && currentComponent.demos ? (<h2>Demo</h2>) : null
@@ -38,7 +41,7 @@ const Content = ({ history, location: { pathname } }) => {
           {
             currentComponent && currentComponent.demos ? (
               currentComponent.demos.sort((a, b) => a.order - b.order).map(demo => (
-                <Demo demo={demo} key={demo.order} />
+                <Demo demo={demo} key={demo.order} componentName={componentName} />
               ))
             ) : null
           }

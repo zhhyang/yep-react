@@ -12,3 +12,13 @@ webpack.config.js
 .gitignore
 yarn.lock
 example
+demo
+scripts
+site
+视觉规范
+组件开发进度.md
+.babelrc
+.editorconfig
+.eslintrc.json
+.npmignore
+

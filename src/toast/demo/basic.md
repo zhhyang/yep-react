@@ -5,10 +5,10 @@ description:
 ---
 
 ```js
-import React, {PureComponent} from 'react'
-import {Toast,Button} from "@jdcfe/lrc-m"
+import React from 'react';
+import {Toast,Button} from "@jdcfe/lrc-m";
 
-class Demo extends PureComponent {
+class Demo extends React.PureComponent {
 
   render() {
     return (

@@ -5,9 +5,9 @@ description:
 ---
 
 ```js
-import React, {PureComponent} from 'react'
-import {Popup, Button} from "@jdcfe/lrc-m"
-class Demo extends PureComponent {
+import React from 'react';
+import {Popup, Button} from "@jdcfe/lrc-m";
+class Demo extends React.PureComponent {
 
   constructor() {
     super()

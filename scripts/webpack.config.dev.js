@@ -17,7 +17,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      '@jdcfe/lrc-m': path.resolve(__dirname, '../src'),
+      //'@jdcfe/lrc-m': path.resolve(__dirname, '../src'),
     },
   },
   module: {
@@ -59,8 +59,9 @@ const config = {
       chunks: ['doc'],
       inject: true,
     }),
+    new webpack.HotModuleReplacementPlugin(),// enable HMR globally
     new OpenBrowserPlugin({url: `http://localhost:8080/doc`})
   ],
-};
+}
 
 module.exports = config;

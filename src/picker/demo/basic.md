@@ -5,10 +5,10 @@ description:
 ---
 
 ```js
-import React, {PureComponent} from 'react'
-import {Picker, Button} from "@jdcfe/lrc-m"
+import React from 'react';
+import {Picker, Button} from "@jdcfe/lrc-m";
 
-class Demo extends PureComponent {
+class Demo extends React.PureComponent {
 
   constructor() {
     super()
@@ -41,7 +41,7 @@ class Demo extends PureComponent {
 
   render() {
     return (
-      <Page title="Picker">
+      <div title="Picker">
         
         <Button type="primary" onClick={this.handleToggleShow}>选择医生</Button>
         
@@ -84,7 +84,7 @@ class Demo extends PureComponent {
           }
           }
         />
-      </Page>
+      </div>
     );
   }
 }

@@ -5,10 +5,10 @@ description:
 ---
 
 ```js
-import React, {PureComponent} from 'react'
-import {Dialog, Button} from "@jdcfe/lrc-m"
+import React from 'react';
+import {Dialog, Button} from "@jdcfe/lrc-m";
 
-class Demo extends PureComponent {
+class Demo extends React.PureComponent {
 
   state = {
     show:false,
@@ -16,7 +16,7 @@ class Demo extends PureComponent {
 
   render() {
     return (
-      <Page title="Dialog">
+      <div title="Dialog">
         <Button onClick={() => {
           this.setState({show:true})
         }}>Dialog</Button>
@@ -32,7 +32,7 @@ class Demo extends PureComponent {
         <Dialog show={this.state.show} maskCloseable onClose={()=>{this.setState({show:false})}}>
           <div className={`Yep-dialog-alert-content`}>123</div>
         </Dialog>
-      </Page>
+      </div>
     );
   }
 }

@@ -5,10 +5,10 @@ description:
 ---
 
 ```js
-import React, {PureComponent} from 'react'
-import {Radio} from "@jdcfe/lrc-m"
+import React from 'react';
+import {Radio} from "@jdcfe/lrc-m";
 
-class RadioDemo extends PureComponent {
+class Demo extends React.PureComponent {
 
   constructor() {
     super()
@@ -33,7 +33,7 @@ class RadioDemo extends PureComponent {
     return (
       <div title="Radio">
         <Radio options={this.state.options1} name="eat" />
-        <Radio options={this.state.options2} checked="3" horizontal />
+        <Radio options={this.state.options2} horizontal />
       </div>
     );
   }

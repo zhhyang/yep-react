@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Components from '@jdcfe/lrc-m'; // eslint-disable-line
 import {transform} from '@babel/standalone';
 
-import Editor from './Editor';
+//import Editor from './Editor';
 
 class Demo extends React.Component {
   static propTypes = {
@@ -29,13 +29,13 @@ class Demo extends React.Component {
   }
 
   componentDidMount() {
-    //this.renderSource(this.code);
+    this.renderSource(this.code);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.demo !== this.props.demo) {
       this.code = nextProps.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
-      //this.renderSource(this.code);
+      this.renderSource(this.code);
       this.setState({
         showEditor: false,
       });
@@ -43,7 +43,7 @@ class Demo extends React.Component {
   }
 
   onCodeChange(newCode) {
-    //this.renderSource(newCode);
+    this.renderSource(newCode);
     this.code = newCode;
   }
 
@@ -58,6 +58,9 @@ class Demo extends React.Component {
     finalCode = finalCode.replace(/import[^;]+?;/g, '');
     const transformedCode = transform(finalCode, {
       presets: ['es2015', 'react'],
+      plugins:[
+        'proposal-class-properties'
+      ]
     }).code;
 
     const args = ['context', 'React', 'ReactDOM', 'PropTypes'];
@@ -79,20 +82,8 @@ class Demo extends React.Component {
     const {demo, componentName} = this.props;
 
     return (
-      <div className="">
-        <h3 className="">{demo.title}</h3>
-        <div className="">{demo.description}</div>
-        <div className="component-box">
-          <div id={`demo-${demo.order}`} className="component-hd">
-            <div style={{width: '375px', height: '620px'}}>
-              <iframe src={`http://localhost:8081/component/${componentName}`} frameBorder="0"
-                      style={{width: '375px', height: '620px'}}/>
-            </div>
-          </div>
-          <div className="component-bd" style={{display: 'block'}}>
-            <Editor value={this.code} onChange={this.onCodeChange}/>
-          </div>
-        </div>
+      <div id={`demo-${demo.order}`}>
+
       </div>
     );
   }
