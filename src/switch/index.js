@@ -5,12 +5,16 @@ import classNames from 'classnames'
 export default class Switch extends PureComponent {
 
   static propTypes = {
+    prefixCls: PropTypes.string,
+    style: PropTypes.object,
     currentStatus: PropTypes.bool,
     handleSwitch: PropTypes.func,
     disabled: PropTypes.bool,
   }
 
   static defaultProps = {
+    prefixCls:'Yep-switch',
+    style:{},
     currentStatus: false,
     disabled: false,
     handleSwitch: () => {
@@ -36,14 +40,15 @@ export default class Switch extends PureComponent {
 
   render() {
 
-    const {disabled} = this.props
+    const {disabled,prefixCls,className,style} = this.props
     const wrapperCls = classNames(
-      'Yep-switch-wrapper',
+      `${prefixCls}-wrapper`,
+      className,
       {
         'open': this.state.switchOn,
         'close': !this.state.switchOn,
         'disabled':disabled,
-      })
+      });
     const innerCls = classNames(
       'switch-inner',
       {
@@ -54,6 +59,7 @@ export default class Switch extends PureComponent {
     return (
       <div
         className={wrapperCls}
+        style={style}
         {...(!disabled ? {onClick: this.handleSwitch} : {})}
       >
         <div className={innerCls}/>

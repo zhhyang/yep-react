@@ -66,7 +66,7 @@ export default class Radio extends PureComponent {
 
   render() {
 
-    const {className, style, options,checked,horizontal, ...restProps} = this.props;
+    const {className, style, options,horizontal, ...restProps} = this.props;
 
     const {prefixCls} = restProps;
     const wrapCls = classNames(`${prefixCls}-wrapper`, className,{
