@@ -14,6 +14,7 @@ import ProgressBar from './progress-bar';
 import Icon from './icon';
 import Toast from './toast';
 import Dialog from './dialog';
+import WhiteSpace from './white-space';
 
 export default {
   ActionSheet,
@@ -27,4 +28,5 @@ export default {
   Icon,
   Toast,
   Dialog,
+  WhiteSpace,
 };
