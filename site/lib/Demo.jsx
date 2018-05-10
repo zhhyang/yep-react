@@ -39,7 +39,7 @@ class Demo extends React.Component {
         <div className="component-box">
           <div id={`demo-${demo.order}`} className="component-hd">
             <div style={{width: '375px', height: '620px'}}>
-              <iframe src={`http://localhost:8081/component/${componentName}`} frameBorder="0"
+              <iframe src={`http://localhost:8081/component/${componentName}?order=${demo.order}`} frameBorder="0"
                       style={{width: '375px', height: '620px'}}/>
             </div>
           </div>

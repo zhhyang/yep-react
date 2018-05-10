@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import { withRouter } from 'react-router-dom';
 import Prism from 'prismjs';
+import qs from 'qs';
 import allDocData from './allDocData';
 import Demo from './Demo';
 
@@ -8,7 +9,7 @@ import {Helmet} from 'react-helmet'
 import {toCamelCase} from '../site/lib/utils'
 import App from "./App";
 
-const Content = ({ history, location: { pathname } }) => {
+const Content = ({ history, location: { pathname,search } }) => {
   setTimeout(() => {
     Prism.highlightAll();
   }, 100);
@@ -25,15 +26,13 @@ const Content = ({ history, location: { pathname } }) => {
         <h1>404 page not found</h1>
       );
     }
+
+    const query = qs.parse(search,{ ignoreQueryPrefix: true });
     return (
       <div className="page-wrapper">
         <Helmet title={toCamelCase(componentName)}/>
           {
-            currentComponent && currentComponent.demos ? (
-              currentComponent.demos.sort((a, b) => a.order - b.order).map(demo => (
-                <Demo demo={demo} key={demo.order} componentName={componentName} />
-              ))
-            ) : null
+            currentComponent && currentComponent.demos ? <Demo demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order]} componentName={componentName} />  : null
           }
           <style>
             { currentComponent.style || '' }

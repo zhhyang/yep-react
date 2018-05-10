@@ -66,6 +66,7 @@
     "postcss-pxtorem": "^4.0.1",
     "prismjs": "^1.14.0",
     "prop-types": "^15.6.1",
+    "qs": "^6.5.2",
     "react": "^16.2.0",
     "react-dom": "^16.3.0",
     "react-helmet": "^5.2.0",
