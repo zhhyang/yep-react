@@ -18,7 +18,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      //'@jdcfe/lrc-m': process.cwd(),
+      '@jdcfe/lrc-m': path.resolve(__dirname, '../src'),
     },
   },
   module: {

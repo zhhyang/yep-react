@@ -79,7 +79,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const {demo, componentName} = this.props;
+    const {demo} = this.props;
 
     return (
       <div id={`demo-${demo.order}`}>
