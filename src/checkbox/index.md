@@ -8,7 +8,7 @@ title: 复选框
 
 
 | 参数 | 说明 | 类型 | 默认值
-| --------- | --------
+| --------- | -------- | --------- | --------
 | prefixCls | 组件class前缀 | string | Yep-checkbox
 | style | 组件样式 | object | {}
 | className | 额外要添加的 CSS 类名 | string | -

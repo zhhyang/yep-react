@@ -9,7 +9,7 @@ title: 对话框
 Dialog
 
 | 参数 | 说明 | 类型 | 默认值
-| --------- | --------
+| --------- | -------- | --------- | --------
 | prefixCls | 组件class前缀 | string | Yep-dialog
 | style | 组件样式 | object | {}
 | bodyStyle | body组件样式 | object | {}
@@ -26,7 +26,7 @@ Dialog
 Dialog.confirm
 
 | 参数 | 说明 | 类型 | 默认值
-| --------- | --------
+| --------- | -------- | --------- | --------
 | title | 标题 | string | -
 | message | 提示信息 | string | -
 | actions | 按钮组，{text, onClick}, | Array | [{text: 'Cancel', onClick: () => console.log('cancel')},{text: 'Ok', onClick: () => console.log('ok')},]
