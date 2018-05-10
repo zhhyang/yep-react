@@ -59,7 +59,8 @@ class Demo extends React.Component {
     const transformedCode = transform(finalCode, {
       presets: ['es2015', 'react'],
       plugins:[
-        'proposal-class-properties'
+        'proposal-class-properties',
+        'proposal-object-rest-spread',
       ]
     }).code;
 
