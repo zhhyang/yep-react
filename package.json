@@ -24,7 +24,6 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/standalone": "^7.0.0-beta.46",
-    "@jdcfe/lrc-m": "0.0.2",
     "autoprefixer": "^8.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

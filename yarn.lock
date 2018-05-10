@@ -89,14 +89,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@jdcfe/lrc-m@0.0.2":
-  version "0.0.2"
-  resolved "http://registry.m.jd.com/@jdcfe/lrc-m/download/@jdcfe/lrc-m-0.0.2.tgz#b46a98ff21f2d4143c923087d9387ce2a9eb803a"
-  dependencies:
-    "@jdcfe/lrc" "^0.0.1"
-    classnames "^2.2.5"
-    react-transition-group "^2.3.1"
-
 "@jdcfe/lrc@^0.0.1":
   version "0.0.1"
   resolved "http://registry.m.jd.com/@jdcfe/lrc/download/@jdcfe/lrc-0.0.1.tgz#d0de0c97eaf709b831aecbf64a59ab70e8f6d6d7"

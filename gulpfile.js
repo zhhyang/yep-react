@@ -46,6 +46,10 @@ gulp.task('dist', function () {
     .pipe(gulp.dest('dist'))
 });
 
+gulp.task('watch', function () {
+  gulp.watch(paths, ['dist'])
+});
+
 gulp.task('default', ['clean'], function () {
-  gulp.start('dist')
+  gulp.start(['dist','watch'])
 });
