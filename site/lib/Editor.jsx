@@ -8,12 +8,11 @@ import 'codemirror/keymap/sublime';
 
 export default class Editor extends React.Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
-    const { onChange, value } = this.props;
+    const {value } = this.props;
 
     this.cm = CodeMirror(this.editor, {
       mode: 'jsx',
@@ -25,16 +24,12 @@ export default class Editor extends React.Component {
     });
 
     this.cm.setValue(value);
+  }
 
-    this.cm.on('changes', (cm) => {
-      if (onChange) {
-        clearTimeout(this.timeout);
-
-        this.timeout = setTimeout(() => {
-          onChange(cm.getValue());
-        }, 300);
-      }
-    });
+  componentWillReceiveProps(nextProps){
+    if (nextProps.value !== this.props.value) {
+      this.cm.setValue(nextProps.value);
+    }
   }
 
   render() {
