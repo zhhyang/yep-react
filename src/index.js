@@ -16,6 +16,7 @@ import Toast from './toast';
 import Dialog from './dialog';
 import WhiteSpace from './white-space';
 import Upload from './upload';
+import Placeholder from './placeholder';
 
 export default {
   ActionSheet,
@@ -31,4 +32,5 @@ export default {
   Dialog,
   WhiteSpace,
   Upload,
+  Placeholder,
 };
