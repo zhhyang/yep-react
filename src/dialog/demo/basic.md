@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Dialog, Button} from "@jdcfe/lrc-m";
+import {Dialog, Button,WhiteSpace} from "@jdcfe/lrc-m";
 
 class Demo extends React.PureComponent {
 
@@ -20,11 +20,11 @@ class Demo extends React.PureComponent {
         <Button onClick={() => {
           this.setState({show:true})
         }}>Dialog</Button>
-        
+        <WhiteSpace/>
         <Button onClick={() => {
           Dialog.confirm('标题', '确定要删除吗?')
         }}>Confirm</Button>
-        
+        <WhiteSpace/>
         <Button onClick={() => {
           Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}])
         }}>Alert</Button>

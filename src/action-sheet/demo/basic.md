@@ -7,7 +7,7 @@ description:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ActionSheet, Button} from "@jdcfe/lrc-m";
+import {ActionSheet, Button,WhiteSpace} from "@jdcfe/lrc-m";
 
 class Demo extends React.PureComponent {
 
@@ -44,9 +44,9 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <Button type="primary" onClick={this.handleToggleShow}>显示</Button>
-        
+        <WhiteSpace/>
         <Button onClick={this.handleToggleSlideDownShow}>显示取消按钮</Button>
-        
+        <WhiteSpace/>
         <Button type="primary" onClick={this.handleToggleSlideRightShow}>婚姻状况</Button>
         
         <ActionSheet

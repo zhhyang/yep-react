@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Popup, Button} from "@jdcfe/lrc-m";
+import {Popup, Button,WhiteSpace} from "@jdcfe/lrc-m";
 class Demo extends React.PureComponent {
 
   constructor() {
@@ -44,9 +44,9 @@ class Demo extends React.PureComponent {
       <div title="Popup">
         
         <Button type="primary" onClick={this.handleToggleShow}>显示</Button>
-        
+        <WhiteSpace/>
         <Button onClick={this.handleToggleSlideDownShow}>从上向下显示</Button>
-        
+        <WhiteSpace/>
         <Button type="primary" onClick={this.handleToggleSlideRightShow}>从右向左显示</Button>
         
         <Popup show={this.state.show} onCancel={this.handleToggleShow}>

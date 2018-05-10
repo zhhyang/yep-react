@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {ProgressBar} from "@jdcfe/lrc-m";
+import {ProgressBar,WhiteSpace} from "@jdcfe/lrc-m";
 
 class Demo extends React.PureComponent {
 
@@ -14,6 +14,7 @@ class Demo extends React.PureComponent {
     return (
       <div title="ProgressBar">
         <ProgressBar percent={150}/>
+        <WhiteSpace/>
         <ProgressBar percent={50}/>
       </div>
     );

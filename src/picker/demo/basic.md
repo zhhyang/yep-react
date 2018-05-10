@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Picker, Button} from "@jdcfe/lrc-m";
+import {Picker, Button,WhiteSpace} from "@jdcfe/lrc-m";
 
 class Demo extends React.PureComponent {
 
@@ -44,9 +44,9 @@ class Demo extends React.PureComponent {
       <div title="Picker">
         
         <Button type="primary" onClick={this.handleToggleShow}>选择医生</Button>
-        
+        <WhiteSpace/>
         <Button onClick={this.handleToggleSlideDownShow}>选择性别</Button>
-        
+        <WhiteSpace/>
         <Button type="primary" onClick={this.handleToggleSlideRightShow}>选择婚姻状况</Button>
         
         <Picker
