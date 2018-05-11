@@ -17,6 +17,7 @@ import Dialog from './dialog';
 import WhiteSpace from './white-space';
 import Upload from './upload';
 import Placeholder from './placeholder';
+import TabBar from './tab-bar';
 
 export default {
   ActionSheet,
@@ -33,4 +34,5 @@ export default {
   WhiteSpace,
   Upload,
   Placeholder,
+  TabBar,
 };

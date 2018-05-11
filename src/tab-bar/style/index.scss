@@ -1,0 +1,40 @@
+@import "../../style/mixin";
+
+.Yep-tab-bar{
+  position: fixed!important;
+  left: 0;
+  bottom: 0;
+  z-index: $tab-barZIndex;
+  box-sizing: border-box;
+  height: $tab-bar-height;
+  width: 100%;
+  display: flex;
+  transition: bottom .2s;
+  justify-content: space-around;
+  align-items: center;
+  @include border-top-1px();
+  &-tab{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    &-image {
+      width: $icon-size-md;
+      height: $icon-size-md;
+      vertical-align: middle;
+    }
+    &-title {
+      font-size: 20px;
+      margin: $v-spacing-xs 0 0 0;
+      line-height: 1;
+      text-align: center;
+    }
+    &-icon{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
