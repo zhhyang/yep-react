@@ -46,7 +46,7 @@ export default class Button extends PureComponent {
         aria-disabled={disabled}
         onClick={disabled ? undefined : onClick}
         style={style}
-        {...(submit?{type:submit}:{})}
+        {...(submit?{type:'submit'}:{})}
       >
         {
           icon && 'icon'
