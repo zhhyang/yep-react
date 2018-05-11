@@ -32,7 +32,7 @@ const Content = ({ history, location: { pathname,search } }) => {
       <div className="page-wrapper">
         <Helmet title={toCamelCase(componentName)}/>
           {
-            currentComponent && currentComponent.demos ? <Demo demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order]} componentName={componentName} />  : null
+            currentComponent && currentComponent.demos ? <Demo demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0]} componentName={componentName} />  : null
           }
           <style>
             { currentComponent.style || '' }
