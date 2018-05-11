@@ -4,7 +4,7 @@ import marked from 'marked';
 import Prism from 'prismjs';
 import allDocData from './allDocData';
 import Demo from '../lib/Demo';
-
+import {Helmet} from 'react-helmet'
 
 import {toCamelCase} from './utils'
 
@@ -33,6 +33,7 @@ const Content = ({ history, location: { pathname } }) => {
     return (
       <div className="l-content l-markdown">
         <div className="markdown-body">
+          <Helmet title={`${toCamelCase(componentName)} ${currentComponent.title}`}/>
           <h1>{toCamelCase(componentName)} {currentComponent.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: marked(contents[0]) }} />
           {
@@ -65,6 +66,7 @@ const Content = ({ history, location: { pathname } }) => {
       /* eslint-disable no-underscore-dangle */
       return (
         <div className="l-content l-markdown">
+          <Helmet title={page.title} />
           <div className="markdown-body">
             <div dangerouslySetInnerHTML={{ __html: marked(page.__content) }} />
           </div>
