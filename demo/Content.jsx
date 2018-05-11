@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import Prism from 'prismjs';
 import qs from 'qs';
 import allDocData from './allDocData';
@@ -29,15 +29,24 @@ const Content = ({ history, location: { pathname,search } }) => {
 
     const query = qs.parse(search,{ ignoreQueryPrefix: true });
     return (
-      <div className="page-wrapper">
-        <Helmet title={toCamelCase(componentName)}/>
+      <Fragment>
+        <h1 className="page-title">
+          <span>{toCamelCase(componentName)}</span>
+          <Link className="page-back router-link-active" to="/">
+            返回
+            <i className="Yepui Yepui-back"/>
+          </Link>
+        </h1>
+        <div className="page-wrapper">
+          <Helmet title={toCamelCase(componentName)}/>
           {
             currentComponent && currentComponent.demos ? <Demo demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0]} componentName={componentName} />  : null
           }
           <style>
             { currentComponent.style || '' }
           </style>
-      </div>
+        </div>
+      </Fragment>
     );
   }
   return (

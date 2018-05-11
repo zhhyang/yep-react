@@ -3,7 +3,16 @@ category: Components
 title: 占位符
 ---
 
+使用SVG创建一个模拟将被加载的内容结构的加载器集合，类似于Facebook卡片加载器
 
+## 特性
+
+* **完全可定制:** 你可以改变颜色，速度和尺寸;
+* **创建你自己的loading:** 使用
+  [create-content-loader](https://danilowoz.github.io/create-content-loader/) 去创建定制的loadings;
+* **开箱可用:** FacebookStyle、InstagramStyle、CodeStyle、ListStyle、BulletListStyle;
+* **高性能:** 纯 SVG, 无需 scripts, canvas, etc;
+  
 <DEMO>
 
 
