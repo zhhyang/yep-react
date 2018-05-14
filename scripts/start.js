@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
-const webpackConfig = require('./webpack.config.dev');
+const webpackConfig = require('./webpack.site.config.dev');
 
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';

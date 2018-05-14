@@ -8,4 +8,5 @@ dist/*.map
 coverage/
 /lib
 /dist
+/build
 
