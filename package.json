@@ -4,6 +4,7 @@
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
+    "add":"node scripts/add.js",
     "watch": "babel src/ --watch --out-dir ./lib --copy-files --ignore md",
     "eslint": "eslint --ext .js --ext .jsx src/",
     "test": "jest --config ./scripts/jest.config.js",
@@ -60,6 +61,7 @@
     "gulp-sass": "^4.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
+    "inquirer": "^5.2.0",
     "jest": "^22.4.2",
     "marked": "^0.3.19",
     "mini-css-extract-plugin": "^0.4.0",
@@ -92,6 +94,7 @@
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2",
     "webpack-dev-server": "^3.1.3",
+    "xregexp": "^4.1.1",
     "yaml-front-matter": "^4.0.0"
   },
   "peerDependencies": {
