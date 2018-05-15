@@ -18,6 +18,7 @@ import WhiteSpace from './white-space';
 import Upload from './upload';
 import Placeholder from './placeholder';
 import TabBar from './tab-bar';
+import Sticky from './sticky';
 
 export default {
   ActionSheet,
@@ -35,4 +36,5 @@ export default {
   Upload,
   Placeholder,
   TabBar,
+  Sticky,
 };
