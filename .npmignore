@@ -22,4 +22,5 @@ build
 .editorconfig
 .eslintrc.json
 .npmignore
+gulpfile.js
 

@@ -1,21 +1,21 @@
 {
   "name": "@jdcfe/lrc-m",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
-    "add":"node scripts/add.js",
-    "watch": "babel src/ --watch --out-dir ./lib --copy-files --ignore md",
+    "add": "node scripts/add.js",
+    "compire": "babel src/ --out-dir ./lib --copy-files --ignore md",
     "eslint": "eslint --ext .js --ext .jsx src/",
     "test": "jest --config ./scripts/jest.config.js",
     "dev": "node scripts/start.js",
     "demo": "node scripts/demo-start.js",
-    "build-css": "node-sass-chokidar src/ -o lib/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o lib/ --watch --recursive",
-    "dist": "gulp default",
-    "clean": "rimraf lib",
+    "watch-css-dist": "gulp default",
+    "dist": "gulp dist",
+    "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
-    "build-site": "webpack --config scripts/webpack.site.config.pro.js"
+    "build-site": "webpack --config scripts/webpack.site.config.pro.js",
+    "prepublish": "npm run clean && npm run dist && npm run compire"
   },
   "keywords": [
     "react",
@@ -66,7 +66,6 @@
     "marked": "^0.3.19",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.8.3",
-    "node-sass-chokidar": "^1.2.2",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss-loader": "^2.1.4",
     "postcss-pxtorem": "^4.0.1",

@@ -14,9 +14,6 @@ const Content = ({ history, location: { pathname,search } }) => {
     Prism.highlightAll();
   }, 100);
 
-  if (pathname.match(/^\/demo\/?$/)) {
-    history.replace(`/demo/${allDocData.docs[0].id}`);
-  }
 
   if (pathname.match(/\/component\//)) {
     const componentName = pathname.split('/').reverse()[0];
