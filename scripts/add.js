@@ -61,11 +61,13 @@ import PropTypes from 'prop-types';
 
 export default class ${newCpt.name} extends PureComponent{
   static propTypes = {
-    
+    prefixCls: PropTypes.string,
+    style: PropTypes.object,
   }
   
   static defaultProps = {
-    
+    prefixCls: 'Yep-${nameLc}',
+    style: {},
   }
   
   constructor(){
@@ -143,7 +145,7 @@ ${newCpt.desc}
 
 | 参数 | 说明 | 类型 | 默认值
 | --------- | -------- | --------- | --------
-| prefixCls | 组件class前缀 | string | Yep_${nameLc}
+| prefixCls | 组件class前缀 | string | Yep-${nameLc}
 | style | 组件样式 | object | {}
 | className | 组件额外样式 | string | -
 
@@ -206,6 +208,22 @@ ReactDOM.render(<Demo/>,  mountNode);
   });
 }
 
+/**
+ * 向入口添加组件
+ * @returns {Promise<any>}
+ */
+function addInToIndex() {
+  return new Promise((resolve, reject) => {
+    const nameLc = decamelize(newCpt.name);
+    const exportContent = `export {default as ${newCpt.name}} from './${nameLc}';`;
+    fs.appendFile('./src/index.js',  exportContent, (err) => {
+      if (err) throw err;
+      console.log('生成组件添加入口文件成功');
+      resolve(`生成组件添加入口文件成功`);
+    });
+  });
+}
+
 function createNew() {
   createIndexJs().then(() => {
     return createDoc();
@@ -213,6 +231,8 @@ function createNew() {
     return createStyle();
   }).then(() => {
     return createDemo();
+  }).then(()=>{
+    return addInToIndex()
   }).then(() => {
     console.log('组件模板生成完毕，陈独秀请开始你的表演吧~');
     process.exit();
