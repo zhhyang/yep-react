@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
@@ -81,7 +82,7 @@ export default class Dialog extends PureComponent {
 
     const cls = classNames(prefixCls, className, `${prefixCls}-transparent`);
 
-    return (
+    return createPortal(
       <div>
         <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit>
           <Mask onClick={this.onMaskClick} />
@@ -97,7 +98,8 @@ export default class Dialog extends PureComponent {
             </div>
           </div>
         </CSSTransition>
-      </div>
+      </div>,
+      document.body,
     );
   }
 }

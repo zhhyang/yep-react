@@ -109,5 +109,8 @@
     "classnames": "^2.2.5",
     "raf": "^3.4.0",
     "react-transition-group": "^2.3.1"
-  }
+  },
+  "pre-commit": [
+    "format"
+  ]
 }
