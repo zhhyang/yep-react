@@ -62,6 +62,7 @@ import PropTypes from 'prop-types';
 export default class ${newCpt.name} extends PureComponent{
   static propTypes = {
     prefixCls: PropTypes.string,
+    className: PropTypes.string,
     style: PropTypes.object,
   }
   
