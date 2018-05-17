@@ -19,3 +19,4 @@ export {default as Upload} from './upload';
 export {default as Placeholder} from './placeholder';
 export {default as TabBar} from './tab-bar';
 export {default as Sticky} from './sticky';
+export {default as List} from './list';

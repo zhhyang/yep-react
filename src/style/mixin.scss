@@ -1,7 +1,7 @@
 @import "./variables";
 
 @mixin border-bottom-1px($color: $border) {
-  position: relative;
+  //position: relative;
   &:before {
     content: '';
     display: block;
@@ -18,7 +18,7 @@
 }
 
 @mixin border-top-1px($color: $border) {
-  position: relative;
+  //position: relative;
   &:after {
     content: '';
     display: block;
@@ -35,7 +35,7 @@
 }
 
 @mixin border-right-1px($color: $border) {
-  position: relative;
+  //position: relative;
   &:after {
     content: '';
     display: block;
@@ -51,7 +51,7 @@
   }
 }
 @mixin border-left-1px($color: $border) {
-  position: relative;
+  //position: relative;
   &:after {
     content: '';
     display: block;
@@ -68,7 +68,7 @@
 }
 //四边*/
 @mixin bd-all-1px($color: $border, $radius: 3px) {
-  position: relative;
+  //position: relative;
   &:after {
     content: '';
     position: absolute;

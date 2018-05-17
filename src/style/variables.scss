@@ -5,6 +5,9 @@ $opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
 
 $color-text-caption: #888; // 辅助描述
 
+$baseBackgroundColor:#fff;
+$tapBackgroundColor: #ddd;//组件按下时背景颜色
+
 // 一像素细线border-top-bottom
 $border: #e0e0e0;
 $tab: #929292;
@@ -79,6 +82,10 @@ $icon-size-sm: 42px;
 $icon-size-md: 44px; // 导航条上的图标、grid的图标大小
 $icon-size-lg: 72px;
 
+// 水平间距
+$h-spacing-sm: 10px;
+$h-spacing-md: 16px;
+$h-spacing-lg: 30px;
 // 垂直间距
 $v-spacing-xs: 6px;
 $v-spacing-sm: 12px;
@@ -87,3 +94,8 @@ $v-spacing-lg: 30px;
 $v-spacing-xl: 42px;
 
 $tab-bar-height:100px;
+
+// list
+$list-title-height: 60px;
+$list-item-height-sm: 70px;
+$list-item-height: 88px;
