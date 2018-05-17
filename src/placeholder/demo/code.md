@@ -1,24 +1,22 @@
 ---
 order: 2
 title: Code Style
-description: 
+description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from "@jdcfe/lrc-m";
-const {CodeStyle} = Placeholder
+import {Placeholder} from '@jdcfe/lrc-m';
+const {CodeStyle} = Placeholder;
 
 class Demo extends React.PureComponent {
-
   render() {
     return (
       <div>
-        <CodeStyle/>
+        <CodeStyle />
       </div>
     );
   }
 }
-ReactDOM.render(<Demo/>,  mountNode);
-
+ReactDOM.render(<Demo />, mountNode);
 ```

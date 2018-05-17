@@ -15,7 +15,8 @@
     "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublish": "npm run clean && npm run dist && npm run compire"
+    "prepublish": "npm run clean && npm run dist && npm run compire",
+    "format": "prettier --write src/**/*.{js,jsx,md}"
   },
   "keywords": [
     "react",
@@ -69,6 +70,8 @@
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss-loader": "^2.1.4",
     "postcss-pxtorem": "^4.0.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.12.1",
     "prismjs": "^1.14.0",
     "prop-types": "^15.6.1",
     "qs": "^6.5.2",

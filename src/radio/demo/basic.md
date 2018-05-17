@@ -1,32 +1,35 @@
 ---
 order: 0
 title: 基础用法
-description: 
+description:
 ---
 
 ```js
 import React from 'react';
-import {Radio} from "@jdcfe/lrc-m";
+import {Radio} from '@jdcfe/lrc-m';
 
 class Demo extends React.PureComponent {
-
   constructor() {
-    super()
+    super();
 
     this.state = {
       options1: ['Option1', 'Option2'],
-      options2: [{
-        label: 'Option1',
-        value: '1'
-      }, {
-        label: 'Option2',
-        value: '2',
-        disabled: true,
-      }, {
-        label: 'Option3',
-        value: '3',
-      }]
-    }
+      options2: [
+        {
+          label: 'Option1',
+          value: '1',
+        },
+        {
+          label: 'Option2',
+          value: '2',
+          disabled: true,
+        },
+        {
+          label: 'Option3',
+          value: '3',
+        },
+      ],
+    };
   }
 
   render() {
@@ -39,9 +42,5 @@ class Demo extends React.PureComponent {
   }
 }
 
-
-
-
-ReactDOM.render(<Demo/>,  mountNode);
-
+ReactDOM.render(<Demo />, mountNode);
 ```

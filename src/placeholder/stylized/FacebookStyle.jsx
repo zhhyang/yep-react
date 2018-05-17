@@ -1,7 +1,7 @@
-import React from 'react'
-import Placeholder from '../Placeholder'
+import React from 'react';
+import Placeholder from '../Placeholder';
 
-const FacebookStyle = (props) => (
+const FacebookStyle = props => (
   <Placeholder {...props}>
     <rect x="70" y="15" rx="4" ry="4" width="117" height="6.4" />
     <rect x="70" y="35" rx="3" ry="3" width="85" height="6.4" />
@@ -12,5 +12,4 @@ const FacebookStyle = (props) => (
   </Placeholder>
 );
 
-export default FacebookStyle
-
+export default FacebookStyle;

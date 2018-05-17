@@ -1,6 +1,5 @@
-import TabBar from './TabBar'
-import Tab from './Tab'
-
+import TabBar from './TabBar';
+import Tab from './Tab';
 
 TabBar.Tab = Tab;
 

@@ -1,17 +1,16 @@
-import React from 'react'
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const TabBar = ({prefixCls, className, style, barTintColor,children}) => {
-
+const TabBar = ({prefixCls, className, style, barTintColor, children}) => {
   const cls = classNames(prefixCls, className);
-  const tabBarStyle = {...style, ...{backgroundColor: barTintColor}}
+  const tabBarStyle = {...style, ...{backgroundColor: barTintColor}};
   return (
     <div className={cls} style={tabBarStyle}>
       {children}
     </div>
-  )
+  );
 };
 
 TabBar.propTypes = {
@@ -25,4 +24,3 @@ TabBar.defaultProps = {
 };
 
 export default TabBar;
-

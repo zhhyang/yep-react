@@ -1,13 +1,11 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TouchFeedback from '../touch-feedback';
-import Icon from "../icon";
+import Icon from '../icon';
 
 export default class ListItem extends PureComponent {
-
-
   static propTypes = {
     prefixCls: PropTypes.string,
     className: PropTypes.string,
@@ -23,7 +21,7 @@ export default class ListItem extends PureComponent {
     wrap: PropTypes.bool,
     activeStyle: PropTypes.object,
     error: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     prefixCls: 'Yep-list',
@@ -31,7 +29,7 @@ export default class ListItem extends PureComponent {
     error: false,
     multipleLine: false,
     wrap: false,
-  }
+  };
 
   render() {
     const {
@@ -48,7 +46,7 @@ export default class ListItem extends PureComponent {
       extra,
       arrow,
       onClick,
-      ...restProps,
+      ...restProps
     } = this.props;
     const wrapCls = classNames(`${prefixCls}-item`, className, {
       [`${prefixCls}-item-disabled`]: disabled,
@@ -68,7 +66,6 @@ export default class ListItem extends PureComponent {
       [`${prefixCls}-arrow-vertical-up`]: arrow === 'up',
     });
 
-
     const touchProps = {};
     Object.keys(restProps).forEach(key => {
       if (/onTouch/i.test(key)) {
@@ -84,30 +81,21 @@ export default class ListItem extends PureComponent {
         activeStyle={activeStyle}
         activeClassName={`${prefixCls}-item-active`}
       >
-        <div
-          {...restProps}
-          onClick={onClick}
-          className={wrapCls}
-        >
+        <div {...restProps} onClick={onClick} className={wrapCls}>
           {thumb && (
-            <div className={`${prefixCls}-thumb`}>
-              {typeof thumb === 'string' ? <img src={thumb}/> : thumb}
-            </div>
+            <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>
           )}
           <div className={lineCls}>
-            {children !== undefined && (
-              <div className={`${prefixCls}-content`}>{children}</div>
+            {children !== undefined && <div className={`${prefixCls}-content`}>{children}</div>}
+            {extra !== undefined && <div className={`${prefixCls}-extra`}>{extra}</div>}
+            {arrow && (
+              <div className={arrowCls} aria-hidden="true">
+                <Icon type="arrow-right" size="xxs" />
+              </div>
             )}
-            {extra !== undefined && (
-              <div className={`${prefixCls}-extra`}>{extra}</div>
-            )}
-            {arrow && <div className={arrowCls} aria-hidden="true">
-              <Icon type="arrow-right" size="xxs"/>
-            </div>}
           </div>
         </div>
       </TouchFeedback>
-    )
+    );
   }
 }
-

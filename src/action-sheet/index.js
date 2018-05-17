@@ -1,13 +1,11 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Popup from '../popup'
+import Popup from '../popup';
 
 export default class ActionSheet extends PureComponent {
-
-
   static propTypes = {
     /**
      * 是否显示
@@ -20,7 +18,7 @@ export default class ActionSheet extends PureComponent {
     /**
      * 点击事件回调
      */
-    itemClick:PropTypes.func,
+    itemClick: PropTypes.func,
 
     prefixCls: PropTypes.string,
 
@@ -44,26 +42,24 @@ export default class ActionSheet extends PureComponent {
 
   static defaultProps = {
     show: false,
-    onCancel: () => {
-    },
+    onCancel: () => {},
     prefixCls: 'Yep-action-sheet',
     hasCancel: false,
     space: false,
     data: [],
-    itemClick:() =>{}
+    itemClick: () => {},
   };
 
   constructor() {
     super();
-    this.onItemClick = this.onItemClick.bind(this)
+    this.onItemClick = this.onItemClick.bind(this);
   }
 
   onItemClick(e) {
     const {itemClick} = this.props;
     const {item, index} = e.target.dataset;
-    itemClick(item, index)
+    itemClick(item, index);
   }
-
 
   render() {
     const {show, onCancel, prefixCls, className, style, title, space, hasCancel, data, active} = this.props;
@@ -72,38 +68,32 @@ export default class ActionSheet extends PureComponent {
     return (
       <Popup show={show} onCancel={onCancel}>
         <div className={cls} style={style}>
-          {
-            title && <h1 className={`${prefixCls}-title border-bottom-1px`}>{title}</h1>
-          }
+          {title && <h1 className={`${prefixCls}-title border-bottom-1px`}>{title}</h1>}
           <div className={`${prefixCls}-content`}>
             <ul className={`${prefixCls}-list`}>
-              {
-                data.map((item, index) =>
-                  <li
-                    key={index}
-                    className={classNames(`${prefixCls}-item`,'border-bottom-1px', {
-                      [`${prefixCls}-item_active`]: index === active || item === active
-                    })}
-                    data-item={item}
-                    data-index={index}
-                    onClick={this.onItemClick}
-                  >
-                    {item}
-                  </li>
-                )}
+              {data.map((item, index) => (
+                <li
+                  key={index}
+                  className={classNames(`${prefixCls}-item`, 'border-bottom-1px', {
+                    [`${prefixCls}-item_active`]: index === active || item === active,
+                  })}
+                  data-item={item}
+                  data-index={index}
+                  onClick={this.onItemClick}
+                >
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
-          {
-            hasCancel && space && <div className={`${prefixCls}-space`}/>
-          }
-          {
-            hasCancel &&
+          {hasCancel && space && <div className={`${prefixCls}-space`} />}
+          {hasCancel && (
             <div className={`${prefixCls}-cancel`} onClick={onCancel}>
               <span>取消</span>
             </div>
-          }
+          )}
         </div>
       </Popup>
-    )
+    );
   }
 }

@@ -1,30 +1,30 @@
 ---
 order: 2
 title: Stacked
-description: 
+description:
 ---
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { Sticky } from "@jdcfe/lrc-m";
-const {StickyContainer }= Sticky;
+import {Sticky} from '@jdcfe/lrc-m';
+const {StickyContainer} = Sticky;
 
 const containerBg = i => `hsl(${i * 40}, 70%, 90%)`;
 const headerBg = i => `hsl(${i * 40}, 70%, 50%)`;
 
 class Header extends React.Component {
   static defaultProps = {
-    className: ""
+    className: '',
   };
   render() {
-    const { style, renderCount, className } = this.props;
+    const {style, renderCount, className} = this.props;
     return (
-      <div className={"sticky-header " + className} style={style}>
+      <div className={'sticky-header ' + className} style={style}>
         <h2>
           <span className="pull-left">
-            {"<Sticky /> "}
+            {'<Sticky /> '}
             {renderCount ? <small>(invocation: #{renderCount})</small> : null}
           </span>
         </h2>
@@ -38,16 +38,8 @@ class Stacked extends React.Component {
     return (
       <div>
         {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
-          <StickyContainer
-            key={i}
-            className="container"
-            style={{ background: containerBg(i) }}
-          >
-            <Sticky>
-              {({ style }) => (
-                <Header style={{ ...style, background: headerBg(i) }} />
-              )}
-            </Sticky>
+          <StickyContainer key={i} className="container" style={{background: containerBg(i)}}>
+            <Sticky>{({style}) => <Header style={{...style, background: headerBg(i)}} />}</Sticky>
             <h2 className="text-center">{`<StickyContainer #${i} />`}</h2>
           </StickyContainer>
         ))}
@@ -56,6 +48,5 @@ class Stacked extends React.Component {
   }
 }
 
-ReactDOM.render(<Stacked/>,  mountNode);
-
+ReactDOM.render(<Stacked />, mountNode);
 ```

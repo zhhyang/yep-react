@@ -8,10 +8,8 @@ dist/*.map
 coverage/
 src
 
-webpack.config.js
 .gitignore
 yarn.lock
-example
 demo
 scripts
 site
@@ -23,4 +21,5 @@ build
 .eslintrc.json
 .npmignore
 gulpfile.js
+.prettierrc
 

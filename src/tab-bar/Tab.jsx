@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 export default class Tab extends PureComponent {
-
   static propTypes = {
     prefixCls: PropTypes.string,
     tintColor: PropTypes.string,
@@ -20,10 +19,9 @@ export default class Tab extends PureComponent {
     prefixCls: 'Yep-tab-bar-tab',
     tintColor: '#ec3838',
     unselectedTintColor: '#888',
-    selected:false,
+    selected: false,
     onClick: () => null,
   };
-
 
   constructor() {
     super();
@@ -38,56 +36,26 @@ export default class Tab extends PureComponent {
     }
   }
 
-
   renderIcon() {
-    const {
-      selected,
-      selectedIcon,
-      icon,
-      title,
-      prefixCls,
-    } = this.props;
+    const {selected, selectedIcon, icon, title, prefixCls} = this.props;
 
     const iconVal = selected ? selectedIcon : icon;
 
-    return React.isValidElement(iconVal) ? (iconVal) :
-      (
-        <img
-          className={`${prefixCls}-image`}
-          src={iconVal}
-          alt={title}
-        />
-      );
+    return React.isValidElement(iconVal) ? iconVal : <img className={`${prefixCls}-image`} src={iconVal} alt={title} />;
   }
 
-
   render() {
-    const {
-      title,
-      prefixCls,
-      selected,
-      unselectedTintColor,
-      tintColor,
-      style,
-      className,
-    } = this.props;
+    const {title, prefixCls, selected, unselectedTintColor, tintColor, style, className} = this.props;
     const iconColor = selected ? tintColor : unselectedTintColor;
     return (
-      <div
-        className={classNames(prefixCls, className)} style={style}
-        onClick={this.onClick}
-      >
+      <div className={classNames(prefixCls, className)} style={style} onClick={this.onClick}>
         <div className={`${prefixCls}-icon`} style={{color: iconColor}}>
           {this.renderIcon()}
         </div>
-        <p
-          className={`${prefixCls}-title`}
-          style={{color: selected ? tintColor : unselectedTintColor}}
-        >
+        <p className={`${prefixCls}-title`} style={{color: selected ? tintColor : unselectedTintColor}}>
           {title}
         </p>
       </div>
-    )
+    );
   }
 }
-

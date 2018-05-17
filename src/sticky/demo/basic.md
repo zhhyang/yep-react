@@ -1,27 +1,27 @@
 ---
 order: 0
 title: 基础用法
-description: 
+description:
 ---
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { Sticky } from "@jdcfe/lrc-m";
-const {StickyContainer }= Sticky;
+import {Sticky} from '@jdcfe/lrc-m';
+const {StickyContainer} = Sticky;
 
 class Header extends React.Component {
   static defaultProps = {
-    className: ""
+    className: '',
   };
   render() {
-    const { style, renderCount, className } = this.props;
+    const {style, renderCount, className} = this.props;
     return (
-      <div className={"sticky-header " + className} style={style}>
+      <div className={'sticky-header ' + className} style={style}>
         <h2>
           <span className="pull-left">
-            {"<Sticky /> "}
+            {'<Sticky /> '}
             {renderCount ? <small>(invocation: #{renderCount})</small> : null}
           </span>
         </h2>
@@ -36,23 +36,13 @@ class Basic extends React.Component {
     return (
       <div>
         <h2>Content before the Sticky...</h2>
-        <div
-          className="gap short"
-          style={{ background: "linear-gradient(#fff, #ddd)" }}
-        />
+        <div className="gap short" style={{background: 'linear-gradient(#fff, #ddd)'}} />
         <StickyContainer className="container">
-          <Sticky>
-            {({ style }) => (
-              <Header style={style} renderCount={renderCount++} />
-            )}
-          </Sticky>
+          <Sticky>{({style}) => <Header style={style} renderCount={renderCount++} />}</Sticky>
 
-          <h2 className="text-center">{"<StickyContainer />"}</h2>
+          <h2 className="text-center">{'<StickyContainer />'}</h2>
         </StickyContainer>
-        <div
-          className="gap tall"
-          style={{ background: "linear-gradient(#ddd, #fff)" }}
-        >
+        <div className="gap tall" style={{background: 'linear-gradient(#ddd, #fff)'}}>
           <h2>Content after the Sticky...</h2>
         </div>
       </div>
@@ -60,6 +50,5 @@ class Basic extends React.Component {
   }
 }
 
-ReactDOM.render(<Basic/>,  mountNode);
-
+ReactDOM.render(<Basic />, mountNode);
 ```

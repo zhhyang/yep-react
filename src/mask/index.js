@@ -1,7 +1,7 @@
 /**
  * Created by zhaohongyang1 on 18-4-26.
  */
-import React ,{PureComponent}from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -9,26 +9,25 @@ import classNames from 'classnames';
  * screen mask, use in `Dialog`, `ActionSheet`, `Popup`.
  *
  */
-export default class Mask extends PureComponent{
-
+export default class Mask extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
     /**
      * Whather mask should be transparent (no color)
      *
      */
-    transparent: PropTypes.bool
+    transparent: PropTypes.bool,
   };
 
   static defaultProps = {
     prefixCls: 'Yep-mask',
-    transparent: false
+    transparent: false,
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.show = this.show.bind(this)
-    this.destroy = this.destroy.bind(this)
+    this.show = this.show.bind(this);
+    this.destroy = this.destroy.bind(this);
   }
 
   destroy() {
@@ -39,26 +38,26 @@ export default class Mask extends PureComponent{
 
   show() {
     const classes = document.body.className;
-    document.body.className = classNames(classes,'mask-open');
+    document.body.className = classNames(classes, 'mask-open');
   }
 
   componentDidMount() {
-    this.show()
+    this.show();
   }
 
   componentWillUnmount() {
     this.destroy();
   }
-  render(){
+  render() {
     const {transparent, className, prefixCls, ...others} = this.props;
-    const clz = classNames({
-      [prefixCls]: !transparent,
-      [`${prefixCls}_transparent`]: transparent
-    }, className);
-
-    return (
-      <div className={clz} {...others}/>
+    const clz = classNames(
+      {
+        [prefixCls]: !transparent,
+        [`${prefixCls}_transparent`]: transparent,
+      },
+      className
     );
-  }
 
+    return <div className={clz} {...others} />;
+  }
 }

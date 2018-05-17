@@ -1,2 +1,2 @@
-import '../../popup/style/index.scss'
-import './index.scss'
+import '../../popup/style/index.scss';
+import './index.scss';

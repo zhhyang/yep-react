@@ -1,42 +1,31 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 import raf from 'raf';
 
 export default class StickyContainer extends PureComponent {
+  static propTypes = {};
 
-
-  static propTypes = {}
-
-  static defaultProps = {}
+  static defaultProps = {};
 
   static childContextTypes = {
     subscribe: PropTypes.func,
     unsubscribe: PropTypes.func,
-    getParent: PropTypes.func
+    getParent: PropTypes.func,
   };
 
   getChildContext() {
     return {
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
-      getParent: this.getParent
+      getParent: this.getParent,
     };
   }
-
 
   constructor() {
     super();
     this.subscribers = [];
-    this.events = [
-      "resize",
-      "scroll",
-      "touchstart",
-      "touchmove",
-      "touchend",
-      "pageshow",
-      "load"
-    ];
+    this.events = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load'];
     this.createRef = this.createRef.bind(this);
     this.getParent = this.getParent.bind(this);
     this.subscribe = this.subscribe.bind(this);
@@ -62,9 +51,9 @@ export default class StickyContainer extends PureComponent {
           handler({
             distanceFromTop: top,
             distanceFromBottom: bottom,
-            eventSource: currentTarget === window ? document.body : this.node
+            eventSource: currentTarget === window ? document.body : this.node,
           })
-        )
+        );
       });
       this.framePending = true;
     }
@@ -78,17 +67,12 @@ export default class StickyContainer extends PureComponent {
     return this.node;
   }
 
-
   componentDidMount() {
-    this.events.forEach(event =>
-      window.addEventListener(event, this.notifySubscribers)
-    );
+    this.events.forEach(event => window.addEventListener(event, this.notifySubscribers));
   }
 
   componentWillUnmount() {
-    this.events.forEach(event =>
-      window.removeEventListener(event, this.notifySubscribers)
-    );
+    this.events.forEach(event => window.removeEventListener(event, this.notifySubscribers));
   }
 
   render() {
@@ -101,7 +85,6 @@ export default class StickyContainer extends PureComponent {
         onTouchMove={this.notifySubscribers}
         onTouchEnd={this.notifySubscribers}
       />
-    )
+    );
   }
 }
-

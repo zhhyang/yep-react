@@ -1,13 +1,11 @@
 import React, {PureComponent} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {CSSTransition} from "react-transition-group";
+import {CSSTransition} from 'react-transition-group';
 import classNames from 'classnames';
-import Icon from "../icon";
+import Icon from '../icon';
 
 export default class Notification extends PureComponent {
-
-
   static propTypes = {
     prefixCls: PropTypes.string,
     style: PropTypes.object,
@@ -27,16 +25,15 @@ export default class Notification extends PureComponent {
   };
 
   constructor(props) {
-    super(props)
+    super(props);
     this.close = this.close.bind(this);
     this.startCloseTimer = this.startCloseTimer.bind(this);
     this.clearCloseTimer = this.clearCloseTimer.bind(this);
     this.close = this.close.bind(this);
     this.state = {
       show: true,
-    }
+    };
   }
-
 
   close() {
     this.setState({
@@ -51,7 +48,7 @@ export default class Notification extends PureComponent {
     if (duration) {
       this.closeTimer = setTimeout(() => {
         this.close();
-      }, duration * 1000)
+      }, duration * 1000);
     }
   }
 
@@ -71,53 +68,42 @@ export default class Notification extends PureComponent {
   }
 
   render() {
-
     const {className, prefixCls, style, icon, message, bottom} = this.props;
-    const cls = classNames(prefixCls, className,'mask',{
-      'bottom': bottom,
+    const cls = classNames(prefixCls, className, 'mask', {
+      bottom: bottom,
     });
     return (
-      <CSSTransition
-        in={this.state.show}
-        timeout={300}
-        classNames="fade"
-        unmountOnExit
-      >
+      <CSSTransition in={this.state.show} timeout={300} classNames="fade" unmountOnExit>
         <div className={cls} style={style}>
           <div className={`${prefixCls}-notice`}>
-            {
-              icon && <Icon type={icon} size="lg"/>
-            }
+            {icon && <Icon type={icon} size="lg" />}
             <div className={`${prefixCls}-notice-message`}>{message}</div>
           </div>
         </div>
-
       </CSSTransition>
-    )
+    );
   }
 }
 
-Notification.newInstance = (properties,callback) => {
-
+Notification.newInstance = (properties, callback) => {
   const div = document.createElement('div');
-  document.body.appendChild(div)
+  document.body.appendChild(div);
 
   let called = false;
   function ref(instance) {
-    if (called){
+    if (called) {
       return;
     }
     called = true;
 
     callback({
-      component:instance,
-      destroy(){
+      component: instance,
+      destroy() {
         ReactDOM.unmountComponentAtNode(div);
         div.parentNode.removeChild(div);
-      }
-    })
+      },
+    });
   }
 
-  ReactDOM.render(<Notification {...properties} ref={ref} />, div)
-}
-
+  ReactDOM.render(<Notification {...properties} ref={ref} />, div);
+};

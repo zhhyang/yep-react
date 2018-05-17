@@ -1,7 +1,7 @@
-import React from 'react'
-import Placeholder from '../Placeholder'
+import React from 'react';
+import Placeholder from '../Placeholder';
 
-const InstagramStyle  = (props) => (
+const InstagramStyle = props => (
   <Placeholder {...props} height={480}>
     <circle cx="30" cy="30" r="30" />
     <rect x="75" y="13" rx="4" ry="4" width="100" height="13" />
@@ -10,5 +10,4 @@ const InstagramStyle  = (props) => (
   </Placeholder>
 );
 
-export default InstagramStyle
-
+export default InstagramStyle;

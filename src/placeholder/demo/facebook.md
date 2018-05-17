@@ -1,24 +1,22 @@
 ---
 order: 0
 title: Facebook Style
-description: 
+description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from "@jdcfe/lrc-m";
-const {FacebookStyle} = Placeholder
+import {Placeholder} from '@jdcfe/lrc-m';
+const {FacebookStyle} = Placeholder;
 
 class Demo extends React.PureComponent {
-
   render() {
     return (
       <div>
-        <FacebookStyle/>
+        <FacebookStyle />
       </div>
     );
   }
 }
-ReactDOM.render(<Demo/>,  mountNode);
-
+ReactDOM.render(<Demo />, mountNode);
 ```

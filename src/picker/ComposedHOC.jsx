@@ -1,24 +1,24 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 
-export default function (ComposedComponent) {
+export default function(ComposedComponent) {
   return class extends Component {
     constructor() {
-      super()
-      this.select = this.select.bind(this)
-      this.selectByIndex = this.selectByIndex.bind(this)
-      this.doScrollingComplete = this.doScrollingComplete.bind(this)
-      this.computeChildIndex = this.computeChildIndex.bind(this)
+      super();
+      this.select = this.select.bind(this);
+      this.selectByIndex = this.selectByIndex.bind(this);
+      this.doScrollingComplete = this.doScrollingComplete.bind(this);
+      this.computeChildIndex = this.computeChildIndex.bind(this);
     }
 
     select(value, itemHeight, scrollTo) {
       const {data} = this.props;
       for (let i = 0, len = data.length; i < len; i++) {
         if (data[i] === value) {
-          this.selectByIndex(i, itemHeight, scrollTo)
+          this.selectByIndex(i, itemHeight, scrollTo);
           return;
         }
       }
-      this.selectByIndex(0, itemHeight, scrollTo)
+      this.selectByIndex(0, itemHeight, scrollTo);
     }
 
     selectByIndex(index, itemHeight, zscrollTo) {
@@ -57,9 +57,8 @@ export default function (ComposedComponent) {
           doScrollingComplete={this.doScrollingComplete}
           computeChildIndex={this.computeChildIndex}
           select={this.select}
-        />)
+        />
+      );
     }
-
-
-  }
+  };
 }

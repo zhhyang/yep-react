@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default class Icon extends PureComponent {
-
   static propTypes = {
     /**
      * icon的type
@@ -21,12 +20,8 @@ export default class Icon extends PureComponent {
   };
 
   render() {
-
     const {className, style, prefixCls, type, size} = this.props;
-    const cls = classNames(prefixCls, className,`${type}`,`${prefixCls}-${size}`);
-    return (
-      <i className={cls} style={style}/>
-    )
+    const cls = classNames(prefixCls, className, `${type}`, `${prefixCls}-${size}`);
+    return <i className={cls} style={style} />;
   }
-
 }

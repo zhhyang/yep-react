@@ -1,9 +1,7 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames'
+import classNames from 'classnames';
 export default class BaseCheckbox extends PureComponent {
-
-
   static propTypes = {
     prefixCls: PropTypes.string,
     className: PropTypes.string,
@@ -22,7 +20,7 @@ export default class BaseCheckbox extends PureComponent {
     readOnly: PropTypes.bool,
     autoFocus: PropTypes.bool,
     value: PropTypes.any,
-  }
+  };
 
   static defaultProps = {
     prefixCls: 'Yep-checkbox',
@@ -30,24 +28,23 @@ export default class BaseCheckbox extends PureComponent {
     style: {},
     type: 'checkbox',
     defaultChecked: false,
-    onFocus:()=> {},
-    onBlur:()=> {},
-    onChange:()=> {},
-  }
-
+    onFocus: () => {},
+    onBlur: () => {},
+    onChange: () => {},
+  };
 
   constructor(props) {
-    super(props)
+    super(props);
     const checked = 'checked' in props ? props.checked : props.defaultChecked;
 
     this.state = {
       checked,
     };
 
-    this.createRef = this.createRef.bind(this)
-    this.blur = this.blur.bind(this)
-    this.focus = this.focus.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.createRef = this.createRef.bind(this);
+    this.blur = this.blur.bind(this);
+    this.focus = this.focus.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -67,7 +64,7 @@ export default class BaseCheckbox extends PureComponent {
   }
 
   createRef(node) {
-    this.input = node
+    this.input = node;
   }
 
   handleChange(e) {
@@ -93,7 +90,7 @@ export default class BaseCheckbox extends PureComponent {
       },
       nativeEvent: e.nativeEvent,
     });
-  };
+  }
 
   render() {
     const {
@@ -112,7 +109,7 @@ export default class BaseCheckbox extends PureComponent {
       autoFocus,
       value,
       label,
-      ...others,
+      ...others
     } = this.props;
 
     const globalProps = Object.keys(others).reduce((prev, key) => {
@@ -148,9 +145,9 @@ export default class BaseCheckbox extends PureComponent {
           value={value}
           {...globalProps}
         />
-        <span className={`${prefixCls}-inner`}/>
+        <span className={`${prefixCls}-inner`} />
         <span className={`${prefixCls}-label`}>{label}</span>
       </span>
-    )
+    );
   }
 }

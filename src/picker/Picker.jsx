@@ -1,26 +1,22 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ComposedHOC from './ComposedHOC'
-
+import ComposedHOC from './ComposedHOC';
 
 class Picker extends Component {
-
   static propTypes = {
     prefixCls: PropTypes.string,
     data: PropTypes.array,
     select: PropTypes.func,
     doScrollingComplete: PropTypes.func,
     computeChildIndex: PropTypes.func,
-
   };
 
   static defaultProps = {
     prefixCls: 'Yep-picker',
     data: [],
   };
-
 
   scrollHanders = (() => {
     let scrollY = -1;
@@ -39,7 +35,7 @@ class Picker extends Component {
       nodeStyle.webkitTransition = value;
     };
 
-    const scrollTo = (x, y, time = .3) => {
+    const scrollTo = (x, y, time = 0.3) => {
       if (scrollY !== y) {
         scrollY = y;
         if (time) {
@@ -51,7 +47,7 @@ class Picker extends Component {
           if (this.contentRef) {
             setTransition(this.contentRef.style, '');
           }
-        }, +time * 1000)
+        }, +time * 1000);
       }
     };
     //速度计
@@ -60,7 +56,7 @@ class Picker extends Component {
       let _y = 0;
       let _velocity = 0;
       const recorder = {
-        record: (y) => {
+        record: y => {
           const now = +new Date();
           _velocity = (y - _y) / (now - _time);
           if (now - _time >= minInterval) {
@@ -69,7 +65,7 @@ class Picker extends Component {
             _time = now;
           }
         },
-        getVelocity: (y) => {
+        getVelocity: y => {
           if (y !== _y) {
             recorder.record(y);
           }
@@ -79,7 +75,7 @@ class Picker extends Component {
       return recorder;
     })();
 
-    const onStart = (y) => {
+    const onStart = y => {
       if (scrollDisabled) {
         return;
       }
@@ -88,7 +84,7 @@ class Picker extends Component {
       lastY = scrollY;
     };
 
-    const onMove = (y) => {
+    const onMove = y => {
       if (scrollDisabled || !isMoving) {
         return;
       }
@@ -103,12 +99,12 @@ class Picker extends Component {
       let targetY = scrollY;
       const height = (this.props.data.length - 1) * this.itemHeight;
 
-      let time = .3;
+      let time = 0.3;
 
       //const velocity = Velocity.getVelocity(targetY) * 4;
       //if (velocity) {
-        //targetY = velocity * 40 + targetY;
-        //time = Math.abs(velocity) * .1;
+      //targetY = velocity * 40 + targetY;
+      //time = Math.abs(velocity) * .1;
       //}
       if (targetY % this.itemHeight !== 0) {
         targetY = Math.round(targetY / this.itemHeight) * this.itemHeight;
@@ -118,19 +114,19 @@ class Picker extends Component {
       } else if (targetY > height) {
         targetY = height;
       }
-      scrollTo(0, targetY, time < .3 ? .3 : time);
+      scrollTo(0, targetY, time < 0.3 ? 0.3 : time);
 
       this.onScrollChange();
     };
 
     return {
-      touchstart: (evt) => onStart(evt.touches[0].screenY),
-      mousedown: (evt) => onStart(evt.screenY),
-      touchmove: (evt) => {
+      touchstart: evt => onStart(evt.touches[0].screenY),
+      mousedown: evt => onStart(evt.screenY),
+      touchmove: evt => {
         evt.preventDefault();
         onMove(evt.touches[0].screenY);
       },
-      mousemove: (evt) => {
+      mousemove: evt => {
         evt.preventDefault();
         onMove(evt.screenY);
       },
@@ -141,7 +137,7 @@ class Picker extends Component {
         return scrollY;
       },
       scrollTo: scrollTo,
-      setDisabled: (disabled) => {
+      setDisabled: disabled => {
         scrollDisabled = disabled;
       },
     };
@@ -172,23 +168,22 @@ class Picker extends Component {
     this.state = {
       selectedValue: selectedValueState,
     };
-
   }
 
   createRootRef(el) {
-    this.rootRef = el
+    this.rootRef = el;
   }
 
   createMaskRef(el) {
-    this.maskRef = el
+    this.maskRef = el;
   }
 
   createIndicatorRef(el) {
-    this.indicatorRef = el
+    this.indicatorRef = el;
   }
 
   createContentRef(el) {
-    this.contentRef = el
+    this.contentRef = el;
   }
 
   passiveSupported() {
@@ -201,8 +196,7 @@ class Picker extends Component {
         },
       });
       window.addEventListener('test', null, options);
-    } catch (err) {
-    }
+    } catch (err) {}
     return passiveSupported;
   }
 
@@ -253,14 +247,14 @@ class Picker extends Component {
   }
 
   componentDidMount() {
-    const {rootRef, maskRef, indicatorRef, contentRef} = this
+    const {rootRef, maskRef, indicatorRef, contentRef} = this;
 
     const rootHeight = rootRef.getBoundingClientRect().height;
-    const itemHeight = this.itemHeight = indicatorRef.getBoundingClientRect().height;
+    const itemHeight = (this.itemHeight = indicatorRef.getBoundingClientRect().height);
 
     let itemNum = Math.floor(rootHeight / itemHeight);
     if (itemNum % 2 === 0) {
-      itemNum--
+      itemNum--;
     }
     itemNum--;
     itemNum /= 2;
@@ -286,29 +280,30 @@ class Picker extends Component {
   componentWillReceiveProps(nextProps) {
     if ('selectedValue' in nextProps) {
       if (this.state.selectedValue !== nextProps.selectedValue) {
-        this.setState({
-          selectedValue: nextProps.selectedValue,
-        }, () => {
-          this.props.select(
-            nextProps.selectedValue,
-            this.itemHeight,
-            nextProps.noAnimate ? this.scrollToWithoutAnimation : this.scrollTo,
-          );
-        });
+        this.setState(
+          {
+            selectedValue: nextProps.selectedValue,
+          },
+          () => {
+            this.props.select(
+              nextProps.selectedValue,
+              this.itemHeight,
+              nextProps.noAnimate ? this.scrollToWithoutAnimation : this.scrollTo
+            );
+          }
+        );
       }
     }
     this.scrollHanders.setDisabled(nextProps.disabled);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.selectedValue !== nextState.selectedValue
-      || this.props.data !== nextProps.data;
+    return this.state.selectedValue !== nextState.selectedValue || this.props.data !== nextProps.data;
   }
 
   componentDidUpdate() {
     this.props.select(this.state.selectedValue, this.itemHeight, this.scrollToWithoutAnimation);
   }
-
 
   componentWillUnmount() {
     Object.keys(this.scrollHanders).forEach(key => {
@@ -319,27 +314,31 @@ class Picker extends Component {
   }
 
   render() {
-
     const {className, prefixCls, style, indicatorStyle, data} = this.props;
 
     const cls = classNames(prefixCls, {
       [className]: !!className,
     });
 
-    const items = data.map((item, index) =>
-      <div key={index} className={classNames(`${prefixCls}-item`,{
-        [`${prefixCls}-item-selected`]:item === this.state.selectedValue,
-      })}>{item}</div>
-    );
+    const items = data.map((item, index) => (
+      <div
+        key={index}
+        className={classNames(`${prefixCls}-item`, {
+          [`${prefixCls}-item-selected`]: item === this.state.selectedValue,
+        })}
+      >
+        {item}
+      </div>
+    ));
     return (
       <div className={cls} style={style} ref={this.createRootRef}>
-        <div className={`${prefixCls}-mask`} ref={this.createMaskRef}/>
-        <div className={`${prefixCls}-indicator`} style={indicatorStyle} ref={this.createIndicatorRef}/>
+        <div className={`${prefixCls}-mask`} ref={this.createMaskRef} />
+        <div className={`${prefixCls}-indicator`} style={indicatorStyle} ref={this.createIndicatorRef} />
         <div className={`${prefixCls}-content`} ref={this.createContentRef}>
           {items}
         </div>
       </div>
-    )
+    );
   }
 }
 

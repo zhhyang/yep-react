@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import classNames from 'classnames';
 
 // TODO 兼容检查
@@ -16,7 +16,7 @@ export default class Upload extends PureComponent {
 
     // 是否支持多选
     // multiple: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     files: [],
@@ -24,7 +24,7 @@ export default class Upload extends PureComponent {
     addImage: () => {},
     removeImage: () => {},
     // multiple: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ export default class Upload extends PureComponent {
     this.props.removeImage(index);
   }
 
-  fileChange({ target }) {
+  fileChange({target}) {
     const file = target.files[0];
 
     if (file.size > 500 * 1024) {
@@ -48,7 +48,7 @@ export default class Upload extends PureComponent {
     }
 
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = e => {
       const dataUrl = e.target.result;
       if (!dataUrl) {
         return;
@@ -65,22 +65,35 @@ export default class Upload extends PureComponent {
   }
 
   render() {
-    const { files, size } = this.props;
+    const {files, size} = this.props;
     const wrapperCls = classNames('Yep-upload-wrapper');
     return (
       <div className={wrapperCls}>
-        {
-          files.map((imgItem, index) => (
-            /* eslint-disable react/no-array-index-key */
-            <div className="upload-flex-item" key={index}>
-              <div className="upload-flex-item-del" onClick={() => { this.removeImagePriv(index); }} />
-              <div className="upload-flex-item-img" style={{ width: size, height: size, backgroundImage: `url(${imgItem.url})` }} />
-            </div>
-          ))
-        }
+        {files.map((imgItem, index) => (
+          /* eslint-disable react/no-array-index-key */
+          <div className="upload-flex-item" key={index}>
+            <div
+              className="upload-flex-item-del"
+              onClick={() => {
+                this.removeImagePriv(index);
+              }}
+            />
+            <div
+              className="upload-flex-item-img"
+              style={{width: size, height: size, backgroundImage: `url(${imgItem.url})`}}
+            />
+          </div>
+        ))}
         <div className="upload-flex-item upload-add">
-          <div className="upload-add-picker" style={{ width: size, height: size }}>
-            <input ref={(input) => { this.input = input; }} type="file" accept="image/*" onChange={this.fileChange} />
+          <div className="upload-add-picker" style={{width: size, height: size}}>
+            <input
+              ref={input => {
+                this.input = input;
+              }}
+              type="file"
+              accept="image/*"
+              onChange={this.fileChange}
+            />
           </div>
         </div>
       </div>

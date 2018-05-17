@@ -1,24 +1,22 @@
 ---
 order: 1
 title: Instagram Style
-description: 
+description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from "@jdcfe/lrc-m";
-const {InstagramStyle} = Placeholder
+import {Placeholder} from '@jdcfe/lrc-m';
+const {InstagramStyle} = Placeholder;
 
 class Demo extends React.PureComponent {
-
   render() {
     return (
       <div>
-        <InstagramStyle/>
+        <InstagramStyle />
       </div>
     );
   }
 }
-ReactDOM.render(<Demo/>,  mountNode);
-
+ReactDOM.render(<Demo />, mountNode);
 ```

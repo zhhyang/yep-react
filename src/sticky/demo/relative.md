@@ -1,27 +1,27 @@
 ---
 order: 1
 title: Relative
-description: 
+description:
 ---
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { Sticky } from "@jdcfe/lrc-m";
-const {StickyContainer }= Sticky;
+import {Sticky} from '@jdcfe/lrc-m';
+const {StickyContainer} = Sticky;
 
 class Header extends React.Component {
   static defaultProps = {
-    className: ""
+    className: '',
   };
   render() {
-    const { style, renderCount, className } = this.props;
+    const {style, renderCount, className} = this.props;
     return (
-      <div className={"sticky-header " + className} style={style}>
+      <div className={'sticky-header ' + className} style={style}>
         <h2>
           <span className="pull-left">
-            {"<Sticky /> "}
+            {'<Sticky /> '}
             {renderCount ? <small>(invocation: #{renderCount})</small> : null}
           </span>
         </h2>
@@ -36,16 +36,9 @@ class Relative extends React.Component {
     return (
       <div>
         <StickyContainer className="container relative">
-          <div
-            className="gap tall"
-            style={{ background: "linear-gradient(#aaa, #fff)" }}
-          >
+          <div className="gap tall" style={{background: 'linear-gradient(#aaa, #fff)'}}>
             <div className="gap short" />
-            <Sticky relative={true}>
-              {({ style }) => (
-                <Header style={style} renderCount={renderCount++} />
-              )}
-            </Sticky>
+            <Sticky relative={true}>{({style}) => <Header style={style} renderCount={renderCount++} />}</Sticky>
             <div className="gap short" />
             <h2>scrolling container</h2>
           </div>
@@ -55,6 +48,5 @@ class Relative extends React.Component {
   }
 }
 
-ReactDOM.render(<Relative/>,  mountNode);
-
+ReactDOM.render(<Relative />, mountNode);
 ```

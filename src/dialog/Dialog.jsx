@@ -1,12 +1,10 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
 import Mask from '../mask';
 
 export default class Dialog extends PureComponent {
-
-
   static propTypes = {
     prefixCls: PropTypes.string,
     className: PropTypes.string,
@@ -17,8 +15,8 @@ export default class Dialog extends PureComponent {
     onClose: PropTypes.func,
     show: PropTypes.bool,
     maskCloseable: PropTypes.bool,
-    dialogTransition:PropTypes.string,
-    maskTransition:PropTypes.string,
+    dialogTransition: PropTypes.string,
+    maskTransition: PropTypes.string,
   };
 
   static defaultProps = {
@@ -27,19 +25,18 @@ export default class Dialog extends PureComponent {
     bodyStyle: {},
     show: false,
     maskCloseable: false,
-    maskTransition:'fade',
-    dialogTransition:'zoom',
-    onClose: () => {
-    },
+    maskTransition: 'fade',
+    dialogTransition: 'zoom',
+    onClose: () => {},
   };
 
   constructor(props) {
-    super(props)
-    this.renderHeader = this.renderHeader.bind(this)
-    this.renderBody = this.renderBody.bind(this)
-    this.renderFooter = this.renderFooter.bind(this)
-    this.close = this.close.bind(this)
-    this.onMaskClick = this.onMaskClick.bind(this)
+    super(props);
+    this.renderHeader = this.renderHeader.bind(this);
+    this.renderBody = this.renderBody.bind(this);
+    this.renderFooter = this.renderFooter.bind(this);
+    this.close = this.close.bind(this);
+    this.onMaskClick = this.onMaskClick.bind(this);
   }
 
   close(e) {
@@ -60,11 +57,9 @@ export default class Dialog extends PureComponent {
     const {prefixCls, title} = this.props;
     return (
       <div className={`${prefixCls}-header`}>
-        <div className={`${prefixCls}-title`}>
-          {title}
-        </div>
+        <div className={`${prefixCls}-title`}>{title}</div>
       </div>
-    )
+    );
   }
 
   renderBody() {
@@ -73,60 +68,36 @@ export default class Dialog extends PureComponent {
       <div className={`${prefixCls}-body`} style={bodyStyle}>
         {children}
       </div>
-    )
+    );
   }
 
   renderFooter() {
     const {prefixCls, footer} = this.props;
-    return (
-      <div className={`${prefixCls}-footer`}>
-        {
-          footer
-        }
-      </div>
-    )
+    return <div className={`${prefixCls}-footer`}>{footer}</div>;
   }
 
   render() {
-    const {prefixCls, className, style, title, show,maskTransition,dialogTransition} = this.props;
+    const {prefixCls, className, style, title, show, maskTransition, dialogTransition} = this.props;
 
     const cls = classNames(prefixCls, className, `${prefixCls}-transparent`);
 
     return (
-
       <div>
-        <CSSTransition
-          in={show}
-          timeout={300}
-          classNames={maskTransition}
-          unmountOnExit
-        >
-          <Mask onClick={this.onMaskClick}/>
+        <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit>
+          <Mask onClick={this.onMaskClick} />
         </CSSTransition>
-        <CSSTransition
-          in={show}
-          timeout={300}
-          classNames={dialogTransition}
-          unmountOnExit
-        >
+        <CSSTransition in={show} timeout={300} classNames={dialogTransition} unmountOnExit>
           <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
             <div className={cls} style={style}>
               <div className={`${prefixCls}-content`}>
-                {
-                  title && this.renderHeader()
-                }
-                {
-                  this.renderBody()
-                }
-                {
-                  this.renderFooter()
-                }
+                {title && this.renderHeader()}
+                {this.renderBody()}
+                {this.renderFooter()}
               </div>
             </div>
           </div>
         </CSSTransition>
       </div>
-    )
+    );
   }
 }
-

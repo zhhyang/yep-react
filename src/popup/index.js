@@ -2,14 +2,13 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
-import Mask from "../mask";
+import Mask from '../mask';
 
 /**
  * screen mask, use in `Dialog`, `ActionSheet`, `Popup`.
  *
  */
 export default class Popup extends PureComponent {
-
   static propTypes = {
     /**
      * 是否显示
@@ -32,23 +31,22 @@ export default class Popup extends PureComponent {
      */
     onCancel: PropTypes.func,
     prefixCls: PropTypes.string,
-    style:PropTypes.object,
-  }
+    style: PropTypes.object,
+  };
 
   static defaultProps = {
     prefixCls: 'Yep-popup',
-    style:{},
+    style: {},
     show: false,
     popupTransition: 'slide-up',
     maskTransition: 'fade',
     maskCloseable: true,
-    onCancel: () => {
-    },
-  }
+    onCancel: () => {},
+  };
 
   constructor() {
     super();
-    this.onMaskClick = this.onMaskClick.bind(this)
+    this.onMaskClick = this.onMaskClick.bind(this);
   }
 
   onMaskClick(e) {
@@ -65,29 +63,16 @@ export default class Popup extends PureComponent {
 
     return (
       <div>
-        <CSSTransition
-          in={show}
-          timeout={300}
-          classNames={maskTransition}
-          unmountOnExit
-        >
-          <Mask onClick={this.onMaskClick}/>
+        <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit>
+          <Mask onClick={this.onMaskClick} />
         </CSSTransition>
 
-        <CSSTransition
-          in={show}
-          timeout={300}
-          classNames={popupTransition}
-          unmountOnExit
-        >
+        <CSSTransition in={show} timeout={300} classNames={popupTransition} unmountOnExit>
           <div className={cls} style={style} onClick={this.onMaskClick}>
             {children}
           </div>
         </CSSTransition>
       </div>
-
-    )
+    );
   }
-
-
 }

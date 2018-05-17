@@ -1,17 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const ButtonGroup = ({prefixCls, className, children}) => {
+  const cls = classNames(prefixCls, className);
 
-  const cls = classNames(prefixCls, className)
-
-  return (
-    <div className={cls}>
-      {children}
-    </div>
-  )
+  return <div className={cls}>{children}</div>;
 };
 
 ButtonGroup.propTypes = {

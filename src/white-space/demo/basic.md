@@ -1,16 +1,17 @@
 ---
 order: 0
 title: 基础用法
-description: 
+description:
 ---
-
 
 ```js
 import React from 'react';
-import { WhiteSpace } from '@jdcfe/lrc-m';
+import {WhiteSpace} from '@jdcfe/lrc-m';
 
-const PlaceHolder = ({ className = '', ...restProps }) => (
-  <div className={`${className} placeholder`} {...restProps}>Block</div>
+const PlaceHolder = ({className = '', ...restProps}) => (
+  <div className={`${className} placeholder`} {...restProps}>
+    Block
+  </div>
 );
 
 const WhiteSpaceExample = () => (
@@ -34,4 +35,3 @@ const WhiteSpaceExample = () => (
 
 ReactDOM.render(<WhiteSpaceExample />, mountNode);
 ```
-

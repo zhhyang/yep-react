@@ -2,11 +2,12 @@
 category: Components
 title: 吸顶
 ---
+
 Make your React components sticky!
 
 <DEMO>
 
-## API 
+## API
 
 `<Sticky />` elements require a function that returns a React component or DOM node as the only child. When invoked, this child function will be supplied an object with the following properties:
 
@@ -64,6 +65,7 @@ class App extends React.Component ({
 
 When the "stickiness" becomes activated, the arguments to the sticky function
 are modified. Similarly, when deactivated, the arguments will update accordingly.
+
 ### `<StickyContainer />` Props
 
 `<StickyContainer />` supports all valid `<div />` props.

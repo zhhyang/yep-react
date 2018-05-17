@@ -1,15 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 import PropTypes from 'prop-types';
-import Wrap from "./Wrap";
+import Wrap from './Wrap';
 
 const Placeholder = props => {
+  const {children, ...restProps} = props;
 
-  const {children, ...restProps} = props
-
-  return (
-    <Wrap {...restProps}>{children ? children : <InitialComponent {...restProps} />}</Wrap>
-  )
+  return <Wrap {...restProps}>{children ? children : <InitialComponent {...restProps} />}</Wrap>;
 };
 
 Placeholder.propTypes = {
@@ -25,7 +22,7 @@ Placeholder.propTypes = {
   secondaryOpacity: PropTypes.number,
   style: PropTypes.object,
   uniquekey: PropTypes.string,
-}
+};
 
 Placeholder.defaultProps = {
   animate: true,
@@ -37,7 +34,6 @@ Placeholder.defaultProps = {
   secondaryColor: '#e0e0e0',
   primaryOpacity: 1,
   secondaryOpacity: 1,
-}
+};
 
 export default Placeholder;
-

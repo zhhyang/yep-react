@@ -1,7 +1,7 @@
-import React from 'react'
-import Placeholder from '../Placeholder'
+import React from 'react';
+import Placeholder from '../Placeholder';
 
-const BulletListStyle = (props) => (
+const BulletListStyle = props => (
   <Placeholder {...props}>
     <circle cx="10" cy="20" r="8" />
     <rect x="25" y="15" rx="5" ry="5" width="220" height="10" />
@@ -12,7 +12,6 @@ const BulletListStyle = (props) => (
     <circle cx="10" cy="110" r="8" />
     <rect x="25" y="105" rx="5" ry="5" width="220" height="10" />
   </Placeholder>
-)
+);
 
-export default BulletListStyle
-
+export default BulletListStyle;

@@ -5,10 +5,7 @@ import Dialog from './Dialog';
 export default function confirm(
   title,
   message,
-  actions = [
-    {text: 'Cancel', onClick: () => console.log('cancel')},
-    {text: 'Ok', onClick: () => console.log('ok')},
-  ],
+  actions = [{text: 'Cancel', onClick: () => console.log('cancel')}, {text: 'Ok', onClick: () => console.log('ok')}]
 ) {
   const prefixCls = 'Yep-dialog';
   let closed = false;
@@ -16,8 +13,7 @@ export default function confirm(
   if (!title && !message) {
     // console.log('Must specify either an alert title, or message, or both');
     return {
-      close: () => {
-      },
+      close: () => {},
     };
   }
 
@@ -33,8 +29,7 @@ export default function confirm(
 
   const buttons = actions.map(button => {
     // tslint:disable-next-line:only-arrow-functions
-    const orginPress = button.onClick || function () {
-    };
+    const orginPress = button.onClick || function() {};
     button.onClick = () => {
       if (closed) {
         return;
@@ -47,8 +42,7 @@ export default function confirm(
             closed = true;
             close();
           })
-          .catch(() => {
-          });
+          .catch(() => {});
       } else {
         closed = true;
         close();
@@ -57,26 +51,20 @@ export default function confirm(
     return button;
   });
 
-  const footer =
+  const footer = (
     <div className={`${prefixCls}-button-group-h`}>
-      {
-        buttons.map((button, index) =>
-          <a className={`${prefixCls}-button`} onClick={button.onClick} key={index}>
-            {button.text}
-          </a>
-        )
-      }
-    </div>;
+      {buttons.map((button, index) => (
+        <a className={`${prefixCls}-button`} onClick={button.onClick} key={index}>
+          {button.text}
+        </a>
+      ))}
+    </div>
+  );
   ReactDOM.render(
-    <Dialog
-      show
-      title={title}
-      footer={footer}
-      onClose={close}
-    >
+    <Dialog show title={title} footer={footer} onClose={close}>
       <div className={`${prefixCls}-alert-content`}>{message}</div>
     </Dialog>,
-    div,
+    div
   );
 
   return {

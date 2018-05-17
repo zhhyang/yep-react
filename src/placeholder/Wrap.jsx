@@ -1,12 +1,26 @@
-import React from 'react'
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import uid from './uid'
+import uid from './uid';
 
-const Wrap = ({uniquekey, width, height, style, className, children, primaryColor, primaryOpacity, secondaryColor, secondaryOpacity, speed, animate,preserveAspectRatio}) => {
-  const idClip = uniquekey ? `${uniquekey}-idClip` : uid()
-  const idGradient = uniquekey ? `${uniquekey}-idGradient` : uid()
+const Wrap = ({
+  uniquekey,
+  width,
+  height,
+  style,
+  className,
+  children,
+  primaryColor,
+  primaryOpacity,
+  secondaryColor,
+  secondaryOpacity,
+  speed,
+  animate,
+  preserveAspectRatio,
+}) => {
+  const idClip = uniquekey ? `${uniquekey}-idClip` : uid();
+  const idGradient = uniquekey ? `${uniquekey}-idGradient` : uid();
 
   return (
     <svg
@@ -31,39 +45,24 @@ const Wrap = ({uniquekey, width, height, style, className, children, primaryColo
         <linearGradient id={idGradient}>
           <stop offset="0%" stopColor={primaryColor} stopOpacity={primaryOpacity}>
             {animate ? (
-              <animate
-                attributeName="offset"
-                values="-2; 1"
-                dur={`${speed}s`}
-                repeatCount="indefinite"
-              />
+              <animate attributeName="offset" values="-2; 1" dur={`${speed}s`} repeatCount="indefinite" />
             ) : null}
           </stop>
           <stop offset="50%" stopColor={secondaryColor} stopOpacity={secondaryOpacity}>
             {animate ? (
-              <animate
-                attributeName="offset"
-                values="-1.5; 1.5"
-                dur={`${speed}s`}
-                repeatCount="indefinite"
-              />
+              <animate attributeName="offset" values="-1.5; 1.5" dur={`${speed}s`} repeatCount="indefinite" />
             ) : null}
           </stop>
           <stop offset="100%" stopColor={primaryColor} stopOpacity={primaryOpacity}>
             {animate ? (
-              <animate
-                attributeName="offset"
-                values="-1; 2"
-                dur={`${speed}s`}
-                repeatCount="indefinite"
-              />
+              <animate attributeName="offset" values="-1; 2" dur={`${speed}s`} repeatCount="indefinite" />
             ) : null}
           </stop>
         </linearGradient>
       </defs>
     </svg>
-  )
-}
+  );
+};
 
 Wrap.propTypes = {
   animate: PropTypes.bool,
@@ -78,6 +77,6 @@ Wrap.propTypes = {
   secondaryOpacity: PropTypes.number,
   style: PropTypes.object,
   uniquekey: PropTypes.string,
-}
+};
 
 export default Wrap;

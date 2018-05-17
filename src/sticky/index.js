@@ -1,5 +1,5 @@
-import Sticky from './Sticky'
-import StickyContainer from './StickyContainer'
+import Sticky from './Sticky';
+import StickyContainer from './StickyContainer';
 
 Sticky.StickyContainer = StickyContainer;
 

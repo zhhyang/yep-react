@@ -1,5 +1,5 @@
-import Dialog from './Dialog'
-import confirm from './confirm'
-Dialog.confirm = confirm
+import Dialog from './Dialog';
+import confirm from './confirm';
+Dialog.confirm = confirm;
 
-export default Dialog
+export default Dialog;
