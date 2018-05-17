@@ -38,6 +38,21 @@ export default class Dialog extends PureComponent {
     this.renderFooter = this.renderFooter.bind(this);
     this.close = this.close.bind(this);
     this.onMaskClick = this.onMaskClick.bind(this);
+    this.state = {
+      show: false,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      show: this.props.show,
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      show: nextProps.show,
+    });
   }
 
   close(e) {
@@ -84,10 +99,10 @@ export default class Dialog extends PureComponent {
 
     return createPortal(
       <div>
-        <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit>
+        <CSSTransition in={this.state.show} timeout={300} classNames={maskTransition} unmountOnExit>
           <Mask onClick={this.onMaskClick} />
         </CSSTransition>
-        <CSSTransition in={show} timeout={300} classNames={dialogTransition} unmountOnExit>
+        <CSSTransition in={this.state.show} timeout={300} classNames={dialogTransition} unmountOnExit>
           <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
             <div className={cls} style={style}>
               <div className={`${prefixCls}-content`}>
