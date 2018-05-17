@@ -15,7 +15,7 @@
     "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublish": "npm run clean && npm run dist && npm run compire",
+    "prepublishOnly": "npm run clean && npm run dist && npm run compire",
     "format": "prettier --write src/**/*.{js,jsx,md}"
   },
   "keywords": [
@@ -105,7 +105,7 @@
     "react-dom": ">=16.0.0"
   },
   "dependencies": {
-    "@jdcfe/lrc": "^0.0.1",
+    "@jdcfe/lrc": "^0.0.2",
     "classnames": "^2.2.5",
     "raf": "^3.4.0",
     "react-transition-group": "^2.3.1"

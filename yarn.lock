@@ -89,9 +89,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@jdcfe/lrc@^0.0.1":
-  version "0.0.1"
-  resolved "http://registry.m.jd.com/@jdcfe/lrc/download/@jdcfe/lrc-0.0.1.tgz#d0de0c97eaf709b831aecbf64a59ab70e8f6d6d7"
+"@jdcfe/lrc@^0.0.2":
+  version "0.0.2"
+  resolved "http://registry.m.jd.com/@jdcfe/lrc/download/@jdcfe/lrc-0.0.2.tgz#122ef9651ee813e3bad1384591008251136076ef"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
