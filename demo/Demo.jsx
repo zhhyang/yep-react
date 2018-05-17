@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import Components from '@jdcfe/lrc-m'; // eslint-disable-line
+import * as Components from '@jdcfe/lrc-m'; // eslint-disable-line
 import {transform} from '@babel/standalone';
 
 //import Editor from './Editor';
