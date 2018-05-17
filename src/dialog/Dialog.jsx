@@ -99,7 +99,7 @@ export default class Dialog extends PureComponent {
           </div>
         </CSSTransition>
       </div>,
-      document.body,
+      document.body
     );
   }
 }
