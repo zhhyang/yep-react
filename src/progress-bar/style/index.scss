@@ -1,17 +1,21 @@
-@import '../../style/mixin';
+@import '../../style/variables';
 
-.Yep-common-progressbar {
-  .bar {
-    border-radius: 50px;
-    height: 10px;
-    width: 100%;
-    background: #f5f5f5;
-    overflow: hidden;
+.Yep-progress {
+  border-radius: 50px;
+  height: 10px;
+  width: 100%;
+  background: #f5f5f5;
+  overflow: hidden;
+
+  &-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $progressZIndex;
   }
-
-  .progress {
+  &-bar {
     height: 10px;
     border-radius: 5px;
-    transition: width 2s;
+    transition: width 1s;
   }
 }

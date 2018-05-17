@@ -6,15 +6,30 @@ description:
 
 ```js
 import React from 'react';
-import {ProgressBar, WhiteSpace} from '@jdcfe/lrc-m';
+import {ProgressBar, WhiteSpace, Button} from '@jdcfe/lrc-m';
 
 class Demo extends React.PureComponent {
+  state = {
+    percent: 50,
+  };
+
+  add = () => {
+    let p = this.state.percent + 10;
+    if (this.state.percent >= 100) {
+      p = 0;
+    }
+    this.setState({percent: p});
+  };
+
   render() {
     return (
       <div title="ProgressBar">
         <ProgressBar percent={150} />
         <WhiteSpace />
-        <ProgressBar percent={50} />
+        <ProgressBar percent={this.state.percent} />
+        <WhiteSpace />
+        <ProgressBar percent={this.state.percent} fixed />
+        <Button onClick={this.add}>(+-)10</Button>
       </div>
     );
   }
