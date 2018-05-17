@@ -18,6 +18,7 @@
   &.btn-primary{
     background-color: $primary-color;
     color:$color-white;
+    border: 1PX solid $primary-color;
     &.btn-disabled{
       background-color: #ce2525;
       //color: #ce2525;
@@ -27,7 +28,7 @@
 
   &.btn-default{
     border: 1PX solid #6f6f6f;
-    color: #6f6f6f;
+    color: $black;
     &.btn-disabled{
       background-color: $button-disabled-background-color;
       color: $button-disabled-color;
