@@ -14,24 +14,8 @@ const devServerOptions = {
   hot: true,
   host: '127.0.0.1',
   publicPath: '/',
-  contentBase: './src/html',
   stats: {
     colors: true,
-  },
-  proxy: {
-    '/doc/doc.bundle.js': {
-      target: `http://127.0.0.1:${defaultPort}`,
-      pathRewrite: {
-        '^/doc': '',
-      },
-    },
-    '/doc/': {
-      target: `http://127.0.0.1:${defaultPort}`,
-      pathRewrite: {
-        '^/doc/.*$': '/doc',
-      },
-      changeOrigin: true,
-    },
   },
 };
 

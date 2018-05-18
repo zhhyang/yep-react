@@ -12,7 +12,7 @@ const config = {
   },
   output: {
     pathinfo: true,
-    path: path.join(process.cwd(), 'build/site'),
+    path: path.join(process.cwd(), 'build'),
     publicPath: '/',
     filename: '[name].bundle.js',
   },
@@ -105,7 +105,7 @@ const config = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['build/*.*', 'build/site',], {
+    new CleanWebpackPlugin(['build/site.*', 'build/index.html',], {
       root: process.cwd(),
     }),
     new webpack.NamedModulesPlugin(),

@@ -51,16 +51,12 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'site/index.html',
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'doc/index.html',
       template: 'site/doc/index.html',
       chunks: ['doc'],
       inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(),// enable HMR globally
-    new OpenBrowserPlugin({url: `http://localhost:8080/doc`})
+    new OpenBrowserPlugin({url: `http://localhost:8080/`})
   ],
 }
 

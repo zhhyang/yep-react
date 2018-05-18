@@ -4,11 +4,11 @@ import './base.scss'
 import Content from './Content'
 import '../dist/@jdcfe/lrc-m.css'
 import {Helmet} from "react-helmet";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 
 render(
   <Fragment>
-    <Helmet titleTemplate="%s - Yep-ui"/>
+    <Helmet titleTemplate="%s - Yep-react"/>
     <Router>
       <Content/>
     </Router>

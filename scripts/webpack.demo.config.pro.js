@@ -14,7 +14,7 @@ const config = {
   },
   output: {
     pathinfo: true,
-    path: path.join(process.cwd(), 'build/demo'),
+    path: path.join(process.cwd(), 'build'),
     publicPath: '/',
     filename: '[name].bundle.js',
   },
@@ -116,7 +116,7 @@ const config = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['build/*.*', 'build/demo',], {
+    new CleanWebpackPlugin(['build/demo.*', 'build/demo.html',], {
       root: process.cwd(),
     }),
     new MiniCssExtractPlugin({
@@ -124,7 +124,7 @@ const config = {
     }),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: 'demo.html',
       template: 'demo/index.html',
       inject: true,
     }),

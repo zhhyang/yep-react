@@ -13,6 +13,10 @@ const Content = ({ history, location: { pathname } }) => {
     Prism.highlightAll();
   }, 100);
 
+  if (pathname ==='/') {
+    history.replace(`/doc/get-started`);
+  }
+
   if (pathname.match(/^\/doc\/?$/)) {
     history.replace(`/doc/${allDocData.docs[0].id}`);
   }

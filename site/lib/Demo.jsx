@@ -31,7 +31,7 @@ class Demo extends React.Component {
 
   render() {
     const {demo, componentName} = this.props;
-    const host = process.env.NODE_ENV === 'production'?'yep-react.jd.com':'localhost:8081';
+    const host = process.env.NODE_ENV === 'production'?'yep-react.jd.com/demo.html':'localhost:8081';
     return (
       <div className="">
         <h3 className="">{demo.title}</h3>
@@ -39,7 +39,7 @@ class Demo extends React.Component {
         <div className="component-box">
           <div id={`demo-${demo.order}`} className="component-hd">
             <div style={{width: '375px', height: '620px'}}>
-              <iframe src={`//${host}/component/${componentName}?order=${demo.order}`} frameBorder="0"
+              <iframe src={`//${host}#/component/${componentName}?order=${demo.order}`} frameBorder="0"
                       style={{width: '375px', height: '620px'}}/>
             </div>
           </div>

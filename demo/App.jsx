@@ -21,7 +21,7 @@ export default class App extends PureComponent {
           Object.keys(allDocData.components).sort().map((componentName, index) => {
               const component = allDocData.components[componentName];
               return (
-                <Link to={`component/${componentName}`} key={index}>
+                <Link to={`/component/${componentName}`} key={index}>
                   <div>
                     <i className="indexicon"/>
                     <span>{toCamelCase(componentName)} {component.title}</span>
