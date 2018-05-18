@@ -17,7 +17,7 @@
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
     "prepublishOnly": "npm run clean && npm run dist && npm run compire",
     "format": "prettier --write src/**/*.{js,jsx,md}",
-    "upload":"node scripts/upload.js"
+    "upload": "node scripts/upload.js"
   },
   "keywords": [
     "react",
@@ -75,6 +75,7 @@
     "prettier": "^1.12.1",
     "prismjs": "^1.14.0",
     "prop-types": "^15.6.1",
+    "qrcode.react": "^0.8.0",
     "qs": "^6.5.2",
     "react": "^16.2.0",
     "react-dom": "^16.3.0",
