@@ -38,9 +38,17 @@ class Demo extends React.Component {
         <div className="">{demo.description}</div>
         <div className="component-box">
           <div id={`demo-${demo.order}`} className="component-hd">
-            <div style={{width: '375px', height: '620px'}}>
+            <div
+              style={{
+                width: '380px',
+                height: '760px',
+                backgroundImage:'url(http://yep.jd.com/index/1.0.0/img/phone.bf15f6c.png)',
+                backgroundSize:'cover',
+                padding:'60px 30px',
+              }}
+            >
               <iframe src={`//${host}#/component/${componentName}?order=${demo.order}`} frameBorder="0"
-                      style={{width: '375px', height: '620px'}}/>
+                      style={{width: '100%', height: '100%'}}/>
             </div>
           </div>
           <div className="component-bd" style={{display: 'block'}}>
