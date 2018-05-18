@@ -26,7 +26,9 @@ class Demo extends React.PureComponent {
       <div title="ProgressBar">
         <ProgressBar percent={150} />
         <WhiteSpace />
-        <ProgressBar percent={this.state.percent} />
+        <ProgressBar percent={this.state.percent} backgroundColor="#000" />
+        <WhiteSpace />
+        <ProgressBar percent={60} colorStart="#feaa36" colorEnd="#ff5741" />
         <WhiteSpace />
         <ProgressBar percent={this.state.percent} fixed />
         <Button onClick={this.add}>(+-)10</Button>
