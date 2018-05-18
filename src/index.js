@@ -30,3 +30,4 @@ export {default as TabBar} from './tab-bar';
 export {default as Sticky} from './sticky';
 export {default as List} from './list';
 export {default as Mask} from './mask';
+export {default as ToTop} from './to-top';
