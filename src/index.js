@@ -29,3 +29,4 @@ export {default as Placeholder} from './placeholder';
 export {default as TabBar} from './tab-bar';
 export {default as Sticky} from './sticky';
 export {default as List} from './list';
+export {default as Mask} from './mask';
