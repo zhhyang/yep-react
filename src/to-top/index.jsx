@@ -4,11 +4,16 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { Gotop } from '@jdcfe/lrc';
 
-export default class ToTop extends PureComponent{
+export default class ToTop extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
     className: PropTypes.string,
     style: PropTypes.object,
+    onClick: PropTypes.func,
+    smooth: PropTypes.bool,
+    children: PropTypes.element,
+    displayHeight: PropTypes.number,
+    duration: PropTypes.number
   }
   
   static defaultProps = {
@@ -16,74 +21,33 @@ export default class ToTop extends PureComponent{
     style: {},
   }
   
-  constructor(){
+  constructor() {
     super()
   }
   
-  render(){
-    const {className, onClick, smooth, children, displayHeight, duration} = this.props;
-    const cls = className ?  className : `Yep-to-top`;
+  render() {
+    const {prefixCls, className, style, onClick, smooth, children, displayHeight, duration} = this.props;
+    const cls = classNames(prefixCls, className);
     
     return (
       <div>
+        <br/><br/>
         <p>滚动至页面底部，查看右下角返回顶部按钮</p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <p>滚动至页面底部，查看右下角返回顶部按钮</p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p> 
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p> 
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p>   
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p>   
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>           
         <Gotop
+          style={style}
           className={cls}
           onClick={onClick}
           smooth={smooth}
