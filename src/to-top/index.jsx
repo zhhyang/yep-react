@@ -1,8 +1,8 @@
-import React , { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import { Gotop } from '@jdcfe/lrc';
+import {Gotop} from '@jdcfe/lrc';
 
 export default class ToTop extends PureComponent {
   static propTypes = {
@@ -13,39 +13,152 @@ export default class ToTop extends PureComponent {
     smooth: PropTypes.bool,
     children: PropTypes.element,
     displayHeight: PropTypes.number,
-    duration: PropTypes.number
-  }
-  
+    duration: PropTypes.number,
+  };
+
   static defaultProps = {
     prefixCls: 'Yep-to-top',
     style: {},
-  }
-  
+  };
+
   constructor() {
-    super()
+    super();
   }
-  
+
   render() {
     const {prefixCls, className, style, onClick, smooth, children, displayHeight, duration} = this.props;
     const cls = classNames(prefixCls, className);
-    
+
     return (
       <div>
-        <br/><br/>
+        <br />
+        <br />
         <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p> 
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p> 
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>   
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>   
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>           
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <Gotop
           style={style}
           className={cls}
@@ -54,9 +167,8 @@ export default class ToTop extends PureComponent {
           children={children}
           displayHeight={displayHeight}
           duration={duration}
-        >
-        </Gotop>
+        />
       </div>
-    )
+    );
   }
 }

@@ -1,28 +1,22 @@
 ---
 order: 0
 title: 基础用法
-description: 
+description:
 ---
 
 ```js
 import React from 'react';
-import {ToTop} from "@jdcfe/lrc-m";
+import {ToTop} from '@jdcfe/lrc-m';
 
 class Demo extends React.PureComponent {
-
   render() {
     return (
       <div>
-        <ToTop 
-          className="my-totop"
-          onClick={e => console.log(e)}
-        />
+        <ToTop className="my-totop" onClick={e => console.log(e)} />
       </div>
     );
   }
 }
 
-ReactDOM.render(<Demo/>,  mountNode);
-
+ReactDOM.render(<Demo />, mountNode);
 ```
-    
