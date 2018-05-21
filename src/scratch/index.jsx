@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export default class Scratch extends PureComponent {
   static propTypes = {
@@ -16,9 +17,14 @@ export default class Scratch extends PureComponent {
   constructor() {
     super();
     this.state = {
-      firstTouch: true,
-      down: false,
+      // firstTouch: true,
+      // down: false,
+      isAreaShow: true,
+      isArea2Show: false
     };
+    this.touchStart = this.touchStart.bind(this);
+    this.touchMove = this.touchMove.bind(this);
+    this.touchEnd = this.touchEnd.bind(this);    
   }
 
   componentDidMount() {
@@ -51,33 +57,40 @@ export default class Scratch extends PureComponent {
     }
   }
 
-  touchStart() {
+  touchStart(e) {
     // $icanvas.off('touchstart');
-    if (this.state.firstTouch) {
-      this.setState({
-        firstTouch: false,
-        down: true,
-      });
-    }
+    // if (this.state.firstTouch) {
+    //   this.setState({
+    //     firstTouch: false,
+    //     down: true,
+    //   });
+    // }
+    var icanvas = document.getElementById('myCanvas');    
     var context = icanvas.getContext('2d');
     context.beginPath();
-    var icanvas = document.getElementById('myCanvas');
     var rect = icanvas.getBoundingClientRect();
-    context.moveTo(event.changedTouches[0].clientX - rect.left, event.changedTouches[0].clientY - rect.top);
+    context.moveTo(e.changedTouches[0].clientX - rect.left, e.changedTouches[0].clientY - rect.top);
     // $("#area2").show();
   }
 
-  touchMove() {
+  touchMove(e) {
     // $icanvas.off('touchmove');
-    $('#area2').show();
-    var e = event;
-    if (this.state.down) {
+    e.persist();
+    this.setState({
+      isArea2Show: true
+    });
+    // var e = event;
+    var icanvas = document.getElementById('myCanvas');    
+    var context = icanvas.getContext('2d');
+        
+    // if (this.state.down) {
       var rect = icanvas.getBoundingClientRect();
 
-      context.lineTo(event.changedTouches[0].clientX - rect.left, event.changedTouches[0].clientY - rect.top);
+      context.lineTo(e.changedTouches[0].clientX - rect.left, e.changedTouches[0].clientY - rect.top);
       context.stroke();
-    }
-
+    // }
+    var iwidth = wrap_canvas.clientWidth;
+    var iheight = wrap_canvas.clientHeight;
     var imgData = context.getImageData(0, 0, iwidth, iheight),
       pixles = imgData.data,
       transPixs = [];
@@ -90,12 +103,9 @@ export default class Scratch extends PureComponent {
     if ((transPixs.length / (pixles.length / 4) * 100).toFixed(2) > 30) {
       // alert("中奖了！");
       // wrap_canvas.style.display="none";
-      if (prizeStatus != '') {
-        wrap_canvas.style.display = 'none';
-        setTimeout(function() {
-          replaceSection(prizeInfo[prizeStatus]);
-        }, 400);
-      }
+        this.setState({
+          isAreaShow: false
+        });
     }
     e.preventDefault && e.preventDefault();
     e.returnValue = false;
@@ -105,9 +115,9 @@ export default class Scratch extends PureComponent {
 
   touchEnd() {
     // $icanvas.off('touchend');
-    this.setState({
-      down: false,
-    });
+    // this.setState({
+    //   down: false,
+    // });
 
     // wrap_canvas.style.display="none";
 
@@ -117,14 +127,20 @@ export default class Scratch extends PureComponent {
   }
 
   render() {
+    const {prefixCls, className, style} = this.props;
+    const cls = classNames(prefixCls, className);
     return (
-      <div class="scratch-box">
-        <div class="area" id="wrap_canvas">
-          <canvas id="myCanvas" onTouchStart={touchStart} onTouchMove={touchMove} onTouchEnd={touchEnd} />
-        </div>
-        <div class="area2" id="area2">
-          中奖了
-        </div>
+      <div className={cls}>
+        {this.state.isAreaShow &&
+          <div className="area" id="wrap_canvas">
+            <canvas id="myCanvas" onTouchStart={this.touchStart} onTouchMove={this.touchMove} onTouchEnd={this.touchEnd} />
+          </div>
+        }
+        {this.state.isArea2Show &&
+          <div className="area2" id="area2">
+            中奖了
+          </div>
+        }
       </div>
     );
   }

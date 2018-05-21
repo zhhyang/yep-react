@@ -2,5 +2,28 @@
 @import '../../style/mixin';
 
 .Yep-scratch {
-  
+    position: relative;
+    margin: 0 auto;
+    width: 445px;
+    height: 120px;
+    .area, .area2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 445px;
+        height: 120px;
+        z-index: 100;
+    }
+    .area2 {
+        border-radius: 5px;
+        background-color: #f0f8a3;
+        line-height: 120px;
+        text-align: center;
+        font-size: 50px;
+        color: #ff001e;
+        z-index: 90;
+    }
+    #myCanvas {
+        border-radius: 5px;
+    }
 } 

@@ -13,7 +13,7 @@ export default class ToTop extends PureComponent {
     smooth: PropTypes.bool,
     children: PropTypes.element,
     displayHeight: PropTypes.number,
-    duration: PropTypes.number
+    duration: PropTypes.number,
   };
 
   static defaultProps = {
@@ -26,7 +26,6 @@ export default class ToTop extends PureComponent {
   }
 
   render() {
-
     const {prefixCls, className, style, onClick, smooth, children, displayHeight, duration} = this.props;
     const cls = classNames(prefixCls, className);
 
