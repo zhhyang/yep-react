@@ -28,148 +28,16 @@ export default class ToTop extends PureComponent {
   render() {
     const {prefixCls, className, style, onClick, smooth, children, displayHeight, duration} = this.props;
     const cls = classNames(prefixCls, className);
-
     return (
-      <div>
-        <br />
-        <br />
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>滚动至页面底部，查看右下角返回顶部按钮</p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Gotop
-          style={style}
-          className={cls}
-          onClick={onClick}
-          smooth={smooth}
-          children={children}
-          displayHeight={displayHeight}
-          duration={duration}
-        />
-      </div>
+      <Gotop
+        style={style}
+        className={cls}
+        onClick={onClick}
+        smooth={smooth}
+        children={children}
+        displayHeight={displayHeight}
+        duration={duration}
+      />
     );
   }
 }
