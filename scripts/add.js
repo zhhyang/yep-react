@@ -109,6 +109,7 @@ function createStyle() {
 } 
 `;
     let jsContent = `
+import '../../style';
 import './index.scss'; 
 `;
 
