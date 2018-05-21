@@ -9,10 +9,7 @@ const clean = require('gulp-clean');
 const header = require('gulp-header');
 
 const pkg = require('./package.json');
-const paths = [
-  'src/style/index.scss',
-  'src/*/style/index.scss'
-];
+const paths = 'src/**/style/index.scss';
 
 gulp.task('clean', function () {
   return gulp.src('dist', {read: false})

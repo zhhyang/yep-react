@@ -31,3 +31,5 @@ export {default as Sticky} from './sticky';
 export {default as List} from './list';
 export {default as Mask} from './mask';
 export {default as ToTop} from './to-top';
+export {default as Scratch} from './scratch';
+export {default as Badge} from './badge';

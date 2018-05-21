@@ -6,13 +6,13 @@ description:
 
 ```js
 import React from 'react';
-import {ToTop} from '@jdcfe/lrc-m';
+import {Scratch} from '@jdcfe/lrc-m';
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <ToTop className="my-totop" onClick={e => console.log(e)} />
+        <Scratch />
       </div>
     );
   }
