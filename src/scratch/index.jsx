@@ -20,11 +20,11 @@ export default class Scratch extends PureComponent {
       // firstTouch: true,
       // down: false,
       isAreaShow: true,
-      isArea2Show: false
+      isArea2Show: false,
     };
     this.touchStart = this.touchStart.bind(this);
     this.touchMove = this.touchMove.bind(this);
-    this.touchEnd = this.touchEnd.bind(this);    
+    this.touchEnd = this.touchEnd.bind(this);
   }
 
   componentDidMount() {
@@ -65,7 +65,7 @@ export default class Scratch extends PureComponent {
     //     down: true,
     //   });
     // }
-    var icanvas = document.getElementById('myCanvas');    
+    var icanvas = document.getElementById('myCanvas');
     var context = icanvas.getContext('2d');
     context.beginPath();
     var rect = icanvas.getBoundingClientRect();
@@ -77,17 +77,17 @@ export default class Scratch extends PureComponent {
     // $icanvas.off('touchmove');
     e.persist();
     this.setState({
-      isArea2Show: true
+      isArea2Show: true,
     });
     // var e = event;
-    var icanvas = document.getElementById('myCanvas');    
+    var icanvas = document.getElementById('myCanvas');
     var context = icanvas.getContext('2d');
-        
-    // if (this.state.down) {
-      var rect = icanvas.getBoundingClientRect();
 
-      context.lineTo(e.changedTouches[0].clientX - rect.left, e.changedTouches[0].clientY - rect.top);
-      context.stroke();
+    // if (this.state.down) {
+    var rect = icanvas.getBoundingClientRect();
+
+    context.lineTo(e.changedTouches[0].clientX - rect.left, e.changedTouches[0].clientY - rect.top);
+    context.stroke();
     // }
     var iwidth = wrap_canvas.clientWidth;
     var iheight = wrap_canvas.clientHeight;
@@ -103,9 +103,9 @@ export default class Scratch extends PureComponent {
     if ((transPixs.length / (pixles.length / 4) * 100).toFixed(2) > 30) {
       // alert("中奖了！");
       // wrap_canvas.style.display="none";
-        this.setState({
-          isAreaShow: false
-        });
+      this.setState({
+        isAreaShow: false,
+      });
     }
     e.preventDefault && e.preventDefault();
     e.returnValue = false;
@@ -118,9 +118,7 @@ export default class Scratch extends PureComponent {
     // this.setState({
     //   down: false,
     // });
-
     // wrap_canvas.style.display="none";
-
     // setTimeout(function () {
     //     replaceSection(prizeInfo[prizeStatus]);
     // }, 0);
@@ -131,16 +129,21 @@ export default class Scratch extends PureComponent {
     const cls = classNames(prefixCls, className);
     return (
       <div className={cls}>
-        {this.state.isAreaShow &&
+        {this.state.isAreaShow && (
           <div className="area" id="wrap_canvas">
-            <canvas id="myCanvas" onTouchStart={this.touchStart} onTouchMove={this.touchMove} onTouchEnd={this.touchEnd} />
+            <canvas
+              id="myCanvas"
+              onTouchStart={this.touchStart}
+              onTouchMove={this.touchMove}
+              onTouchEnd={this.touchEnd}
+            />
           </div>
-        }
-        {this.state.isArea2Show &&
+        )}
+        {this.state.isArea2Show && (
           <div className="area2" id="area2">
             中奖了
           </div>
-        }
+        )}
       </div>
     );
   }

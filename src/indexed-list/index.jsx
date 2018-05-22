@@ -2,19 +2,44 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ListView from './ListView';
+import {_event, getOffsetTop} from './util';
+import ReactDOM from 'react-dom';
+
+function setDocumentScrollTop(val) {
+  window.document.body.scrollTop = val; // chrome61 is invalid
+  window.document.documentElement.scrollTop = val;
+}
 
 export default class IndexedList extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
+    listPrefixCls: PropTypes.string,
     className: PropTypes.string,
     style: PropTypes.object,
     showIndicator: PropTypes.bool,
+    data: PropTypes.object.isRequired,
+    renderSectionHeader: PropTypes.func,
+    renderRow: PropTypes.func,
+    renderSectionWrapper: PropTypes.func,
+    quickIndexedBarTop: PropTypes.object,
+    useBodyScroll: PropTypes.bool,
+    onQuickSearch: PropTypes.func,
+    indexedBarStyle: PropTypes.func,
   };
 
   static defaultProps = {
     prefixCls: 'Yep-indexed-list',
+    listPrefixCls: 'Yep-list',
     style: {},
+    indexedBarStyle: {},
+    showIndicator: false,
+    renderSectionHeader: sectionData => <div>{sectionData}</div>,
+    quickIndexedBarTop: {label: '#', value: '#'},
+    useBodyScroll: true,
+    onQuickSearch: () => {},
   };
+
+  sectionComponents = {};
 
   constructor() {
     super();
@@ -25,60 +50,167 @@ export default class IndexedList extends PureComponent {
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.onTouchEnd = this.onTouchEnd.bind(this);
-    this.onTouchCancel = this.onTouchCancel.bind(this);
+    this.getQsInfo = this.getQsInfo.bind(this);
+    this._disableParent = this._disableParent.bind(this);
+    this.updateIndicator = this.updateIndicator.bind(this);
+    this.state = {
+      showIndicator: false,
+    };
   }
 
   createIndicatorRef(el) {
     this.indicator = el;
   }
+
   createIndexedBarRef(el) {
     this.indexedBar = el;
   }
 
-  onTouchStart(e) {}
+  _disableParent(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
 
-  onTouchMove(e) {}
+  onQuickSearchTop(sectionID, topId) {
+    if (this.props.useBodyScroll) {
+      setDocumentScrollTop(0);
+    } else {
+      ReactDOM.findDOMNode(this.indexedListView.listViewRef).scrollTop = 0;
+    }
+    this.props.onQuickSearch(sectionID, topId);
+  }
 
-  onTouchEnd(e) {}
+  onQuickSearch = sectionID => {
+    const lv = ReactDOM.findDOMNode(this.indexedListView.listViewRef);
+    const sec = ReactDOM.findDOMNode(this.sectionComponents[sectionID]);
+    if (this.props.useBodyScroll) {
+      setDocumentScrollTop(sec.getBoundingClientRect().top - lv.getBoundingClientRect().top + getOffsetTop(lv));
+    } else {
+      lv.scrollTop += sec.getBoundingClientRect().top - lv.getBoundingClientRect().top;
+    }
+    this.props.onQuickSearch(sectionID);
+  };
 
-  onTouchCancel(e) {}
+  updateIndicator(ele, end) {
+    let el = ele;
+    if (!el.getAttribute('data-index-target')) {
+      el = el.parentNode;
+    }
+    if (this.props.showIndicator) {
+      this.indicator.innerText = el.innerText.trim();
+      this.setState({
+        showIndicator: true,
+      });
+      if (this._indicatorTimer) {
+        clearTimeout(this._indicatorTimer);
+      }
+      this._indicatorTimer = setTimeout(() => {
+        this.setState({
+          showIndicator: false,
+        });
+      }, 1000);
+    }
+
+    const cls = `${this.props.prefixCls}-quick-search-bar-over`;
+    // can not use setState to change className, it has a big performance issue!
+    this._hCache.forEach(d => {
+      d[0].className = d[0].className.replace(cls, '');
+    });
+    if (!end) {
+      el.className = `${el.className} ${cls}`;
+    }
+  }
+
+  onTouchStart(e) {
+    this._target = e.target;
+    this._basePos = this.indexedBar.getBoundingClientRect();
+    document.addEventListener('touchmove', this._disableParent, false);
+    document.body.className = `${document.body.className} ${this.props.prefixCls}-qsb-moving`;
+    this.updateIndicator(this._target);
+  }
+
+  onTouchMove(e) {
+    e.preventDefault();
+    if (this._target) {
+      const ex = _event(e);
+      const basePos = this._basePos;
+      let _pos;
+      if (ex.clientY >= basePos.top && ex.clientY <= basePos.top + this._qsHeight) {
+        _pos = Math.floor((ex.clientY - basePos.top) / this._avgH);
+        let target;
+        if (_pos in this._hCache) {
+          target = this._hCache[_pos][0];
+        }
+        if (target) {
+          const overValue = target.getAttribute('data-index-target');
+          if (this._target !== target) {
+            if (this.props.quickIndexedBarTop.value === overValue) {
+              this.onQuickSearchTop(undefined, overValue);
+            } else {
+              this.onQuickSearch(overValue);
+            }
+            this.updateIndicator(target);
+          }
+          this._target = target;
+        }
+      }
+    }
+  }
+
+  onTouchEnd(e) {
+    if (!this._target) {
+      return;
+    }
+    document.removeEventListener('touchmove', this._disableParent, false);
+    document.body.className = document.body.className.replace(
+      new RegExp(`\\s*${this.props.prefixCls}-qsb-moving`, 'g'),
+      ''
+    );
+    this.updateIndicator(this._target, true);
+    this._target = null;
+  }
+
+  componentDidMount() {
+    this.getQsInfo();
+  }
+
+  componentDidUpdate() {
+    this.getQsInfo();
+  }
+
+  componentWillUnmount() {
+    if (this._indicatorTimer) {
+      clearTimeout(this._indicatorTimer);
+    }
+    this._hCache = null;
+  }
+
+  getQsInfo() {
+    const quickSearchBar = this.indexedBar;
+    const height = quickSearchBar.offsetHeight;
+    const hCache = [];
+    [].slice.call(quickSearchBar.querySelectorAll('[data-index-target]')).forEach(d => {
+      hCache.push([d]);
+    });
+    const _avgH = height / hCache.length;
+    let _top = 0;
+    for (let i = 0, len = hCache.length; i < len; i++) {
+      _top = i * _avgH;
+      hCache[i][1] = [_top, _top + _avgH];
+    }
+    this._qsHeight = height;
+    this._avgH = _avgH;
+    this._hCache = hCache;
+  }
 
   renderIndexedBar() {
-    const {prefixCls, indexedBarStyle} = this.props;
-    const sectionKvs = [
-      {
-        label: 'A',
-        value: 'A',
-      },
-      {
-        label: 'B',
-        value: 'B',
-      },
-      {
-        label: 'C',
-        value: 'C',
-      },
-      {
-        label: 'D',
-        value: 'D',
-      },
-      {
-        label: 'E',
-        value: 'E',
-      },
-      {
-        label: 'F',
-        value: 'F',
-      },
-      {
-        label: 'G',
-        value: 'G',
-      },
-      {
-        label: 'H',
-        value: 'H',
-      },
-    ];
+    const {prefixCls, indexedBarStyle, data, quickIndexedBarTop} = this.props;
+    const sectionKvs = Object.keys(data).map(item => {
+      return {
+        label: item,
+        value: item,
+      };
+    });
     return (
       <ul
         ref={this.createIndexedBarRef}
@@ -87,10 +219,16 @@ export default class IndexedList extends PureComponent {
         onTouchStart={this.onTouchStart}
         onTouchMove={this.onTouchMove}
         onTouchEnd={this.onTouchEnd}
-        onTouchCancel={this.onTouchCancel}
+        onTouchCancel={this.onTouchEnd}
       >
+        <li
+          data-index-target={quickIndexedBarTop.value}
+          onClick={() => this.onQuickSearchTop(undefined, quickIndexedBarTop.value)}
+        >
+          {quickIndexedBarTop.label}
+        </li>
         {sectionKvs.map(kv => (
-          <li key={kv.value} data-index-target={kv.value}>
+          <li key={kv.value} data-index-target={kv.value} onClick={() => this.onQuickSearch(kv.value)}>
             {kv.label}
           </li>
         ))}
@@ -108,11 +246,23 @@ export default class IndexedList extends PureComponent {
   }
 
   render() {
-    const {prefixCls, className, style, showQuickIndexedIndicator} = this.props;
+    const {prefixCls, listPrefixCls, className, renderSectionHeader, ...restProps} = this.props;
     const cls = classNames(prefixCls, className);
+    const sectionHeaderClassName = classNames([`${prefixCls}-section-header`], [`${listPrefixCls}-body`]);
     return (
       <div className={`${prefixCls}-container`}>
-        <ListView className={cls} ref={el => (this.indexedListView = el)} />
+        <ListView
+          className={cls}
+          ref={el => (this.indexedListView = el)}
+          {...restProps}
+          sectionBodyClassName={`${prefixCls}-section-body ${listPrefixCls}-body`}
+          renderSectionHeader={(sectionData, sectionId) =>
+            React.cloneElement(renderSectionHeader(sectionData, sectionId), {
+              ref: el => (this.sectionComponents[sectionId] = el),
+              className: sectionHeaderClassName,
+            })
+          }
+        />
         {this.renderIndexedBar()}
         {this.renderIndicator()}
       </div>
