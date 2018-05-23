@@ -24,7 +24,7 @@ export default class IndexedList extends PureComponent {
     quickIndexedBarTop: PropTypes.object,
     useBodyScroll: PropTypes.bool,
     onQuickSearch: PropTypes.func,
-    indexedBarStyle: PropTypes.func,
+    indexedBarStyle: PropTypes.object,
   };
 
   static defaultProps = {
