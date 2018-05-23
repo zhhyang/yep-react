@@ -240,7 +240,7 @@ export default class IndexedList extends PureComponent {
   }
 
   renderIndicator() {
-    const {prefixCls, showIndicator,indicatorStyle} = this.props;
+    const {prefixCls, showIndicator, indicatorStyle} = this.props;
     const cls = classNames(`${prefixCls}-indicator`, {
       [`${prefixCls}-indicator-hide`]: !showIndicator || !this.state.showIndicator,
     });
