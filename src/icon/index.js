@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import loadSprite from './loadSprite';
 
 export default class Icon extends PureComponent {
   static propTypes = {
@@ -8,20 +9,27 @@ export default class Icon extends PureComponent {
      * icon的type
      */
     type: PropTypes.string.isRequired,
-    prefixCls: PropTypes.string,
-    style: PropTypes.object,
-    size: PropTypes.string,
+    className: PropTypes.string,
+    size: PropTypes.oneOf(['xxs','xs','sm','md','lg']),
+    color: PropTypes.string,
   };
 
   static defaultProps = {
-    prefixCls: 'Yep_icon',
     style: {},
     size: 'md',
   };
 
+  componentDidMount() {
+    loadSprite();
+  }
+
   render() {
-    const {className, style, prefixCls, type, size} = this.props;
-    const cls = classNames(prefixCls, className, `${type}`, `${prefixCls}-${size}`);
-    return <i className={cls} style={style} />;
+    const {className, type, size, ...restProps} = this.props;
+    const cls = classNames('Yep-icon', className, `Yep-icon-${type}`, `Yep-icon-${size}`);
+    return (
+      <svg className={cls} {...restProps}>
+        <use xlinkHref={`#${type}`} />
+      </svg>
+    );
   }
 }
