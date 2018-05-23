@@ -9635,10 +9635,6 @@ xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "http://registry.m.jd.com/xml-name-validator/download/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
 
-xregexp@^4.1.1:
-  version "4.1.1"
-  resolved "http://registry.m.jd.com/xregexp/download/xregexp-4.1.1.tgz#eb8a032aa028d403f7b1b22c47a5f16c24b21d8d"
-
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "http://registry.m.jd.com/xtend/download/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
