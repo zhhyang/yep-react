@@ -36,6 +36,7 @@ export default class ListView extends PureComponent {
       renderSectionHeader,
       renderSectionBodyWrapper,
       sectionBodyClassName,
+      renderBodyComponent,
       data,
       renderRow,
       children,
@@ -93,7 +94,7 @@ export default class ListView extends PureComponent {
     return (
       <div onScroll={this.onScroll} ref={el => (this.listViewRef = el)} className={className}>
         {renderHeader && renderHeader()}
-        <div>{contentComponents}</div>
+        {React.cloneElement(renderBodyComponent(), {}, contentComponents)}
         {renderFooter && renderFooter()}
         {children}
       </div>

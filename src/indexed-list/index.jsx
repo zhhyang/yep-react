@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import ListView from './ListView';
 import {_event, getOffsetTop} from './util';
 import ReactDOM from 'react-dom';
+import List from '../list';
+const {Item} = List;
 
 function setDocumentScrollTop(val) {
   window.document.body.scrollTop = val; // chrome61 is invalid
@@ -67,7 +69,7 @@ export default class IndexedList extends PureComponent {
   }
 
   _disableParent(e) {
-    e.preventDefault();
+    //e.preventDefault();
     e.stopPropagation();
   }
 
@@ -130,7 +132,6 @@ export default class IndexedList extends PureComponent {
   }
 
   onTouchMove(e) {
-    e.preventDefault();
     if (this._target) {
       const ex = _event(e);
       const basePos = this._basePos;
@@ -246,22 +247,46 @@ export default class IndexedList extends PureComponent {
   }
 
   render() {
-    const {prefixCls, listPrefixCls, className, renderSectionHeader, ...restProps} = this.props;
-    const cls = classNames(prefixCls, className);
+    const {
+      prefixCls,
+      listPrefixCls,
+      className,
+      renderSectionHeader,
+      renderHeader,
+      renderFooter,
+      renderBodyComponent,
+      ...restProps
+    } = this.props;
+    const cls = classNames(prefixCls, listPrefixCls, className);
     const sectionHeaderClassName = classNames([`${prefixCls}-section-header`], [`${listPrefixCls}-body`]);
+    const otherProps = {};
+    if (renderHeader) {
+      otherProps.renderHeader = () => <div className={`${listPrefixCls}-header`}>{renderHeader()}</div>;
+    }
+
+    if (renderFooter) {
+      otherProps.renderFooter = () => <div className={`${listPrefixCls}-footer`}>{renderFooter()}</div>;
+    }
     return (
       <div className={`${prefixCls}-container`}>
         <ListView
           className={cls}
           ref={el => (this.indexedListView = el)}
-          {...restProps}
           sectionBodyClassName={`${prefixCls}-section-body ${listPrefixCls}-body`}
+          renderBodyComponent={renderBodyComponent || (() => <div className={`${listPrefixCls}-body`} />)}
           renderSectionHeader={(sectionData, sectionId) =>
-            React.cloneElement(renderSectionHeader(sectionData, sectionId), {
-              ref: el => (this.sectionComponents[sectionId] = el),
-              className: sectionHeaderClassName,
-            })
+            React.cloneElement(
+              <div>
+                <Item prefixCls={listPrefixCls}>{renderSectionHeader(sectionData, sectionId)}</Item>
+              </div>,
+              {
+                ref: el => (this.sectionComponents[sectionId] = el),
+                className: sectionHeaderClassName,
+              }
+            )
           }
+          {...restProps}
+          {...otherProps}
         />
         {this.renderIndexedBar()}
         {this.renderIndicator()}
