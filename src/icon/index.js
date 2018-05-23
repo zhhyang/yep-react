@@ -10,7 +10,7 @@ export default class Icon extends PureComponent {
      */
     type: PropTypes.string.isRequired,
     className: PropTypes.string,
-    size: PropTypes.oneOf(['xxs','xs','sm','md','lg']),
+    size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg']),
     color: PropTypes.string,
   };
 

@@ -12,7 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Icon type="add-circle" color="red"  />
+        <Icon type="add-circle" color="red" />
         <Icon type="arrow-down-hollow" size="xxs" />
         <Icon type="arrow-back " />
         <Icon type="add" />
