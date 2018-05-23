@@ -27,6 +27,7 @@ export default class IndexedList extends PureComponent {
     useBodyScroll: PropTypes.bool,
     onQuickSearch: PropTypes.func,
     indexedBarStyle: PropTypes.object,
+    indicatorStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -34,6 +35,7 @@ export default class IndexedList extends PureComponent {
     listPrefixCls: 'Yep-list',
     style: {},
     indexedBarStyle: {},
+    indicatorStyle: {},
     showIndicator: false,
     renderSectionHeader: sectionData => <div>{sectionData}</div>,
     quickIndexedBarTop: {label: '#', value: '#'},
@@ -238,12 +240,12 @@ export default class IndexedList extends PureComponent {
   }
 
   renderIndicator() {
-    const {prefixCls, showIndicator} = this.props;
+    const {prefixCls, showIndicator,indicatorStyle} = this.props;
     const cls = classNames(`${prefixCls}-indicator`, {
       [`${prefixCls}-indicator-hide`]: !showIndicator || !this.state.showIndicator,
     });
 
-    return showIndicator && <div className={cls} ref={this.createIndicatorRef} />;
+    return showIndicator && <div className={cls} style={indicatorStyle} ref={this.createIndicatorRef} />;
   }
 
   render() {
