@@ -1,4 +1,30 @@
+@import "variables";
 @import './animate';
+
+*,
+*:before,
+*:after {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  background-color: $baseBackgroundColor;
+  font-size: $baseFontSize;
+}
+
+*[contenteditable] {
+  -webkit-user-select: auto !important;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+}
 
 .mask-open{
   overflow: hidden;

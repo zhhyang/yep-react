@@ -36,3 +36,4 @@ export {default as Badge} from './badge';
 export {default as IndexedList} from './indexed-list';
 export {default as Hammer} from './hammer';
 export {default as SwipeAction} from './swipe-action';
+export {default as CountDown} from './count-down';
