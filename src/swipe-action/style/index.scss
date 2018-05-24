@@ -1,0 +1,71 @@
+
+@import '../../style/mixin';
+
+.Yep-swipe {
+  overflow: hidden;
+  position: relative;
+
+  &-content {
+    position: relative;
+    background-color: #ffffff;
+  }
+
+  &-cover{
+    position: absolute;
+    z-index: 2;
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    display: none;
+  }
+
+
+  & &-content,
+  & &-actions{
+    transition: all 250ms;
+  }
+
+  &-swiping{
+
+    & &-content, & &-content{
+      transition: none;
+    }
+
+    .Yep-list-item-active{
+      background-color: #ffffff;
+    }
+
+  }
+
+  &-actions{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &-left{
+      left: 0;
+    }
+
+    &-right{
+      right: 0;
+    }
+  }
+
+  &-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    &-text{
+      font-size: 28px;
+      padding: 0 $h-spacing-md;
+    }
+  }
+
+}
+
