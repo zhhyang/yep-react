@@ -1,6 +1,6 @@
-$baseFontSize: 20px;
+$baseFontSize: 28px;
 $baseLineHeight: 1;
-
+$maskColor:rgba(0, 0, 0, 0.4);
 $primary-color: #ec3838;
 // 透明度
 $opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
@@ -75,8 +75,8 @@ $popupZIndex: 666;
 $toastZIndex: 777;
 $tab-barZIndex:200;
 $progressZIndex:999;//progress fixed 应该是最大的z-index
+$indexedIndicatorZIndex:1999;//索引列表
 
-$iconfont: '651165_hina411aawhcwhfr';
 // 图标尺寸
 // ---
 $icon-size-xxs: 30px;

@@ -5,28 +5,26 @@ import Sidebar from '../lib/Sidebar';
 import Content from '../lib/Content';
 import {Helmet} from 'react-helmet';
 
+
 const App = () => (
   <div className="l-container">
-    <Helmet titleTemplate="%s - Yep-react"/>
+    <Helmet titleTemplate="%s - Yep-React"/>
     <header className="l-header">
       <a className="l-logo" href="//yep-react.jd.com/">
         <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="LRC-M"/>
-        <span>Yep-react</span>
-        <span style={{fontSize: 14, color: 'rgb(149, 151, 155)'}}>inspired by lrc</span>
+        <span>Yep-React</span>
+        <span className="l-inspired" >inspired by lrc</span>
       </a>
       <nav className="l-nav">
         <ul>
           <li className="nav-item">
-            <a href="/">首页</a>
-          </li>
-          <li className="nav-item">
             <Link to="/doc/get-started">组件</Link>
           </li>
           <li className="nav-item">
-            <a href="/">工厂</a>
+            <a href="http://git.jd.com/JDC-FE/lrc-m">Gitlab</a>
           </li>
           <li className="nav-item">
-            <a href="/">案例</a>
+            <a href="http://git.jd.com/JDC-FE/lrc-m/issues/new">问题反馈</a>
           </li>
         </ul>
       </nav>
@@ -35,7 +33,7 @@ const App = () => (
       <Sidebar/>
       <Content/>
     </div>
-    <footer className="l-footer">Copyright © 2018 JD.com</footer>
+
   </div>
 );
 

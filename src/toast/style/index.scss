@@ -5,7 +5,7 @@
   width: 100%;
   top: 40%;
   z-index: $toastZIndex;
-  font-size: 26px;
+  font-size: 32px;
   text-align: center;
 
   &.mask{
@@ -16,24 +16,26 @@
     top: 86%;
   }
   &-notice{
-    padding: 30px 30px;
-    border-radius: 3px;
+    padding: 30px 40px;
+    border-radius: 12px;
     color: #fff;
-    min-width: 120px;
-    background: rgba(0, 0, 0, .6);
+    min-width: 208px;
+    background: rgba(0, 0, 0, .7);
     &-message{
 
       //padding: 10px 30px;
     }
+    .Yep-icon + &-message{
+      margin-top: 25px;
+    }
   }
-  & .Yep_icon{
-    margin-bottom: 12px;
-    &.shop-zhengque{
+  & .Yep-icon{
+    /*&.shop-zhengque{
       color: #1aad19;
     }
     &.shop-zhuyi{
       color: $primary-color;
-    }
+    }*/
   }
 }
 

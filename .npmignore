@@ -9,6 +9,7 @@ coverage/
 src
 
 .gitignore
+.gitattributes
 yarn.lock
 demo
 scripts
@@ -16,6 +17,7 @@ site
 build
 视觉规范
 组件开发进度.md
+开发流程.md
 .babelrc
 .editorconfig
 .eslintrc.json
