@@ -39,7 +39,7 @@ gulp.task('dist', function () {
     .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest('dist'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(cleanCSS())
+    //.pipe(cleanCSS())
     .pipe(gulp.dest('dist'))
 });
 
