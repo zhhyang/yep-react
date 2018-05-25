@@ -2,6 +2,23 @@
 
 ### 一套基于 [LRC](https://lrc.jd.com) 的移动端组件库
 
+## 安装 & 使用
+
+[快速上手](http://yep-react.jd.com/#/doc/get-started)
+
+## React版本要求
+
+- `react^16.0.0`
+
+## 浏览器支持
+
+- `iOS`
+- `Android 4.0+`
+
+## 链接
+
+- [首页](http://yep-react.jd.com)
+- [LRC](https://lrc.jd.com)
 
 ## 讨论 / 问题反馈 / 建议
 
