@@ -9,20 +9,20 @@ export default class Scratch extends PureComponent {
     style: PropTypes.object,
     scratchImgUrl: PropTypes.string,
     resPercent: PropTypes.number,
-    resCallback: PropTypes.func
+    resCallback: PropTypes.func,
   };
 
   static defaultProps = {
     prefixCls: 'Yep-scratch',
     style: {},
-    scratchImgUrl: 'http://img12.360buyimg.com/uba/jfs/t20377/335/194083123/261/85331804/5b02899bN0571f2a7.png'
+    scratchImgUrl: 'http://img12.360buyimg.com/uba/jfs/t20377/335/194083123/261/85331804/5b02899bN0571f2a7.png',
   };
 
   constructor() {
     super();
     this.state = {
       isAreaShow: true,
-      isArea2Show: false
+      isArea2Show: false,
     };
     this.touchStart = this.touchStart.bind(this);
     this.touchMove = this.touchMove.bind(this);
@@ -50,14 +50,13 @@ export default class Scratch extends PureComponent {
     imgObj.crossOrigin = 'Anonymous';
     imgObj.src = this.props.scratchImgUrl;
     //待图片加载完后，将其显示在canvas上
-    imgObj.onload = function(){
+    imgObj.onload = function() {
       context.drawImage(imgObj, 0, 0, iwidth, iheight); //this即是imgObj,保持图片的原始大小：470*480
       //ctx.drawImage(this, 0, 0,1024,768); //改变图片的大小到1024*768
 
       // 在源图像外显示目标图像。只有源图像外的目标图像部分会被显示，源图像是透明的。(源图像：刮痕区域，目标图像：带图片的初始canvas)
       context.globalCompositeOperation = 'destination-out';
-      
-    }
+    };
     // context.font = '24px 微软雅黑';
     // context.fillStyle = '#454444';
     // var txt = '刮这里';
@@ -107,7 +106,7 @@ export default class Scratch extends PureComponent {
     if ((transPixs.length / (pixles.length / 4) * 100).toFixed(2) > this.props.resPercent) {
       this.props.resCallback();
       this.setState({
-        isAreaShow: false
+        isAreaShow: false,
       });
     }
     e.preventDefault && e.preventDefault();

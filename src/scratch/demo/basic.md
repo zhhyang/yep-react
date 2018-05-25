@@ -12,8 +12,10 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Scratch 
-          scratchImgUrl={'http://img13.360buyimg.com/uba/jfs/t18799/156/2627259082/17162/d0d22282/5b027b37N5b0fa969.png'}
+        <Scratch
+          scratchImgUrl={
+            'http://img13.360buyimg.com/uba/jfs/t18799/156/2627259082/17162/d0d22282/5b027b37N5b0fa969.png'
+          }
         />
       </div>
     );
