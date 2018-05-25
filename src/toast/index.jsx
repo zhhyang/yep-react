@@ -42,13 +42,13 @@ export default {
   show(message, duration, onClose) {
     return notice(message, null, duration, onClose);
   },
-  success(message, duration, onClose: () => {}) {
-    return notice(message, 'shop-zhengque', duration, onClose);
+  success(message, duration, onClose = () => {}) {
+    return notice(message, 'lego_duohao1', duration, onClose);
   },
-  fail(message, duration, onClose: () => {}) {
-    return notice(message, 'shop-zhuyi', duration, onClose);
+  fail(message, duration, onClose = () => {}) {
+    return notice(message, 'shop-shuoming', duration, onClose);
   },
-  loading(message, duration, onClose: () => {}) {
-    return notice(message, 'data', duration, onClose);
+  loading(message, duration, onClose = () => {}) {
+    return notice(message, 'lego_jiazai', duration, onClose);
   },
 };

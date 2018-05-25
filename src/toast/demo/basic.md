@@ -38,7 +38,7 @@ class Demo extends React.PureComponent {
         <WhiteSpace />
         <Button
           onClick={() => {
-            Toast.loading('loading');
+            Toast.loading('加载中...', 10);
           }}
         >
           显示loading
