@@ -51,7 +51,7 @@ ReactDOM.render(<Button>Start</Button>, mountNode);
 引入样式：
 
 ```jsx
-import '@jdcfe/lrc-m/dist/lrc-m.css'; // or '@jdcfe/lrc-m/dist/lrc-m.scss'
+import '@jdcfe/lrc-m/dist/lrc-m.css';
 ```
 
 ##### 按需加载
