@@ -8,7 +8,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 render(
   <Fragment>
-    <Helmet titleTemplate="%s - Yep-react"/>
+    <Helmet titleTemplate="%s - Yep-React"/>
     <Router>
       <Content/>
     </Router>

@@ -8,11 +8,11 @@ import {Helmet} from 'react-helmet';
 
 const App = () => (
   <div className="l-container">
-    <Helmet titleTemplate="%s - Yep-react"/>
+    <Helmet titleTemplate="%s - Yep-React"/>
     <header className="l-header">
       <a className="l-logo" href="//yep-react.jd.com/">
         <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="LRC-M"/>
-        <span>YepReact</span>
+        <span>Yep-React</span>
         <span className="l-inspired" >inspired by lrc</span>
       </a>
       <nav className="l-nav">
