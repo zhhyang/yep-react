@@ -25,7 +25,7 @@
     "components",
     "web"
   ],
-  "author": "wangge8 <wangge1@jd.com>",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/standalone": "^7.0.0-beta.46",
