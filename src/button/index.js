@@ -12,7 +12,7 @@ export default class Button extends PureComponent {
     className: PropTypes.string,
     style: PropTypes.object,
     disabled: PropTypes.bool,
-    type: PropTypes.oneOf(['primary','ghost']),
+    type: PropTypes.oneOf(['primary', 'ghost']),
     inline: PropTypes.bool,
     size: PropTypes.string,
     submit: PropTypes.bool,
@@ -69,7 +69,7 @@ export default class Button extends PureComponent {
           style={style}
           {...(submit ? {type: 'submit'} : {})}
         >
-          {icon && <Icon type={icon} size={size === 'sm'? 'xxs':'md'} className={`${prefixCls}-icon`} />}
+          {icon && <Icon type={icon} size={size === 'sm' ? 'xxs' : 'md'} className={`${prefixCls}-icon`} />}
           {children}
         </El>
       </TouchFeedback>

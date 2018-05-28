@@ -100,18 +100,18 @@ export default class ListItem extends PureComponent {
   }
 }
 
-export const Brief = ({prefixCls,style,children}) => (
+export const Brief = ({prefixCls, style, children}) => (
   <div className={`${prefixCls}-brief`} style={style}>
     {children}
   </div>
 );
 
 Brief.propTypes = {
-  prefixCls:PropTypes.string,
-  style:PropTypes.object,
-}
+  prefixCls: PropTypes.string,
+  style: PropTypes.object,
+};
 
 Brief.defaultProps = {
-  prefixCls:'Yep-list',
-  style:{},
-}
+  prefixCls: 'Yep-list',
+  style: {},
+};
