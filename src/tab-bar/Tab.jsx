@@ -18,7 +18,7 @@ export default class Tab extends PureComponent {
   static defaultProps = {
     prefixCls: 'Yep-tab-bar-tab',
     tintColor: '#ec3838',
-    unselectedTintColor: '#888',
+    unselectedTintColor: '#6C707D',
     selected: false,
     onClick: () => null,
   };

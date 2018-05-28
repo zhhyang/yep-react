@@ -22,12 +22,12 @@
     text-align: center;
     width: 100%;
     &-image {
-      width: $icon-size-md;
-      height: $icon-size-md;
+      width: $tab-bar-image-height;
+      height: $tab-bar-image-height;
       vertical-align: middle;
     }
     &-title {
-      font-size: 20px;
+      font-size: $font-size-help;
       margin: $v-spacing-xs 0 0 0;
       line-height: 1;
       text-align: center;

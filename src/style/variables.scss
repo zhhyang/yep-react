@@ -59,9 +59,9 @@ $button-font-size-sm: 13 * $hd !default;
 $tab-item-font-size: 12px;
 
 // Tabbar Component */
-$tabbar-background-color: #fafafa;
-$tabbar-tab-item-selected-background-color: #eaeaea;
-$tabbar-tab-item-selected-color: $brand-primary;
+// tab-bar
+$tab-bar-height: 51 * $hd;
+$tab-bar-image-height: 25 * $hd;
 
 // Navbar Component */
 $navbar-background-color: #fafafa;
@@ -101,7 +101,7 @@ $v-spacing-md: 18px;
 $v-spacing-lg: 30px;
 $v-spacing-xl: 42px;
 
-$tab-bar-height:100px;
+
 
 // list
 $list-title-height: 60px;
