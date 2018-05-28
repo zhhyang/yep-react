@@ -20,6 +20,7 @@ TabBar
 | style        | 组件样式        | object | {}          |
 | className    | 额外 class      | string | -           |
 | barTintColor | TabBar 背景色   | string | white       |
+| hidden       | 是否隐藏 TabBar | bool   | false       |
 
 Tab
 
@@ -36,3 +37,4 @@ Tab
 | title               | 标题文字                                            | string          | -               |
 | badge               | 徽标数                                              | number \ string | 无              |
 | dot                 | 是否在右上角显示小红点（在设置 badge 的情况下失效） | boolean         | false           |
+| onClick             | 点击事件回调                                        | func            | () => null      |
