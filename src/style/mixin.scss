@@ -1,6 +1,6 @@
 @import "./variables";
 
-@mixin border-bottom-1px($color: $border) {
+@mixin border-bottom-1px($color: $border-color-base) {
   position: relative;
   &:before {
     content: '';
@@ -17,7 +17,7 @@
   }
 }
 
-@mixin border-top-1px($color: $border) {
+@mixin border-top-1px($color: $border-color-base) {
   position: relative;
   &:after {
     content: '';
@@ -34,7 +34,7 @@
   }
 }
 
-@mixin border-right-1px($color: $border) {
+@mixin border-right-1px($color: $border-color-base) {
   position: relative;
   &:after {
     content: '';
@@ -50,7 +50,7 @@
     pointer-events: none;
   }
 }
-@mixin border-left-1px($color: $border) {
+@mixin border-left-1px($color: $border-color-base) {
   position: relative;
   &:after {
     content: '';
@@ -67,7 +67,7 @@
   }
 }
 //四边*/
-@mixin bd-all-1px($color: $border, $radius: 3px) {
+@mixin bd-all-1px($color: $border-color-base, $radius: 3px) {
   position: relative;
   &:after {
     content: '';

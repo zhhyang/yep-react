@@ -8,8 +8,8 @@
 }
 
 body {
-  background-color: $baseBackgroundColor;
-  font-size: $baseFontSize;
+  background-color: $fill-body;
+  font-size: $font-size-base;
 }
 
 *[contenteditable] {

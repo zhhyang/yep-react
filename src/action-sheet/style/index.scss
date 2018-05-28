@@ -47,7 +47,7 @@
     list-style: none;
     user-select: none;
     &_active {
-      color: $primary-color;
+      color: $brand-primary;
     }
     @include border-bottom-1px();
   }

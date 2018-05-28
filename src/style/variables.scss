@@ -1,36 +1,47 @@
-$baseFontSize: 28px;
+$hd : 2px!default;//设计稿两倍尺寸
+//色彩
+// 文字色
+$color-text-base-inverse: #fff;          // 基本 - 反色
+$color-text-base:#3D3F52!default; //一级信息：重要文字&标题等
+$color-text-secondary: #6C707D!default;          // 二级信息：重要文字等
+$color-text-caption:#999BAA!default; // 三级信息：辅助类文字
+
+//全局/品牌色
+$brand-primary: #ec3838!default;  //品牌标准色：重要内容信息
+$brand-primary-tap: #0e80d2!default;
+$brand-success: #85C859!default; //辅助色：区别强调信息
+$brand-warning: #ED2945!default;//辅助色：价格&警告信息 小红点
+$brand-important: #FBA144!default;  // 辅助色：辅助提示信息
+
+// 背景色
+$fill-base: #fff!default;                           // 内容层：全局
+$fill-body: #F8F8F8!default;                        // 背景层：全局
+//@fill-tap: #ddd;                            // 组件默认背景 - 按下
+$fill-disabled:  #B5B5B5!default;                       // 通用失效背景
+$fill-mask: rgba(0, 0, 0, 0.65)!default;              // 遮罩背景
+
+// 边框色
+$border-color-base: #E3E5E9!default; //分割线：全局
+
+// 字体尺寸
+// ---
+$font-size-icontext: 10 * $hd!default;//标签等次要信息
+$font-size-tags: 10 * $hd!default;//标签等次要信息
+$font-size-help: 12 * $hd!default; //辅助等次要信息
+$font-size-tips: 13 * $hd!default; //提示等次要信息
+$font-size-base: 14 * $hd!default;//TAB、内容等信息
+$font-size-caption: 16 * $hd!default;//标题、列表、输入框等重要信息
+$font-size-heading: 18 * $hd!default;//导航栏标题、主按钮等重要信息
+
+
 $baseLineHeight: 1;
-$maskColor:rgba(0, 0, 0, 0.4);
-$primary-color: #ec3838;
 // 透明度
 $opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
 
-$color-text-caption: #888; // 辅助描述
-
-$baseBackgroundColor:#fff;
+//$fill-base:#fff;
 $tapBackgroundColor: #ddd;//组件按下时背景颜色
 
-// 一像素细线border-top-bottom
-$border: #e0e0e0;
-$tab: #929292;
-$tab-deep: #333;
-$sub: #c09947;
-$l-black: #333;
-$black: #000;
-$l-red: #f23030;
-$d-red: #e4393c;
-$ll-black: #232326;
-$gray: #848689;
-$l-gray: #cccccc;
 
-$color-blue: #26a2ff;
-$color-white: #fff;
-$color-grey: #d9d9d9;
-$border-color: #c8c8cd;
-$success-color: #4caf50;
-$error-color: #f44336;
-$warning-color: #ffc107;
-$disabled-color: #eeeeee;
 // Cell Component
 $cell-value-color: #888;
 
@@ -38,17 +49,11 @@ $cell-value-color: #888;
 $header-height: 40px;
 
 // Button Component */
-$button-default-color: #656b79;
-$button-default-background-color: #f6f8fa;
-$button-default-plain-color: #5a5a5a;
-$button-default-box-shadow: 0 0 1px #b8bbbf;
-$button-primary-color: #fff;
-$button-primary-background-color: #26a2ff;
-$button-danger-color: #fff;
-$button-danger-background-color: #ef4f4f;
+$button-height: 45 * $hd !default;
+$button-font-size: 18 * $hd !default;
 
-$button-disabled-background-color: $disabled-color;
-$button-disabled-color: #cecece;
+$button-height-sm: 28 * $hd !default;
+$button-font-size-sm: 13 * $hd !default;
 
 // Tab Item Component */
 $tab-item-font-size: 12px;
@@ -56,7 +61,7 @@ $tab-item-font-size: 12px;
 // Tabbar Component */
 $tabbar-background-color: #fafafa;
 $tabbar-tab-item-selected-background-color: #eaeaea;
-$tabbar-tab-item-selected-color: $color-blue;
+$tabbar-tab-item-selected-color: $brand-primary;
 
 // Navbar Component */
 $navbar-background-color: #fafafa;

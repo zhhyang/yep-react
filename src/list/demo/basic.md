@@ -7,7 +7,7 @@ description:
 ```js
 import React from 'react';
 import {List} from '@jdcfe/lrc-m';
-const {Item} = List;
+const {Item, Brief} = List;
 
 class Demo extends React.PureComponent {
   constructor() {
@@ -28,7 +28,7 @@ class Demo extends React.PureComponent {
         </List>
         <List renderHeader={() => 'Subtitle'} className="my-list">
           <Item arrow="horizontal" multipleLine onClick={() => {}}>
-            Title
+            Title <Brief>subtitle</Brief>
           </Item>
           <Item
             arrow="horizontal"
