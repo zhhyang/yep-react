@@ -35,6 +35,18 @@
     &-icon{
       display: flex;
       justify-content: center;
+      .tab-badge{
+        :last-child {
+          margin-top: 2 * $hd;
+          left: $tab-bar-image-height;
+        }
+      }
+      .tab-dot {
+        :last-child {
+          margin-top: 2 * $hd;
+          left: $tab-bar-image-height;
+        }
+      }
     }
   }
 }

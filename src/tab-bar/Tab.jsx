@@ -1,13 +1,14 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Badge from '../badge';
 export default class Tab extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
     tintColor: PropTypes.string,
     unselectedTintColor: PropTypes.string,
-    //dot: PropTypes.bool,
-    //badge: string | number,
+    dot: PropTypes.bool,
+    badge: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     selected: PropTypes.bool,
     selectedIcon: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
     icon: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
@@ -20,6 +21,7 @@ export default class Tab extends PureComponent {
     tintColor: '#ec3838',
     unselectedTintColor: '#6C707D',
     selected: false,
+    dot: false,
     onClick: () => null,
   };
 
@@ -37,11 +39,31 @@ export default class Tab extends PureComponent {
   }
 
   renderIcon() {
-    const {selected, selectedIcon, icon, title, prefixCls} = this.props;
+    const {selected, selectedIcon, icon, title, prefixCls, badge, dot} = this.props;
 
     const iconVal = selected ? selectedIcon : icon;
 
-    return React.isValidElement(iconVal) ? iconVal : <img className={`${prefixCls}-image`} src={iconVal} alt={title} />;
+    const iconDom = React.isValidElement(iconVal) ? (
+      iconVal
+    ) : (
+      <img className={`${prefixCls}-image`} src={iconVal} alt={title} />
+    );
+    if (badge) {
+      return (
+        <Badge text={badge} className={`${prefixCls}-badge tab-badge`}>
+          {' '}
+          {iconDom}{' '}
+        </Badge>
+      );
+    }
+    if (dot) {
+      return (
+        <Badge dot className={`${prefixCls}-badge tab-dot`}>
+          {iconDom}
+        </Badge>
+      );
+    }
+    return iconDom;
   }
 
   render() {

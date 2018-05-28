@@ -14,8 +14,8 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <TabBar>
-          <Tab icon="//placehold.it/24x24" title="首页" selectedIcon="//placehold.it/24x24" selected />
-          <Tab icon="//placehold.it/24x24" title="我的" selectedIcon="//placehold.it/24x24" />
+          <Tab icon="//placehold.it/24x24" title="首页" dot selectedIcon="//placehold.it/24x24" selected />
+          <Tab icon="//placehold.it/24x24" title="我的" badge={6} selectedIcon="//placehold.it/24x24" />
           <Tab icon="//placehold.it/24x24" title="他的" selectedIcon="//placehold.it/24x24" />
           <Tab icon="//placehold.it/24x24" title="和的" selectedIcon="//placehold.it/24x24" />
         </TabBar>
