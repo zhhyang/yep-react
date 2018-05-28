@@ -1,0 +1,29 @@
+
+@import '../../style/mixin';
+
+.Yep-tips {
+  .box {
+    display: flex;
+    &-info {
+      background: #2e6da4;
+    }
+    &-warn {
+      background: #f0ad4e;
+    }
+    &-error {
+      background: #d9534f;
+    }
+  }
+  .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: #f0f;
+  }
+  .tips-text {
+    font-size: 24px;
+    color: #fff;
+    line-height: 32px;
+  }
+
+} 
