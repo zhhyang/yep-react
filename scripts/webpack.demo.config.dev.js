@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const address = require('address')
+const ip = address.ip()
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -113,6 +116,7 @@ const config = {
       template: 'demo/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),// enable HMR globally
+    new OpenBrowserPlugin({url: `http://${ip}:8081/`})
   ],
 }
 
