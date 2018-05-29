@@ -58,6 +58,12 @@ export default class Tips extends PureComponent {
   }
 
   closeTips() {
+    // 清空定时器
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+
     this.setState({
       isShow: false,
     });
