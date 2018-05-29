@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import {Icon} from '@jdcfe/lrc-m';
+import Icon from '../icon';
 
 export default class Tips extends PureComponent {
   static propTypes = {
