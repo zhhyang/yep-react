@@ -13,6 +13,9 @@
   justify-content: space-around;
   align-items: center;
   @include border-top-1px();
+  &-hidden {
+    bottom: -$tab-bar-height;
+  }
   &-tab{
     flex: 1;
     display: flex;
@@ -22,12 +25,12 @@
     text-align: center;
     width: 100%;
     &-image {
-      width: $icon-size-md;
-      height: $icon-size-md;
+      width: $tab-bar-image-height;
+      height: $tab-bar-image-height;
       vertical-align: middle;
     }
     &-title {
-      font-size: 20px;
+      font-size: $font-size-help;
       margin: $v-spacing-xs 0 0 0;
       line-height: 1;
       text-align: center;
@@ -35,6 +38,18 @@
     &-icon{
       display: flex;
       justify-content: center;
+      .tab-badge{
+        :last-child {
+          margin-top: 2 * $hd;
+          left: $tab-bar-image-height;
+        }
+      }
+      .tab-dot {
+        :last-child {
+          margin-top: 2 * $hd;
+          left: $tab-bar-image-height;
+        }
+      }
     }
   }
 }

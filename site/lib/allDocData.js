@@ -12,7 +12,7 @@ const mdFiles = glob.sync('**/*.@(md|css)', {
 
 mdFiles.forEach(filename => tree.addMarkdonwFile(filename));
 
-const docFiles = glob.sync('./site/doc/*.md', {
+const docFiles = glob.sync('{./site/doc/*.md,./CHANGELOG.md}', {
   cwd: rootDir,
 });
 

@@ -32,8 +32,8 @@ class Demo extends React.Component {
 
   render() {
     const {demo, componentName} = this.props;
-    const host = process.env.NODE_ENV === 'production'?'yep-react.jd.com/demo.html':'localhost:8081';
-    const src = `http://${host}#/component/${componentName}?order=${demo.order}`;
+    const { protocol,hostname,host,port } = window.location;
+    const src = `${protocol}//${port?hostname+':8081':host+'/demo.html'}#/component/${componentName}?order=${demo.order}`;
     return (
       <div className="">
         <h3 style={{

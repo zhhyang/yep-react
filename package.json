@@ -29,6 +29,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/standalone": "^7.0.0-beta.46",
+    "address": "^1.0.3",
     "autoprefixer": "^8.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

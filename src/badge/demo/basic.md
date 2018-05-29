@@ -19,6 +19,12 @@ class Demo extends React.PureComponent {
             </Badge>
             <span style={{marginLeft: 12}}>Dot badge</span>
           </List.Item>
+          <List.Item extra="extra content" arrow="horizontal">
+            <Badge text={8}>
+              <span style={{width: '26px', height: '26px', background: '#ddd', display: 'inline-block'}} />
+            </Badge>
+            <span style={{marginLeft: 12}}>Text badge</span>
+          </List.Item>
           <List.Item
             thumb="https://zos.alipayobjects.com/rmsportal/faMhXAxhCzLvveJ.png"
             extra={<Badge text={77} max={55} />}
@@ -47,6 +53,21 @@ class Demo extends React.PureComponent {
                 borderRadius: 2,
                 color: '#f19736',
                 border: '1px solid #f19736',
+              }}
+            />
+          </List.Item>
+          <List.Item>
+            Customize
+            <Badge
+              text="凭处方退诊费"
+              style={{
+                marginLeft: 5,
+                padding: '0 2px',
+                backgroundColor: '#fff',
+                borderRadius: 2,
+                fontSize: 11,
+                color: '#ED2945',
+                border: '1px solid #ED2945',
               }}
             />
           </List.Item>

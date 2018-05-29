@@ -36,8 +36,38 @@ class Demo extends React.PureComponent {
           primary disabled
         </Button>
         <WhiteSpace />
+        <Button
+          type="ghost"
+          onClick={() => {
+            alert('ghost');
+          }}
+        >
+          ghost
+        </Button>
+        <WhiteSpace />
+        <Button
+          type="ghost"
+          disabled
+          onClick={() => {
+            alert('ghost');
+          }}
+        >
+          ghost disabled
+        </Button>
+        <WhiteSpace />
         <Button size="md" style={{backgroundColor: '#2A83E1', color: '#FFFFFF', border: 0}}>
           下一步，上传医师认证相关证书
+        </Button>
+        <WhiteSpace />
+        <Button icon="lego_jiazai">Loading Button</Button>
+        <WhiteSpace />
+        <Button icon="delete">with icon</Button>
+        <WhiteSpace />
+        <Button size="sm" inline type="primary">
+          small
+        </Button>
+        <Button size="sm" inline>
+          small
         </Button>
         <WhiteSpace />
         <Button inline>inline</Button>

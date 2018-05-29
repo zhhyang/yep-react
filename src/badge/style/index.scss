@@ -21,7 +21,7 @@
     text-align: center;
     font-size: 24px;
     color: #ffffff;
-    background-color: $primary-color;
+    background-color: $brand-warning;
     white-space: nowrap;
     transform: translateX(-45%);
     transform-origin: -10% center;
@@ -46,7 +46,7 @@
     height: 0.5 * 32px;
     width: 0.5 * 32px;
     border-radius: 100%;
-    background: $primary-color;
+    background: $brand-warning;
     z-index: 10;
   }
 

@@ -49,8 +49,8 @@
 
   &.Yep-checkbox-checked {
     .Yep-checkbox-inner {
-      border-color: $primary-color;
-      background: $primary-color;
+      border-color: $brand-primary;
+      background: $brand-primary;
 
       &:after {
         display: block;

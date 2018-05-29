@@ -12,7 +12,7 @@ export default class Button extends PureComponent {
     className: PropTypes.string,
     style: PropTypes.object,
     disabled: PropTypes.bool,
-    type: PropTypes.string,
+    type: PropTypes.oneOf(['primary', 'ghost']),
     inline: PropTypes.bool,
     size: PropTypes.string,
     submit: PropTypes.bool,
@@ -24,7 +24,6 @@ export default class Button extends PureComponent {
   static defaultProps = {
     prefixCls: 'Yep-btn',
     disabled: false,
-    type: 'default',
     activeStyle: {},
     onClick: () => {},
   };
@@ -51,10 +50,10 @@ export default class Button extends PureComponent {
       'btn-primary': type === 'primary',
       'btn-disabled': disabled,
       'btn-ghost': type === 'ghost',
-      'btn-default': type === 'default',
       'btn-inline': !!inline,
       'btn-sm': size === 'sm',
       'btn-md': size === 'md',
+      [`${prefixCls}-icon`]: !!icon,
     });
     return (
       <TouchFeedback
@@ -70,7 +69,7 @@ export default class Button extends PureComponent {
           style={style}
           {...(submit ? {type: 'submit'} : {})}
         >
-          {icon && <Icon type={icon} />}
+          {icon && <Icon type={icon} size={size === 'sm' ? 'xxs' : 'md'} className={`${prefixCls}-icon`} />}
           {children}
         </El>
       </TouchFeedback>

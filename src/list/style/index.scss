@@ -3,19 +3,19 @@
 .Yep-list {
   &-header {
     padding: $v-spacing-lg $h-spacing-lg $v-spacing-md $h-spacing-lg;
-    font-size: $baseFontSize;
+    font-size: $font-size-base;
     color: $color-text-caption;
     width: 100%;
     box-sizing: border-box;
   }
   &-footer {
     padding: $v-spacing-md $h-spacing-lg $v-spacing-lg $h-spacing-lg;
-    font-size: $baseFontSize;
+    font-size: $font-size-base;
     color: $color-text-caption;
   }
   &-body {
     position: relative;
-    background-color: $baseBackgroundColor;
+    background-color: $fill-base;
     @include border-top-1px();
     @include border-bottom-1px();
 
@@ -41,7 +41,7 @@
   display: flex;
   padding-left: $h-spacing-lg;
   min-height: $list-item-height;
-  background-color: $baseBackgroundColor;
+  background-color: $fill-base;
   vertical-align: middle;
   overflow: hidden;
   transition: background-color 200ms;
@@ -82,7 +82,7 @@
   }
 
   &.Yep-list-item-active {
-    background-color: $tapBackgroundColor;
+    background-color: $fill-tap;
   }
 
 
@@ -115,8 +115,8 @@
     /* list左侧主内容*/
     .Yep-list-content {
       flex: 1;
-      color: #000;
-      font-size: 34px;
+      color: $color-text-base;
+      font-size: $font-size-caption;
       line-height: 1.5;
       text-align: left;
       @include sl();
@@ -144,8 +144,8 @@
 
     /* 辅助性文字*/
     .Yep-list-brief {
-      color: $color-text-caption;
-      font-size: 30px;
+      color: $color-text-secondary;
+      font-size: $font-size-help;
       line-height: 1.5;
       margin-top: $v-spacing-sm;
       @include sl();

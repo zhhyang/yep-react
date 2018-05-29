@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
-
+const address = require('address')
+const ip = address.ip()
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -56,7 +57,7 @@ const config = {
       inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(),// enable HMR globally
-    new OpenBrowserPlugin({url: `http://localhost:8080/`})
+    new OpenBrowserPlugin({url: `http://${ip}:8080/`})
   ],
 }
 

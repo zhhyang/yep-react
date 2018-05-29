@@ -15,10 +15,10 @@
 .Yep-popup-picker-header{
   display: flex;
   align-items: center;
-  border-bottom: 1PX solid $border-color;
+  border-bottom: 1PX solid $border-color-base;
   &-item{
-    color: $primary-color;
-    font-size: 34px;
+    color: $brand-primary;
+    font-size: $font-size-caption;
     padding: 18px 30px;
     height: 84px;
     box-sizing: border-box;
@@ -47,7 +47,7 @@
   width: 100%;
   flex: 1;
   height: 476px;
-  background-color: #ffffff;
+  background-color: $fill-base;
 
   &-mask{
     top: 0;

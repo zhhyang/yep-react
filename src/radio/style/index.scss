@@ -58,8 +58,8 @@
 
   &.Yep-radio-checked {
     .Yep-radio-inner {
-      border-color: $primary-color;
-      background: $primary-color;
+      border-color: $brand-primary;
+      background: $brand-primary;
 
       &:after {
         display: block;
