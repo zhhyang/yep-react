@@ -5,7 +5,7 @@
   height: $button-height;
   line-height: $button-height;
   text-align: center;
-  border-radius: 5px;
+  border-radius: $button-border-radius;
   //color: #6f6f6f;
   font-size: $button-font-size;
   text-overflow: ellipsis;
@@ -46,16 +46,16 @@
     padding: 0 $h-spacing-lg;
   }
   &.btn-md {
-    height: 94px;
-    line-height: 94px;
-    border-radius: 12px;
+    height: $button-height-md;
+    line-height: $button-height-md;
+    border-radius: $button-border-radius-md;
   }
   &.btn-sm {
     font-size: $button-font-size-sm;
     height: $button-height-sm;
     line-height: $button-height-sm;
     padding: 0 $h-spacing-lg;
-    border-radius: 4px;
+    border-radius: $button-border-radius-sm;
   }
   &-icon {
     display: flex;
