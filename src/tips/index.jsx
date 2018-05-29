@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { Icon } from '@jdcfe/lrc-m';
+import {Icon} from '@jdcfe/lrc-m';
 
 export default class Tips extends PureComponent {
   static propTypes = {
@@ -26,7 +26,7 @@ export default class Tips extends PureComponent {
      * 通知位置：固定顶部、固定底部、在通知栏所处DOM位置不变
      */
     position: PropTypes.oneOf(['fix-top', 'fix-bottom', 'in-place']),
-  }
+  };
 
   static defaultProps = {
     children: null,
@@ -36,7 +36,7 @@ export default class Tips extends PureComponent {
     duration: -1,
     tipType: 'info',
     position: 'in-place',
-  }
+  };
 
   constructor() {
     super();
@@ -48,7 +48,7 @@ export default class Tips extends PureComponent {
   }
 
   componentDidMount() {
-    const { duration } = this.props;
+    const {duration} = this.props;
 
     if (duration > 0) {
       this.timer = setTimeout(() => {
@@ -78,13 +78,7 @@ export default class Tips extends PureComponent {
   render() {
     if (!this.state.isShow) return null;
 
-    const {
-      prefixCls,
-      className,
-      style,
-      tipType,
-      position,
-    } = this.props;
+    const {prefixCls, className, style, tipType, position} = this.props;
 
     const wrapperCls = classNames(prefixCls, position, className);
     const box = classNames('box', `box-${tipType}`);
@@ -94,9 +88,7 @@ export default class Tips extends PureComponent {
       <div className={wrapperCls} style={style}>
         <div className={box}>
           <Icon onClick={this.closeTips} className="icon icon-info" type="lego_yichang" color="#fff" />
-          <div className="tips-text">
-            {this.props.children}
-          </div>
+          <div className="tips-text">{this.props.children}</div>
           <Icon onClick={this.closeTips} className="icon icon-close" type="lego_cuowu2" color="#fff" />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import classNames from 'classnames';
 
 // TODO 兼容检查
@@ -40,7 +40,7 @@ export default class Upload extends PureComponent {
     this.props.removeImage(index);
   }
 
-  fileChange({ target }) {
+  fileChange({target}) {
     const file = target.files[0];
 
     if (file.size > 500 * 1024) {
@@ -65,7 +65,7 @@ export default class Upload extends PureComponent {
   }
 
   render() {
-    const { files, size } = this.props;
+    const {files, size} = this.props;
     const wrapperCls = classNames('Yep-upload-wrapper');
     return (
       <div className={wrapperCls}>
