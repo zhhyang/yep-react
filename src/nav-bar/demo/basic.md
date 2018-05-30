@@ -19,11 +19,14 @@ class Demo extends React.PureComponent {
             console.log('close');
           }}
           share={<Icon type="share" />}
+          rightContent={<Icon type="lego_gengduo" />}
         >
           页面标题
         </NavBar>
         <WhiteSpace />
-        <NavBar leftContent="返回">页面标题</NavBar>
+        <NavBar leftContent="返回" rightContent={<Icon type="lego_gengduo" />}>
+          页面标题
+        </NavBar>
         <WhiteSpace />
         <NavBar leftIcon={null} leftContent="取消" rightContent="操作">
           页面标题

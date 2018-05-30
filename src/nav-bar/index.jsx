@@ -22,7 +22,7 @@ export default class NavBar extends PureComponent {
     prefixCls: 'Yep-nav-bar',
     style: {},
     leftIcon: <Icon type="arrow-back" size="xs" />,
-    rightContent: <Icon type="lego_gengduo" />,
+    //rightContent: <Icon type="lego_gengduo" />,
     onLeftClick: () => null,
     onCloseClick: () => null,
     onRightClick: () => null,
@@ -70,9 +70,11 @@ export default class NavBar extends PureComponent {
 
         <div className={`${prefixCls}-right`}>
           {share && <span className={`${prefixCls}-right-share`}>{share}</span>}
-          <span className={`${prefixCls}-right-content`} onClick={onRightClick}>
-            {rightContent}
-          </span>
+          {rightContent && (
+            <span className={`${prefixCls}-right-content`} onClick={onRightClick}>
+              {rightContent}
+            </span>
+          )}
         </div>
       </div>
     );
