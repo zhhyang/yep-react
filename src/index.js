@@ -38,3 +38,4 @@ export {default as Hammer} from './hammer';
 export {default as SwipeAction} from './swipe-action';
 export {default as CountDown} from './count-down';
 export {default as Tips} from './tips';
+export {default as NavBar} from './nav-bar';

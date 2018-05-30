@@ -49,10 +49,15 @@ $button-border-radius-md: 0 * $hd !default;
 $button-height-sm: 28 * $hd !default;
 $button-font-size-sm: 13 * $hd !default;
 $button-border-radius-sm: 2 * $hd !default;
+
+$link-button-font-size: 16 * $hd !default;
 // Tabbar Component */
 // tab-bar
 $tab-bar-height: 51 * $hd !default;
 $tab-bar-image-height: 25 * $hd !default;
+
+//NavBar
+$nav-bar-height:44 * $hd !default;
 
 // z-index */
 $z-index-normal: 1 !default;
