@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../icon';
+
 export default class NavBar extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
@@ -14,6 +15,7 @@ export default class NavBar extends PureComponent {
     onCloseClick: PropTypes.func,
     rightContent: PropTypes.node,
     share: PropTypes.node,
+    onRightClick: PropTypes.func,
   };
 
   static defaultProps = {
@@ -21,6 +23,9 @@ export default class NavBar extends PureComponent {
     style: {},
     leftIcon: <Icon type="arrow-back" size="xs" />,
     rightContent: <Icon type="lego_gengduo" />,
+    onLeftClick: () => null,
+    onCloseClick: () => null,
+    onRightClick: () => null,
   };
 
   constructor() {
@@ -40,6 +45,7 @@ export default class NavBar extends PureComponent {
       onCloseClick,
       rightContent,
       share,
+      onRightClick,
     } = this.props;
     const cls = classNames(prefixCls, className);
     return (
@@ -50,7 +56,9 @@ export default class NavBar extends PureComponent {
               {leftIcon}
             </span>
           )}
-          {leftContent}
+          <span className={`${prefixCls}-left-content`} onClick={onLeftClick}>
+            {leftContent}
+          </span>
           {close && (
             <div onClick={onCloseClick} className={`${prefixCls}-left-close`}>
               关闭
@@ -61,12 +69,10 @@ export default class NavBar extends PureComponent {
         <div className={`${prefixCls}-title`}>{children}</div>
 
         <div className={`${prefixCls}-right`}>
-          {share && (
-            <span className={`${prefixCls}-right-share`}>
-              <Icon type="share" />
-            </span>
-          )}
-          {rightContent}
+          {share && <span className={`${prefixCls}-right-share`}>{share}</span>}
+          <span className={`${prefixCls}-right-content`} onClick={onRightClick}>
+            {rightContent}
+          </span>
         </div>
       </div>
     );

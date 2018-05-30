@@ -7,7 +7,6 @@
   background: $fill-base;
   color: $color-text-base;
 
-
   &-left,
   &-title,
   &-right {
@@ -26,7 +25,7 @@
       display: inherit;
     }
     &-close {
-      margin-left: 11 *$hd;
+      margin-left: 11 * $hd;
       display: inherit;
     }
   }
@@ -39,11 +38,14 @@
 
   &-right {
     justify-content: flex-end;
-    font-size: $link-button-font-size;
-    margin-right: $h-spacing-lg;
+
     &-share {
-      margin-right: 11 *$hd;
+      margin-right: 11 * $hd;
       display: inherit;
+    }
+    &-content {
+      font-size: $link-button-font-size;
+      margin-right: $h-spacing-lg;
     }
   }
 }

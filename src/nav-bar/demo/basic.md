@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {NavBar, WhiteSpace} from '@jdcfe/lrc-m';
+import {NavBar, WhiteSpace, Icon} from '@jdcfe/lrc-m';
 
 class Demo extends React.PureComponent {
   render() {
@@ -18,12 +18,14 @@ class Demo extends React.PureComponent {
           onCloseClick={() => {
             console.log('close');
           }}
-          share
+          share={<Icon type="share" />}
         >
           页面标题
         </NavBar>
         <WhiteSpace />
-        <NavBar leftIcon={null} leftContent="返回" share>
+        <NavBar leftContent="返回">页面标题</NavBar>
+        <WhiteSpace />
+        <NavBar leftIcon={null} leftContent="取消" rightContent="操作">
           页面标题
         </NavBar>
       </div>
