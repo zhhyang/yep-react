@@ -19,6 +19,8 @@ export default class Button extends PureComponent {
     onClick: PropTypes.func,
     activeClassName: PropTypes.string,
     activeStyle: PropTypes.object,
+    icon: PropTypes.string,
+    children: PropTypes.node,
   };
 
   static defaultProps = {
