@@ -1,0 +1,51 @@
+@import '../../style/mixin';
+
+.Yep-nav-bar {
+  display: flex;
+  align-items: center;
+  height: $nav-bar-height;
+  background: $fill-base;
+  color: $color-text-base;
+
+  &-left,
+  &-title,
+  &-right {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &-left {
+    padding-left: $h-spacing-lg;
+    font-size: $link-button-font-size;
+
+    &-icon {
+      margin-right: $h-spacing-sm;
+      display: inherit;
+    }
+    &-close {
+      margin-left: 11 * $hd;
+      display: inherit;
+    }
+  }
+
+  &-title {
+    justify-content: center;
+    font-size: 18 * $hd;
+    white-space: nowrap;
+  }
+
+  &-right {
+    justify-content: flex-end;
+
+    &-share {
+      margin-right: 11 * $hd;
+      display: inherit;
+    }
+    &-content {
+      font-size: $link-button-font-size;
+      margin-right: $h-spacing-lg;
+    }
+  }
+}

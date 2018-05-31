@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Prism from 'prismjs';
 import qs from 'qs';
+import {NavBar} from '@jdcfe/lrc-m'
 import allDocData from './allDocData';
 import Demo from './Demo';
 
@@ -27,13 +28,7 @@ const Content = ({ history, location: { pathname,search } }) => {
     const query = qs.parse(search,{ ignoreQueryPrefix: true });
     return (
       <Fragment>
-        <h1 className="page-title">
-          <span>{toCamelCase(componentName)}</span>
-          <Link className="page-back router-link-active" to="/">
-            返回
-            <i className="Yepui Yepui-back"/>
-          </Link>
-        </h1>
+        <NavBar leftContent="返回" onLeftClick={() =>history.push('/')}>{toCamelCase(componentName)}</NavBar>
         <div className="page-wrapper">
           <Helmet title={toCamelCase(componentName)}/>
           {

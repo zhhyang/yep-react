@@ -6,19 +6,19 @@
 
 [快速上手](http://yep-react.jd.com/#/doc/get-started)
 
-## React版本要求
+## React 版本要求
 
-- `react^16.0.0`
+* `react^16.0.0`
 
 ## 浏览器支持
 
-- `iOS`
-- `Android 4.0+`
+* `iOS`
+* `Android 4.0+`
 
 ## 链接
 
-- [首页](http://yep-react.jd.com)
-- [LRC](https://lrc.jd.com)
+* [首页](http://yep-react.jd.com)
+* [LRC](https://lrc.jd.com)
 
 ## 讨论 / 问题反馈 / 建议
 
