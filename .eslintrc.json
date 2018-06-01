@@ -1,8 +1,17 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["jest"],
+  "plugins": ["jest", "prettier"],
   "extends": ["airbnb", "plugin:jest/recommended"],
   "env": {
-      "browser": true
+    "browser": true
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "object-curly-spacing": "off",
+    "object-curly-newline": "off", // Incompatible with prettier
+    "react/require-default-props": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"]}],
+    "prettier/prettier": ["error"]
   }
 }

@@ -20,9 +20,7 @@ class Demo extends React.PureComponent {
           resCallback={() => {
             alert('中奖了！！！');
           }}
-          children={
-            <div className="scratch-child">中奖了</div>
-          }
+          children={<div className="scratch-child">中奖了</div>}
         />
       </div>
     );

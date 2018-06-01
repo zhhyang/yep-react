@@ -41,4 +41,4 @@ export {default as Tips} from './tips';
 export {default as AutoComplete} from './auto-complete/index';
 export {default as Dropdown} from './dropdown/index';
 export {default as Input} from './input';
-
+export {default as NavBar} from './nav-bar';

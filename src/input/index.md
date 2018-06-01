@@ -1,9 +1,9 @@
 ---
 category: Components
-title: input()除按钮
+title: 输入框
 ---
 
-带删除按钮的 input
+输入框，可以带清空按钮
 
 <DEMO>
 

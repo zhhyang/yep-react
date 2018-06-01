@@ -6,14 +6,14 @@ description:
 
 ```js
 import React from 'react';
-import {ClearabClearableInput} from "@jdcfe/lrc-m";
+import {Input} from "@jdcfe/lrc-m";
 
 class Demo extends React.PureComponent {
 
   render() {
     return (
       <div>
-      <ClearabClearableInput />
+      <Input />
     </div>
     );
   }

@@ -3,16 +3,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const ButtonGroup = ({prefixCls, className, children}) => {
+const ButtonGroup = ({prefixCls, className, style, children}) => {
   const cls = classNames(prefixCls, className);
 
-  return <div className={cls}>{children}</div>;
+  return (
+    <div className={cls} style={style}>
+      {children}
+    </div>
+  );
 };
 
 ButtonGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
+  children: PropTypes.node,
 };
 
 ButtonGroup.defaultProps = {
