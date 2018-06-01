@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
@@ -16,7 +16,7 @@ const config = {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
     publicPath: '/',
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash:8].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -36,7 +36,7 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'),path.join(process.cwd(), 'demo')],
+        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'), path.join(process.cwd(), 'demo')],
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -71,7 +71,7 @@ const config = {
               ],
             },
           },
-        ]
+        ],
       },
       {
         test: /\.scss/,
@@ -102,7 +102,7 @@ const config = {
             },
           },
           'sass-loader',
-        ]
+        ],
       },
     ],
   },
@@ -111,16 +111,16 @@ const config = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true // set to true if you want JS source maps
+        sourceMap: true, // set to true if you want JS source maps
       }),
-    ]
+    ],
   },
   plugins: [
-    new CleanWebpackPlugin(['build/demo.*', 'build/demo.html',], {
+    new CleanWebpackPlugin(['build/demo.*', 'build/demo.html'], {
       root: process.cwd(),
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].[chunkhash:8].css',
     }),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
@@ -129,6 +129,6 @@ const config = {
       inject: true,
     }),
   ],
-}
+};
 
 module.exports = config;
