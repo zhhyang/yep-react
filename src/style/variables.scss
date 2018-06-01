@@ -1,104 +1,93 @@
-$baseFontSize: 28px;
-$baseLineHeight: 1;
-$maskColor:rgba(0, 0, 0, 0.4);
-$primary-color: #ec3838;
+$hd: 2px !default; //设计稿两倍尺寸
+//色彩
+// 文字色
+$color-text-base-inverse: #fff; // 基本 - 反色
+$color-text-base: #3d3f52 !default; //一级信息：重要文字&标题等
+$color-text-secondary: #6c707d !default; // 二级信息：重要文字等
+$color-text-caption: #999baa !default; // 三级信息：辅助类文字
+
+//全局/品牌色
+$brand-primary: #ec3838 !default; //品牌标准色：重要内容信息
+$brand-primary-tap: #0e80d2 !default;
+$brand-success: #85c859 !default; //辅助色：区别强调信息
+$brand-warning: #ed2945 !default; //辅助色：价格&警告信息 小红点
+$brand-important: #fba144 !default; // 辅助色：辅助提示信息
+
+// 背景色
+$fill-base: #fff !default; // 内容层：全局
+$fill-body: #f8f8f8 !default; // 背景层：全局
+$fill-tap: #ddd!default; // 组件默认背景 - 按下
+$fill-disabled: #b5b5b5 !default; // 通用失效背景
+$fill-mask: rgba(0, 0, 0, 0.65) !default; // 遮罩背景
+
+// 边框色
+$border-color-base: #e3e5e9 !default; //分割线：全局
+
+// 字体尺寸
+// ---
+$font-size-icontext: 10 * $hd !default; //标签等次要信息
+$font-size-tags: 10 * $hd !default; //标签等次要信息
+$font-size-help: 12 * $hd !default; //辅助等次要信息
+$font-size-tips: 13 * $hd !default; //提示等次要信息
+$font-size-base: 14 * $hd !default; //TAB、内容等信息
+$font-size-caption: 16 * $hd !default; //标题、列表、输入框等重要信息
+$font-size-heading: 18 * $hd !default; //导航栏标题、主按钮等重要信息
+
+$baseLineHeight: 1 !default;
 // 透明度
-$opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
-
-$color-text-caption: #888; // 辅助描述
-
-$baseBackgroundColor:#fff;
-$tapBackgroundColor: #ddd;//组件按下时背景颜色
-
-// 一像素细线border-top-bottom
-$border: #e0e0e0;
-$tab: #929292;
-$tab-deep: #333;
-$sub: #c09947;
-$l-black: #333;
-$black: #000;
-$l-red: #f23030;
-$d-red: #e4393c;
-$ll-black: #232326;
-$gray: #848689;
-$l-gray: #cccccc;
-
-$color-blue: #26a2ff;
-$color-white: #fff;
-$color-grey: #d9d9d9;
-$border-color: #c8c8cd;
-$success-color: #4caf50;
-$error-color: #f44336;
-$warning-color: #ffc107;
-$disabled-color: #eeeeee;
-// Cell Component
-$cell-value-color: #888;
-
-// Header Component */
-$header-height: 40px;
+$opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
 
 // Button Component */
-$button-default-color: #656b79;
-$button-default-background-color: #f6f8fa;
-$button-default-plain-color: #5a5a5a;
-$button-default-box-shadow: 0 0 1px #b8bbbf;
-$button-primary-color: #fff;
-$button-primary-background-color: #26a2ff;
-$button-danger-color: #fff;
-$button-danger-background-color: #ef4f4f;
+$button-height: 45 * $hd !default;
+$button-font-size: 18 * $hd !default;
+$button-border-radius: 2 * $hd !default;
 
-$button-disabled-background-color: $disabled-color;
-$button-disabled-color: #cecece;
+$button-height-md: 50 * $hd !default;
+$button-font-size-md: 18 * $hd !default;
+$button-border-radius-md: 0 * $hd !default;
 
-// Tab Item Component */
-$tab-item-font-size: 12px;
+$button-height-sm: 28 * $hd !default;
+$button-font-size-sm: 13 * $hd !default;
+$button-border-radius-sm: 2 * $hd !default;
 
+$link-button-font-size: 16 * $hd !default;
 // Tabbar Component */
-$tabbar-background-color: #fafafa;
-$tabbar-tab-item-selected-background-color: #eaeaea;
-$tabbar-tab-item-selected-color: $color-blue;
+// tab-bar
+$tab-bar-height: 51 * $hd !default;
+$tab-bar-image-height: 25 * $hd !default;
 
-// Navbar Component */
-$navbar-background-color: #fafafa;
-$tabbar-tab-item-selected-background-color: #eaeaea;
-
-// Checklist Component */
-$checklist-title-color: #888;
-
-// Radio Component */
-$radio-title-color: #888;
+//NavBar
+$nav-bar-height:44 * $hd !default;
 
 // z-index */
-$z-index-normal: 1;
-$maskZIndex: 222;
-$popupZIndex: 666;
-$toastZIndex: 777;
-$tab-barZIndex:200;
-$progressZIndex:999;//progress fixed 应该是最大的z-index
-$indexedIndicatorZIndex:1999;//索引列表
+$z-index-normal: 1 !default;
+$maskZIndex: 222 !default;
+$popupZIndex: 666 !default;
+$toastZIndex: 777 !default;
+$tab-barZIndex: 200 !default;
+$progressZIndex: 999 !default; //progress fixed 应该是最大的z-index
+$indexedIndicatorZIndex: 1999 !default; //索引列表
 
 // 图标尺寸
 // ---
-$icon-size-xxs: 30px;
-$icon-size-xs: 36px;
-$icon-size-sm: 42px;
-$icon-size-md: 44px; // 导航条上的图标、grid的图标大小
-$icon-size-lg: 72px;
+$icon-size-xxs: 15 * $hd !default;
+$icon-size-xs: 18 * $hd !default;
+$icon-size-sm: 21 * $hd !default;
+$icon-size-md: 22 * $hd !default; // 导航条上的图标、grid的图标大小
+$icon-size-lg: 36 * $hd !default;
 
 // 水平间距
-$h-spacing-sm: 10px;
-$h-spacing-md: 16px;
-$h-spacing-lg: 30px;
+$h-spacing-sm: 5 * $hd !default;
+$h-spacing-md: 8 * $hd !default;
+$h-spacing-lg: 15 * $hd !default;
 // 垂直间距
-$v-spacing-xs: 6px;
-$v-spacing-sm: 12px;
-$v-spacing-md: 18px;
-$v-spacing-lg: 30px;
-$v-spacing-xl: 42px;
-
-$tab-bar-height:100px;
+$v-spacing-xs: 3 * $hd !default;
+$v-spacing-sm: 6 * $hd !default;
+$v-spacing-md: 9 * $hd !default;
+$v-spacing-lg: 15 * $hd !default;
+$v-spacing-xl: 21 * $hd !default;
 
 // list
-$list-title-height: 60px;
-$list-item-height-sm: 70px;
-$list-item-height: 88px;
+$list-title-height: 30 * $hd !default;
+$list-item-height-sm: 35 * $hd !default;
+$list-item-height: 44 * $hd !default;

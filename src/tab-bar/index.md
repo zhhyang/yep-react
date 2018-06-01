@@ -20,17 +20,21 @@ TabBar
 | style        | 组件样式        | object | {}          |
 | className    | 额外 class      | string | -           |
 | barTintColor | TabBar 背景色   | string | white       |
+| hidden       | 是否隐藏 TabBar | bool   | false       |
 
 Tab
 
-| 参数                | 说明                                    | 类型           | 默认值          |
-| ------------------- | --------------------------------------- | -------------- | --------------- |
-| prefixCls           | 组件 class 前缀                         | string         | Yep-tab-bar-tab |
-| style               | 组件样式                                | object         | {}              |
-| className           | 额外 class                              | string         | -               |
-| tintColor           | 选中状态颜色                            | string         | #ec3838         |
-| unselectedTintColor | 未选中状态颜色                          | string         | #888            |
-| selected            | 是否选中状态                            | boolean        | false           |
-| icon                | 默认展示图片(图片的 url 地址或组件)     | string 或 node | -               |
-| selectedIcon        | 选中状态展示图片(图片的 url 地址或组件) | string 或 node | -               |
-| title               | 标题文字                                | string         | -               |
+| 参数                | 说明                                                | 类型            | 默认值          |
+| ------------------- | --------------------------------------------------- | --------------- | --------------- |
+| prefixCls           | 组件 class 前缀                                     | string          | Yep-tab-bar-tab |
+| style               | 组件样式                                            | object          | {}              |
+| className           | 额外 class                                          | string          | -               |
+| tintColor           | 选中状态颜色                                        | string          | #ec3838         |
+| unselectedTintColor | 未选中状态颜色                                      | string          | #888            |
+| selected            | 是否选中状态                                        | boolean         | false           |
+| icon                | 默认展示图片(图片的 url 地址或组件)                 | string 或 node  | -               |
+| selectedIcon        | 选中状态展示图片(图片的 url 地址或组件)             | string 或 node  | -               |
+| title               | 标题文字                                            | string          | -               |
+| badge               | 徽标数                                              | number \ string | 无              |
+| dot                 | 是否在右上角显示小红点（在设置 badge 的情况下失效） | boolean         | false           |
+| onClick             | 点击事件回调                                        | func            | () => null      |

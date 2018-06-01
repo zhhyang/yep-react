@@ -1,65 +1,84 @@
-@import "../../style/mixin";
+@import '../../style/mixin';
 
-.Yep-btn{
+.Yep-btn {
   display: block;
-  height: 68px;
-  line-height: 68px;
+  height: $button-height;
+  line-height: $button-height;
   text-align: center;
-  border-radius: 5px;
+  border-radius: $button-border-radius;
   //color: #6f6f6f;
-  font-size: 34px;
+  font-size: $button-font-size;
   text-overflow: ellipsis;
   word-break: break-word;
   white-space: nowrap;
   box-sizing: border-box;
   //margin-right: .2rem;
+  border: 1px solid $color-text-base;
+  color: $color-text-base;
 
-
-  &.btn-primary{
-    background-color: $primary-color;
-    color:$color-white;
-    border: 1PX solid $primary-color;
-    &.btn-disabled{
-      background-color: #ce2525;
+  &.btn-disabled {
+    background-color: $fill-disabled;
+    border: 1px solid $fill-disabled;
+  }
+  &.btn-primary {
+    background-color: $brand-primary;
+    color: $color-text-base-inverse;
+    border: 1px solid $brand-primary;
+    &.btn-disabled {
+      background-color: $fill-disabled;
+      border: 1px solid $fill-disabled;
       //color: #ce2525;
     }
   }
 
-
-  &.btn-default{
-    border: 1PX solid #6f6f6f;
-    color: $black;
-    &.btn-disabled{
-      background-color: $button-disabled-background-color;
-      color: $button-disabled-color;
+  &.btn-ghost {
+    background-color: $fill-base;
+    color: $brand-primary;
+    border: 1px solid $brand-primary;
+    &.btn-disabled {
+      background-color: $fill-disabled;
+      border: 1px solid $fill-disabled;
     }
   }
-  &.btn-inline{
+
+  &.btn-inline {
     display: inline-block;
-    padding: 0 30px;
+    padding: 0 $h-spacing-lg;
   }
-  &.btn-md{
-    height: 94px;
-    line-height: 94px;
-    border-radius: 12px;
+  &.btn-md {
+    height: $button-height-md;
+    line-height: $button-height-md;
+    border-radius: $button-border-radius-md;
+  }
+  &.btn-sm {
+    font-size: $button-font-size-sm;
+    height: $button-height-sm;
+    line-height: $button-height-sm;
+    padding: 0 $h-spacing-lg;
+    border-radius: $button-border-radius-sm;
+  }
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > .Yep-btn-icon {
+    margin-right: 0.5em;
   }
 }
 
-.Yep-btns{
+.Yep-btns {
   display: flex;
   align-items: center;
-  & .Yep-btn{
+  & .Yep-btn {
     display: flex;
-    flex:1;
+    flex: 1;
     justify-content: center;
     align-items: center;
     margin-right: 20px;
-    &:last-of-type{
+    &:last-of-type {
       margin-right: 0;
     }
   }
 }
-
-
-
-

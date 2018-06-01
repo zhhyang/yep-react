@@ -1,0 +1,62 @@
+
+@import '../../style/mixin';
+
+.Yep-tips {
+  $fontSize: 24px;
+  .icon {
+    width: $fontSize;
+    height: $fontSize;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+  }
+  .icon-close {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.fix-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &.fix-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  &.in-place {
+    position: relative;
+  }
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    &-info {
+      color: #fff;
+      background: #2e6da4;
+    }
+    &-warn {
+      color: #fff;
+      background: #f0ad4e;
+    }
+    &-error {
+      color: #fff;
+      background: #d9534f;
+    }
+  }
+  .icon {
+    display: block;
+    font-size: $fontSize;
+  }
+  .tips-text {
+    display: block;
+    min-height: 32px;
+    line-height: 32px;
+    flex: 1;
+    margin: 0 14px;
+    font-size: $fontSize;
+  }
+} 

@@ -17,7 +17,7 @@
     .Yep-list-item {
       height: $list-title-height;
       min-height: $list-title-height;
-      background-color: $baseBackgroundColor;
+      background-color: $fill-base;
 
       .Yep-list-line {
         height: $list-title-height;
@@ -48,7 +48,7 @@
     }
 
     &-over {
-      background-color: $maskColor;
+      background-color: $fill-mask;
     }
   }
 
@@ -61,7 +61,7 @@
     margin: -30px auto auto -60px;
     background: transparent;
     opacity: .7;
-    color: $primary-color;
+    color: $brand-primary;
     font-size: 40px;
     border-radius: 60px;
     z-index: $indexedIndicatorZIndex;

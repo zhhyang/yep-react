@@ -17,12 +17,14 @@ class Demo extends React.PureComponent {
           autoClose
           right={[
             {
-              text: '取消',
+              text: '置顶商品',
+              className: 'demo-btn',
               onClick: () => console.log('cancel'),
               style: {backgroundColor: '#ddd', color: 'white'},
             },
             {
-              text: '删除',
+              text: '取消关注',
+              className: 'demo-btn',
               onClick: () => console.log('delete'),
               style: {backgroundColor: '#F4333C', color: 'white'},
             },

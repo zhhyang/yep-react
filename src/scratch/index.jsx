@@ -10,6 +10,7 @@ export default class Scratch extends PureComponent {
     scratchImgUrl: PropTypes.string,
     resPercent: PropTypes.number,
     resCallback: PropTypes.func,
+    children: PropTypes.element,
   };
 
   static defaultProps = {
@@ -103,7 +104,10 @@ export default class Scratch extends PureComponent {
         transPixs.push(i);
       }
     }
-    if ((transPixs.length / (pixles.length / 4) * 100).toFixed(2) > this.props.resPercent) {
+    if (
+      (transPixs.length / (pixles.length / 4) * 100).toFixed(2) >
+      (this.props.resPercent >= 0 ? this.props.resPercent : 60)
+    ) {
       this.props.resCallback();
       this.setState({
         isAreaShow: false,
@@ -139,7 +143,7 @@ export default class Scratch extends PureComponent {
         )}
         {this.state.isArea2Show && (
           <div className="area2" id="area2">
-            中奖了
+            {this.props.children}
           </div>
         )}
       </div>
