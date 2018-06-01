@@ -14,7 +14,7 @@ const config = {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
     publicPath: '/',
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash:8].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -69,7 +69,7 @@ const config = {
               ],
             },
           },
-        ]
+        ],
       },
       {
         test: /\.scss/,
@@ -100,12 +100,12 @@ const config = {
             },
           },
           'sass-loader',
-        ]
+        ],
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['build/site.*', 'build/index.html',], {
+    new CleanWebpackPlugin(['build/site.*', 'build/index.html'], {
       root: process.cwd(),
     }),
     new webpack.NamedModulesPlugin(),
@@ -115,6 +115,6 @@ const config = {
       inject: true,
     }),
   ],
-}
+};
 
 module.exports = config;
