@@ -1,22 +1,20 @@
-
 import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
-import Popover from '../Popover'
-import DropdownToggle from './DropdownToggle'
-import DropdownMenu from './DropdownMenu'
+import Popover from '../Popover';
+import DropdownToggle from './DropdownToggle';
+import DropdownMenu from './DropdownMenu';
 
 class Dropdown extends PureComponent {
-
   constructor(props) {
-    super()
+    super();
     this.state = {
-      open: props.open || false
-    }
+      open: props.open || false,
+    };
   }
 
   componentWillReceiveProps(nextProps) {
-    'open' in nextProps && this.setState({open: nextProps.open})
+    'open' in nextProps && this.setState({open: nextProps.open});
   }
 
   /**
@@ -25,7 +23,7 @@ class Dropdown extends PureComponent {
    * @description 展开
    */
   open() {
-    this.setState({open: true})
+    this.setState({open: true});
   }
 
   /**
@@ -34,30 +32,30 @@ class Dropdown extends PureComponent {
    * @description 收起
    */
   close() {
-    this.setState({open: false})
+    this.setState({open: false});
   }
 
   handleToggle(open) {
-    this.setState({ open })
-    this.props.onToggle && this.props.onToggle(open)
+    this.setState({open});
+    this.props.onToggle && this.props.onToggle(open);
   }
 
   render() {
-    const { children, disabled, aligned } = this.props
-    const { open } = this.state
+    const {children, disabled, aligned} = this.props;
+    const {open} = this.state;
 
-    let toggle, menu
+    let toggle, menu;
     React.Children.forEach(children, child => {
       if (child.type === DropdownToggle) {
-        toggle = child
+        toggle = child;
       } else if (child.type === DropdownMenu) {
-        menu = child
+        menu = child;
       }
-    })
+    });
 
-    const { right, ...menuProps } = menu.props
+    const {right, ...menuProps} = menu.props;
     if (right) {
-      menuProps.align = 'right'
+      menuProps.align = 'right';
     }
 
     return (
@@ -70,14 +68,13 @@ class Dropdown extends PureComponent {
         aligned={aligned}
         {...menuProps}
       >
-        {React.cloneElement(toggle, { open })}
+        {React.cloneElement(toggle, {open})}
       </Popover>
-    )
+    );
   }
 }
 
 Dropdown.propTypes = {
-
   // 是否展开
   open: PropTypes.bool,
 
@@ -88,7 +85,7 @@ Dropdown.propTypes = {
   disabled: PropTypes.bool,
 
   // DropdownToggle 与 DropdownMenu 宽度相同
-  aligned: PropTypes.bool
-}
+  aligned: PropTypes.bool,
+};
 
-export default Dropdown
+export default Dropdown;
