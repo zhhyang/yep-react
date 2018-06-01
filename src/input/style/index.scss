@@ -1,0 +1,19 @@
+
+
+.Yep-clearable-input {
+  position: relative;
+  display: inline-block;
+  .Yep-input {
+    padding-right: 25px;
+  }
+  .Yep-input--sm + .Yep-clearable-input__clear {
+    right: 0;
+  }
+}
+
+.Yep-clearable-input__clear {
+  position: absolute;
+  top: 50%;
+  margin-top: -11px;
+  right: 5px;
+}

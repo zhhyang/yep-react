@@ -68,7 +68,7 @@
     "jest": "^22.4.2",
     "marked": "^0.3.19",
     "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.9.0",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss-loader": "^2.1.4",
     "postcss-pxtorem": "^4.0.1",
@@ -108,6 +108,7 @@
   },
   "dependencies": {
     "@jdcfe/lrc": "^0.0.2",
+    "classlist": "^2.0.0",
     "classnames": "^2.2.5",
     "hammerjs": "^2.0.8",
     "lodash": "^4.17.10",

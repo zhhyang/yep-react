@@ -12,7 +12,7 @@ const devServerOptions = {
   disableHostCheck: true,
   overlay: true,
   hot: true,
-  host: '0.0.0.0',
+  host: '127.0.0.1',
   publicPath: '/',
   contentBase: './src/html',
   stats: {
