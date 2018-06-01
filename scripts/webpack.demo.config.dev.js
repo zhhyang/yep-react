@@ -4,8 +4,8 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const address = require('address')
-const ip = address.ip()
+const address = require('address');
+const ip = address.ip();
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -36,7 +36,7 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'),path.join(process.cwd(), 'demo')],
+        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'), path.join(process.cwd(), 'demo')],
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -71,7 +71,7 @@ const config = {
               ],
             },
           },
-        ]
+        ],
       },
       {
         test: /\.scss/,
@@ -102,7 +102,7 @@ const config = {
             },
           },
           'sass-loader',
-        ]
+        ],
       },
     ],
   },
@@ -115,9 +115,9 @@ const config = {
       filename: 'index.html',
       template: 'demo/index.html',
     }),
-    new webpack.HotModuleReplacementPlugin(),// enable HMR globally
-    new OpenBrowserPlugin({url: `http://${ip}:8081/`})
+    new webpack.HotModuleReplacementPlugin(), // enable HMR globally
+    new OpenBrowserPlugin({url: `http://${ip}:8081/`}),
   ],
-}
+};
 
 module.exports = config;
