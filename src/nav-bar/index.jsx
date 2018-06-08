@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../icon';
+import noop from '../_utils/noop';
 
 export default class NavBar extends PureComponent {
   static propTypes = {
@@ -23,9 +24,9 @@ export default class NavBar extends PureComponent {
     style: {},
     leftIcon: <Icon type="arrow-back" size="xs" />,
     //rightContent: <Icon type="lego_gengduo" />,
-    onLeftClick: () => null,
-    onCloseClick: () => null,
-    onRightClick: () => null,
+    onLeftClick: noop,
+    onCloseClick: noop,
+    onRightClick: noop,
   };
 
   constructor() {

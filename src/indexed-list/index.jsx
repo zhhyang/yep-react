@@ -1,10 +1,11 @@
 import React, {PureComponent} from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ListView from './ListView';
 import {_event, getOffsetTop} from './util';
-import ReactDOM from 'react-dom';
 import List from '../list';
+import noop from '../_utils/noop';
 const {Item} = List;
 
 function setDocumentScrollTop(val) {
@@ -40,7 +41,7 @@ export default class IndexedList extends PureComponent {
     renderSectionHeader: sectionData => <div>{sectionData}</div>,
     quickIndexedBarTop: {label: '#', value: '#'},
     useBodyScroll: true,
-    onQuickSearch: () => {},
+    onQuickSearch: noop,
   };
 
   sectionComponents = {};

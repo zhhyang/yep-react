@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
 import classNames from 'classnames';
-
+import noop from '../_utils/noop';
 // TODO 兼容检查
 export default class Upload extends PureComponent {
   static propTypes = {
@@ -21,8 +21,8 @@ export default class Upload extends PureComponent {
   static defaultProps = {
     files: [],
     size: '75px',
-    addImage: () => {},
-    removeImage: () => {},
+    addImage: noop,
+    removeImage: noop,
     // multiple: false,
   };
 

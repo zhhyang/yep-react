@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Countdown} from '@jdcfe/lrc';
 import classNames from 'classnames';
+import noop from '../_utils/noop';
 
 export default class CountDown extends PureComponent {
   static propTypes = {
@@ -17,7 +18,7 @@ export default class CountDown extends PureComponent {
     prefixCls: 'Yep-count-down',
     style: {},
     overText: '活动结束',
-    onEnd: () => null,
+    onEnd: noop,
   };
 
   render() {

@@ -1,9 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Hammer from '../hammer';
 import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
+import Hammer from '../hammer';
+import noop from '../_utils/noop';
 
 function closest(el, selector) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -53,8 +54,8 @@ export default class SwipeAction extends PureComponent {
     disabled: false,
     left: [],
     right: [],
-    onOpen: () => {},
-    onClose: () => {},
+    onOpen: noop,
+    onClose: noop,
   };
 
   constructor() {
