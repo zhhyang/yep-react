@@ -1,14 +1,18 @@
 
-
 .Yep-input-wrapper {
   position: relative;
   display: inline-block;
   .Yep-input {
     padding-right: 25px;
+    font-size:32px;
+    &::placeholder {
+      color: #C6C7CE;
+    }
   }
   .Yep-input--sm + .Yep-clearable-input__clear {
     right: 0;
   }
+
 }
 
 .Yep-input__clear {

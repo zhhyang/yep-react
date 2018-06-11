@@ -13,14 +13,12 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Dropdown>
+        <Dropdown >
           <Dropdown.DropdownToggle>
             <button>Open</button>
           </Dropdown.DropdownToggle>
           <Dropdown.DropdownMenu>
-            Nullam quis risus eget urna mollis
-            ornare vel eu leo. Cum sociis natoque
-            penatibus et magnis dis parturient montes
+           这是一个下拉框
           </Dropdown.DropdownMenu>
         </Dropdown>
     </div>
