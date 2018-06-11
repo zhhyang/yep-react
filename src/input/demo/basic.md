@@ -13,7 +13,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-      <Input />
+      <Input clearable={true} />
     </div>
     );
   }

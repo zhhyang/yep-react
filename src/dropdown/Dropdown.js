@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
-import Popover from '../Popover';
+import Popover from '../_shared/Popover';
 import DropdownToggle from './DropdownToggle';
 import DropdownMenu from './DropdownMenu';
 
@@ -13,24 +13,30 @@ class Dropdown extends PureComponent {
     };
   }
 
+  static propTypes = {
+    // 是否展开
+    open: PropTypes.bool,
+
+    // 切换 open 状态后的回调，参数为切换后的 open 状态
+    onToggle: PropTypes.func,
+
+    // 是否禁用
+    disabled: PropTypes.bool,
+
+    // DropdownToggle 与 DropdownMenu 宽度相同
+    aligned: PropTypes.bool,
+  };
+
+
   componentWillReceiveProps(nextProps) {
     'open' in nextProps && this.setState({open: nextProps.open});
   }
 
-  /**
-   * @public
-   * @name this.refs.dropdown.open
-   * @description 展开
-   */
+
   open() {
     this.setState({open: true});
   }
 
-  /**
-   * @public
-   * @name this.refs.dropdown.close
-   * @description 收起
-   */
   close() {
     this.setState({open: false});
   }
@@ -74,18 +80,5 @@ class Dropdown extends PureComponent {
   }
 }
 
-Dropdown.propTypes = {
-  // 是否展开
-  open: PropTypes.bool,
-
-  // 切换 open 状态后的回调，参数为切换后的 open 状态
-  onToggle: PropTypes.func,
-
-  // 是否禁用
-  disabled: PropTypes.bool,
-
-  // DropdownToggle 与 DropdownMenu 宽度相同
-  aligned: PropTypes.bool,
-};
 
 export default Dropdown;

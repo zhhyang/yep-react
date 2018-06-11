@@ -2,30 +2,18 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Icon from './../icon';
 
-const NormalInput = params => {
-  const {className, size, ...other} = params;
-  const classNames = classnames(
-    'Yep-input',
-    {
-      [`Yep-input--${size}`]: size,
-    },
-    className
-  );
-  return <input className={classNames} {...other} />;
-};
 
 class Input extends PureComponent {
   constructor(props) {
     super();
-    let value;
-    'value' in props && (value = props.value);
-    'defaultValue' in props && (value = props.defaultValue);
-    this.state = {value};
+    this.state = {value:props.defaultValue || props.value || ''};
   }
 
   componentWillReceiveProps(nextProps) {
     'value' in nextProps && this.setState({value: nextProps.value});
+    'source' in nextProps && this.setState({result: nextProps.source});
   }
 
   handleClear(e) {
@@ -40,6 +28,7 @@ class Input extends PureComponent {
   }
 
   handleChange(value) {
+    console.log(value);
     this.setState({value});
     this.props.onChange && this.props.onChange(value);
   }
@@ -56,19 +45,33 @@ class Input extends PureComponent {
       placeholder,
       readOnly,
       maxLength,
+      clearable,
       ...other
     } = this.props;
     const {value} = this.state;
     delete other.value;
 
     const inputProps = {value, disabled, size, placeholder, readOnly, type, maxLength};
-
+    const classNames = classnames(
+      'Yep-input',
+      {
+        [`Yep-input--${size}`]: size,
+      },
+      className
+    );
     return (
-      <div className={classnames('Yep-clearable-input', className)} {...other}>
-        <NormalInput onChange={this.handleInput.bind(this)} {...inputProps} />
-        <button tabIndex="-1" disabled={inputProps.disabled} onClick={this.handleClear.bind(this)}>
-          清除
-        </button>
+      <div className={classnames('Yep-input-wrapper', className)} {...other}>
+        <input className={classNames} {...inputProps} onChange={this.handleInput.bind(this)} />
+        {(value || value === 0 || Number.isNaN(value)) && clearable && (
+          <Icon
+            type={'lego_cuowu1'}
+            key={'lego_cuowu1'}
+            size={'xxs'}
+            className="Yep-input__clear"
+            tabIndex="-1"
+            onClick={this.handleClear.bind(this)}
+          />
+        )}
       </div>
     );
   }
@@ -92,6 +95,9 @@ Input.propTypes = {
 
   // 是否禁用
   disabled: PropTypes.bool,
+
+  // 是否配置删除按钮
+  clearable: PropTypes.bool,
 
   // 同 input placeholder
   placeholder: PropTypes.string,

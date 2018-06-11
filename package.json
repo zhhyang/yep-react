@@ -20,7 +20,12 @@
     "precommit": "lint-staged",
     "upload": "node scripts/upload.js"
   },
-  "keywords": ["react", "UI", "components", "web"],
+  "keywords": [
+    "react",
+    "UI",
+    "components",
+    "web"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -114,6 +119,9 @@
     "react-transition-group": "^2.3.1"
   },
   "lint-staged": {
-    "*.{js,jsx,json,css,scss,md}": ["prettier --write", "git add"]
+    "*.{js,jsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

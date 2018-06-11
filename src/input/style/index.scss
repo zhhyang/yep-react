@@ -1,6 +1,6 @@
 
 
-.Yep-clearable-input {
+.Yep-input-wrapper {
   position: relative;
   display: inline-block;
   .Yep-input {
@@ -11,9 +11,9 @@
   }
 }
 
-.Yep-clearable-input__clear {
+.Yep-input__clear {
   position: absolute;
   top: 50%;
-  margin-top: -11px;
+  margin-top: -15px;
   right: 5px;
 }

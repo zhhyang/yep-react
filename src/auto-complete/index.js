@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Dropdown from '../dropdown';
 import Input from '../input';
-import TextOverflow from '../TextOverflow';
 
 class AutoComplete extends PureComponent {
   constructor(props) {
@@ -16,6 +15,47 @@ class AutoComplete extends PureComponent {
       value: props.defaultValue || props.value || '',
     };
   }
+
+  static propTypes = {
+    // 待搜索的数据源
+    className: PropTypes.string,
+
+    // 待搜索的数据源
+    source: PropTypes.array.isRequired,
+
+    // 输入框的值
+    value: PropTypes.string,
+
+    // 初始化输入框的值
+    defaultValue: PropTypes.string,
+
+    // 输入改变、选择后的回调，参数为当前输入框的值
+    onChange: PropTypes.func,
+
+    // 输入框大小，除默认外可选值：sm、lg
+    size: PropTypes.string,
+
+    // 是否禁用
+    disabled: PropTypes.bool,
+
+    // 是否打开下拉
+    isOpen: PropTypes.bool,
+    // 输入框是否显示清空按钮
+    clearable: PropTypes.bool,
+
+    // 同 input placeholder
+    placeholder: PropTypes.string,
+    // 提示框对齐方式，默认 `middle`
+    customProp({value, onChange}) {
+      if (value && !onChange) {
+        return new Error('You provided a `value` prop without an `onChange` handler');
+      }
+    }
+  }
+
+  static defaultProps = {
+    prefixCls: 'Yep-auto-complete'
+  };
 
   componentWillReceiveProps(nextProps) {
     'value' in nextProps && this.setState({value: nextProps.value});
@@ -77,11 +117,17 @@ class AutoComplete extends PureComponent {
 
   render() {
     const {open, index, result, value} = this.state;
-    const {className, source, onFocus, onKeyDown, onChange, disabled, isOpen, align, ...other} = this.props;
+    const {prefixCls, className, source, onFocus, onKeyDown, onChange, disabled, isOpen, align, ...other} = this.props;
+    const cls = classnames(prefixCls, className);
 
     return (
-      <Dropdown open={!!isOpen || open} disabled={!!disabled} aligned onToggle={open => this.setState({open})}>
-        <Dropdown.DropdownToggle className={classnames('Yep-auto-complete', className)}>
+      <Dropdown className={cls}
+                open={!!isOpen || open}
+                disabled={!!disabled}
+                aligned
+                onToggle={open => this.setState({open})}
+      >
+        <Dropdown.DropdownToggle>
           <Input
             value={value}
             onKeyDown={this.handleKeyDown.bind(this)}
@@ -91,17 +137,15 @@ class AutoComplete extends PureComponent {
             {...other}
           />
         </Dropdown.DropdownToggle>
-        <Dropdown.DropdownMenu className="Yep-auto-complete__popover">
-          <ul className="Yep-auto-complete__result">
+        <Dropdown.DropdownMenu className={`${prefixCls}__popover`}>
+          <ul className={`${prefixCls}__result`}>
             {result.map((item, i) => (
-              <TextOverflow key={item}>
-                <li
-                  className={classnames({'Yep-auto-complete__option--active': index === i})}
+                <li key={item}
+                  className={classnames({[`${prefixCls}__option--active`] : index === i})}
                   onClick={this.handleSelect.bind(this, item)}
                 >
                   {item}
                 </li>
-              </TextOverflow>
             ))}
           </ul>
         </Dropdown.DropdownMenu>
@@ -110,36 +154,5 @@ class AutoComplete extends PureComponent {
   }
 }
 
-AutoComplete.propTypes = {
-  // 待搜索的数据源
-  source: PropTypes.array.isRequired,
-
-  // 输入框的值
-  value: PropTypes.string,
-
-  // 初始化输入框的值
-  defaultValue: PropTypes.string,
-
-  // 输入改变、选择后的回调，参数为当前输入框的值
-  onChange: PropTypes.func,
-
-  // 输入框大小，除默认外可选值：sm、lg
-  size: PropTypes.string,
-
-  // 是否禁用
-  disabled: PropTypes.bool,
-
-  // 是否打开下拉
-  isOpen: PropTypes.bool,
-
-  // 同 input placeholder
-  placeholder: PropTypes.string,
-  // 提示框对齐方式，默认 `middle`
-  customProp({value, onChange}) {
-    if (value && !onChange) {
-      return new Error('You provided a `value` prop without an `onChange` handler');
-    }
-  },
-};
 
 export default AutoComplete;
