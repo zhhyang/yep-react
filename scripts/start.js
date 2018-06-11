@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-
 const webpackConfig = require('./webpack.site.config.dev');
+const ip = require('address').ip();
 
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';
@@ -12,7 +12,7 @@ const devServerOptions = {
   disableHostCheck: true,
   overlay: true,
   hot: true,
-  host: '0.0.0.0',
+  host: '127.0.0.1',
   publicPath: '/',
   stats: {
     colors: true,

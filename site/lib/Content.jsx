@@ -8,7 +8,15 @@ import {Helmet} from 'react-helmet'
 
 import {toCamelCase} from './utils'
 
+
+function handleResetScrollStatus(){
+    document.querySelector('.l-header').style.left = ''
+    document.querySelector('.l-menu').style.marginLeft = '-220px'
+}
+
+
 const Content = ({ history, location: { pathname } }) => {
+
   setTimeout(() => {
     Prism.highlightAll();
   }, 100);
@@ -35,7 +43,7 @@ const Content = ({ history, location: { pathname } }) => {
     /* eslint-disable react/no-danger */
     /* eslint-disable no-underscore-dangle */
     return (
-      <div className="l-content l-markdown">
+      <div className="l-content l-markdown" onClick={handleResetScrollStatus}>
         <div className="markdown-body">
           <Helmet title={`${toCamelCase(componentName)} ${currentComponent.title}`}/>
           <h1>{toCamelCase(componentName)} {currentComponent.title}</h1>

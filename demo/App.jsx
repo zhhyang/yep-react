@@ -16,7 +16,7 @@ export default class App extends PureComponent {
     return (
       <section className="page-index">
         <Helmet title="Components"/>
-        <div className="page-title">组件库</div>
+        <div className="page-title">Yep-React</div>
         {
           Object.keys(allDocData.components).sort().map((componentName, index) => {
               const component = allDocData.components[componentName];

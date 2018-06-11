@@ -9,7 +9,7 @@ title: 通知
 
 | 参数      | 说明                                                           | 类型   | 默认值   |
 | --------- | -------------------------------------------------------------- | ------ | -------- |
-| prefixCls | 组件 class 前缀                                                | string | Yep-tips |
+| prefixCls | 组件 class 前缀                                                | string | Yep-message |
 | style     | 组件样式                                                       | object | {}       |
 | className | 组件额外样式                                                   | string | -        |
 | duration  | 通知显示时长，单位为毫秒，-1 代表一直显示                      | number | -1       |

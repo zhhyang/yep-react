@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Tips} from '@jdcfe/lrc-m';
+import {Message} from '@jdcfe/lrc-m';
 
 class Demo extends React.PureComponent {
   render() {
@@ -18,29 +18,29 @@ class Demo extends React.PureComponent {
     };
     return (
       <div>
-        <Tips tipType="error">电话号码无效</Tips>
+        <Message tipType="error">电话号码无效</Message>
         <br />
-        <Tips tipType="warn">
+        <Message tipType="warn">
           <p>
             <b style={{color: 'red'}}>注意：</b>小心熊出没
           </p>
           <p>光头强要小心啦！</p>
-        </Tips>
-        <Tips tipType="error" duration={3000} position="fix-top">
+        </Message>
+        <Message tipType="error" duration={3000} position="fix-top">
           顶部通知，3秒后消失
-        </Tips>
-        <Tips
+        </Message>
+        <Message
           position="fix-bottom"
-          ref={tips2 => {
-            this.tips2 = tips2;
+          ref={message2 => {
+            this.message2 = message2;
           }}
         >
           底部通知
-        </Tips>
+        </Message>
         <a
           style={aStyle}
           onClick={() => {
-            this.tips2.showTips();
+            this.message2.showMessage();
           }}
         >
           显示底部通知
@@ -48,7 +48,7 @@ class Demo extends React.PureComponent {
         <a
           style={aStyle}
           onClick={() => {
-            this.tips2.closeTips();
+            this.message2.closeMessage();
           }}
         >
           关闭底部通知
