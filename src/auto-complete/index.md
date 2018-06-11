@@ -18,6 +18,5 @@ title: 自动完成
 | onChange | 输入框内容变化的回调函数    | func | -                 |
 | size | 输入框的大小    | string | -                 |
 | disabled | 输入框是否禁用    | bool | -                 |
-| isOpen | 是否打开下拉框    | bool | -                 |
 | placeholder | 输入框的placeholder    | string | -                 |
 | clearabled | 输入框是否显示清空按钮    | bool | -                 |

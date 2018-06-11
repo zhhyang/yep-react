@@ -20,4 +20,4 @@ title: 下拉框
 | onToggle | 切换 open 状态后的回调    | func | -            |
 | aligned | 	
 DropdownToggle 与 DropdownMenu 宽度相同    | string | -            |
-| className | 组件额外样式    | string | -            |
+
