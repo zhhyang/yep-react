@@ -16,13 +16,15 @@ $brand-important: #fba144 !default; // 辅助色：辅助提示信息
 // 背景色
 $fill-base: #fff !default; // 内容层：全局
 $fill-body: #f8f8f8 !default; // 背景层：全局
-$fill-tap: #ddd!default; // 组件默认背景 - 按下
+$fill-tap: #ddd !default; // 组件默认背景 - 按下
 $fill-disabled: #b5b5b5 !default; // 通用失效背景
 $fill-mask: rgba(0, 0, 0, 0.65) !default; // 遮罩背景
 
 // 边框色
 $border-color-base: #e3e5e9 !default; //分割线：全局
-
+//边框
+$border-width: 1px !default;
+$border-width-lg: 2 * $hd !default;
 // 字体尺寸
 // ---
 $font-size-icontext: 10 * $hd !default; //标签等次要信息
@@ -56,8 +58,14 @@ $link-button-font-size: 16 * $hd !default;
 $tab-bar-height: 51 * $hd !default;
 $tab-bar-image-height: 25 * $hd !default;
 
+// tabs
+$tabs-color: $brand-primary !default;
+$tabs-height: 44 * $hd !default;
+$tabs-font-size-heading: 14 * $hd !default;
+$tabs-ink-bar-height: $border-width-lg !default;
+
 //NavBar
-$nav-bar-height:44 * $hd !default;
+$nav-bar-height: 44 * $hd !default;
 
 // z-index */
 $z-index-normal: 1 !default;

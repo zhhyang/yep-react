@@ -1,5 +1,23 @@
 @import '../../style/mixin';
 $tabs-prefix-cls: Yep-tabs;
+$tabs-default-bar-prefix-cls: Yep-tabs-default-bar;
+$badge-prefix-cls: Yep-badge;
+
+$page-hide-color: rgba(255, 255, 255, 0);
+$page-show-color: rgba(255, 255, 255, 1);
+$easing-in-out: cubic-bezier(0.35, 0, 0.25, 1);
+$effect-duration: 0.3s;
+
+@mixin common-pagination() {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 59 * $hd;
+  height: 100%;
+  content: ' ';
+  //z-index: $tabs-pagination-zindex;
+}
 
 .#{$tabs-prefix-cls} {
   box-sizing: border-box;
@@ -21,8 +39,8 @@ $tabs-prefix-cls: Yep-tabs;
     height: 100%;
 
     &-animated {
-      transition: transform 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1),
-        top 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+      transition: transform $effect-duration $easing-in-out, left $effect-duration $easing-in-out,
+        top $effect-duration $easing-in-out;
     }
   }
 
@@ -30,6 +48,9 @@ $tabs-prefix-cls: Yep-tabs;
     width: 100%;
     flex-shrink: 0;
     overflow-y: auto;
+  }
+  &-tab-bar-wrap {
+    flex-shrink: 0;
   }
 
   &-horizontal {
@@ -65,6 +86,160 @@ $tabs-prefix-cls: Yep-tabs;
 
       &-pane-wrap-inactive {
         overflow: hidden;
+      }
+    }
+  }
+  &-top,
+  &-bottom {
+    flex-direction: column;
+  }
+
+  &-left,
+  &-right {
+    flex-direction: row;
+  }
+}
+
+.#{$tabs-default-bar-prefix-cls} {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+
+  &-tab {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: $tabs-font-size-heading;
+    height: $tabs-height;
+    line-height: $tabs-height;
+
+    .#{$badge-prefix-cls} {
+      .#{$badge-prefix-cls}-text {
+        top: -13 * $hd;
+        transform: translateX(-5 * $hd);
+      }
+      .#{$badge-prefix-cls}-dot {
+        top: -6 * $hd;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &-tab-active {
+    color: $tabs-color;
+  }
+
+  &-underline {
+    position: absolute;
+    border: $border-width $tabs-color solid;
+  }
+
+  &-animated &-content {
+    transition: transform $effect-duration $easing-in-out;
+    will-change: transform;
+  }
+
+  &-animated &-underline {
+    transition: top $effect-duration $easing-in-out, left $effect-duration $easing-in-out,
+      color $effect-duration $easing-in-out, width $effect-duration $easing-in-out;
+    will-change: top, left, width, color;
+  }
+  &-top,
+  &-bottom {
+    flex-direction: row;
+
+    .#{$tabs-default-bar-prefix-cls} {
+      &-content {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+      }
+
+      &-prevpage {
+        @include common-pagination();
+
+        left: 0;
+        background: linear-gradient(to right, $page-show-color, $page-hide-color);
+      }
+
+      &-nextpage {
+        @include common-pagination();
+
+        right: 0;
+        background: linear-gradient(to right, $page-hide-color, $page-show-color);
+      }
+
+      &-tab {
+        padding: 8px 0;
+      }
+
+      &-underline {
+        bottom: 0;
+      }
+    }
+  }
+
+  &-top {
+    .#{$tabs-default-bar-prefix-cls} {
+      &-tab {
+        //.hairline('bottom');
+        @include border-bottom-1px();
+      }
+    }
+  }
+
+  &-bottom {
+    .#{$tabs-default-bar-prefix-cls} {
+      &-tab {
+        //.hairline('top');
+        @include border-top-1px();
+      }
+    }
+  }
+
+  &-left,
+  &-right {
+    flex-direction: column;
+
+    .#{$tabs-default-bar-prefix-cls} {
+      &-content {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+      }
+
+      &-tab {
+        padding: 0 8px;
+      }
+    }
+  }
+
+  &-left {
+    .#{$tabs-default-bar-prefix-cls} {
+      &-underline {
+        right: 0;
+      }
+      &-tab {
+        //.hairline('right');
+        @include border-right-1px();
+      }
+    }
+  }
+
+  &-right {
+    .#{$tabs-default-bar-prefix-cls} {
+      &-underline {
+        left: 0;
+      }
+      &-tab {
+        @include border-left-1px();
       }
     }
   }
