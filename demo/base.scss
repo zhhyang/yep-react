@@ -1,6 +1,88 @@
 @charset "utf-8";
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, dialog, input {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+dialog,
+input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -12,12 +94,23 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   box-sizing: border-box;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 
 /* ios默认文本框阴影 */
-input[type=text], textarea {
+input[type='text'],
+textarea {
   -webkit-appearance: none;
 }
 
@@ -26,64 +119,70 @@ input:focus {
   -webkit-user-modify: read-write-plaintext-only;
 }
 
-ol, ul, li, menu {
-  list-style: none
+ol,
+ul,
+li,
+menu {
+  list-style: none;
 }
 
 table {
   border-collapse: collapse;
-  border-spacing: 0
+  border-spacing: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   font-size: 10px;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
+    sans-serif;
   line-height: 1;
   color: #303030;
 }
 
 html {
   -webkit-text-size-adjust: none;
-  -ms-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%;
 }
 
 html {
   font-size: 32px; /*no*/
 }
 
-@media screen and (min-width: 320PX) { /*no*/
+@media screen and (min-width: 320px) {
+  /*no*/
   html {
-    font-size: calc(85.34% + 2 * (100vw - 320PX) / 55); /*no*/
-    font-size: calc(42.67PX + 2 * (100vw - 320PX) / 55); /*no*/
+    font-size: calc(85.34% + 2 * (100vw - 320px) / 55); /*no*/
+    font-size: calc(42.67px + 2 * (100vw - 320px) / 55); /*no*/
   }
 }
 
-@media screen and (min-width: 375PX) {
+@media screen and (min-width: 375px) {
   html {
-    font-size: calc(100% + 2 * (100vw - 375PX) / 39); /*no*/
-    font-size: calc(50PX + 2 * (100vw - 375PX) / 39); /*no*/
+    font-size: calc(100% + 2 * (100vw - 375px) / 39); /*no*/
+    font-size: calc(50px + 2 * (100vw - 375px) / 39); /*no*/
   }
 }
 
-@media screen and (min-width: 414PX) {
+@media screen and (min-width: 414px) {
   html {
-    font-size: calc(110.4% + 4 * (100vw - 414PX) / 186); /*no*/
-    font-size: calc(55.2PX + 4 * (100vw - 414PX) / 186); /*no*/
+    font-size: calc(110.4% + 4 * (100vw - 414px) / 186); /*no*/
+    font-size: calc(55.2px + 4 * (100vw - 414px) / 186); /*no*/
   }
 }
 
-@media screen and (min-width: 600PX) {
+@media screen and (min-width: 600px) {
   html {
-    font-size: calc(160% + 4 * (100vw - 600PX) / 150); /*no*/
-    font-size: calc(80PX + 4 * (100vw - 600PX) / 150); /*no*/
+    font-size: calc(160% + 4 * (100vw - 600px) / 150); /*no*/
+    font-size: calc(80px + 4 * (100vw - 600px) / 150); /*no*/
   }
 }
 
-@media screen and (min-width: 750PX) {
+@media screen and (min-width: 750px) {
   html {
-    font-size: calc(200% + 6 * (100vw - 1000PX) / 1000); /*no*/
-    font-size: calc(100PX + 6 * (100vw - 1000PX) / 1000); /*no*/
+    font-size: calc(200% + 6 * (100vw - 1000px) / 1000); /*no*/
+    font-size: calc(100px + 6 * (100vw - 1000px) / 1000); /*no*/
   }
 }
 
@@ -98,9 +197,11 @@ html {
 //     }
 // }
 
-a, button, input {
+a,
+button,
+input {
   outline: 0 none;
-  text-decoration: none
+  text-decoration: none;
 }
 
 img {
@@ -137,14 +238,17 @@ img {
 }
 
 // 整体布局 适用于SPA
-.header, .footer, .wrap-page {
+.header,
+.footer,
+.wrap-page {
   position: absolute;
   left: 0;
   right: 0;
   background-color: #fff;
 }
 
-.header, .footer {
+.header,
+.footer {
   height: 0.88rem;
   line-height: 0.88rem;
   background-color: #fff;
@@ -251,8 +355,13 @@ body {
   margin-bottom: 20px; /*no*/
 }
 
-.demo-list {
-
+.demo-title {
+  padding: 30px 0 18px 30px;
+  color: #000;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bolder;
+  position: relative;
 }
 
 .demo-list-header {
@@ -270,23 +379,21 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) .demo-list-body {
     border-bottom: none;
   }
 }
 
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) .demo-list-body {
     border-top: none;
   }
 }
 
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) .demo-list-body:before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: #ddd;
     display: block;
@@ -298,11 +405,9 @@ body {
     width: 100%;
     height: 1px;
     transform-origin: 50% 50%;
-    transform: scaleY(.5);
+    transform: scaleY(0.5);
   }
 }
-
-
 
 .demo-list-item {
   position: relative;
@@ -311,7 +416,7 @@ body {
   /*background-color: #fff;*/
   vertical-align: middle;
   overflow: hidden;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   align-items: center;
 
   & .demo-list-line {
@@ -324,7 +429,8 @@ body {
   }
 }
 
-.demo-list-item .demo-list-line .demo-list-content, .demo-list-item .demo-list-line .demo-list-extra {
+.demo-list-item .demo-list-line .demo-list-content,
+.demo-list-item .demo-list-line .demo-list-extra {
   line-height: 1.5;
   width: auto;
   overflow: hidden;
@@ -347,4 +453,3 @@ body {
   font-size: 32px;
   text-align: right;
 }
-
