@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Toast, Button, WhiteSpace} from '@jdcfe/lrc-m';
+import {Toast, Button, WhiteSpace} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

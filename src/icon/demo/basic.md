@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Icon} from '@jdcfe/lrc-m';
+import {Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

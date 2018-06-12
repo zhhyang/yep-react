@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {AutoComplete} from "@jdcfe/lrc-m";
+import {AutoComplete} from "@jdcfe/yep-react";
 
 class Demo extends React.PureComponent {
 

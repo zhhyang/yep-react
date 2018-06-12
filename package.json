@@ -1,6 +1,6 @@
 {
-  "name": "@jdcfe/lrc-m",
-  "version": "0.1.1",
+  "name": "@jdcfe/yep-react",
+  "version": "0.1.2",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {

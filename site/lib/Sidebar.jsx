@@ -37,7 +37,7 @@ class Sidebar extends React.Component {
       <div className="l-menu">
         <div style={{marginBottom:'20px'}}>
           <a className="l-logo" href="//yep-react.jd.com/">
-            <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="LRC-M"/>
+            <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="Yep-React"/>
             <span>Yep-React</span>
           </a>
           <div style={{paddingLeft:'63px'}}> <span className="l-inspired" >inspired by lrc</span></div>

@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Switch} from '@jdcfe/lrc-m';
+import {Switch} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

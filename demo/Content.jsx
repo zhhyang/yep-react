@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Prism from 'prismjs';
 import qs from 'qs';
-import {NavBar} from '@jdcfe/lrc-m'
+import {NavBar} from '@jdcfe/yep-react'
 import allDocData from './allDocData';
 import Demo from './Demo';
 

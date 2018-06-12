@@ -8,7 +8,7 @@ description:
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Sticky} from '@jdcfe/lrc-m';
+import {Sticky} from '@jdcfe/yep-react';
 const {StickyContainer} = Sticky;
 
 class Header extends React.Component {

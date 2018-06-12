@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Message} from '@jdcfe/lrc-m';
+import {Message} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

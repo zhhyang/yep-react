@@ -7,7 +7,7 @@ description:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button, WhiteSpace} from '@jdcfe/lrc-m';
+import {Button, WhiteSpace} from '@jdcfe/yep-react';
 const {ButtonGroup} = Button;
 class Demo extends React.PureComponent {
   render() {

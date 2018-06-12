@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Dropdown} from "@jdcfe/lrc-m";
+import {Dropdown} from "@jdcfe/yep-react";
 
 class Demo extends React.PureComponent {
 

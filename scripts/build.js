@@ -43,7 +43,7 @@ const type2name = {
     file: `dist/${type2name[format]}`,
     format,
     sourcemap: true,
-    name: format === 'umd' ? 'LRCM' : undefined,
+    name: format === 'umd' ? 'Yep-React' : undefined,
   })));
 });
 

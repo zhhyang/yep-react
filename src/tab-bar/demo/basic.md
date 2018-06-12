@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {TabBar, Icon} from '@jdcfe/lrc-m';
+import {TabBar, Icon} from '@jdcfe/yep-react';
 const {Tab} = TabBar;
 
 class Demo extends React.PureComponent {

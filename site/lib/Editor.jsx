@@ -16,7 +16,7 @@ export default class Editor extends React.Component {
 
     this.cm = CodeMirror(this.editor, {
       mode: 'jsx',
-      theme: 'lrc',
+      theme: 'yep',
       viewportMargin: Infinity,
       lineNumbers: false,
       dragDrop: false,

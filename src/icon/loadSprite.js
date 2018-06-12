@@ -6,7 +6,7 @@ const svgSprite = contents => `
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    id="__LRC_M_SVG_SPRITE_NODE__"
+    id="__Yep_React_SVG_SPRITE_NODE__"
     style="position:absolute;width:0;height:0"
   >
     <defs>
@@ -31,7 +31,7 @@ const loadSprite = () => {
   if (!document) {
     return;
   }
-  const existing = document.getElementById('__LRC_M_SVG_SPRITE_NODE__');
+  const existing = document.getElementById('__Yep_React_SVG_SPRITE_NODE__');
   const mountNode = document.body;
 
   if (!existing) {

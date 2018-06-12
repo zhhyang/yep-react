@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {List, Button, Switch} from '@jdcfe/lrc-m';
+import {List, Button, Switch} from '@jdcfe/yep-react';
 const {Item} = List;
 
 class Demo extends React.PureComponent {

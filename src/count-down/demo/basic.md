@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {CountDown, WhiteSpace} from '@jdcfe/lrc-m';
+import {CountDown, WhiteSpace} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
