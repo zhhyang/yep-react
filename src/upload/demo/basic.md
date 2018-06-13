@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Upload} from '@jdcfe/lrc-m';
+import {Upload} from '@jdcfe/yep-react';
 
 class UploadDemo extends React.PureComponent {
   constructor() {

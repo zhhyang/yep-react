@@ -1,0 +1,35 @@
+
+@import '../../style/mixin';
+
+
+.Yep-auto-complete__popover {
+  .Yep-popover__content {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+.Yep-auto-complete__result {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  > li {
+    line-height: 30px;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+}
+
+.Yep-auto-complete__result {
+  max-height: 180px;
+  overflow: auto;
+}
+
+.Yep-auto-complete__option--active {
+  background-color: #f5f5f5;
+}
+

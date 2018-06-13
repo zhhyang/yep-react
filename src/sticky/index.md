@@ -11,12 +11,12 @@ Make your React components sticky!
 
 `<Sticky />` elements require a function that returns a React component or DOM node as the only child. When invoked, this child function will be supplied an object with the following properties:
 
-* `isSticky` _(boolean)_ - is the element sticky as a result of the current event?
-* `wasSticky` _(boolean)_ - was the element sticky prior to the current event?
-* `distanceFromTop` _(number)_ - number of pixels from the top of the `Sticky` to the nearest `StickyContainer`'s top
-* `distanceFromBottom` _(number)_ - number of pixels from the bottom of the `Sticky` to the nearest `StickyContainer`'s bottom
-* `calculatedHeight` _(number)_ - height of the element returned by this function
-* `style` _(object)_ - modifiable style attributes to optionally be passed to the element returned by this function
+- `isSticky` _(boolean)_ - is the element sticky as a result of the current event?
+- `wasSticky` _(boolean)_ - was the element sticky prior to the current event?
+- `distanceFromTop` _(number)_ - number of pixels from the top of the `Sticky` to the nearest `StickyContainer`'s top
+- `distanceFromBottom` _(number)_ - number of pixels from the bottom of the `Sticky` to the nearest `StickyContainer`'s bottom
+- `calculatedHeight` _(number)_ - height of the element returned by this function
+- `style` _(object)_ - modifiable style attributes to optionally be passed to the element returned by this function
 
 The `Sticky`'s child function will be called when events occur in the parent `StickyContainer`,
 and will serve as the callback to apply your own logic and customizations, with sane `style` attributes

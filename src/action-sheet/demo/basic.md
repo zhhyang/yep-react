@@ -7,7 +7,7 @@ description:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ActionSheet, Button, WhiteSpace} from '@jdcfe/lrc-m';
+import {ActionSheet, Button, WhiteSpace} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   constructor() {

@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Scratch} from '@jdcfe/lrc-m';
+import {Scratch} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {ProgressBar, WhiteSpace, Button} from '@jdcfe/lrc-m';
+import {ProgressBar, WhiteSpace, Button} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {

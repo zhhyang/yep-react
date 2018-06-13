@@ -8,7 +8,7 @@ if (
 ) {
   // tslint:disable-next-line:no-console
   console.warn(
-    'You are using a whole package of @jdcfe/lrc-m, ' +
+    'You are using a whole package of @jdcfe/yep-react, ' +
       'please use https://www.npmjs.com/package/babel-plugin-import to reduce app bundle size.'
   );
 }
@@ -37,6 +37,9 @@ export {default as IndexedList} from './indexed-list';
 export {default as Hammer} from './hammer';
 export {default as SwipeAction} from './swipe-action';
 export {default as CountDown} from './count-down';
-export {default as Tips} from './tips';
+export {default as Message} from './message';
+export {default as AutoComplete} from './auto-complete';
+export {default as Dropdown} from './dropdown';
+export {default as Input} from './input';
 export {default as NavBar} from './nav-bar';
 export {default as Tabs} from './tabs';

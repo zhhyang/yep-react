@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Placeholder} from '@jdcfe/lrc-m';
+import {Placeholder} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

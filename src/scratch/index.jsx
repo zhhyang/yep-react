@@ -105,7 +105,7 @@ export default class Scratch extends PureComponent {
       }
     }
     if (
-      (transPixs.length / (pixles.length / 4) * 100).toFixed(2) >
+      ((transPixs.length / (pixles.length / 4)) * 100).toFixed(2) >
       (this.props.resPercent >= 0 ? this.props.resPercent : 60)
     ) {
       this.props.resCallback();

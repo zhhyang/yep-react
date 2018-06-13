@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {IndexedList, List, Sticky} from '@jdcfe/lrc-m';
+import {IndexedList, List, Sticky} from '@jdcfe/yep-react';
 const {Item} = List;
 const {StickyContainer} = Sticky;
 class Demo extends React.PureComponent {

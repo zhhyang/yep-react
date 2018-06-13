@@ -10,24 +10,24 @@ title: 快速上手
 使用 [`yarn`](https://yarnpkg.com/en/) 安装：
 
 ```bash
-yarn add @jdcfe/lrc-m
+yarn add @jdcfe/yep-react
 ```
 
 或是使用 [`npm`](https://www.npmjs.com/)：
 
 ```bash
-npm install --save @jdcfe/lrc-m
+npm install --save @jdcfe/yep-react
 ```
 
 ### 使用
 
 入口页面 (html 或 模板) 相关设置：
 
-> 引入 [FastClick](https://github.com/ftlabs/fastclick) 并且设置 html `meta` [wiki](http://git.jd.com/JDC-FE/lrc-m/wikis/fastclick)
+> 引入 [FastClick](https://github.com/ftlabs/fastclick) 并且设置 html `meta` [wiki](http://git.jd.com/JDC-FE/yep-react/wikis/fastclick)
 >
 > 引入 Promise 的 fallback 支持 (部分安卓手机不支持 Promise)
 >
-> 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/lrc-m/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
+> 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/yep-react/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
 
 ```html
 <!DOCTYPE html>
@@ -44,14 +44,14 @@ npm install --save @jdcfe/lrc-m
 组件使用实例：
 
 ```jsx
-import {Button} from '@jdcfe/lrc-m';
+import {Button} from '@jdcfe/yep-react';
 ReactDOM.render(<Button>Start</Button>, mountNode);
 ```
 
 引入样式：
 
 ```jsx
-import '@jdcfe/lrc-m/dist/lrc-m.css';
+import '@jdcfe/yep-react/dist/yep-react.css';
 ```
 
 ##### 按需加载
@@ -66,21 +66,21 @@ import '@jdcfe/lrc-m/dist/lrc-m.css';
   // .babelrc or babel-loader option
   {
     "plugins": [
-      ["import", { libraryName: "@jdcfe/lrc-m", style: true }] // `style: true` 会加载 scss 文件
+      ["import", { libraryName: "@jdcfe/yep-react", style: true }] // `style: true` 会加载 scss 文件
     ]
   }
   ```
 
-  然后只需从 @jdcfe/lrc-m 引入模块即可，无需单独引入样式。
+  然后只需从 @jdcfe/yep-react 引入模块即可，无需单独引入样式。
 
   ```jsx
   // babel-plugin-import 会帮助你加载 JS 和 SCSS
-  import {Button} from '@jdcfe/lrc-m';
+  import {Button} from '@jdcfe/yep-react';
   ```
 
 * 手动引入
 
   ```jsx
-  import Button from '@jdcfe/lrc-m/lib/button'; // 加载 JS
-  import '@jdcfe/lrc-m/lib/button/style'; // 加载 SCSS
+  import Button from '@jdcfe/yep-react/lib/button'; // 加载 JS
+  import '@jdcfe/yep-react/lib/button/style'; // 加载 SCSS
   ```

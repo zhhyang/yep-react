@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {ToTop} from '@jdcfe/lrc-m';
+import {ToTop} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

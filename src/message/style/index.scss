@@ -1,7 +1,7 @@
 
 @import '../../style/mixin';
 
-.Yep-tips {
+.Yep-message {
   $fontSize: 24px;
   .icon {
     width: $fontSize;
@@ -51,7 +51,7 @@
     display: block;
     font-size: $fontSize;
   }
-  .tips-text {
+  .message-text {
     display: block;
     min-height: 32px;
     line-height: 32px;
@@ -59,4 +59,4 @@
     margin: 0 14px;
     font-size: $fontSize;
   }
-} 
+}

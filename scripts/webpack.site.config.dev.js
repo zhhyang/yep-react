@@ -18,7 +18,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      '@jdcfe/lrc-m': path.resolve(__dirname, '../src'),
+      '@jdcfe/yep-react': path.resolve(__dirname, '../src'),
     },
   },
   module: {

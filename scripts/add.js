@@ -162,7 +162,7 @@ description:
 
 \`\`\`js
 import React from 'react';
-import {${newCpt.name}} from "@jdcfe/lrc-m";
+import {${newCpt.name}} from "@jdcfe/yep-react";
 
 class Demo extends React.PureComponent {
 

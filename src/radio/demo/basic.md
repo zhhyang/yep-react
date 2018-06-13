@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Radio} from '@jdcfe/lrc-m';
+import {Radio} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   constructor() {

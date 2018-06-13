@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {List} from '@jdcfe/lrc-m';
+import {List} from '@jdcfe/yep-react';
 const {Item, Brief} = List;
 
 class Demo extends React.PureComponent {

@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Dialog, Button, WhiteSpace} from '@jdcfe/lrc-m';
+import {Dialog, Button, WhiteSpace} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
