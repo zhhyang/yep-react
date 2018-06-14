@@ -34,7 +34,7 @@ export {default as ToTop} from './to-top';
 export {default as Scratch} from './scratch';
 export {default as Badge} from './badge';
 export {default as IndexedList} from './indexed-list';
-export {default as Hammer} from './hammer';
+export {default as Gesture} from './gesture';
 export {default as SwipeAction} from './swipe-action';
 export {default as CountDown} from './count-down';
 export {default as Message} from './message';

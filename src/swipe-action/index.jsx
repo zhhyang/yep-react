@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
-import Hammer from '../hammer';
+import Gesture from '../gesture';
 import noop from '../_utils/noop';
 
 function closest(el, selector) {
@@ -151,7 +151,7 @@ export default class SwipeAction extends PureComponent {
   }
 
   onPanStart(e) {
-    const {direction, deltaX} = e;
+    const {direction, moveStatus} = e;
     // http://hammerjs.github.io/api/#directions
     const isLeft = direction === 2;
     const isRight = direction === 4;
@@ -173,15 +173,17 @@ export default class SwipeAction extends PureComponent {
       this.setState({
         swiping: this.swiping,
       });
-      this._setStyle(deltaX);
+      this._setStyle(moveStatus.x);
     }
   }
   onPan(e) {
-    const {deltaX} = e;
+    const {
+      moveStatus: {x},
+    } = e;
     if (!this.swiping) {
       return;
     }
-    this._setStyle(deltaX);
+    this._setStyle(x);
   }
 
   onPanEnd(e) {
@@ -189,10 +191,12 @@ export default class SwipeAction extends PureComponent {
       return;
     }
 
-    const {deltaX} = e;
+    const {
+      moveStatus: {x},
+    } = e;
 
-    const needOpenRight = this.needShowRight && Math.abs(deltaX) > this.btnsRightWidth / 2;
-    const needOpenLeft = this.needShowLeft && Math.abs(deltaX) > this.btnsLeftWidth / 2;
+    const needOpenRight = this.needShowRight && Math.abs(x) > this.btnsRightWidth / 2;
+    const needOpenLeft = this.needShowLeft && Math.abs(x) > this.btnsLeftWidth / 2;
 
     if (needOpenRight) {
       this.doOpenRight();
@@ -260,16 +264,17 @@ export default class SwipeAction extends PureComponent {
         <div className={`${prefixCls}-cover`} ref={el => (this.cover = el)} />
         {this.renderButtons(left, 'left')}
         {this.renderButtons(right, 'right')}
-        <Hammer
+        <Gesture
           onPanStart={this.onPanStart}
           onPan={this.onPan}
           onPanEnd={this.onPanEnd}
           onSwipeLeft={this.doOpenRight}
           onSwipeRight={this.doOpenLeft}
-          createRef={this.createContentRef}
         >
-          <div className={`${prefixCls}-content`}>{children}</div>
-        </Hammer>
+          <div className={`${prefixCls}-content`} ref={this.createContentRef}>
+            {children}
+          </div>
+        </Gesture>
       </div>
     ) : (
       <div ref={this.createContentRef} {...divProps}>

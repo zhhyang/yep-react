@@ -2,10 +2,23 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
-import Hammer from '../hammer';
-import {getTransformPropValue} from '../_utils/styleUtil';
+import Gesture from '../gesture';
+import {GestureStatus} from '../gesture/type';
+import {getTransformPropValue, setPxStyle, setTransform} from '../_utils/styleUtil';
 import DefaultTabBar from './DefaultTabBar';
 
+const getPanDirection = (direction: number | undefined) => {
+  switch (direction) {
+    case 2:
+    case 4:
+      return 'horizontal';
+    case 8:
+    case 16:
+      return 'vertical';
+    default:
+      return 'none';
+  }
+};
 export default class Tabs extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
@@ -83,7 +96,7 @@ export default class Tabs extends PureComponent {
 
   getContentPosByIndex(index, isVertical) {
     const value = `${-index * 100}%`;
-
+    this.onPan.setCurrentOffset(value);
     const translate = isVertical ? `0px, ${value}` : `${value}, 0px`;
     // fix: content overlay TabBar on iOS 10. ( 0px -> 1px )
     return `translate3d(${translate}, 1px)`;
@@ -159,6 +172,71 @@ export default class Tabs extends PureComponent {
         break;
     }
   }
+  onPan = (() => {
+    let lastOffset: number | string = 0;
+    let finalOffset = 0;
+    let panDirection: string;
+
+    const getLastOffset = (isVertical = this.isTabVertical()) => {
+      let offset = +`${lastOffset}`.replace('%', '');
+      if (`${lastOffset}`.indexOf('%') >= 0) {
+        offset /= 100;
+        offset *= isVertical ? this.layout.clientHeight : this.layout.clientWidth;
+      }
+      return offset;
+    };
+
+    return {
+      onPanStart: (status: GestureStatus) => {
+        if (!this.props.swipeable || !this.props.animated) return;
+        panDirection = getPanDirection(status.direction);
+        this.setState({
+          isMoving: true,
+        });
+      },
+
+      onPanMove: (status: GestureStatus) => {
+        const {swipeable, animated} = this.props;
+        if (!status.moveStatus || !this.layout || !swipeable || !animated) return;
+        const isVertical = this.isTabVertical();
+        let offset = getLastOffset();
+        if (isVertical) {
+          offset += panDirection === 'horizontal' ? 0 : status.moveStatus.y;
+        } else {
+          offset += panDirection === 'vertical' ? 0 : status.moveStatus.x;
+        }
+        const canScrollOffset = isVertical
+          ? -this.layout.scrollHeight + this.layout.clientHeight
+          : -this.layout.scrollWidth + this.layout.clientWidth;
+        offset = Math.min(offset, 0);
+        offset = Math.max(offset, canScrollOffset);
+        setPxStyle(this.layout, offset, 'px', isVertical);
+        finalOffset = offset;
+      },
+
+      onPanEnd: () => {
+        if (!this.props.swipeable || !this.props.animated) return;
+        lastOffset = finalOffset;
+        const isVertical = this.isTabVertical();
+        const offsetIndex = this.getOffsetIndex(
+          finalOffset,
+          isVertical ? this.layout.clientHeight : this.layout.clientWidth
+        );
+        this.setState({
+          isMoving: false,
+        });
+        if (offsetIndex === this.state.currentTab) {
+          if (this.props.usePaged) {
+            setTransform(this.layout.style, this.getContentPosByIndex(offsetIndex, this.isTabVertical()));
+          }
+        } else {
+          this.goToTab(offsetIndex);
+        }
+      },
+
+      setCurrentOffset: (offset: number | string) => (lastOffset = offset),
+    };
+  })();
 
   getOffsetIndex = (current, width, threshold = this.props.distanceToChangeTab || 0) => {
     const ratio = Math.abs(current / width);
@@ -267,9 +345,9 @@ export default class Tabs extends PureComponent {
       <div key="tabBar" className={`${prefixCls}-tab-bar-wrap`}>
         {this.renderTabBar(tabBarProps)}
       </div>,
-      <Hammer key="$content" onSwipe={this.onSwipe} createRef={this.createContentLayoutRef}>
+      <Gesture key="$content" onSwipe={this.onSwipe} {...this.onPan}>
         {this.renderContent()}
-      </Hammer>,
+      </Gesture>,
     ];
     return (
       <div className={cls} style={style}>

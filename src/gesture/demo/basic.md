@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Hammer, WhiteSpace} from '@jdcfe/yep-react';
+import {Gesture, WhiteSpace} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   handleTap = () => {
@@ -21,6 +21,12 @@ class Demo extends React.PureComponent {
   handleSwipeRight = () => {
     alert('SwipeRight');
   };
+  handleSwipeUp = () => {
+    alert('SwipeUp');
+  };
+  handleSwipeDown = () => {
+    alert('SwipeDown');
+  };
 
   render() {
     const options = {
@@ -34,11 +40,13 @@ class Demo extends React.PureComponent {
     };
     return (
       <div>
-        <Hammer
+        <Gesture
           onTap={this.handleTap}
           onSwipe={this.handleSwipe}
           onSwipeLeft={this.handleSwipeLeft}
           onSwipeRight={this.handleSwipeRight}
+          onSwipeUp={this.handleSwipeUp}
+          onSwipeDown={this.handleSwipeDown}
         >
           <div
             style={{
@@ -52,9 +60,9 @@ class Demo extends React.PureComponent {
           >
             Tap Me(Default options)
           </div>
-        </Hammer>
+        </Gesture>
         <WhiteSpace />
-        <Hammer onTap={this.handleTap} options={options}>
+        <Gesture onTap={this.handleTap} options={options}>
           <div
             style={{
               width: '100%',
@@ -67,7 +75,7 @@ class Demo extends React.PureComponent {
           >
             Tap Me(Custom options)
           </div>
-        </Hammer>
+        </Gesture>
       </div>
     );
   }
