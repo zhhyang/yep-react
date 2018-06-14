@@ -11,6 +11,41 @@ class Input extends PureComponent {
     this.state = {value:props.defaultValue || props.value || ''};
   }
 
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    className: PropTypes.string,
+    style: PropTypes.object,
+
+    // 输入框的值
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    // 初始化输入框的值
+    defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    // 输入改变、清空后的回调，参数为当前输入框的值
+    onChange: PropTypes.func,
+
+    // 清空后的回调
+    onClear: PropTypes.func,
+
+    // 输入框尺寸
+    size: PropTypes.oneOf(['sm', 'lg']),
+
+    // 是否禁用
+    disabled: PropTypes.bool,
+
+    // 是否配置删除按钮
+    clearable: PropTypes.bool,
+
+    // 同 input placeholder
+    placeholder: PropTypes.string,
+  };
+
+  static defaultProps = {
+    prefixCls: 'Yep-input',
+    style: {},
+  }
+
   componentWillReceiveProps(nextProps) {
     'value' in nextProps && this.setState({value: nextProps.value});
     'source' in nextProps && this.setState({result: nextProps.source});
@@ -53,7 +88,7 @@ class Input extends PureComponent {
 
     const inputProps = {value, disabled, size, placeholder, readOnly, type, maxLength};
     const classNames = classnames(
-      'Yep-input',
+      `${prefixCls}`,
       {
         [`Yep-input--${size}`]: size,
       },
@@ -77,30 +112,5 @@ class Input extends PureComponent {
   }
 }
 
-Input.propTypes = {
-  // 输入框的值
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  // 初始化输入框的值
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  // 输入改变、清空后的回调，参数为当前输入框的值
-  onChange: PropTypes.func,
-
-  // 清空后的回调
-  onClear: PropTypes.func,
-
-  // 输入框尺寸
-  size: PropTypes.oneOf(['sm', 'lg']),
-
-  // 是否禁用
-  disabled: PropTypes.bool,
-
-  // 是否配置删除按钮
-  clearable: PropTypes.bool,
-
-  // 同 input placeholder
-  placeholder: PropTypes.string,
-};
 
 export default Input;
