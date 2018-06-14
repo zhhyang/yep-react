@@ -6,6 +6,14 @@ const pxtorem = require('postcss-pxtorem');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const address = require('address');
 const ip = address.ip();
+function resolve(dir) {
+  return path.join(__dirname, '..', dir);
+}
+
+const createLintingRule = () => ({
+
+});
+
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -26,6 +34,16 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: true,
+        }
+      },
       {
         test: /allDocData\.js$/,
         use: [

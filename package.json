@@ -20,7 +20,12 @@
     "precommit": "lint-staged",
     "upload": "node scripts/upload.js"
   },
-  "keywords": ["react", "UI", "components", "web"],
+  "keywords": [
+    "react",
+    "UI",
+    "components",
+    "web"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -46,6 +51,8 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jest": "^21.15.0",
@@ -111,6 +118,9 @@
     "react-transition-group": "^2.3.1"
   },
   "lint-staged": {
-    "*.{js,jsx,json,css,scss,md}": ["prettier --write", "git add"]
+    "*.{js,jsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
