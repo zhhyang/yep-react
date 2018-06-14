@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Badge from '../badge';
+import noop from '../_utils/noop';
 export default class Tab extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
@@ -22,7 +23,7 @@ export default class Tab extends PureComponent {
     unselectedTintColor: '#6C707D',
     selected: false,
     dot: false,
-    onClick: () => null,
+    onClick: noop,
   };
 
   constructor() {

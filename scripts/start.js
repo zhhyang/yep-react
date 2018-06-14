@@ -25,4 +25,3 @@ const server = new WebpackDevServer(compiler, devServerOptions);
 server.listen(defaultPort, devServerOptions.host, () => {
   process.stdout.write(`Server is running at http://${ip}:${defaultPort}\n`);
 });
-

@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import noop from '../_utils/noop';
 
 export default class WhiteSpace extends PureComponent {
   static propTypes = {
@@ -16,7 +17,7 @@ export default class WhiteSpace extends PureComponent {
     prefixCls: 'Yep-whitespace',
     style: {},
     size: 'md',
-    onClick: () => null,
+    onClick: noop,
   };
 
   render() {

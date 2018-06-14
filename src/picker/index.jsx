@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Popup from '../popup';
 import Picker from './Picker';
+import noop from '../_utils/noop';
 
 export default class PopupPicker extends PureComponent {
   static propTypes = {
@@ -30,7 +31,7 @@ export default class PopupPicker extends PureComponent {
 
   static defaultProps = {
     show: false,
-    onCancel: () => {},
+    onCancel: noop,
     prefixCls: 'Yep-picker',
     data: [],
   };

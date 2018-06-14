@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
 import Mask from '../mask';
+import noop from '../_utils/noop';
 
 export default class Dialog extends PureComponent {
   static propTypes = {
@@ -28,7 +29,7 @@ export default class Dialog extends PureComponent {
     maskCloseable: false,
     maskTransition: 'fade',
     dialogTransition: 'zoom',
-    onClose: () => {},
+    onClose: noop,
   };
 
   constructor(props) {

@@ -1,9 +1,12 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["jest", "prettier"],
-  "extends": ["airbnb", "plugin:jest/recommended"],
+  "extends": ["airbnb", "prettier", "prettier/react", "prettier/flowtype"],
+  "plugins": ["prettier"],
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
   },
   "rules": {
     "linebreak-style": "off",
@@ -12,6 +15,42 @@
     "react/require-default-props": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"]}],
+    "react/sort-comp": 0,
+    "react/prop-types": 0,
+    "react/no-array-index-key": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "import/prefer-default-export": 0,
+    "import/newline-after-import": 0,
+    "class-methods-use-this": 0,
+    "arrow-parens": 0,
+    "no-underscore-dangle": "off",
+    "no-prototype-builtins": 0,
+    "no-return-assign": 0,
+    "no-param-reassign": 0,
+    "no-console": ["error", {"allow": ["error"]}],
+    "no-use-before-define": [
+      "warn",
+      {
+        "functions": false,
+        "classes": false,
+        "variables": false
+      }
+    ],
+    "no-unused-vars": ["warn", {"args": "none", "ignoreRestSiblings": true}],
+    "no-useless-constructor": "warn",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true,
+        "allowTaggedTemplates": true
+      }
+    ],
+    "no-plusplus": 0,
+    "spaced-comment": 0,
+    "prefer-template": "off",
     "prettier/prettier": ["error"]
   }
 }

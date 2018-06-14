@@ -1,0 +1,36 @@
+@import '../../style/mixin';
+
+.Yep-carousel {
+  position: relative;
+  overflow: hidden;
+  &__container {
+    @include box();
+  }
+  &__item {
+    display: inline-block;
+    @include box();
+    @include horizontal-center();
+    @include vertical-center();
+    flex-shrink: 0;
+  }
+  &__page {
+    position: absolute;
+    display: flex;
+    @include vertical-center();
+    @include horizontal-center();
+    left: 0;
+    right: 0;
+    bottom: 0.25rem;
+    &-bullet {
+      width: 0.14rem;
+      height: 0.14rem;
+      margin: 0 0.055rem;
+      border-radius: 0.07rem;
+      background: rgba(255, 255, 255, 0.4);
+      &.active {
+        width: 0.24rem;
+        background: #fff;
+      }
+    }
+  }
+}
