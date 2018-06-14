@@ -13,7 +13,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-      <Carousel autoPlay={true}>
+      <Carousel autoPlay={5000}>
         <div><img src="//img13.360buyimg.com/popactivity/s750x310_jfs/t20509/74/416462535/109407/be7c303b/5b0ccea6N16a32a31.jpg!q70!cc_750x310" /></div>
         <div><img src="//img13.360buyimg.com/popactivity/s750x214_jfs/t21682/201/857107433/119607/34abd114/5b19f491N7feae4d5.jpg!cc_750x214!q70" /></div>
         <div><img src="//img11.360buyimg.com/popactivity/s750x310_jfs/t21508/86/127140022/107226/daf99cf3/5afe8ab7Nb3170223.jpg!q70!cc_750x310" /></div>
