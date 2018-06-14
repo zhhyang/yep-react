@@ -15,7 +15,7 @@
     "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublishOnly": "npm run clean && npm run compire && npm run dist ",
+    "prepublishOnly": "npm run clean && npm run dist && npm run compire ",
     "format": "prettier --write src/**/*.{js,jsx,scss,md}",
     "precommit": "lint-staged",
     "upload": "node scripts/upload.js"
@@ -68,7 +68,6 @@
     "gulp-header": "^2.0.5",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
