@@ -6,13 +6,10 @@ export default class Carousel extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
     autoPlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+    className: PropTypes.string,
     initPage: PropTypes.number,
     renderPage: PropTypes.func,
     onTransitionEnd: PropTypes.func,
-    style: PropTypes.object,
-    pageStyle: PropTypes.object,
-    pageItemStyle: PropTypes.object,
-    pageActiveitemStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -21,10 +18,6 @@ export default class Carousel extends PureComponent {
     initPage: 0,
     renderPage: null,
     onTransitionEnd: () => {},
-    style: {},
-    pageStyle: {},
-    pageItemStyle: {},
-    pageActiveitemStyle: {},
   };
 
   constructor(props) {
@@ -148,7 +141,7 @@ export default class Carousel extends PureComponent {
   }
 
   renderPageComponent(active, total) {
-    const {renderPage, pageStyle, pageItemStyle, pageActiveitemStyle} = this.props;
+    const {renderPage} = this.props;
 
     if (renderPage) {
       return renderPage(active, total);
@@ -159,12 +152,10 @@ export default class Carousel extends PureComponent {
       arr.push(i);
     }
     return (
-      <div style={pageStyle} className={`${this.props.prefixCls}__page`}>
+      <div className={`${this.props.prefixCls}__page`}>
         {arr.map((item, index) => {
-          const activeStyle = index === active ? pageActiveitemStyle : {};
           return (
             <div
-              style={{...pageItemStyle, ...activeStyle}}
               key={`page_${item}`}
               className={classNames(index === active ? 'active' : '', `${this.props.prefixCls}__page-bullet`)}
             />
@@ -176,7 +167,7 @@ export default class Carousel extends PureComponent {
 
   render() {
     const {touchStartPlace, touchMovePlace, currentIndex, isMoving, width, isShow} = this.state;
-    const {prefixCls, children, style} = this.props;
+    const {prefixCls, children, className} = this.props;
     let childrens = [];
     if (Object.prototype.toString.call(children) === '[object Array]') {
       childrens = this.props.children;
@@ -185,7 +176,7 @@ export default class Carousel extends PureComponent {
     }
     const showStyle = isShow ? null : {visibility: 'hidden'};
     return (
-      <div className={prefixCls} style={{...showStyle, ...style}}>
+      <div className={classNames(prefixCls, className)} style={showStyle}>
         <div
           className={`${prefixCls}__container`}
           style={{
