@@ -24,4 +24,5 @@ build
 .npmignore
 gulpfile.js
 .prettierrc
+.prettierignore
 
