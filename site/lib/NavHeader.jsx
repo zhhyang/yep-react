@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import allDocData from "./allDocData";
 
 class NavHeader extends React.Component {
   constructor(props) {
@@ -10,22 +11,39 @@ class NavHeader extends React.Component {
   }
 
   handleNavbarToggle() {
-    if(document.querySelector('.l-header').style.left == ''){
+    if(document.querySelector('.l-header').style.left === ''){
       document.querySelector('.l-header').style.left = '220px'
-    } else if(document.querySelector('.l-header').style.left == '220px'){
+    } else if(document.querySelector('.l-header').style.left === '220px'){
       document.querySelector('.l-header').style.left = ''
     }
-    if(document.querySelector('.l-menu').style.marginLeft == '' || document.querySelector('.l-menu').style.marginLeft == '-220px'){
+    if(document.querySelector('.l-menu').style.marginLeft === '' || document.querySelector('.l-menu').style.marginLeft === '-220px'){
       document.querySelector('.l-menu').style.marginLeft = '0'
-    }else if(document.querySelector('.l-menu').style.marginLeft == '0px'){
+    }else if(document.querySelector('.l-menu').style.marginLeft === '0px'){
       document.querySelector('.l-menu').style.marginLeft = '-220px'
     }
-
-
   }
+
 
   render() {
     const {scrollToRight} = this.state;
+    const { location } = this.props;
+    let pageId = '';
+    let page = {};
+    const pathname = location.pathname;
+    if (allDocData && pathname.match(/^\/doc\/component\/(\S+)/)) {
+      pageId = location.pathname.replace(/^\/doc\/component\//, '');
+      console.log(allDocData);
+      for(let i in allDocData.components){
+        if(allDocData.components[i].name === pageId){
+          page= allDocData.components[i]
+        }
+      }
+      console.log(page);
+    }else if(allDocData){
+      pageId = location.pathname.replace(/^\/doc\//, '');
+      page = allDocData.docs.find(d => d.id === pageId);
+    }
+
     return (
       <header className={`l-header`}>
         <button className="navbar-toggle" onClick={this.handleNavbarToggle.bind(this)}>
@@ -33,6 +51,7 @@ class NavHeader extends React.Component {
           <span></span>
           <span></span>
         </button>
+        <h2 className="l-header-title">{`${page.name ? page.name.substring(0,1).toUpperCase() + page.name.substring(1) : ''} ${page.title ? page.title : ''}`}</h2>
         <nav className="l-nav">
           <ul>
             <li className="nav-item">
@@ -51,4 +70,4 @@ class NavHeader extends React.Component {
   }
 }
 
-export default NavHeader;
+export default withRouter(NavHeader);
