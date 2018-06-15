@@ -13,6 +13,7 @@ title: 更新日志
 
 ---
 
+
 ### 0.1.2
 
 `2018-06-14`
@@ -21,7 +22,7 @@ title: 更新日志
 
   * 🌟 新增AutoComplete、Dropdown、Input组件 
   * 🌟 样式按需加载提供css的引入方式
-  * 🌟 `List` 新增 `Brief`次级内容
+  
 
 - **Bug Fix**
 
@@ -29,10 +30,8 @@ title: 更新日志
 
 - **Enhancement**
 
-  * 📝 更新 `TabBar` 使用文档
-  * 📝 更新 `Button` 文档
-  * 📝 更新 `List` 使用文档
-
+  * 📝 代码引入FlowType静态检查及相应静态检查问题修复
+  
 ### 0.1.1
 
 `2018-06-01`
