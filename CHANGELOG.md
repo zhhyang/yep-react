@@ -20,7 +20,9 @@ title: 更新日志
 
 * **Feature**
 
-  * 🌟 新增AutoComplete、Dropdown、Input组件 
+  * 🌟 新增AutoComplete组件 
+  * 🌟 新增Dropdown组件 
+  * 🌟 新增Input组件 
   * 🌟 样式按需加载提供css的引入方式
   
 
@@ -32,6 +34,7 @@ title: 更新日志
 
   * 📝 代码引入FlowType静态检查及相应静态检查问题修复
   
+
 ### 0.1.1
 
 `2018-06-01`
