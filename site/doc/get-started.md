@@ -27,7 +27,7 @@ npm install --save @jdcfe/yep-react
 >
 > 引入 Promise 的 fallback 支持 (部分安卓手机不支持 Promise)
 >
-> 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/yep-react/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
+> 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/lrc-m/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
 
 ```html
 <!DOCTYPE html>
@@ -66,7 +66,7 @@ import '@jdcfe/yep-react/dist/yep-react.css';
   // .babelrc or babel-loader option
   {
     "plugins": [
-      ["import", { libraryName: "@jdcfe/yep-react", style: true }] // `style: true` 会加载 scss 文件
+      ["import", { libraryName: "@jdcfe/yep-react", style: "css" }] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
     ]
   }
   ```

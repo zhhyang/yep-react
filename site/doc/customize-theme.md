@@ -9,7 +9,7 @@ Yep-React 设计规范上支持一定程度的样式定制，以满足业务和�
 
 Yep-React 的样式使用了 [scss](http://sass-lang.com/) 作为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整。
 
-* [默认样式变量](http://git.jd.com/JDC-FE/yep-react/blob/master/src/style/variables.scss)
+* [默认样式变量](http://git.jd.com/JDC-FE/lrc-m/blob/master/src/style/variables.scss)
 
 ## 定制方式
 

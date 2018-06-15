@@ -11,11 +11,11 @@
     "dev": "node scripts/start.js",
     "demo": "node scripts/demo-start.js",
     "watch-css-dist": "gulp default",
-    "dist": "gulp dist",
+    "dist": "gulp dist && gulp build-css-js",
     "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublishOnly": "npm run clean && npm run dist && npm run compire",
+    "prepublishOnly": "npm run clean && npm run dist && npm run compire ",
     "format": "prettier --write src/**/*.{js,jsx,scss,md}",
     "precommit": "lint-staged",
     "upload": "node scripts/upload.js"
