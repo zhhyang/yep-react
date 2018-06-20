@@ -90,6 +90,7 @@ class Demo extends React.PureComponent {
           indexedBarStyle={{top: 170}}
           data={data}
           renderRow={rowData => <Item>{rowData}</Item>}
+          enableQuickIndexedBarTop={false}
           renderSectionWrapper={sectionId => (
             <StickyContainer key={`s_${sectionId}_c`} className="sticky-container" style={{zIndex: 4}} />
           )}

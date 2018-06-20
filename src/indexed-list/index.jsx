@@ -29,6 +29,7 @@ export default class IndexedList extends PureComponent {
     onQuickSearch: PropTypes.func,
     indexedBarStyle: PropTypes.object,
     indicatorStyle: PropTypes.object,
+    enableQuickIndexedBarTop: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -42,6 +43,7 @@ export default class IndexedList extends PureComponent {
     quickIndexedBarTop: {label: '#', value: '#'},
     useBodyScroll: true,
     onQuickSearch: noop,
+    enableQuickIndexedBarTop: true,
   };
 
   sectionComponents = {};
@@ -208,7 +210,7 @@ export default class IndexedList extends PureComponent {
   }
 
   renderIndexedBar() {
-    const {prefixCls, indexedBarStyle, data, quickIndexedBarTop} = this.props;
+    const {prefixCls, indexedBarStyle, data, quickIndexedBarTop, enableQuickIndexedBarTop} = this.props;
     const sectionKvs = Object.keys(data).map(item => {
       return {
         label: item,
@@ -225,12 +227,15 @@ export default class IndexedList extends PureComponent {
         onTouchEnd={this.onTouchEnd}
         onTouchCancel={this.onTouchEnd}
       >
-        <li
-          data-index-target={quickIndexedBarTop.value}
-          onClick={() => this.onQuickSearchTop(undefined, quickIndexedBarTop.value)}
-        >
-          {quickIndexedBarTop.label}
-        </li>
+        {enableQuickIndexedBarTop && (
+          <li
+            data-index-target={quickIndexedBarTop.value}
+            onClick={() => this.onQuickSearchTop(undefined, quickIndexedBarTop.value)}
+          >
+            {quickIndexedBarTop.label}
+          </li>
+        )}
+
         {sectionKvs.map(kv => (
           <li key={kv.value} data-index-target={kv.value} onClick={() => this.onQuickSearch(kv.value)}>
             {kv.label}
