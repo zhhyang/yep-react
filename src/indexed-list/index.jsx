@@ -30,6 +30,7 @@ export default class IndexedList extends PureComponent {
     indexedBarStyle: PropTypes.object,
     indicatorStyle: PropTypes.object,
     enableQuickIndexedBarTop: PropTypes.bool,
+    activeBar: PropTypes.string,
   };
 
   static defaultProps = {
@@ -98,7 +99,8 @@ export default class IndexedList extends PureComponent {
     this.props.onQuickSearch(sectionID);
   };
 
-  updateIndicator(ele, end) {
+  updateIndicator(ele, end = false) {
+    console.log(ele, end);
     let el = ele;
     if (!el.getAttribute('data-index-target')) {
       el = el.parentNode;
@@ -118,10 +120,15 @@ export default class IndexedList extends PureComponent {
       }, 1000);
     }
 
-    const cls = `${this.props.prefixCls}-quick-search-bar-over`;
+    const cls = `${this.props.prefixCls}-indexed-bar-over`;
+    const activeCls = `${this.props.prefixCls}-indexed-bar-active`;
     // can not use setState to change className, it has a big performance issue!
     this._hCache.forEach(d => {
-      d[0].className = d[0].className.replace(cls, '');
+      d[0].className = d[0].className.replace(cls, '').replace(activeCls, '');
+      //add active class
+      d[0].className = `${d[0].className} ${
+        d[0].getAttribute('data-index-target') === el.innerText.trim() ? activeCls : ''
+      }`;
     });
     if (!end) {
       el.className = `${el.className} ${cls}`;
@@ -207,6 +214,19 @@ export default class IndexedList extends PureComponent {
     this._qsHeight = height;
     this._avgH = _avgH;
     this._hCache = hCache;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.activeBar !== this.props.activeBar) {
+      const activeCls = `${this.props.prefixCls}-indexed-bar-active`;
+      this._hCache.forEach(d => {
+        d[0].className = d[0].className.replace(activeCls, '');
+        //add active class
+        d[0].className = `${d[0].className} ${
+          d[0].getAttribute('data-index-target') === nextProps.activeBar ? activeCls : ''
+        }`;
+      });
+    }
   }
 
   renderIndexedBar() {

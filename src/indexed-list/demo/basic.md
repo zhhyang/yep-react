@@ -9,7 +9,45 @@ import React from 'react';
 import {IndexedList, List, Sticky} from '@jdcfe/yep-react';
 const {Item} = List;
 const {StickyContainer} = Sticky;
+
+class Header extends React.Component {
+  static defaultProps = {
+    className: '',
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isSticky !== this.props.isSticky && nextProps.isSticky) {
+      console.log(nextProps.isSticky);
+      this.props.change(nextProps.sectionData);
+    }
+  }
+  render() {
+    const {style, sectionData} = this.props;
+    return (
+      <div
+        className="sticky"
+        style={{
+          ...style,
+          zIndex: 3,
+          backgroundColor: sectionData.charCodeAt(0) % 2 ? '#5890ff' : '#F8591A',
+          color: 'white',
+        }}
+      >
+        {sectionData}
+      </div>
+    );
+  }
+}
+
 class Demo extends React.PureComponent {
+  state = {
+    key: '',
+  };
+
+  change = key => {
+    this.setState({key});
+  };
+
   render() {
     const data = {
       A: [
@@ -89,25 +127,17 @@ class Demo extends React.PureComponent {
           showIndicator
           indexedBarStyle={{top: 170}}
           data={data}
+          activeBar={this.state.key}
           renderRow={rowData => <Item>{rowData}</Item>}
           enableQuickIndexedBarTop={false}
+          onQuickSearch={this.change}
           renderSectionWrapper={sectionId => (
             <StickyContainer key={`s_${sectionId}_c`} className="sticky-container" style={{zIndex: 4}} />
           )}
           renderSectionHeader={sectionData => (
             <Sticky>
-              {({style}) => (
-                <div
-                  className="sticky"
-                  style={{
-                    ...style,
-                    zIndex: 3,
-                    backgroundColor: sectionData.charCodeAt(0) % 2 ? '#5890ff' : '#F8591A',
-                    color: 'white',
-                  }}
-                >
-                  {sectionData}
-                </div>
+              {({style, isSticky}) => (
+                <Header change={this.change} sectionData={sectionData} style={style} isSticky={isSticky} />
               )}
             </Sticky>
           )}
