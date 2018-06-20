@@ -25,4 +25,6 @@ build
 gulpfile.js
 .prettierrc
 .prettierignore
+.flowconfig
+CHANGELOG.md
 
