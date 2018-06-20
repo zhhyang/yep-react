@@ -13,18 +13,13 @@ title: 更新日志
 
 ---
 
+### 0.1.3
 
-### 0.1.2
-
-`2018-06-14`
+`2018-06-20`
 
 * **Feature**
 
-  * 🌟 新增AutoComplete组件 
-  * 🌟 新增Dropdown组件 
-  * 🌟 新增Input组件 
-  * 🌟 样式按需加载提供css的引入方式
-  
+  * 🌟 新增 Carousel 组件
 
 - **Bug Fix**
 
@@ -32,8 +27,26 @@ title: 更新日志
 
 - **Enhancement**
 
-  * 📝 代码引入FlowType静态检查及相应静态检查问题修复
-  
+  * 📝 无
+
+### 0.1.2
+
+`2018-06-14`
+
+* **Feature**
+
+  * 🌟 新增 AutoComplete 组件
+  * 🌟 新增 Dropdown 组件
+  * 🌟 新增 Input 组件
+  * 🌟 样式按需加载提供 css 的引入方式
+
+- **Bug Fix**
+
+  * 🐞 无
+
+- **Enhancement**
+
+  * 📝 代码引入 FlowType 静态检查及相应静态检查问题修复
 
 ### 0.1.1
 
@@ -43,7 +56,7 @@ title: 更新日志
 
   * 🌟 根据设计稿重新设计大部分组件规范
   * 🌟 支持组件[自定义主题样式](http://yep-react.jd.com/#/doc/customize-theme)
-  * 🌟 新增Tips组件
+  * 🌟 新增 Tips 组件
   * 🌟 `TabBar` 支持自定义 `badge` `dot` `hidden` 属性
   * 🌟 `Button` 支持 `type=ghost`类型
   * 🌟 `List` 新增 `Brief`次级内容
