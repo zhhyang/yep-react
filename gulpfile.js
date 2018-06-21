@@ -19,7 +19,6 @@ gulp.task('build-css-js', () => {
     .src('src/**/style/index.js')
     .pipe(replace(/\/style\/?'/g, "/style/css'"))
     .pipe(replace(/\.scss/g, '.css'))
-    .pipe(gulp.dest('lib/'))
     .pipe(
       rename({
         basename: 'css',

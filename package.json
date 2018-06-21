@@ -68,6 +68,7 @@
     "gulp-header": "^2.0.5",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
