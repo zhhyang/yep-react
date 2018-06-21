@@ -71,6 +71,7 @@ class Input extends PureComponent {
   render() {
     const {
       className,
+      prefixCls,
       type,
       defaultValue,
       onChange,

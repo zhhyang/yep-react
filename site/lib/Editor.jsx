@@ -21,6 +21,7 @@ export default class Editor extends React.Component {
       lineNumbers: false,
       dragDrop: false,
       keyMap: 'sublime',
+      cursorBlinkRate:-1
     });
 
     this.cm.setValue(value);
