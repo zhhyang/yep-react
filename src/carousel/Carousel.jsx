@@ -10,6 +10,7 @@ export default class Carousel extends PureComponent {
     initPage: PropTypes.number,
     renderPage: PropTypes.func,
     onTransitionEnd: PropTypes.func,
+    isBounces: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -17,6 +18,7 @@ export default class Carousel extends PureComponent {
     autoPlay: false,
     initPage: 0,
     renderPage: null,
+    isBounces: true,
     onTransitionEnd: () => {},
   };
 
@@ -89,6 +91,15 @@ export default class Carousel extends PureComponent {
   }
 
   touchMoveHandle(e) {
+    const {currentIndex, total, touchStartPlace} = this.state;
+    const {isBounces} = this.props;
+    if (!isBounces) {
+      if (currentIndex === 0 && touchStartPlace <= e.targetTouches[0].pageX) {
+        return false;
+      } else if (total - 1 === currentIndex && touchStartPlace >= e.targetTouches[0].pageX) {
+        return false;
+      }
+    }
     this.setState({
       touchMovePlace: e.targetTouches[0].pageX,
     });
