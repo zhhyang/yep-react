@@ -29,7 +29,7 @@
     "no-prototype-builtins": 0,
     "no-return-assign": 0,
     "no-param-reassign": 0,
-    "no-console": ["error", {"allow": ["error"]}],
+    "no-console": ["error", {"allow": ["error", "warn"]}],
     "no-use-before-define": [
       "warn",
       {
