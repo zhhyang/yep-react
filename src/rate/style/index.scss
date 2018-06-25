@@ -1,0 +1,19 @@
+@import '../../style/mixin';
+
+.Yep-rate {
+  display: inline-block;
+  position: relative;
+
+  &-star {
+    float: right;
+
+    &-icon {
+      font-size: 50px;
+    }
+  }
+
+  &-full-star,
+  &-empty-star {
+    color: $brand-primary;
+  }
+}
