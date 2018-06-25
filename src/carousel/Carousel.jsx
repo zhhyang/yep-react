@@ -50,7 +50,7 @@ export default class Carousel extends PureComponent {
     this.setState(
       {
         width: document.querySelector(`.${this.props.prefixCls}__container`).clientWidth,
-        total: children.length,
+        total: Object.prototype.toString.call(children) === '[object Array]' ? children.length : 1,
       },
       () => {
         this.setState({
@@ -183,7 +183,7 @@ export default class Carousel extends PureComponent {
     if (Object.prototype.toString.call(children) === '[object Array]') {
       childrens = this.props.children;
     } else {
-      childrens = [this.porps.children];
+      childrens = [this.props.children];
     }
     const showStyle = isShow ? null : {visibility: 'hidden'};
     return (
