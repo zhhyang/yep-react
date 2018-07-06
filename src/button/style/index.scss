@@ -2,19 +2,31 @@
 
 .Yep-btn {
   display: block;
+  outline: 0 none;
+  padding: 0;
   height: $button-height;
   line-height: $button-height;
   text-align: center;
   border-radius: $button-border-radius;
-  //color: #6f6f6f;
   font-size: $button-font-size;
+
+  overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-word;
   white-space: nowrap;
+
+  -webkit-appearance: none;
   box-sizing: border-box;
-  //margin-right: .2rem;
-  border: 1px solid $color-text-base;
+
   color: $color-text-base;
+  background-color: $fill-base;
+  @include hairline($button-border-color, $button-border-radius);
+
+  &-borderfix {
+    &:before {
+      transform: scale(0.49) !important;
+    }
+  }
 
   &.btn-disabled {
     background-color: $fill-disabled;
@@ -23,21 +35,22 @@
   &.btn-primary {
     background-color: $brand-primary;
     color: $color-text-base-inverse;
-    border: 1px solid $brand-primary;
+    @include hairline($brand-primary, $button-border-radius);
+
     &.btn-disabled {
       background-color: $fill-disabled;
-      border: 1px solid $fill-disabled;
-      //color: #ce2525;
     }
   }
 
   &.btn-ghost {
     background-color: $fill-base;
     color: $brand-primary;
-    border: 1px solid $brand-primary;
+
+    @include hairline($brand-primary, $button-border-radius);
+
     &.btn-disabled {
       background-color: $fill-disabled;
-      border: 1px solid $fill-disabled;
+      @include hairline($fill-disabled, $button-border-radius);
     }
   }
 

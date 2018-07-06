@@ -1,4 +1,139 @@
-@import "./variables";
+@import './variables';
+
+@mixin scale-hairline-common($color, $top, $right, $bottom, $left) {
+  content: '';
+  position: absolute;
+  background-color: $color;
+  display: block;
+  z-index: 1;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin hairline-top($direction, $color: $border-color-base) {
+  border-top: 1px solid $color;
+
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-top: none;
+
+      &::before {
+        @include scale-hairline-common($color, 0, auto, auto, 0);
+        width: 100%;
+        height: 1px;
+        transform-origin: 50% 50%;
+        transform: scaleY(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+  }
+}
+
+@mixin hairline-right($direction, $color: $border-color-base) {
+  border-right: 1px solid $color;
+
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-right: none;
+
+      &::after {
+        @include scale-hairline-common($color, 0, 0, auto, auto);
+        width: 1px;
+        height: 100%;
+        background: $color;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleX(0.33);
+        }
+      }
+    }
+  }
+}
+
+@mixin hairline-bottom($direction, $color: $border-color-base) {
+  border-bottom: 1px solid $color;
+
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-bottom: none;
+
+      &::after {
+        @include scale-hairline-common($color, auto, auto, 0, 0);
+        width: 100%;
+        height: 1px;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+  }
+}
+
+@mixin hairline-left($direction, $color: $border-color-base) {
+  border-left: 1px solid $color;
+
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-left: none;
+
+      &::before {
+        @include scale-hairline-common($color, 0, auto, auto, 0);
+        width: 1px;
+        height: 100%;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleX(0.33);
+        }
+      }
+    }
+  }
+}
+
+@mixin hairline($color: $border-color-base, $radius: 0) {
+  border: 1px solid $color;
+  border-radius: $radius;
+
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      position: relative;
+      border: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200%;
+        height: 200%;
+        border: 1px solid $color;
+        border-radius: $radius * 2;
+        transform-origin: 0 0;
+        transform: scale(0.5);
+        box-sizing: border-box;
+        pointer-events: none;
+
+        // $media (min-resolution: 3dppx) {
+        //   width: 300%;
+        //   height: 300%;
+        //   border-radius: $radius * 3;
+        //   transform: scale(0.33);
+        // }
+      }
+    }
+  }
+}
 
 @mixin border-bottom-1px($color: $border-color-base) {
   position: relative;
@@ -9,7 +144,7 @@
     width: 100%;
     left: 0;
     bottom: 0;
-    height: 1PX;
+    height: 1px;
     background-color: $color;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
@@ -26,7 +161,7 @@
     width: 100%;
     left: 0;
     top: 0;
-    height: 1PX;
+    height: 1px;
     background-color: $color;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
@@ -43,7 +178,7 @@
     height: 100%;
     left: 100%;
     top: 0;
-    width: 1PX;
+    width: 1px;
     background-color: $color;
     -webkit-transform: scaleX(0.5);
     transform: scaleX(0.5);
@@ -59,7 +194,7 @@
     height: 100%;
     right: 100%;
     top: 0;
-    width: 1PX;
+    width: 1px;
     background-color: $color;
     -webkit-transform: scaleX(0.5);
     transform: scaleX(0.5);
@@ -82,7 +217,7 @@
     transform: scale(0.5);
     -webkit-transform-origin: left top;
     transform-origin: left top;
-    border: 1PX solid $color;
+    border: 1px solid $color;
     border-radius: $radius;
   }
 }
@@ -114,19 +249,16 @@
 // 垂直居中 */
 @mixin vertical-center {
   align-items: center;
-
 }
 
 // 垂直靠上 */
 @mixin vertical-top {
   align-items: flex-start;
-
 }
 
 // 垂直靠下 */
 @mixin vertical-end {
   align-items: flex-end;
-
 }
 
 // 水平居中 */
@@ -154,7 +286,7 @@
   white-space: nowrap;
 }
 
-@mixin _icon($width, $height,$bgsize,$bgurl,$bgpos:0 0,$display:inline-block) {
+@mixin _icon($width, $height, $bgsize, $bgurl, $bgpos: 0 0, $display: inline-block) {
   width: $width;
   height: $height;
   display: $display;
@@ -164,19 +296,19 @@
   background-position: $bgpos;
 }
 
-@mixin arrow($color,$heightAndWidth,$deg:45deg) {
+@mixin arrow($color, $heightAndWidth, $deg: 45deg) {
   border-right: 1px solid $color;
   border-top: 1px solid $color;
   height: $heightAndWidth;
   width: $heightAndWidth;
-  margin-top: .05rem;
+  margin-top: 0.05rem;
   transform: rotate($deg);
   -webkit-transform: rotate($deg);
   border-left: 1px solid transparent;
   border-bottom: 1px solid transparent;
 }
 
-@mixin check($width,$height,$color) {
+@mixin check($width, $height, $color) {
   display: inline-block;
   width: $width;
   height: $height;
@@ -189,14 +321,14 @@
   &:after {
     content: '/';
     display: block;
-    width: $width*1.7;
+    width: $width * 1.7;
     height: $height;
     background: $color;
     -webkit-transform: rotate(-100deg) translateY(100%) translateX(50%);
   }
 }
 
-@mixin cross($width,$height,$color:black) {
+@mixin cross($width, $height, $color: black) {
   display: inline-block;
   width: $width;
   height: $height;
@@ -216,17 +348,20 @@
   }
 }
 
-
 @mixin clearfix {
   &:after {
-    content: ".";
+    content: '.';
     display: block;
     height: 0;
     clear: both;
-    visibility:hidden
+    visibility: hidden;
   }
   display: inline-block;
-  * html & {height:1%}
-  display:block;
-  *+html &{min-height:1%}
+  * html & {
+    height: 1%;
+  }
+  display: block;
+  * + html & {
+    min-height: 1%;
+  }
 }

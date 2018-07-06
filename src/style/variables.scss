@@ -40,6 +40,8 @@ $baseLineHeight: 1 !default;
 $opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
 
 // Button Component */
+$button-border-color: #c6c7ce !default;
+
 $button-height: 45 * $hd !default;
 $button-font-size: 18 * $hd !default;
 $button-border-radius: 2 * $hd !default;
