@@ -13,7 +13,7 @@
 }
 
 @mixin hairline-top($direction, $color: $border-color-base) {
-  border-top: 1px solid $color;
+  border-top: 1PX solid $color;
 
   html:not([data-scale]) & {
     @media (min-resolution: 2dppx) {
@@ -22,7 +22,7 @@
       &::before {
         @include scale-hairline-common($color, 0, auto, auto, 0);
         width: 100%;
-        height: 1px;
+        height: 1PX;
         transform-origin: 50% 50%;
         transform: scaleY(0.5);
 
@@ -35,7 +35,7 @@
 }
 
 @mixin hairline-right($direction, $color: $border-color-base) {
-  border-right: 1px solid $color;
+  border-right: 1PX solid $color;
 
   html:not([data-scale]) & {
     @media (min-resolution: 2dppx) {
@@ -43,7 +43,7 @@
 
       &::after {
         @include scale-hairline-common($color, 0, 0, auto, auto);
-        width: 1px;
+        width: 1PX;
         height: 100%;
         background: $color;
         transform-origin: 100% 50%;
@@ -58,7 +58,7 @@
 }
 
 @mixin hairline-bottom($direction, $color: $border-color-base) {
-  border-bottom: 1px solid $color;
+  border-bottom: 1PX solid $color;
 
   html:not([data-scale]) & {
     @media (min-resolution: 2dppx) {
@@ -67,7 +67,7 @@
       &::after {
         @include scale-hairline-common($color, auto, auto, 0, 0);
         width: 100%;
-        height: 1px;
+        height: 1PX;
         transform-origin: 50% 100%;
         transform: scaleY(0.5);
 
@@ -80,7 +80,7 @@
 }
 
 @mixin hairline-left($direction, $color: $border-color-base) {
-  border-left: 1px solid $color;
+  border-left: 1PX solid $color;
 
   html:not([data-scale]) & {
     @media (min-resolution: 2dppx) {
@@ -88,7 +88,7 @@
 
       &::before {
         @include scale-hairline-common($color, 0, auto, auto, 0);
-        width: 1px;
+        width: 1PX;
         height: 100%;
         transform-origin: 100% 50%;
         transform: scaleX(0.5);
@@ -102,7 +102,7 @@
 }
 
 @mixin hairline($color: $border-color-base, $radius: 0) {
-  border: 1px solid $color;
+  border: 1PX solid $color;
   border-radius: $radius;
 
   html:not([data-scale]) & {
@@ -117,7 +117,7 @@
         top: 0;
         width: 200%;
         height: 200%;
-        border: 1px solid $color;
+        border: 1PX solid $color;
         border-radius: $radius * 2;
         transform-origin: 0 0;
         transform: scale(0.5);
@@ -144,7 +144,7 @@
     width: 100%;
     left: 0;
     bottom: 0;
-    height: 1px;
+    height: 1PX;
     background-color: $color;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
@@ -161,7 +161,7 @@
     width: 100%;
     left: 0;
     top: 0;
-    height: 1px;
+    height: 1PX;
     background-color: $color;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
@@ -178,7 +178,7 @@
     height: 100%;
     left: 100%;
     top: 0;
-    width: 1px;
+    width: 1PX;
     background-color: $color;
     -webkit-transform: scaleX(0.5);
     transform: scaleX(0.5);
@@ -194,7 +194,7 @@
     height: 100%;
     right: 100%;
     top: 0;
-    width: 1px;
+    width: 1PX;
     background-color: $color;
     -webkit-transform: scaleX(0.5);
     transform: scaleX(0.5);
@@ -217,7 +217,7 @@
     transform: scale(0.5);
     -webkit-transform-origin: left top;
     transform-origin: left top;
-    border: 1px solid $color;
+    border: 1PX solid $color;
     border-radius: $radius;
   }
 }
@@ -297,15 +297,15 @@
 }
 
 @mixin arrow($color, $heightAndWidth, $deg: 45deg) {
-  border-right: 1px solid $color;
-  border-top: 1px solid $color;
+  border-right: 1PX solid $color;
+  border-top: 1PX solid $color;
   height: $heightAndWidth;
   width: $heightAndWidth;
   margin-top: 0.05rem;
   transform: rotate($deg);
   -webkit-transform: rotate($deg);
-  border-left: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  border-left: 1PX solid transparent;
+  border-bottom: 1PX solid transparent;
 }
 
 @mixin check($width, $height, $color) {

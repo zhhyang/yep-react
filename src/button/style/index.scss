@@ -39,6 +39,7 @@
 
     &.btn-disabled {
       background-color: $fill-disabled;
+      @include hairline($fill-disabled, $button-border-radius);
     }
   }
 
