@@ -4,6 +4,8 @@ $hd: 2px !default; //设计稿两倍尺寸
 $color-text-base-inverse: #fff; // 基本 - 反色
 $color-text-base: #3d3f52 !default; //一级信息：重要文字&标题等
 $color-text-secondary: #6c707d !default; // 二级信息：重要文字等
+$color-text-placeholder: #C6C7CE;           // 文本框提示placeholder
+$color-text-disabled:  #999BAA;              // 失效
 $color-text-caption: #999baa !default; // 三级信息：辅助类文字
 
 //全局/品牌色
@@ -38,6 +40,9 @@ $font-size-heading: 18 * $hd !default; //导航栏标题、主按钮等重要信
 $baseLineHeight: 1 !default;
 // 透明度
 $opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
+
+
+$radius-circle: 50%;
 
 // Button Component */
 $button-border-color: #c6c7ce !default;
@@ -101,3 +106,10 @@ $v-spacing-xl: 21 * $hd !default;
 $list-title-height: 30 * $hd !default;
 $list-item-height-sm: 35 * $hd !default;
 $list-item-height: 44 * $hd !default;
+
+
+// input
+$input-label-width: 16 * $hd!default;       // InputItem、TextareaItem 文字长度基础值
+$input-font-size: 16 * $hd!default;
+$input-color-icon: #ccc!default; // input clear icon 的背景色
+$input-color-icon-tap: $brand-primary!default;

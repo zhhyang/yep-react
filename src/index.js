@@ -39,7 +39,7 @@ export {default as CountDown} from './count-down';
 export {default as Message} from './message';
 export {default as AutoComplete} from './auto-complete';
 export {default as Dropdown} from './dropdown';
-export {default as Input} from './input';
+export {default as InputItem} from './input-item';
 export {default as NavBar} from './nav-bar';
 export {default as Carousel} from './carousel';
 export {default as Tabs} from './tabs';
