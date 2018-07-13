@@ -1,0 +1,52 @@
+
+@import '../../style/mixin';
+.yep-search-bar-bj {
+  height: 100px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items:center; 
+  .yep-search-bar-cancel {
+    color: #2A83E1;
+    font-size: 28px;
+    margin: 0 0 0 36px;
+  }
+  .Yep-search-bar-wrapper {
+      position: relative;
+      display: inline-block;
+      height: 64px;
+      background: #F0F0F0;
+      width: 584px;
+      border-radius: 40px;
+      display: flex;
+      align-items:center; 
+      margin: 0 0 0 26px;
+      .Yep-icon-lego_sousuo{
+        margin: 0 20px 0 20px;
+      }
+      .Yep-search-bar {
+        padding-right: 25px;
+        font-size:32px;
+        height: 64px;
+        line-height: 64px;
+        width:490px;
+        background-color: #F0F0F0;
+        display:flex;
+        display:-webkit-flex;
+        &::placeholder {
+          color: #C6C7CE;
+        }
+      }
+      .Yep-search-bar--sm + .Yep-clearable-search-bar__clear {
+        right: 0;
+      }
+  }
+}
+
+  
+  .Yep-search-bar__clear {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: 10px;
+  }

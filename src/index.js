@@ -44,3 +44,4 @@ export {default as NavBar} from './nav-bar';
 export {default as Carousel} from './carousel';
 export {default as Tabs} from './tabs';
 export {default as Rate} from './rate';
+export {default as SearchBar} from './search-bar';
