@@ -13,6 +13,22 @@ title: 更新日志
 
 ---
 
+### 0.1.12
+
+`2018-07-16`
+
+* **Feature**
+
+  * 🌟 新增 InputItem、DatePicker、PickerVIew 组件
+
+- **Bug Fix**
+
+  * 🐞
+
+- **Enhancement**
+
+  * 无
+
 ### 0.1.11
 
 `2018-07-10`
