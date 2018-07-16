@@ -7,7 +7,6 @@ import ComposedHOC from './ComposedHOC';
 class Picker extends Component {
   static propTypes = {
     prefixCls: PropTypes.string,
-    data: PropTypes.array,
     select: PropTypes.func,
     doScrollingComplete: PropTypes.func,
     computeChildIndex: PropTypes.func,
@@ -15,7 +14,6 @@ class Picker extends Component {
 
   static defaultProps = {
     prefixCls: 'Yep-picker',
-    data: [],
   };
 
   scrollHanders = (() => {
@@ -97,7 +95,7 @@ class Picker extends Component {
     const onFinish = () => {
       isMoving = false;
       let targetY = scrollY;
-      const height = (this.props.data.length - 1) * this.itemHeight;
+      const height = (this.props.children.length - 1) * this.itemHeight;
 
       let time = 0.3;
 
@@ -157,13 +155,14 @@ class Picker extends Component {
     this.scrollToWithoutAnimation = this.scrollToWithoutAnimation.bind(this);
 
     let selectedValueState;
-    const {selectedValue, defaultSelectedValue, data} = props;
+    const {selectedValue, defaultSelectedValue} = props;
     if (selectedValue !== undefined) {
       selectedValueState = selectedValue;
     } else if (defaultSelectedValue !== undefined) {
       selectedValueState = defaultSelectedValue;
     } else {
-      selectedValueState = data && data[0] && data[0];
+      const children = React.Children.toArray(this.props.children);
+      selectedValueState = children && children[0] && children[0].props.value;
     }
     this.state = {
       selectedValue: selectedValueState,
@@ -201,16 +200,16 @@ class Picker extends Component {
   }
 
   onScrollChange() {
-    const {data, onScrollChange, computeChildIndex} = this.props;
+    const {children, onScrollChange, computeChildIndex} = this.props;
     const top = this.scrollHanders.getValue();
     if (top >= 0) {
-      const index = computeChildIndex(top, this.itemHeight, data.length);
+      const index = computeChildIndex(top, this.itemHeight, children.length);
       if (this.scrollValue !== index) {
         this.scrollValue = index;
-        const value = data[index];
-        if (value && onScrollChange) {
-          onScrollChange(value);
-        } else if (!value && console.warn) {
+        const child = children[index];
+        if (child && onScrollChange) {
+          onScrollChange(child.props.value);
+        } else if (!child && console.warn) {
           console.warn('child not found', children, index);
         }
       }
@@ -298,7 +297,7 @@ class Picker extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.selectedValue !== nextState.selectedValue || this.props.data !== nextProps.data;
+    return this.state.selectedValue !== nextState.selectedValue || this.props.children !== nextProps.children;
   }
 
   componentDidUpdate() {
@@ -314,22 +313,29 @@ class Picker extends Component {
   }
 
   render() {
-    const {className, prefixCls, style, indicatorStyle, data} = this.props;
+    const {className, prefixCls, style, indicatorStyle, itemStyle, children} = this.props;
 
     const cls = classNames(prefixCls, {
       [className]: !!className,
     });
 
-    const items = data.map((item, index) => (
-      <div
-        key={index}
-        className={classNames(`${prefixCls}-item`, {
-          [`${prefixCls}-item-selected`]: item === this.state.selectedValue,
-        })}
-      >
-        {item}
-      </div>
-    ));
+    const map = (item: any) => {
+      const {className = '', style, value} = item.props;
+      return (
+        <div
+          style={{...itemStyle, ...style}}
+          key={value}
+          className={classNames(`${prefixCls}-item`, className, {
+            [`${prefixCls}-item-selected`]: value === this.state.selectedValue,
+          })}
+        >
+          {item.children || item.props.children}
+        </div>
+      );
+    };
+
+    const items = React.Children ? React.Children.map(children, map) : [].concat(children).map(map);
+
     return (
       <div className={cls} style={style} ref={this.createRootRef}>
         <div className={`${prefixCls}-mask`} ref={this.createMaskRef} />
