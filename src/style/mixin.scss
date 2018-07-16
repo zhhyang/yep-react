@@ -12,7 +12,7 @@
   left: $left;
 }
 
-@mixin hairline-top($direction, $color: $border-color-base) {
+@mixin hairline-top($color: $border-color-base) {
   border-top: 1PX solid $color;
 
   html:not([data-scale]) & {
@@ -34,7 +34,7 @@
   }
 }
 
-@mixin hairline-right($direction, $color: $border-color-base) {
+@mixin hairline-right($color: $border-color-base) {
   border-right: 1PX solid $color;
 
   html:not([data-scale]) & {
@@ -57,7 +57,7 @@
   }
 }
 
-@mixin hairline-bottom($direction, $color: $border-color-base) {
+@mixin hairline-bottom($color: $border-color-base) {
   border-bottom: 1PX solid $color;
 
   html:not([data-scale]) & {
@@ -79,7 +79,7 @@
   }
 }
 
-@mixin hairline-left($direction, $color: $border-color-base) {
+@mixin hairline-left($color: $border-color-base) {
   border-left: 1PX solid $color;
 
   html:not([data-scale]) & {

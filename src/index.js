@@ -44,3 +44,5 @@ export {default as NavBar} from './nav-bar';
 export {default as Carousel} from './carousel';
 export {default as Tabs} from './tabs';
 export {default as Rate} from './rate';
+export {default as DatePicker} from './date-picker';
+export {default as PickerView} from './picker-view';
