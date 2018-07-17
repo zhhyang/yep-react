@@ -21,6 +21,9 @@ class PopupDatePicker extends React.Component<DatePickerProps, any> {
 
   onOk = v => {
     const {onChange, onOk} = this.props;
+    if (this.scrollValue !== undefined) {
+      v = this.scrollValue;
+    }
     if (onChange) {
       onChange(v);
     }
