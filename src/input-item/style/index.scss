@@ -10,13 +10,13 @@ $inputPrefixCls: Yep-input;
   }
   &:not(:last-child) {
     .#{$listPrefixCls}-line {
-      @include hairline('bottom');
+      @include hairline-bottom();
     }
   }
 
   .#{$inputPrefixCls}-label {
     color: $color-text-base;
-    font-size: $font-size-heading;
+    font-size: $font-size-caption;
     margin-left: 0;
     margin-right: $h-spacing-sm;
     text-align: left;
@@ -55,7 +55,7 @@ $inputPrefixCls: Yep-input;
 
     input {
       color: $color-text-base;
-      font-size: $font-size-heading;
+      font-size: $font-size-caption;
       appearance: none;
       width: 100%;
       padding: 2 * $hd 0;
@@ -66,7 +66,7 @@ $inputPrefixCls: Yep-input;
 
       &::placeholder {
         color: $color-text-placeholder;
-        line-height: 1.2;
+        line-height: $baseLineHeight;
       }
 
       &:disabled {
