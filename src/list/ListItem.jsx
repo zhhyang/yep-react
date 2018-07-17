@@ -17,7 +17,7 @@ export default class ListItem extends PureComponent {
     multipleLine: PropTypes.bool,
     thumb: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     extra: PropTypes.node,
-    arrow: PropTypes.oneOf(['horizontal', 'down', 'up', 'empty', '']),
+    icon: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     wrap: PropTypes.bool,
     activeStyle: PropTypes.object,
     error: PropTypes.bool,
@@ -44,7 +44,7 @@ export default class ListItem extends PureComponent {
       multipleLine,
       thumb,
       extra,
-      arrow,
+      icon,
       onClick,
       ...restProps
     } = this.props;
@@ -60,11 +60,7 @@ export default class ListItem extends PureComponent {
       [`${prefixCls}-line-wrap`]: wrap,
     });
 
-    const arrowCls = classNames(`${prefixCls}-arrow`, {
-      [`${prefixCls}-arrow-horizontal`]: arrow === 'horizontal',
-      [`${prefixCls}-arrow-vertical`]: arrow === 'down' || arrow === 'up',
-      [`${prefixCls}-arrow-vertical-up`]: arrow === 'up',
-    });
+    const arrowCls = classNames(`${prefixCls}-arrow`, `${prefixCls}-arrow-horizontal`);
 
     const touchProps = {};
     Object.keys(restProps).forEach(key => {
@@ -88,9 +84,9 @@ export default class ListItem extends PureComponent {
           <div className={lineCls}>
             {children !== undefined && <div className={`${prefixCls}-content`}>{children}</div>}
             {extra !== undefined && <div className={`${prefixCls}-extra`}>{extra}</div>}
-            {arrow && (
+            {icon && (
               <div className={arrowCls} aria-hidden="true">
-                <Icon type="arrow-right" size="xxs" />
+                {typeof icon === 'string' ? <Icon type={icon} size="xxs" /> : icon}
               </div>
             )}
           </div>
