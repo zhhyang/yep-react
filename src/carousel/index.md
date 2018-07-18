@@ -13,3 +13,4 @@ title: 轮播图
 | initPage        | 默认第一帧                                  | number        | 0            |
 | onTransitionEnd | 每次轮播完一帧的钩子函数                    | function      | null         |
 | isBounces | 是否允许回弹效果                    | bool      | true         |
+| isInfinite | 是否无限滚动                    | bool      | false         |
