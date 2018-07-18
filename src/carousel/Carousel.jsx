@@ -12,6 +12,7 @@ export default class Carousel extends PureComponent {
     onTransitionEnd: PropTypes.func,
     isBounces: PropTypes.bool,
     isInfinite: PropTypes.bool,
+    distance: PropTypes.number,
   };
 
   static defaultProps = {
@@ -21,6 +22,7 @@ export default class Carousel extends PureComponent {
     renderPage: null,
     isBounces: true,
     isInfinite: false,
+    distance: 2,
     onTransitionEnd: () => {},
   };
 
@@ -122,12 +124,13 @@ export default class Carousel extends PureComponent {
 
   touchEndHandle() {
     const {width, touchStartPlace, touchMovePlace, currentIndex} = this.state;
+    const {distance} = this.props;
     this.setState({
       isMoving: false,
       touchStartPlace: 0,
       touchMovePlace: 0,
     });
-    const multiple = Math.round((touchMovePlace - touchStartPlace) / width * 1.3);
+    const multiple = Math.round((touchMovePlace - touchStartPlace) / width * distance);
     const targetIndex = currentIndex - multiple;
     this.goPage(targetIndex);
     this.autoplayFunc();

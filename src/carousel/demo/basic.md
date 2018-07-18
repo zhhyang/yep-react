@@ -12,7 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Carousel className='bbb' isInfinite={false}>
+        <Carousel className='bbb' isInfinite={true}>
           <div>
             <img src="//m.360buyimg.com/babel/jfs/t23224/35/1026004507/74414/35929bac/5b4d885bN0cdaa9f4.jpg" />
           </div>
