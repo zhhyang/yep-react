@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Dropdown from '../dropdown';
-import Input from '../input';
+import Input from '../input-item/Input';
 
 class AutoComplete extends PureComponent {
   constructor(props) {
@@ -50,11 +50,11 @@ class AutoComplete extends PureComponent {
       if (value && !onChange) {
         return new Error('You provided a `value` prop without an `onChange` handler');
       }
-    }
-  }
+    },
+  };
 
   static defaultProps = {
-    prefixCls: 'Yep-auto-complete'
+    prefixCls: 'Yep-auto-complete',
   };
 
   componentWillReceiveProps(nextProps) {
@@ -121,11 +121,12 @@ class AutoComplete extends PureComponent {
     const cls = classnames(prefixCls, className);
 
     return (
-      <Dropdown className={cls}
-                open={!!isOpen || open}
-                disabled={!!disabled}
-                aligned
-                onToggle={open => this.setState({open})}
+      <Dropdown
+        className={cls}
+        open={!!isOpen || open}
+        disabled={!!disabled}
+        aligned
+        onToggle={open => this.setState({open})}
       >
         <Dropdown.DropdownToggle>
           <Input
@@ -140,12 +141,13 @@ class AutoComplete extends PureComponent {
         <Dropdown.DropdownMenu className={`${prefixCls}__popover`}>
           <ul className={`${prefixCls}__result`}>
             {result.map((item, i) => (
-                <li key={item}
-                  className={classnames({[`${prefixCls}__option--active`] : index === i})}
-                  onClick={this.handleSelect.bind(this, item)}
-                >
-                  {item}
-                </li>
+              <li
+                key={item}
+                className={classnames({[`${prefixCls}__option--active`]: index === i})}
+                onClick={this.handleSelect.bind(this, item)}
+              >
+                {item}
+              </li>
             ))}
           </ul>
         </Dropdown.DropdownMenu>
@@ -153,6 +155,5 @@ class AutoComplete extends PureComponent {
     );
   }
 }
-
 
 export default AutoComplete;

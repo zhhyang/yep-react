@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
+const Item = props => null;
+
+Item.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.any,
+};
 
 export default function(ComposedComponent) {
   return class extends Component {
+    static Item = Item;
+
     constructor() {
       super();
       this.select = this.select.bind(this);
@@ -11,9 +21,9 @@ export default function(ComposedComponent) {
     }
 
     select(value, itemHeight, scrollTo) {
-      const {data} = this.props;
-      for (let i = 0, len = data.length; i < len; i++) {
-        if (data[i] === value) {
+      const children = React.Children.toArray(this.props.children);
+      for (let i = 0, len = children.length; i < len; i++) {
+        if (children[i].props.value === value) {
           this.selectByIndex(i, itemHeight, scrollTo);
           return;
         }
@@ -22,7 +32,7 @@ export default function(ComposedComponent) {
     }
 
     selectByIndex(index, itemHeight, zscrollTo) {
-      if (index < 0 || index >= this.props.data.length || !itemHeight) {
+      if (index < 0 || index >= this.props.children.length || !itemHeight) {
         return;
       }
       zscrollTo(index * itemHeight);
@@ -40,13 +50,13 @@ export default function(ComposedComponent) {
     }
 
     doScrollingComplete(top, itemHeight, fireValueChange) {
-      const {data} = this.props;
-      const index = this.computeChildIndex(top, itemHeight, data.length);
-      const value = data[index];
-      if (value) {
-        fireValueChange(value);
+      const children = React.Children.toArray(this.props.children);
+      const index = this.computeChildIndex(top, itemHeight, children.length);
+      const child: any = children[index];
+      if (child) {
+        fireValueChange(child.props.value);
       } else if (console.warn) {
-        console.warn('child not found', children, index);
+        console.warn('child not found', child, index);
       }
     }
 
