@@ -3,13 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Wrap from './Wrap';
 
-const Placeholder = props => {
+const InitialComponent = props => <rect x="0" y="0" rx="5" ry="5" width={props.width} height={props.height} />;
+
+const Skeleton = props => {
   const {children, ...restProps} = props;
 
   return <Wrap {...restProps}>{children ? children : <InitialComponent {...restProps} />}</Wrap>;
 };
 
-Placeholder.propTypes = {
+Skeleton.propTypes = {
   animate: PropTypes.bool,
   speed: PropTypes.number,
   className: PropTypes.string,
@@ -24,7 +26,7 @@ Placeholder.propTypes = {
   uniquekey: PropTypes.string,
 };
 
-Placeholder.defaultProps = {
+Skeleton.defaultProps = {
   animate: true,
   speed: 2,
   width: 400,
@@ -36,4 +38,4 @@ Placeholder.defaultProps = {
   secondaryOpacity: 1,
 };
 
-export default Placeholder;
+export default Skeleton;

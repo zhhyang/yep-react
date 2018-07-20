@@ -7,11 +7,11 @@ title: 占位符
 
 ## 特性
 
-- **完全可定制:** 你可以改变颜色，速度和尺寸;
-- **创建你自己的 loading:** 使用
+* **完全可定制:** 你可以改变颜色，速度和尺寸;
+* **创建你自己的 loading:** 使用
   [create-content-loader](https://danilowoz.github.io/create-content-loader/) 去创建定制的 loadings;
-- **开箱可用:** FacebookStyle、InstagramStyle、CodeStyle、ListStyle、BulletListStyle;
-- **高性能:** 纯 SVG, 无需 scripts, canvas, etc;
+* **开箱可用:** FacebookStyle、InstagramStyle、CodeStyle、ListStyle、BulletListStyle;
+* **高性能:** 纯 SVG, 无需 scripts, canvas, etc;
 
 <DEMO>
 

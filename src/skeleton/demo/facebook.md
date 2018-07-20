@@ -1,19 +1,19 @@
 ---
-order: 1
-title: Instagram Style
+order: 0
+title: Facebook Style
 description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from '@jdcfe/yep-react';
-const {InstagramStyle} = Placeholder;
+import {Skeleton} from '@jdcfe/yep-react';
+const {FacebookStyle} = Skeleton;
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <InstagramStyle />
+        <FacebookStyle />
       </div>
     );
   }

@@ -24,7 +24,7 @@ export {default as Toast} from './toast';
 export {default as Dialog} from './dialog';
 export {default as WhiteSpace} from './white-space';
 export {default as Upload} from './upload';
-export {default as Placeholder} from './placeholder';
+export {default as Skeleton} from './skeleton';
 export {default as TabBar} from './tab-bar';
 export {default as Sticky} from './sticky';
 export {default as List} from './list';

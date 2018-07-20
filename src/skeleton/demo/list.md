@@ -1,19 +1,19 @@
 ---
-order: 4
-title: BulletList Style
+order: 3
+title: List Style
 description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from '@jdcfe/yep-react';
-const {BulletListStyle} = Placeholder;
+import {Skeleton} from '@jdcfe/yep-react';
+const {ListStyle} = Skeleton;
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <BulletListStyle />
+        <ListStyle />
       </div>
     );
   }

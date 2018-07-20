@@ -1,19 +1,19 @@
 ---
-order: 3
-title: List Style
+order: 1
+title: Instagram Style
 description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from '@jdcfe/yep-react';
-const {ListStyle} = Placeholder;
+import {Skeleton} from '@jdcfe/yep-react';
+const {InstagramStyle} = Skeleton;
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <ListStyle />
+        <InstagramStyle />
       </div>
     );
   }

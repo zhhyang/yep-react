@@ -1,19 +1,19 @@
 ---
-order: 0
-title: Facebook Style
+order: 2
+title: Code Style
 description:
 ---
 
 ```js
 import React from 'react';
-import {Placeholder} from '@jdcfe/yep-react';
-const {FacebookStyle} = Placeholder;
+import {Skeleton} from '@jdcfe/yep-react';
+const {CodeStyle} = Skeleton;
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <FacebookStyle />
+        <CodeStyle />
       </div>
     );
   }

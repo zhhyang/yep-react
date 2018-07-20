@@ -1,8 +1,8 @@
 import React from 'react';
-import Placeholder from '../Placeholder';
+import Skeleton from '../Skeleton';
 
 const BulletListStyle = props => (
-  <Placeholder {...props}>
+  <Skeleton {...props}>
     <circle cx="10" cy="20" r="8" />
     <rect x="25" y="15" rx="5" ry="5" width="220" height="10" />
     <circle cx="10" cy="50" r="8" />
@@ -11,7 +11,7 @@ const BulletListStyle = props => (
     <rect x="25" y="75" rx="5" ry="5" width="220" height="10" />
     <circle cx="10" cy="110" r="8" />
     <rect x="25" y="105" rx="5" ry="5" width="220" height="10" />
-  </Placeholder>
+  </Skeleton>
 );
 
 export default BulletListStyle;
