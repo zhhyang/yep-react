@@ -28,7 +28,10 @@ class Demo extends React.PureComponent {
           mode={'date'}
           show={this.state.show}
           value={this.state.date}
-          onOk={() => this.setState({show: false})}
+          onOk={value => {
+            this.setState({show: false});
+            console.log(value);
+          }}
           onCancel={() => this.setState({show: false})}
           onChange={date => this.setState({date})}
         />
