@@ -34,11 +34,10 @@ class NavHeader extends React.Component {
       pageId = location.pathname.replace(/^\/doc\/component\//, '');
       console.log(allDocData);
       for(let i in allDocData.components){
-        if(allDocData.components[i].name === pageId){
+        if(allDocData.components[i] && allDocData.components[i].name === pageId){
           page= allDocData.components[i]
         }
       }
-      console.log(page);
     }else if(allDocData){
       pageId = location.pathname.replace(/^\/doc\//, '');
       page = allDocData.docs.find(d => d.id === pageId);
@@ -51,7 +50,7 @@ class NavHeader extends React.Component {
           <span></span>
           <span></span>
         </button>
-        <h2 className="l-header-title">{`${page.name ? page.name.substring(0,1).toUpperCase() + page.name.substring(1) : ''} ${page.title ? page.title : ''}`}</h2>
+        <h2 className="l-header-title">{`${(page && page.name) ? page.name.substring(0,1).toUpperCase() + page.name.substring(1) : ''} ${(page && page.title) ? page.title : ''}`}</h2>
         <nav className="l-nav">
           <ul>
             <li className="nav-item">
