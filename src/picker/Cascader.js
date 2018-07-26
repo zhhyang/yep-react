@@ -97,8 +97,7 @@ class Cascader extends React.Component<ICascaderProps, any> {
   }
 
   render() {
-    const props = this.props;
-    const {prefixCls, className, rootNativeProps, style} = props;
+    const {prefixCls, className, rootNativeProps, style, onScrollChange} = this.props;
     const cols = this.getCols();
     const multiStyle = {
       flexDirection: 'row',
@@ -113,7 +112,7 @@ class Cascader extends React.Component<ICascaderProps, any> {
         selectedValue={this.state.value}
         rootNativeProps={rootNativeProps}
         onValueChange={this.onValueChange}
-        onScrollChange={props.onScrollChange}
+        onScrollChange={onScrollChange}
       >
         {cols}
       </MultiPicker>

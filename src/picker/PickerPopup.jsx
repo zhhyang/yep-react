@@ -21,7 +21,7 @@ export default class PickerPopup extends PureComponent {
      * 确定事件回调
      */
     onOk: PropTypes.func,
-    children: PropTypes.any,
+    picker: PropTypes.any.isRequired,
   };
 
   static defaultProps = {
@@ -31,14 +31,18 @@ export default class PickerPopup extends PureComponent {
     title: '',
   };
 
-  onOk = (v: any) => {
+  onOk = () => {
     if (this.props.onOk) {
-      this.props.onOk(v);
+      this.props.onOk(this.picker.getValue());
     }
   };
 
+  saveRef = picker => {
+    this.picker = picker;
+  };
+
   render() {
-    const {show, onCancel, title, children} = this.props;
+    const {show, onCancel, title, picker} = this.props;
 
     return (
       <Popup show={show} onCancel={onCancel}>
@@ -52,7 +56,7 @@ export default class PickerPopup extends PureComponent {
               确定
             </div>
           </div>
-          {children}
+          {React.cloneElement(picker, {ref: this.saveRef})}
         </div>
       </Popup>
     );

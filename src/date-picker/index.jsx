@@ -48,21 +48,26 @@ class PopupDatePicker extends React.Component<DatePickerProps, any> {
       onValueChange,
     } = this.props;
     return (
-      <PickerPopup show={show} onCancel={onCancel} onOk={this.onOk}>
-        <DatePicker
-          minuteStep={minuteStep}
-          locale={locale}
-          minDate={minDate}
-          maxDate={maxDate}
-          mode={mode}
-          pickerPrefixCls={pickerPrefixCls}
-          prefixCls={prefixCls}
-          defaultDate={value || new Date()}
-          use12Hours={use12Hours}
-          onValueChange={onValueChange}
-          onScrollChange={this.setScrollValue}
-        />
-      </PickerPopup>
+      <PickerPopup
+        show={show}
+        onCancel={onCancel}
+        onOk={this.onOk}
+        picker={
+          <DatePicker
+            minuteStep={minuteStep}
+            locale={locale}
+            minDate={minDate}
+            maxDate={maxDate}
+            mode={mode}
+            pickerPrefixCls={pickerPrefixCls}
+            prefixCls={prefixCls}
+            defaultDate={value || new Date()}
+            use12Hours={use12Hours}
+            onValueChange={onValueChange}
+            onScrollChange={this.setScrollValue}
+          />
+        }
+      />
     );
   }
 }

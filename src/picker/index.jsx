@@ -125,13 +125,6 @@ export default class PopupPicker extends PureComponent {
     this.setScrollValue(v);
   };
 
-  fixOnOk = (cascader: any) => {
-    if (cascader && cascader.onOk !== this.onOk) {
-      cascader.onOk = this.onOk;
-      cascader.forceUpdate();
-    }
-  };
-
   onPickerChange = (v: any) => {
     this.setScrollValue(v);
     if (this.props.onPickerChange) {
@@ -160,25 +153,23 @@ export default class PopupPicker extends PureComponent {
       ...restProps
     } = this.props;
 
-    return (
-      <PickerPopup onCancel={onCancel} show={show} onOk={this.onOk}>
-        {cascade ? (
-          <Cascader
-            prefixCls={prefixCls}
-            pickerPrefixCls={pickerPrefixCls}
-            data={data}
-            cols={cols}
-            onChange={this.onPickerChange}
-            onScrollChange={this.setCasecadeScrollValue}
-            pickerItemStyle={itemStyle}
-            indicatorStyle={indicatorStyle}
-          />
-        ) : (
-          <MultiPicker {...restProps} prefixCls={pickerPrefixCls} onScrollChange={this.setScrollValue}>
-            {this.getPickerCol()}
-          </MultiPicker>
-        )}
-      </PickerPopup>
+    const picker = cascade ? (
+      <Cascader
+        prefixCls={prefixCls}
+        pickerPrefixCls={pickerPrefixCls}
+        data={data}
+        cols={cols}
+        onChange={this.onPickerChange}
+        onScrollChange={this.setCasecadeScrollValue}
+        pickerItemStyle={itemStyle}
+        indicatorStyle={indicatorStyle}
+      />
+    ) : (
+      <MultiPicker {...restProps} prefixCls={pickerPrefixCls} onScrollChange={this.setScrollValue}>
+        {this.getPickerCol()}
+      </MultiPicker>
     );
+
+    return <PickerPopup onCancel={onCancel} show={show} onOk={this.onOk} picker={picker} />;
   }
 }
