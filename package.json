@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.1.18",
+  "version": "0.2.0",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
@@ -8,8 +8,8 @@
     "compire": "babel src/ --out-dir ./lib --copy-files --ignore md",
     "eslint": "eslint --ext .js --ext .jsx src/",
     "test": "jest --config ./scripts/jest.config.js",
-    "dev": "node scripts/start.js",
-    "demo": "node scripts/demo-start.js",
+    "site-run": "node scripts/start.js",
+    "demo-run": "node scripts/demo-start.js",
     "watch-css-dist": "gulp default",
     "dist": "gulp dist && gulp build-css-js",
     "clean": "rimraf lib dist",

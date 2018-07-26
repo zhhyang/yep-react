@@ -4,8 +4,8 @@ $hd: 2px !default; //设计稿两倍尺寸
 $color-text-base-inverse: #fff; // 基本 - 反色
 $color-text-base: #3d3f52 !default; //一级信息：重要文字&标题等
 $color-text-secondary: #6c707d !default; // 二级信息：重要文字等
-$color-text-placeholder: #C6C7CE;           // 文本框提示placeholder
-$color-text-disabled:  #999BAA;              // 失效
+$color-text-placeholder: #C6C7CE!default;          // 文本框提示placeholder
+$color-text-disabled:  #999BAA!default;             // 失效
 $color-text-caption: #999baa !default; // 三级信息：辅助类文字
 
 //全局/品牌色
@@ -42,7 +42,7 @@ $baseLineHeight: 1 !default;
 $opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
 
 
-$radius-circle: 50%;
+$radius-circle: 50%!default;
 
 // Button Component */
 $button-border-color: #c6c7ce !default;
