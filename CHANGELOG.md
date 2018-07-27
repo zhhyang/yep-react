@@ -17,17 +17,35 @@ title: 更新日志
 
 `2018-07-26`
 
+经过 18 个小版本迭代，发布 0.2.0 版本。
+
 * **Feature**
 
+  * 🌟 重新设计全部组件规范，支持自定义主题。组件按需加载支持引入 css 和 scss 源文件
+  * 🌟 新增 Tips 组件
+  * 🌟 新增 AutoComplete 组件
+  * 🌟 新增 Dropdown 组件
+  * 🌟 新增 InputItem 组件
+  * 🌟 新增 Carousel 组件
+  * 🌟 新增 Rate 组件
+  * 🌟 新增 DatePicker 组件
+  * 🌟 新增 PickerVIew 组件
+  * 🌟 Picker 组件支持多列数据，支持级联选择
   * 🌟 Placeholder 组件更名为 Skeleton，用来配置页面骨架组件
 
 - **Bug Fix**
 
   * 🐞 修改部分 scss 变量可覆盖
+  * 🐞 重构 Button 组件的 border 实现方式
 
 - **Enhancement**
 
-  * 无
+  * `List.Item` 组件右侧 图标支持自定义，当 `icon`为 string，需要符合 Icon type，如果是自定义组件，则直接渲染
+  * `IndexedList` 组件新增 `activeBar` 属性，支持外界影响 bar 的 active 状态
+  * `TabBar` 支持自定义 `badge` `dot` `hidden` 属性
+  * `Button` 支持 `type=ghost`类型
+  * `List` 新增 `Brief`次级内容
+  * 引入 FlowType 静态检查
 
 ### 0.1.18
 
