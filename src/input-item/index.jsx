@@ -78,7 +78,6 @@ class InputItem extends PureComponent<InputItemPropsType, State> {
 
   onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {value} = e.target;
-    console.log(value);
     const {type} = this.props;
 
     let newValue = value;

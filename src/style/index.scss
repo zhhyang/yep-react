@@ -10,10 +10,18 @@
 body {
   background-color: $fill-body;
   font-size: $font-size-base;
+  font-family: $font-family;
 }
 
 *[contenteditable] {
   -webkit-user-select: auto !important;
+}
+
+input[readonly]{
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 *:focus {

@@ -24,10 +24,26 @@ class Input extends PureComponent<InputPropsType> {
     }
   };
 
+  onClick = e => {
+    const {readOnly, onClick} = this.props;
+    if (readOnly) {
+      this.inputRef.blur();
+    }
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   render() {
-    const {onBlur, onFocus, ...restProps} = this.props;
+    const {onBlur, onFocus, onClick, ...restProps} = this.props;
     return (
-      <input ref={el => (this.inputRef = el)} onBlur={this.onInputBlur} onFocus={this.onInputFocus} {...restProps} />
+      <input
+        {...restProps}
+        ref={el => (this.inputRef = el)}
+        onBlur={this.onInputBlur}
+        onFocus={this.onInputFocus}
+        onClick={this.onClick}
+      />
     );
   }
 }
