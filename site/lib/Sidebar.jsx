@@ -70,6 +70,7 @@ class Sidebar extends React.Component {
                         className={`nav-item ${this.props.location.pathname.split('/').reverse()[0] === componentName ? 'nav-on' : ''}`}
                         key={componentName}>
                         <Link className="nav-link"
+                              title={`${toCamelCase(componentName)} ${component.title}`}
                               onClick={this.handleResetScrollStatus}
                               to={`/doc/component/${componentName}`}>{toCamelCase(componentName)} {component.title}</Link>
                       </li>
