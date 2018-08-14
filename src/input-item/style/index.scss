@@ -66,7 +66,7 @@ $inputPrefixCls: Yep-input;
 
       &::placeholder {
         color: $color-text-placeholder;
-        line-height: $baseLineHeight;
+        line-height: 1.2;
       }
 
       &:disabled {
