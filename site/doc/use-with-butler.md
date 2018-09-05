@@ -217,3 +217,7 @@ module.exports = {
 这里利用了 [scss-loader](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_default) 的 `options data` 来进行主题配置，变量和其他配置方式可以参考 [配置主题](/doc/customize-theme) 文档。
 
 修改后重启 `butler start`，如果看到一个蓝色的按钮就说明配置成功了。
+
+在线示例
+
+* [butler-yep-react](http://git.jd.com/zhaohongyang1/butler-yep-react)
