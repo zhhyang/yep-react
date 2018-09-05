@@ -18,6 +18,7 @@
     "prepublishOnly": "npm run clean && npm run dist && npm run compire ",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
+    "preupload": "npm run build-demo && npm run build-site",
     "upload": "node scripts/upload.js"
   },
   "keywords": [
