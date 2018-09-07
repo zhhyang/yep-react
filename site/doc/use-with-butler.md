@@ -179,7 +179,7 @@ $ yarn add -D babel-plugin-import
   }
 ```
 
-最后重启 `butler start` 访问页面，Yep-React 组件的 js 和 css 代码都会按需加载，你在控制台也不会看到这样的[警告信息](https://zos.alipayobjects.com/rmsportal/vgcHJRVZFmPjAawwVoXK.png)。关于按需加载的原理和其他方式可以阅读[这里](/docs/react/getting-started#按需加载)。
+最后重启 `butler start` 访问页面，Yep-React 组件的 js 和 css 代码都会按需加载，你在控制台也不会看到这样的[警告信息](https://zos.alipayobjects.com/rmsportal/vgcHJRVZFmPjAawwVoXK.png)。关于按需加载的原理和其他方式可以阅读[这里](#/docs/react/getting-started#按需加载)。
 
 ### 自定义主题
 
