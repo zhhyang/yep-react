@@ -82,7 +82,7 @@ if (module.hot) {
 $ yarn add -D  postcss-pxtorem
 ```
 
-```
+```js
 const pxtorem = require('postcss-pxtorem');
 
 module.exports = {
@@ -97,7 +97,7 @@ module.exports = {
 
 修改 `src/html/app.html`,在 head 中添加如下
 
-```
+```css
 <style>
   @media screen and (min-width: 320px) { /*no*/
     html {
@@ -183,33 +183,30 @@ $ yarn add -D babel-plugin-import
 
 ### 自定义主题
 
-按照 [配置主题](/doc/customize-theme) 的要求，自定义主题需要用到 scss 变量覆盖功能。
+按照 [配置主题](#/doc/customize-theme) 的要求，自定义主题需要用到 scss 变量覆盖功能。
 
 根目录新增`sassloader.option.config.js`
 
 定制主题较少时
 
-```
+```js
 module.exports = {
   option: {
-    data:"$brand-primary:#2A83E1;"
-  }
-}
+    data: '$brand-primary:#2A83E1;',
+  },
+};
 ```
 
 或者定制主题较多时
 
-```
-const theme = [
-  "$brand-primary:#2A83E1;",
-  "$button-height:100px;"
-]
+```js
+const theme = ['$brand-primary:#2A83E1;', '$button-height:100px;'];
 
 module.exports = {
   option: {
     data: theme.join(' '),
-  }
-}
+  },
+};
 ```
 
 这里利用了 [scss-loader](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_default) 的 `options data` 来进行主题配置，变量和其他配置方式可以参考 [配置主题](/doc/customize-theme) 文档。
