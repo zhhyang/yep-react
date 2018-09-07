@@ -62,6 +62,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../css/app.scss';
 import Button from '@jdcfe/yep-react/lib/button';
+import '@jdcfe/yep-react/lib/button/style';
 
 ReactDOM.render(
   <div className="demo-template">
@@ -75,15 +76,11 @@ if (module.hot) {
 }
 ```
 
-修改 `src/css/app.scss`，在文件顶部引入 `@jdcfe/yep-react/dist/@jdcfe/yep-react.css`。
-
-```scss
-@import '~@jdcfe/yep-react/dist/@jdcfe/yep-react.css';
-
-...
-```
-
 根目录新增 `postcss.config.js`文件
+
+```bash
+$ yarn add -D  postcss-pxtorem
+```
 
 ```
 const pxtorem = require('postcss-pxtorem');
@@ -159,7 +156,7 @@ $ yarn add -D babel-plugin-import
 }
 ```
 
-然后移除前面在 `src/css/app.scss` 里全量添加的 `@import '~@jdcfe/yep-react/dist/@jdcfe/yep-react.css';` 样式代码，并且按下面的格式引入模块。
+然后移除前面在 `src/js/pages/app.jsx` 里添加的 `@jdcfe/yep-react/lib/button/style` Button 组件样式代码，并且按下面的格式引入模块。
 
 ```diff
   // src/App.js
@@ -167,6 +164,7 @@ $ yarn add -D babel-plugin-import
   import ReactDOM from 'react-dom';
   import '../../css/app.scss';
 - import Button from '@jdcfe/yep-react/lib/button';
+- import '@jdcfe/yep-react/lib/button/style';
 + import { Button } from '@jdcfe/yep-react';
 
   ReactDOM.render(
