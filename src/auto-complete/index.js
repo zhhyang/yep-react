@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Dropdown from '../dropdown';
-import Input from '../input-item/Input';
+import InputItem from '../input-item';
 
 class AutoComplete extends PureComponent {
   constructor(props) {
@@ -41,7 +41,7 @@ class AutoComplete extends PureComponent {
     // 是否打开下拉
     isOpen: PropTypes.bool,
     // 输入框是否显示清空按钮
-    clearable: PropTypes.bool,
+    clear: PropTypes.bool,
 
     // 同 input placeholder
     placeholder: PropTypes.string,
@@ -127,30 +127,30 @@ class AutoComplete extends PureComponent {
         disabled={!!disabled}
         aligned
         onToggle={open => this.setState({open})}
+        overlay={
+          <div className={`${prefixCls}__popover`}>
+            <ul className={`${prefixCls}__result`}>
+              {result.map((item, i) => (
+                <li
+                  key={item}
+                  className={classnames({[`${prefixCls}__option--active`]: index === i})}
+                  onClick={this.handleSelect.bind(this, item)}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        }
       >
-        <Dropdown.DropdownToggle>
-          <Input
-            value={value}
-            onKeyDown={this.handleKeyDown.bind(this)}
-            onChange={this.handleInput.bind(this)}
-            disabled={!!disabled}
-            open={!!isOpen || open}
-            {...other}
-          />
-        </Dropdown.DropdownToggle>
-        <Dropdown.DropdownMenu className={`${prefixCls}__popover`}>
-          <ul className={`${prefixCls}__result`}>
-            {result.map((item, i) => (
-              <li
-                key={item}
-                className={classnames({[`${prefixCls}__option--active`]: index === i})}
-                onClick={this.handleSelect.bind(this, item)}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Dropdown.DropdownMenu>
+        <InputItem
+          value={value}
+          onKeyDown={this.handleKeyDown.bind(this)}
+          onChange={this.handleInput.bind(this)}
+          disabled={!!disabled}
+          open={!!isOpen || open}
+          {...other}
+        />
       </Dropdown>
     );
   }

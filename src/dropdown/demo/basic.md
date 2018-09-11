@@ -1,32 +1,24 @@
 ---
 order: 0
 title: 基础用法
-description: 
+description:
 ---
 
 ```js
 import React from 'react';
-import {Dropdown} from "@jdcfe/yep-react";
+import {Dropdown} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
-
   render() {
     return (
       <div>
-        <Dropdown >
-          <Dropdown.DropdownToggle>
-            <button>Open</button>
-          </Dropdown.DropdownToggle>
-          <Dropdown.DropdownMenu>
-           这是一个下拉框
-          </Dropdown.DropdownMenu>
+        <Dropdown overlay={'这是一个下拉框'}>
+          <button>Open</button>
         </Dropdown>
-    </div>
+      </div>
     );
   }
 }
 
-ReactDOM.render(<Demo/>,  mountNode);
-
+ReactDOM.render(<Demo />, mountNode);
 ```
-    
