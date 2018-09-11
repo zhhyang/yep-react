@@ -17,14 +17,21 @@ Dialog
 | footer           | 底部组件              | node    | -          |
 | onClose          | 关闭事件的回调函数    | func    | -          |
 | show             | 是否显示              | boolean | false      |
-| maskCloseable    | 点击蒙层是否关闭      | func    | -          |
+| maskCloseable    | 点击蒙层是否关闭      | boolean | false      |
 | dialogTransition | 对话框动画            | string  | zoom       |
 | maskTransition   | 蒙层对话              | string  | fade       |
 
 Dialog.confirm
 
-| 参数    | 说明                     | 类型   | 默认值                                                                                                   |
-| ------- | ------------------------ | ------ | -------------------------------------------------------------------------------------------------------- |
-| title   | 标题                     | string | -                                                                                                        |
-| message | 提示信息                 | string | -                                                                                                        |
-| actions | 按钮组，{text, onClick}, | Array  | [{text: 'Cancel', onClick: () => console.log('cancel')},{text: 'Ok', onClick: () => console.log('ok')},] |
+| 参数             | 说明                     | 类型    | 默认值                                                                                                   |
+| ---------------- | ------------------------ | ------- | -------------------------------------------------------------------------------------------------------- |
+| title            | 标题                     | string  | -                                                                                                        |
+| message          | 提示信息                 | string  | -                                                                                                        |
+| actions          | 按钮组，{text, onClick}, | Array   | [{text: 'Cancel', onClick: () => console.log('cancel')},{text: 'Ok', onClick: () => console.log('ok')},] |
+| prefixCls        | 组件 class 前缀          | string  | Yep-dialog                                                                                               |
+| style            | 组件样式                 | object  | {}                                                                                                       |
+| bodyStyle        | body 组件样式            | object  | {}                                                                                                       |
+| className        | 额外要添加的 CSS 类名    | string  | -                                                                                                        |
+| maskCloseable    | 点击蒙层是否关闭         | boolean | false                                                                                                    |
+| dialogTransition | 对话框动画               | string  | zoom                                                                                                     |
+| maskTransition   | 蒙层对话                 | string  | fade                                                                                                     |

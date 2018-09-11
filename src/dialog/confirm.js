@@ -5,7 +5,8 @@ import Dialog from './Dialog';
 export default function confirm(
   title,
   message,
-  actions = [{text: 'Cancel', onClick: () => console.log('cancel')}, {text: 'Ok', onClick: () => console.log('ok')}]
+  actions = [{text: 'Cancel', onClick: () => console.log('cancel')}, {text: 'Ok', onClick: () => console.log('ok')}],
+  ...restProps
 ) {
   const prefixCls = 'Yep-dialog';
   let closed = false;
@@ -61,7 +62,7 @@ export default function confirm(
     </div>
   );
   ReactDOM.render(
-    <Dialog show title={title} footer={footer} onClose={close}>
+    <Dialog {...restProps} show title={title} footer={footer} onClose={close}>
       <div className={`${prefixCls}-alert-content`}>{message}</div>
     </Dialog>,
     div

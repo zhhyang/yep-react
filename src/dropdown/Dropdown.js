@@ -27,11 +27,9 @@ class Dropdown extends PureComponent {
     aligned: PropTypes.bool,
   };
 
-
   componentWillReceiveProps(nextProps) {
     'open' in nextProps && this.setState({open: nextProps.open});
   }
-
 
   open() {
     this.setState({open: true});
@@ -52,9 +50,9 @@ class Dropdown extends PureComponent {
 
     let toggle, menu;
     React.Children.forEach(children, child => {
-      if (child.type === DropdownToggle) {
+      if (child.type.name === 'DropdownToggle') {
         toggle = child;
-      } else if (child.type === DropdownMenu) {
+      } else if (child.type.name === 'DropdownMenu') {
         menu = child;
       }
     });
@@ -79,6 +77,5 @@ class Dropdown extends PureComponent {
     );
   }
 }
-
 
 export default Dropdown;
