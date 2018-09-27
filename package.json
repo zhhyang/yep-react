@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
@@ -113,6 +113,7 @@
   },
   "dependencies": {
     "@jdcfe/lrc": "^0.0.2",
+    "@jdcfe/yep-gesture": "^0.0.1",
     "classlist": "^2.0.0",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",
