@@ -13,7 +13,11 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <div className="demo-title">基本</div>
-        <Tabs>
+        <Tabs
+          onChange={index => {
+            console.log(index);
+          }}
+        >
           <TabPanel tab="选项卡一">
             <div
               style={{

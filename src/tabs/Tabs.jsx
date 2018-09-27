@@ -129,7 +129,7 @@ export default class Tabs extends PureComponent {
     const {children, onChange} = this.props;
     if (index >= 0 && index < children.length) {
       if (!force) {
-        //onChange && onChange(tabs[index], index);
+        onChange && onChange(index);
         if (this.props.page !== undefined) {
           return false;
         }
