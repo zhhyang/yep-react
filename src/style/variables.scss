@@ -115,3 +115,10 @@ $input-label-width: 16 * $hd!default;       // InputItem、TextareaItem 文字�
 $input-font-size: 16 * $hd!default;
 $input-color-icon: #ccc!default; // input clear icon 的背景色
 $input-color-icon-tap: $brand-primary!default;
+
+// switch
+$switch-fill:#f23030 !default;
+$switch-width: 50 * $hd !default;
+$switch-height: 30 * $hd !default;
+$switch-border-radius: 30 * $hd !default;
+$switch-circle: 28 * $hd !default;
