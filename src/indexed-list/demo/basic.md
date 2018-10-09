@@ -128,7 +128,7 @@ class Demo extends React.PureComponent {
           indexedBarStyle={{top: 170}}
           data={data}
           activeBar={this.state.key}
-          renderRow={rowData => <Item>{rowData}</Item>}
+          renderRow={rowData => <Item>{rowData.label}</Item>}
           enableQuickIndexedBarTop={false}
           onQuickSearch={this.change}
           renderSectionWrapper={sectionId => (

@@ -70,7 +70,7 @@ export default class ListView extends PureComponent {
         const row = (
           <StaticRenderer
             key={`r_${comboID}`}
-            render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx].label)}
+            render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx])}
           />
         );
         sectionBody.push(row);
