@@ -5,8 +5,11 @@ import Dialog from './Dialog';
 export default function confirm(
   title,
   message,
-  actions = [{text: 'Cancel', onClick: () => console.log('cancel')}, {text: 'Ok', onClick: () => console.log('ok')}],
-  ...restProps
+  actions = [
+    {text: 'Cancel', onClick: () => console.log('cancel'), className: ''},
+    {text: 'Ok', onClick: () => console.log('ok'), className: ''},
+  ],
+  restProps
 ) {
   const prefixCls = 'Yep-dialog';
   let closed = false;
@@ -55,14 +58,18 @@ export default function confirm(
   const footer = (
     <div className={`${prefixCls}-button-group-h`}>
       {buttons.map((button, index) => (
-        <a className={`${prefixCls}-button`} onClick={button.onClick} key={index}>
+        <a
+          className={`${prefixCls}-button ${button.className ? button.className : ''}`}
+          onClick={button.onClick}
+          key={index}
+        >
           {button.text}
         </a>
       ))}
     </div>
   );
   ReactDOM.render(
-    <Dialog {...restProps} show title={title} footer={footer} onClose={close}>
+    <Dialog show title={title} footer={footer} onClose={close} {...restProps}>
       <div className={`${prefixCls}-alert-content`}>{message}</div>
     </Dialog>,
     div

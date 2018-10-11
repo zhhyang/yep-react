@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
@@ -16,6 +16,7 @@
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
     "prepublishOnly": "npm run clean && npm run dist && npm run compire ",
+    "postpublish": "npm run upload",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
     "preupload": "npm run build-demo && npm run build-site",

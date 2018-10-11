@@ -13,6 +13,22 @@ title: 更新日志
 
 ---
 
+### 0.2.10
+
+`2018-10-11`
+
+* **Feature**
+
+  * 🌟 无
+
+- **Bug Fix**
+
+  * 🐞 修复 Dialog 的 confirm 组件更多参数的传参方式，第四个参数 restProps 为 object 类型，支持 Dialog 组件的其余属性
+
+- **Enhancement**
+
+  * 无
+
 ### 0.2.9
 
 `2018-10-09`
