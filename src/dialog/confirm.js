@@ -9,7 +9,7 @@ export default function confirm(
     {text: 'Cancel', onClick: () => console.log('cancel'), className: ''},
     {text: 'Ok', onClick: () => console.log('ok'), className: ''},
   ],
-  restProps
+  restProps = {}
 ) {
   const prefixCls = 'Yep-dialog';
   let closed = false;
