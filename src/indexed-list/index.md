@@ -28,6 +28,7 @@ title: 索引列表
 | renderBodyComponent      | 自定义 body 的包裹组件                                                                           | func                               | () => renderable                          |
 | enableQuickIndexedBarTop | 是否显示默认快速回到顶部的 key                                                                   | bool                               | true                                      |
 | activeBar                | 外部传进来的选中索引的值                                                                         | string                             | -                                         |
+| keyLabel                 | 作为唯一的 key                                                                                   | string                             | `value`                                   |
 
 ## Attributes
 

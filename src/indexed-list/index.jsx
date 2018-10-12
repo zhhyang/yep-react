@@ -31,6 +31,7 @@ export default class IndexedList extends PureComponent {
     indicatorStyle: PropTypes.object,
     enableQuickIndexedBarTop: PropTypes.bool,
     activeBar: PropTypes.string,
+    keyLabel: PropTypes.string,
   };
 
   static defaultProps = {
@@ -45,6 +46,7 @@ export default class IndexedList extends PureComponent {
     useBodyScroll: true,
     onQuickSearch: noop,
     enableQuickIndexedBarTop: true,
+    keyLabel: 'value',
   };
 
   sectionComponents = {};
