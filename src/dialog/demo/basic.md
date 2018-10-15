@@ -14,6 +14,9 @@ class Demo extends React.PureComponent {
   };
 
   render() {
+    const obj = {
+      className: '123',
+    };
     return (
       <div title="Dialog">
         <Button
@@ -34,7 +37,7 @@ class Demo extends React.PureComponent {
         <WhiteSpace />
         <Button
           onClick={() => {
-            Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}]);
+            Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}], obj);
           }}
         >
           Alert

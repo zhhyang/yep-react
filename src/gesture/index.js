@@ -1,3 +1,3 @@
-import Gesture from './Gesture';
+import Gesture from '@jdcfe/yep-gesture';
 
 export default Gesture;

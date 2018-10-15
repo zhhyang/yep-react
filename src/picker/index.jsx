@@ -1,10 +1,13 @@
 import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
-
-import Popup from '../popup';
-import Picker from './Picker';
+import Picker from '../picker-view/Picker';
+import MultiPicker from '../picker-view/MultiPicker';
 import noop from '../_utils/noop';
+import treeFilter from '../_utils/arrayTreeFilter';
+import Cascader from './Cascader';
+import type {PickerData} from '../picker-view';
+import PickerPopup from './PickerPopup';
 
 export default class PopupPicker extends PureComponent {
   static propTypes = {
@@ -21,8 +24,12 @@ export default class PopupPicker extends PureComponent {
      */
     onOk: PropTypes.func,
     prefixCls: PropTypes.string,
+    pickerPrefixCls: PropTypes.string,
     style: PropTypes.object,
     data: PropTypes.array,
+    cascade: PropTypes.bool,
+    onChange: PropTypes.func,
+    onLabelChange: PropTypes.func,
     /**
      * 默认选中的数据
      */
@@ -33,56 +40,136 @@ export default class PopupPicker extends PureComponent {
     show: false,
     onCancel: noop,
     prefixCls: 'Yep-picker',
+    pickerPrefixCls: 'Yep-picker-col',
     data: [],
+    cascade: true,
   };
 
   constructor(props) {
     super(props);
-    let selectedValueState;
-    const {selectedValue, defaultSelectedValue, data} = props;
-    if (selectedValue !== undefined) {
-      selectedValueState = selectedValue;
-    } else if (defaultSelectedValue !== undefined) {
-      selectedValueState = defaultSelectedValue;
+  }
+
+  getSel = () => {
+    const value = this.props.value || [];
+    let treeChildren: PickerData[];
+    const {data} = this.props;
+    if (this.props.cascade) {
+      treeChildren = treeFilter(data, (c: any, level: any) => {
+        return c.value === value[level];
+      });
     } else {
-      selectedValueState = data && data[0] && data[0];
+      treeChildren = value.map((v, i) => {
+        return data[i].filter(d => d.value === v)[0];
+      });
     }
-    this.state = {
-      selectedValue: selectedValueState,
-    };
-    this.handleOnOk = this.handleOnOk.bind(this);
-    this.handleValueChange = this.handleValueChange.bind(this);
-  }
+    return (
+      this.props.format &&
+      this.props.format(
+        treeChildren.map(v => {
+          return v.label;
+        })
+      )
+    );
+  };
 
-  handleOnOk() {
-    const {onOk} = this.props;
-    onOk(this.state.selectedValue);
-  }
-
-  handleValueChange(v) {
-    this.setState({
-      selectedValue: v,
+  getPickerCol = () => {
+    const {data, pickerPrefixCls, itemStyle, indicatorStyle} = this.props;
+    return data.map((col, index) => {
+      return (
+        <Picker
+          key={index}
+          prefixCls={pickerPrefixCls}
+          style={{flex: 1}}
+          itemStyle={itemStyle}
+          indicatorStyle={indicatorStyle}
+        >
+          {col.map(item => {
+            return (
+              <Picker.Item key={item.value} value={item.value}>
+                {item.label}
+              </Picker.Item>
+            );
+          })}
+        </Picker>
+      );
     });
-  }
+  };
+
+  onOk = (v: any) => {
+    if (this.scrollValue !== undefined) {
+      v = this.scrollValue;
+    }
+    if (this.props.onChange) {
+      this.props.onChange(v);
+    }
+    if (this.props.onLabelChange) {
+      this.props.onLabelChange(this.getSel());
+    }
+    if (this.props.onOk) {
+      this.props.onOk(v);
+    }
+  };
+
+  setScrollValue = (v: any) => {
+    this.scrollValue = v;
+  };
+
+  setCasecadeScrollValue = (v: any) => {
+    // 级联情况下保证数据正确性，滚动过程中只有当最后一级变化时才变更数据
+    if (v && this.scrollValue) {
+      const length = this.scrollValue.length;
+      if (length === v.length && this.scrollValue[length - 1] === v[length - 1]) {
+        return;
+      }
+    }
+    this.setScrollValue(v);
+  };
+
+  onPickerChange = (v: any) => {
+    this.setScrollValue(v);
+    if (this.props.onPickerChange) {
+      this.props.onPickerChange(v);
+    }
+  };
+
+  onVisibleChange = (visible: boolean) => {
+    this.setScrollValue(undefined);
+    if (this.props.onVisibleChange) {
+      this.props.onVisibleChange(visible);
+    }
+  };
 
   render() {
-    const {show, onCancel, title, ...restProps} = this.props;
+    const {
+      show,
+      onCancel,
+      pickerPrefixCls,
+      prefixCls,
+      cascade,
+      data,
+      cols,
+      itemStyle,
+      indicatorStyle,
+      ...restProps
+    } = this.props;
 
-    return (
-      <Popup show={show} onCancel={onCancel}>
-        <div className="Yep-popup-picker-wrapper">
-          <div className="Yep-popup-picker-header">
-            <div className="Yep-popup-picker-header-item Yep-popup-picker-header-left" onClick={onCancel}>
-              取消
-            </div>
-            <div className="Yep-popup-picker-header-item Yep-popup-picker-header-title">{title}</div>
-            <div className="Yep-popup-picker-header-item Yep-popup-picker-header-right" onClick={this.handleOnOk}>
-              确定
-            </div>
-          </div>
-          <Picker onValueChange={this.handleValueChange} {...restProps} />
-        </div>
-      </Popup>
+    const picker = cascade ? (
+      <Cascader
+        prefixCls={prefixCls}
+        pickerPrefixCls={pickerPrefixCls}
+        data={data}
+        cols={cols}
+        onChange={this.onPickerChange}
+        onScrollChange={this.setCasecadeScrollValue}
+        pickerItemStyle={itemStyle}
+        indicatorStyle={indicatorStyle}
+      />
+    ) : (
+      <MultiPicker {...restProps} prefixCls={pickerPrefixCls} onScrollChange={this.setScrollValue}>
+        {this.getPickerCol()}
+      </MultiPicker>
     );
+
+    return <PickerPopup onCancel={onCancel} show={show} onOk={this.onOk} picker={picker} />;
   }
 }

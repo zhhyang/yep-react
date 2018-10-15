@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
 import Gesture from '../gesture';
-import {GestureStatus} from '../gesture/type';
+//import {GestureStatus} from '../gesture/type';
 import {getTransformPropValue, setPxStyle, setTransform} from '../_utils/styleUtil';
 import DefaultTabBar from './DefaultTabBar';
 
@@ -129,7 +129,7 @@ export default class Tabs extends PureComponent {
     const {children, onChange} = this.props;
     if (index >= 0 && index < children.length) {
       if (!force) {
-        //onChange && onChange(tabs[index], index);
+        onChange && onChange(index);
         if (this.props.page !== undefined) {
           return false;
         }
@@ -187,7 +187,7 @@ export default class Tabs extends PureComponent {
     };
 
     return {
-      onPanStart: (status: GestureStatus) => {
+      onPanStart: status => {
         if (!this.props.swipeable || !this.props.animated) return;
         panDirection = getPanDirection(status.direction);
         this.setState({
@@ -195,7 +195,7 @@ export default class Tabs extends PureComponent {
         });
       },
 
-      onPanMove: (status: GestureStatus) => {
+      onPanMove: status => {
         const {swipeable, animated} = this.props;
         if (!status.moveStatus || !this.layout || !swipeable || !animated) return;
         const isVertical = this.isTabVertical();

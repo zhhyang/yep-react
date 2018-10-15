@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.1.11",
+  "version": "0.2.10",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
@@ -8,16 +8,18 @@
     "compire": "babel src/ --out-dir ./lib --copy-files --ignore md",
     "eslint": "eslint --ext .js --ext .jsx src/",
     "test": "jest --config ./scripts/jest.config.js",
-    "dev": "node scripts/start.js",
-    "demo": "node scripts/demo-start.js",
+    "site-run": "node scripts/start.js",
+    "demo-run": "node scripts/demo-start.js",
     "watch-css-dist": "gulp default",
     "dist": "gulp dist && gulp build-css-js",
     "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
     "prepublishOnly": "npm run clean && npm run dist && npm run compire ",
+    "postpublish": "npm run upload",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
+    "preupload": "npm run build-demo && npm run build-site",
     "upload": "node scripts/upload.js"
   },
   "keywords": [
@@ -112,6 +114,7 @@
   },
   "dependencies": {
     "@jdcfe/lrc": "^0.0.2",
+    "@jdcfe/yep-gesture": "^0.0.1",
     "classlist": "^2.0.0",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",

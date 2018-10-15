@@ -11,6 +11,8 @@ export default class Carousel extends PureComponent {
     renderPage: PropTypes.func,
     onTransitionEnd: PropTypes.func,
     isBounces: PropTypes.bool,
+    isInfinite: PropTypes.bool,
+    distance: PropTypes.number,
   };
 
   static defaultProps = {
@@ -19,6 +21,8 @@ export default class Carousel extends PureComponent {
     initPage: 0,
     renderPage: null,
     isBounces: true,
+    isInfinite: false,
+    distance: 2,
     onTransitionEnd: () => {},
   };
 
@@ -31,7 +35,7 @@ export default class Carousel extends PureComponent {
       touchMovePlace: 0,
       currentIndex: props.initPage,
       total: 0,
-      isMoving: false,
+      isMoving: true,
     };
     this.timer = null; // 定时器
 
@@ -46,16 +50,29 @@ export default class Carousel extends PureComponent {
   }
 
   componentDidMount() {
-    const {children} = this.props;
+    const {children, isInfinite} = this.props;
+    const {currentIndex} = this.state;
+    let total = Object.prototype.toString.call(children) === '[object Array]' ? children.length : 1;
+    let currentTemp = currentIndex;
+    if (isInfinite && total > 1) {
+      currentTemp += 1;
+      total += 2;
+    }
     this.setState(
       {
         width: document.querySelector(`.${this.props.prefixCls}__container`).clientWidth,
-        total: Object.prototype.toString.call(children) === '[object Array]' ? children.length : 1,
+        total,
+        currentIndex: currentTemp,
       },
       () => {
         this.setState({
           isShow: true,
         });
+        setTimeout(() => {
+          this.setState({
+            isMoving: false,
+          });
+        }, 300);
       }
     );
 
@@ -107,12 +124,13 @@ export default class Carousel extends PureComponent {
 
   touchEndHandle() {
     const {width, touchStartPlace, touchMovePlace, currentIndex} = this.state;
+    const {distance} = this.props;
     this.setState({
       isMoving: false,
       touchStartPlace: 0,
       touchMovePlace: 0,
     });
-    const multiple = Math.round((touchMovePlace - touchStartPlace) / width * 1.3);
+    const multiple = Math.round((touchMovePlace - touchStartPlace) / width * distance);
     const targetIndex = currentIndex - multiple;
     this.goPage(targetIndex);
     this.autoplayFunc();
@@ -120,7 +138,7 @@ export default class Carousel extends PureComponent {
 
   goPage(index) {
     const {total} = this.state;
-    const {onTransitionEnd} = this.props;
+    const {onTransitionEnd, isInfinite} = this.props;
     let targetIndex = index;
     targetIndex = targetIndex < 0 ? 0 : targetIndex;
     targetIndex = targetIndex > total - 1 ? total - 1 : targetIndex;
@@ -129,7 +147,35 @@ export default class Carousel extends PureComponent {
         currentIndex: targetIndex,
       },
       () => {
-        onTransitionEnd(targetIndex);
+        // 当滚动临时的索引时
+        let temp = targetIndex;
+        // 真实的索引
+        let realIndex = targetIndex;
+        if (isInfinite && total > 3) {
+          if (temp === 0) {
+            temp = total - 2;
+            realIndex = total - 1;
+          } else if (temp === total - 1) {
+            temp = 1;
+            realIndex = 0;
+          }
+          setTimeout(() => {
+            this.setState(
+              {
+                currentIndex: temp,
+                isMoving: true,
+              },
+              () => {
+                setTimeout(() => {
+                  this.setState({
+                    isMoving: false,
+                  });
+                }, 300);
+              }
+            );
+          }, 300);
+        }
+        onTransitionEnd(realIndex);
       }
     );
   }
@@ -151,24 +197,41 @@ export default class Carousel extends PureComponent {
     );
   }
 
-  renderPageComponent(active, total) {
-    const {renderPage} = this.props;
-
+  /**
+   * 加载地址组件
+   * @param {当前显示的图片索引} active
+   * @param {真实页数} realTotal
+   */
+  renderPageComponent(active, realTotal) {
+    const {renderPage, isInfinite} = this.props;
+    const {total} = this.state;
     if (renderPage) {
-      return renderPage(active, total);
+      return renderPage(active, realTotal);
     }
 
     const arr = [];
-    for (let i = 0; i < total; i += 1) {
+    for (let i = 0; i < realTotal; i += 1) {
       arr.push(i);
     }
     return (
       <div className={`${this.props.prefixCls}__page`}>
         {arr.map((item, index) => {
+          let flag = false;
+          if (isInfinite && realTotal > 1) {
+            if (active === 0) {
+              flag = index === realTotal - 1;
+            } else if (active === total - 1) {
+              flag = index === 0;
+            } else {
+              flag = index === active - 1;
+            }
+          } else {
+            flag = index === active;
+          }
           return (
             <div
               key={`page_${item}`}
-              className={classNames(index === active ? 'active' : '', `${this.props.prefixCls}__page-bullet`)}
+              className={classNames(flag ? 'active' : '', `${this.props.prefixCls}__page-bullet`)}
             />
           );
         })}
@@ -178,7 +241,7 @@ export default class Carousel extends PureComponent {
 
   render() {
     const {touchStartPlace, touchMovePlace, currentIndex, isMoving, width, isShow} = this.state;
-    const {prefixCls, children, className} = this.props;
+    const {prefixCls, children, className, isInfinite} = this.props;
     let childrens = [];
     if (Object.prototype.toString.call(children) === '[object Array]') {
       childrens = this.props.children;
@@ -198,7 +261,9 @@ export default class Carousel extends PureComponent {
           onTouchMove={this.touchMoveHandle}
           onTouchEnd={this.touchEndHandle}
         >
+          {isInfinite && children.length > 1 && this.renderItem(children[children.length - 1], children.length)}
           {childrens.map((item, index) => this.renderItem(item, index))}
+          {isInfinite && children.length > 1 && this.renderItem(children[0], -1)}
         </div>
         {this.renderPageComponent(currentIndex, childrens.length)}
       </div>

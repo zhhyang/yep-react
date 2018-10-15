@@ -3,6 +3,8 @@ order: 0
 title: 快速上手
 ---
 
+如果是在[butler](http://butler.jd.com/#/)中使用，请直接访问[在 butler 中使用](#/doc/use-with-butler).
+
 开始使用前请先配置[京东内部 npm 源](http://npm.m.jd.com/)。
 
 ### 安装

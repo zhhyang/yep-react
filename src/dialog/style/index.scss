@@ -17,7 +17,7 @@
   }
 
   &-transparent &-content{
-    border-radius: 14px;
+    border-radius: 18px;
     padding-top: 30px;
   }
 
@@ -32,14 +32,19 @@
     text-align: center;
   }
   &-body {
-    font-size: 30px;
+    font-size: 32px;
     color: #888;
     height: 100%;
     line-height: 1.5;
     overflow: auto;
   }
-  &-transparent &-content &-body{
+  /* 如果没有header时，改变padding的值*/
+  &-transparent &-content &-header +  &-body  {
     padding: 0 30px 30px;
+  }
+
+  &-transparent &-content &-body{
+    padding: 28px 30px 58px;
   }
 
   &-wrap{
@@ -66,8 +71,8 @@
     background-color: $brand-primary;
     color: #ffffff;
     font-size: 36px;
-    height: 100px;
-    line-height: 100px;
+    height: 88px;
+    line-height: 88px;
     display: block;
     width: auto;
     overflow: hidden;

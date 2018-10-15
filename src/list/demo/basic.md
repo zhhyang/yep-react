@@ -34,6 +34,7 @@ class Demo extends React.PureComponent {
             arrow="horizontal"
             multipleLine
             onClick={() => {}}
+            icon={'arrow-right'}
             thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
           >
             ListItem （Android）
@@ -42,6 +43,12 @@ class Demo extends React.PureComponent {
             arrow="horizontal"
             thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
             multipleLine
+            icon={
+              <img
+                style={{display: 'block', width: 15, height: 15}}
+                src="http://img13.360buyimg.com/uba/jfs/t23977/282/1022509367/2839/74d4afce/5b4dad41N005d5914.png"
+              />
+            }
             onClick={() => {}}
             extra={'extra content'}
           >

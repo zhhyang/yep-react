@@ -35,9 +35,9 @@ Yep-React 的样式使用了 [scss](http://sass-lang.com/) 作为开发语言，
 }
 ```
 
-* 在 `webpack` 配置文件中添加 scss 文件的 sass-loader 处理，在 options 选项里面将包含所有我们想要修改的主题样式。[全部主题样式参考这里](http://git.jd.com/JDC-FE/yep-react/blob/master/src/style/variables.scss)
+* 在 `webpack` 配置文件中添加 scss 文件的 sass-loader 处理，在 options 选项里面将包含所有我们想要修改的主题样式。[全部主题样式参考这里](http://git.jd.com/JDC-FE/lrc-m/blob/master/src/style/variables.scss)
 
-```
+```js
   {
     test: /\.scss$/,
     use: [
@@ -63,14 +63,11 @@ Yep-React 的样式使用了 [scss](http://sass-lang.com/) 作为开发语言，
 
 创建一个单独的 `theme.json` 文件如下，再引入这个文件。
 
-```
-[
-    "$brand-primary:#2A83E1;",
-    "$button-height:100px;"
-]
+```json
+["$brand-primary:#2A83E1;", "$button-height:100px;"]
 ```
 
-```
+```js
 const theme = require('theme.json')
 
 {

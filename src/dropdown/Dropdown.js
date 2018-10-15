@@ -3,11 +3,11 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Popover from '../_shared/Popover';
 import DropdownToggle from './DropdownToggle';
-import DropdownMenu from './DropdownMenu';
 
 class Dropdown extends PureComponent {
   constructor(props) {
     super();
+    this.handleToggle = this.handleToggle.bind(this);
     this.state = {
       open: props.open || false,
     };
@@ -25,13 +25,27 @@ class Dropdown extends PureComponent {
 
     // DropdownToggle 与 DropdownMenu 宽度相同
     aligned: PropTypes.bool,
+
+    // 展开方向，默认 `down`，如果实际空间不足，则可能自适应改变方向
+    direction: PropTypes.oneOf(['up', 'down', 'left', 'right']),
+
+    // 对齐方式，默认 `left`
+    align: PropTypes.oneOf(['top', 'right', 'bottom', 'left', 'middle']),
+
+    // 是否右对齐，建议用 `align="right"` 代替
+    right: PropTypes.bool,
+
+    overlay: PropTypes.node.isRequired,
   };
 
+  static defaultProps = {
+    direction: 'down',
+    align: 'left',
+  };
 
   componentWillReceiveProps(nextProps) {
     'open' in nextProps && this.setState({open: nextProps.open});
   }
-
 
   open() {
     this.setState({open: true});
@@ -47,38 +61,23 @@ class Dropdown extends PureComponent {
   }
 
   render() {
-    const {children, disabled, aligned} = this.props;
+    const {children, disabled, aligned, overlay, ...restProps} = this.props;
     const {open} = this.state;
-
-    let toggle, menu;
-    React.Children.forEach(children, child => {
-      if (child.type === DropdownToggle) {
-        toggle = child;
-      } else if (child.type === DropdownMenu) {
-        menu = child;
-      }
-    });
-
-    const {right, ...menuProps} = menu.props;
-    if (right) {
-      menuProps.align = 'right';
-    }
 
     return (
       <Popover
         triggerMode="click"
         open={open}
-        onToggle={this.handleToggle.bind(this)}
-        content={menuProps.children}
+        onToggle={this.handleToggle}
+        content={overlay}
         disabled={disabled}
         aligned={aligned}
-        {...menuProps}
+        {...restProps}
       >
-        {React.cloneElement(toggle, {open})}
+        <DropdownToggle open={open}>{children}</DropdownToggle>
       </Popover>
     );
   }
 }
-
 
 export default Dropdown;
