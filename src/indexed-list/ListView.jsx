@@ -39,6 +39,7 @@ export default class ListView extends PureComponent {
       renderBodyComponent,
       data,
       renderRow,
+      keyLabel,
       children,
     } = this.props;
     const rowIdentities = [];
@@ -46,7 +47,7 @@ export default class ListView extends PureComponent {
     Object.keys(data).forEach((item, index) => {
       rowIdentities[index] = [];
       data[item].forEach(ss => {
-        rowIdentities[index].push(ss.value);
+        rowIdentities[index].push(ss[keyLabel]);
       });
     });
     const contentComponents = [];

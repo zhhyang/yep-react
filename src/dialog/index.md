@@ -30,6 +30,8 @@ Dialog.confirm
 | actions   | 按钮组，{text, onClick,className}, | Array        | `[{text: 'Cancel', onClick: () => console.log('cancel'),className:''},{text: 'Ok', onClick: () => console.log('ok'),className:''},]` |
 | restProps | dialog 组件其他参数组成的对象      | object       | {}                                                                                                                                   |
 
+`Dialog.confirm(title, message, actions?, restProps?).close()` 可以在外部关闭 confirm
+
 restProps:
 
 | 参数             | 说明                  | 类型    | 默认值 |
