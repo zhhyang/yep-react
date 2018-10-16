@@ -77,7 +77,7 @@ export default class IndexedList extends PureComponent {
   }
 
   _disableParent(e) {
-    //e.preventDefault();
+    e.preventDefault();
     e.stopPropagation();
   }
 
@@ -102,7 +102,6 @@ export default class IndexedList extends PureComponent {
   };
 
   updateIndicator(ele, end = false) {
-    console.log(ele, end);
     let el = ele;
     if (!el.getAttribute('data-index-target')) {
       el = el.parentNode;
@@ -146,6 +145,7 @@ export default class IndexedList extends PureComponent {
   }
 
   onTouchMove(e) {
+    e.preventDefault();
     if (this._target) {
       const ex = _event(e);
       const basePos = this._basePos;
