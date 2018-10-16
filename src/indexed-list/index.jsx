@@ -130,10 +130,10 @@ export default class IndexedList extends PureComponent {
       //add active class
       d[0].className = `${d[0].className} ${
         d[0].getAttribute('data-index-target') === el.innerText.trim() ? activeCls : ''
-      }`;
+      }`.trim();
     });
     if (!end) {
-      el.className = `${el.className} ${cls}`;
+      el.className = `${el.className} ${cls}`.trim();
     }
   }
 

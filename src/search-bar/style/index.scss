@@ -7,13 +7,12 @@
   display: flex;
   align-items:center; 
   .yep-search-bar-cancel {
-    color: #2A83E1;
+    color: $brand-primary;
     font-size: 28px;
     margin: 0 0 0 36px;
   }
   .Yep-search-bar-wrapper {
       position: relative;
-      display: inline-block;
       height: 64px;
       background: #F0F0F0;
       width: 584px;

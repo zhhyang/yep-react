@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 import Icon from '../icon';
 
 export default class Message extends PureComponent {
@@ -26,6 +24,8 @@ export default class Message extends PureComponent {
      * 通知位置：固定顶部、固定底部、在通知栏所处DOM位置不变
      */
     position: PropTypes.oneOf(['fix-top', 'fix-bottom', 'in-place']),
+
+    icon: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -36,6 +36,7 @@ export default class Message extends PureComponent {
     duration: -1,
     tipType: 'info',
     position: 'in-place',
+    icon: false,
   };
 
   constructor() {
@@ -43,7 +44,7 @@ export default class Message extends PureComponent {
     this.state = {
       isShow: true,
     };
-    this.closemessage = this.closeMessage.bind(this);
+    this.closeMessage = this.closeMessage.bind(this);
     this.showMessage = this.showMessage.bind(this);
   }
 
@@ -84,7 +85,7 @@ export default class Message extends PureComponent {
   render() {
     if (!this.state.isShow) return null;
 
-    const {prefixCls, className, style, tipType, position} = this.props;
+    const {prefixCls, className, style, tipType, position, icon, duration} = this.props;
 
     const wrapperCls = classNames(prefixCls, position, className);
     const box = classNames('box', `box-${tipType}`);
@@ -93,9 +94,12 @@ export default class Message extends PureComponent {
     return (
       <div className={wrapperCls} style={style}>
         <div className={box}>
-          <Icon onClick={this.closeMessage} className="icon icon-info" type="lego_yichang" color="#fff" />
+          {icon && <Icon onClick={this.closeMessage} className="icon icon-info" type="lego_yichang" color="#fff" />}
+
           <div className="message-text">{this.props.children}</div>
-          <Icon onClick={this.closeMessage} className="icon icon-close" type="lego_cuowu2" color="#fff" />
+          {duration !== -1 && (
+            <Icon onClick={this.closeMessage} className="icon icon-close" type="lego_cuowu2" color="#fff" />
+          )}
         </div>
       </div>
     );
