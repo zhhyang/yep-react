@@ -148,7 +148,6 @@ export default class IndexedList extends PureComponent {
     this._target = e.target;
     this._basePos = this.indexedBar.getBoundingClientRect();
     draggingIndexBar = true;
-    document.body.className = `${document.body.className} ${this.props.prefixCls}-qsb-moving`;
     this.updateIndicator(this._target);
   }
 
@@ -185,10 +184,6 @@ export default class IndexedList extends PureComponent {
       return;
     }
     draggingIndexBar = false;
-    document.body.className = document.body.className.replace(
-      new RegExp(`\\s*${this.props.prefixCls}-qsb-moving`, 'g'),
-      ''
-    );
     this.updateIndicator(this._target, true);
     this._target = null;
   }
