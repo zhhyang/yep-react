@@ -12,7 +12,15 @@ function setDocumentScrollTop(val) {
   window.document.body.scrollTop = val; // chrome61 is invalid
   window.document.documentElement.scrollTop = val;
 }
+let draggingIndexBar = false;
 
+document.addEventListener(
+  'touchmove',
+  e => {
+    draggingIndexBar && e.preventDefault();
+  },
+  {passive: false}
+);
 export default class IndexedList extends PureComponent {
   static propTypes = {
     prefixCls: PropTypes.string,
@@ -139,7 +147,7 @@ export default class IndexedList extends PureComponent {
   onTouchStart(e) {
     this._target = e.target;
     this._basePos = this.indexedBar.getBoundingClientRect();
-    document.addEventListener('touchmove', this._disableParent, false);
+    draggingIndexBar = true;
     document.body.className = `${document.body.className} ${this.props.prefixCls}-qsb-moving`;
     this.updateIndicator(this._target);
   }
@@ -176,7 +184,7 @@ export default class IndexedList extends PureComponent {
     if (!this._target) {
       return;
     }
-    document.removeEventListener('touchmove', this._disableParent, false);
+    draggingIndexBar = false;
     document.body.className = document.body.className.replace(
       new RegExp(`\\s*${this.props.prefixCls}-qsb-moving`, 'g'),
       ''
@@ -233,12 +241,10 @@ export default class IndexedList extends PureComponent {
 
   renderIndexedBar() {
     const {prefixCls, indexedBarStyle, data, quickIndexedBarTop, enableQuickIndexedBarTop} = this.props;
-    const sectionKvs = Object.keys(data).map(item => {
-      return {
-        label: item,
-        value: item,
-      };
-    });
+    const sectionKvs = Object.keys(data).map(item => ({
+      label: item,
+      value: item,
+    }));
     return (
       <ul
         ref={this.createIndexedBarRef}
