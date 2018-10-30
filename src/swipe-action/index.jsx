@@ -45,6 +45,7 @@ export default class SwipeAction extends PureComponent {
     ),
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
+    onMovingDistance: PropTypes.func,
   };
 
   static defaultProps = {
@@ -56,6 +57,7 @@ export default class SwipeAction extends PureComponent {
     right: [],
     onOpen: noop,
     onClose: noop,
+    onMovingDistance: noop,
   };
 
   constructor() {
@@ -79,11 +81,11 @@ export default class SwipeAction extends PureComponent {
   componentDidMount() {
     this.btnsLeftWidth = this.left ? this.left.offsetWidth : 0;
     this.btnsRightWidth = this.right ? this.right.offsetWidth : 0;
-    document.body.addEventListener('touchstart', this.onCloseSwipe, true);
+    document.body.addEventListener('touchstart', this.onCloseSwipe, {passive: false});
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('touchstart', this.onCloseSwipe, true);
+    document.body.removeEventListener('touchstart', this.onCloseSwipe, {passive: false});
   }
 
   onCloseSwipe(ev) {
@@ -114,6 +116,7 @@ export default class SwipeAction extends PureComponent {
   }
 
   _setStyle = value => {
+    const {onMovingDistance} = this.props;
     const limit = value > 0 ? this.btnsLeftWidth : -this.btnsRightWidth;
     const contentLeft = this._getContentEasing(value, limit);
     this.content.style.left = `${contentLeft}px`;
@@ -121,6 +124,7 @@ export default class SwipeAction extends PureComponent {
       this.cover.style.display = Math.abs(value) > 0 ? 'block' : 'none';
       this.cover.style.left = `${contentLeft}px`;
     }
+    onMovingDistance(contentLeft);
   };
 
   open(value, openedLeft, openedRight) {

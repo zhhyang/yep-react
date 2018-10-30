@@ -43,6 +43,7 @@ class Demo extends React.PureComponent {
           ]}
           onOpen={() => console.log('global open')}
           onClose={() => console.log('global close')}
+          onMovingDistance={distance => console.log(distance)}
         >
           <List.Item extra="滑" arrow="horizontal" onClick={e => console.log(e)}>
             左右两侧都有按钮
