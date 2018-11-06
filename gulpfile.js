@@ -10,14 +10,14 @@ const header = require('gulp-header');
 const replace = require('gulp-replace');
 
 const pkg = require('./package.json');
-const paths = 'src/**/css/index.scss';
+const paths = 'src/**/style/index.scss';
 
 gulp.task('clean', () => gulp.src('dist', {read: false}).pipe(clean({force: true})));
 
 gulp.task('build-css-js', () => {
   gulp
-    .src('src/**/css/index.js')
-    .pipe(replace(/\/style\/?'/g, "/css/css'"))
+    .src('src/**/style/index.js')
+    .pipe(replace(/\/style\/?'/g, "/style/css'"))
     .pipe(replace(/\.scss/g, '.css'))
     .pipe(
       rename({

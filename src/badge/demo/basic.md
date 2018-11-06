@@ -30,7 +30,7 @@ class Demo extends React.PureComponent {
             extra={<Badge text={77} max={55} />}
             arrow="horizontal"
           >
-            Routes
+            Content
           </List.Item>
 
           <List.Item extra="extra" arrow="horizontal">
