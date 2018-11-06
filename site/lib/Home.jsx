@@ -22,8 +22,9 @@ class Home extends React.Component {
       activeStartContent: 0,
       activeIntro: 0,
       toTop: false,
-      scrollTop: 0
+      scrollTop: 0,
     };
+    this.scrollTo = this.scrollTo.bind(this);
   }
 
   componentDidMount() {
@@ -41,18 +42,20 @@ class Home extends React.Component {
     });
   }
 
-  scrollTo(position) {
-    let currentPosition = document.documentElement.scrollTop;
-    const step = (position - currentPosition) / 50;
-    if (step > 1) {
-      currentPosition += step;
-      document.body.scrollTop = currentPosition;
-      document.documentElement.scrollTop = currentPosition;
-      setTimeout(this.scrollTo(position), 10);
-    } else {
-      document.body.scrollTop = position;
-      document.documentElement.scrollTop = position;
-    }
+  scrollTo(e) {
+    const {position} = e.target.dataset;
+    window.scrollTo(0, position);
+    // let currentPosition = document.documentElement.scrollTop;
+    // const step = (position - currentPosition) / 50;
+    // if (step > 1) {
+    //   currentPosition += step;
+    //   document.body.scrollTop = currentPosition;
+    //   document.documentElement.scrollTop = currentPosition;
+    //   setTimeout(this.scrollTo(e), 10);
+    // } else {
+    //   document.body.scrollTop = position;
+    //   document.documentElement.scrollTop = position;
+    // }
   }
 
   scrollFunc() {
@@ -163,11 +166,11 @@ class Home extends React.Component {
                 </a>
               </div>
               <div className="page-home-warehouse logo-animate" id="page-home-warehouse">
-                <a href="http://git.jd.com/JDC_FE/JDC_m_UI" className="github" target="_blank">
+                <a href="//git.jd.com/JDC-FE/lrc-m" className="github" target="_blank">
                   <img src={git3} alt="" />
                 </a>
                 <i className="circ" id="circ" />
-                <a href="http://npm.m.jd.com/package/@jdcfe/yepui" className="npm" target="_blank">
+                <a href="http://npm.m.jd.com/package/@jdcfe/yep-react" className="npm" target="_blank">
                   <img src={iconNpm} alt="" />
                 </a>
               </div>
@@ -178,7 +181,9 @@ class Home extends React.Component {
           <div className="card" id="card">
             <div className="left">
               <div className={`faststart-placeholder ${activeBeforeStartContainer === 0 ? 'block' : 'none'}`}>
-                <div className="fast-start">快速开始</div>
+                <div className="fast-start" data-position="1300" onClick={this.scrollTo}>
+                  快速开始
+                </div>
                 <div className="scroll-container">
                   <div className="chevron" />
                   <div className="chevron" />
@@ -186,14 +191,18 @@ class Home extends React.Component {
                 </div>
               </div>
               <div className={`left-content ${activeBeforeStartContainer === 0 ? 'card-init' : 'card-complete'}`}>
-                <h1>Yep UI Components</h1>
+                <h1>Yep React Components</h1>
                 <p>基于京东日常开发业务,我们提供了一套开箱即用的高质量 React 组件, 主要用于快速开发移动端页面.</p>
-                <div className="fast-start">快速开始</div>
+                <div className="fast-start" data-position="1300" onClick={this.scrollTo}>
+                  快速开始
+                </div>
               </div>
             </div>
             <div className="right">
               <div className={`readmore-placeholder ${activeBeforeStartContainer === 0 ? 'block' : 'none'}`}>
-                <div className="read-more">了解更多</div>
+                <div className="read-more" data-position="2605" onClick={this.scrollTo}>
+                  了解更多
+                </div>
                 <div className="scroll-container">
                   <div className="chevron" />
                   <div className="chevron" />
@@ -203,13 +212,13 @@ class Home extends React.Component {
               <div className={`right-content ${activeBeforeStartContainer === 0 ? 'card-init' : 'card-complete'}`}>
                 <h1>Feature</h1>
                 <ul>
-                  <li>基于 React 2.0 开发的 UI 组件</li>
+                  <li>基于 React 16 开发的 UI 组件</li>
                   <li>使用 npm + webpack + babel 的工作流，支持 ES2015</li>
-                  <li>
-                    CSS 样式独立，即使使用不同的框架实现，也都能保持统一的 UI 风格提供友好的 API，可灵活的使用组件
-                  </li>
+                  <li>CSS 使用sass，推荐使用postcss和babel-plugin-import方便处理样式和解决样式按需加载问题</li>
                 </ul>
-                <div className="read-more">了解更多</div>
+                <div className="read-more" data-position="2605" onClick={this.scrollTo}>
+                  了解更多
+                </div>
               </div>
             </div>
           </div>
@@ -235,7 +244,7 @@ class Home extends React.Component {
                     </span>
                     <span className="page-home-comment"># 安装组件</span>
                     <span>
-                      <span className="pl-smi">npm install --save @jdcfe/yepui</span>
+                      <span className="pl-smi">npm install --save @jdcfe/yep-react</span>
                     </span>
                   </code>
                 </div>
@@ -244,28 +253,51 @@ class Home extends React.Component {
                 <h6>引入</h6>
                 <div className="page-home-code">
                   <code>
-                    <span className="page-home-comment">// 引入全部组件</span>
+                    <span className="page-home-comment">// 组件使用实例：</span>
                     <span>
                       <span className="pl-k">import </span>
-                      <span className="pl-smi">YepUI </span>
+                      <span className="pl-smi">{'{Button}'} </span>
                       <span className="pl-k">from </span>
-                      <span className="pl-s">'@jdcfe/YepUI'</span>
+                      <span className="pl-s">'@jdcfe/yep-react'</span>
                       <span className="pl-smi">;</span>
                     </span>
                     <span>
-                      <span className="pl-smi">Vue.</span>
-                      <span className="pl-en">use</span>
-                      <span className="pl-smi">(YepUI);</span>
+                      <span className="pl-smi">ReactDOM.</span>
+                      <span className="pl-en">render</span>
+                      <span className="pl-smi">{'(<Button>Start</Button>, mountNode);'} </span>
                     </span>
-                  </code>
-                  <code>
-                    <span className="page-home-comment">// 按需引入部分组件</span>
+                    <span className="page-home-comment">// 引入样式：</span>
                     <span>
                       <span className="pl-k">import </span>
                       <span className="pl-smi"> </span>
+                      <span className="pl-s">'@jdcfe/yep-react/dist/yep-react.css';</span>
+                    </span>
+                  </code>
+                  <code>
+                    <span className="page-home-comment">// 或使用：babel-plugin-import（推荐）</span>
+                    <span className="page-home-comment">// babel-plugin-import 会帮助你加载 JS 和 SCSS</span>
+                    <span>
+                      <span className="pl-k">import </span>
+                      <span className="pl-smi">{'{Button}'} </span>
                       <span className="pl-k">from </span>
-                      <span className="pl-s">@jdcfe/YepUI</span>
+                      <span className="pl-s">'@jdcfe/yep-react'</span>
                       <span className="pl-smi">;</span>
+                    </span>
+                  </code>
+                  <code>
+                    <span className="page-home-comment">// 单个手动引入</span>
+                    <span>
+                      <span className="pl-k">import </span>
+                      <span className="pl-smi">{'Button'} </span>
+                      <span className="pl-k">from </span>
+                      <span className="pl-s">'@jdcfe/yep-react/lib/button'</span>
+                      <span style={{color: '#969896'}}>// 加载js</span>
+                      <span className="pl-smi">;</span>
+                    </span>
+                    <span>
+                      <span className="pl-k">import </span>
+                      <span className="pl-s">'@jdcfe/yep-react/lib/button/style;'</span>
+                      <span style={{color: '#969896'}}>// 加载css</span>
                     </span>
                   </code>
                 </div>
@@ -289,7 +321,7 @@ class Home extends React.Component {
                   <h6 className="intro-title">组件丰富 功能全面</h6>
                   <p className="intro-motto">小体量，大功能</p>
                   <p className="intro-content">
-                    提供了 30+ 基础组件、覆盖各类场景，组件符合京东APP视觉、交互规范，组件特性丰富、满足各种功能需求。
+                    提供了 40+ 基础组件、覆盖各类场景，组件符合京东APP视觉、交互规范，组件特性丰富、满足各种功能需求。
                   </p>
                 </div>
               </li>
@@ -393,8 +425,8 @@ class Home extends React.Component {
             data-rellax-speed="-2"
           />
         </div>
-        <footer className="page-home-footer">邮箱：<a href="mailto:yep_group@jd.com">jdf_yep@jd.com</a> | Copyright ©
-          京东前端开发部
+        <footer className="page-home-footer">
+          邮箱：<a href="mailto:yep_group@jd.com">jdf_yep@jd.com</a> | Copyright © 京东前端开发部
         </footer>
       </div>
     );

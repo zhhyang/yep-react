@@ -371,7 +371,7 @@ body {
               margin-left: .2rem;
               width: 15px;
               height: 15px;
-              background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAABgElEQVQ4jX3UP0hWURjH8Y+vL3docejPkk2GONTS0NqrmAZWIrqkU0PgLk0tTU3ujkKDQhQOvosGGoWJTga12ZRO2vAugVLQcJ4r1+u9nuUMv8P3+T6c55yu2fmTp3iFxzhyfs3gBcbRUbEW5jINvMR9bOBGIW9G9gDr6KmCQCMMPuEOvqI3sr94iL1Cket1kA7GsIm+AN6K/Agt7OJeHagR+58wagdoG7cj62AEW2H7uWB7DpKDJrGKm2HUXwJtYiCy3ioInGIKywHawt2S7VrYfsltu2bnT8otQjfeYhrHGMa3yDK8xxMcolU2ydc/PMdPXMMH6cpz22n8DtvlOkg3FkP7GBPSlcMVLOFqmDxrVgAyvJOm9BCj+FEAtDEYloMLc9mvMuRCv9iPrAcrBUALBwp95lVWMRSHRmPPAevS5H6PM2fvrFkAFDXPqkgT2q4D5JBylUfRSg7YkCZ1Vxq4C6+5eUmVDB8DsBPtVX4HDbyWxriseYo30oQO1QHgP3CPZDB2MHVNAAAAAElFTkSuQmCC") no-repeat;
+              background: url('./../img/arrow_right.png') no-repeat;
               background-size: 15px 15px;
             }
           }
@@ -432,7 +432,7 @@ body {
             margin: .33rem .52rem 0;
           }
           width: 5.8rem;
-          height: 3rem;
+          height: 4rem;
           box-shadow: 0rem 0rem 0.19rem 0.05rem rgba(6, 0, 1, 0.2);
         }
         .page-home-code {
