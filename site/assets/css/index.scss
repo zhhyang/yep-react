@@ -160,7 +160,7 @@
        .start-main {
          display: block;
          width: 100%;
-         height: 10rem;
+         height: 17rem;
          #card-container {
            display: block;
            width: 100%;
@@ -207,10 +207,13 @@
           width: 90%;
           margin: 0 5% 0;
           li {
-            display: block;
+            //display: block;
+            width: 100%;
+            height:4rem;
             img {
               display: block;
-
+              width:2rem;
+              height:2rem;
             }
             div {
               display: block;
@@ -218,13 +221,30 @@
               padding: 0;
               width: 100%;
               p, h6 {
-                width: 80%;
-                margin: 0.2rem auto;
-              }
+                //width: 80%;
+                margin: 0 auto;
+              };
 
+              .intro-title{
+                font-size: .36rem;
+                width: 100%;
+              };
+              .intro-motto{
+                font-size:.28rem;
+              }
+              .intro-content{
+                width:auto;
+                margin-top:.2rem;
+              }
+            }
+            div.left{
+              flex: 1;
+              margin-right:.2rem;
             }
             div.right {
+              flex: 1;
               text-align: right;
+              margin-left:.2rem;
             }
           }
         }
