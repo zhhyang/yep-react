@@ -34,9 +34,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: {
-    doc: path.join(process.cwd(), 'site/index'),
-  },
+  entry: [require.resolve('react-dev-utils/webpackHotDevClient'), path.join(process.cwd(), 'site/index')],
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'dist/site'),
@@ -136,8 +134,6 @@ const config = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'site/index.html',
-      chunks: ['doc'],
-      inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(), // enable HMR globally
     new OpenBrowserPlugin({url: `http://${ip}:8080/`}),

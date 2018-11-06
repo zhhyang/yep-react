@@ -259,6 +259,7 @@ export default class SwipeAction extends PureComponent {
       'autoClose',
       'onOpen',
       'onClose',
+      'onMovingDistance',
     ]);
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}-swiping`]: this.state.swiping,

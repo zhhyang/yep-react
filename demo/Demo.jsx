@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as Components from '@jdcfe/yep-react'; // eslint-disable-line
 import {transform} from '@babel/standalone';
-
+import jsonp from 'jsonp';
 //import Editor from './Editor';
 
 class Demo extends React.Component {
@@ -14,7 +14,7 @@ class Demo extends React.Component {
       description: PropTypes.string,
       __content: PropTypes.string.isRequired,
     }).isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -58,16 +58,13 @@ class Demo extends React.Component {
     finalCode = finalCode.replace(/import[^;]+?;/g, '');
     const transformedCode = transform(finalCode, {
       presets: ['es2015', 'react'],
-      plugins:[
-        'proposal-class-properties',
-        'proposal-object-rest-spread',
-      ]
+      plugins: ['proposal-class-properties', 'proposal-object-rest-spread'],
     }).code;
 
-    const args = ['context', 'React', 'ReactDOM', 'PropTypes'];
-    const argv = [this, React, ReactDOM, PropTypes];
+    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp'];
+    const argv = [this, React, ReactDOM, PropTypes, jsonp];
 
-    Object.keys(Components).forEach((name) => {
+    Object.keys(Components).forEach(name => {
       args.push(name);
       argv.push(Components[name]);
     });
@@ -82,11 +79,7 @@ class Demo extends React.Component {
   render() {
     const {demo} = this.props;
 
-    return (
-      <div id={`demo-${demo.order}`}>
-
-      </div>
-    );
+    return <div id={`demo-${demo.order}`} />;
   }
 }
 

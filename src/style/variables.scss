@@ -1,13 +1,13 @@
 $hd: 2px !default; //设计稿两倍尺寸
 //字体
-$font-family:PingFangSC,"Microsoft YaHei",Helvetica,"Droid Sans",Arial,sans-serif!default;
+$font-family: PingFangSC, 'Microsoft YaHei', Helvetica, 'Droid Sans', Arial, sans-serif !default;
 //色彩
 // 文字色
 $color-text-base-inverse: #fff; // 基本 - 反色
 $color-text-base: #3d3f52 !default; //一级信息：重要文字&标题等
 $color-text-secondary: #6c707d !default; // 二级信息：重要文字等
-$color-text-placeholder: #C6C7CE!default;          // 文本框提示placeholder
-$color-text-disabled:  #999BAA!default;             // 失效
+$color-text-placeholder: #c6c7ce !default; // 文本框提示placeholder
+$color-text-disabled: #999baa !default; // 失效
 $color-text-caption: #999baa !default; // 三级信息：辅助类文字
 
 //全局/品牌色
@@ -27,7 +27,7 @@ $fill-mask: rgba(0, 0, 0, 0.65) !default; // 遮罩背景
 // 边框色
 $border-color-base: #e3e5e9 !default; //分割线：全局
 //边框
-$border-width: 1PX !default;
+$border-width: 1px !default;
 $border-width-lg: 2 * $hd !default;
 // 字体尺寸
 // ---
@@ -43,8 +43,7 @@ $baseLineHeight: 1 !default;
 // 透明度
 $opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
 
-
-$radius-circle: 50%!default;
+$radius-circle: 50% !default;
 
 // Button Component */
 $button-border-color: #c6c7ce !default;
@@ -109,16 +108,18 @@ $list-title-height: 30 * $hd !default;
 $list-item-height-sm: 35 * $hd !default;
 $list-item-height: 44 * $hd !default;
 
-
 // input
-$input-label-width: 16 * $hd!default;       // InputItem、TextareaItem 文字长度基础值
-$input-font-size: 16 * $hd!default;
-$input-color-icon: #ccc!default; // input clear icon 的背景色
-$input-color-icon-tap: $brand-primary!default;
+$input-label-width: 16 * $hd !default; // InputItem、TextareaItem 文字长度基础值
+$input-font-size: 16 * $hd !default;
+$input-color-icon: #ccc !default; // input clear icon 的背景色
+$input-color-icon-tap: $brand-primary !default;
 
 // switch
-$switch-fill:#f23030 !default;
+$switch-fill: #f23030 !default;
 $switch-width: 50 * $hd !default;
 $switch-height: 30 * $hd !default;
 $switch-border-radius: 30 * $hd !default;
 $switch-circle: 28 * $hd !default;
+
+$area-tabs-height: 28 * $hd !default;
+$area-content-height: 478 * $hd !default;
