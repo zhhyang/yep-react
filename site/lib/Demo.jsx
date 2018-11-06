@@ -11,7 +11,7 @@ class Demo extends React.Component {
       description: PropTypes.string,
       __content: PropTypes.string.isRequired,
     }).isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -22,25 +22,31 @@ class Demo extends React.Component {
     this.code = props.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
   }
 
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.demo !== this.props.demo) {
       this.code = nextProps.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
     }
   }
 
-
   render() {
     const {demo, componentName} = this.props;
-    const { protocol,hostname,host,port } = window.location;
-    const src = `${protocol}//${port?hostname+':8081':host+'/demo.html'}#/component/${componentName}?order=${demo.order}`;
+    const {protocol, hostname, host, port} = window.location;
+    const src = `${protocol}//${port ? hostname + ':8081' : host + '/demo.html'}#/component/${componentName}?order=${
+      demo.order
+    }`;
+    console.log(src);
     return (
       <div className="">
-        <h3 style={{
-          display:'flex',
-          alignItems:'center',
-          margin:0,
-        }}>{demo.title}<QRCode value={src} size={100} style={{marginLeft:10}} level="M" /></h3>
+        <h3
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            margin: 0,
+          }}
+        >
+          {demo.title}
+          <QRCode value={src} size={100} style={{marginLeft: 10}} level="M" />
+        </h3>
         <div className="">{demo.description}</div>
         <div className="component-box">
           <div id={`demo-${demo.order}`} className="component-hd">
@@ -48,17 +54,16 @@ class Demo extends React.Component {
               style={{
                 width: '380px',
                 height: '760px',
-                backgroundImage:'url(http://yep.jd.com/index/1.0.0/img/phone.bf15f6c.png)',
-                backgroundSize:'cover',
-                padding:'60px 30px',
+                backgroundImage: 'url(http://yep.jd.com/index/1.0.0/img/phone.bf15f6c.png)',
+                backgroundSize: 'cover',
+                padding: '60px 30px',
               }}
             >
-              <iframe src={src} frameBorder="0"
-                      style={{width: '100%', height: '100%'}}/>
+              <iframe src={src} frameBorder="0" style={{width: '100%', height: '100%'}} />
             </div>
           </div>
           <div className="component-bd" style={{display: 'block'}}>
-            <Editor value={this.code}/>
+            <Editor value={this.code} />
           </div>
         </div>
       </div>

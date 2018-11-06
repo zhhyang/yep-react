@@ -254,7 +254,7 @@ class Demo extends React.PureComponent {
           选择医生
         </Button>
         <WhiteSpace />
-        <Button onClick={this.handleToggleSlideDownShow}>选择性别</Button>
+        <Button onClick={this.handleToggleSlideDownShow}>选择地区</Button>
         <WhiteSpace />
         <Button type="primary" onClick={this.handleToggleSlideRightShow}>
           选择婚姻状况

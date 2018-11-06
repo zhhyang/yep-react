@@ -1,17 +1,17 @@
-import React, {Fragment} from 'react'
-import {render} from 'react-dom'
-import './base.scss'
-import Content from './Content'
-import '../dist/@jdcfe/yep-react.css'
-import {Helmet} from "react-helmet";
-import { HashRouter as Router } from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {render} from 'react-dom';
+import {Helmet} from 'react-helmet';
+import {HashRouter as Router} from 'react-router-dom';
+import './base.scss';
+import Content from './Content';
+import '../dist/@jdcfe/yep-react.css';
 
 render(
   <Fragment>
-    <Helmet titleTemplate="%s - Yep-React"/>
+    <Helmet titleTemplate="%s - Yep-React" />
     <Router>
-      <Content/>
+      <Content />
     </Router>
-  </Fragment>
-  , document.getElementById('app')
+  </Fragment>,
+  document.getElementById('app')
 );

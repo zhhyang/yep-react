@@ -35,7 +35,7 @@ class Basic extends React.Component {
   render() {
     return (
       <div>
-        <h2>Content before the Sticky...</h2>
+        <h2>Routes before the Sticky...</h2>
         <div className="gap short" style={{background: 'linear-gradient(#fff, #ddd)'}} />
         <StickyContainer className="container">
           <Sticky>{({style}) => <Header style={style} renderCount={renderCount++} />}</Sticky>
@@ -43,7 +43,7 @@ class Basic extends React.Component {
           <h2 className="text-center">{'<StickyContainer />'}</h2>
         </StickyContainer>
         <div className="gap tall" style={{background: 'linear-gradient(#ddd, #fff)'}}>
-          <h2>Content after the Sticky...</h2>
+          <h2>Routes after the Sticky...</h2>
         </div>
       </div>
     );

@@ -66,11 +66,9 @@ import '@jdcfe/yep-react/dist/yep-react.css';
 
   ```js
   // .babelrc or babel-loader option
-  {
-    "plugins": [
-      ["import", { libraryName: "@jdcfe/yep-react", style: "css" }] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
-    ]
-  }
+     {
+       plugins: [['import', {libraryName: '@jdcfe/yep-react', style: 'css'}]],
+     }
   ```
 
   然后只需从 @jdcfe/yep-react 引入模块即可，无需单独引入样式。

@@ -104,7 +104,7 @@ export default class SwipeAction extends PureComponent {
   }
 
   _getContentEasing(value, limit) {
-    // limit content style left when value > actions width
+    // limit content css left when value > actions width
     const delta = Math.abs(value) - Math.abs(limit);
     const isOverflow = delta > 0;
     const factor = limit > 0 ? 1 : -1;
