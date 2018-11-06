@@ -112,7 +112,6 @@ class Demo extends React.PureComponent {
           onCancel={this.onCancel}
           initialData={this.state.data}
           onOk={this.onOk}
-          activeIndex={this.state.index}
           fetchAction={(city, index) => getArea(city.id)}
         />
       </div>
