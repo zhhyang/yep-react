@@ -48,3 +48,4 @@ export {default as DatePicker} from './date-picker';
 export {default as PickerView} from './picker-view';
 export {default as InfiniteLoader} from './infinite-loader';
 export {default as SearchBar} from './search-bar';
+export {default as AreaPicker} from './area-picker';

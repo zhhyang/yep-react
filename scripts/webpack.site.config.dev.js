@@ -2,17 +2,16 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
-const address = require('address')
-const ip = address.ip()
+const address = require('address');
+const ip = address.ip();
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: {
-    doc: path.join(process.cwd(), 'site/doc/index'),
-  },
+  entry: [require.resolve('react-dev-utils/webpackHotDevClient'), path.join(process.cwd(), 'site/doc/index')],
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'dist/site'),
+    publicPath: '/',
     filename: '[name].bundle.js',
   },
   resolve: {
@@ -53,12 +52,10 @@ const config = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'site/doc/index.html',
-      chunks: ['doc'],
-      inject: true,
     }),
-    new webpack.HotModuleReplacementPlugin(),// enable HMR globally
-    new OpenBrowserPlugin({url: `http://${ip}:8080/`})
+    new webpack.HotModuleReplacementPlugin(), // enable HMR globally
+    new OpenBrowserPlugin({url: `http://${ip}:8080/`}),
   ],
-}
+};
 
 module.exports = config;

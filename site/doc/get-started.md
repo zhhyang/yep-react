@@ -25,18 +25,13 @@ npm install --save @jdcfe/yep-react
 
 入口页面 (html 或 模板) 相关设置：
 
-> 引入 [FastClick](https://github.com/ftlabs/fastclick) 并且设置 html `meta` [wiki](http://git.jd.com/JDC-FE/yep-react/wikis/fastclick)
->
-> 引入 Promise 的 fallback 支持 (部分安卓手机不支持 Promise)
->
 > 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/lrc-m/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- set `maximum-scale` for some compatibility issues -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
 </head>
 <body>
 </body>
@@ -64,13 +59,22 @@ import '@jdcfe/yep-react/dist/yep-react.css';
 
 * 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)（推荐）。
 
-  ```js
-  // .babelrc or babel-loader option
+  ```javascript
+  // babel 6  .babelrc or babel-loader option
   {
     "plugins": [
       ["import", { libraryName: "@jdcfe/yep-react", style: "css" }] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
     ]
   }
+  ```
+
+  ```javascript
+    // babel 7  .babelrc or babel-loader option
+    {
+      "plugins": [
+        ["import", { libraryName: "@jdcfe/yep-react", style: "css" },"@jdcfe/yep-react"] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
+      ]
+    }
   ```
 
   然后只需从 @jdcfe/yep-react 引入模块即可，无需单独引入样式。

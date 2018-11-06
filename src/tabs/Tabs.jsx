@@ -86,8 +86,8 @@ export default class Tabs extends PureComponent {
   }
 
   getTabIndex(props) {
-    const {page, initialPage} = props;
-    const param = (page !== undefined ? page : initialPage) || 0;
+    const {page, defaultIndex} = props;
+    const param = (page !== undefined ? page : defaultIndex) || 0;
 
     const index = param || 0;
 

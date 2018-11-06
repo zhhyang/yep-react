@@ -1,0 +1,100 @@
+@import '../../style/mixin';
+$easing-in-out: cubic-bezier(0.35, 0, 0.25, 1);
+$effect-duration: 0.3s;
+
+
+.Yep-area-picker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.2s;
+  background-color: #fff;
+  text-align: center;
+  font-size: 14px;
+
+  &-title {
+    font-size: 36px;
+    color: #2e2d2d;
+    font-weight: bold;
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      padding: 20px 20px 0 20px;
+    }
+  }
+
+  &-content {
+    height: $area-content-height;
+    overflow: auto;
+    li {
+      height: 74px;
+      line-height: 74px;
+      padding: 0 20px;
+      color: #333;
+      font-size: 24px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      .Yep-area-picker-area--selected {
+        margin-left: 30px;
+        color: $brand-primary;
+      }
+    }
+  }
+}
+
+$tabs-default-bar-prefix-cls: Yep-area-picker-tabs-bar;
+
+.#{$tabs-default-bar-prefix-cls} {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+
+  &-tab {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: $tabs-font-size-heading;
+    height: $area-tabs-height;
+    line-height: $area-tabs-height;
+    margin-left: 20px;
+  }
+
+  &-tab-active {
+    color: $tabs-color;
+    @include border-bottom-1px($tabs-color);
+  }
+
+  &-animated &-content {
+    transition: transform $effect-duration $easing-in-out;
+    will-change: transform;
+  }
+
+  &-top {
+    flex-direction: row;
+
+    .#{$tabs-default-bar-prefix-cls} {
+      &-content {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        @include border-bottom-1px();
+
+        .#{$tabs-default-bar-prefix-cls}-tab-active {
+          color: $tabs-color;
+          @include border-bottom-1px($tabs-color);
+        }
+      }
+    }
+  }
+}
