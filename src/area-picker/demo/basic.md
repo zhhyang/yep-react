@@ -108,6 +108,7 @@ class Demo extends React.PureComponent {
           点我
         </Button>
         <AreaPicker
+          chooseLabel={'12321'}
           show={this.state.show}
           onCancel={this.onCancel}
           initialData={this.state.data}

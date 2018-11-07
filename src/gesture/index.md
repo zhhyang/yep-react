@@ -3,7 +3,7 @@ category: Components
 title: 手势操作
 ---
 
-为移动端 React 组件提供手势操作
+为移动端 React 组件提供手势操作，inspired by hammer and
 
 <DEMO>
 
@@ -11,9 +11,9 @@ title: 手势操作
 
 ### common props
 
-| 参数      | 类型   | 默认值 | 说明                                                                                |
-| --------- | ------ | ------ | ----------------------------------------------------------------------------------- |
-| direction | string | `all`  | control the allowed gesture direction, could be `['all', 'vertical', 'horizontal']` |
+| 参数      | 类型   | 默认值 | 说明                                                        |
+| --------- | ------ | ------ | ----------------------------------------------------------- |
+| direction | string | `all`  | 控制允许的手势方向，可选`['all', 'vertical', 'horizontal']` |
 
 ### Swipe
 
@@ -66,6 +66,7 @@ Rotate gesture is not enabled by default, you must set props.enableRotate = true
 
 ### gesture
 
+```javascript
 // http://hammerjs.github.io/api/#event-object
 export type GestureStatus = {
 /_ start status snapshot _/
@@ -106,3 +107,4 @@ rotation: number, // Rotation (in deg) that has been done when multi-touch. 0 on
 /_ event, such as TouchEvent, MouseEvent, PointerEvent _/
 srcEvent: any,
 };
+```

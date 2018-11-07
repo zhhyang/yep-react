@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
 import Gesture from '../gesture';
 import noop from '../_utils/noop';
@@ -100,7 +99,7 @@ export default class SwipeAction extends PureComponent {
   }
 
   createContentRef(el) {
-    this.content = ReactDOM.findDOMNode(el);
+    this.content = el;
   }
 
   _getContentEasing(value, limit) {
@@ -218,7 +217,7 @@ export default class SwipeAction extends PureComponent {
   }
 
   onBtnClick(ev, btn) {
-    const onClick = btn.onClick;
+    const {onClick} = btn;
     if (onClick) {
       onClick(ev);
     }
@@ -228,9 +227,9 @@ export default class SwipeAction extends PureComponent {
   }
 
   renderButtons(buttons, ref) {
-    const prefixCls = this.props.prefixCls;
+    const {prefixCls} = this.props;
 
-    return buttons && buttons.length ? (
+    return buttons && buttons.length > 0 ? (
       <div className={`${prefixCls}-actions ${prefixCls}-actions-${ref}`} ref={el => (this[ref] = el)}>
         {buttons.map((btn, i) => (
           <div
@@ -264,7 +263,7 @@ export default class SwipeAction extends PureComponent {
     const cls = classNames(prefixCls, className, {
       [`${prefixCls}-swiping`]: this.state.swiping,
     });
-    return (left.length || right.length) && !disabled ? (
+    return (left.length > 0 || right.length > 0) && !disabled ? (
       <div className={cls} style={style} {...divProps}>
         <div className={`${prefixCls}-cover`} ref={el => (this.cover = el)} />
         {this.renderButtons(left, 'left')}

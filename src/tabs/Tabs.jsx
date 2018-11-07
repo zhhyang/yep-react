@@ -41,6 +41,7 @@ export default class Tabs extends PureComponent {
     tabBarTextStyle: PropTypes.object,
     tabBarUnderlineStyle: PropTypes.object,
     renderTab: PropTypes.func,
+    distanceToChangeTab: PropTypes.number,
   };
 
   static defaultProps = {
@@ -56,6 +57,7 @@ export default class Tabs extends PureComponent {
     swipeable: true,
     usePaged: true,
     onTabClick: noop,
+    distanceToChangeTab: 0,
   };
 
   constructor(props) {
@@ -238,7 +240,7 @@ export default class Tabs extends PureComponent {
     };
   })();
 
-  getOffsetIndex = (current, width, threshold = this.props.distanceToChangeTab || 0) => {
+  getOffsetIndex = (current, width, threshold = this.props.distanceToChangeTab) => {
     const ratio = Math.abs(current / width);
     const direction = ratio > this.state.currentTab ? '<' : '>';
     const index = Math.floor(ratio);

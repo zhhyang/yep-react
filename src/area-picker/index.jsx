@@ -13,22 +13,25 @@ export default class AreaPicker extends PureComponent {
     style: PropTypes.object,
     maskCloseable: PropTypes.bool,
     title: PropTypes.string,
-    initialData: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+    initialData: PropTypes.array.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     fetchAction: PropTypes.func.isRequired,
+    distanceToChangeTab: PropTypes.number,
+    keyExtractor: PropTypes.func,
+    nameExtractor: PropTypes.func,
+    chooseLabel: PropTypes.string,
   };
 
   static defaultProps = {
     prefixCls: 'Yep-area-picker',
     title: '配送至',
+    chooseLabel: '请选择',
     style: {},
     maskCloseable: false,
+    distanceToChangeTab: 10,
+    keyExtractor: (item, index) => item.id,
+    nameExtractor: item => item.name,
   };
 
   constructor(props) {
@@ -41,16 +44,16 @@ export default class AreaPicker extends PureComponent {
   }
 
   onClick = (city, index) => {
-    const {fetchAction, onOk} = this.props;
+    const {fetchAction, onOk, keyExtractor} = this.props;
     const {tabs, data} = this.state;
-    const {id} = city;
+    const id = keyExtractor(city, index);
     let tempTabs = tabs;
     const tempData = data;
     if (tempTabs[index]) {
       tempTabs.splice(index);
     }
     tempData.splice(index + 1);
-    if (tabs.filter(tab => tab.id === id).length === 0) {
+    if (tabs.filter((tab, i) => keyExtractor(tab, i) === id).length === 0) {
       tempTabs = tempTabs.concat(city);
     }
     fetchAction(city, index).then(res => {
@@ -73,7 +76,19 @@ export default class AreaPicker extends PureComponent {
   };
 
   render() {
-    const {show, onCancel, prefixCls, className, style, title, maskCloseable} = this.props;
+    const {
+      show,
+      onCancel,
+      prefixCls,
+      className,
+      style,
+      title,
+      maskCloseable,
+      distanceToChangeTab,
+      keyExtractor,
+      nameExtractor,
+      chooseLabel,
+    } = this.props;
     const {data, tabs, defaultIndex} = this.state;
     const cls = classNames(prefixCls, className);
 
@@ -87,16 +102,17 @@ export default class AreaPicker extends PureComponent {
 
           <Tabs
             defaultIndex={defaultIndex}
+            distanceToChangeTab={distanceToChangeTab}
             ref={ref => (this.tabs = ref)}
             renderTabBar={props => <TabBar {...props} />}
           >
             {data.map((item, index) => (
-              <TabPanel tab={(tabs[index] && tabs[index].name) || '请选择'} key={index}>
+              <TabPanel tab={(tabs[index] && nameExtractor(tabs[index])) || chooseLabel} key={index}>
                 <div className={`${prefixCls}-content`}>
                   <ul>
                     {item.map(city => (
-                      <li key={city.id} onClick={() => this.onClick(city, index)}>
-                        {city.name}
+                      <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
+                        {nameExtractor(city)}
                         {tabs.includes(city) && (
                           <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
                         )}
