@@ -15,7 +15,7 @@
     "clean": "rimraf lib dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublishOnly": "npm run clean && npm run dist && npm run compire ",
+    "prepublishOnly": "npm run clean && npm run dist && npm run compile ",
     "postpublish": "npm run upload",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
