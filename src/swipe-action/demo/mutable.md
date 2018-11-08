@@ -16,9 +16,8 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        {new Array(4).fill(0).map((address, index) => (
+        {new Array(1).fill(0).map((address, index) => (
           <SwipeAction
-            style={{backgroundColor: 'gray'}}
             autoClose
             right={
               this.state.default !== index
@@ -31,26 +30,11 @@ class Demo extends React.PureComponent {
                       },
                       style: {backgroundColor: '#ddd', color: 'white'},
                     },
-                    {
-                      text: '删除',
-                      className: 'demo-btn',
-                      onClick: () => console.log('delete'),
-                      style: {backgroundColor: '#F4333C', color: 'white'},
-                    },
                   ]
-                : [
-                    {
-                      text: '删除',
-                      className: 'demo-btn',
-                      onClick: () => console.log('delete'),
-                      style: {backgroundColor: '#F4333C', color: 'white'},
-                    },
-                  ]
+                : []
             }
           >
-            <List.Item extra="左滑操作" arrow="horizontal" onClick={e => console.log(e)}>
-              地址
-            </List.Item>
+            <div style={{padding: '0.14rem', fontSize: '0.32rem'}}>地址</div>
           </SwipeAction>
         ))}
       </div>

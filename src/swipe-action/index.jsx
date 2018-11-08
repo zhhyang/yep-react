@@ -67,6 +67,7 @@ export default class SwipeAction extends PureComponent {
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.createContentRef = this.createContentRef.bind(this);
+    this.createCoverRef = this.createCoverRef.bind(this);
     this.onCloseSwipe = this.onCloseSwipe.bind(this);
     this.onPanStart = this.onPanStart.bind(this);
     this.onPan = this.onPan.bind(this);
@@ -106,6 +107,9 @@ export default class SwipeAction extends PureComponent {
 
   createContentRef(el) {
     this.content = el;
+  }
+  createCoverRef(el) {
+    this.cover = el;
   }
 
   _getContentEasing(value, limit) {
@@ -271,7 +275,7 @@ export default class SwipeAction extends PureComponent {
     });
     return (left.length > 0 || right.length > 0) && !disabled ? (
       <div className={cls} style={style} {...divProps}>
-        <div className={`${prefixCls}-cover`} ref={el => (this.cover = el)} />
+        <div className={`${prefixCls}-cover`} ref={this.createCoverRef} />
         {this.renderButtons(left, 'left')}
         {this.renderButtons(right, 'right')}
         <Gesture
@@ -287,8 +291,11 @@ export default class SwipeAction extends PureComponent {
         </Gesture>
       </div>
     ) : (
-      <div ref={this.createContentRef} {...divProps}>
-        {children}
+      <div className={cls} style={style} {...divProps}>
+        <div className={`${prefixCls}-cover`} ref={this.createCoverRef} />
+        <div className={`${prefixCls}-content`} ref={this.createContentRef} {...divProps}>
+          {children}
+        </div>
       </div>
     );
   }
