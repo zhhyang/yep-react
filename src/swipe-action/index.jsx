@@ -87,6 +87,12 @@ export default class SwipeAction extends PureComponent {
     document.body.removeEventListener('touchstart', this.onCloseSwipe, {passive: false});
   }
 
+  componentDidUpdate() {
+    //如果是动态改变right和left的length，需要重新计算
+    this.btnsLeftWidth = this.left ? this.left.offsetWidth : 0;
+    this.btnsRightWidth = this.right ? this.right.offsetWidth : 0;
+  }
+
   onCloseSwipe(ev) {
     if (!(this.openedLeft || this.openedRight)) {
       return;
