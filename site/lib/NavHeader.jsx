@@ -58,7 +58,7 @@ class NavHeader extends React.Component {
         <nav className="l-nav">
           <ul>
             <li className="nav-item">
-              <Link to="/doc/get-started">组件</Link>
+              <Link to="/">首页</Link>
             </li>
             <li className="nav-item">
               <a href="http://git.jd.com/JDC-FE/lrc-m">Gitlab</a>
