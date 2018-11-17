@@ -21,6 +21,7 @@ export default class AreaPicker extends PureComponent {
     keyExtractor: PropTypes.func,
     nameExtractor: PropTypes.func,
     chooseLabel: PropTypes.string,
+    selected: PropTypes.array,
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ export default class AreaPicker extends PureComponent {
     distanceToChangeTab: 10,
     keyExtractor: (item, index) => item.id,
     nameExtractor: item => item.name,
+    selected: [],
   };
 
   constructor(props) {
@@ -75,6 +77,19 @@ export default class AreaPicker extends PureComponent {
     });
   };
 
+  componentDidMount() {
+    const {selected, fetchAction, initialData} = this.props;
+    if (selected.length > 0) {
+      Promise.all(selected.map(city => fetchAction(city))).then(res => {
+        this.setState({
+          tabs: selected,
+          data: [initialData].concat(res.filter(item => item.length > 0)),
+          defaultIndex: selected.length - 1,
+        });
+      });
+    }
+  }
+
   render() {
     const {
       show,
@@ -113,9 +128,10 @@ export default class AreaPicker extends PureComponent {
                     {item.map(city => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
                         {nameExtractor(city)}
-                        {tabs.includes(city) && (
-                          <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
-                        )}
+                        {tabs[index] &&
+                          keyExtractor(tabs[index]) === keyExtractor(city) && (
+                            <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
+                          )}
                       </li>
                     ))}
                   </ul>

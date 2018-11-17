@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 默认选中
 description:
 ---
 
@@ -75,6 +75,7 @@ class Demo extends React.PureComponent {
   onOk = (values, index) => {
     console.log(values);
     this.setState({show: false});
+    alert(JSON.stringify([values]));
   };
 
   render() {
@@ -90,6 +91,7 @@ class Demo extends React.PureComponent {
           initialData={this.state.data}
           onOk={this.onOk}
           fetchAction={(city, index) => getArea(city.id)}
+          selected={[{id: 1, name: '北京'}, {name: '东城区', id: 2802}, {id: 54748, name: '建国门街道'}]}
         />
       </div>
     );
