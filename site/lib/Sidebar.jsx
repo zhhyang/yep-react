@@ -39,7 +39,7 @@ class Sidebar extends React.Component {
     return (
       <div className="l-menu">
         <div style={{marginBottom: '20px'}}>
-          <a className="l-logo" href="//yep-react.jd.com/">
+          <a className="l-logo" href="//jdf2e.github.io/yep-react/">
             <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="Yep-React" />
             <span>Yep-React</span>
           </a>

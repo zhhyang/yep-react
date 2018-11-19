@@ -138,14 +138,19 @@ class Home extends React.Component {
               </div>
               <div className="page-home-buttons logo-animate">
                 <a
-                  href="//yep-react.jd.com/#/doc/get-started"
+                  href="//jdf2e.github.io/yep-react/#/doc/get-started"
                   className="page-home-button"
                   target="_blank"
                   rel="noopener"
                 >
                   开始使用
                 </a>
-                <a href="//yep-react.jd.com/demo.html" className="page-home-button" rel="noopener" target="_blank">
+                <a
+                  href="//jdf2e.github.io/yep-react/demo.html"
+                  className="page-home-button"
+                  rel="noopener"
+                  target="_blank"
+                >
                   查看示例
                   <div className="triangle-qrcode" id="triangle-qrcode">
                     <img
@@ -305,7 +310,7 @@ class Home extends React.Component {
             </div>
             <div className="right" id="phone-container">
               <div className="page-home-phone">
-                <iframe src="//yep-react.jd.com/demo.html" frameBorder="0" />
+                <iframe src="//jdf2e.github.io/yep-react/demo.html" frameBorder="0" />
               </div>
             </div>
           </div>
