@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {SearchBar} from '@jdcfe/lrc-m';
+import {SearchBar} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {

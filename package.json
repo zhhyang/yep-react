@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "scripts": {
@@ -16,11 +16,11 @@
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
     "prepublishOnly": "npm run clean && npm run dist && npm run compile ",
-    "postpublish": "npm run upload",
+    "postpublish": "npm run deploy",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
-    "preupload": "npm run build-demo && npm run build-site",
-    "upload": "node scripts/upload.js"
+    "predeploy": "npm run build-demo && npm run build-site",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "react",
@@ -64,6 +64,7 @@
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^2.0.0",
     "flow-bin": "^0.74.0",
+    "gh-pages": "^2.0.1",
     "glob-promise": "^3.4.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",

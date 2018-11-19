@@ -7,7 +7,6 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 
-
 // common function to get css loaders
 const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
   const loaders = [
@@ -26,7 +25,6 @@ const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
   return loaders;
 };
 
-
 // css files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -42,7 +40,7 @@ const config = {
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
-    publicPath: '/',
+    publicPath: '',
     filename: '[name].[chunkhash:8].js',
   },
   resolve: {

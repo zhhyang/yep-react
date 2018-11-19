@@ -25,7 +25,7 @@ npm install --save @jdcfe/yep-react
 
 入口页面 (html 或 模板) 相关设置：
 
-> 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/lrc-m/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
+> 屏幕适配(更多参考 [wiki](https://github.com/jdf2e/yep-react/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
 
 ```html
 <!DOCTYPE html>
