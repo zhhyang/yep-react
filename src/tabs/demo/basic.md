@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Tabs, WhiteSpace, Badge} from '@jdcfe/lrc-m';
+import {Tabs, WhiteSpace, Badge} from '@jdcfe/yep-react';
 const {TabPanel} = Tabs;
 class Demo extends React.PureComponent {
   render() {

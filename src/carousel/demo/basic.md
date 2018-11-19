@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Carousel} from '@jdcfe/lrc-m';
+import {Carousel} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {

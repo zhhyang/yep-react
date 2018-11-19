@@ -15,7 +15,7 @@ const config = {
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
-    publicPath: '/',
+    publicPath: '',
     filename: '[name].[chunkhash:8].js',
   },
   resolve: {
