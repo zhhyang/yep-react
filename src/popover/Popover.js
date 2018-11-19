@@ -2,9 +2,8 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import PopoverContent from './PopoverContent';
-import './index.scss';
 
 window.addEventListener('click', () => {
   const openedPopoverInContext = Popover[Popover.OPENED_POPOVER];
@@ -151,7 +150,7 @@ class Popover extends PureComponent {
     const {children, triggerMode, disabled} = this.props;
     const {open} = this.state;
     const triggerProps = {
-      className: classnames(children.props.className, 'Yep-popover__trigger', {
+      className: classNames(children.props.className, 'Yep-popover__trigger', {
         'Yep-popover__trigger--disabled': disabled,
       }),
     };

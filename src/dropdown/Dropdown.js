@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
-import Popover from '../_shared/Popover';
+import Popover from '../popover';
 import DropdownToggle from './DropdownToggle';
 
 class Dropdown extends PureComponent {
