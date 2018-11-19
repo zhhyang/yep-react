@@ -171,7 +171,7 @@ class Home extends React.Component {
                 </a>
               </div>
               <div className="page-home-warehouse logo-animate" id="page-home-warehouse">
-                <a href="//git.jd.com/JDC-FE/lrc-m" className="github" target="_blank">
+                <a href="//github.com/jdf2e/yep-react" className="github" target="_blank">
                   <img src={git3} alt="" />
                 </a>
                 <i className="circ" id="circ" />
