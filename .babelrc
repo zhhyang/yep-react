@@ -1,24 +1,12 @@
 {
-  "plugins": [
-    ["transform-runtime",{
-      "polyfill": false
-    }],
-    "transform-class-properties",
-    "transform-object-rest-spread"
-  ],
   "presets": [
-    ["env", {
-      "modules": false
-    }],
-    "react"
+    ["@babel/preset-env", {"modules":false}],
+    "@babel/preset-flow",
+    "@babel/preset-react"
   ],
-  "env": {
-    "test": {
-      "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread"
-      ],
-      "presets": [["env"], "react"]
-    }
-  }
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
 }

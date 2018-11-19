@@ -80,7 +80,7 @@ export default class AreaPicker extends PureComponent {
   componentDidMount() {
     const {selected, fetchAction, initialData} = this.props;
     if (selected.length > 0) {
-      Promise.all(selected.map(city => fetchAction(city))).then(res => {
+      Promise.all(selected.map((city, index) => fetchAction(city, index))).then(res => {
         this.setState({
           tabs: selected,
           data: [initialData].concat(res.filter(item => item.length > 0)),
