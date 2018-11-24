@@ -17,7 +17,7 @@ class Demo extends React.PureComponent {
           onChange={index => {
             console.log(index);
           }}
-          distanceToChangeTab="100"
+          distanceToChangeTab={100}
         >
           <TabPanel tab="选项卡一">
             <div
