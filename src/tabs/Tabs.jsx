@@ -242,13 +242,14 @@ export default class Tabs extends PureComponent {
 
   getOffsetIndex = (current, width, threshold = this.props.distanceToChangeTab) => {
     const ratio = Math.abs(current / width);
-    const direction = ratio > this.state.currentTab ? '<' : '>';
+    const direction = ratio >= this.state.currentTab ? '<' : '>';
+    const distance = direction === '>' ? Math.abs(width % current) : Math.abs(current % width);
     const index = Math.floor(ratio);
     switch (direction) {
       case '<':
-        return ratio - index > threshold ? index + 1 : index;
+        return distance > threshold ? index + 1 : index;
       case '>':
-        return 1 - ratio + index > threshold ? index : index + 1;
+        return distance < threshold ? index + 1 : index;
       default:
         return Math.round(ratio);
     }
