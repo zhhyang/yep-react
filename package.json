@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "一套基于 LRC 的移动端组件库",
   "main": "lib",
   "module": "es",
@@ -31,6 +31,10 @@
     "web"
   ],
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdf2e/yep-react.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
@@ -119,5 +123,15 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "bugs": {
+    "url": "https://github.com/jdf2e/yep-react/issues"
+  },
+  "homepage": "https://jdf2e.github.io/yep-react",
+  "directories": {
+    "lib": "lib"
+  },
+  "publishConfig": {
+    "access":"public"
   }
 }
