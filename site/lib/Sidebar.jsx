@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link, withRouter} from 'react-router-dom';
 import allDocData from './allDocData';
 import {toCamelCase} from './utils';
+import {website} from '../config';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class Sidebar extends React.Component {
     return (
       <div className="l-menu">
         <div style={{marginBottom: '20px'}}>
-          <a className="l-logo" href="//jdf2e.github.io/yep-react/">
+          <a className="l-logo" href={`//${website}`}>
             <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="Yep-React" />
             <span>Yep-React</span>
           </a>

@@ -715,7 +715,7 @@ title: 更新日志
 * **Feature**
 
   * 🌟 根据设计稿重新设计大部分组件规范
-  * 🌟 支持组件[自定义主题样式](https://jdf2e.github.io/yep-react/#/doc/customize-theme)
+  * 🌟 支持组件[自定义主题样式](/#/doc/customize-theme)
   * 🌟 新增 Tips 组件
   * 🌟 `TabBar` 支持自定义 `badge` `dot` `hidden` 属性
   * 🌟 `Button` 支持 `type=ghost`类型

@@ -12,6 +12,7 @@ import ppt3 from './../assets/img/ppt3.png';
 import ppt4 from './../assets/img/ppt4.png';
 import iconNpm from './../assets/img/npm.png';
 import './../assets/css/home.scss';
+import {website} from '../config';
 
 class Home extends React.Component {
   constructor(props) {
@@ -138,7 +139,7 @@ class Home extends React.Component {
               </div>
               <div className="page-home-buttons logo-animate">
                 <a
-                  href="//jdf2e.github.io/yep-react/#/doc/get-started"
+                  href={`//${website}/#/doc/get-started`}
                   className="page-home-button"
                   target="_blank"
                   rel="noopener"
@@ -146,7 +147,7 @@ class Home extends React.Component {
                   开始使用
                 </a>
                 <a
-                  href="//jdf2e.github.io/yep-react/demo.html"
+                  href={`//${website}/demo.html`}
                   className="page-home-button"
                   rel="noopener"
                   target="_blank"
@@ -175,8 +176,8 @@ class Home extends React.Component {
                   <img src={git3} alt="" />
                 </a>
                 <i className="circ" id="circ" />
-                <a href="http://npm.m.jd.com/package/@jdcfe/yep-react" className="npm" target="_blank">
-                  <img src={iconNpm} alt="" />
+                <a href="https://npmjs.com/package/@jdcfe/yep-react" className="npm" target="_blank">
+                  <img src="https://badge.fury.io/js/%40jdcfe%2Fyep-react.svg" alt="" />
                 </a>
               </div>
             </div>
@@ -236,20 +237,13 @@ class Home extends React.Component {
                 <h6>安装</h6>
                 <div className="page-home-code">
                   <code>
-                    <span className="page-home-comment"># 安装nrm</span>
-                    <span>
-                      <span className="pl-smi">npm install -g nrm</span>
-                    </span>
-                    <span className="page-home-comment"># 添加jdnpm源</span>
-                    <span>
-                      <span className="pl-smi">nrm add jdnpm2 http://registry.m.jd.com/</span>
-                    </span>
-                    <span>
-                      <span className="pl-smi">nrm use jdnpm2</span>
-                    </span>
-                    <span className="page-home-comment"># 安装组件</span>
+                    <span className="page-home-comment"># npm</span>
                     <span>
                       <span className="pl-smi">npm install --save @jdcfe/yep-react</span>
+                    </span>
+                    <span className="page-home-comment"># yarn</span>
+                    <span>
+                      <span className="pl-smi">yarn add @jdcfe/yep-react</span>
                     </span>
                   </code>
                 </div>
@@ -310,7 +304,7 @@ class Home extends React.Component {
             </div>
             <div className="right" id="phone-container">
               <div className="page-home-phone">
-                <iframe src="//jdf2e.github.io/yep-react/demo.html" frameBorder="0" />
+                <iframe src={`//${website}/demo.html`} frameBorder="0" />
               </div>
             </div>
           </div>

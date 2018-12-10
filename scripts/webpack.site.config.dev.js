@@ -130,6 +130,7 @@ const config = {
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
       __DEV__: true,
+      __JD__: process.env.JD,
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',

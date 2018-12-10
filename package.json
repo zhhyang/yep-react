@@ -22,7 +22,10 @@
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
     "predeploy": "npm run build-demo && npm run build-site",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build-site:jd": "cross-env JD=true webpack --config scripts/webpack.site.config.pro.js",
+    "deploy:jd": "gh-pages -d build -r http://git.jd.com/JDC-FE/lrc-m.git -b master",
+    "predeploy:jd": "npm run build-demo && npm run build-site:jd"
   },
   "keywords": [
     "react",
@@ -46,6 +49,7 @@
     "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^0.1.19",
     "codemirror": "^5.37.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "del": "^3.0.0",
     "eslint": "^4.17.0",
@@ -109,9 +113,9 @@
     "react-dom": ">=16.0.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.1.5",
     "@jdcfe/lrc": "^0.0.2",
     "@jdcfe/yep-gesture": "^0.0.1",
-    "@babel/runtime": "^7.1.5",
     "classlist": "^2.0.0",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",
@@ -132,6 +136,6 @@
     "lib": "lib"
   },
   "publishConfig": {
-    "access":"public"
+    "access": "public"
   }
 }

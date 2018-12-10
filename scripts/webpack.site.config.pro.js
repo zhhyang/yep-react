@@ -130,6 +130,9 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __JD__: process.env.JD,
+    }),
     new CleanWebpackPlugin(['build/site.*', 'build/index.html'], {
       root: process.cwd(),
     }),
