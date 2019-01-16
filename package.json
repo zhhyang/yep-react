@@ -114,7 +114,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5",
-    "@jdcfe/lrc": "^0.0.2",
     "@jdcfe/yep-gesture": "^0.0.1",
     "classlist": "^2.0.0",
     "classnames": "^2.2.5",

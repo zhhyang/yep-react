@@ -721,11 +721,6 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@jdcfe/lrc@^0.0.2":
-  version "0.0.2"
-  resolved "http://registry.m.jd.com/@jdcfe/lrc/download/@jdcfe/lrc-0.0.2.tgz#122ef9651ee813e3bad1384591008251136076ef"
-  integrity sha1-Ei75ZR7oE+O60ThFkQCCURNgdu8=
-
 "@jdcfe/yep-gesture@^0.0.1":
   version "0.0.1"
   resolved "http://registry.m.jd.com/@jdcfe/yep-gesture/download/@jdcfe/yep-gesture-0.0.1.tgz#242f31166c98e9346bfd57c1293201aecb8688a9"
