@@ -19,7 +19,7 @@ class Demo extends React.PureComponent {
         <p className="totop-demo-p">滚动至页面底部，查看右下角返回顶部按钮</p>
         <p className="totop-demo-p">滚动至页面底部，查看右下角返回顶部按钮</p>
         <p className="totop-demo-p">滚动至页面底部，查看右下角返回顶部按钮</p>
-        <ToTop className="my-totop" onClick={e => console.log(e)} />
+        <ToTop onClick={e => console.log(e)} />
       </div>
     );
   }
