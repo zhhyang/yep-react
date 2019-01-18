@@ -44,10 +44,6 @@ class Sidebar extends React.Component {
             <img src="http://yep.jd.com/index/1.0.0/img/logo.de07a48.png" alt="Yep-React" />
             <span>Yep-React</span>
           </a>
-          <div style={{paddingLeft: '63px'}}>
-            {' '}
-            <span className="l-inspired">inspired by lrc</span>
-          </div>
         </div>
         <ul>
           {allDocData.docs.sort((p1, p2) => p1.order - p2.order).map(page => (
