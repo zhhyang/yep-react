@@ -1,7 +1,7 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.2.24",
-  "description": "一套基于 LRC 的移动端组件库",
+  "version": "0.2.25",
+  "description": "一套基于React的移动端组件库",
   "main": "lib",
   "module": "es",
   "scripts": {
