@@ -33,7 +33,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const config = {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: false,
   entry: {
     site: path.join(process.cwd(), 'site/index'),
   },

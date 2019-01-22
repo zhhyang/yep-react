@@ -8,7 +8,7 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const config = {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: false,
   entry: {
     demo: path.join(process.cwd(), 'demo/index'),
   },
