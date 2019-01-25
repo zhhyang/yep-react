@@ -4,19 +4,7 @@ import classNames from 'classnames';
 import omit from 'lodash/omit';
 import Gesture from '../gesture';
 import noop from '../_utils/noop';
-
-function closest(el, selector) {
-  const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-
-  while (el) {
-    if (matchesSelector.call(el, selector)) {
-      return el;
-    } else {
-      el = el.parentElement;
-    }
-  }
-  return null;
-}
+import closest from '../_utils/closest';
 
 export default class SwipeAction extends PureComponent {
   static propTypes = {

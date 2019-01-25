@@ -13,3 +13,5 @@ props
 | style       | 组件样式              | object  | {}       |
 | className   | 额外要添加的 CSS 类名 | string  | -        |
 | transparent | 是否透明              | boolean | false    |
+
+注:为了解决 iOS 上滑动穿透的问题，Mask 组件添加了 fix 方法，请在使用 Mask 组件时，浮层里面的容器有需要滚动的元素，添加 `Yep-scroller` class

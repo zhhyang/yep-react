@@ -123,15 +123,14 @@ export default class AreaPicker extends PureComponent {
           >
             {data.map((item, index) => (
               <TabPanel tab={(tabs[index] && nameExtractor(tabs[index])) || chooseLabel} key={index}>
-                <div className={`${prefixCls}-content`}>
+                <div className={`${prefixCls}-content Yep-scroller`}>
                   <ul>
                     {item.map(city => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
                         {nameExtractor(city)}
-                        {tabs[index] &&
-                          keyExtractor(tabs[index]) === keyExtractor(city) && (
-                            <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
-                          )}
+                        {tabs[index] && keyExtractor(tabs[index]) === keyExtractor(city) && (
+                          <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
+                        )}
                       </li>
                     ))}
                   </ul>
