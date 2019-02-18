@@ -1,19 +1,18 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 import loadSprite from './loadSprite';
 
-export default class Icon extends PureComponent {
-  static propTypes = {
-    /**
-     * icon的type
-     */
-    type: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg']),
-    color: PropTypes.string,
-  };
+export interface IconProps {
+  /**
+   * icon的type
+   */
+  type: string;
+  className?: string;
+  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
+  color?: string;
+}
 
+export default class Icon extends React.PureComponent<IconProps, any> {
   static defaultProps = {
     style: {},
     size: 'md',

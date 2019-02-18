@@ -2,7 +2,7 @@ import icons from './svgs';
 /* tslint:disable:max-line-length */
 // inspried by https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js
 // Much simplified, do make sure run this after document ready
-const svgSprite = contents => `
+const svgSprite = (contents: string) => `
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"

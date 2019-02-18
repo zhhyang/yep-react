@@ -8,7 +8,7 @@ import closest from '../_utils/closest';
  */
 
 export default function fixMask() {
-  let data = {
+  const data = {
     scroller: null,
     posY: 0,
     scrollY: 0,

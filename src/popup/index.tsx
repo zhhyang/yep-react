@@ -1,39 +1,35 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
 import Mask from '../mask';
 
-/**
- * screen mask, use in `Dialog`, `ActionSheet`, `Popup`.
- *
- */
-export default class Popup extends PureComponent {
-  static propTypes = {
-    /**
-     * 是否显示
-     */
-    show: PropTypes.bool,
-    /**
-     * popup弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up
-     */
-    popupTransition: PropTypes.string,
-    /**
-     * mask层的动画，默认为fade
-     */
-    maskTransition: PropTypes.string,
-    /**
-     * 点击遮罩层是否关闭
-     */
-    maskCloseable: PropTypes.bool,
-    /**
-     * 关闭事件回调
-     */
-    onCancel: PropTypes.func,
-    prefixCls: PropTypes.string,
-    style: PropTypes.object,
-  };
+export interface PopupProps {
+  /**
+   * 是否显示
+   */
+  show?: boolean;
+  /**
+   * popup弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up
+   */
+  popupTransition?: string;
+  /**
+   * mask层的动画，默认为fade
+   */
+  maskTransition?: string;
+  /**
+   * 点击遮罩层是否关闭
+   */
+  maskCloseable?: boolean;
+  /**
+   * 关闭事件回调
+   */
+  onCancel?: (e: React.MouseEvent) => void;
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
+export default class Popup extends React.PureComponent<PopupProps, any> {
   static defaultProps = {
     prefixCls: 'Yep-popup',
     style: {},
@@ -44,17 +40,12 @@ export default class Popup extends PureComponent {
     onCancel: () => {},
   };
 
-  constructor() {
-    super();
-    this.onMaskClick = this.onMaskClick.bind(this);
-  }
-
-  onMaskClick(e) {
+  onMaskClick = e => {
     const {maskCloseable, onCancel} = this.props;
     if (e.target === e.currentTarget && maskCloseable && onCancel) {
       onCancel(e);
     }
-  }
+  };
 
   render() {
     const {show, popupTransition, maskTransition, prefixCls, className, style, children} = this.props;

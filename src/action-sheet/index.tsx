@@ -1,45 +1,44 @@
-import React, {PureComponent} from 'react';
-
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 
 import Popup from '../popup';
 
-export default class ActionSheet extends PureComponent {
-  static propTypes = {
-    /**
-     * 是否显示
-     */
-    show: PropTypes.bool,
-    /**
-     * 关闭事件回调
-     */
-    onCancel: PropTypes.func,
-    /**
-     * 点击事件回调
-     */
-    itemClick: PropTypes.func,
+export interface ActionSheetProps {
+  /**
+   * 是否显示
+   */
+  show?: boolean;
+  /**
+   * 关闭事件回调
+   */
+  onCancel?: () => void;
+  /**
+   * 点击事件回调
+   */
+  itemClick?: (item: string, index: number) => void;
 
-    prefixCls: PropTypes.string,
+  prefixCls?: string;
+  className?: string;
 
-    style: PropTypes.object,
-    /**
-     * 是否拥有title
-     */
-    title: PropTypes.string,
-    /**
-     * 如果hasCancel为true，content与取消按钮中是否有space间隔空间
-     */
-    space: PropTypes.bool,
-    /**
-     * 是否显示取消按钮
-     */
-    hasCancel: PropTypes.bool,
+  style?: React.CSSProperties;
+  /**
+   * 是否拥有title
+   */
+  title?: string;
+  /**
+   * 如果hasCancel为true，content与取消按钮中是否有space间隔空间
+   */
+  space?: boolean;
+  /**
+   * 是否显示取消按钮
+   */
+  hasCancel?: boolean;
 
-    data: PropTypes.array,
-    active: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  };
+  data: [];
+  active: [number, string];
+}
 
+export default class ActionSheet extends React.PureComponent<ActionSheetProps, any> {
   static defaultProps = {
     show: false,
     onCancel: () => {},
@@ -50,16 +49,11 @@ export default class ActionSheet extends PureComponent {
     itemClick: () => {},
   };
 
-  constructor() {
-    super();
-    this.onItemClick = this.onItemClick.bind(this);
-  }
-
-  onItemClick(e) {
+  onItemClick = (e: React.MouseEvent<HTMLDataElement>) => {
     const {itemClick} = this.props;
     const {item, index} = e.target.dataset;
     itemClick(item, index);
-  }
+  };
 
   render() {
     const {show, onCancel, prefixCls, className, style, title, space, hasCancel, data, active} = this.props;
