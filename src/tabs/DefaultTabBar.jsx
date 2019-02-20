@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
+import Gesture from '../gesture';
+import {getPxStyle, getTransformPropValue, setPxStyle} from '../_utils/styleUtil';
 
 export default class DefaultTabBar extends PureComponent {
   static propTypes = {
@@ -21,13 +23,14 @@ export default class DefaultTabBar extends PureComponent {
     page: 5,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       transform: '',
       isMoving: false,
       showPrev: false,
       showNext: false,
+      ...this.getTransformByIndex(props),
     };
     this.renderTab = this.renderTab.bind(this);
     this.isTabBarVertical = this.isTabBarVertical.bind(this);
@@ -35,9 +38,86 @@ export default class DefaultTabBar extends PureComponent {
     this.onClick = this.onClick.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.activeTab !== nextProps.activeTab ||
+      this.props.tabs !== nextProps.tabs ||
+      this.props.tabs.length !== nextProps.tabs.length
+    ) {
+      this.setState({
+        ...this.getTransformByIndex(nextProps),
+      });
+    }
+  }
+
+  onPan = (() => {
+    let lastOffset: number | string = 0;
+    let finalOffset = 0;
+
+    const getLastOffset = (isVertical = this.isTabBarVertical()) => {
+      let offset = +`${lastOffset}`.replace('%', '');
+      if (`${lastOffset}`.indexOf('%') >= 0) {
+        offset /= 100;
+        offset *= isVertical ? this.layout.clientHeight : this.layout.clientWidth;
+      }
+      return offset;
+    };
+
+    return {
+      onPanStart: () => {
+        this.setState({isMoving: true});
+      },
+
+      onPanMove: status => {
+        if (!status.moveStatus || !this.layout) return;
+        const isVertical = this.isTabBarVertical();
+        let offset = getLastOffset() + (isVertical ? status.moveStatus.y : status.moveStatus.x);
+        const canScrollOffset = isVertical
+          ? -this.layout.scrollHeight + this.layout.clientHeight
+          : -this.layout.scrollWidth + this.layout.clientWidth;
+        offset = Math.min(offset, 0);
+        offset = Math.max(offset, canScrollOffset);
+        setPxStyle(this.layout, offset, 'px', isVertical);
+        finalOffset = offset;
+
+        this.setState({
+          showPrev: -offset > 0,
+          showNext: offset > canScrollOffset,
+        });
+      },
+
+      onPanEnd: () => {
+        const isVertical = this.isTabBarVertical();
+        lastOffset = finalOffset;
+        this.setState({
+          isMoving: false,
+          transform: getPxStyle(finalOffset, 'px', isVertical),
+        });
+      },
+
+      setCurrentOffset: (offset: number | string) => (lastOffset = offset),
+    };
+  })();
+
   isTabBarVertical(position = this.props.tabBarPosition) {
     return position === 'left' || position === 'right';
   }
+
+  getTransformByIndex = props => {
+    const {activeTab, tabs, page = 0} = props;
+    const isVertical = this.isTabBarVertical();
+
+    const size = this.getTabSize(page, tabs.length);
+    const center = page / 2;
+    const pos = Math.min(activeTab, tabs.length - center - 0.5);
+    const skipSize = Math.min(-(pos - center + 0.5) * size, 0);
+    this.onPan.setCurrentOffset(`${skipSize}%`);
+    return {
+      transform: getPxStyle(skipSize, '%', isVertical),
+      showPrev: activeTab > center - 0.5 && tabs.length > page,
+      showNext: activeTab < tabs.length - center - 0.5 && tabs.length > page,
+    };
+  };
 
   getTabSize(page, tabLength) {
     return 100 / Math.min(page, tabLength);
@@ -110,6 +190,18 @@ export default class DefaultTabBar extends PureComponent {
       return this.renderTab(t, i, size, isTabBarVertical);
     });
 
+    const style = {
+      backgroundColor: tabBarBackgroundColor || '',
+    };
+
+    const transformStyle = needScroll
+      ? {
+          ...getTransformPropValue(transform),
+        }
+      : {};
+
+    const {setCurrentOffset, ...onPan} = this.onPan;
+
     const underlineProps = {
       style: {
         ...(isTabBarVertical ? {height: `${size}%`} : {width: `${size}%`}),
@@ -120,11 +212,15 @@ export default class DefaultTabBar extends PureComponent {
     };
 
     return (
-      <div className={cls}>
-        <div className={`${prefixCls}-content`}>
-          {Tabs}
-          {renderUnderline ? renderUnderline(underlineProps) : <div {...underlineProps} />}
-        </div>
+      <div className={cls} style={style}>
+        {showPrev && <div className={`${prefixCls}-prevpage`} />}
+        <Gesture {...onPan} direction={isTabBarVertical ? 'vertical' : 'horizontal'}>
+          <div className={`${prefixCls}-content`} ref={div => (this.layout = div)} style={transformStyle}>
+            {Tabs}
+            {renderUnderline ? renderUnderline(underlineProps) : <div {...underlineProps} />}
+          </div>
+        </Gesture>
+        {showNext && <div className={`${prefixCls}-nextpage`} />}
       </div>
     );
   }

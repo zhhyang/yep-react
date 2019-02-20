@@ -40,5 +40,5 @@ title: 标签页
 | animated   | 是否使用动画       | boolean                                     |                      | true  |
 | prefixCls  | 样式前缀           | string                                      | Yep-tabs-default-bar | false |
 | renderTab  | 替换 TabBar 的 Tab | (tab: {title,index}) => React.ReactNode     |                      | false |
-| page       | Tab 分页尺寸       | number                                      | 5                    | false |
+| page       | Tab 分页大小       | number                                      | 5                    | false |
 | onTabClick | tab 被点击的回调   | (tab: {title,index}, index: number) => void |                      | false |
