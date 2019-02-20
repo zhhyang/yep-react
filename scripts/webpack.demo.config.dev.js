@@ -66,7 +66,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: [require.resolve('react-dev-utils/webpackHotDevClient'), path.join(process.cwd(), 'demo/index')],
+  entry: [require.resolve('react-dev-utils/webpackHotDevClient'), path.join(process.cwd(), 'demo/index.ts')],
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'dist/demo'),
@@ -100,8 +100,12 @@ const config = {
         ],
       },
       {
-        test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'), path.join(process.cwd(), 'demo')],
+        test: /\.(ts|js)x?$/,
+        include: [
+          path.join(process.cwd(), 'site/index.ts'),
+          path.join(process.cwd(), 'src/index.ts'),
+          path.join(process.cwd(), 'demo/index.ts'),
+        ],
         use: [
           {
             loader: require.resolve('babel-loader'),

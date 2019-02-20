@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonGroup from './ButtonGroup';
 import TouchFeedback from '../touch-feedback';
-import Icon from '../icon';
+import Icon from '../icon/index.tsx';
 
 export default class Button extends PureComponent {
   static propTypes = {

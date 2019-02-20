@@ -1,5 +1,5 @@
-import TabBar from './TabBar';
-import Tab from './Tab';
+import TabBar from './TabBar.tsx';
+import Tab from './Tab.tsx';
 
 TabBar.Tab = Tab;
 

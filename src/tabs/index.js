@@ -1,5 +1,5 @@
-import Tabs from './Tabs';
-import TabPanel from './TabPanel';
+import Tabs from './Tabs.tsx';
+import TabPanel from './TabPanel.tsx';
 import DefaultTabBar from './DefaultTabBar';
 
 Tabs.TabPanel = TabPanel;

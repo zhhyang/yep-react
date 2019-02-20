@@ -1,5 +1,5 @@
 import React from 'react';
-import type DatePickerProps from './type';
+import DatePickerProps from './type';
 import DatePicker from './DatePicker';
 import PickerPopup from '../picker/PickerPopup';
 

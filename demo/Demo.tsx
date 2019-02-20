@@ -22,7 +22,7 @@ class Demo extends React.Component {
     this.state = {
       showEditor: false,
     };
-    this.code = props.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
+    this.code = props.demo.__content.replace(/^\s*```(js|ts)x?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
 
     this.toggleEditor = this.toggleEditor.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
@@ -34,7 +34,7 @@ class Demo extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.demo !== this.props.demo) {
-      this.code = nextProps.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
+      this.code = nextProps.demo.__content.replace(/^\s*```(js|ts)x?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
       this.renderSource(this.code);
       this.setState({
         showEditor: false,
@@ -57,7 +57,7 @@ class Demo extends React.Component {
     let finalCode = code.replace('mountNode', `document.getElementById("demo-${this.props.demo.order}")`);
     finalCode = finalCode.replace(/import[^;]+?;/g, '');
     const transformedCode = transform(finalCode, {
-      presets: ['es2015', 'react'],
+      presets: ['es2015', 'react', 'typescript'],
       plugins: ['proposal-class-properties', 'proposal-object-rest-spread'],
     }).code;
 

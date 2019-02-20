@@ -202,7 +202,7 @@ function addInToIndex() {
   return new Promise((resolve, reject) => {
     const nameLc = camel2Dash(newCpt.name);
     const exportContent = `export {default as ${newCpt.name}} from './${nameLc}';`;
-    fs.appendFile('./src/index.js', exportContent, err => {
+    fs.appendFile('./src/index.ts', exportContent, err => {
       if (err) throw err;
       console.log('生成组件添加入口文件成功');
       resolve(`生成组件添加入口文件成功`);
