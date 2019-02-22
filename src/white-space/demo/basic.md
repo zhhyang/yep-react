@@ -14,24 +14,5 @@ const PlaceHolder = ({className = '', ...restProps}) => (
   </div>
 );
 
-const WhiteSpaceExample = () => (
-  <div>
-    <WhiteSpace size="xs" />
-    <PlaceHolder />
-
-    <WhiteSpace size="sm" />
-    <PlaceHolder />
-
-    <WhiteSpace />
-    <PlaceHolder />
-
-    <WhiteSpace size="lg" />
-    <PlaceHolder />
-
-    <WhiteSpace size="xl" />
-    <PlaceHolder />
-  </div>
-);
-
-ReactDOM.render(<WhiteSpaceExample />, mountNode);
+ReactDOM.render(<PlaceHolder />, mountNode);
 ```

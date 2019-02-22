@@ -19,7 +19,7 @@ const config = {
     filename: '[name].[chunkhash:8].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.tsx'],
     alias: {
       '@jdcfe/yep-react': path.resolve(__dirname, '../src'),
     },
@@ -35,8 +35,8 @@ const config = {
         ],
       },
       {
-        test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'), path.join(process.cwd(), 'demo')],
+        test: /\.js|[j|t]sx?$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: require.resolve('babel-loader'),

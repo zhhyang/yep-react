@@ -25,7 +25,8 @@
     "deploy": "gh-pages -d build",
     "build-site:jd": "cross-env JD=true webpack --config scripts/webpack.site.config.pro.js",
     "deploy:jd": "gh-pages -d build -r http://git.jd.com/JDC-FE/lrc-m.git -b master",
-    "predeploy:jd": "npm run build-demo && npm run build-site:jd"
+    "predeploy:jd": "npm run build-demo && npm run build-site:jd",
+    "tsc": "tsc"
   },
   "keywords": [
     "react",
@@ -38,13 +39,17 @@
     "type": "git",
     "url": "git+https://github.com/jdf2e/yep-react.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/standalone": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "@jdcfe/yep-tools": "^0.0.3",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",
     "@types/react-transition-group": "^2.0.16",
+    "@types/lodash": "^4.14.121",
     "address": "^1.0.3",
     "autoprefixer": "^8.3.0",
     "babel-eslint": "^10.0.1",

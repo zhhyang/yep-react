@@ -1,29 +1,31 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 import Popup from '../popup';
 import Icon from '../icon';
 import Tabs from '../tabs';
 import TabBar from './TabBar';
 const {TabPanel} = Tabs;
-export default class AreaPicker extends PureComponent {
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    maskCloseable: PropTypes.bool,
-    title: PropTypes.string,
-    initialData: PropTypes.array.isRequired,
-    onOk: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-    fetchAction: PropTypes.func.isRequired,
-    distanceToChangeTab: PropTypes.number,
-    keyExtractor: PropTypes.func,
-    nameExtractor: PropTypes.func,
-    chooseLabel: PropTypes.string,
-    selected: PropTypes.array,
-  };
 
+export interface Data {}
+
+export interface AreaPickerProps {
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  maskCloseable?: boolean;
+  title?: string;
+  initialData: Data[];
+  onOk: () => void;
+  onCancel: () => void;
+  fetchAction: () => void;
+  distanceToChangeTab?: number;
+  keyExtractor?: (item: any, index: number) => void;
+  nameExtractor: (item: any, index: number) => void;
+  chooseLabel: string;
+  selected: [];
+}
+
+export default class AreaPicker extends React.PureComponent<AreaPickerProps, any> {
   static defaultProps = {
     prefixCls: 'Yep-area-picker',
     title: '配送至',
@@ -31,12 +33,12 @@ export default class AreaPicker extends PureComponent {
     style: {},
     maskCloseable: false,
     distanceToChangeTab: 10,
-    keyExtractor: (item, index) => item.id,
-    nameExtractor: item => item.name,
+    keyExtractor: (item: any, index: number) => item.id,
+    nameExtractor: (item: any) => item.name,
     selected: [],
   };
 
-  constructor(props) {
+  constructor(props:AreaPickerProps) {
     super(props);
     this.state = {
       tabs: [],
@@ -128,9 +130,10 @@ export default class AreaPicker extends PureComponent {
                     {item.map(city => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
                         {nameExtractor(city)}
-                        {tabs[index] && keyExtractor(tabs[index]) === keyExtractor(city) && (
-                          <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
-                        )}
+                        {tabs[index] &&
+                          keyExtractor(tabs[index]) === keyExtractor(city) && (
+                            <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
+                          )}
                       </li>
                     ))}
                   </ul>

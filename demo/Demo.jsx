@@ -23,9 +23,6 @@ class Demo extends React.Component {
       showEditor: false,
     };
     this.code = props.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
-
-    this.toggleEditor = this.toggleEditor.bind(this);
-    this.onCodeChange = this.onCodeChange.bind(this);
   }
 
   componentDidMount() {
@@ -40,17 +37,6 @@ class Demo extends React.Component {
         showEditor: false,
       });
     }
-  }
-
-  onCodeChange(newCode) {
-    this.renderSource(newCode);
-    this.code = newCode;
-  }
-
-  toggleEditor() {
-    this.setState({
-      showEditor: !this.state.showEditor,
-    });
   }
 
   renderSource(code) {

@@ -10,6 +10,7 @@ export interface IconProps {
   className?: string;
   size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
+  onClick?: () => void;
 }
 
 export default class Icon extends React.PureComponent<IconProps, any> {

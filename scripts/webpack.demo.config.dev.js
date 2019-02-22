@@ -74,7 +74,7 @@ const config = {
     filename: '[name].bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.tsx'],
     alias: {
       '@jdcfe/yep-react': path.resolve(__dirname, '../src'),
     },
@@ -100,8 +100,8 @@ const config = {
         ],
       },
       {
-        test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'), path.join(process.cwd(), 'demo')],
+        test: /\.js|[j|t]sx?$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -158,7 +158,7 @@ const config = {
         // its runtime that would otherwise be processed through "file" loader.
         // Also exclude `html` and `json` extensions so they get processed
         // by webpacks internal loaders.
-        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.scss$/, /\.css$/],
+        exclude: [/\.(js|jsx|mjs|tsx)$/, /\.html$/, /\.json$/, /\.scss$/, /\.css$/],
         loader: require.resolve('file-loader'),
         options: {
           name: 'static/media/[name].[hash:8].[ext]',

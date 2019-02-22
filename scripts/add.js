@@ -74,7 +74,7 @@ export default class ${newCpt.name} extends PureComponent{
 }`;
 
     const dirPath = path.join(__dirname, `../src/${nameLc}/`);
-    const filePath = path.join(dirPath, `index.jsx`);
+    const filePath = path.join(dirPath, `index.tsx`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath);
     }
@@ -102,7 +102,7 @@ import './index.scss';
 
     const dirPath = path.join(__dirname, `../src/${nameLc}/style/`);
     const filePath = path.join(dirPath, `index.scss`);
-    const jsFilePath = path.join(dirPath, `index.js`);
+    const jsFilePath = path.join(dirPath, `index.tsx`);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath);
     }
@@ -111,7 +111,7 @@ import './index.scss';
       console.log('生成scss文件成功');
       fs.writeFile(jsFilePath, jsContent, err => {
         if (err) throw err;
-        resolve(`生成style/index.js文件成功`);
+        resolve(`生成style/index.tsx文件成功`);
       });
     });
   });
@@ -202,7 +202,7 @@ function addInToIndex() {
   return new Promise((resolve, reject) => {
     const nameLc = camel2Dash(newCpt.name);
     const exportContent = `export {default as ${newCpt.name}} from './${nameLc}';`;
-    fs.appendFile('./src/index.js', exportContent, err => {
+    fs.appendFile('./src/index.txs', exportContent, err => {
       if (err) throw err;
       console.log('生成组件添加入口文件成功');
       resolve(`生成组件添加入口文件成功`);
