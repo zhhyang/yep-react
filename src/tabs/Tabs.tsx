@@ -2,10 +2,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
 import Gesture from '../gesture';
-//import {GestureStatus} from '../gesture/type';
+import {IGestureStatus} from '../gesture';
 import {getTransformPropValue, setPxStyle, setTransform} from '../_utils/styleUtil';
 import DefaultTabBar from './DefaultTabBar';
-
+import {TabPanelProps} from './TabPanel';
 const getPanDirection = (direction: number | undefined) => {
   switch (direction) {
     case 2:
@@ -26,24 +26,30 @@ export interface TabsProps {
   defaultIndex?: number;
   children: React.ReactNode;
   lazy?: boolean;
-  onChange?: () => void;
+  onChange?: (index: number) => void;
   tabBarPosition?: 'top' | 'bottom' | 'left' | 'right';
   tabDirection?: 'horizontal' | 'vertical';
   animated?: boolean;
   swipeable?: boolean;
   usePaged?: boolean;
-  renderTabBar: boolean | ((tabbarProps: any) => React.ReactNode);
+  renderTabBar: ((props: any) => React.ReactNode) | false;
   onTabClick?: () => void;
   tabBarActiveTextColor?: string;
   tabBarBackgroundColor?: string;
   tabBarInactiveTextColor: string;
   tabBarTextStyle: React.CSSProperties;
   tabBarUnderlineStyle: React.CSSProperties;
-  renderTab: (props:any) => React.ReactNode;
+  renderTab: (props: any) => React.ReactNode;
   distanceToChangeTab: number;
+  page?: number;
 }
-export default class Tabs extends React.PureComponent<TabsProps> {
 
+export interface State {
+  isMoving: boolean;
+  currentTab: number;
+  contentPos: string;
+}
+export default class Tabs extends React.PureComponent<TabsProps, State> {
   static defaultProps = {
     prefixCls: 'Yep-tabs',
     style: {},
@@ -59,8 +65,11 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     onTabClick: noop,
     distanceToChangeTab: 0,
   };
-
-  constructor(props:TabsProps) {
+  TabPanel: TabPanelProps;
+  prevCurrentTab: number;
+  nextCurrentTab: number;
+  layout: HTMLDivElement;
+  constructor(props: TabsProps) {
     super(props);
     this.renderTabBar = this.renderTabBar.bind(this);
     this.renderContent = this.renderContent.bind(this);
@@ -87,7 +96,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     this.prevCurrentTab = this.state.currentTab;
   }
 
-  getTabIndex(props) {
+  getTabIndex(props: TabsProps) {
     const {page, defaultIndex} = props;
     const param = (page !== undefined ? page : defaultIndex) || 0;
 
@@ -96,7 +105,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     return index < 0 ? 0 : index;
   }
 
-  getContentPosByIndex(index, isVertical) {
+  getContentPosByIndex(index: number, isVertical: boolean) {
     const value = `${-index * 100}%`;
     this.onPan.setCurrentOffset(value);
     const translate = isVertical ? `0px, ${value}` : `${value}, 0px`;
@@ -108,15 +117,15 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     return direction === 'vertical';
   }
 
-  createContentLayoutRef(el) {
+  createContentLayoutRef(el: HTMLDivElement) {
     this.layout = el;
   }
 
-  tabClickGoToTab(index) {
+  tabClickGoToTab(index: number) {
     this.goToTab(index, false, true);
   }
 
-  goToTab(index, force = false, usePaged = this.props.usePaged) {
+  goToTab(index: number, force = false, usePaged = this.props.usePaged) {
     const {tabDirection} = this.props;
     let newState = {};
     if (usePaged) {
@@ -129,9 +138,11 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     }
     this.nextCurrentTab = index;
     const {children, onChange} = this.props;
-    if (index >= 0 && index < children.length) {
+    if (index >= 0 && index < React.Children.count(children)) {
       if (!force) {
-        onChange && onChange(index);
+        if (onChange) {
+          onChange(index);
+        }
         if (this.props.page !== undefined) {
           return false;
         }
@@ -145,7 +156,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     return true;
   }
 
-  onSwipe(e) {
+  onSwipe(e: IGestureStatus) {
     const {tabBarPosition, swipeable, usePaged} = this.props;
     if (!swipeable || !usePaged || this.isTabVertical()) return;
     switch (tabBarPosition) {
@@ -189,7 +200,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     };
 
     return {
-      onPanStart: status => {
+      onPanStart: (status: IGestureStatus) => {
         if (!this.props.swipeable || !this.props.animated) return;
         panDirection = getPanDirection(status.direction);
         this.setState({
@@ -197,7 +208,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
         });
       },
 
-      onPanMove: status => {
+      onPanMove: (status: IGestureStatus) => {
         const {swipeable, animated} = this.props;
         if (!status.moveStatus || !this.layout || !swipeable || !animated) return;
         const isVertical = this.isTabVertical();
@@ -240,7 +251,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     };
   })();
 
-  getOffsetIndex = (current, width, threshold = this.props.distanceToChangeTab) => {
+  getOffsetIndex = (current: number, width: number, threshold = this.props.distanceToChangeTab) => {
     const ratio = Math.abs(current / width);
     const direction = ratio >= this.state.currentTab ? '<' : '>';
     const distance = direction === '>' ? Math.abs(width % current) : Math.abs(current % width);
@@ -270,7 +281,7 @@ export default class Tabs extends React.PureComponent<TabsProps> {
       children,
     } = this.props;
 
-    const tabs = React.Children.map(children, (child, index) => {
+    const tabs = React.Children.map(children, (child: any, index) => {
       return {
         title: child.props.tab,
         key: index,
@@ -291,12 +302,11 @@ export default class Tabs extends React.PureComponent<TabsProps> {
     };
   }
 
-  renderTabBar(tabBarProps) {
+  renderTabBar(tabBarProps: any) {
     const {renderTabBar} = this.props;
     if (renderTabBar === false) {
       return null;
     } else if (renderTabBar) {
-      // return React.cloneElement(this.props.renderTabBar(props), props);
       return renderTabBar(tabBarProps);
     } else {
       return <DefaultTabBar {...tabBarProps} />;

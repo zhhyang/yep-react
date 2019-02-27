@@ -7,7 +7,6 @@
   "scripts": {
     "add": "node scripts/add.js",
     "compile": "yep-tools compile",
-    "compile:es": "yep-tools compile-with-es",
     "tslint": "eslint src/",
     "test": "jest --config ./scripts/jest.config.js",
     "site-run": "node scripts/start.js",
@@ -45,11 +44,12 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@jdcfe/yep-tools": "^0.0.3",
+
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",
     "@types/react-transition-group": "^2.0.16",
     "@types/lodash": "^4.14.121",
+    "@types/classnames": "^2.2.7",
     "address": "^1.0.3",
     "autoprefixer": "^8.3.0",
     "babel-eslint": "^10.0.1",

@@ -15,7 +15,7 @@ export interface ActionSheetProps {
   /**
    * 点击事件回调
    */
-  itemClick?: (item: string, index: number) => void;
+  itemClick: (item: string, index: number) => void;
 
   prefixCls?: string;
   className?: string;
@@ -35,7 +35,7 @@ export interface ActionSheetProps {
   hasCancel?: boolean;
 
   data: [];
-  active: [number, string];
+  active: number | string;
 }
 
 export default class ActionSheet extends React.PureComponent<ActionSheetProps, any> {
@@ -49,9 +49,8 @@ export default class ActionSheet extends React.PureComponent<ActionSheetProps, a
     itemClick: () => {},
   };
 
-  onItemClick = (e: React.MouseEvent<HTMLDataElement>) => {
+  onItemClick = (item: string, index: number) => {
     const {itemClick} = this.props;
-    const {item, index} = e.target.dataset;
     itemClick(item, index);
   };
 
@@ -71,9 +70,7 @@ export default class ActionSheet extends React.PureComponent<ActionSheetProps, a
                   className={classNames(`${prefixCls}-item`, 'border-bottom-1px', {
                     [`${prefixCls}-item_active`]: index === active || item === active,
                   })}
-                  data-item={item}
-                  data-index={index}
-                  onClick={this.onItemClick}
+                  onClick={() => this.onItemClick(item, index)}
                 >
                   {item}
                 </li>

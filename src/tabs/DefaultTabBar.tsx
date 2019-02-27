@@ -1,14 +1,24 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
+
+export type Tab = {
+  title: string;
+};
 export interface DefaultTabBarProps {
   prefixCls?: string;
-  style?:React.CSSProperties;
-  className?:string;
+  style?: React.CSSProperties;
+  className?: string;
   activeTab?: number;
-  onTabClick?: () => void;
-  tabBarPosition?: 'top'| 'bottom'| 'left'| 'right';
+  onTabClick?: (tab: any, index: number) => void;
+  goToTab?: (index: number) => void;
+  tabBarPosition?: 'top' | 'bottom' | 'left' | 'right';
   page?: number;
+  tabs: Tab[];
+  renderTab: (t:Tab) => React.ReactNode;
+  tabBarTextStyle?: React.CSSProperties;
+  tabBarActiveTextColor?:string;
+  tabBarInactiveTextColor?:string;
 }
 export interface State {
   transform?: string;
@@ -17,8 +27,7 @@ export interface State {
   showNext?: boolean;
 }
 
-export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProps,State> {
-
+export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProps, State> {
   static defaultProps = {
     prefixCls: 'Yep-tabs-default-bar',
     onTabClick: noop,
@@ -26,7 +35,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     page: 5,
   };
 
-  constructor(props:DefaultTabBarProps) {
+  constructor(props: DefaultTabBarProps) {
     super(props);
     this.state = {
       transform: '',
@@ -44,17 +53,17 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     return position === 'left' || position === 'right';
   }
 
-  getTabSize(page, tabLength) {
+  getTabSize(page: number, tabLength: number) {
     return 100 / Math.min(page, tabLength);
   }
 
-  onClick = index => {
+  onClick = (index: number) => {
     const {goToTab, onTabClick, tabs} = this.props;
     onTabClick && onTabClick(tabs[index], index);
     goToTab && goToTab(index);
   };
 
-  renderTab = (t, i, size, isTabBarVertical) => {
+  renderTab = (t:Tab, i:number, size:number, isTabBarVertical:boolean) => {
     const {
       prefixCls,
       renderTab,
@@ -64,7 +73,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
       tabBarInactiveTextColor,
     } = this.props;
 
-    const textStyle = {...tabBarTextStyle};
+    const textStyle = {...tabBarTextStyle} as React.CSSProperties;
     let cls = `${prefixCls}-tab`;
     if (activeTab === i) {
       cls += ` ${cls}-active`;
