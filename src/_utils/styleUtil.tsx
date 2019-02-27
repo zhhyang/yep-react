@@ -17,6 +17,14 @@ export function getPxStyle(value, unit = 'px', vertical = false) {
   return `translate3d(${value})`;
 }
 
-export function setPxStyle(el, value, unit = 'px', vertical = false) {
-  setTransform(el.style, getPxStyle(value, unit, vertical));
+export function setPxStyle(el, value, unit = 'px', vertical = false, useLeft = false) {
+  if (useLeft) {
+    if (vertical) {
+      el.style.top = `${value}${unit}`;
+    } else {
+      el.style.left = `${value}${unit}`;
+    }
+  } else {
+    setTransform(el.style, getPxStyle(value, unit, vertical));
+  }
 }
