@@ -51,6 +51,7 @@ export default class VirtualList extends Component {
      * 设置跳转位置，需要设置 itemSizeGetter 才能生效, 不设置认为元素等高并取第一个元素高度作为默认高
      */
     jumpIndex: PropTypes.number,
+
     className: PropTypes.string,
   };
 
