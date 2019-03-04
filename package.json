@@ -52,6 +52,7 @@
     "@types/react-transition-group": "^2.0.16",
     "@types/lodash": "^4.14.121",
     "@types/classnames": "^2.2.7",
+    "@jdcfe/yep-tools": "^0.0.4",
     "address": "^1.0.3",
     "autoprefixer": "^8.3.0",
     "babel-eslint": "^10.0.1",
