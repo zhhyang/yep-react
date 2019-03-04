@@ -7,7 +7,7 @@ export interface ItemProps  {
   value?: any;
 };
 
-export default function(ComposedComponent) {
+export default function(ComposedComponent:any) {
   return class extends React.Component {
     static Item = Item;
 

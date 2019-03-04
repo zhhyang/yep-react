@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
 import Mask from '../mask';
 import noop from '../_utils/noop';
+import confirm from './confirm';
 
 export interface DialogProps {
   prefixCls?: string;
@@ -15,12 +16,13 @@ export interface DialogProps {
   onClose?: (e:any) => void,
   show?: boolean;
   maskCloseable?: boolean;
-  dialogTransition?: string,
-  maskTransition?: string,
+  dialogTransition: string,
+  maskTransition: string,
 }
 
 export default class Dialog extends React.PureComponent<DialogProps,any> {
 
+  static confirm = confirm;
   static defaultProps = {
     prefixCls: 'Yep-dialog',
     style: {},
@@ -56,7 +58,7 @@ export default class Dialog extends React.PureComponent<DialogProps,any> {
     });
   }
 
-  close(e) {
+  close(e:any) {
     const {onClose} = this.props;
     if (onClose) {
       onClose(e);
@@ -100,10 +102,10 @@ export default class Dialog extends React.PureComponent<DialogProps,any> {
 
     return createPortal(
       <div>
-        <CSSTransition in={this.state.show} timeout={300} classNames={maskTransition} unmountOnExit>
+        <CSSTransition in={this.state.show} timeout={300} classNames={maskTransition} unmountOnExit={true}>
           <Mask onClick={this.onMaskClick} />
         </CSSTransition>
-        <CSSTransition in={this.state.show} timeout={300} classNames={dialogTransition} unmountOnExit>
+        <CSSTransition in={this.state.show} timeout={300} classNames={dialogTransition} unmountOnExit={true}>
           <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
             <div className={cls} style={style}>
               <div className={`${prefixCls}-content`}>

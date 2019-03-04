@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ComposedHOC from './ComposedHOC';
 export interface PickerProps {
   prefixCls?:string;
+  style?:any;
   select?: () => void ,
   doScrollingComplete?: () => void ,
   computeChildIndex?: () => void ,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ListView from './ListView';
 import {_event, getOffsetTop} from './util';
@@ -7,7 +7,7 @@ import List from '../list';
 import noop from '../_utils/noop';
 const {Item} = List;
 
-function setDocumentScrollTop(val) {
+function setDocumentScrollTop(val:number) {
   window.document.body.scrollTop = val; // chrome61 is invalid
   window.document.documentElement.scrollTop = val;
 }

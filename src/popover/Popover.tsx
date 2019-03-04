@@ -17,7 +17,7 @@ export interface PopoverProps {
   direction?: 'up'|'down'| 'left'|'right';
   align?: 'top'| 'right'| 'bottom'| 'left'| 'middle';
   open?: boolean;
-  onToggle?: () => void;
+  onToggle?: (open:boolean) => void;
   shouldOpen?: () => void;
   shouldClose?: () => void;
   disabled?: boolean;

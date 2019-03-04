@@ -36,6 +36,7 @@ export interface AutoCompleteProps {
 }
 
 class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
+  lastValue:any;
   constructor(props: AutoCompleteProps) {
     super(props);
     this.state = {
@@ -50,14 +51,14 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     prefixCls: 'Yep-auto-complete',
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps:AutoCompleteProps) {
     'value' in nextProps && this.setState({value: nextProps.value});
     'source' in nextProps && this.setState({result: nextProps.source});
   }
 
-  handleInput(value) {
+  handleInput = (value:any) => {
     this.lastValue = value;
-    const state = {value};
+    const state = {value} as any;
     if (!value) {
       state.open = true;
       state.result = this.props.source;
@@ -65,14 +66,14 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     } else {
       // reset tab index
       state.index = -1;
-      state.result = this.props.source.filter(item => item.indexOf(value) > -1);
+      state.result = this.props.source.filter((item:string) => item.indexOf(value) > -1);
       state.open = !!state.result.length;
       this.setState(state);
     }
     this.props.onChange && this.props.onChange(value);
   }
 
-  handleSelect(value) {
+  handleSelect(value:any) {
     this.setState({
       value,
       open: false,
@@ -80,7 +81,7 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     this.props.onChange && this.props.onChange(value);
   }
 
-  handleKeyDown(e) {
+  handleKeyDown = (e:any) => {
     const {open, result} = this.state;
     if (open) {
       const input = e.target;
@@ -110,20 +111,21 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
 
   render() {
     const {open, index, result, value} = this.state;
-    const {prefixCls, className, source, onFocus, onKeyDown, onChange, disabled, isOpen, align, ...other} = this.props;
+    const {prefixCls, className, source,  onChange, disabled, isOpen, ...other} = this.props;
     const cls = classnames(prefixCls, className);
 
     return (
+      //@ts-ignore
       <Dropdown
         className={cls}
-        open={!!isOpen || open}
-        disabled={!!disabled}
-        aligned
+        open={isOpen || open}
+        disabled={disabled}
+        aligned={true}
         onToggle={open => this.setState({open})}
         overlay={
           <div className={`${prefixCls}__popover`}>
             <ul className={`${prefixCls}__result`}>
-              {result.map((item, i) => (
+              {result.map((item:any, i:number) => (
                 <li
                   key={item}
                   className={classnames({[`${prefixCls}__option--active`]: index === i})}
@@ -136,12 +138,13 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
           </div>
         }
       >
+        //@ts-ignore
         <InputItem
           value={value}
-          onKeyDown={this.handleKeyDown.bind(this)}
-          onChange={this.handleInput.bind(this)}
-          disabled={!!disabled}
-          open={!!isOpen || open}
+          onKeyDown={this.handleKeyDown}
+          onChange={this.handleInput}
+          disabled={disabled}
+          open={isOpen || open}
           {...other}
         />
       </Dropdown>

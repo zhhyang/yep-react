@@ -1,4 +1,4 @@
-function closest(el, selector) {
+function closest(el:any, selector:string) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
 
   while (el) {

@@ -19,4 +19,5 @@ export interface DatePickerProps {
   pickerPrefixCls?: string;
   className?: string;
   use12Hours?: boolean;
+  value?:any;
 }

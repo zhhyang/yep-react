@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import Dialog from './Dialog';
 
 export default function confirm(
@@ -39,7 +39,7 @@ export default function confirm(
         return;
       }
 
-      const res = orginPress();
+      const res = orginPress() as any;
       if (res && res.then) {
         res
           .then(() => {
@@ -69,7 +69,7 @@ export default function confirm(
     </div>
   );
   ReactDOM.render(
-    <Dialog show title={title} footer={footer} onClose={close} {...restProps}>
+    <Dialog show={true} title={title} footer={footer} onClose={close} {...restProps}>
       <div className={`${prefixCls}-alert-content`}>{message}</div>
     </Dialog>,
     div

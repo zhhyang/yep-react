@@ -22,6 +22,7 @@ export interface ButtonProps {
 
 export default class Button extends React.PureComponent<ButtonProps,any> {
 
+  static ButtonGroup= ButtonGroup;
   static defaultProps = {
     prefixCls: 'Yep-btn',
     disabled: false,

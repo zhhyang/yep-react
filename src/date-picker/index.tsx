@@ -2,8 +2,13 @@ import * as React from 'react';
 import {DatePickerProps} from './type';
 import DatePicker from './DatePicker';
 import PickerPopup from '../picker/PickerPopup';
-
-class PopupDatePicker extends React.Component<DatePickerProps, any> {
+export interface PopupDatePickerProps extends DatePickerProps{
+  onChange:(data:any) => void;
+  onOk:(data:any) => void;
+  onCancel:() => void;
+  show:boolean;
+}
+class PopupDatePicker extends React.Component<PopupDatePickerProps, any> {
   static defaultProps = {
     mode: 'datetime',
     prefixCls: 'Yep-picker',
@@ -14,11 +19,14 @@ class PopupDatePicker extends React.Component<DatePickerProps, any> {
     pickerValueChangeProp: 'onDateChange',
     title: '',
   };
+
+  scrollValue:HTMLDivElement;
+
   setScrollValue = (v: any) => {
     this.scrollValue = v;
   };
 
-  onOk = v => {
+  onOk = (v:any) => {
     const {onChange, onOk} = this.props;
     if (this.scrollValue !== undefined) {
       v = this.scrollValue;

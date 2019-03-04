@@ -1,18 +1,20 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
-
-export default class TabBar extends PureComponent {
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    activeTab: PropTypes.number,
-    onTabClick: PropTypes.func,
-    tabBarPosition: PropTypes.string,
-    page: PropTypes.number,
-  };
+export interface TabBarProps {
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  activeTab: number;
+  renderTab: (t: any) => React.ReactNode;
+  goToTab?: (index: number) => void;
+  onTabClick?: (tab: any, index: number) => void;
+  tabs: any[];
+  tabBarTextStyle?: React.CSSProperties;
+  tabBarActiveTextColor?: string;
+  tabBarInactiveTextColor?: string;
+}
+export default class TabBar extends React.PureComponent<TabBarProps> {
 
   static defaultProps = {
     prefixCls: 'Yep-area-picker-tabs-bar',
@@ -22,8 +24,8 @@ export default class TabBar extends PureComponent {
     tabBarPosition: 'top',
   };
 
-  constructor() {
-    super();
+  constructor(props:TabBarProps) {
+    super(props);
     this.state = {
       transform: '',
       isMoving: false,
@@ -31,26 +33,16 @@ export default class TabBar extends PureComponent {
       showNext: false,
     };
     this.renderTab = this.renderTab.bind(this);
-    this.isTabBarVertical = this.isTabBarVertical.bind(this);
-    this.getTabSize = this.getTabSize.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
-  isTabBarVertical(position = this.props.tabBarPosition) {
-    return position === 'left' || position === 'right';
-  }
-
-  getTabSize(page, tabLength) {
-    return 100 / Math.min(page, tabLength);
-  }
-
-  onClick = index => {
+  onClick = (index:number) => {
     const {goToTab, onTabClick, tabs} = this.props;
     onTabClick && onTabClick(tabs[index], index);
     goToTab && goToTab(index);
   };
 
-  renderTab = (t, i, ) => {
+  renderTab = (t:any, i:number, ) => {
     const {
       prefixCls,
       renderTab,
@@ -60,7 +52,7 @@ export default class TabBar extends PureComponent {
       tabBarInactiveTextColor,
     } = this.props;
 
-    const textStyle = {...tabBarTextStyle};
+    const textStyle = {...tabBarTextStyle} as React.CSSProperties;
     let cls = `${prefixCls}-tab`;
     if (activeTab === i) {
       cls += ` ${cls}-active`;
@@ -79,7 +71,6 @@ export default class TabBar extends PureComponent {
         }}
         className={cls}
         onClick={() => this.onClick(i)}
-        ref={ref => (this[`tabbar${i}`] = ref)}
       >
         {renderTab ? renderTab(t) : t.title}
       </div>
@@ -87,11 +78,8 @@ export default class TabBar extends PureComponent {
   };
 
   render() {
-    const {prefixCls, animated, tabs = [], tabBarPosition} = this.props;
-    const {isMoving} = this.state;
-    const cls = classNames(prefixCls, `${prefixCls}-${tabBarPosition}`, {
-      [` ${prefixCls}-animated`]: animated && !isMoving,
-    });
+    const {prefixCls, tabs = []} = this.props;
+    const cls = classNames(prefixCls, `${prefixCls}-top`);
 
     const Tabs = tabs.map((t, i) => {
       return this.renderTab(t, i,);

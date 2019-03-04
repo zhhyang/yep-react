@@ -8,12 +8,13 @@ export interface BaseCheckboxProps {
   name?: string;
   id?: string;
   type?: string;
+  label?:string;
   defaultChecked?: number | boolean;
   checked?: number | boolean;
   disabled?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
-  onChange?: () => void;
+  onChange: (cb:any) => void;
   onClick?: () => void;
   tabIndex?: string;
   readOnly?: boolean;
@@ -33,6 +34,8 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
     onChange: () => {},
   };
 
+  input:HTMLInputElement;
+
   constructor(props: BaseCheckboxProps) {
     super(props);
     const checked = 'checked' in props ? props.checked : props.defaultChecked;
@@ -47,7 +50,7 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps:BaseCheckboxProps) {
     if ('checked' in nextProps) {
       this.setState({
         checked: nextProps.checked,
@@ -63,11 +66,11 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
     this.input.blur();
   }
 
-  createRef(node) {
+  createRef(node:HTMLInputElement) {
     this.input = node;
   }
 
-  handleChange(e) {
+  handleChange(e:any) {
     const {disabled, onChange} = this.props;
     if (disabled) {
       return;
@@ -112,8 +115,9 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
       ...others
     } = this.props;
 
-    const globalProps = Object.keys(others).reduce((prev, key) => {
+    const globalProps = Object.keys(others).reduce((prev:any, key) => {
       if (key.substr(0, 5) === 'aria-' || key.substr(0, 5) === 'data-' || key === 'role') {
+        //@ts-ignore
         prev[key] = others[key];
       }
       return prev;

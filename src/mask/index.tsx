@@ -6,13 +6,14 @@ import classNames from 'classnames';
 import fixMask from './fixMask';
 
 export interface MaskProps {
-  prefixCls?: string;
+  prefixCls: string;
   className?: string;
   /**
    * Whather mask should be transparent (no color)
    *
    */
   transparent?: boolean;
+  onClick:(e?:any) => void
 }
 
 /**

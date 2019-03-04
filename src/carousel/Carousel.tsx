@@ -2,15 +2,15 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface CarouselProps {
-  prefixCls?: string;
-  autoPlay?: boolean | number;
+  prefixCls: string;
+  autoPlay?: false | number;
   className?: string;
   initPage?: number;
-  renderPage?: () =>void;
-  onTransitionEnd?: () =>void;
+  renderPage?: (active:number,total:number) =>void;
+  onTransitionEnd: (index:number) =>void;
   isBounces?: boolean;
   isInfinite?: boolean;
-  distance?: number;
+  distance: number;
 }
 export default class Carousel extends React.PureComponent<CarouselProps,any> {
   static defaultProps = {
@@ -23,7 +23,8 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     distance: 2,
     onTransitionEnd: () => {},
   };
-
+  timer:number;
+  container:HTMLDivElement;
   constructor(props:CarouselProps) {
     super(props);
     this.state = {
@@ -35,7 +36,6 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
       total: 0,
       isMoving: true,
     };
-    this.timer = null; // 定时器
 
     this.renderItem = this.renderItem.bind(this);
     this.touchStartHandle = this.touchStartHandle.bind(this);
@@ -50,7 +50,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
   componentDidMount() {
     const {children, isInfinite} = this.props;
     const {currentIndex} = this.state;
-    let total = Object.prototype.toString.call(children) === '[object Array]' ? children.length : 1;
+    let total = Object.prototype.toString.call(children) === '[object Array]' ? React.Children.count(children) : 1;
     let currentTemp = currentIndex;
     if (isInfinite && total > 1) {
       currentTemp += 1;
@@ -58,7 +58,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     }
     this.setState(
       {
-        width: document.querySelector(`.${this.props.prefixCls}__container`).clientWidth,
+        width: this.container.clientWidth,
         total,
         currentIndex: currentTemp,
       },
@@ -88,6 +88,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     // 是否自动播放
     if (autoPlay) {
       this.cancelAutoPaly();
+      // @ts-ignore
       this.timer = setInterval(() => {
         if (!this.state.isMoving) {
           this.goNextPage();
@@ -96,7 +97,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     }
   }
 
-  touchStartHandle(e) {
+  touchStartHandle(e:React.TouchEvent<HTMLDivElement>) {
     this.cancelAutoPaly();
     this.setState({
       isMoving: true,
@@ -105,7 +106,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     });
   }
 
-  touchMoveHandle(e) {
+  touchMoveHandle(e:React.TouchEvent<HTMLDivElement>) {
     const {currentIndex, total, touchStartPlace} = this.state;
     const {isBounces} = this.props;
     if (!isBounces) {
@@ -134,7 +135,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     this.autoplayFunc();
   }
 
-  goPage(index) {
+  goPage(index:number) {
     const {total} = this.state;
     const {onTransitionEnd, isInfinite} = this.props;
     let targetIndex = index;
@@ -187,7 +188,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     }
   }
 
-  renderItem(item, index) {
+  renderItem(item:any, index:number) {
     return (
       <div className={`${this.props.prefixCls}__item`} style={{width: `${this.state.width}px`}} key={`item${index}`}>
         {item}
@@ -200,7 +201,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
    * @param {当前显示的图片索引} active
    * @param {真实页数} realTotal
    */
-  renderPageComponent(active, realTotal) {
+  renderPageComponent(active:number, realTotal:number) {
     const {renderPage, isInfinite} = this.props;
     const {total} = this.state;
     if (renderPage) {
@@ -209,6 +210,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
 
     const arr = [];
     for (let i = 0; i < realTotal; i += 1) {
+      //@ts-ignore
       arr.push(i);
     }
     return (
@@ -240,13 +242,14 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
   render() {
     const {touchStartPlace, touchMovePlace, currentIndex, isMoving, width, isShow} = this.state;
     const {prefixCls, children, className, isInfinite} = this.props;
-    let childrens = [];
+    let childrens = [] as any[]|React.ReactNode;
+    const count = React.Children.count(children);
     if (Object.prototype.toString.call(children) === '[object Array]') {
       childrens = this.props.children;
     } else {
       childrens = [this.props.children];
     }
-    const showStyle = isShow ? null : {visibility: 'hidden'};
+    const showStyle = isShow ? {} : {visibility: 'hidden'} as React.CSSProperties;
     return (
       <div className={classNames(prefixCls, className)} style={showStyle}>
         <div
@@ -255,15 +258,20 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
             transform: `translate3d(${-(currentIndex * width) + (touchMovePlace - touchStartPlace)}px, 0px, 0px)`,
             transitionDuration: isMoving ? '0ms' : '300ms',
           }}
+          ref={div => this.container = div as HTMLDivElement}
           onTouchStart={this.touchStartHandle}
           onTouchMove={this.touchMoveHandle}
           onTouchEnd={this.touchEndHandle}
         >
-          {isInfinite && children.length > 1 && this.renderItem(children[children.length - 1], children.length)}
-          {childrens.map((item, index) => this.renderItem(item, index))}
-          {isInfinite && children.length > 1 && this.renderItem(children[0], -1)}
+          {isInfinite && count > 1 && this.renderItem(React.Children.toArray(children)[count - 1], count)}
+          {
+            React.Children.map(
+              childrens,(item, index) => this.renderItem(item, index)
+            )
+          }
+          {isInfinite && count > 1 && this.renderItem(React.Children.toArray(children)[0], -1)}
         </div>
-        {this.renderPageComponent(currentIndex, childrens.length)}
+        {this.renderPageComponent(currentIndex,React.Children.toArray(childrens).length)}
       </div>
     );
   }

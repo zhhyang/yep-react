@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 import MultiPickerHOC from './MultiPickerHOC';
 import noop from '../_utils/noop';
 
-const MultiPicker:React.FunctionComponent<MultiPickerProps> = (props:MultiPickerProps) => {
+const MultiPicker: React.FunctionComponent<MultiPickerProps> = (props: MultiPickerProps) => {
   const {prefixCls, className, rootNativeProps, children, style} = props;
   const selectedValue = props.getValue();
   const colElements = React.Children.map(children, (col: any, i) => {
@@ -25,12 +24,12 @@ export interface MultiPickerProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  selectedValue?: any[],
-  rootNativeProps?: any,
-  onValueChange?: () => void;
-  children: any,
+  selectedValue?: any[];
+  rootNativeProps?: any;
+  onValueChange?: (values: any, index: number) => void;
+  children: any;
   onScrollChange?: () => void;
-};
+}
 
 MultiPicker.defaultProps = {
   prefixCls: '',
@@ -39,4 +38,4 @@ MultiPicker.defaultProps = {
   onScrollChange: noop,
 };
 
-export default MultiPickerHOC(MultiPicker);
+export default MultiPickerHOC(MultiPicker) as MultiPicker;

@@ -11,7 +11,7 @@ function arrayTreeFilter<T>(
   const result: T[] = [];
   let level = 0;
   do {
-    const foundItem: T = children.filter(item => {
+    const foundItem: any = children.filter(item => {
       return filterFn(item, level);
     })[0];
     if (!foundItem) {

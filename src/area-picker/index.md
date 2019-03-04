@@ -12,6 +12,7 @@ title: 主站地区选择组件
 | prefixCls           | 组件 class 前缀                              | string                                                                                      | Yep-area-picker            | false |
 | style               | 组件样式                                     | object                                                                                      | {}                         | false |
 | className           | 组件额外样式                                 | string                                                                                      | -                          | false |
+| show                | 是否显示                                     | boolean                                                                                     | false                      | false |
 | maskCloseable       | 点击遮罩层是否收起                           | boolean                                                                                     | false                      | false |
 | distanceToChangeTab | 左右滑动触发切换的安全距离                   | number                                                                                      | 10                         | false |
 | title               | 顶部标题                                     | string                                                                                      | `配送至`                   | false |

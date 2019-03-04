@@ -1,5 +1,4 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
 import Gesture from '../gesture';
@@ -8,20 +7,28 @@ import {getPxStyle, getTransformPropValue, setPxStyle} from '../_utils/styleUtil
 export type Tab = {
   title: string;
 };
+export type underlineProps = {
+  style: React.CSSProperties;
+  className: string;
+};
 export interface DefaultTabBarProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   className?: string;
-  activeTab?: number;
+  activeTab: number;
   onTabClick?: (tab: any, index: number) => void;
   goToTab?: (index: number) => void;
   tabBarPosition?: 'top' | 'bottom' | 'left' | 'right';
   page?: number;
   tabs: Tab[];
-  renderTab: (t:Tab) => React.ReactNode;
+  renderTab: (t: Tab) => React.ReactNode;
   tabBarTextStyle?: React.CSSProperties;
-  tabBarActiveTextColor?:string;
-  tabBarInactiveTextColor?:string;
+  tabBarActiveTextColor?: string;
+  tabBarInactiveTextColor?: string;
+  tabBarBackgroundColor?: string;
+  tabBarUnderlineStyle: React.CSSProperties;
+  renderUnderline: (underlineProps: underlineProps) => React.ReactNode;
+  animated: boolean;
 }
 export interface State {
   transform?: string;
@@ -31,11 +38,14 @@ export interface State {
 }
 
 export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProps, State> {
+  layout: HTMLDivElement;
+
   static defaultProps = {
     prefixCls: 'Yep-tabs-default-bar',
     onTabClick: noop,
     activeTab: 0,
     page: 5,
+    animated: true,
   };
 
   constructor(props: DefaultTabBarProps) {
@@ -53,7 +63,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     this.onClick = this.onClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: DefaultTabBarProps) {
     if (
       this.props.activeTab !== nextProps.activeTab ||
       this.props.tabs !== nextProps.tabs ||
@@ -83,7 +93,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
         this.setState({isMoving: true});
       },
 
-      onPanMove: status => {
+      onPanMove: (status: any) => {
         if (!status.moveStatus || !this.layout) return;
         const isVertical = this.isTabBarVertical();
         let offset = getLastOffset() + (isVertical ? status.moveStatus.y : status.moveStatus.x);
@@ -118,7 +128,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     return position === 'left' || position === 'right';
   }
 
-  getTransformByIndex = props => {
+  getTransformByIndex = (props: DefaultTabBarProps) => {
     const {activeTab, tabs, page = 0} = props;
     const isVertical = this.isTabBarVertical();
 
@@ -144,7 +154,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     goToTab && goToTab(index);
   };
 
-  renderTab = (t:Tab, i:number, size:number, isTabBarVertical:boolean) => {
+  renderTab = (t: Tab, i: number, size: number, isTabBarVertical: boolean) => {
     const {
       prefixCls,
       renderTab,
@@ -230,7 +240,11 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
       <div className={cls} style={style}>
         {showPrev && <div className={`${prefixCls}-prevpage`} />}
         <Gesture {...onPan} direction={isTabBarVertical ? 'vertical' : 'horizontal'}>
-          <div className={`${prefixCls}-content`} ref={div => (this.layout = div)} style={transformStyle}>
+          <div
+            className={`${prefixCls}-content`}
+            ref={div => (this.layout = div as HTMLDivElement)}
+            style={transformStyle}
+          >
             {Tabs}
             {renderUnderline ? renderUnderline(underlineProps) : <div {...underlineProps} />}
           </div>

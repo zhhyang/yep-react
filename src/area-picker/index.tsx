@@ -12,15 +12,16 @@ export interface AreaPickerProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
+  show: boolean;
   maskCloseable?: boolean;
   title?: string;
   initialData: Data[];
-  onOk: () => void;
+  onOk: (data: any) => void;
   onCancel: () => void;
-  fetchAction: () => void;
+  fetchAction: (item: any, index: number) => Promise<any>;
   distanceToChangeTab?: number;
-  keyExtractor?: (item: any, index: number) => void;
-  nameExtractor: (item: any, index: number) => void;
+  keyExtractor: (item: any, index?: number) => any;
+  nameExtractor: (item: any, index?: number) => any;
   chooseLabel: string;
   selected: [];
 }
@@ -31,14 +32,17 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
     title: '配送至',
     chooseLabel: '请选择',
     style: {},
+    show: false,
     maskCloseable: false,
     distanceToChangeTab: 10,
-    keyExtractor: (item: any, index: number) => item.id,
+    keyExtractor: (item: any) => item.id,
     nameExtractor: (item: any) => item.name,
     selected: [],
   };
 
-  constructor(props:AreaPickerProps) {
+  tabs: Tabs;
+
+  constructor(props: AreaPickerProps) {
     super(props);
     this.state = {
       tabs: [],
@@ -47,7 +51,7 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
     };
   }
 
-  onClick = (city, index) => {
+  onClick = (city: any, index: number) => {
     const {fetchAction, onOk, keyExtractor} = this.props;
     const {tabs, data} = this.state;
     const id = keyExtractor(city, index);
@@ -57,7 +61,7 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
       tempTabs.splice(index);
     }
     tempData.splice(index + 1);
-    if (tabs.filter((tab, i) => keyExtractor(tab, i) === id).length === 0) {
+    if (tabs.filter((tab: any, i: number) => keyExtractor(tab, i) === id).length === 0) {
       tempTabs = tempTabs.concat(city);
     }
     fetchAction(city, index).then(res => {
@@ -120,20 +124,19 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
           <Tabs
             defaultIndex={defaultIndex}
             distanceToChangeTab={distanceToChangeTab}
-            ref={ref => (this.tabs = ref)}
+            ref={ref => this.tabs = ref as Tabs}
             renderTabBar={props => <TabBar {...props} />}
           >
-            {data.map((item, index) => (
+            {data.map((item:any, index:number) => (
               <TabPanel tab={(tabs[index] && nameExtractor(tabs[index])) || chooseLabel} key={index}>
                 <div className={`${prefixCls}-content Yep-scroller`}>
                   <ul>
-                    {item.map(city => (
+                    {item.map((city:any) => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
                         {nameExtractor(city)}
-                        {tabs[index] &&
-                          keyExtractor(tabs[index]) === keyExtractor(city) && (
-                            <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
-                          )}
+                        {tabs[index] && keyExtractor(tabs[index]) === keyExtractor(city) && (
+                          <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
+                        )}
                       </li>
                     ))}
                   </ul>

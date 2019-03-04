@@ -1,15 +1,8 @@
 import * as React from 'react';
-import BaseCheckbox from './BaseCheckbox';
+import BaseCheckbox,{BaseCheckboxProps} from './BaseCheckbox';
 import classNames from 'classnames';
-export interface CheckboxProps {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  name?: string;
-  defaultChecked?: boolean;
-  checked?: boolean;
-  disabled?: boolean;
-  onChange?: () => void;
+export interface CheckboxProps extends BaseCheckboxProps{
+  children:string;
 }
 export default class Checkbox extends React.PureComponent<CheckboxProps> {
   static defaultProps = {

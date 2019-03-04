@@ -2,10 +2,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
 import Gesture from '../gesture';
-import {IGestureStatus} from '../gesture';
 import {getTransformPropValue, setPxStyle, setTransform} from '../_utils/styleUtil';
 import DefaultTabBar from './DefaultTabBar';
-import {TabPanelProps} from './TabPanel';
+import TabPanel from './TabPanel';
 const getPanDirection = (direction: number | undefined) => {
   switch (direction) {
     case 2:
@@ -36,10 +35,10 @@ export interface TabsProps {
   onTabClick?: () => void;
   tabBarActiveTextColor?: string;
   tabBarBackgroundColor?: string;
-  tabBarInactiveTextColor: string;
-  tabBarTextStyle: React.CSSProperties;
-  tabBarUnderlineStyle: React.CSSProperties;
-  renderTab: (props: any) => React.ReactNode;
+  tabBarInactiveTextColor?: string;
+  tabBarTextStyle?: React.CSSProperties;
+  tabBarUnderlineStyle?: React.CSSProperties;
+  renderTab?: (props: any) => React.ReactNode;
   distanceToChangeTab: number;
   page?: number;
 }
@@ -65,7 +64,8 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     onTabClick: noop,
     distanceToChangeTab: 0,
   };
-  TabPanel: TabPanelProps;
+  static TabPanel = TabPanel;
+  static DefaultTabBar = DefaultTabBar;
   prevCurrentTab: number;
   nextCurrentTab: number;
   layout: HTMLDivElement;
@@ -156,7 +156,7 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     return true;
   }
 
-  onSwipe(e: IGestureStatus) {
+  onSwipe(e: any) {
     const {tabBarPosition, swipeable, usePaged} = this.props;
     if (!swipeable || !usePaged || this.isTabVertical()) return;
     switch (tabBarPosition) {
@@ -200,7 +200,7 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     };
 
     return {
-      onPanStart: (status: IGestureStatus) => {
+      onPanStart: (status: any) => {
         if (!this.props.swipeable || !this.props.animated) return;
         panDirection = getPanDirection(status.direction);
         this.setState({
@@ -208,7 +208,7 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
         });
       },
 
-      onPanMove: (status: IGestureStatus) => {
+      onPanMove: (status: any) => {
         const {swipeable, animated} = this.props;
         if (!status.moveStatus || !this.layout || !swipeable || !animated) return;
         const isVertical = this.isTabVertical();
@@ -289,7 +289,7 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     });
     return {
       activeTab: currentTab,
-      animated: !!animated,
+      animated: animated,
       goToTab: this.tabClickGoToTab,
       onTabClick,
       tabBarActiveTextColor,
@@ -323,13 +323,13 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     });
     const contentStyle = animated
       ? getTransformPropValue(contentPos)
-      : {
+      : ({
           position: 'relative',
           ...(this.isTabVertical() ? {top: `${-currentTab * 100}%`} : {left: `${-currentTab * 100}%`}),
-        };
+        } as React.CSSProperties);
     return (
       <div className={cls} style={contentStyle} ref={this.createContentLayoutRef}>
-        {React.Children.map(children, (child, index) => {
+        {React.Children.map(children, (child:any, index) => {
           const panelCls = classNames({
             [`${prefixCls}-pane-wrap`]: true,
             [`${prefixCls}-pane-wrap-${currentTab === index ? '' : 'in'}active`]: true,
