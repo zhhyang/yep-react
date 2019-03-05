@@ -58,7 +58,8 @@ export default class VirtualList extends React.Component<VirtualListProps> {
   static defaultProps = {
     prefixCls: 'Yep',
     itemsRenderer: (parameters: {items: any; ref: any}) => {
-      let {items, ref} = parameters;
+      const {items, ref} = parameters;
+      console.log(items);
       return <ul ref={ref}>{items}</ul>;
     },
     minSize: 1,
@@ -400,12 +401,12 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     const {children, itemsRenderer} = this.props;
     const {from, size}: Readonly<any> = this.state;
     const items = [];
-
     for (let i = 0; i < size; ++i) {
       items.push(children[from + i]);
     }
-
+    console.log(items);
     return itemsRenderer(items, (c:any) => {
+      console.log(c)
       this.items = c;
       return this.items;
     });
