@@ -189,7 +189,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
         ? // Firefox always returns document.body[scrollKey] as 0 and Chrome/Safari
           // always return document.documentElement[scrollKey] as 0, so take
           // whichever has a value.
-          document.body[scrollKey] || (document.documentElement && document.documentElement[scrollKey])
+        document.body[scrollKey] || (document.documentElement && document.documentElement[scrollKey])
         : scrollParent && scrollParent[scrollKey];
     const max = this.getScrollSize() - this.getViewportSize();
 
