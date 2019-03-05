@@ -6,7 +6,8 @@ import * as events from '../_utils/events';
 const NOOP = () => {};
 const MAX_SYNC_UPDATES = 100;
 
-const isEqualSubset = (a, b) => {
+const isEqualSubset = (parameters: {a: any; b: any}) => {
+  let {a, b} = parameters;
   for (const key in b) {
     if (a[key] !== b[key]) {
       return false;
@@ -17,9 +18,10 @@ const isEqualSubset = (a, b) => {
 };
 
 export interface VirtualListProps {
+  next: any;
   prefixCls?: string;
 
-  className?: string;
+  className: string;
   /**
    * 渲染的子节点
    */
@@ -55,12 +57,24 @@ export default class VirtualList extends React.Component<VirtualListProps> {
 
   static defaultProps = {
     prefixCls: 'Yep',
-    itemsRenderer: (items, ref) => <ul ref={ref}>{items}</ul>,
+    itemsRenderer: (parameters: {items: any; ref: any}) => {
+      let {items, ref} = parameters;
+      return <ul ref={ref}>{items}</ul>;
+    },
     minSize: 1,
     pageSize: 10,
     jumpIndex: 0,
     threshold: 100,
   };
+  private cache: {};
+  private cachedScroll: number;
+  private unstable: boolean;
+  private updateCounter: number;
+  private scrollParent: any;
+  private updateCounterTimeoutId: number;
+  private el: any;
+  private items: any;
+  private defaultItemHeight: number;
 
   constructor(props: VirtualListProps) {
     super(props);
@@ -69,7 +83,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     this.state = {from, size};
     this.cache = {};
     this.scrollTo = this.scrollTo.bind(this);
-    this.cachedScroll = null;
+    this.cachedScroll = 0;
     this.unstable = false;
     this.updateCounter = 0;
   }
@@ -79,23 +93,24 @@ export default class VirtualList extends React.Component<VirtualListProps> {
 
     this.updateFrameAndClearCache = this.updateFrameAndClearCache.bind(this);
 
-    events.on(window, 'resize', this.updateFrameAndClearCache);
+    events.on(window, 'resize', this.updateFrameAndClearCache, false);
 
-    this.updateFrame(this.scrollTo.bind(this, jumpIndex));
+    this.updateFrame({cb: this.scrollTo.bind(this, jumpIndex)});
   }
 
-  componentWillReceiveProps(next) {
-    const {from, size} = this.state;
+  componentWillReceiveProps = (parameters: VirtualListProps) => {
+    let next = parameters.next;
+    const {from, size}: Readonly<any> = this.state;
 
     const oldIndex = this.props.jumpIndex;
     const newIndex = next.jumpIndex;
 
     if (oldIndex !== newIndex) {
-      this.updateFrame(this.scrollTo.bind(this, newIndex));
+      this.updateFrame({cb: this.scrollTo.bind(this, newIndex)});
     }
 
-    this.maybeSetState(this.constrain(from, size, next), NOOP);
-  }
+    this.maybeSetState({b: this.constrain(from, size, next), cb: NOOP});
+  };
 
   componentDidUpdate() {
     // If the list has reached an unstable state, prevent an infinite loop.
@@ -108,31 +123,33 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     }
 
     if (!this.updateCounterTimeoutId) {
-      this.updateCounterTimeoutId = setTimeout(() => {
+      this.updateCounterTimeoutId = window.setTimeout(() => {
         this.updateCounter = 0;
         delete this.updateCounterTimeoutId;
       }, 0);
     }
 
-    this.updateFrame();
+    this.updateFrame({cb: NOOP});
   }
 
   componentWillUnmount() {
-    events.off(window, 'resize', this.updateFrameAndClearCache);
+    events.off(window, 'resize', this.updateFrameAndClearCache, false);
 
-    events.off(this.scrollParent, 'scroll', this.updateFrameAndClearCache);
-    events.off(this.scrollParent, 'mousewheel', NOOP);
+    events.off(this.scrollParent, 'scroll', this.updateFrameAndClearCache, false);
+    events.off(this.scrollParent, 'mousewheel', NOOP, false);
   }
 
-  maybeSetState(b, cb) {
-    if (isEqualSubset(this.state, b)) {
+  maybeSetState(parameters: {b: any; cb: any}) {
+    let {b, cb} = parameters;
+    if (isEqualSubset({a: this.state, b: b})) {
       return cb();
     }
 
     this.setState(b, cb);
   }
 
-  getOffset(el) {
+  getOffset(parameters: {el: any}) {
+    let el = parameters.el;
     let offset = el.clientLeft || 0;
     do {
       offset += el.offsetTop || 0;
@@ -172,25 +189,28 @@ export default class VirtualList extends React.Component<VirtualListProps> {
         ? // Firefox always returns document.body[scrollKey] as 0 and Chrome/Safari
           // always return document.documentElement[scrollKey] as 0, so take
           // whichever has a value.
-          document.body[scrollKey] || document.documentElement[scrollKey]
-        : scrollParent[scrollKey];
+          document.body[scrollKey] || (document.documentElement && document.documentElement[scrollKey])
+        : scrollParent && scrollParent[scrollKey];
     const max = this.getScrollSize() - this.getViewportSize();
 
     const scroll = Math.max(0, Math.min(actual, max));
     const el = this.getEl();
-    this.cachedScroll = this.getOffset(scrollParent) + scroll - this.getOffset(el);
+    this.cachedScroll = this.getOffset({el: scrollParent}) + scroll - this.getOffset({el: el});
 
     return this.cachedScroll;
   }
 
-  setScroll(offset) {
+  setScroll(parameters: {offset: any}) {
+    let offset = parameters.offset;
     const {scrollParent} = this;
-    offset += this.getOffset(this.getEl());
-    if (scrollParent === window) {
-      return window.scrollTo(0, offset);
+    let win: any;
+    win = window;
+    offset += this.getOffset({el: this.getEl()});
+    if (scrollParent === win) {
+      return win.scrollTo(0, offset);
     }
 
-    offset -= this.getOffset(this.scrollParent);
+    offset -= this.getOffset({el: this.scrollParent});
     scrollParent.scrollTop = offset;
   }
 
@@ -203,7 +223,9 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     const {scrollParent} = this;
     const {body, documentElement} = document;
     const key = 'scrollHeight';
-    return scrollParent === window ? Math.max(body[key], documentElement[key]) : scrollParent[key];
+    return scrollParent === window
+      ? Math.max(body[key], documentElement ? documentElement[key] : 0)
+      : scrollParent[key];
   }
 
   getStartAndEnd(threshold = this.props.threshold) {
@@ -217,19 +239,21 @@ export default class VirtualList extends React.Component<VirtualListProps> {
   }
 
   // Called by 'scroll' and 'resize' events, clears scroll position cache.
-  updateFrameAndClearCache(cb) {
-    this.cachedScroll = null;
-    return this.updateFrame(cb);
+  updateFrameAndClearCache(parameters: {cb: any}) {
+    let cb = parameters.cb;
+    this.cachedScroll = 0;
+    return this.updateFrame({cb: cb});
   }
 
-  updateFrame(cb) {
+  updateFrame(parameters: {cb: any}) {
+    let cb = parameters.cb;
     this.updateScrollParent();
 
     if (typeof cb !== 'function') {
       cb = NOOP;
     }
 
-    return this.updateVariableFrame(cb);
+    return this.updateVariableFrame({cb: cb});
   }
 
   updateScrollParent() {
@@ -240,18 +264,19 @@ export default class VirtualList extends React.Component<VirtualListProps> {
       return;
     }
     if (prev) {
-      events.off(prev, 'scroll', this.updateFrameAndClearCache);
-      events.off(prev, 'mousewheel', NOOP);
+      events.off(prev, 'scroll', this.updateFrameAndClearCache, false);
+      events.off(prev, 'mousewheel', NOOP, false);
     }
 
-    events.on(this.scrollParent, 'scroll', this.updateFrameAndClearCache);
-    events.on(this.scrollParent, 'mousewheel', NOOP);
+    events.on(this.scrollParent, 'scroll', this.updateFrameAndClearCache, false);
+    events.on(this.scrollParent, 'mousewheel', NOOP, false);
 
     // You have to attach mousewheel listener to the scrollable element.
     // Just an empty listener. After that onscroll events will be fired synchronously.
   }
 
-  updateVariableFrame(cb) {
+  updateVariableFrame(parameters: {cb: any}) {
+    let cb = parameters.cb;
     if (!this.props.itemSizeGetter) {
       this.cacheSizes();
     }
@@ -265,7 +290,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     const maxFrom = length - 1;
 
     while (from < maxFrom) {
-      const itemSize = this.getSizeOf(from);
+      const itemSize = this.getSizeOf({index: from});
       if (itemSize === null || itemSize === undefined || space + itemSize > start) {
         break;
       }
@@ -276,7 +301,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     const maxSize = length - from;
 
     while (size < maxSize && space < end) {
-      const itemSize = this.getSizeOf(from + size);
+      const itemSize = this.getSizeOf({index: from + size});
       if (itemSize === null || itemSize === undefined) {
         size = Math.min(size + pageSize, maxSize);
         break;
@@ -285,10 +310,11 @@ export default class VirtualList extends React.Component<VirtualListProps> {
       ++size;
     }
 
-    this.maybeSetState({from, size}, cb);
+    this.maybeSetState({b: {from, size}, cb: cb});
   }
 
-  getSpaceBefore(index, cache = {}) {
+  getSpaceBefore(parameters: {index: any; cache?: any}) {
+    let {index, cache = {}} = parameters;
     if (!index) {
       return 0;
     }
@@ -306,7 +332,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     let space = cache[from] || 0;
     for (let i = from; i < index; ++i) {
       cache[i] = space;
-      const itemSize = this.getSizeOf(i);
+      const itemSize = this.getSizeOf({index: i});
       if (itemSize === null || itemSize === undefined) {
         break;
       }
@@ -319,22 +345,23 @@ export default class VirtualList extends React.Component<VirtualListProps> {
   }
 
   cacheSizes() {
-    const {cache} = this;
-    const {from} = this.state;
+    const {cache}: Readonly<any> = this;
+    const {from}: Readonly<any> = this.state;
     const {children, props = {}} = this.items;
     const itemEls = children || props.children || [];
     for (let i = 0, l = itemEls.length; i < l; ++i) {
-      const ulRef = findDOMNode(this.items);
-      const height = ulRef.children[i].offsetHeight;
+      const ulRef:any = findDOMNode(this.items);
+      const height = ulRef && ulRef.children[i].offsetHeight;
       if (height > 0) {
         cache[from + i] = height;
       }
     }
   }
 
-  getSizeOf(index) {
-    const {cache} = this;
-    const {itemSizeGetter, jumpIndex} = this.props;
+  getSizeOf(parameters: {index: any}) {
+    let index = parameters.index;
+    const {cache}: Readonly<any> = this;
+    const {itemSizeGetter, jumpIndex}: Readonly<any> = this.props;
 
     // Try the cache.
     if (index in cache) {
@@ -344,7 +371,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
       return itemSizeGetter(index);
     }
 
-    const height = Object.values(this.cache).pop();
+    const height = (Object as any).values(this.cache).pop();
     if (!this.defaultItemHeight && jumpIndex > -1 && height) {
       this.defaultItemHeight = height;
     }
@@ -354,7 +381,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     }
   }
 
-  constrain(from, size, {children, minSize}) {
+  constrain = (from: any, size: any, {children, minSize}: any) => {
     const length = children && children.length;
     size = Math.max(size, minSize);
     if (size > length) {
@@ -363,22 +390,22 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     from = from ? Math.max(Math.min(from, length - size), 0) : 0;
 
     return {from, size};
-  }
+  };
 
-  scrollTo(index) {
-    this.setScroll(this.getSpaceBefore(index));
+  scrollTo(index:any) {
+    this.setScroll({offset: this.getSpaceBefore({index: index})});
   }
 
   renderMenuItems() {
     const {children, itemsRenderer} = this.props;
-    const {from, size} = this.state;
+    const {from, size}: Readonly<any> = this.state;
     const items = [];
 
     for (let i = 0; i < size; ++i) {
       items.push(children[from + i]);
     }
 
-    return itemsRenderer(items, c => {
+    return itemsRenderer(items, (c:any) => {
       this.items = c;
       return this.items;
     });
@@ -387,18 +414,18 @@ export default class VirtualList extends React.Component<VirtualListProps> {
   render() {
     const {children = [], prefixCls, className} = this.props;
     const length = React.Children.count(children);
-    const {from} = this.state;
+    const {from}: Readonly<any> = this.state;
     const items = this.renderMenuItems();
 
-    const style = {position: 'relative'};
+    let style = {height: 'auto', position: 'relative' as 'relative'};
     const cache = {};
 
-    const size = this.getSpaceBefore(length, cache);
+    const size = this.getSpaceBefore({index: length, cache: cache});
 
     if (size) {
       style.height = size;
     }
-    const offset = this.getSpaceBefore(from, cache);
+    const offset = this.getSpaceBefore({index: from, cache: cache});
     const transform = `translate(0px, ${offset}px)`;
     const listStyle = {
       msTransform: transform,

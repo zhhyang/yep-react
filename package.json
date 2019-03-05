@@ -11,7 +11,7 @@
     "test": "jest --config ./scripts/jest.config.js",
     "site-run": "node scripts/start.js",
     "demo-run": "node scripts/demo-start.js",
-    "watch-css-dist": "yep-tools dev",
+    "watch-css-dist": "yep-tools watch",
     "dist": "yep-tools dist",
     "clean": "rimraf lib es dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
