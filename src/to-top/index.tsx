@@ -17,23 +17,27 @@ const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
 };
 
 export interface ToTopProps {
-  prefixCls?: string,
-  className?: string,
+  prefixCls?: string;
+  className?: string;
   style?: React.CSSProperties;
-  onClick?: ()=> void;
+  onClick?: (e: any) => void;
   children: React.ReactNode;
-  displayHeight: number,
+  displayHeight: number;
+  visible: boolean;
 }
 
-export default class ToTop extends React.PureComponent<ToTopProps>{
+export interface State {
+  visible: boolean;
+}
 
+export default class ToTop extends React.PureComponent<ToTopProps, State> {
   static defaultProps = {
     prefixCls: 'Yep-to-top',
     style: {},
     displayHeight: 0,
   };
 
-  constructor(props:ToTopProps) {
+  constructor(props: ToTopProps) {
     super(props);
     this.state = {
       visible: false,
@@ -47,6 +51,15 @@ export default class ToTop extends React.PureComponent<ToTopProps>{
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+  static setScrollTop(parameters: {value: any}) {
+    let value = parameters.value;
+    const {documentElement} = document;
+    document.body.scrollTop = value;
+    if (documentElement) {
+      documentElement.scrollTop = value;
+    }
+  }
+
   handleScroll = () => {
     const {displayHeight} = this.props;
     this.setState({
@@ -54,32 +67,28 @@ export default class ToTop extends React.PureComponent<ToTopProps>{
     });
   };
 
-  scrollToTop = e => {
-    const scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
+  scrollToTop = (e: any) => {
+    const {documentElement} = document;
+    const scrollTop =
+      window.pageYOffset || document.body.scrollTop || (documentElement && documentElement.scrollTop) || 0;
     const startTime = Date.now();
     const frameFunc = () => {
       const timestamp = Date.now();
       const time = timestamp - startTime;
-      this.setScrollTop(easeInOutCubic(time, scrollTop, 0, 450));
+      ToTop.setScrollTop({value: easeInOutCubic(time, scrollTop, 0, 450)});
       if (time < 450) {
         raf(frameFunc);
       } else {
-        this.setScrollTop(0);
+        ToTop.setScrollTop({value: 0});
       }
     };
     raf(frameFunc);
     (this.props.onClick || noop)(e);
   };
 
-  setScrollTop(value) {
-    document.body.scrollTop = value;
-    document.documentElement.scrollTop = value;
-  }
-
   render() {
     const {prefixCls, className = '', children, style} = this.props;
     const cls = classNames(prefixCls, className);
-
     const defaultElement = (
       <div className={`${prefixCls}-content`}>
         <Icon type="lego_zhiding" size="md" />
@@ -88,7 +97,7 @@ export default class ToTop extends React.PureComponent<ToTopProps>{
     const divProps = omit(this.props, ['prefixCls', 'className', 'children', 'displayHeight', 'visible']);
     const visible = 'visible' in this.props ? this.props.visible : this.state.visible;
     return (
-      <CSSTransition in={visible} timeout={300} classNames={'fade'} unmountOnExit>
+      <CSSTransition in={visible} timeout={300} classNames={'fade'} unmountOnExit={true}>
         <div {...divProps} style={style} className={cls} onClick={this.scrollToTop}>
           {children || defaultElement}
         </div>

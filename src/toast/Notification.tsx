@@ -1,18 +1,24 @@
-import * as  React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {CSSTransition} from 'react-transition-group';
 import classNames from 'classnames';
 import Icon from '../icon';
 export interface NotificationProps {
   prefixCls?: string;
   style?: React.CSSProperties;
-  icon?: string,
+  icon?: string;
   message: string;
   bottom?: boolean;
   duration?: number;
+  onClose: () => {};
+  className?: string;
 }
-export default class Notification extends React.PureComponent<NotificationProps> {
 
+interface State {
+  show: boolean;
+}
+
+export default class Notification extends React.PureComponent<NotificationProps, State> {
   static defaultProps = {
     prefixCls: 'Yep-toast',
     style: {},
@@ -20,8 +26,9 @@ export default class Notification extends React.PureComponent<NotificationProps>
     bottom: false,
     duration: 1.5,
   };
-
-  constructor(props:NotificationProps) {
+  private closeTimer: number;
+  static newInstance: (properties:any, callback:any) => void;
+  constructor(props: NotificationProps) {
     super(props);
     this.close = this.close.bind(this);
     this.startCloseTimer = this.startCloseTimer.bind(this);
@@ -43,7 +50,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
   startCloseTimer() {
     const {duration} = this.props;
     if (duration) {
-      this.closeTimer = setTimeout(() => {
+      this.closeTimer = window.setTimeout(() => {
         this.close();
       }, duration * 1000);
     }
@@ -52,7 +59,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
   clearCloseTimer() {
     if (this.closeTimer) {
       clearTimeout(this.closeTimer);
-      this.closeTimer = null;
+      this.closeTimer = -1;
     }
   }
 
@@ -66,11 +73,12 @@ export default class Notification extends React.PureComponent<NotificationProps>
 
   render() {
     const {className, prefixCls, style, icon, message, bottom} = this.props;
+    const {show} = this.state;
     const cls = classNames(prefixCls, className, 'mask', {
       bottom: bottom,
     });
     return (
-      <CSSTransition in={this.state.show} timeout={300} classNames="fade" unmountOnExit>
+      <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit={true}>
         <div className={cls} style={style}>
           <div className={`${prefixCls}-notice`}>
             {icon && <Icon type={icon} size="lg" />}
@@ -87,7 +95,8 @@ Notification.newInstance = (properties, callback) => {
   document.body.appendChild(div);
 
   let called = false;
-  function ref(instance) {
+  function ref(parameters: {instance: any}) {
+    let instance = parameters.instance;
     if (called) {
       return;
     }
@@ -97,7 +106,7 @@ Notification.newInstance = (properties, callback) => {
       component: instance,
       destroy() {
         ReactDOM.unmountComponentAtNode(div);
-        div.parentNode.removeChild(div);
+        div && div.parentNode && div.parentNode.removeChild(div);
       },
     });
   }

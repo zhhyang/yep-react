@@ -1,16 +1,19 @@
-import React from 'react';
 import Notification from './Notification';
 import noop from '../_utils/noop';
+// import {any} from 'prop-types';
 
 let messageInstance:any = null;
 
-function getInstance(props:any, callback:() => void) {
+function getInstance(props:any, callback: (notification: any) => void) {
   if (messageInstance) {
     messageInstance.destroy();
     messageInstance = null;
   }
 
-  Notification.newInstance(props, notification => callback && callback(notification));
+  Notification.newInstance(props, (parameters: {notification: any}) => {
+    let notification = parameters.notification;
+    return callback && callback(notification);
+  });
 }
 
 function notice(message:string, icon:any, duration = 3, onClose: () => void) {
@@ -31,9 +34,9 @@ function notice(message:string, icon:any, duration = 3, onClose: () => void) {
       duration,
       onClose: close,
     },
-    notification => {
+    (notification: any) => {
       messageInstance = notification;
-    }
+    },
   );
 }
 

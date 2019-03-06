@@ -5,6 +5,7 @@ export interface TouchFeedbackProps {
   disabled?: boolean;
   activeClassName?: string;
   activeStyle?: React.CSSProperties;
+  children:any
 }
 
 /**
@@ -39,11 +40,12 @@ export default class TouchFeedback extends React.PureComponent<TouchFeedbackProp
     }
   }
 
-  triggerEvent(type, isActive, ev) {
+  triggerEvent(parameters: {type: any, isActive: any, ev: any}) {
+    let {type, isActive, ev} = parameters;
     const eventType = `on${type}`;
     const {children} = this.props;
 
-    if (children.props[eventType]) {
+    if (children && children.props[eventType]) {
       children.props[eventType](ev);
     }
     if (isActive !== this.state.active) {
@@ -53,33 +55,40 @@ export default class TouchFeedback extends React.PureComponent<TouchFeedbackProp
     }
   }
 
-  onTouchStart(e) {
-    this.triggerEvent('TouchStart', true, e);
+  onTouchStart(parameters: {e: any}) {
+    let e = parameters.e;
+    this.triggerEvent({type: 'TouchStart', isActive: true, ev: e});
   }
 
-  onTouchMove(e) {
-    this.triggerEvent('TouchMove', false, e);
+  onTouchMove(parameters: {e: any}) {
+    let e = parameters.e;
+    this.triggerEvent({type: 'TouchMove', isActive: false, ev: e});
   }
 
-  onTouchEnd(e) {
-    this.triggerEvent('TouchEnd', false, e);
+  onTouchEnd(parameters: {e: any}) {
+    let e = parameters.e;
+    this.triggerEvent({type: 'TouchEnd', isActive: false, ev: e});
   }
 
-  onTouchCancel(e) {
-    this.triggerEvent('TouchCancel', false, e);
+  onTouchCancel(parameters: {e: any}) {
+    let e = parameters.e;
+    this.triggerEvent({type: 'TouchCancel', isActive: false, ev: e});
   }
 
-  onMouseDown(e) {
+  onMouseDown(parameters: {e: any}) {
+    let e = parameters.e;
     // pc simulate mobile
-    this.triggerEvent('MouseDown', true, e);
+    this.triggerEvent({type: 'MouseDown', isActive: true, ev: e});
   }
 
-  onMouseUp(e) {
-    this.triggerEvent('MouseUp', false, e);
+  onMouseUp(parameters: {e: any}) {
+    let e = parameters.e;
+    this.triggerEvent({type: 'MouseUp', isActive: false, ev: e});
   }
 
-  onMouseLeave(e) {
-    this.triggerEvent('MouseLeave', false, e);
+  onMouseLeave(parameters: {e: any}) {
+    let e = parameters.e;
+    this.triggerEvent({type: 'MouseLeave', isActive: false, ev: e});
   }
 
   render() {

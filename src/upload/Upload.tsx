@@ -1,21 +1,20 @@
-import * as  React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import noop from '../_utils/noop';
 
 export interface File {
-  url:string;
+  url: string;
 }
 export interface UploadProps {
   files?: File[];
 
   size?: string;
 
-  addImage?: () => void;
+  addImage?: (params: any) => void;
 
-  removeImage?: () => void;
+  removeImage?: (params: any) => void;
 }
 export default class Upload extends React.PureComponent<UploadProps> {
-
   static defaultProps = {
     files: [],
     size: '75px',
@@ -23,31 +22,35 @@ export default class Upload extends React.PureComponent<UploadProps> {
     removeImage: noop,
     // multiple: false,
   };
+  private input: HTMLInputElement | null;
 
-  constructor(props:UploadProps) {
+  constructor(props: UploadProps) {
     super(props);
     this.state = {};
     this.fileChange = this.fileChange.bind(this);
   }
 
-  addImagePriv(imgItem) {
-    this.props.addImage(imgItem);
+  addImagePriv(imgItem: object) {
+    const {addImage = () => {}} = this.props;
+    addImage(imgItem);
   }
 
-  removeImagePriv(index) {
-    this.props.removeImage(index);
+  removeImagePriv(index: any) {
+    const {removeImage = () => {}} = this.props;
+    removeImage(index);
   }
 
-  fileChange({target}) {
-    const file = target.files[0];
+  fileChange(e: any) {
+    const file = e.target.files[0];
 
     if (file.size > 500 * 1024) {
       throw new Error('图片超过500k规定大小');
     }
 
     const reader = new FileReader();
-    reader.onload = e => {
-      const dataUrl = e.target.result;
+    reader.onload = (e: any) => {
+      const {currentTarget} = e;
+      const dataUrl = currentTarget && currentTarget.result;
       if (!dataUrl) {
         return;
       }
@@ -58,8 +61,9 @@ export default class Upload extends React.PureComponent<UploadProps> {
     };
 
     reader.readAsDataURL(file);
-
-    this.input.value = '';
+    if (this.input) {
+      this.input.value = '';
+    }
   }
 
   render() {
@@ -67,7 +71,7 @@ export default class Upload extends React.PureComponent<UploadProps> {
     const wrapperCls = classNames('Yep-upload-wrapper');
     return (
       <div className={wrapperCls}>
-        {files.map((imgItem, index) => (
+        {files && files.map((imgItem, index) => (
           /* eslint-disable react/no-array-index-key */
           <div className="upload-flex-item" key={index}>
             <div
