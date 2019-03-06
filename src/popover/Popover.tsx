@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
+import * as PropTypes from 'prop-types';
+import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import PopoverContent from './PopoverContent';
 
@@ -12,24 +12,25 @@ window.addEventListener('click', () => {
 
 export interface PopoverProps {
   children: React.ReactNode;
-  triggerMode?: 'click'| 'hover';
+  triggerMode?: 'click';
   content?: React.ReactNode;
-  direction?: 'up'|'down'| 'left'|'right';
-  align?: 'top'| 'right'| 'bottom'| 'left'| 'middle';
+  direction?: 'up' | 'down' | 'left' | 'right';
+  align?: 'top' | 'right' | 'bottom' | 'left' | 'middle';
   open?: boolean;
-  onToggle?: (open:boolean) => void;
+  onToggle?: (open: boolean) => void;
   shouldOpen?: () => void;
   shouldClose?: () => void;
   disabled?: boolean;
   aligned?: boolean;
 }
 
-class Popover extends React.PureComponent<PopoverProps,any> {
+class Popover extends React.PureComponent<PopoverProps, any> {
   static LAZY_DURATION = 150;
 
   static OPENED_POPOVER = Symbol();
+  static defaultProps: {triggerMode: string; direction: string};
 
-  constructor(props:PopoverProps) {
+  constructor(props: PopoverProps) {
     super(props);
     this.state = {
       open: props.open || false,
@@ -132,14 +133,6 @@ class Popover extends React.PureComponent<PopoverProps,any> {
         e.stopPropagation();
         this.closeChildOpenedPopover();
       };
-      if (triggerMode === 'hover') {
-        other.onMouseEnter = () => {
-          clearTimeout(this.closeTimer);
-        };
-        other.onMouseLeave = () => {
-          this.closeTimer = setTimeout(() => this.close(), Popover.LAZY_DURATION);
-        };
-      }
       if (aligned) {
         other.style = Object.assign(other.style || {}, {
           width: triggerNode.offsetWidth,
@@ -169,24 +162,11 @@ class Popover extends React.PureComponent<PopoverProps,any> {
       }),
     };
     if (!disabled) {
-      if (triggerMode === 'hover') {
-        triggerProps.onMouseEnter = () => {
-          clearTimeout(this.closeTimer);
-          this.openTimer = setTimeout(this.open.bind(this), Popover.LAZY_DURATION);
-          children.props.onMouseEnter && children.props.onMouseEnter();
-        };
-        triggerProps.onMouseLeave = () => {
-          clearTimeout(this.openTimer);
-          this.closeTimer = setTimeout(this.close.bind(this), Popover.LAZY_DURATION);
-          children.props.onMouseLeave && children.props.onMouseLeave();
-        };
-      } else {
-        triggerProps.onClick = e => {
-          e.stopPropagation();
-          this[open ? 'close' : 'open']();
-          children.props.onClick && children.props.onClick();
-        };
-      }
+      triggerProps.onClick = e => {
+        e.stopPropagation();
+        this[open ? 'close' : 'open']();
+        children.props.onClick && children.props.onClick();
+      };
     }
     return React.cloneElement(children, triggerProps);
   }
@@ -198,11 +178,9 @@ Popover.contextTypes = {
 
 Popover.defaultProps = {
   direction: 'up',
-  triggerMode: 'hover',
+  triggerMode: 'click',
 };
 
-Popover.propTypes = {
-
-};
+Popover.propTypes = {};
 
 export default Popover;
