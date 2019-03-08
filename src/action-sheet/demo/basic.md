@@ -51,7 +51,12 @@ class Demo extends React.PureComponent {
           婚姻状况
         </Button>
 
-        <ActionSheet show={this.state.show} onCancel={this.handleToggleShow} data={['未婚', '已婚', '离异']} />
+        <ActionSheet
+          show={this.state.show}
+          onCancel={this.handleToggleShow}
+          data={['未婚', '已婚', '离异']}
+          itemClick={(value, index) => Toast.show(value)}
+        />
 
         <ActionSheet
           show={this.state.slideDownShow}
@@ -60,6 +65,7 @@ class Demo extends React.PureComponent {
           space
           data={['未婚', '已婚', '离异']}
           active={1}
+          itemClick={(value, index) => Toast.show(value)}
         />
         <ActionSheet
           show={this.state.slideRightShow}
@@ -68,6 +74,7 @@ class Demo extends React.PureComponent {
           space
           title="婚姻状况"
           data={['未婚', '已婚', '离异']}
+          itemClick={(value, index) => Toast.show(value)}
         />
       </div>
     );

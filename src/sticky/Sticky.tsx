@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import * as ReactDOM from 'react-dom';
 import StickyContainer from './StickyContainer';
 export interface StickyProps {
   topOffset: number;
@@ -7,12 +9,6 @@ export interface StickyProps {
   children: (props:any) => any;
   disableCompensation:boolean;
   disableHardwareAcceleration:boolean;
-}
-
-export interface StickyContextProps {
-  subscribe: () => void;
-  unsubscribe: () => void;
-  getParent:  () => void;
 }
 
 interface State {
@@ -25,7 +21,7 @@ interface State {
 }
 export default class Sticky extends React.PureComponent<StickyProps,State> {
 
-  StickyContainer = StickyContainer;
+  static StickyContainer = StickyContainer;
 
   static defaultProps = {
     relative: false,
@@ -35,10 +31,14 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
     disableHardwareAcceleration: false,
   };
 
-  static contextTypes :StickyContextProps ;
+  static contextTypes = {
+    subscribe: PropTypes.func,
+    unsubscribe: PropTypes.func,
+    getParent: PropTypes.func,
+  };
 
   placeholder:any;
-  content:HTMLDivElement;
+  content:any;
 
   constructor(props:StickyProps) {
     super(props);
@@ -123,7 +123,7 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
   }
 
   createContentRef(content:HTMLDivElement) {
-    this.content = content;
+    this.content = ReactDOM.findDOMNode(content);
   }
 
   render() {

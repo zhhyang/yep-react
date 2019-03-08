@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {DatePicker, Button} from '@jdcfe/yep-react';
+import {DatePicker, Button, Toast} from '@jdcfe/yep-react';
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
@@ -30,7 +30,7 @@ class Demo extends React.PureComponent {
           value={this.state.date}
           onOk={value => {
             this.setState({show: false});
-            console.log(value);
+            Toast.show(value.toLocaleString());
           }}
           onCancel={() => this.setState({show: false})}
           onChange={date => this.setState({date})}

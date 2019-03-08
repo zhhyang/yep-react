@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {InputItem, List} from '@jdcfe/yep-react';
+import {InputItem, List, ActionSheet, Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   constructor(props) {
@@ -26,9 +26,6 @@ class Demo extends React.PureComponent {
   }
 
   handleSexItemClick(item, index) {
-    const {
-      input: {onChange},
-    } = this.props;
     this.setState({
       sex: item,
     });

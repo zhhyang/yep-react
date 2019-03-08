@@ -1,10 +1,8 @@
 import Notification from './Notification';
-import noop from '../_utils/noop';
-// import {any} from 'prop-types';
 
-let messageInstance:any = null;
+let messageInstance: any = null;
 
-function getInstance(props:any, callback: (notification: any) => void) {
+function getInstance(props: any, callback: (notification: any) => void) {
   if (messageInstance) {
     messageInstance.destroy();
     messageInstance = null;
@@ -16,7 +14,7 @@ function getInstance(props:any, callback: (notification: any) => void) {
   });
 }
 
-function notice(message:string, icon:any, duration = 3, onClose: () => void) {
+function notice(message: string, icon: any, duration: number = 3, onClose?: () => void) {
   function close() {
     if (messageInstance) {
       messageInstance.destroy();
@@ -36,23 +34,23 @@ function notice(message:string, icon:any, duration = 3, onClose: () => void) {
     },
     (notification: any) => {
       messageInstance = notification;
-    },
+    }
   );
 }
 
 export default {
   SHORT: 3,
   LONG: 8,
-  show(message:string, duration:number, onClose:() => void) {
+  show(message: string, duration?: number, onClose?: () => void) {
     return notice(message, null, duration, onClose);
   },
-  success(message:string, duration:number, onClose = noop) {
+  success(message: string, duration?: number, onClose?: () => void) {
     return notice(message, 'lego_duohao1', duration, onClose);
   },
-  fail(message:string, duration:number, onClose = noop) {
+  fail(message: string, duration?: number, onClose?: () => void) {
     return notice(message, 'shop-shuoming', duration, onClose);
   },
-  loading(message:string, duration:number, onClose = noop) {
+  loading(message: string, duration?: number, onClose?: () => void) {
     return notice(message, 'lego_jiazai', duration, onClose);
   },
 };

@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import * as PropTypes from 'prop-types';
-import * as raf from 'raf';
+// @ts-ignore
+import raf from 'raf';
 
 export interface StickyContainerProps {
 
