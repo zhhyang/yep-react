@@ -2,17 +2,6 @@ import * as React from 'react';
 import MultiPicker from './MultiPicker';
 import Picker from './Picker';
 
-function getDefaultProps() {
-  return {
-    prefixCls: 'Yep-picker',
-    pickerPrefixCls: 'Yep-picker-col',
-    cols: 3,
-    cascade: true,
-    value: [],
-    onChange() {},
-  };
-}
-
 export type PickerData = {
   value: string | number,
   label: string,
@@ -25,7 +14,7 @@ export interface IPickerView  {
   cols?: number;
   cascade?: boolean;
   value?: any[];
-  data?: PickerData[] | PickerData[][];
+  data: PickerData[] | PickerData[][];
   onChange?: (value?: any) => void;
   onScrollChange?: (value?: any) => void;
   indicatorStyle?: any;
@@ -33,11 +22,19 @@ export interface IPickerView  {
 };
 
 export default class PickerView extends React.PureComponent<IPickerView, any> {
-  static defaultProps = getDefaultProps();
+  static defaultProps = {
+    prefixCls: 'Yep-picker',
+    pickerPrefixCls: 'Yep-picker-col',
+    cols: 3,
+    cascade: true,
+    value: [],
+    onChange() {},
+  };
 
   getCol = () => {
     const {data, pickerPrefixCls, indicatorStyle, itemStyle} = this.props;
-    return data.map((col, index) => {
+    //@ts-ignore
+    return data.map((col:any, index:number) => {
       return (
         <Picker
           key={index}
@@ -45,9 +42,8 @@ export default class PickerView extends React.PureComponent<IPickerView, any> {
           style={{flex: 1}}
           indicatorStyle={indicatorStyle}
           itemStyle={itemStyle}
-          data={col}
         >
-          {col.map(item => {
+          {col.map((item:any) => {
             return (
               <Picker.Item key={item.value} value={item.value}>
                 {item.label}

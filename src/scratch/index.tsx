@@ -4,17 +4,23 @@ export interface ScratchProps {
   prefixCls?: string,
   className?: string,
   style?: React.CSSProperties;
-  scratchImgUrl?: string;
+  scratchImgUrl: string;
   resPercent?: number;
-  resCallback?: () =>void;
+  resCallback: () =>void;
   children: React.ReactNode;
 }
-export default class Scratch extends React.PureComponent<ScratchProps> {
+
+export interface State {
+  isAreaShow: boolean;
+  isArea2Show: boolean;
+}
+export default class Scratch extends React.PureComponent<ScratchProps,State> {
   
   static defaultProps = {
     prefixCls: 'Yep-scratch',
     style: {},
     scratchImgUrl: 'http://img12.360buyimg.com/uba/jfs/t20377/335/194083123/261/85331804/5b02899bN0571f2a7.png',
+    resCallback: () => {}
   };
 
   constructor(props:ScratchProps) {
@@ -29,8 +35,8 @@ export default class Scratch extends React.PureComponent<ScratchProps> {
   }
 
   componentDidMount() {
-    const wrap_canvas = document.getElementById('wrap_canvas');
-    const icanvas = document.getElementById('myCanvas');
+    const wrap_canvas = document.getElementById('wrap_canvas') as HTMLDivElement;
+    const icanvas = document.getElementById('myCanvas') as HTMLCanvasElement;
     // if (wrap_canvas && icanvas) {
     const iwidth = wrap_canvas.clientWidth;
     const iheight = wrap_canvas.clientHeight;
@@ -40,7 +46,7 @@ export default class Scratch extends React.PureComponent<ScratchProps> {
 
     // var drawMode = false;
 
-    let context = icanvas.getContext('2d');
+    let context = icanvas.getContext('2d') as CanvasRenderingContext2D;
     context.lineCap = 'round';
     context.lineJoin = 'round';
     // context.fillStyle = 'rgb(193,193,193)';
@@ -66,24 +72,25 @@ export default class Scratch extends React.PureComponent<ScratchProps> {
     // }
   }
 
-  touchStart(e) {
-    var icanvas = document.getElementById('myCanvas');
-    var context = icanvas.getContext('2d');
+  touchStart(e:any) {
+    var icanvas = document.getElementById('myCanvas') as HTMLCanvasElement;
+    var context = icanvas.getContext('2d') as CanvasRenderingContext2D;
     context.beginPath();
     var rect = icanvas.getBoundingClientRect();
     context.moveTo(e.changedTouches[0].clientX - rect.left, e.changedTouches[0].clientY - rect.top);
     // $("#area2").show();
   }
 
-  touchMove(e) {
+  touchMove(e:any) {
     // $icanvas.off('touchmove');
     e.persist();
     this.setState({
       isArea2Show: true,
     });
     // var e = event;
-    var icanvas = document.getElementById('myCanvas');
-    var context = icanvas.getContext('2d');
+    const wrap_canvas = document.getElementById('wrap_canvas') as HTMLDivElement;
+    var icanvas = document.getElementById('myCanvas') as HTMLCanvasElement;
+    var context = icanvas.getContext('2d') as CanvasRenderingContext2D ;
 
     // if (this.state.down) {
     var rect = icanvas.getBoundingClientRect();
@@ -99,12 +106,12 @@ export default class Scratch extends React.PureComponent<ScratchProps> {
     for (var i = 0, j = pixles.length; i < j; i += 4) {
       var a = pixles[i + 3];
       if (a < 128) {
+        //@ts-ignore
         transPixs.push(i);
       }
     }
-    if (
-      ((transPixs.length / (pixles.length / 4)) * 100).toFixed(2) >
-      (this.props.resPercent >= 0 ? this.props.resPercent : 60)
+    //@ts-ignore
+    if (((transPixs.length / (pixles.length / 4)) * 100).toFixed(2) > (this.props.resPercent >= 0 ? this.props.resPercent : 60)
     ) {
       this.props.resCallback();
       this.setState({

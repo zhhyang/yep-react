@@ -1,8 +1,9 @@
 import * as  React from 'react';
 import {throttle} from 'lodash';
 import {InfiniteLoaderPropTypes} from './types';
+import noop from '../_utils/noop';
 
-export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes> {
+export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes,any> {
   static defaultProps = {
     pullDownToRefreshContent: <h3>Pull down to refresh</h3>,
     releaseToRefreshContent: <h3>Release to refresh</h3>,
@@ -10,7 +11,18 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     disableBrowserPullToRefresh: true,
     style: {},
     className: 'Yep-infinite-loader',
+    onScroll:noop,
   };
+
+  startY:number;
+  currentY:number;
+  dragging:boolean;
+  maxPullDownDistance:number;
+  throttledOnScrollListener: any;
+  _scrollableNode:any;
+  el:any;
+  _infScroll:any;
+  _pullDown:any;
 
   constructor(props:InfiniteLoaderPropTypes) {
     super(props);
@@ -82,7 +94,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     }
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps(props:InfiniteLoaderPropTypes) {
     // do nothing when dataLength is unchanged
     if (this.props.dataLength === props.dataLength) return;
 
@@ -107,7 +119,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     return null;
   }
 
-  onStart(evt) {
+  onStart(evt:any) {
     if (this.state.lastScrollTop) return;
 
     this.dragging = true;
@@ -118,7 +130,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     this._infScroll.style.transition = `transform 0.2s cubic-bezier(0,0,0.31,1)`;
   }
 
-  onMove(evt) {
+  onMove(evt:any) {
     if (!this.dragging) return;
     this.currentY = evt.pageY || evt.touches[0].pageY;
 
@@ -138,7 +150,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     this._infScroll.style.transform = `translate3d(0px, ${this.currentY - this.startY}px, 0px)`;
   }
 
-  onEnd(evt) {
+  onEnd() {
     this.startY = 0;
     this.currentY = 0;
 
@@ -155,14 +167,14 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     });
   }
 
-  isElementAtBottom(target, scrollThreshold = 0.8) {
+  isElementAtBottom(target:any, scrollThreshold = 0.8) {
     const clientHeight =
       target === document.body || target === document.documentElement ? window.screen.availHeight : target.clientHeight;
 
     return target.scrollTop + clientHeight >= scrollThreshold * target.scrollHeight;
   }
 
-  onScrollListener(event) {
+  onScrollListener(event:React.TouchEvent<HTMLDivElement>) {
     if (typeof this.props.onScroll === 'function') {
       // Execute this callback in next tick so that it does not affect the
       // functionality of the library.
@@ -174,7 +186,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
         ? event.target
         : document.documentElement.scrollTop
           ? document.documentElement
-          : document.body;
+          : document.body as any;
 
     // return immediately if the action has already been triggered,
     // prevents multiple triggers.
@@ -209,8 +221,8 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
       //overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       ...style,
-    };
-    const hasChild = hasChildren || !!(children && children.length);
+    } as React.CSSProperties;
+    const hasChild = hasChildren || !!(children && React.Children.count(children));
 
     // because heighted infiniteScroll visualy breaks
     // on drag down as overflow becomes visible

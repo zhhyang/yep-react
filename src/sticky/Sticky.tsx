@@ -1,11 +1,12 @@
 import * as React from 'react';
-
-import ReactDOM from 'react-dom';
+import StickyContainer from './StickyContainer';
 export interface StickyProps {
-  topOffset?: number;
-  bottomOffset?: number;
+  topOffset: number;
+  bottomOffset: number;
   relative?: boolean;
-  children: () => React.ReactNode;
+  children: (props:any) => any;
+  disableCompensation:boolean;
+  disableHardwareAcceleration:boolean;
 }
 
 export interface StickyContextProps {
@@ -13,7 +14,18 @@ export interface StickyContextProps {
   unsubscribe: () => void;
   getParent:  () => void;
 }
-export default class Sticky extends React.PureComponent<StickyProps> {
+
+interface State {
+  isSticky: boolean;
+  wasSticky: boolean;
+  style: React.CSSProperties;
+  calculatedHeight:number;
+  distanceFromTop?:number;
+  distanceFromBottom?:number;
+}
+export default class Sticky extends React.PureComponent<StickyProps,State> {
+
+  StickyContainer = StickyContainer;
 
   static defaultProps = {
     relative: false,
@@ -26,6 +38,7 @@ export default class Sticky extends React.PureComponent<StickyProps> {
   static contextTypes :StickyContextProps ;
 
   placeholder:any;
+  content:HTMLDivElement;
 
   constructor(props:StickyProps) {
     super(props);
@@ -36,6 +49,7 @@ export default class Sticky extends React.PureComponent<StickyProps> {
       isSticky: false,
       wasSticky: false,
       style: {},
+      calculatedHeight:0,
     };
   }
 
@@ -55,6 +69,7 @@ export default class Sticky extends React.PureComponent<StickyProps> {
     this.context.unsubscribe(this.handleContainerEvent);
   }
 
+  // @ts-ignore
   handleContainerEvent({distanceFromTop, distanceFromBottom, eventSource}) {
     const {relative, bottomOffset, topOffset, disableHardwareAcceleration} = this.props;
     const parent = this.context.getParent();
@@ -88,7 +103,7 @@ export default class Sticky extends React.PureComponent<StickyProps> {
               : bottomDifference,
           left: placeholderClientRect.left,
           width: placeholderClientRect.width,
-        };
+        } as React.CSSProperties;
     if (!disableHardwareAcceleration) {
       style.transform = 'translateZ(0)';
     }
@@ -103,12 +118,12 @@ export default class Sticky extends React.PureComponent<StickyProps> {
     });
   }
 
-  createPlaceholderRef(placeholder) {
+  createPlaceholderRef(placeholder:HTMLDivElement) {
     this.placeholder = placeholder;
   }
 
-  createContentRef(content) {
-    this.content = ReactDOM.findDOMNode(content);
+  createContentRef(content:HTMLDivElement) {
+    this.content = content;
   }
 
   render() {

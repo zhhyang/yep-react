@@ -4,7 +4,7 @@ import Picker from '../picker-view/Picker';
 import MultiPicker from '../picker-view/MultiPicker';
 import noop from '../_utils/noop';
 import treeFilter from '../_utils/arrayTreeFilter';
-import Cascader from './Cascader';
+import Cascade from './Cascade';
 import {PickerData} from '../picker-view';
 import PickerPopup from './PickerPopup';
 
@@ -20,20 +20,25 @@ export interface PopupPickerProps {
   /**
    * 确定事件回调
    */
-  onOk: () => void;
+  onOk: (v:any) => void;
+  onPickerChange: (v:any) => void;
+  onVisibleChange: (visible: boolean) => void;
   prefixCls?: string;
   pickerPrefixCls?: string;
   style?: React.CSSProperties;
   data: PickerData[];
   cascade?: boolean;
-  onChange: () => void;
-  onLabelChange: () => void;
+  onChange: (v:any) => void;
+  onLabelChange: (v:any) => void;
+  cols?:number;
   /**
    * 默认选中的数据
    */
   defaultSelectedValue?: string | number;
   value: string[] | number[];
-  format?: () => void;
+  format?: (value:any) => void;
+  indicatorStyle?:React.CSSProperties;
+  itemStyle?:React.CSSProperties;
 }
 
 export default class PopupPicker extends React.PureComponent<PopupPickerProps, any> {
@@ -46,6 +51,8 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
     cascade: true,
   };
 
+  scrollValue:any;
+
   getSel = () => {
     const value = this.props.value || [];
     let treeChildren: PickerData[];
@@ -55,8 +62,9 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
         return c.value === value[level];
       });
     } else {
-      treeChildren = value.map((v, i) => {
-        return data[i].filter(d => d.value === v)[0];
+      // @ts-ignore
+      treeChildren = value.map((v:any, i:number) => {
+        return (data[i] as any ).filter((d:any) => d.value === v)[0];
       });
     }
     return (
@@ -71,7 +79,7 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
 
   getPickerCol = () => {
     const {data, pickerPrefixCls, itemStyle, indicatorStyle} = this.props;
-    return data.map((col, index) => {
+    return data.map((col:any, index:number) => {
       return (
         <Picker
           key={index}
@@ -80,7 +88,7 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
           itemStyle={itemStyle}
           indicatorStyle={indicatorStyle}
         >
-          {col.map(item => {
+          {col.map((item:any) => {
             return (
               <Picker.Item key={item.value} value={item.value}>
                 {item.label}
@@ -151,7 +159,7 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
     } = this.props;
 
     const picker = cascade ? (
-      <Cascader
+      <Cascade
         prefixCls={prefixCls}
         pickerPrefixCls={pickerPrefixCls}
         data={data}

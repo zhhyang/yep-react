@@ -399,6 +399,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     const {from, size}: Readonly<any> = this.state;
     const items = [];
     for (let i = 0; i < size; ++i) {
+      //@ts-ignore
       items.push(children[from + i]);
     }
     return itemsRenderer(items, (c:any) => {

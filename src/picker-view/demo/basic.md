@@ -11,12 +11,12 @@ import {PickerView} from '@jdcfe/yep-react';
 const seasons = [
   [
     {
-      label: '2013',
-      value: '2013',
+      label: '2018',
+      value: '2018',
     },
     {
-      label: '2014',
-      value: '2014',
+      label: '2019',
+      value: '2019',
     },
   ],
   [
@@ -27,6 +27,14 @@ const seasons = [
     {
       label: '夏',
       value: '夏',
+    },
+    {
+      label: '秋',
+      value: '秋',
+    },
+    {
+      label: '冬',
+      value: '冬',
     },
   ],
 ];

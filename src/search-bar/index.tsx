@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {omit} from 'lodash';
 import Icon from './../icon';
 
 export interface SearchBarProps {
@@ -9,7 +8,7 @@ export interface SearchBarProps {
   style?: React.CSSProperties;
 
   // 输入框的值
-  value?: string| number;
+  value: any;
 
   // 初始化输入框的值
   defaultValue?: string| number;
@@ -18,7 +17,7 @@ export interface SearchBarProps {
   onChange?: (value:any) => void;
 
   // 搜索后的回调
-  onSearch?: () => void;
+  onSearch?: (value:any) => void;
 
   // 是否禁用
   disabled?: boolean;
@@ -28,6 +27,8 @@ export interface SearchBarProps {
 
   // 同 input placeholder
   placeholder?: string;
+  readOnly?:boolean;
+  maxLength?:number;
 }
 
 class SearchBar extends React.PureComponent<SearchBarProps> {
@@ -36,6 +37,7 @@ class SearchBar extends React.PureComponent<SearchBarProps> {
     prefixCls: 'Yep-search-bar',
     style: {},
     value: '',
+    readOnly:false,
   };
 
   constructor(props:SearchBarProps) {
@@ -50,13 +52,13 @@ class SearchBar extends React.PureComponent<SearchBarProps> {
     onChange && onChange('');
   }
 
-  handleChange(e) {
+  handleChange(e:any) {
     const {value} = e.target;
     const {onChange} = this.props;
     onChange && onChange(value);
   }
 
-  handleSearchFn(value) {
+  handleSearchFn(value:any) {
     const {onSearch} = this.props;
     onSearch && onSearch(value);
   }
@@ -65,25 +67,20 @@ class SearchBar extends React.PureComponent<SearchBarProps> {
     const {
       className,
       prefixCls,
-      type,
-      defaultValue,
-      onChange,
-      onClear,
-      onSearch,
       disabled,
       placeholder,
       readOnly,
       maxLength,
       clearable,
       value,
-      ...other
+      style
     } = this.props;
 
-    const inputProps = omit();
+    const inputProps = {value, disabled, placeholder, readOnly, maxLength};
     const inputCls = classNames(`${prefixCls}`, className);
     return (
       <div className="yep-search-bar-bj">
-        <div className={classNames('Yep-search-bar-wrapper', className)} {...other}>
+        <div className={classNames('Yep-search-bar-wrapper', className)} style={style}>
           <Icon type={'lego_sousuo'} key={'lego_sousuo'} size={'xxs'} />
           <input className={inputCls} {...inputProps} onChange={this.handleChange} />
           {(value || value === 0 || Number.isNaN(value)) &&
@@ -92,7 +89,6 @@ class SearchBar extends React.PureComponent<SearchBarProps> {
                 type={'lego_cuowu1'}
                 size={'xxs'}
                 className="Yep-search-bar__clear"
-                tabIndex="-1"
                 onClick={this.handleClear}
               />
             )}

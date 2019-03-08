@@ -47,6 +47,7 @@ export default function fixMask() {
         return;
       }
 
+      // @ts-ignore
       const scrollTop = data.scroller.scrollTop;
       const distanceY = e.touches[0].pageY - data.posY;
 
@@ -71,7 +72,7 @@ export default function fixMask() {
 
   document.body.addEventListener(
     'touchend',
-    e => {
+    () => {
       if (!isIosModalVisible()) return;
       data.scroller = null;
       data.maxscroll = 0;

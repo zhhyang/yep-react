@@ -18,14 +18,14 @@ export interface SwipeActionProps {
   style?: React.CSSProperties;
   autoClose: boolean;
   disabled: boolean;
-  left?: ActionModel[];
-  right?: ActionModel[];
+  left: ActionModel[];
+  right: ActionModel[];
   onOpen: () => void;
   onClose: () => void;
   onMovingDistance: (distance:number) => void;
 }
 
-export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
+export default class SwipeAction extends React.PureComponent<SwipeActionProps,any> {
 
   static defaultProps = {
     prefixCls: 'Yep-swipe',
@@ -57,6 +57,18 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
       swiping: false,
     };
   }
+  btnsLeftWidth:number;
+  left:HTMLDivElement;
+  btnsRightWidth:number;
+  right:HTMLDivElement;
+  openedLeft:boolean;
+  openedRight:boolean;
+
+  content:HTMLDivElement;
+  cover:HTMLDivElement;
+  needShowRight:boolean;
+  needShowLeft:boolean;
+  swiping:boolean;
 
   componentDidMount() {
     this.btnsLeftWidth = this.left ? this.left.offsetWidth : 0;
@@ -65,6 +77,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
   }
 
   componentWillUnmount() {
+    // @ts-ignore
     document.body.removeEventListener('touchstart', this.onCloseSwipe, {passive: false});
   }
 
@@ -74,7 +87,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     this.btnsRightWidth = this.right ? this.right.offsetWidth : 0;
   }
 
-  onCloseSwipe(ev) {
+  onCloseSwipe(ev:any) {
     if (!(this.openedLeft || this.openedRight)) {
       return;
     }
@@ -85,14 +98,14 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     }
   }
 
-  createContentRef(el) {
+  createContentRef(el:HTMLDivElement) {
     this.content = el;
   }
-  createCoverRef(el) {
+  createCoverRef(el:HTMLDivElement) {
     this.cover = el;
   }
 
-  _getContentEasing(value, limit) {
+  _getContentEasing(value:number, limit:number) {
     // limit content style left when value > actions width
     const delta = Math.abs(value) - Math.abs(limit);
     const isOverflow = delta > 0;
@@ -104,7 +117,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     return value;
   }
 
-  _setStyle = value => {
+  _setStyle = (value:number) => {
     const {onMovingDistance} = this.props;
     const limit = value > 0 ? this.btnsLeftWidth : -this.btnsRightWidth;
     const contentLeft = this._getContentEasing(value, limit);
@@ -116,7 +129,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     onMovingDistance(contentLeft);
   };
 
-  open(value, openedLeft, openedRight) {
+  open(value:number, openedLeft:boolean, openedRight:boolean) {
     if (!this.openedLeft && !this.openedRight && this.props.onOpen) {
       this.props.onOpen();
     }
@@ -143,7 +156,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     this.open(-this.btnsRightWidth, true, false);
   }
 
-  onPanStart(e) {
+  onPanStart(e:any) {
     const {direction, moveStatus} = e;
     // http://hammerjs.github.io/api/#directions
     const isLeft = direction === 2;
@@ -169,7 +182,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
       this._setStyle(moveStatus.x);
     }
   }
-  onPan(e) {
+  onPan(e:any) {
     const {
       moveStatus: {x},
     } = e;
@@ -179,7 +192,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     this._setStyle(x);
   }
 
-  onPanEnd(e) {
+  onPanEnd(e:any) {
     if (!this.swiping) {
       return;
     }
@@ -206,7 +219,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     this.needShowRight = false;
   }
 
-  onBtnClick(ev, btn) {
+  onBtnClick(ev:any, btn:any) {
     const {onClick} = btn;
     if (onClick) {
       onClick(ev);
@@ -216,12 +229,12 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     }
   }
 
-  renderButtons(buttons, ref) {
+  renderButtons(buttons:any, ref:any) {
     const {prefixCls} = this.props;
 
     return buttons && buttons.length > 0 ? (
-      <div className={`${prefixCls}-actions ${prefixCls}-actions-${ref}`} ref={el => (this[ref] = el)}>
-        {buttons.map((btn, i) => (
+      <div className={`${prefixCls}-actions ${prefixCls}-actions-${ref}`} ref={ref}>
+        {buttons.map((btn:any, i:number) => (
           <div
             key={i}
             className={`${prefixCls}-btn ${btn.hasOwnProperty('className') ? btn.className : ''}`}
@@ -256,8 +269,8 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps> {
     return (left.length > 0 || right.length > 0) && !disabled ? (
       <div className={cls} style={style} {...divProps}>
         <div className={`${prefixCls}-cover`} ref={this.createCoverRef} />
-        {this.renderButtons(left, 'left')}
-        {this.renderButtons(right, 'right')}
+        {this.renderButtons(left, (el:HTMLDivElement) => this.left = el)}
+        {this.renderButtons(right, (el :HTMLDivElement)=> this.right = el)}
         <Gesture
           onPanStart={this.onPanStart}
           onPan={this.onPan}

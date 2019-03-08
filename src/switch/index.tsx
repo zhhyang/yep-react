@@ -4,10 +4,10 @@ import classNames from 'classnames';
 export interface SwitchProps {
   prefixCls?: string;
   className?: string;
-  style?: React.CSSProperties;
+  style: React.CSSProperties;
   currentStatus?: boolean;
-  handleSwitch?: () => void,
-  onClick?: () => void,
+  handleSwitch?: (checked:boolean) => void,
+  onClick?: (value:boolean) => void,
   disabled?: boolean;
   name?: string;
   color?: string;
@@ -31,14 +31,14 @@ export default class Switch extends React.PureComponent<SwitchProps> {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(e) {
+  onChange(e:any) {
     const {checked} = e.target;
     if (this.props.handleSwitch) {
       this.props.handleSwitch(checked);
     }
   }
 
-  onClick(e) {
+  onClick(e:any) {
     const {onClick, currentStatus: checked} = this.props;
     if (onClick) {
       let val;
@@ -72,9 +72,9 @@ export default class Switch extends React.PureComponent<SwitchProps> {
           checked={checked}
           onChange={this.onChange}
           value={checked ? 'on' : 'off'}
-          {...(!disabled ? {onClick: this.handleSwitch} : {})}
+          {...(!disabled ? {onClick: this.onClick} : {})}
         />
-        <div className={innerCls} style={style} {...(disabled ? {onClick: this.handleSwitch} : {})} />
+        <div className={innerCls} style={style} {...(disabled ? {onClick: this.onClick} : {})} />
       </label>
     );
   }

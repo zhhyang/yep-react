@@ -1,3 +1,5 @@
-import Popover from './Popover';
+
+// @ts-ignore
+import Popover from '@jdcfe/yep-popover';
 
 export default Popover;

@@ -1,37 +1,53 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import ComposedHOC from './ComposedHOC';
 export interface PickerProps {
-  prefixCls?:string;
+  prefixCls:string;
+  className?:string;
   style?:any;
-  select?: () => void ,
-  doScrollingComplete?: () => void ,
-  computeChildIndex?: () => void ,
+  selectedValue?:[];
+  defaultSelectedValue?:[];
+  onScrollChange?:(value:any) => void;
+  onValueChange?:(value:any) => void;
+  children:React.ReactNode;
+  noAnimate?:boolean;
+  disabled:boolean;
+  indicatorStyle?:React.CSSProperties;
+  itemStyle?:React.CSSProperties;
 }
+
+const Item: React.FunctionComponent<ItemProps> = () => null;
+
+export interface ItemProps  {
+  className?: string;
+  value?: any;
+};
 class Picker extends React.Component<PickerProps,any> {
+
+  static Item=Item;
 
   static defaultProps = {
     prefixCls: 'Yep-picker',
+    disabled:false,
   };
 
-  scrollHanders = (() => {
+  scrollHandlers = (() => {
     let scrollY = -1;
     let lastY = 0;
     let startY = 0;
     let scrollDisabled = false;
     let isMoving = false;
 
-    const setTransform = (nodeStyle, value) => {
+    const setTransform = (nodeStyle:any, value:any) => {
       nodeStyle.transform = value;
-      nodeStyle.webkitTransform = value;
+      nodeStyle.WebkitTransform = value;
     };
 
-    const setTransition = (nodeStyle, value) => {
+    const setTransition = (nodeStyle:any, value:any) => {
       nodeStyle.transition = value;
-      nodeStyle.webkitTransition = value;
+      nodeStyle.WebkitTransition = value;
     };
 
-    const scrollTo = (x, y, time = 0.3) => {
+    const scrollTo = (_x:number, y:number, time = 0.3) => {
       if (scrollY !== y) {
         scrollY = y;
         if (time) {
@@ -52,7 +68,7 @@ class Picker extends React.Component<PickerProps,any> {
       let _y = 0;
       let _velocity = 0;
       const recorder = {
-        record: y => {
+        record: (y:number) => {
           const now = +new Date();
           _velocity = (y - _y) / (now - _time);
           if (now - _time >= minInterval) {
@@ -61,7 +77,7 @@ class Picker extends React.Component<PickerProps,any> {
             _time = now;
           }
         },
-        getVelocity: y => {
+        getVelocity: (y:number) => {
           if (y !== _y) {
             recorder.record(y);
           }
@@ -71,7 +87,7 @@ class Picker extends React.Component<PickerProps,any> {
       return recorder;
     })();
 
-    const onStart = y => {
+    const onStart = (y:number) => {
       if (scrollDisabled) {
         return;
       }
@@ -80,7 +96,7 @@ class Picker extends React.Component<PickerProps,any> {
       lastY = scrollY;
     };
 
-    const onMove = y => {
+    const onMove = (y:number) => {
       if (scrollDisabled || !isMoving) {
         return;
       }
@@ -93,7 +109,7 @@ class Picker extends React.Component<PickerProps,any> {
     const onFinish = () => {
       isMoving = false;
       let targetY = scrollY;
-      const height = (this.props.children.length - 1) * this.itemHeight;
+      const height = (React.Children.count(this.props.children) - 1) * this.itemHeight;
 
       let time = 0.3;
 
@@ -116,13 +132,13 @@ class Picker extends React.Component<PickerProps,any> {
     };
 
     return {
-      touchstart: evt => onStart(evt.touches[0].screenY),
-      mousedown: evt => onStart(evt.screenY),
-      touchmove: evt => {
+      touchstart: (evt:any) => onStart(evt.touches[0].screenY),
+      mousedown: (evt:any) => onStart(evt.screenY),
+      touchmove: (evt:any) => {
         evt.preventDefault();
         onMove(evt.touches[0].screenY);
       },
-      mousemove: evt => {
+      mousemove: (evt:any) => {
         evt.preventDefault();
         onMove(evt.screenY);
       },
@@ -133,13 +149,13 @@ class Picker extends React.Component<PickerProps,any> {
         return scrollY;
       },
       scrollTo: scrollTo,
-      setDisabled: disabled => {
+      setDisabled: (disabled:boolean) => {
         scrollDisabled = disabled;
       },
     };
   })();
 
-  constructor(props) {
+  constructor(props:PickerProps) {
     super(props);
     this.createRootRef = this.createRootRef.bind(this);
     this.createMaskRef = this.createMaskRef.bind(this);
@@ -151,7 +167,10 @@ class Picker extends React.Component<PickerProps,any> {
     this.fireValueChange = this.fireValueChange.bind(this);
     this.scrollTo = this.scrollTo.bind(this);
     this.scrollToWithoutAnimation = this.scrollToWithoutAnimation.bind(this);
-
+    this.select = this.select.bind(this);
+    this.selectByIndex = this.selectByIndex.bind(this);
+    this.doScrollingComplete = this.doScrollingComplete.bind(this);
+    this.computeChildIndex = this.computeChildIndex.bind(this);
     let selectedValueState;
     const {selectedValue, defaultSelectedValue} = props;
     if (selectedValue !== undefined) {
@@ -160,26 +179,33 @@ class Picker extends React.Component<PickerProps,any> {
       selectedValueState = defaultSelectedValue;
     } else {
       const children = React.Children.toArray(this.props.children);
+      // @ts-ignore
       selectedValueState = children && children[0] && children[0].props.value;
     }
     this.state = {
       selectedValue: selectedValueState,
     };
   }
+  itemHeight:number;
+  scrollValue:number;
+  rootRef:HTMLDivElement;
+  contentRef:HTMLDivElement;
+  maskRef:HTMLDivElement;
+  indicatorRef:HTMLDivElement;
 
-  createRootRef(el) {
+  createRootRef(el:HTMLDivElement) {
     this.rootRef = el;
   }
 
-  createMaskRef(el) {
+  createMaskRef(el:HTMLDivElement) {
     this.maskRef = el;
   }
 
-  createIndicatorRef(el) {
+  createIndicatorRef(el:HTMLDivElement) {
     this.indicatorRef = el;
   }
 
-  createContentRef(el) {
+  createContentRef(el:HTMLDivElement) {
     this.contentRef = el;
   }
 
@@ -192,18 +218,19 @@ class Picker extends React.Component<PickerProps,any> {
           passiveSupported = true;
         },
       });
-      window.addEventListener('test', null, options);
+      window.addEventListener('test', () => {}, options);
     } catch (err) {}
     return passiveSupported;
   }
 
   onScrollChange() {
-    const {children, onScrollChange, computeChildIndex} = this.props;
-    const top = this.scrollHanders.getValue();
+    const {children, onScrollChange } = this.props;
+    const top = this.scrollHandlers.getValue();
     if (top >= 0) {
-      const index = computeChildIndex(top, this.itemHeight, children.length);
+      const index = this.computeChildIndex(top, this.itemHeight, React.Children.count(children));
       if (this.scrollValue !== index) {
         this.scrollValue = index;
+        // @ts-ignore
         const child = children[index];
         if (child && onScrollChange) {
           onScrollChange(child.props.value);
@@ -214,7 +241,7 @@ class Picker extends React.Component<PickerProps,any> {
     }
   }
 
-  fireValueChange(selectedValue) {
+  fireValueChange(selectedValue:any) {
     if (selectedValue !== this.state.selectedValue) {
       if (!('selectedValue' in this.props)) {
         this.setState({
@@ -228,19 +255,18 @@ class Picker extends React.Component<PickerProps,any> {
   }
 
   scrollingComplete() {
-    const {doScrollingComplete} = this.props;
-    const top = this.scrollHanders.getValue();
+    const top = this.scrollHandlers.getValue();
     if (top >= 0) {
-      doScrollingComplete(top, this.itemHeight, this.fireValueChange);
+      this.doScrollingComplete(top, this.itemHeight, this.fireValueChange);
     }
   }
 
-  scrollTo(top) {
-    this.scrollHanders.scrollTo(0, top);
+  scrollTo(top:number) {
+    this.scrollHandlers.scrollTo(0, top);
   }
 
-  scrollToWithoutAnimation(top) {
-    this.scrollHanders.scrollTo(0, top, 0);
+  scrollToWithoutAnimation(top:number) {
+    this.scrollHandlers.scrollTo(0, top, 0);
   }
 
   componentDidMount() {
@@ -259,22 +285,23 @@ class Picker extends React.Component<PickerProps,any> {
     indicatorRef.style.top = `${itemHeight * itemNum}px`;
     maskRef.style.backgroundSize = `100% ${itemHeight * itemNum}px`;
 
-    this.scrollHanders.setDisabled(this.props.disabled);
-    this.props.select(this.state.selectedValue, this.itemHeight, this.scrollTo);
+    this.scrollHandlers.setDisabled(this.props.disabled);
+    this.select(this.state.selectedValue, this.itemHeight, this.scrollTo);
 
     const passiveSupported = this.passiveSupported();
     const willPreventDefault = passiveSupported ? {passive: false} : false;
     const willNotPreventDefault = passiveSupported ? {passive: true} : false;
 
-    Object.keys(this.scrollHanders).forEach(key => {
+    Object.keys(this.scrollHandlers).forEach(key => {
       if (key.indexOf('touch') === 0 || key.indexOf('mouse') === 0) {
         const pd = key.indexOf('move') >= 0 ? willPreventDefault : willNotPreventDefault;
-        rootRef.addEventListener(key, this.scrollHanders[key], pd);
+        // @ts-ignore
+        rootRef.addEventListener(key, this.scrollHandlers[key], pd);
       }
     });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps:PickerProps) {
     if ('selectedValue' in nextProps) {
       if (this.state.selectedValue !== nextProps.selectedValue) {
         this.setState(
@@ -282,38 +309,81 @@ class Picker extends React.Component<PickerProps,any> {
             selectedValue: nextProps.selectedValue,
           },
           () => {
-            this.props.select(
+            this.select(
               nextProps.selectedValue,
               this.itemHeight,
-              nextProps.noAnimate ? this.scrollToWithoutAnimation : this.scrollTo
+              nextProps.noAnimate ? this.scrollToWithoutAnimation : this.scrollTo,
             );
-          }
+          },
         );
       }
     }
-    this.scrollHanders.setDisabled(nextProps.disabled);
+    this.scrollHandlers.setDisabled(nextProps.disabled);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps:PickerProps, nextState:any) {
     return this.state.selectedValue !== nextState.selectedValue || this.props.children !== nextProps.children;
   }
 
   componentDidUpdate() {
-    this.props.select(this.state.selectedValue, this.itemHeight, this.scrollToWithoutAnimation);
+    this.select(this.state.selectedValue, this.itemHeight, this.scrollToWithoutAnimation);
   }
 
   componentWillUnmount() {
-    Object.keys(this.scrollHanders).forEach(key => {
+    Object.keys(this.scrollHandlers).forEach(key => {
       if (key.indexOf('touch') === 0 || key.indexOf('mouse') === 0) {
-        this.rootRef.removeEventListener(key, this.scrollHanders[key]);
+        // @ts-ignore
+        this.rootRef.removeEventListener(key, this.scrollHandlers[key]);
       }
     });
+  }
+  select(value:any, itemHeight:number, scrollTo:any) {
+    const children = React.Children.toArray(this.props.children);
+    for (let i = 0, len = children.length; i < len; i++) {
+      // @ts-ignore
+      if (children[i].props.value === value) {
+        this.selectByIndex(i, itemHeight, scrollTo);
+        return;
+      }
+    }
+    this.selectByIndex(0, itemHeight, scrollTo);
+  }
+
+  selectByIndex(index:number, itemHeight:number, zscrollTo:any) {
+    if (index < 0 || index >=React.Children.count(this.props.children) || !itemHeight) {
+      return;
+    }
+    zscrollTo(index * itemHeight);
+  }
+
+  computeChildIndex(top:number, itemHeight:number, childrenLength:number) {
+    let index = top / itemHeight;
+    const floor = Math.floor(index);
+    if (index - floor > 0.5) {
+      index = floor + 1;
+    } else {
+      index = floor;
+    }
+    return Math.min(index, childrenLength - 1);
+  }
+
+  doScrollingComplete(top:number, itemHeight:number, fireValueChange:any) {
+    const children = React.Children.toArray(this.props.children);
+    const index = this.computeChildIndex(top, itemHeight, children.length);
+    const child: any = children[index];
+    if (child) {
+      fireValueChange(child.props.value);
+    } else if (console.warn) {
+      console.warn('child not found', child, index);
+    }
   }
 
   render() {
     const {className, prefixCls, style, indicatorStyle, itemStyle, children} = this.props;
 
+
     const cls = classNames(prefixCls, {
+      // @ts-ignore
       [className]: !!className,
     });
 
@@ -332,6 +402,7 @@ class Picker extends React.Component<PickerProps,any> {
       );
     };
 
+    // @ts-ignore
     const items = React.Children ? React.Children.map(children, map) : [].concat(children).map(map);
 
     return (
@@ -346,4 +417,4 @@ class Picker extends React.Component<PickerProps,any> {
   }
 }
 
-export default ComposedHOC(Picker);
+export default Picker;

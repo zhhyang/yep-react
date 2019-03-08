@@ -45,7 +45,7 @@ export default class Tab extends React.PureComponent<TabProps> {
   renderIcon() {
     const {selected, selectedIcon, icon, title, prefixCls, badge, dot} = this.props;
 
-    const iconVal = selected ? selectedIcon : icon;
+    const iconVal = selected ? selectedIcon : icon as any;
 
     const iconDom = React.isValidElement(iconVal) ? (
       iconVal
@@ -62,7 +62,7 @@ export default class Tab extends React.PureComponent<TabProps> {
     }
     if (dot) {
       return (
-        <Badge dot className={`${prefixCls}-badge tab-dot`}>
+        <Badge dot={true} className={`${prefixCls}-badge tab-dot`}>
           {iconDom}
         </Badge>
       );

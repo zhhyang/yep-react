@@ -2,9 +2,9 @@ import * as React from 'react';
 import arrayTreeFilter from '../_utils/arrayTreeFilter';
 import MultiPicker from '../picker-view/MultiPicker';
 import Picker from '../picker-view/Picker';
-import {ICascaderProps} from './CascaderTypes';
+import {ICascadeProps} from './CascadeTypes';
 
-class Cascader extends React.Component<ICascaderProps, any> {
+class Cascade extends React.Component<ICascadeProps, any> {
   static defaultProps = {
     cols: 3,
     prefixCls: 'Yep-cascader',
@@ -25,7 +25,7 @@ class Cascader extends React.Component<ICascaderProps, any> {
     }
   }
 
-  onValueChange = (value, index) => {
+  onValueChange = (value:any, index:number) => {
     const children = arrayTreeFilter(this.props.data, (c, level) => {
       return level <= index && c.value === value[level];
     });
@@ -46,7 +46,7 @@ class Cascader extends React.Component<ICascaderProps, any> {
     }
   };
 
-  getValue(d, val) {
+  getValue(d:any, val:any) {
     let data = d || this.props.data;
     let value = val || this.props.value || this.props.defaultValue;
     if (!value || !value.length || value.indexOf(undefined) > -1) {
@@ -119,4 +119,4 @@ class Cascader extends React.Component<ICascaderProps, any> {
   }
 }
 
-export default Cascader;
+export default Cascade;

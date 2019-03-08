@@ -59,10 +59,12 @@ export default class ListItem extends React.PureComponent<ListItemProps,any> {
 
     const arrowCls = classNames(`${prefixCls}-arrow`, `${prefixCls}-arrow-horizontal`);
 
-    const touchProps = {};
+    const touchProps = {} as any;
     Object.keys(restProps).forEach(key => {
       if (/onTouch/i.test(key)) {
+        // @ts-ignore
         touchProps[key] = restProps[key];
+        // @ts-ignore
         delete restProps[key];
       }
     });
