@@ -53,8 +53,9 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
 
   scrollValue:any;
 
-  getSel = () => {
-    const value = this.props.value || [];
+  getSel = (v:any) => {
+    const value = this.scrollValue || v || [];
+    console.log('---'+value)
     let treeChildren: PickerData[];
     const {data} = this.props;
     if (this.props.cascade) {
@@ -68,12 +69,14 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
       });
     }
     return (
-      this.props.format &&
+      this.props.format ?
       this.props.format(
         treeChildren.map(v => {
           return v.label;
         })
-      )
+      ):treeChildren.map(v => {
+          return v.label;
+        })
     );
   };
 
@@ -108,7 +111,7 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
       this.props.onChange(v);
     }
     if (this.props.onLabelChange) {
-      this.props.onLabelChange(this.getSel());
+      this.props.onLabelChange(this.getSel(v));
     }
     if (this.props.onOk) {
       this.props.onOk(v);
@@ -119,7 +122,7 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
     this.scrollValue = v;
   };
 
-  setCasecadeScrollValue = (v: any) => {
+  setCascadeScrollValue = (v: any) => {
     // 级联情况下保证数据正确性，滚动过程中只有当最后一级变化时才变更数据
     if (v && this.scrollValue) {
       const length = this.scrollValue.length;
@@ -165,7 +168,7 @@ export default class PopupPicker extends React.PureComponent<PopupPickerProps, a
         data={data}
         cols={cols}
         onChange={this.onPickerChange}
-        onScrollChange={this.setCasecadeScrollValue}
+        onScrollChange={this.setCascadeScrollValue}
         pickerItemStyle={itemStyle}
         indicatorStyle={indicatorStyle}
       />

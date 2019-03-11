@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Rate} from '@jdcfe/yep-react';
+import {Rate, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
@@ -15,6 +15,7 @@ class Demo extends React.PureComponent {
 
   onStarClick = (nextValue, prevValue, name) => {
     this.setState({rating: nextValue});
+    Toast.show(nextValue);
   };
 
   render() {

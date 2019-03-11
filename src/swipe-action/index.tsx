@@ -229,11 +229,11 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps,an
     }
   }
 
-  renderButtons(buttons:any, ref:any) {
+  renderButtons(buttons:any, position:string,ref:any) {
     const {prefixCls} = this.props;
 
     return buttons && buttons.length > 0 ? (
-      <div className={`${prefixCls}-actions ${prefixCls}-actions-${ref}`} ref={ref}>
+      <div className={`${prefixCls}-actions ${prefixCls}-actions-${position}`} ref={ref}>
         {buttons.map((btn:any, i:number) => (
           <div
             key={i}
@@ -269,8 +269,8 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps,an
     return (left.length > 0 || right.length > 0) && !disabled ? (
       <div className={cls} style={style} {...divProps}>
         <div className={`${prefixCls}-cover`} ref={this.createCoverRef} />
-        {this.renderButtons(left, (el:HTMLDivElement) => this.left = el)}
-        {this.renderButtons(right, (el :HTMLDivElement)=> this.right = el)}
+        {this.renderButtons(left,'left', (el:HTMLDivElement) => this.left = el)}
+        {this.renderButtons(right, 'right', (el :HTMLDivElement)=> this.right = el)}
         <Gesture
           onPanStart={this.onPanStart}
           onPan={this.onPan}

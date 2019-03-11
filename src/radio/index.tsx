@@ -13,7 +13,7 @@ export interface RadioProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  onChange: (index:number) => void;
+  onChange: (value:any) => void;
   name?: string;
   /**
    * ['option1','option2']
@@ -59,16 +59,16 @@ export default class Radio extends React.PureComponent<RadioProps, any> {
     };
   }
 
-  handleChange(value: any, index: number) {
+  handleChange(value: any) {
     const {onChange} = this.props;
     this.setState({
       value,
     });
-    onChange(index);
+    onChange(value);
   }
 
   render() {
-    const {className, style, options, horizontal, ...restProps} = this.props;
+    const {className, style, options, horizontal, onChange,...restProps} = this.props;
 
     const {prefixCls} = restProps;
     const wrapCls = classNames(`${prefixCls}-wrapper`, className, {
@@ -84,7 +84,7 @@ export default class Radio extends React.PureComponent<RadioProps, any> {
             label={option.label || option}
             disabled={option.disabled}
             checked={this.state.value === (option.value || option.label || option)}
-            onChange={() => this.handleChange(option.value || option.label || option, index)}
+            onChange={() => this.handleChange(option.value || option.label || option)}
             value={option.value || option.label || option}
             {...restProps}
           />
