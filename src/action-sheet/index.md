@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Feedback
 title: 动作面板
 ---
 

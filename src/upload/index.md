@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Form
 title: 图片上传选择器
 ---
 

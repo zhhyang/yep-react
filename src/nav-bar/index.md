@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Navigation
 title: 导航栏
 ---
 

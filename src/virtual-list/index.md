@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Layout
 title: 虚拟滚动列表
 ---
 

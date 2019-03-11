@@ -1,5 +1,5 @@
 ---
-category: Components
+category: View
 title: 滚动无限加载
 ---
 

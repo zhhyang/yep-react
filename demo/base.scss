@@ -316,6 +316,60 @@ body {
   text-align: center;
 }
 
+.page-module-list{
+  margin: 30px;
+
+  &__item{
+    padding: 0 15px;
+    margin-top: 20px;
+    background: #fff;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.04);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &--wrapper ul{
+      display: none;
+    }
+    &--wrapper ul.open{
+      display: block;
+    }
+  }
+  &__icon{
+    width: 60px;
+    height: 60px;
+    color: #78a4fa;
+    text-align: center;
+    border: 1px solid rgba(120,164,250,.16);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div{
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &__info{
+    font-size:32px;
+    line-height: 24px;
+    color: #6a6a77;
+    font-weight: 700;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    flex: 1;
+  }
+  &__arrow{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .page-back {
   display: inline-block;
   position: absolute;

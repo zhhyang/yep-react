@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Form
 title: 单选框
 ---
 
