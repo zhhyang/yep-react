@@ -25,7 +25,7 @@ export default class Steps extends React.Component<StepsProps> {
     prefixCls: 'Yep-steps',
     style: {},
     stepNum: 1,
-    titles: ['step1', 'step2', 'step3'],
+    titles: ['step1', 'step2', 'step3', 'step3'],
     desc: ['step1_text', 'step2_text', 'step3_text'],
   };
 
@@ -52,7 +52,11 @@ export default class Steps extends React.Component<StepsProps> {
           {titles.map((item: any, key: number) => {
             console.log(stepNum);
             return (
-              <div key={key} className={`step-item ${stepNum > key ? 'current' : ''}`}>
+              <div
+                key={key}
+                style={{width: 100 / titles.length + '%'}}
+                className={`step-item ${stepNum > key ? 'current' : ''}`}
+              >
                 <span className="step-num">{key + 1}</span>
                 <div className="item-text">{item}</div>
                 <div className="item-text fs24">{desc[key]}</div>
