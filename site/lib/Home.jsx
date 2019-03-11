@@ -378,7 +378,7 @@ class Home extends React.Component {
               transform: 'rotate(17deg)',
               opacity: 0.8,
               zIndex: 1,
-              backgroundColor: '#33B077',
+              backgroundColor: '#5b9eff',
             }}
             data-rellax-speed="4"
           />
@@ -392,7 +392,7 @@ class Home extends React.Component {
               right: '7%',
               transform: 'rotate(17deg)',
               opacity: 0.8,
-              backgroundColor: '#33B077',
+              backgroundColor: '#5b9eff',
             }}
             data-rellax-speed="10"
           />

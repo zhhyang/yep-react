@@ -1,6 +1,152 @@
-
 @import '../../style/mixin';
 
 .Yep-steps {
-  
-} 
+  background: #ffffff;
+  position: relative;
+  .step-list {
+    padding: 40px 30px;
+    display: flex;
+    .step-item {
+      flex: 1;
+      text-align: center;
+      padding-top: 56px;
+      position: relative;
+      .item-text {
+        font-size: 28px;
+        color: #6b707d;
+        & > span {
+          font-size: 24px;
+        }
+      }
+      .step-num {
+        display: block;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: #ffffff;
+        background: #999baa;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 28px;
+      }
+    }
+    .current {
+      .item-text {
+        color: #333333;
+        font-size: 28px;
+      }
+      .step-num {
+        background: #2a83e1;
+      }
+    }
+    //.step-item:nth-child(3n) {
+    //  flex: 2;
+    //}
+    // 10%
+    .step-line {
+      width: 90%;
+      height: 1px;
+      background: #e0e0e0;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      .line-blue {
+        width: 15%;
+        display: block;
+        height: 1px;
+        background: #2a83e1;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    // 50%
+    .step-line-half {
+      width: 90%;
+      height: 1px;
+      background: #e0e0e0;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::before {
+        content: '';
+        width: 50%;
+        display: block;
+        height: 1px;
+        background: #2a83e1;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    // 100%
+    .step-line-end {
+      width: 90%;
+      height: 1px;
+      background: #e0e0e0;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::before {
+        content: '';
+        width: 100%;
+        display: block;
+        height: 1px;
+        background: #2a83e1;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  // 编辑的step
+  .step-list-edit {
+    padding: 36px 30px;
+    display: flex;
+    text-align: center;
+    .step-item {
+      flex: 1;
+      .item-text {
+        font-size: 56px;
+        color: #6b707d;
+      }
+    }
+    .step-item:nth-child(2) {
+      flex: 2;
+    }
+    .current {
+      position: relative;
+      .item-text {
+        color: #2a83e1;
+        font-size: 32px;
+      }
+    }
+    .current::before {
+      content: '';
+      width: 24px;
+      display: block;
+      height: 8px;
+      border-radius: 4px;
+      background: #2a83e1;
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .fs24 {
+    font-size: 24px !important;
+    margin-top: 8px;
+  }
+}
