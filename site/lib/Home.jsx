@@ -34,6 +34,16 @@ class Home extends React.Component {
     document.body.ontouchmove = this.scrollFunc.bind(this);
     document.body.onscroll = this.scrollFunc.bind(this);
     loiterInit(window);
+    if(document.documentElement.clientHeight > 1300){
+      this.setState({
+        activeBeforeStartContainer: 1,
+      });
+    }
+    if(document.documentElement.clientHeight > 1900){
+      this.setState({
+        activeStartContent: 1,
+      });
+    }
     return new Rellax('.parallax-animation .rellax', {
       speed: -2,
       center: false,
@@ -61,25 +71,16 @@ class Home extends React.Component {
 
   scrollFunc() {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-
     if (document.body.clientWidth > 500) {
       //在 PC 端显示缓出动画
       if (scrollTop > 290) {
         this.setState({
           activeBeforeStartContainer: 1,
         });
-      } else {
-        this.setState({
-          activeBeforeStartContainer: 0,
-        });
       }
       if (scrollTop > 1240) {
         this.setState({
           activeStartContent: 1,
-        });
-      } else {
-        this.setState({
-          activeStartContent: 0,
         });
       }
 
@@ -87,17 +88,9 @@ class Home extends React.Component {
         this.setState({
           activeIntro: 1,
         });
-      } else {
-        this.setState({
-          activeIntro: 0,
-        });
       }
     } else {
       if (scrollTop > 880) {
-        this.setState({
-          activeIntro: 1,
-        });
-      } else {
         this.setState({
           activeIntro: 1,
         });
@@ -106,18 +99,10 @@ class Home extends React.Component {
         this.setState({
           activeBeforeStartContainer: 1,
         });
-      } else {
-        this.setState({
-          activeBeforeStartContainer: 1,
-        });
       }
       if (scrollTop > 29) {
         this.setState({
           activeStartContent: 1,
-        });
-      } else {
-        this.setState({
-          activeStartContent: 0,
         });
       }
     }
@@ -378,7 +363,7 @@ class Home extends React.Component {
               transform: 'rotate(17deg)',
               opacity: 0.8,
               zIndex: 1,
-              backgroundColor: '#33B077',
+              backgroundColor: '#5b9eff',
             }}
             data-rellax-speed="4"
           />
@@ -392,7 +377,7 @@ class Home extends React.Component {
               right: '7%',
               transform: 'rotate(17deg)',
               opacity: 0.8,
-              backgroundColor: '#33B077',
+              backgroundColor: '#5b9eff',
             }}
             data-rellax-speed="10"
           />
@@ -425,7 +410,7 @@ class Home extends React.Component {
           />
         </div>
         <footer className="page-home-footer">
-          邮箱：<a href="mailto:yep_group@jd.com">jdf_yep@jd.com</a> | Copyright © 京东前端开发部
+          邮箱：<a href="mailto:yep@jd.com">yep@jd.com</a> | Copyright © 京东前端开发部
         </footer>
       </div>
     );
