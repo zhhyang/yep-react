@@ -57,11 +57,16 @@ class Sidebar extends React.Component {
               </Link>
             </li>
           ))}
+          <li className={'nav-item'} >
+            <h1>组件</h1>
+            <ul className={'component-ul-wrapper'}>
           {
             CATEGORIES.map((category,index) =>
                 <Panel key={index} category={category} components={allDocData.components} location={this.props.location} />
             )
           }
+            </ul>
+          </li>
         </ul>
       </div>
     );

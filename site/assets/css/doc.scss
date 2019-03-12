@@ -97,6 +97,16 @@ body {
   color: #ff686b;
 }
 
+.component-ul-wrapper{
+  .nav-title{
+    color:rgba(0,0,0,0.5);
+    &:hover{
+      cursor:pointer;
+      color: #ff686b;
+    }
+  }
+}
+
 .l-main {
   display: flex;
   background-color: #fff;
@@ -637,3 +647,5 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help;
 }
+
+
