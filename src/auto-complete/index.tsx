@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import Dropdown from '../dropdown';
 import InputItem from '../input-item';
 
@@ -111,13 +111,13 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
 
   render() {
     const {open, index, result, value} = this.state;
-    const {prefixCls, className, source,  onChange, disabled, isOpen, ...other} = this.props;
-    const cls = classnames(prefixCls, className);
-
+    const {prefixCls, source,  onChange, disabled, isOpen, ...other} = this.props;
+    const inputProps = {
+      ...other,
+      onKeyDown:this.handleKeyDown
+    }
     return (
-      //@ts-ignore
       <Dropdown
-        className={cls}
         open={isOpen || open}
         disabled={disabled}
         aligned={true}
@@ -128,7 +128,7 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
               {result.map((item:any, i:number) => (
                 <li
                   key={item}
-                  className={classnames({[`${prefixCls}__option--active`]: index === i})}
+                  className={classNames({[`${prefixCls}__option--active`]: index === i})}
                   onClick={this.handleSelect.bind(this, item)}
                 >
                   {item}
@@ -138,14 +138,11 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
           </div>
         }
       >
-        //@ts-ignore
         <InputItem
           value={value}
-          onKeyDown={this.handleKeyDown}
           onChange={this.handleInput}
           disabled={disabled}
-          open={isOpen || open}
-          {...other}
+          {...inputProps}
         />
       </Dropdown>
     );

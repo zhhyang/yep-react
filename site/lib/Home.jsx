@@ -132,7 +132,7 @@ class Home extends React.Component {
                   开始使用
                 </a>
                 <a
-                  href={`//${website}/demo.html`}
+                  href={`/demo.html`}
                   className="page-home-button"
                   rel="noopener"
                   target="_blank"
