@@ -4,8 +4,16 @@ export const CATEGORIES = [
     label: '基础',
   },
   {
+    name: 'Layout',
+    label: '布局',
+  },
+  {
     name: 'View',
     label: '视图',
+  },
+  {
+    name: 'Navigation',
+    label: '导航',
   },
   {
     name: 'Feedback',
@@ -14,13 +22,5 @@ export const CATEGORIES = [
   {
     name: 'Form',
     label: '表单',
-  },
-  {
-    name: 'Layout',
-    label: '布局',
-  },
-  {
-    name: 'Navigation',
-    label: '导航',
   },
 ];
