@@ -25,7 +25,7 @@ export default class Steps extends React.Component<StepsProps> {
     prefixCls: 'Yep-steps',
     style: {},
     stepNum: 1,
-    titles: ['step1', 'step2', 'step3', 'step3'],
+    titles: ['step1', 'step2', 'step3'],
     desc: ['step1_text', 'step2_text', 'step3_text'],
   };
 
