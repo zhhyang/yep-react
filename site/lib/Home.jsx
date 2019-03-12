@@ -124,7 +124,7 @@ class Home extends React.Component {
               </div>
               <div className="page-home-buttons logo-animate">
                 <a
-                  href={`//${website}/#/doc/get-started`}
+                  href={`/#/doc/get-started`}
                   className="page-home-button"
                   target="_blank"
                   rel="noopener"

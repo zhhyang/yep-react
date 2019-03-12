@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.2.28",
+  "version": "0.3.0-alpha",
   "description": "一套基于React的移动端组件库",
   "main": "lib",
   "module": "es",
@@ -16,8 +16,8 @@
     "clean": "rimraf lib es dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublishOnly": "npm run clean && npm run dist && npm run compile && npm run compile:es",
-    "postpublish": "npm run deploy",
+    "prepublishOnly": "npm run clean && npm run dist && npm run compile",
+    "postpublish": "npm run deploy:jd",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
     "predeploy": "npm run build-demo && npm run build-site",
@@ -128,7 +128,7 @@
     "react-dom": ">=16.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5",
+    "@babel/runtime": "^7.0.0",
     "@jdcfe/yep-gesture": "^0.0.1",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",

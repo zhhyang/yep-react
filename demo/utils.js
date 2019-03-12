@@ -1,7 +1,3 @@
-export function getCategories(components) {
-  return [...new Set([...Object.keys(components).map(component => components[component].category)])];
-}
-
 export const CATEGORIES = [
   {
     name: 'Basic',
