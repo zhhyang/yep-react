@@ -133,6 +133,7 @@
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",
+    "lottie-web": "^5.4.4",
     "raf": "^3.4.0",
     "react-transition-group": "^2.3.1"
   },

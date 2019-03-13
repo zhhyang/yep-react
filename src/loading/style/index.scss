@@ -1,0 +1,16 @@
+
+@import '../../style/mixin';
+
+.Yep-loading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: $loadingZIndex;
+  top: calc(50% - 60px);
+
+  &-container{
+    width: 120px;
+    height: 120px;
+  }
+}

@@ -74,7 +74,7 @@ const config = {
     filename: '[name].bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx'],
+    extensions: ['.js', '.jsx', '.tsx', '.json'],
     alias: {
       '@jdcfe/yep-react': path.resolve(__dirname, '../src'),
     },
@@ -100,7 +100,7 @@ const config = {
         ],
       },
       {
-        test: /\.js|[j|t]sx?$/,
+        test: /\.js$|[j|t]sx?$/,
         exclude: /node_modules/,
         use: [
           {

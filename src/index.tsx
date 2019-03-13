@@ -50,3 +50,4 @@ export {default as InfiniteLoader} from './infinite-loader';
 export {default as SearchBar} from './search-bar';
 export {default as AreaPicker} from './area-picker';
 export {default as VirtualList} from './virtual-list';
+export {default as Loading} from './loading';

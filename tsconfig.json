@@ -7,6 +7,8 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "target": "es6",
     "lib": ["dom", "es7"]
   },
