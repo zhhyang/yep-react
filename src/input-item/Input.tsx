@@ -1,7 +1,15 @@
 import * as React from 'react';
-import {InputPropsType} from './types';
+import {InputEventHandler} from './types';
+export type Omit<T,K extends keyof T> = Pick<T,Exclude<keyof T,K>>;
 
-class Input extends React.PureComponent<InputPropsType> {
+export type HTMLInputElementProps = Omit<React.HTMLProps<HTMLInputElement>,'onFocus'|'onBlur'>
+
+export interface InputProps extends HTMLInputElementProps{
+  onFocus?: InputEventHandler;
+  onBlur?: InputEventHandler;
+}
+
+class Input extends React.PureComponent<InputProps> {
   inputRef: HTMLInputElement;
 
   onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -39,7 +47,7 @@ class Input extends React.PureComponent<InputPropsType> {
     return (
       <input
         {...restProps}
-        ref={el => (this.inputRef = el)}
+        ref={(el:HTMLInputElement) => (this.inputRef = el)}
         onBlur={this.onInputBlur}
         onFocus={this.onInputFocus}
         onClick={this.onClick}

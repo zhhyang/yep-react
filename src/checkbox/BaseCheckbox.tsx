@@ -10,7 +10,7 @@ export interface BaseCheckboxProps {
   type?: string;
   label?:string;
   defaultChecked?: number | boolean;
-  checked?: number | boolean;
+  checked?: number | boolean | string;
   disabled?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;

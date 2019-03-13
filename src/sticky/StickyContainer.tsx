@@ -1,9 +1,14 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
+// @ts-ignore
 import raf from 'raf';
 
-export default class StickyContainer extends PureComponent {
+export interface StickyContainerProps {
+
+}
+
+export default class StickyContainer extends React.PureComponent<StickyContainerProps,any> {
 
   static defaultProps = {};
 
@@ -20,11 +25,12 @@ export default class StickyContainer extends PureComponent {
       getParent: this.getParent,
     };
   }
-
-  constructor() {
-    super();
-    this.subscribers = [];
-    this.events = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load'];
+  node:HTMLDivElement;
+  subscribers = []
+  events = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load']
+  framePending:boolean;
+  constructor(props:StickyContainerProps) {
+    super(props);
     this.createRef = this.createRef.bind(this);
     this.getParent = this.getParent.bind(this);
     this.subscribe = this.subscribe.bind(this);
@@ -32,21 +38,21 @@ export default class StickyContainer extends PureComponent {
     this.notifySubscribers = this.notifySubscribers.bind(this);
   }
 
-  subscribe(handler) {
+  subscribe(handler:any) {
     this.subscribers = this.subscribers.concat(handler);
   }
 
-  unsubscribe(handler) {
+  unsubscribe(handler:any) {
     this.subscribers = this.subscribers.filter(current => current !== handler);
   }
 
-  notifySubscribers(evt) {
+  notifySubscribers(evt:any) {
     if (!this.framePending) {
       const {currentTarget} = evt;
       raf(() => {
         this.framePending = false;
         const {top, bottom} = this.node.getBoundingClientRect();
-        this.subscribers.forEach(handler =>
+        this.subscribers.forEach((handler:any) =>
           handler({
             distanceFromTop: top,
             distanceFromBottom: bottom,
@@ -58,7 +64,7 @@ export default class StickyContainer extends PureComponent {
     }
   }
 
-  createRef(node) {
+  createRef(node:HTMLDivElement) {
     this.node = node;
   }
 

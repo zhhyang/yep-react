@@ -1,5 +1,5 @@
 ---
-category: Components
+category: View
 title: 倒计时
 ---
 

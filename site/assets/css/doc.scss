@@ -97,6 +97,19 @@ body {
   color: #ff686b;
 }
 
+.component-ul-wrapper{
+  .nav-title{
+    color:rgba(0,0,0,0.5);
+    &:hover{
+      cursor:pointer;
+      color: #ff686b;
+    }
+  }
+  .nav-title-active{
+    color: #ff686b;;
+  }
+}
+
 .l-main {
   display: flex;
   background-color: #fff;
@@ -118,7 +131,6 @@ body {
 }
 
 .l-menu .nav-item {
-  height: 40px;
   line-height: 40px;
   color: #2d3646;
   font-size: 16px;
@@ -183,7 +195,6 @@ body {
 
 .l-menu .nav-group {
   display: none;
-  padding-bottom: 40px;
 }
 
 .l-menu .nav-group .nav-link{
@@ -639,3 +650,5 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help;
 }
+
+

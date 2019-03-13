@@ -10,4 +10,5 @@ coverage/
 /es
 /dist
 /build
+package-lock.json
 

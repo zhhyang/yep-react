@@ -6,26 +6,26 @@ description:
 
 ```js
 import React from 'react';
-import {Radio} from '@jdcfe/yep-react';
+import {Radio, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   constructor() {
     super();
 
     this.state = {
-      options1: ['Option1', 'Option2'],
+      options1: ['男', '女'],
       options2: [
         {
-          label: 'Option1',
+          label: '男',
           value: '1',
         },
         {
-          label: 'Option2',
+          label: '女',
           value: '2',
           disabled: true,
         },
         {
-          label: 'Option3',
+          label: '未知',
           value: '3',
         },
       ],
@@ -35,8 +35,8 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div title="Radio">
-        <Radio options={this.state.options1} name="eat" />
-        <Radio options={this.state.options2} horizontal />
+        <Radio options={this.state.options1} name="eat" onChange={value => Toast.show('选择了' + value)} />
+        <Radio options={this.state.options2} horizontal onChange={value => Toast.show('选择了' + value)} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Feedback
 title: 主站地区选择组件
 ---
 

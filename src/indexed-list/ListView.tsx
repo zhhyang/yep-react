@@ -1,30 +1,29 @@
-import React, {PureComponent, Component} from 'react';
+import * as React from 'react';
 
-import PropTypes from 'prop-types';
+import {IndexedListProps} from './index'
+export interface ListViewProps extends  IndexedListProps{
+  renderSectionHeader: (sectionData:string, sectionId:string) => React.ReactNode;
+  renderSectionBodyWrapper: (sectionId:string) => React.ReactNode;
+  sectionBodyClassName:string;
+}
 
-class StaticRenderer extends Component {
+export interface StaticRendererProps{
+  render:() => React.ReactNode;
+}
+
+class StaticRenderer extends React.Component<StaticRendererProps> {
   render() {
     return this.props.render();
   }
 }
 
-export default class ListView extends PureComponent {
-  static propTypes = {
-    renderSectionHeader: PropTypes.func,
-    renderSectionBodyWrapper: PropTypes.func,
-  };
+export default class ListView extends React.PureComponent<ListViewProps> {
+  listViewRef:HTMLDivElement;
 
   static defaultProps = {
-    renderSectionBodyWrapper: sectionId => <div key={sectionId} />,
+    renderSectionBodyWrapper: (sectionId:string) => <div key={sectionId} />,
+    renderBodyComponent:() => <div />,
   };
-
-  constructor() {
-    super();
-
-    this.onScroll = this.onScroll.bind(this);
-  }
-
-  onScroll(e) {}
 
   render() {
     const {
@@ -41,11 +40,11 @@ export default class ListView extends PureComponent {
       keyLabel,
       children,
     } = this.props;
-    const rowIdentities = [];
+    const rowIdentities = [] as any;
     const sectionIdentities = Object.keys(data);
     Object.keys(data).forEach((item, index) => {
       rowIdentities[index] = [];
-      data[item].forEach(ss => {
+      data[item].forEach((ss:any) => {
         rowIdentities[index].push(ss[keyLabel]);
       });
     });
@@ -73,28 +72,33 @@ export default class ListView extends PureComponent {
             render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx])}
           />
         );
+        //@ts-ignore
         sectionBody.push(row);
       }
       const rowsAndSeparators = React.cloneElement(
-        renderSectionBodyWrapper(sectionId),
+        renderSectionBodyWrapper(sectionId) as any,
         {
           className: sectionBodyClassName,
         },
         sectionBody
       );
       if (renderSectionWrapper) {
+        //@ts-ignore
         contentComponents.push(
-          React.cloneElement(renderSectionWrapper(sectionId), {}, renderSectionHeaderComponent, rowsAndSeparators)
+          //@ts-ignore
+          React.cloneElement(renderSectionWrapper(sectionId) as any, {}, renderSectionHeaderComponent, rowsAndSeparators)
         );
       } else {
+        //@ts-ignore
         contentComponents.push(renderSectionHeaderComponent);
+        //@ts-ignore
         contentComponents.push(rowsAndSeparators);
       }
     }
     return (
-      <div onScroll={this.onScroll} ref={el => (this.listViewRef = el)} className={className}>
+      <div ref={el => (this.listViewRef = el as HTMLDivElement)} className={className}>
         {renderHeader && renderHeader()}
-        {React.cloneElement(renderBodyComponent(), {}, contentComponents)}
+        {React.cloneElement(renderBodyComponent() as any, {}, contentComponents)}
         {renderFooter && renderFooter()}
         {children}
       </div>

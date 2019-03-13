@@ -1,24 +1,64 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import MultiPickerHOC from './MultiPickerHOC';
 import noop from '../_utils/noop';
 
-const MultiPicker: React.FunctionComponent<MultiPickerProps> = (props: MultiPickerProps) => {
-  const {prefixCls, className, rootNativeProps, children, style} = props;
-  const selectedValue = props.getValue();
-  const colElements = React.Children.map(children, (col: any, i) => {
-    return React.cloneElement(col, {
-      selectedValue: selectedValue[i],
-      onValueChange: (...args) => props.onValueChange(i, ...args),
-      onScrollChange: props.onScrollChange && ((...args) => props.onScrollChange(i, ...args)),
+class MultiPicker extends React.PureComponent<MultiPickerProps,any>{
+
+  static defaultProps = {
+    prefixCls: 'Yep-multi-picker',
+    style: {},
+    onValueChange: noop,
+    onScrollChange: noop,
+  };
+
+  getValue = () => {
+    const {children, selectedValue} = this.props;
+    if (selectedValue && selectedValue.length) {
+      return selectedValue;
+    } else {
+      if (!children) {
+        return [];
+      }
+      return React.Children.map(children, (c: any) => {
+        const cc = React.Children.toArray(c.children || c.props.children);
+        return cc && cc[0] && cc[0].props.value;
+      });
+    }
+  };
+
+  onChange = (i:number, v:any, cb:any) => {
+    const value = this.getValue().concat();
+    value[i] = v;
+    if (cb) {
+      cb(value, i);
+    }
+  };
+
+  onValueChange = (i:number, v?:any) => {
+    this.onChange(i, v, this.props.onValueChange);
+  };
+
+  onScrollChange = (i:number, v?:any) => {
+    this.onChange(i, v, this.props.onScrollChange);
+  };
+
+  render() {
+    const {prefixCls, className, rootNativeProps, children, style} = this.props;
+    const selectedValue = this.getValue();
+    const colElements = React.Children.map(children, (col: any, i:number) => {
+      return React.cloneElement(col, {
+        selectedValue: selectedValue[i],
+        onValueChange: (...args:any) => this.onValueChange(i, ...args),
+        onScrollChange: this.onScrollChange && ((...args:any) => this.onScrollChange(i, ...args)),
+      });
     });
-  });
-  return (
-    <div {...rootNativeProps} style={style} className={classNames(className, prefixCls)}>
-      {colElements}
-    </div>
-  );
-};
+    return (
+      <div {...rootNativeProps} style={style} className={classNames(className, prefixCls)}>
+        {colElements}
+      </div>
+    );
+  };
+}
 
 export interface MultiPickerProps {
   prefixCls?: string;
@@ -28,14 +68,9 @@ export interface MultiPickerProps {
   rootNativeProps?: any;
   onValueChange?: (values: any, index: number) => void;
   children: any;
-  onScrollChange?: () => void;
+  onScrollChange?: (newValue: any, values?: any, index?:number) => void;
 }
 
-MultiPicker.defaultProps = {
-  prefixCls: '',
-  style: {},
-  onValueChange: noop,
-  onScrollChange: noop,
-};
 
-export default MultiPickerHOC(MultiPicker) as MultiPicker;
+
+export default MultiPicker;

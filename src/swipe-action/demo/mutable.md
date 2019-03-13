@@ -18,6 +18,7 @@ class Demo extends React.PureComponent {
       <div>
         {new Array(1).fill(0).map((address, index) => (
           <SwipeAction
+            key={index}
             autoClose
             right={
               this.state.default !== index

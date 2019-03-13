@@ -11,11 +11,11 @@ export interface PopupProps {
   /**
    * popup弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up
    */
-  popupTransition?: string;
+  popupTransition: string;
   /**
    * mask层的动画，默认为fade
    */
-  maskTransition?: string;
+  maskTransition: string;
   /**
    * 点击遮罩层是否关闭
    */
@@ -23,7 +23,7 @@ export interface PopupProps {
   /**
    * 关闭事件回调
    */
-  onCancel?: (e: React.MouseEvent) => void;
+  onCancel?: (e: React.TouchEvent<HTMLDivElement>) => void;
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -40,7 +40,7 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
     onCancel: () => {},
   };
 
-  onMaskClick = e => {
+  onMaskClick = (e:any) => {
     const {maskCloseable, onCancel} = this.props;
     if (e.target === e.currentTarget && maskCloseable && onCancel) {
       onCancel(e);
@@ -54,11 +54,11 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
 
     return (
       <div>
-        <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit>
+        <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit={true}>
           <Mask onClick={this.onMaskClick} />
         </CSSTransition>
 
-        <CSSTransition in={show} timeout={300} classNames={popupTransition} unmountOnExit>
+        <CSSTransition in={show} timeout={300} classNames={popupTransition} unmountOnExit={true}>
           <div className={cls} style={style} onClick={this.onMaskClick}>
             {children}
           </div>

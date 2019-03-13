@@ -26,6 +26,7 @@ export interface InputItemPropsType  {
   onChange?: (value: string) => void;
   onFocus?: InputEventHandler;
   onBlur?: InputEventHandler;
+  clearIcon?: React.ReactNode;
 }
 export type InputPropsType = {
   value?: any;

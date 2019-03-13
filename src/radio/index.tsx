@@ -13,7 +13,7 @@ export interface RadioProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  onChange: () => void;
+  onChange: (value:any) => void;
   name?: string;
   /**
    * ['option1','option2']
@@ -36,7 +36,7 @@ export interface RadioProps {
    *
    *
    */
-  options: Option[] | string[];
+  options: any;
   checked?: string | number;
   /**
    * 是否水平排列
@@ -54,20 +54,21 @@ export default class Radio extends React.PureComponent<RadioProps, any> {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
+      // @ts-ignore
       value: props.checked || props.options[0].value || props.options[0].label || props.options[0],
     };
   }
 
-  handleChange(value, index) {
+  handleChange(value: any) {
     const {onChange} = this.props;
     this.setState({
       value,
     });
-    onChange(index);
+    onChange(value);
   }
 
   render() {
-    const {className, style, options, horizontal, ...restProps} = this.props;
+    const {className, style, options, horizontal, onChange,...restProps} = this.props;
 
     const {prefixCls} = restProps;
     const wrapCls = classNames(`${prefixCls}-wrapper`, className, {
@@ -76,14 +77,14 @@ export default class Radio extends React.PureComponent<RadioProps, any> {
     });
     return (
       <div className={wrapCls} style={style}>
-        {options.map((option, index) => (
+        {options.map((option:any, index:number) => (
           <BaseCheckbox
             key={index}
             type="radio"
             label={option.label || option}
             disabled={option.disabled}
             checked={this.state.value === (option.value || option.label || option)}
-            onChange={() => this.handleChange(option.value || option.label || option, index)}
+            onChange={() => this.handleChange(option.value || option.label || option)}
             value={option.value || option.label || option}
             {...restProps}
           />

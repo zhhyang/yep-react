@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, withRouter} from 'react-router-dom';
 import allDocData from './allDocData';
-import {toCamelCase} from './utils';
 import {website} from '../config';
-
+import Panel from './Panel';
+import {CATEGORIES} from '../../demo/utils'
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -57,38 +57,15 @@ class Sidebar extends React.Component {
               </Link>
             </li>
           ))}
-          <li className={`nav-item${this.state.isOpen ? ' nav-open' : ''}`}>
-            <div className="nav-title" onClick={this.handleClick} onKeyDown={() => {}} role="menu" tabIndex="-1">
-              <span>组件</span>
-              <i />
-            </div>
-            <div className="nav-group">
-              <ul>
-                {Object.keys(allDocData.components)
-                  .sort()
-                  .map(componentName => {
-                    const component = allDocData.components[componentName];
-
-                    return (
-                      <li
-                        className={`nav-item ${
-                          this.props.location.pathname.split('/').reverse()[0] === componentName ? 'nav-on' : ''
-                        }`}
-                        key={componentName}
-                      >
-                        <Link
-                          className="nav-link"
-                          title={`${toCamelCase(componentName)} ${component.title}`}
-                          onClick={this.handleResetScrollStatus}
-                          to={`/doc/component/${componentName}`}
-                        >
-                          {toCamelCase(componentName)} {component.title}
-                        </Link>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </div>
+          <li className={'nav-item'} >
+            <h1>组件</h1>
+            <ul className={'component-ul-wrapper'}>
+          {
+            CATEGORIES.map((category,index) =>
+                <Panel key={index} category={category} components={allDocData.components} location={this.props.location} />
+            )
+          }
+            </ul>
           </li>
         </ul>
       </div>

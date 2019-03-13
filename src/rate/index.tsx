@@ -7,16 +7,16 @@ export interface RateProps {
   className?: string;
   style?: React.CSSProperties;
   name?: string;
-  value?: number;
+  value: number;
   editing?: boolean;
-  starCount?: number;
-  onStarClick?: () => void;
-  renderStarIcon?: (index: number, value: any, name: any, id: any) => void;
-  renderStarIconHalf?: (index: number, value: any, name: any, id: any) => void;
+  starCount: number;
+  onStarClick?: (index: number, value: any, name: any, e: any) => void;
+  renderStarIcon?: (index: number, value: any, name: any, id: any) => React.ReactNode;
+  renderStarIconHalf?: (index: number, value: any, name: any, id: any) => React.ReactNode;
 }
 
 interface State  {
-  value?: number,
+  value: number,
 }
 
 export default class Rate extends React.PureComponent<RateProps, State> {
@@ -25,6 +25,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     style: {},
     starCount: 5,
     editing: true,
+    value:0,
   };
 
   constructor(props:RateProps) {
@@ -37,7 +38,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps:RateProps) {
     const {value} = nextProps;
 
     if (value != null && value !== this.state.value) {
@@ -45,7 +46,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     }
   }
 
-  onChange(inputValue) {
+  onChange(inputValue:any) {
     const {editing, value} = this.props;
 
     if (!editing) {
@@ -60,7 +61,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     this.setState({value: inputValue});
   }
 
-  onStarClick(index, value, name, e) {
+  onStarClick(index:number, value:any, name?:string, e?:any) {
     e.stopPropagation();
 
     const {onStarClick, editing} = this.props;
@@ -80,7 +81,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
       display: 'none',
       position: 'absolute',
       marginLeft: -9999,
-    };
+    } as React.CSSProperties;
 
     // populate stars
     const starNodes = [];
@@ -97,7 +98,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
           id={id}
           value={i}
           checked={value === i}
-          onChange={() => this.onChange(i, name)}
+          onChange={() => this.onChange(i)}
         />
       );
       const starNodeLabel = (
@@ -110,15 +111,16 @@ export default class Rate extends React.PureComponent<RateProps, State> {
           {this.renderIcon(i, value, name, id)}
         </label>
       );
-
+      //@ts-ignore
       starNodes.push(starNodeInput);
+      //@ts-ignore
       starNodes.push(starNodeLabel);
     }
 
     return starNodes.length ? starNodes : null;
   }
 
-  renderIcon(index:string, value:any, name:any, id:string) {
+  renderIcon(index:number, value:any, name?:string, id?:string) {
     const {renderStarIcon, renderStarIconHalf} = this.props;
 
     if (typeof renderStarIconHalf === 'function' && Math.ceil(value) === index && value % 1 !== 0) {

@@ -1,6 +1,15 @@
 .page-index {
   padding-bottom: 100px; /*no*/
 
+  .logo{
+    margin: 60px  auto 0 ;
+    font-size: 0;
+    text-align: center;
+    img{
+      width: 260px;
+      height: 260px;
+    }
+  }
   .indexicon {
     font-size: 44px; /*no*/
     color: #26a2ff;

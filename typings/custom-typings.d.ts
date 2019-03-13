@@ -1,3 +1,3 @@
 declare module 'jsonp';
 
-declare module 'raf';
+declare module '@jdcfe/yep-popover';
