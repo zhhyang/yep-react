@@ -6,22 +6,20 @@
 
 ## 安装 & 使用
 
-[快速上手(github)](https://jdf2e.github.io/yep-react/#/doc/get-started)
-[快速上手(jd)](https://yep-react.jd.com/#/doc/get-started)
+[快速上手](https://yep-react.jd.com/#/doc/get-started)
 
 ## React 版本要求
 
-* `react^16.0.0`
+- `react^16.0.0`
 
 ## 浏览器支持
 
-* `iOS`
-* `Android 4.0+`
+- `iOS`
+- `Android 4.0+`
 
 ## 链接
 
-* [首页(github)](https://jdf2e.github.io/yep-react/)
-* [首页](https://yep-react.jd.com/)
+- [首页](https://yep-react.jd.com/)
 
 ## 讨论 / 问题反馈 / 建议
 
