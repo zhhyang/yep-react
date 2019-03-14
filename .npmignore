@@ -20,11 +20,10 @@ build
 开发流程.md
 .babelrc
 .editorconfig
-.eslintrc.json
 .npmignore
-gulpfile.js
 .prettierrc
 .prettierignore
-.flowconfig
 CHANGELOG.md
+tsconfig.json
+tslint.json
 

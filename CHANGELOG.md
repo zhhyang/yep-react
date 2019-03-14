@@ -13,6 +13,25 @@ title: 更新日志
 
 ---
 
+### 0.3.0
+
+`2019-3-14`
+
+- **Feature**
+
+  - 🌟 使用 TypeScript 重构全部组件，可以获得更好的代码提示体验
+  - 🌟 break: Upload 组件重命名为 ImagePicker
+  - 🌟 新增：Steps 组件、新增基于 Lottie 实现的 Loading 组件(默认京东 App7.0 统一 loading 动画)，支持自定义动画
+  - 🌟 重新设计全新官网首页、Demo 首页
+
+* **Bug Fix**
+
+  - 🐞 无
+
+* **Enhancement**
+
+  -
+
 ### 0.3.0-alpha
 
 `2019-3-12`
