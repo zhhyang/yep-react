@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames';
-import {Icon} from '@jdcfe/yep-react';
+import Icon from './Icon';
 import {toCamelCase} from '../site/lib/utils';
 
 class Panel extends React.Component {
@@ -20,14 +20,17 @@ class Panel extends React.Component {
     return (
       <div className="page-module-list__item--wrapper">
         <div className="page-module-list__item" onClick={this.onClick}>
-          {/*<div className="page-module-list__icon">
-          <div>
-            <img src="" alt=""/>
+          <div className="page-module-list__icon">
+            <div>
+              <img src={category.icon} alt="" />
+            </div>
           </div>
-        </div>*/}
-          <div className="page-module-list__info">{category.label}</div>
+          <div className="page-module-list__info">
+            <div className="page-module-list__info__title">{category.label}</div>
+            <div className="page-module-list__info__desc">{category.desc}</div>
+          </div>
           <div className="page-module-list__arrow">
-            <Icon type={this.state.open ? 'lego_shangjiantou' : 'lego_xiajiantou'} />
+            <Icon type={this.state.open ? 'open_icon' : 'close_icon'} />
           </div>
         </div>
         <ul className={classNames({open: this.state.open})}>
