@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import './style';
+import classNames from 'classnames';
 
 interface StepsProps {
   prefixCls?: string;
   className?: string;
-  style?: string;
+  style?: React.CSSProperties;
   stepNum: number;
   titles: string[];
   desc: string[];
@@ -34,13 +35,14 @@ export default class Steps extends React.Component<StepsProps> {
   }
 
   render() {
-    const {stepNum, titles, desc} = this.props;
-    return (
-      <div className="Yep-steps">
-        <div className="step-list">
-          <div className={'step-line'}>
+    const {prefixCls,className,style,stepNum, titles, desc} = this.props;
+    const wrapCls = classNames(`${prefixCls}`, className)
+      return (
+      <div className={wrapCls} style={style}>
+        <div className={`${prefixCls}-list`}>
+          <div className={`${prefixCls}-line`}>
             <div
-              className={'line-blue'}
+              className={`${prefixCls}-line-blue`}
               style={{
                 width:
                   (100 / (titles.length * 2)) *
@@ -55,11 +57,11 @@ export default class Steps extends React.Component<StepsProps> {
               <div
                 key={key}
                 style={{width: 100 / titles.length + '%'}}
-                className={`step-item ${stepNum > key ? 'current' : ''}`}
+                className={`${prefixCls}-item ${stepNum > key ? 'current' : ''}`}
               >
-                <span className="step-num">{key + 1}</span>
-                <div className="item-text">{item}</div>
-                <div className="item-text fs24">{desc[key]}</div>
+                <span className={`${prefixCls}-num`}>{key + 1}</span>
+                <div className={`${prefixCls}-item-text`}>{item}</div>
+                <div className={`${prefixCls}-item-text fs24`}>{desc[key]}</div>
               </div>
             );
           })}
