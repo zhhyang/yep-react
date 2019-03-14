@@ -34,6 +34,11 @@ function main() {
         name: 'desc',
         message: '组件描述(五十个字以内)：',
       },
+      {
+        type: 'input',
+        name: 'category',
+        message: '组件分类：',
+      },
     ])
     .then(answers => {
       newCpt = answers;
@@ -44,23 +49,22 @@ function main() {
 function createIndexJs() {
   return new Promise((resolve, reject) => {
     const nameLc = camel2Dash(newCpt.name);
-    let content = `import React , { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-
-export default class ${newCpt.name} extends PureComponent{
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    className: PropTypes.string,
-    style: PropTypes.object,
+    let content = `import * as React  from 'react';
+  export interface ${newCpt.name}Props {
+    prefixCls?: string;
+    className?: string;
+    style?: React.CSSProperties;
   }
+
+export default class ${newCpt.name} extends React.PureComponent<${newCpt.name}Props,any>{
   
   static defaultProps = {
     prefixCls: 'Yep-${nameLc}',
     style: {},
   }
   
-  constructor(){
-    super()
+  constructor(props:${newCpt.name}Props){
+    super(props)
   }
   
   render(){
@@ -122,7 +126,7 @@ function createDoc() {
     const nameLc = camel2Dash(newCpt.name);
 
     const docContent = `---
-category: Components
+category: ${newCpt.category}
 title: ${newCpt.chnName}
 ---
 
