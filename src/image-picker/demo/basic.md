@@ -6,9 +6,9 @@ description:
 
 ```js
 import React from 'react';
-import {Upload} from '@jdcfe/yep-react';
+import {ImagePicker} from '@jdcfe/yep-react';
 
-class UploadDemo extends React.PureComponent {
+class Demo extends React.PureComponent {
   constructor() {
     super();
 
@@ -51,14 +51,14 @@ class UploadDemo extends React.PureComponent {
     const {files} = this.state;
     return (
       <div className="demo-list">
-        <div className="demo-list-header">基础upload组件</div>
+        <div className="demo-list-header">基础ImagePicker组件</div>
         <div className="demo-list-body">
-          <Upload files={files} addImage={this.addImage} removeImage={this.removeImage} />
+          <ImagePicker files={files} addImage={this.addImage} removeImage={this.removeImage} />
         </div>
       </div>
     );
   }
 }
 
-ReactDOM.render(<UploadDemo />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
