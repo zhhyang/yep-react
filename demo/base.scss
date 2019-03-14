@@ -323,7 +323,8 @@ body {
     padding: 0 15px;
     margin-top: 20px;
     background: #fff;
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.04);
+    box-shadow: 0px 3px 5px 0px
+    rgba(9, 32, 61, 0.15);
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -336,11 +337,11 @@ body {
     }
   }
   &__icon{
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     color: #78a4fa;
     text-align: center;
-    border: 1px solid rgba(120,164,250,.16);
+    border: 2px solid rgba(120,164,250,.16);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -351,25 +352,43 @@ body {
     }
   }
   &__info{
-    font-size:32px;
-    line-height: 24px;
-    color: #6a6a77;
-    font-weight: 700;
     height: 120px;
     display: flex;
-    align-items: center;
-    padding: 0 60px;
+    padding-left: 30px;
+    align-items: flex-start;
     flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    &__title {
+      font-size:32px;
+      font-weight: 700;
+      color: #20323e;
+      margin-bottom: 10px;
+    }
+    &__desc {
+      font-size:20px;
+      font-weight: 100;
+      color: #3b4a5d;
+    }
   }
   &__arrow{
     width: 60px;
     height: 60px;
+    background-color: #167dfd;
+    box-shadow: 2px 2px 7px 0px
+    rgba(22, 125, 253, 0.3);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    svg{
+    img{
       width: 30px;
       height: 30px;
+      transition: transform ease-in 200ms;
+    }
+
+    img.active {
+      transform: rotate(90deg);
     }
   }
 }

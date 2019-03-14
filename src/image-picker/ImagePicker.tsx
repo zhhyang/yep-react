@@ -5,7 +5,7 @@ import noop from '../_utils/noop';
 export interface File {
   url: string;
 }
-export interface UploadProps {
+export interface ImagePickerProps {
   files?: File[];
 
   size?: string;
@@ -14,7 +14,7 @@ export interface UploadProps {
 
   removeImage?: (params: any) => void;
 }
-export default class Upload extends React.PureComponent<UploadProps> {
+export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
   static defaultProps = {
     files: [],
     size: '75px',
@@ -24,7 +24,7 @@ export default class Upload extends React.PureComponent<UploadProps> {
   };
   private input: HTMLInputElement | null;
 
-  constructor(props: UploadProps) {
+  constructor(props: ImagePickerProps) {
     super(props);
     this.state = {};
     this.fileChange = this.fileChange.bind(this);
