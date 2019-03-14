@@ -33,7 +33,7 @@
     "components",
     "web"
   ],
-  "author": "",
+  "author": "jdf2e",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jdf2e/yep-react.git"
@@ -146,7 +146,7 @@
   "bugs": {
     "url": "https://github.com/jdf2e/yep-react/issues"
   },
-  "homepage": "https://jdf2e.github.io/yep-react",
+  "homepage": "https://yep-react.jd.com",
   "directories": {
     "lib": "lib"
   },
