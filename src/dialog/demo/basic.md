@@ -12,6 +12,11 @@ class Demo extends React.PureComponent {
   state = {
     show: false,
   };
+  onClose = () => {
+    if (this.confirmInstance) {
+      this.confirmInstance.close();
+    }
+  };
 
   render() {
     const obj = {
@@ -33,6 +38,23 @@ class Demo extends React.PureComponent {
           }}
         >
           Confirm
+        </Button>
+        <WhiteSpace />
+        <Button
+          onClick={() => {
+            this.confirmInstance = Dialog.confirm(
+              '标题',
+              <div>
+                <div>确定要加入购物车吗？</div>
+                <Button size="sm" inline type="ghost" onClick={this.onClose}>
+                  自定义关闭按钮
+                </Button>
+              </div>,
+              []
+            );
+          }}
+        >
+          自定义关闭
         </Button>
         <WhiteSpace />
         <Button
