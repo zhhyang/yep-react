@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import ButtonGroup from './ButtonGroup';
-import TouchFeedback from '../touch-feedback';
 import Icon from '../icon';
 
 export interface ButtonProps {
@@ -9,25 +8,26 @@ export interface ButtonProps {
   className?: string;
   style?: React.CSSProperties;
   disabled?: boolean;
-  type: 'primary' | 'ghost';
-  inline?: boolean;
+  type?: 'primary' | 'ghost' | 'fill' | 'light' | 'lightred' | 'checked'|'dashed';
+  block?: boolean;
+  circle?: boolean;
   size?: string;
-  submit?: boolean;
   onClick?: () => void;
-  activeClassName?: string;
-  activeStyle?: React.CSSProperties;
   icon?: string;
+  iconColor?: string;
+  iconSize?: 'xxs' | 'md';
   children: React.ReactNode;
 }
 
-export default class Button extends React.PureComponent<ButtonProps,any> {
-
-  static ButtonGroup= ButtonGroup;
+export default class Button extends React.PureComponent<ButtonProps, any> {
+  static ButtonGroup = ButtonGroup;
   static defaultProps = {
     prefixCls: 'Yep-btn',
     disabled: false,
     activeStyle: {},
     onClick: () => {},
+    iconColor:'#f0250f',
+    iconSize:'xxs',
   };
 
   render() {
@@ -35,46 +35,45 @@ export default class Button extends React.PureComponent<ButtonProps,any> {
       prefixCls,
       className,
       type,
-      submit,
       disabled,
       onClick,
       icon,
-      inline,
       style,
       size,
-      activeStyle,
-      activeClassName,
       children,
+      block,
+      circle,
+      iconColor,
+      iconSize
     } = this.props;
-    const El = submit ? 'button' : 'a';
 
     const cls = classNames(prefixCls, className, {
       'btn-primary': type === 'primary',
+      'btn-block': block,
       'btn-disabled': disabled,
       'btn-ghost': type === 'ghost',
-      'btn-inline': !!inline,
+      'btn-fill': type === 'fill',
+      'btn-light': type === 'light',
+      'btn-lightred': type === 'lightred',
+      'btn-checked': type === 'checked',
+      'btn-dashed': type === 'dashed',
       'btn-sm': size === 'sm',
-      'btn-md': size === 'md',
+      'btn-xxs': size === 'xxs',
+      'btn-circle': circle,
       [`${prefixCls}-icon`]: !!icon,
     });
     return (
-      <TouchFeedback
-        // tslint:disable-next-line:jsx-no-multiline-js
-        activeClassName={activeClassName || (activeStyle ? `${prefixCls}-active` : undefined)}
-        disabled={disabled}
-        activeStyle={activeStyle}
-      >
-        <El
-          className={cls}
-          aria-disabled={disabled}
-          onClick={disabled ? undefined : onClick}
-          style={style}
-          {...(submit ? {type: 'submit'} : {})}
-        >
-          {icon && <Icon type={icon} size={size === 'sm' ? 'xxs' : 'md'} className={`${prefixCls}-icon`} />}
-          {children}
-        </El>
-      </TouchFeedback>
+      <button className={cls} aria-disabled={disabled} onClick={disabled ? undefined : onClick} style={style}>
+        {icon && (
+          <Icon
+            type={icon}
+            color={iconColor}
+            size={iconSize}
+            className={`${prefixCls}-icon`}
+          />
+        )}
+        {children}
+      </button>
     );
   }
 }

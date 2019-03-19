@@ -1,6 +1,6 @@
 @import '../../style/mixin';
 
-.Yep-switch{
+.Yep-switch {
   display: inline-block;
   vertical-align: middle;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
     height: $switch-height;
     border-radius: $switch-border-radius;
     box-sizing: border-box;
-    background: #e5e5e5;
+    background: $fill-base;
     z-index: 0;
     margin: 0;
     padding: 0;
@@ -25,40 +25,26 @@
 
     &:before {
       content: ' ';
-      position: absolute;
-      left: 1 * $hd;
-      top: 1 * $hd;
-      width: 48 * $hd;
-      height: 28 * $hd;
-      border-radius: 28 * $hd;
-      box-sizing: border-box;
-      background: $fill-base;
-      z-index: 1;
-      transition: all 200ms;
-      transform: scale(1);
-    }
-
-    &:after {
-      content: ' ';
       height: $switch-circle;
       width: $switch-circle;
       border-radius: $switch-circle;
-      background: $fill-base;
+      background: $border-color-base;
       position: absolute;
       z-index: 2;
-      left: 1 * $hd;
-      top: 1 * $hd;
+      left: $switch-circle-top;
+      top: $switch-circle-top;
       transform: translateX(0);
       transition: all 200ms;
-      box-shadow: 2 * $hd 2 * $hd 4 * $hd rgba(0, 0, 0, 0.21);
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
     }
+    @include bd-all($color: $border-color-base, $radius: $switch-border-radius,$width:3PX);
 
     &.checkbox-disabled {
       z-index: 3;
     }
   }
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,15 +57,11 @@
 
     &:checked {
       & + .checkbox {
-        background: $switch-fill;
-
         &:before {
-          transform: scale(0);
+          background: $switch-fill;
+          transform: translateX($switch-transform);
         }
-
-        &:after {
-          transform: translateX(20 *$hd);
-        }
+        @include bd-all($color: $switch-fill, $radius: $switch-border-radius,$width:3PX);
       }
     }
 

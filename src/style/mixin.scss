@@ -1,4 +1,4 @@
-@import './variables';
+@import './themes/app';
 
 @mixin scale-hairline-common($color, $top, $right, $bottom, $left) {
   content: '';
@@ -218,6 +218,26 @@
     -webkit-transform-origin: left top;
     transform-origin: left top;
     border: 1PX solid $color;
+    border-radius: $radius;
+  }
+}
+
+@mixin bd-all($color: $border-color-base, $radius: 3px,$width:2PX,$borderStyle:solid) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border: $width $borderStyle $color;
     border-radius: $radius;
   }
 }

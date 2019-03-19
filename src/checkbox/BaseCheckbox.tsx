@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-
+import Icon from '../icon'
 export interface BaseCheckboxProps {
   prefixCls?: string;
   className?: string;
@@ -149,7 +149,7 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
           value={value}
           {...globalProps}
         />
-        <span className={`${prefixCls}-inner`} />
+        <Icon type={checked?type === 'checkbox'?'checkbox-checked':'radio-checked':'checkbox'} />
         <span className={`${prefixCls}-label`}>{label}</span>
       </span>
     );

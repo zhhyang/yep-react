@@ -1,24 +1,25 @@
 @import '../../style/mixin';
 
 .Yep-btn {
-  display: block;
   outline: 0 none;
-  padding: 0;
+  border: 0;
   height: $button-height;
   line-height: $button-height;
+  padding: 0 39*$hd;
   text-align: center;
   border-radius: $button-border-radius;
   font-size: $button-font-size;
-
   white-space: nowrap;
-
   -webkit-appearance: none;
   box-sizing: border-box;
 
   color: $color-text-base;
   background-color: $fill-base;
-  @include hairline($button-border-color, $button-border-radius);
 
+  &.btn-circle{
+    border-radius: 30 * $hd;
+    @include bd-all-1px(#ababab, 30 * $hd);
+  }
   &-borderfix {
     &:before {
       transform: scale(0.49) !important;
@@ -27,16 +28,13 @@
 
   &.btn-disabled {
     background-color: $fill-disabled;
-    border: 1PX solid $fill-disabled;
   }
   &.btn-primary {
-    background-color: $brand-primary;
+    background: linear-gradient(135deg, #ff4f18 0%, #f20000 100%);
     color: $color-text-base-inverse;
-    @include hairline($brand-primary, $button-border-radius);
 
     &.btn-disabled {
-      background-color: $fill-disabled;
-      @include hairline($fill-disabled, $button-border-radius);
+      background: $fill-disabled;
     }
   }
 
@@ -44,38 +42,63 @@
     background-color: $fill-base;
     color: $brand-primary;
 
-    @include hairline($brand-primary, $button-border-radius);
+    @include bd-all-1px($brand-primary, 30 * $hd);
 
     &.btn-disabled {
-      background-color: $fill-disabled;
-      @include hairline($fill-disabled, $button-border-radius);
+      background: $fill-disabled;
+      @include bd-all-1px($fill-disabled, $button-border-radius);
     }
   }
 
-  &.btn-inline {
-    display: inline-block;
-    padding: 0 $h-spacing-lg;
+  &.btn-fill{
+    background-color: #f6f6f6;
+    @include bd-all(#f6f6f6, 30 * $hd,0PX);
   }
-  &.btn-md {
-    height: $button-height-md;
-    line-height: $button-height-md;
-    border-radius: $button-border-radius-md;
+
+  &.btn-light{
+    @include bd-all-1px(#dadada, 30 * $hd);
   }
+
+  &.btn-block {
+    width: 690px;
+    height: 80px;
+    line-height: 80px;
+    background: linear-gradient(135deg, #ff4f18 0%, #ff2000 24%, #f10000 100%);
+    box-shadow: 0 10px 20px 0 rgba(255, 62, 62, 0.2);
+    border-radius: 100px;
+    color: #ffffff;
+  }
+
+  &.btn-lightred{
+    background: rgba(240, 37, 15, 0.05);
+    @include bd-all-1px(rgba(240, 37, 15, 0.05), 27 * $hd);
+  }
+
+  &.btn-checked{
+    background:  #fef4f3;
+    @include bd-all(#f0250f, 27 * $hd,2PX);
+  }
+
+  &.btn-dashed{
+    @include bd-all(#DADADA, 27 * $hd,2PX,dashed);
+  }
+
   &.btn-sm {
     font-size: $button-font-size-sm;
     height: $button-height-sm;
     line-height: $button-height-sm;
     padding: 0 $h-spacing-lg;
-    border-radius: $button-border-radius-sm;
   }
-  &-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &.btn-xxs {
+    font-size: $button-font-size-xxs;
+    height: $button-height-xxs;
+    line-height: $button-height-xxs;
+    padding: 0 $h-spacing-lg;
   }
 
   > .Yep-btn-icon {
     margin-right: 0.5em;
+    vertical-align: text-top;
   }
 }
 
@@ -87,7 +110,6 @@
     flex: 1;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
     &:last-of-type {
       margin-right: 0;
     }

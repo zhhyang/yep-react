@@ -327,6 +327,30 @@ const icons = {
     '<svg viewBox="0 0 16 16"><g fill="#333"><path d="M13.999 3.551V2a1.5 1.5 0 0 0-1.5-1.5H2.5A2.503 2.503 0 0 0 0 3v10c0 1.379 1.121 2.5 2.5 2.5h9.999a1.5 1.5 0 0 0 1.5-1.5v-2.05A2.504 2.504 0 0 0 16 9.5V6a2.504 2.504 0 0 0-2.001-2.449zM2.5 1.5h9.999a.5.5 0 0 1 .5.5v2.592a1.479 1.479 0 0 0-.5-.092h-.5v-2H1.092c.207-.58.757-1 1.408-1zm8.999 2H1.092A1.479 1.479 0 0 1 1 3h10.499v.5zm0 .5v.5H2.5c-.441 0-.835-.195-1.11-.5h10.109zm1 10.5H2.5c-.827 0-1.5-.673-1.5-1.5V4.987c.419.318.935.513 1.5.513h9.999a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5h-3.5A2.503 2.503 0 0 0 6.5 9.5c0 1.379 1.121 2.5 2.499 2.5h4v2a.5.5 0 0 1-.5.5zM13.5 11H8.999a1.501 1.501 0 0 1 0-3h3.5a1.5 1.5 0 0 0 1.5-1.5V4.593A1.497 1.497 0 0 1 15 6v3.5c0 .827-.673 1.5-1.5 1.5z"/><circle cx="8.999" cy="9.5" r="1"/></g></svg>',
   zoom:
     '<svg viewBox="0 0 16 16"><path d="M10.071 11.466A6.001 6.001 0 0 1 3.46 1.494a6 6 0 0 1 8.076 8.828l.1.012 3.078 3.94a1 1 0 0 1-1.576 1.232l-3.078-3.94.012-.1zm-.455-2.092A4 4 0 1 0 4.69 3.07a4 4 0 0 0 4.926 6.304z" /></svg>',
+  'checkbox-checked':
+    '<svg viewBox="0 0 50 50" ><defs><path d="M38,19 C38,8.507 29.493,0 19,0 C8.507,0 0,8.507 0,19 C0,29.493 8.507,38 19,38 C29.493,38 38,29.493 38,19" id="path-1"></path><filter x="-28.9%" y="-18.4%" width="157.9%" height="157.9%" filterUnits="objectBoundingBox" id="filter-2"><feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset> <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur> <feColorMatrix values="0 0 0 0 0.941176471   0 0 0 0 0.145098039   0 0 0 0 0.0588235294  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix> </filter></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="操作示例" transform="translate(-246.000000, -5008.000000)"><g id="操作" transform="translate(-1790.000000, 871.000000)"><g id="常规"><g id="9" transform="translate(1958.000000, 4015.000000)"><g id="Group-4" transform="translate(0.000000, 122.000000)"><g id="Group-11" transform="translate(84.000000, 2.000000)"> <g id="Fill-1"> <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use> <use fill="#F0250F" fill-rule="evenodd" xlink:href="#path-1"></use> </g> <polygon id="Fill-3" points="10 29 30 29 30 9 10 9"></polygon> <polygon id="Fill-5" fill="#FFFFFF" points="10 19 12.5 16.5 17.5 21 27.5 11.5 30 14 18 26 17 26"></polygon> </g> </g> </g> </g> </g></g> </g> </svg>',
+  checkbox: `<svg viewBox="0 0 50 50"><g id="Fill-3"><use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use><path stroke-opacity="0.6" stroke="#848484" stroke-width="3" d="M7.5,21 C7.5,30.6651611 15.3348389,38.5 25,38.5 C34.6651611,38.5 42.5,30.6651611 42.5,21 C42.5,11.3348389 34.6651611,3.5 25,3.5 C15.3348389,3.5 7.5,11.3348389 7.5,21 Z" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd"></path></g></svg>`,
+  'radio-checked': `<svg viewBox="0 0 50 50">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="操作示例" transform="translate(-482.000000, -5008.000000)">
+            <g id="操作" transform="translate(-1790.000000, 871.000000)">
+                <g id="常规">
+                    <g id="9" transform="translate(1958.000000, 4015.000000)">
+                        <g id="Group-15" transform="translate(242.000000, 124.000000)">
+                            <g id="Group-13" transform="translate(78.000000, 0.000000)">
+                                <g id="Fill-9">
+                                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                    <path stroke="#F0250F" stroke-width="3" d="M19,1.5 C9.33483889,1.5 1.5,9.33483889 1.5,19 C1.5,28.6651611 9.33483889,36.5 19,36.5 C28.6651611,36.5 36.5,28.6651611 36.5,19 C36.5,9.33483889 28.6651611,1.5 19,1.5 Z" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd"></path>
+                                </g>
+                                <path d="M31,19 C31,12.373 25.627,7 19,7 C12.373,7 7,12.373 7,19 C7,25.627 12.373,31 19,31 C25.627,31 31,25.627 31,19" id="Fill-13" fill="#F0250F"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>`,
 };
 
 export default icons;
