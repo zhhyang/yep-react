@@ -8,6 +8,7 @@ description:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {ActionSheet, Button, WhiteSpace} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {
@@ -41,15 +42,17 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.handleToggleShow}>
-          显示
-        </Button>
-        <WhiteSpace />
-        <Button onClick={this.handleToggleSlideDownShow}>显示取消按钮</Button>
-        <WhiteSpace />
-        <Button type="primary" onClick={this.handleToggleSlideRightShow}>
-          婚姻状况
-        </Button>
+        <ComponentCard title="基本用法">
+          <Button type="primary" onClick={this.handleToggleShow}>
+            显示
+          </Button>
+          <WhiteSpace />
+          <Button onClick={this.handleToggleSlideDownShow}>显示取消按钮</Button>
+          <WhiteSpace />
+          <Button type="primary" onClick={this.handleToggleSlideRightShow}>
+            婚姻状况
+          </Button>
+        </ComponentCard>
 
         <ActionSheet
           show={this.state.show}

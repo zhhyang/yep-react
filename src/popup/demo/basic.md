@@ -7,6 +7,7 @@ description:
 ```js
 import React from 'react';
 import {Popup, Button, WhiteSpace} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
 class Demo extends React.PureComponent {
   constructor() {
     super();
@@ -40,15 +41,17 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div title="Popup">
-        <Button type="primary" onClick={this.handleToggleShow}>
-          显示
-        </Button>
-        <WhiteSpace />
-        <Button onClick={this.handleToggleSlideDownShow}>从上向下显示</Button>
-        <WhiteSpace />
-        <Button type="primary" onClick={this.handleToggleSlideRightShow}>
-          从右向左显示
-        </Button>
+        <ComponentCard title="基础用法">
+          <Button type="primary" onClick={this.handleToggleShow}>
+            显示
+          </Button>
+          <WhiteSpace />
+          <Button onClick={this.handleToggleSlideDownShow}>从上向下显示</Button>
+          <WhiteSpace />
+          <Button type="primary" onClick={this.handleToggleSlideRightShow}>
+            从右向左显示
+          </Button>
+        </ComponentCard>
 
         <Popup show={this.state.show} onCancel={this.handleToggleShow}>
           <div className="ul">
