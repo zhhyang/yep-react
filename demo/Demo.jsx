@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import * as Components from '@jdcfe/yep-react'; // eslint-disable-line
 import {transform} from '@babel/standalone';
 import jsonp from 'jsonp';
+import ComponentCard from './component/ComponentCard';
 //import Editor from './Editor';
 
 class Demo extends React.Component {
@@ -47,8 +48,8 @@ class Demo extends React.Component {
       plugins: ['proposal-class-properties', 'proposal-object-rest-spread'],
     }).code;
 
-    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp'];
-    const argv = [this, React, ReactDOM, PropTypes, jsonp];
+    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp', 'ComponentCard'];
+    const argv = [this, React, ReactDOM, PropTypes, jsonp, ComponentCard];
 
     Object.keys(Components).forEach(name => {
       args.push(name);
