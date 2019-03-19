@@ -7,6 +7,7 @@ description:
 ```js
 import React from 'react';
 import {ImagePicker} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {
@@ -50,11 +51,10 @@ class Demo extends React.PureComponent {
   render() {
     const {files} = this.state;
     return (
-      <div className="demo-list">
-        <div className="demo-list-header">基础ImagePicker组件</div>
-        <div className="demo-list-body">
+      <div>
+        <ComponentCard title="基础ImagePicker组件">
           <ImagePicker files={files} addImage={this.addImage} removeImage={this.removeImage} />
-        </div>
+        </ComponentCard>
       </div>
     );
   }

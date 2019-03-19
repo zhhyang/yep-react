@@ -7,6 +7,7 @@ description:
 ```js
 import React from 'react';
 import {Dialog, Button, WhiteSpace} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   state = {
@@ -24,46 +25,51 @@ class Demo extends React.PureComponent {
     };
     return (
       <div title="Dialog">
-        <Button
-          onClick={() => {
-            this.setState({show: true});
-          }}
-        >
-          Dialog
-        </Button>
-        <WhiteSpace />
-        <Button
-          onClick={() => {
-            Dialog.confirm('标题', '确定要删除吗?');
-          }}
-        >
-          Confirm
-        </Button>
-        <WhiteSpace />
-        <Button
-          onClick={() => {
-            this.confirmInstance = Dialog.confirm(
-              '标题',
-              <div>
-                <div>确定要加入购物车吗？</div>
-                <Button size="sm" inline type="ghost" onClick={this.onClose}>
-                  自定义关闭按钮
-                </Button>
-              </div>,
-              []
-            );
-          }}
-        >
-          自定义关闭
-        </Button>
-        <WhiteSpace />
-        <Button
-          onClick={() => {
-            Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}], obj);
-          }}
-        >
-          Alert
-        </Button>
+        <ComponentCard title="基础用法">
+          <Button
+            onClick={() => {
+              this.setState({show: true});
+            }}
+          >
+            Dialog
+          </Button>
+        </ComponentCard>
+        <ComponentCard title="Confirm">
+          <Button
+            onClick={() => {
+              Dialog.confirm('标题', '确定要删除吗?');
+            }}
+          >
+            Confirm
+          </Button>
+        </ComponentCard>
+        <ComponentCard title="自定义关闭">
+          <Button
+            onClick={() => {
+              this.confirmInstance = Dialog.confirm(
+                '标题',
+                <div>
+                  <div>确定要加入购物车吗？</div>
+                  <Button size="sm" inline type="ghost" onClick={this.onClose}>
+                    自定义关闭按钮
+                  </Button>
+                </div>,
+                []
+              );
+            }}
+          >
+            自定义关闭
+          </Button>
+        </ComponentCard>
+        <ComponentCard title="Alert">
+          <Button
+            onClick={() => {
+              Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}], obj);
+            }}
+          >
+            Alert
+          </Button>
+        </ComponentCard>
 
         <Dialog
           show={this.state.show}

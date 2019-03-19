@@ -7,6 +7,7 @@ description:
 ```js
 import React from 'react';
 import {Radio, Toast} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {
@@ -35,8 +36,12 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div title="Radio">
-        <Radio options={this.state.options1} name="eat" onChange={value => Toast.show('选择了' + value)} />
-        <Radio options={this.state.options2} horizontal onChange={value => Toast.show('选择了' + value)} />
+        <ComponentCard title="基础用法">
+          <Radio options={this.state.options1} name="eat" onChange={value => Toast.show('选择了' + value)} />
+        </ComponentCard>
+        <ComponentCard title="禁用">
+          <Radio options={this.state.options2} horizontal onChange={value => Toast.show('选择了' + value)} />
+        </ComponentCard>
       </div>
     );
   }
