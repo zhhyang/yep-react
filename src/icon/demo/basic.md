@@ -7,6 +7,7 @@ description:
 ```js
 import React from 'react';
 import {Icon} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   render() {
@@ -174,9 +175,55 @@ class Demo extends React.PureComponent {
       'zoom',
     ];
 
-    return <div>{icons.map(icon => <Icon type={icon} key={icon} />)}</div>;
+    return (
+      <div>
+        <style dangerouslySetInnerHTML={{__html: style}} />
+        <ComponentCard title="基础图标">
+          <div className="iconContainer">
+            {icons.map(icon => (
+              <div className="iconItem">
+                <Icon type={icon} key={icon} className="iconStyle" />
+                <h6 className="iconName">{icon}</h6>
+              </div>
+            ))}
+          </div>
+        </ComponentCard>
+      </div>
+    );
   }
 }
-
+const style = `
+  .iconContainer {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .iconItem {
+    width: 50px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+        align-items: center;
+  }
+  .iconStyle{
+    width: 30px;
+    height: 30px;
+  }
+  .iconName{
+    margin-top: 12px;
+    font-family: PingFangSC-Medium;
+    	font-size: 10px;
+    	font-weight: normal;
+    	font-stretch: normal;
+    	letter-spacing: 0px;
+    	color: #000;
+    	width: 100%;
+    	overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+  }
+`;
 ReactDOM.render(<Demo />, mountNode);
 ```
