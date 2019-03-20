@@ -10,7 +10,7 @@ import ComponentTitle from './component/ComponentTitle';
 import {Helmet} from 'react-helmet';
 import {toCamelCase} from '../site/lib/utils';
 import App from './App';
-
+import {CATEGORIES} from './utils';
 const Content = ({history, location: {pathname, search}}) => {
   setTimeout(() => {
     Prism.highlightAll();
@@ -27,7 +27,7 @@ const Content = ({history, location: {pathname, search}}) => {
     return (
       <Fragment>
         <NavBar leftContent="返回" onLeftClick={() => history.push('/')}>
-          YepUI
+          {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">
           <ComponentTitle title={query.title} englishTitle={toCamelCase(componentName)} />
