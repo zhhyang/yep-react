@@ -21,6 +21,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('去结算');
               }}
+              style={{marginRight: '0.8rem'}}
             >
               去结算
             </Button>
@@ -37,6 +38,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('去结算');
               }}
+              style={{marginRight: '0.8rem'}}
             >
               去结算
             </Button>
@@ -70,6 +72,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('ghost');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               确认收货
             </Button>
@@ -79,6 +82,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('ghost');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               再次购买
             </Button>
@@ -89,6 +93,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('ghost');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               查看物流
             </Button>
@@ -114,6 +119,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('京东快递');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               京东快递
             </Button>
@@ -124,6 +130,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('ghost');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               好评 6.6万
             </Button>
@@ -150,6 +157,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('京东快递');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               象牙白
             </Button>
@@ -160,6 +168,7 @@ class Demo extends React.PureComponent {
               onClick={() => {
                 alert('ghost');
               }}
+              style={{marginRight: '0.36rem'}}
             >
               皓月灰
             </Button>
@@ -182,7 +191,7 @@ class Demo extends React.PureComponent {
         </ComponentCard>
         <WhiteSpace />
         <ComponentCard title="带Icon按钮">
-          <Button icon="lego_jiazai" circle size="sm">
+          <Button icon="lego_jiazai" circle size="sm" style={{marginRight: '0.36rem'}}>
             Loading
           </Button>
           <Button type="ghost" icon="delete" circle size="sm">
