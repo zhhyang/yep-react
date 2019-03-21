@@ -40,7 +40,7 @@ class Panel extends React.Component {
               const component = components[componentName];
               return (
                 <li key={index}>
-                  <Link to={`/component/${componentName}`} key={index}>
+                  <Link to={`/component/${componentName}?title=${component.title}`} key={index}>
                     <div>
                       <i className="indexicon" />
                       <span style={{color: '#6a6a77'}}>

@@ -14,7 +14,7 @@ export default class App extends PureComponent {
     const components = allDocData.components;
     return (
       <section className="page-index">
-        <Helmet title="Components" />
+        <Helmet title="示例" />
         <div className="logo">
           <img src="http://yep-react.jd.com/logo.de07a481.png" alt="" />
         </div>
