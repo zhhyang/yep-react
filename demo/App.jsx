@@ -70,6 +70,7 @@ export default class App extends PureComponent {
             );
           })}
         </div>
+        <div className={'add-footer'}>邮箱：yep@jd.com | Copyright © 京东前端开发部</div>
       </section>
     );
   }
