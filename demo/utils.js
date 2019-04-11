@@ -38,3 +38,9 @@ export const CATEGORIES = [
     icon: icon.form,
   },
 ];
+
+export const clearCache = () => {
+  localStorage.setItem('openStatus', JSON.stringify({}));
+  localStorage.setItem('scrollTop', '0');
+  localStorage.setItem('preTime', `${new Date().getTime()}`);
+};
