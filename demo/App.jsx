@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet';
 import './index.scss';
 import {CATEGORIES, clearCache} from './utils';
 import Panel from './Panel';
+import Image from './image';
 
 export default class App extends PureComponent {
   static propTypes = {};
@@ -46,6 +47,13 @@ export default class App extends PureComponent {
     return (
       <section className="page-index">
         <Helmet title="Components" />
+        <img
+          className="index-github"
+          src={Image.github}
+          onClick={() => {
+            window.location.href = 'https://github.com/jdf2e/yep-react';
+          }}
+        />
         <div className="logo">
           <img src="http://yep-react.jd.com/logo.de07a481.png" alt="" />
         </div>

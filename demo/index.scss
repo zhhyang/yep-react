@@ -1,5 +1,12 @@
 .page-index {
   padding-bottom: 100px; /*no*/
+  .index-github {
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+  }
 
   .logo{
     margin: 60px  auto 0 ;
