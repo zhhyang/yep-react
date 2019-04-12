@@ -40,7 +40,6 @@ export const CATEGORIES = [
 ];
 
 export const clearCache = () => {
-  localStorage.setItem('openStatus', JSON.stringify({}));
-  localStorage.setItem('scrollTop', '0');
-  localStorage.setItem('preTime', `${new Date().getTime()}`);
+  sessionStorage.setItem('openStatus', JSON.stringify({}));
+  sessionStorage.setItem('scrollTop', '0');
 };

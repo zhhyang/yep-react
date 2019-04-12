@@ -11,42 +11,35 @@ export default class App extends PureComponent {
 
   static defaultProps = {};
 
-  componentWillMount() {
-    const EXPIRE = 1800000;
-    const current = new Date().getTime();
-    const pre = localStorage.getItem('preTime');
-
-    if (!pre) {
-      clearCache();
-    } else {
-      if (current - pre > EXPIRE) {
-        clearCache();
-      } else {
-        localStorage.setItem('preTime', `${new Date().getTime()}`);
-      }
-    }
-  }
+  componentWillMount() {}
 
   componentDidMount() {
     window.onscroll = () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       if (window.location.href.indexOf('component') === -1) {
         // 表示首页，需要记录滚动位置
-        localStorage.setItem('scrollTop', scrollTop);
+        sessionStorage.setItem('scrollTop', scrollTop);
       }
     };
     if (window.location.href.indexOf('component') === -1) {
       // 表示首页，需要滚动位置
-      window.scrollTo(0, Number(localStorage.getItem('scrollTop') || 0));
+      window.scrollTo(0, Number(sessionStorage.getItem('scrollTop') || 0));
     }
   }
 
   render() {
     const components = allDocData.components;
-    const openStatusObj = JSON.parse(localStorage.getItem('openStatus')) || {};
+    const openStatusObj = JSON.parse(sessionStorage.getItem('openStatus')) || {};
     return (
       <section className="page-index">
         <Helmet title="示例" />
+        <img
+          className="index-github"
+          src={Image.github}
+          onClick={() => {
+            window.location.href = 'https://github.com/jdf2e/yep-react';
+          }}
+        />
         <div className="logo">
           <img src="http://yep-react.jd.com/logo.de07a481.png" alt="" />
         </div>
