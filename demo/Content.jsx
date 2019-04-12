@@ -10,6 +10,10 @@ import ComponentTitle from './component/ComponentTitle';
 import {Helmet} from 'react-helmet';
 import {toCamelCase} from '../site/lib/utils';
 import App from './App';
+
+import './Content.scss';
+import Image from './image';
+
 import {CATEGORIES} from './utils';
 const Content = ({history, location: {pathname, search}}) => {
   setTimeout(() => {
@@ -26,7 +30,19 @@ const Content = ({history, location: {pathname, search}}) => {
     const query = qs.parse(search, {ignoreQueryPrefix: true});
     return (
       <Fragment>
-        <NavBar leftContent="返回" onLeftClick={() => history.push('/')}>
+        <NavBar
+          leftContent=""
+          onLeftClick={() => history.push('/')}
+          rightContent={
+            <img
+              className="github"
+              src={Image.github}
+              onClick={() => {
+                window.location.href = 'https://github.com/jdf2e/yep-react';
+              }}
+            />
+          }
+        >
           {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">

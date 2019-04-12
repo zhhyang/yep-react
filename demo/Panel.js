@@ -6,10 +6,14 @@ import {toCamelCase} from '../site/lib/utils';
 
 class Panel extends React.Component {
   state = {
-    open: false,
+    open: this.props.open,
   };
 
   onClick = () => {
+    const {category} = this.props;
+    const openStatusObj = JSON.parse(sessionStorage.getItem('openStatus')) || {};
+    Object.assign(openStatusObj, {[category.name]: !this.state.open});
+    sessionStorage.setItem('openStatus', JSON.stringify(openStatusObj));
     this.setState({
       open: !this.state.open,
     });

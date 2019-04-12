@@ -6,4 +6,5 @@ module.exports = {
   operation: require('./operation.png'),
   view: require('./view.png'),
   right: require('./right.png'),
+  github: require('./github.png'),
 };

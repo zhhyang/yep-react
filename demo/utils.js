@@ -38,3 +38,8 @@ export const CATEGORIES = [
     icon: icon.form,
   },
 ];
+
+export const clearCache = () => {
+  sessionStorage.setItem('openStatus', JSON.stringify({}));
+  sessionStorage.setItem('scrollTop', '0');
+};
