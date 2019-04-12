@@ -6,6 +6,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+
 const config = {
   mode: 'production',
   devtool: false,
@@ -75,9 +77,44 @@ const config = {
       },
       {
         test: /\.scss/,
+        exclude: sassModuleRegex,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              // Necessary for external CSS imports to work
+              // https://github.com/facebookincubator/create-react-app/issues/2677
+              ident: 'postcss',
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+                pxtorem({
+                  rootValue: 100,
+                  propWhiteList: [],
+                }),
+              ],
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.module\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('css-loader'),
+            options: {modules: true},
+          },
           {
             loader: 'postcss-loader',
             options: {

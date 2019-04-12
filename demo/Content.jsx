@@ -14,6 +14,7 @@ import App from './App';
 import './Content.scss';
 import Image from './image';
 
+import {CATEGORIES} from './utils';
 const Content = ({history, location: {pathname, search}}) => {
   setTimeout(() => {
     Prism.highlightAll();
@@ -42,7 +43,7 @@ const Content = ({history, location: {pathname, search}}) => {
             />
           }
         >
-          YepUI
+          {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">
           <ComponentTitle title={query.title} englishTitle={toCamelCase(componentName)} />
