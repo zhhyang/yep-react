@@ -43,3 +43,5 @@ export const clearCache = () => {
   sessionStorage.setItem('openStatus', JSON.stringify({}));
   sessionStorage.setItem('scrollTop', '0');
 };
+
+export const subListDemos = ['sticky'];
