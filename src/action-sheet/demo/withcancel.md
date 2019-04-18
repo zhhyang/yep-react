@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 带取消按钮
 description:
 ---
 
@@ -23,13 +23,18 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button onClick={this.handleToggleShow}>显示</Button>
+        <Button onClick={this.handleToggleShow}>显示取消按钮</Button>
 
         <ActionSheet
           show={this.state.show}
           onCancel={this.handleToggleShow}
+          hasCancel
+          space
           data={['未婚', '已婚', '离异']}
-          itemClick={(value, index) => Toast.show(value)}
+          itemClick={(value, index) => {
+            this.handleToggleShow();
+            Toast.show(value);
+          }}
         />
       </div>
     );

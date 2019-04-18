@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import Prism from 'prismjs';
+import {withRouter} from 'react-router-dom';
 import qs from 'qs';
 import {NavBar, Button} from '@jdcfe/yep-react';
 import allDocData from './allDocData';
@@ -15,11 +14,8 @@ import './Content.scss';
 import Image from './image';
 
 import {CATEGORIES, subListDemos} from './utils';
+import ComponentCard from './component/ComponentCard';
 const Content = ({history, location: {pathname, search}}) => {
-  setTimeout(() => {
-    Prism.highlightAll();
-  }, 100);
-
   if (pathname.match(/\/component\//)) {
     const componentName = pathname.split('/').reverse()[0];
     const currentComponent = allDocData.components[componentName];
@@ -46,7 +42,7 @@ const Content = ({history, location: {pathname, search}}) => {
           {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">
-          <ComponentTitle title={query.title} englishTitle={toCamelCase(componentName)} />
+          <ComponentTitle title={currentComponent.title} englishTitle={toCamelCase(componentName)} />
           <Helmet title={toCamelCase(componentName)} />
           {currentComponent && currentComponent.demos ? (
             subListDemos.indexOf(componentName) > -1 ? (
@@ -54,8 +50,8 @@ const Content = ({history, location: {pathname, search}}) => {
                 currentComponent.demos
                   .sort((a, b) => a.order - b.order)
                   .map((demo, index) => (
-                    <div key={index}>
-                      <Button onClick={() => (window.location.hash = `${window.location.hash}&order=${index}`)}>
+                    <div key={index} className="demo-wingblank">
+                      <Button onClick={() => (window.location.hash = `${window.location.hash}?order=${index}`)}>
                         {demo.title}
                       </Button>
                     </div>
@@ -69,7 +65,11 @@ const Content = ({history, location: {pathname, search}}) => {
             ) : (
               currentComponent.demos
                 .sort((a, b) => a.order - b.order)
-                .map(demo => <Demo demo={demo} componentName={componentName} />)
+                .map(demo => (
+                  <ComponentCard title={demo.title} key={demo.order}>
+                    <Demo demo={demo} componentName={componentName} />
+                  </ComponentCard>
+                ))
             )
           ) : null}
           <style>{currentComponent.style || ''}</style>

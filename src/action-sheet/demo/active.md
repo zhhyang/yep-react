@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 打开时选中已选择的选项
 description:
 ---
 
@@ -23,11 +23,15 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button onClick={this.handleToggleShow}>显示</Button>
+        <Button onClick={this.handleToggleShow}>选中已选择的选项</Button>
 
         <ActionSheet
           show={this.state.show}
           onCancel={this.handleToggleShow}
+          hasCancel
+          space
+          active={1}
+          title="婚姻状况"
           data={['未婚', '已婚', '离异']}
           itemClick={(value, index) => Toast.show(value)}
         />
