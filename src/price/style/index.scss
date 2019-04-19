@@ -1,0 +1,19 @@
+
+@import '../../style/mixin';
+
+.Yep-price {
+  &-txt{
+    font-size: 36px;
+    color: #e01222;
+  }
+  &-sym{
+    font-size: 16px;
+  }
+  .sym-sub{
+    vertical-align: bottom;
+  }
+  .sym-sup{
+    vertical-align: top;
+  }
+
+}
