@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 3
+title: 小红点
 description:
 ---
 
@@ -12,10 +12,10 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Badge text={8}>
+        <Badge dot>
           <div className="shop-image" />
         </Badge>
-        <div className="badge-text">待收货</div>
+        <div className="badge-text">有未读消息</div>
       </div>
     );
   }

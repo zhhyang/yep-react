@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 自定义最大数
 description:
 ---
 
@@ -12,10 +12,8 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Badge text={8}>
-          <div className="shop-image" />
-        </Badge>
-        <div className="badge-text">待收货</div>
+        <Badge text={77} max={55} />
+        <div className="badge-text">有未读消息</div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 自定义
 description:
 ---
 
@@ -8,7 +8,6 @@ description:
 import React from 'react';
 import {Button, AreaPicker, Toast} from '@jdcfe/yep-react';
 import jsonp from 'jsonp';
-import ComponentCard from 'ComponentCard';
 const province = [
   {id: 1, name: '北京'},
   {id: 2, name: '上海'},
@@ -83,9 +82,11 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <Button onClick={this.onShow} type={'ghost'}>
-          选择地址
+          自定义
         </Button>
         <AreaPicker
+          title={'自定义标题'}
+          chooseLabel={'快选择地址'}
           show={this.state.show}
           onCancel={this.onCancel}
           initialData={this.state.data}
