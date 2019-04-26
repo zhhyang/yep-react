@@ -115,7 +115,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     } = this.props;
     const componentStyle = {
       height: height || 'auto',
-      overflow: 'hidden',
+      overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       ...style,
     } as React.CSSProperties;
