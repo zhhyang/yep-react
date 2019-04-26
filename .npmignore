@@ -26,4 +26,5 @@ build
 CHANGELOG.md
 tsconfig.json
 tslint.json
+typings
 
