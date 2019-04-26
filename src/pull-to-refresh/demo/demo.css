@@ -1,0 +1,22 @@
+.up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all .2s;
+  background-color: #FFFFFF;
+}
+
+.up div {
+  height: 300px;
+  line-height: .95rem;
+  font-size: .28rem;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  padding: 0 .2rem;
+}
+
+.up div.cur {
+  color: #f12222;
+}
