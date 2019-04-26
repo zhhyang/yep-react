@@ -92,7 +92,7 @@ export interface PriceProps {
    */
   status?: string;
   /**
-   * 符号额外样式
+   * 货币符号额外样式
    */
   symClassName?: string;
   /**
