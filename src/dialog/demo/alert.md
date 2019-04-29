@@ -1,5 +1,5 @@
 ---
-order: 0
+order: 3
 title: 基础用法
 description:
 ---
@@ -9,30 +9,19 @@ import React from 'react';
 import {Dialog, Button} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
-  state = {
-    show: false,
-  };
-
   render() {
+    const obj = {
+      className: '123',
+    };
     return (
       <div title="Dialog">
         <Button
           onClick={() => {
-            this.setState({show: true});
+            Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}], obj);
           }}
         >
-          基础用法
+          Alert
         </Button>
-
-        <Dialog
-          show={this.state.show}
-          maskCloseable
-          onClose={() => {
-            this.setState({show: false});
-          }}
-        >
-          <div className={`Yep-dialog-alert-content`}>123</div>
-        </Dialog>
       </div>
     );
   }
