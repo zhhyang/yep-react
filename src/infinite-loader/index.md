@@ -7,8 +7,8 @@ title: 滚动无限加载
 
 <DEMO>
 
-| 参数             | 说明                                                            | 类型    | 默认值              | required | -------- |
-| ---------------- | --------------------------------------------------------------- | ------- | ------------------- | -------- | -------- |
+| 参数             | 说明                                                            | 类型    | 默认值              | required |
+| ---------------- | --------------------------------------------------------------- | ------- | ------------------- | -------- |
 | children         | 列表                                                            | node    | -                   | true     |
 | loadMore         | 请求更多数据调用的方法                                          | func    | -                   | true     |
 | hasMore          | 是否还有更多数据                                                | boolean | true                | false    |
@@ -21,4 +21,4 @@ title: 滚动无限加载
 | scrollableTarget | 滚动的父容器 id                                                 | string  | -                   | false    |
 | hasChildren      | 如果 children 不是数组，提供额外的 prop 来计算数据是 0 还是更多 | boolean | -                   | false    |
 | onScroll         | 容器滚动时触发的事件                                            | func    | -                   | false    |
-| dataLength       | 数据的长度                                                      | number  | -                   | false    |
+| initialScrollY   | 组件初始化时滚动到的位置                                        | number  | -                   | false    |
