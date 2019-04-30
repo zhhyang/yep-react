@@ -7,7 +7,6 @@ description:
 ```js
 import React from 'react';
 import {Icon} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   render() {
@@ -178,16 +177,14 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <style dangerouslySetInnerHTML={{__html: style}} />
-        <ComponentCard title="基础图标">
-          <div className="iconContainer">
-            {icons.map(icon => (
-              <div className="iconItem">
-                <Icon type={icon} key={icon} className="iconStyle" />
-                <h6 className="iconName">{icon}</h6>
-              </div>
-            ))}
-          </div>
-        </ComponentCard>
+        <div className="iconContainer">
+          {icons.map(icon => (
+            <div className="iconItem">
+              <Icon type={icon} key={icon} className="iconStyle" />
+              <h6 className="iconName">{icon}</h6>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
