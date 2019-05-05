@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: fail
 description:
 ---
 
@@ -13,10 +13,10 @@ class Demo extends React.PureComponent {
     return (
       <Button
         onClick={() => {
-          Toast.show('This is a toast tips !!!');
+          Toast.fail('失败');
         }}
       >
-        显示
+        显示 fail
       </Button>
     );
   }

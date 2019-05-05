@@ -1,17 +1,17 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 无图标模式
 description:
 ---
 
 ```js
 import React from 'react';
-import {NavBar, Icon} from '@jdcfe/yep-react';
+import {NavBar} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
     return (
-      <NavBar leftContent="返回" rightContent={<Icon type="lego_gengduo" />}>
+      <NavBar leftIcon={null} leftContent="取消" rightContent="操作">
         页面标题
       </NavBar>
     );

@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 背景色渐变
 description:
 ---
 
@@ -12,7 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div title="ProgressBar">
-        <ProgressBar percent={50} />
+        <ProgressBar percent={80} colorStart="#feaa36" colorEnd="#ff5741" />
       </div>
     );
   }

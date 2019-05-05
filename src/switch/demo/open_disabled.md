@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 禁用 当前开启
 description:
 ---
 
@@ -10,11 +10,11 @@ import {Switch} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
-    checked: false,
+    checked: true,
   };
 
   render() {
-    return <Switch currentStatus={this.state.checked} handleSwitch={checked => this.setState({checked})} />;
+    return <Switch currentStatus={this.state.checked} disabled />;
   }
 }
 

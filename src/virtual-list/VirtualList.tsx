@@ -18,7 +18,6 @@ const isEqualSubset = (parameters: {a: any; b: any}) => {
 };
 
 export interface VirtualListProps {
-  next: any;
   prefixCls?: string;
 
   className: string;
@@ -97,18 +96,17 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     this.updateFrame({cb: this.scrollTo.bind(this, jumpIndex)});
   }
 
-  componentWillReceiveProps = (parameters: VirtualListProps) => {
-    let next = parameters.next;
+  componentWillReceiveProps = (nextProps: VirtualListProps) => {
     const {from, size}: Readonly<any> = this.state;
 
     const oldIndex = this.props.jumpIndex;
-    const newIndex = next.jumpIndex;
+    const newIndex = nextProps.jumpIndex;
 
     if (oldIndex !== newIndex) {
       this.updateFrame({cb: this.scrollTo.bind(this, newIndex)});
     }
 
-    this.maybeSetState({b: this.constrain(from, size, next), cb: NOOP});
+    this.maybeSetState({b: this.constrain(from, size, nextProps), cb: NOOP});
   };
 
   componentDidUpdate() {

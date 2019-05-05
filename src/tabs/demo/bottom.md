@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: Tabbar在底部
 description:
 ---
 
@@ -11,12 +11,7 @@ const {TabPanel} = Tabs;
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Tabs
-        onChange={index => {
-          console.log(index);
-        }}
-        distanceToChangeTab={100}
-      >
+      <Tabs tabBarPosition="bottom">
         <TabPanel tab="选项卡一">
           <div
             style={{

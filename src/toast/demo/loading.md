@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 3
+title: loading
 description:
 ---
 
@@ -13,10 +13,10 @@ class Demo extends React.PureComponent {
     return (
       <Button
         onClick={() => {
-          Toast.show('This is a toast tips !!!');
+          Toast.loading('加载中...', 10);
         }}
       >
-        显示
+        显示loading
       </Button>
     );
   }

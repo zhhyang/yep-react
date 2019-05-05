@@ -1,23 +1,18 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 带徽章
 description:
 ---
 
 ```js
 import React from 'react';
-import {Tabs} from '@jdcfe/yep-react';
+import {Tabs, Badge} from '@jdcfe/yep-react';
 const {TabPanel} = Tabs;
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Tabs
-        onChange={index => {
-          console.log(index);
-        }}
-        distanceToChangeTab={100}
-      >
-        <TabPanel tab="选项卡一">
+      <Tabs>
+        <TabPanel tab={<Badge text={'3'}>选项卡一</Badge>}>
           <div
             style={{
               height: 150,
@@ -30,7 +25,7 @@ class Demo extends React.PureComponent {
             选项卡一内容
           </div>
         </TabPanel>
-        <TabPanel tab="选项卡二">
+        <TabPanel tab={<Badge text={'今日(20)'}>选项卡二</Badge>}>
           <div
             style={{
               height: 150,
@@ -43,7 +38,7 @@ class Demo extends React.PureComponent {
             选项卡二内容
           </div>
         </TabPanel>
-        <TabPanel tab="选项卡三">
+        <TabPanel tab={<Badge dot>选项卡三</Badge>}>
           <div
             style={{
               height: 150,

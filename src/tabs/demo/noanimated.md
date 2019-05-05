@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 3
+title: 切换无动画
 description:
 ---
 
@@ -11,12 +11,7 @@ const {TabPanel} = Tabs;
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Tabs
-        onChange={index => {
-          console.log(index);
-        }}
-        distanceToChangeTab={100}
-      >
+      <Tabs animated={false}>
         <TabPanel tab="选项卡一">
           <div
             style={{

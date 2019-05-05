@@ -1,0 +1,51 @@
+---
+order: 2
+title: 从右向左显示
+description:
+---
+
+```js
+import React from 'react';
+import {Popup, Button, WhiteSpace} from '@jdcfe/yep-react';
+import ComponentCard from 'ComponentCard';
+class Demo extends React.PureComponent {
+  state = {
+    slideRightShow: false,
+  };
+
+  handleToggleSlideRightShow = () => {
+    this.setState({
+      slideRightShow: !this.state.slideRightShow,
+    });
+  };
+
+  render() {
+    return (
+      <div title="Popup">
+        <Button type="primary" onClick={this.handleToggleSlideRightShow}>
+          从右向左显示
+        </Button>
+
+        <Popup
+          show={this.state.slideRightShow}
+          onCancel={this.handleToggleSlideRightShow}
+          popupTransition="slide-right"
+        >
+          <div className="right">
+            <div
+              className="cur"
+              onClick={() => {
+                alert('未婚');
+              }}
+            >
+              未婚
+            </div>
+          </div>
+        </Popup>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```

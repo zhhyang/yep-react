@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 3
+title: 禁用 当前关闭
 description:
 ---
 
@@ -14,7 +14,7 @@ class Demo extends React.PureComponent {
   };
 
   render() {
-    return <Switch currentStatus={this.state.checked} handleSwitch={checked => this.setState({checked})} />;
+    return <Switch currentStatus={this.state.checked} disabled />;
   }
 }
 
