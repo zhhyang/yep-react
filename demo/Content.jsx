@@ -46,22 +46,24 @@ const Content = ({history, location: {pathname, search}}) => {
           <Helmet title={toCamelCase(componentName)} />
           {currentComponent && currentComponent.demos ? (
             subListDemos.indexOf(componentName) > -1 ? (
-              currentComponent.demos
-                .sort((a, b) => a.order - b.order)
-                .map((demo, index) => (
-                  <div key={index} className="demo-wingblank">
-                    <Button onClick={() => (window.location.hash = `${window.location.hash}?order=${index}`)}>
-                      {demo.title}
-                    </Button>
-                  </div>
-                ))
-            ) : query.order ? (
-              <ComponentCard title={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0].title}>
-                <Demo
-                  demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0]}
-                  componentName={componentName}
-                />
-              </ComponentCard>
+              query.order ? (
+                <ComponentCard title={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0].title}>
+                  <Demo
+                    demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0]}
+                    componentName={componentName}
+                  />
+                </ComponentCard>
+              ) : (
+                currentComponent.demos
+                  .sort((a, b) => a.order - b.order)
+                  .map((demo, index) => (
+                    <div key={index} className="demo-wingblank">
+                      <Button onClick={() => (window.location.hash = `${window.location.hash}?order=${index}`)}>
+                        {demo.title}
+                      </Button>
+                    </div>
+                  ))
+              )
             ) : (
               currentComponent.demos
                 .sort((a, b) => a.order - b.order)
