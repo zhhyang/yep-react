@@ -49,7 +49,7 @@ class Demo extends React.PureComponent {
           </div>
         </Popup>
         <Button onClick={() => this.setState({show: true})}>展开遮罩</Button>
-        <PullToRefresh pullDownToRefresh refreshFunction={this.refresh} refreshing={this.state.refreshing}>
+        <PullToRefresh refreshFunction={this.refresh} refreshing={this.state.refreshing}>
           <InfiniteLoader
             dataLength={this.state.items.length}
             loadMore={this.fetchMoreData}

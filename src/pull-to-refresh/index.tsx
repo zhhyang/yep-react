@@ -16,6 +16,7 @@ export interface PullToRefreshProps {
   refreshFunction?: () => void;
   refreshing: boolean;
   indicator: Indicator;
+  getScrollContainer:() => React.ReactNode;
 }
 
 export type CurrentState = 'activate' | 'deactivate' | 'release' | 'finish';
@@ -34,9 +35,11 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
     style: {},
     prefixCls: 'Yep-pull-to-refresh',
     indicator: INDICATOR,
+    getScrollContainer: () => undefined,
   };
 
   private container: any;
+  private ele: any;
 
   private containerRef = (container: HTMLDivElement) => {
     this.container = container;
@@ -64,9 +67,10 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   }
 
   componentDidMount() {
-    this.container.addEventListener('touchstart', this.onStart);
-    this.container.addEventListener('touchmove', this.onMove);
-    this.container.addEventListener('touchend', this.onEnd);
+    this.ele = this.props.getScrollContainer() || this.container;
+    this.ele.addEventListener('touchstart', this.onStart,{ passive: false });
+    this.ele.addEventListener('touchmove', this.onMove,{ passive: false });
+    this.ele.addEventListener('touchend', this.onEnd,{ passive: false });
 
     this.forceUpdate();
 
@@ -86,9 +90,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   }
 
   componentWillUnmount() {
-    this.container.removeEventListener('touchstart', this.onStart);
-    this.container.removeEventListener('touchmove', this.onMove);
-    this.container.removeEventListener('touchend', this.onEnd);
+    this.ele.removeEventListener('touchstart', this.onStart);
+    this.ele.removeEventListener('touchmove', this.onMove);
+    this.ele.removeEventListener('touchend', this.onEnd);
   }
 
   triggerPullToRefresh = () => {
@@ -109,30 +113,45 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
     this.container.style.transition = `transform 0.2s cubic-bezier(0,0,0.31,1)`;
   }
 
+  isMoveEdge = () => {
+    const container = this.props.getScrollContainer();
+    if (container && container === document.body) {
+      const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
+      return scrollNode.scrollTop <= 0;
+    }
+    return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop) <= 0;
+  }
+
+
   onMove(evt: any) {
     if (!this.dragging) return;
     this.currentY = evt.pageY || evt.touches[0].pageY;
 
     // user is scrolling down to up
     if (this.currentY < this.startY) return;
-    //禁止整个页面下拉效果
-    evt.preventDefault();
-    if (this.currentY - this.startY >= this.props.pullDownToRefreshThreshold) {
-      if (this.state.currentState === 'deactivate') {
-        this.setState({
-          currentState: 'activate',
-        });
+
+    if (this.isMoveEdge()){
+      //禁止整个页面下拉效果
+      evt.preventDefault();
+      evt.stopPropagation();
+      if (this.currentY - this.startY >= this.props.pullDownToRefreshThreshold) {
+        if (this.state.currentState === 'deactivate') {
+          this.setState({
+            currentState: 'activate',
+          });
+        }
+      } else {
+        if (this.state.currentState !== 'deactivate') {
+          this.setState({currentState: 'deactivate'});
+        }
       }
-    } else {
-      if (this.state.currentState !== 'deactivate') {
-        this.setState({currentState: 'deactivate'});
-      }
+
+      if (this.currentY - this.startY > this.props.maxPullDownDistance) return;
+
+      this.container.style.overflow = 'visible';
+      this.setInfScrollStyle(this.currentY - this.startY);
     }
 
-    if (this.currentY - this.startY > this.props.maxPullDownDistance) return;
-
-    this.container.style.overflow = 'visible';
-    this.setInfScrollStyle(this.currentY - this.startY);
   }
 
   onEnd() {
