@@ -12,11 +12,6 @@ export interface InfiniteLoaderPropTypes {
   height?: number;
   scrollableTarget: React.ReactNode;
   hasChildren?: boolean;
-  pullDownToRefresh?: boolean;
-  pullDownToRefreshContent?: React.ReactNode;
-  releaseToRefreshContent?: React.ReactNode;
-  pullDownToRefreshThreshold: number;
-  refreshFunction?: () => void;
   onScroll: (e:React.TouchEvent<HTMLDivElement>) => void;
   dataLength?: number;
   initialScrollY: number | undefined;
