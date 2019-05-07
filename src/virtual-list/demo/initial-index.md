@@ -27,15 +27,15 @@ class Demo extends React.Component {
     initial: 100,
     dataSource: generateData(1000),
   };
-  onClick() {
+  onClick = () => {
     this.setState({
       initial: this.state.initial + 100,
     });
-  }
+  };
   render() {
     return (
       <div>
-        <Button onClick={this.onClick.bind(this)}>jump to {this.state.initial + 100}</Button>
+        <Button onClick={this.onClick}>jump to {this.state.initial + 100}</Button>
         <br />
         <br />
         <div className={'virtual-box'}>

@@ -6,8 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Gesture, WhiteSpace} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
+import {Gesture} from '@jdcfe/yep-react';
 const style = `
   .outter {
     display: flex;
@@ -90,99 +89,56 @@ class Demo extends React.Component {
     this.rootNode = ReactDOM.findDOMNode(this.root);
     this.rootNode.style.transform = transform;
   };
-  moveSwiper(e) {
-    const {srcEvent, moveStatus} = e;
-    const {x, y} = e.moveStatus;
-
-    this.swiperNode = ReactDOM.findDOMNode(this.refSwiper);
-    this.swiperNode.style.transform = [`translateX(${x}px)`];
-
-    // preventDefault, avoid trigger scroll event when touch moving.
-    srcEvent.preventDefault();
-  }
-
-  resetSwiper() {
-    this.swiperNode = ReactDOM.findDOMNode(this.refSwiper);
-    this.swiperNode.style.transform = [`translateX(0px)`];
-  }
 
   render() {
     return (
       <div>
         <style dangerouslySetInnerHTML={{__html: style}} />
-        <ComponentCard title="自由拖拽">
-          <div ref="log" style={{height: 100, overflow: 'auto', margin: 10}} />
-          <div className="outter">
-            <Gesture
-              direction="all"
-              enablePinch
-              enableRotate
-              onTap={this.log('onTap')}
-              onPress={this.log('onPress')}
-              onPressUp={this.log('onPressUp')}
-              onSwipe={this.log('onSwipe', ['direction'])}
-              onSwipeLeft={this.log('onSwipeLeft', ['direction'])}
-              onSwipeRight={this.log('onSwipeRight', ['direction'])}
-              onSwipeUp={this.log('onSwipeUp', ['direction'])}
-              onSwipeDown={this.log('onSwipeDown', ['direction'])}
-              onPinch={this.log('onPinch', ['scale'])}
-              onPinchStart={this.log('onPinchStart', ['scale'])}
-              onPinchMove={this.log('onPinchMove', ['scale'])}
-              onPinchEnd={this.log('onPinchEnd', ['scale'])}
-              onPinchCancel={this.log('onPinchCancel', ['scale'])}
-              onPinchIn={this.log('onPinchIn', ['scale'])}
-              onPinchOut={this.log('onPinchOut', ['scale'])}
-              onRotate={this.log('onRotate', ['rotation'])}
-              onRotateStart={this.log('onRotateStart', ['rotation'])}
-              onRotateMove={this.log('onRotateMove', ['rotation'])}
-              onRotateEnd={this.log('onRotateEnd', ['rotation'])}
-              onRotateCancel={this.log('onRotateCancel', ['rotation'])}
-              onPan={this.log('onPan', ['moveStatus', 'direction'])}
-              onPanStart={this.log('onPanStart', ['moveStatus', 'direction'])}
-              onPanMove={this.log('onPanMove', ['moveStatus', 'direction'])}
-              onPanEnd={this.log('onPanEnd', ['moveStatus', 'direction'])}
-              onPanCancel={this.log('onPanCancel', ['moveStatus', 'direction'])}
-              onPanLeft={this.log('onPanLeft', ['moveStatus', 'direction'])}
-              onPanRight={this.log('onPanRight', ['moveStatus', 'direction'])}
-              onPanUp={this.log('onPanUp', ['moveStatus', 'direction'])}
-              onPanDown={this.log('onPanDown', ['moveStatus', 'direction'])}
-            >
-              <div
-                className="inner"
-                ref={el => {
-                  this.root = el;
-                }}
-              />
-            </Gesture>
-          </div>
-        </ComponentCard>
-        <ComponentCard title="左右滑动">
-          <div className="swiper-container">
-            <Gesture
-              direction="horizontal"
-              onPanMove={(e, args) => {
-                this.moveSwiper(e, args);
+
+        <div ref="log" style={{height: 100, overflow: 'auto', margin: 10}} />
+        <div className="outter">
+          <Gesture
+            direction="all"
+            enablePinch
+            enableRotate
+            onTap={this.log('onTap')}
+            onPress={this.log('onPress')}
+            onPressUp={this.log('onPressUp')}
+            onSwipe={this.log('onSwipe', ['direction'])}
+            onSwipeLeft={this.log('onSwipeLeft', ['direction'])}
+            onSwipeRight={this.log('onSwipeRight', ['direction'])}
+            onSwipeUp={this.log('onSwipeUp', ['direction'])}
+            onSwipeDown={this.log('onSwipeDown', ['direction'])}
+            onPinch={this.log('onPinch', ['scale'])}
+            onPinchStart={this.log('onPinchStart', ['scale'])}
+            onPinchMove={this.log('onPinchMove', ['scale'])}
+            onPinchEnd={this.log('onPinchEnd', ['scale'])}
+            onPinchCancel={this.log('onPinchCancel', ['scale'])}
+            onPinchIn={this.log('onPinchIn', ['scale'])}
+            onPinchOut={this.log('onPinchOut', ['scale'])}
+            onRotate={this.log('onRotate', ['rotation'])}
+            onRotateStart={this.log('onRotateStart', ['rotation'])}
+            onRotateMove={this.log('onRotateMove', ['rotation'])}
+            onRotateEnd={this.log('onRotateEnd', ['rotation'])}
+            onRotateCancel={this.log('onRotateCancel', ['rotation'])}
+            onPan={this.log('onPan', ['moveStatus', 'direction'])}
+            onPanStart={this.log('onPanStart', ['moveStatus', 'direction'])}
+            onPanMove={this.log('onPanMove', ['moveStatus', 'direction'])}
+            onPanEnd={this.log('onPanEnd', ['moveStatus', 'direction'])}
+            onPanCancel={this.log('onPanCancel', ['moveStatus', 'direction'])}
+            onPanLeft={this.log('onPanLeft', ['moveStatus', 'direction'])}
+            onPanRight={this.log('onPanRight', ['moveStatus', 'direction'])}
+            onPanUp={this.log('onPanUp', ['moveStatus', 'direction'])}
+            onPanDown={this.log('onPanDown', ['moveStatus', 'direction'])}
+          >
+            <div
+              className="inner"
+              ref={el => {
+                this.root = el;
               }}
-              onPanEnd={() => {
-                this.resetSwiper();
-              }}
-              onTouchMove={e => {
-                console.log('still run touch move');
-              }}
-            >
-              <div style={{height: 200, backgroundColor: 'red'}}>
-                <div
-                  className="swiper"
-                  ref={e => {
-                    this.refSwiper = e;
-                  }}
-                >
-                  This is simple swiper demo. Only allow horizontal direction and height=200px to test scroll event.
-                </div>
-              </div>
-            </Gesture>
-          </div>
-        </ComponentCard>
+            />
+          </Gesture>
+        </div>
       </div>
     );
   }

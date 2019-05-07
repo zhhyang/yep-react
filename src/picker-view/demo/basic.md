@@ -54,17 +54,13 @@ class Demo extends React.Component {
   };
   render() {
     return (
-      <div>
-        <ComponentCard title="基础用法">
-          <PickerView
-            onChange={this.onChange}
-            onScrollChange={this.onScrollChange}
-            value={this.state.value}
-            data={seasons}
-            cascade={false}
-          />
-        </ComponentCard>
-      </div>
+      <PickerView
+        onChange={this.onChange}
+        onScrollChange={this.onScrollChange}
+        value={this.state.value}
+        data={seasons}
+        cascade={false}
+      />
     );
   }
 }

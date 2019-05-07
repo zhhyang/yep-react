@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import Prism from 'prismjs';
+import {withRouter} from 'react-router-dom';
 import qs from 'qs';
-import {NavBar} from '@jdcfe/yep-react';
+import {NavBar, Button} from '@jdcfe/yep-react';
 import allDocData from './allDocData';
 import Demo from './Demo';
 import ComponentTitle from './component/ComponentTitle';
@@ -14,12 +13,9 @@ import App from './App';
 import './Content.scss';
 import Image from './image';
 
-import {CATEGORIES} from './utils';
+import {CATEGORIES, subListDemos} from './utils';
+import ComponentCard from './component/ComponentCard';
 const Content = ({history, location: {pathname, search}}) => {
-  setTimeout(() => {
-    Prism.highlightAll();
-  }, 100);
-
   if (pathname.match(/\/component\//)) {
     const componentName = pathname.split('/').reverse()[0];
     const currentComponent = allDocData.components[componentName];
@@ -32,7 +28,7 @@ const Content = ({history, location: {pathname, search}}) => {
       <Fragment>
         <NavBar
           leftContent=""
-          onLeftClick={() => history.push('/')}
+          onLeftClick={() => history.goBack()}
           rightContent={
             <img
               className="github"
@@ -46,13 +42,37 @@ const Content = ({history, location: {pathname, search}}) => {
           {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">
-          <ComponentTitle title={query.title} englishTitle={toCamelCase(componentName)} />
+          <ComponentTitle title={currentComponent.title} englishTitle={toCamelCase(componentName)} />
           <Helmet title={toCamelCase(componentName)} />
           {currentComponent && currentComponent.demos ? (
-            <Demo
-              demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0]}
-              componentName={componentName}
-            />
+            subListDemos.indexOf(componentName) > -1 ? (
+              query.order ? (
+                <ComponentCard title={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0].title}>
+                  <Demo
+                    demo={currentComponent.demos.sort((a, b) => a.order - b.order)[query.order || 0]}
+                    componentName={componentName}
+                  />
+                </ComponentCard>
+              ) : (
+                currentComponent.demos
+                  .sort((a, b) => a.order - b.order)
+                  .map((demo, index) => (
+                    <div key={index} className="demo-wingblank">
+                      <Button onClick={() => (window.location.hash = `${window.location.hash}?order=${index}`)}>
+                        {demo.title}
+                      </Button>
+                    </div>
+                  ))
+              )
+            ) : (
+              currentComponent.demos
+                .sort((a, b) => a.order - b.order)
+                .map(demo => (
+                  <ComponentCard title={demo.title} key={demo.order}>
+                    <Demo demo={demo} componentName={componentName} />
+                  </ComponentCard>
+                ))
+            )
           ) : null}
           <style>{currentComponent.style || ''}</style>
         </div>

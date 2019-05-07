@@ -82,14 +82,10 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <ComponentCard title="基础用法">
-          <Button onClick={this.onShow} type={'ghost'}>
-            选择地址
-          </Button>
-        </ComponentCard>
-
+        <Button onClick={this.onShow} type={'ghost'}>
+          选择地址
+        </Button>
         <AreaPicker
-          chooseLabel={'12321'}
           show={this.state.show}
           onCancel={this.onCancel}
           initialData={this.state.data}

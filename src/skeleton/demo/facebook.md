@@ -7,7 +7,6 @@ description:
 ```js
 import React from 'react';
 import {Skeleton} from '@jdcfe/yep-react';
-const {FacebookStyle} = Skeleton;
 
 class Demo extends React.PureComponent {
   render() {
