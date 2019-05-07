@@ -6,8 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Popup, Button, WhiteSpace} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
+import {Popup, Button} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   state = {
     slideRightShow: false,

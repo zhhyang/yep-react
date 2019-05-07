@@ -7,7 +7,6 @@ description:
 ```js
 import React from 'react';
 import {PickerView} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
 
 const seasons = [
   [

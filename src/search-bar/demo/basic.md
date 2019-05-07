@@ -7,7 +7,6 @@ description:
 ```js
 import React from 'react';
 import {SearchBar} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   state = {

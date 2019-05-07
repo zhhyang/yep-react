@@ -8,7 +8,6 @@ description:
 import React from 'react';
 import {Button, AreaPicker, Toast} from '@jdcfe/yep-react';
 import jsonp from 'jsonp';
-import ComponentCard from 'ComponentCard';
 const province = [
   {id: 1, name: '北京'},
   {id: 2, name: '上海'},

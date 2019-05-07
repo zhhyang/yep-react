@@ -7,8 +7,7 @@ description:
 ```js
 import React from 'react';
 import {List} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
-const {Item, Brief} = List;
+const {Item} = List;
 
 class Demo extends React.PureComponent {
   constructor() {

@@ -6,7 +6,6 @@ description:
 
 ```js
 import {VirtualList} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
 
 const dataSource = [];
 
