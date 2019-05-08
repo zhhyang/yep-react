@@ -14,9 +14,9 @@ class Demo extends React.PureComponent {
       <div>
         <Carousel
           isInfinite={true}
-          renderPage={(active, realTotal) => (
+          renderPage={(active, total) => (
             <div className="Yep-carousel-demo-page">
-              {active + 1}/{realTotal}
+              {active + 1}/{total}
             </div>
           )}
         >
