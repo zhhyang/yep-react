@@ -34,7 +34,12 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     this.el.addEventListener('scroll', this.throttledOnScrollListener);
 
     if (typeof this.props.initialScrollY === 'number' && this.el.scrollHeight > this.props.initialScrollY) {
-      this.el.scrollTo(0, this.props.initialScrollY);
+      //this.el.scrollTo(0, this.props.initialScrollY) scrollTo is not a function in andriod webview
+      if (typeof this.el.scrollTo === 'function'){
+        this.el.scrollTo(0,this.props.initialScrollY)
+      } else {
+        this.el.scrollTop = this.props.initialScrollY;
+      }
     }
   }
 
