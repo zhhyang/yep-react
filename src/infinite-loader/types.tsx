@@ -13,6 +13,6 @@ export interface InfiniteLoaderPropTypes {
   scrollableTarget: React.ReactNode;
   hasChildren?: boolean;
   onScroll: (e:React.TouchEvent<HTMLDivElement>) => void;
-  dataLength?: number;
+  dataLength: number;
   initialScrollY: number | undefined;
 }
