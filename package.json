@@ -25,7 +25,7 @@
     "build-site:jd": "cross-env JD=true webpack --config scripts/webpack.site.config.pro.js",
     "deploy:jd": "gh-pages -d build -r http://git.jd.com/JDC-FE/lrc-m.git -b master",
     "predeploy:jd": "npm run build-demo && npm run build-site:jd",
-    "lint-staged": "tsc && node node_modules/tslint/bin/tslint",
+    "lint-staged": "node node_modules/tslint/bin/tslint src/**/*.tsx",
     "tsc": "tsc"
   },
   "keywords": [
