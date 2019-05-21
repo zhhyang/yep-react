@@ -55,3 +55,4 @@ export {default as Steps} from './steps';
 export {default as Price} from './price';
 export {default as PullToRefresh} from './pull-to-refresh';
 export {default as Cell} from './cell';
+export {default as LazyLoad} from './lazy-load';
