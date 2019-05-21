@@ -22,3 +22,4 @@ title: 滚动无限加载
 | hasChildren      | 如果 children 不是数组，提供额外的 prop 来计算数据是 0 还是更多 | boolean | -                   | false    |
 | onScroll         | 容器滚动时触发的事件                                            | func    | -                   | false    |
 | initialScrollY   | 组件初始化时滚动到的位置                                        | number  | -                   | false    |
+| dataLength       | 数据的长度，用来判断下一页数据是否请求结束                      | number  | -                   | true     |

@@ -27,7 +27,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
     duration: 1.5,
   };
   private closeTimer: number;
-  static newInstance: (properties:any, callback:any) => void;
+  static newInstance: (properties: any, callback: any) => void;
   constructor(props: NotificationProps) {
     super(props);
     this.close = this.close.bind(this);
@@ -74,8 +74,8 @@ export default class Notification extends React.PureComponent<NotificationProps,
   render() {
     const {className, prefixCls, style, icon, message, bottom} = this.props;
     const {show} = this.state;
-    const cls = classNames(prefixCls, className, 'mask', {
-      bottom: bottom,
+    const cls = classNames(prefixCls, className, `${prefixCls}-mask`, {
+      [`${prefixCls}-bottom`]: bottom,
     });
     return (
       <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit={true}>
@@ -95,8 +95,7 @@ Notification.newInstance = (properties, callback) => {
   document.body.appendChild(div);
 
   let called = false;
-  function ref(parameters: {instance: any}) {
-    let instance = parameters.instance;
+  function ref(instance: any) {
     if (called) {
       return;
     }
