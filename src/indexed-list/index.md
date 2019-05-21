@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Layout
 title: 索引列表
 ---
 

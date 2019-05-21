@@ -17,7 +17,6 @@ class Header extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isSticky !== this.props.isSticky && nextProps.isSticky) {
-      console.log(nextProps.isSticky);
       this.props.change(nextProps.sectionData);
     }
   }

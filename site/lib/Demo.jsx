@@ -30,10 +30,10 @@ class Demo extends React.Component {
 
   render() {
     const {demo, componentName} = this.props;
-    const {protocol, hostname, host, port} = window.location;
-    const src = `${protocol}//${port ? hostname + ':8081' : host + '/demo.html'}#/component/${componentName}?order=${
-      demo.order
-    }`;
+    const {protocol, hostname, host, port, pathname} = window.location;
+    const src = `${protocol}//${
+      port ? hostname + ':8081' : host + pathname + 'demo.html'
+    }#/component/${componentName}?order=${demo.order}`;
     console.log(src);
     return (
       <div className="">

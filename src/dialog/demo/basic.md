@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Dialog, Button, WhiteSpace} from '@jdcfe/yep-react';
+import {Dialog, Button} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
@@ -14,9 +14,6 @@ class Demo extends React.PureComponent {
   };
 
   render() {
-    const obj = {
-      className: '123',
-    };
     return (
       <div title="Dialog">
         <Button
@@ -24,23 +21,7 @@ class Demo extends React.PureComponent {
             this.setState({show: true});
           }}
         >
-          Dialog
-        </Button>
-        <WhiteSpace />
-        <Button
-          onClick={() => {
-            Dialog.confirm('标题', '确定要删除吗?');
-          }}
-        >
-          Confirm
-        </Button>
-        <WhiteSpace />
-        <Button
-          onClick={() => {
-            Dialog.confirm('标题', '确定要删除吗?', [{text: '好的', onClick: () => console.log('好的')}], obj);
-          }}
-        >
-          Alert
+          基础用法
         </Button>
 
         <Dialog

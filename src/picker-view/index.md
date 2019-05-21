@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Form
 title: 选择器
 ---
 
@@ -18,3 +18,6 @@ PickerView 的功能类似于 Picker ，但它是直接渲染在区域中，而�
 | pickerPrefixCls | picker prefix class                                              | string                                                   | Yep-picker-col |
 | itemStyle       | 每列样式                                                         | Object                                                   | -              |
 | indicatorStyle  | indicator 样式                                                   | Object                                                   | -              |
+
+selectedValue
+defaultSelectedValue

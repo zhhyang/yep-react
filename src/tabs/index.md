@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Navigation
 title: 标签页
 ---
 
@@ -15,7 +15,7 @@ title: 标签页
 | className               | 组件额外样式               | string                                              | -          | false |
 | tabBarPosition          | TabBar 位置                | 'top' 'bottom' 'left' 'right' top                   | false      |
 | renderTabBar            | 替换 TabBar                | ((props: TabBarPropsType) => React.ReactNode) false |            | false |
-| initialPage             | 初始化 Tab, index or key   | number string                                       |            | false |
+| defaultIndex            | 初始化 Tab, index or key   | number string                                       |            | false |
 | page                    | 当前 Tab, index or key     | number string                                       |            | false |
 | swipeable               | 是否可以滑动内容切换       | boolean                                             | true       | false |
 | animated                | 是否开启切换动画           | boolean                                             | true       | false |
@@ -40,5 +40,5 @@ title: 标签页
 | animated   | 是否使用动画       | boolean                                     |                      | true  |
 | prefixCls  | 样式前缀           | string                                      | Yep-tabs-default-bar | false |
 | renderTab  | 替换 TabBar 的 Tab | (tab: {title,index}) => React.ReactNode     |                      | false |
-| page       | Tab 分页尺寸       | number                                      | 5                    | false |
+| page       | Tab 分页大小       | number                                      | 5                    | false |
 | onTabClick | tab 被点击的回调   | (tab: {title,index}, index: number) => void |                      | false |

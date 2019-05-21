@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Layout
 title: 列表
 ---
 

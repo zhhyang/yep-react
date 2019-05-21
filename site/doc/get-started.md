@@ -5,8 +5,6 @@ title: 快速上手
 
 如果是在[butler](http://butler.jd.com/#/)中使用，请直接访问[在 butler 中使用](#/doc/use-with-butler).
 
-开始使用前请先配置[京东内部 npm 源](http://npm.m.jd.com/)。
-
 ### 安装
 
 使用 [`yarn`](https://yarnpkg.com/en/) 安装：
@@ -21,22 +19,43 @@ yarn add @jdcfe/yep-react
 npm install --save @jdcfe/yep-react
 ```
 
+组件样式基于 sass 开发，需要安装 node-sass
+
+```
+yarn add -D node-sass
+```
+
+设计规范按照 750 的 2 倍屏，需要 px 转为 rem
+
+```
+yarn add -D postcss-pxtorem
+```
+
 ### 使用
 
 入口页面 (html 或 模板) 相关设置：
 
-> 屏幕适配(更多参考 [wiki](http://git.jd.com/JDC-FE/lrc-m/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
+> 屏幕适配(更多参考 [wiki](https://github.com/jdf2e/yep-react/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- set `maximum-scale` for some compatibility issues -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 </head>
 <body>
 </body>
 </html>
+```
+
+配置 postcss-pxtorem
+
+```javascript
+const pxtorem = require('postcss-pxtorem');
+pxtorem({
+  rootValue: 100,
+  propList: [],
+});
 ```
 
 组件使用实例：
@@ -49,7 +68,7 @@ ReactDOM.render(<Button>Start</Button>, mountNode);
 引入样式：
 
 ```jsx
-import '@jdcfe/yep-react/dist/yep-react.css';
+import '@jdcfe/yep-react/dist/@jdcfe/yep-react.css';
 ```
 
 ##### 按需加载

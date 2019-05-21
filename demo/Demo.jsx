@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import * as Components from '@jdcfe/yep-react'; // eslint-disable-line
 import {transform} from '@babel/standalone';
 import jsonp from 'jsonp';
+import ComponentCard from './component/ComponentCard';
 //import Editor from './Editor';
 
 class Demo extends React.Component {
@@ -23,13 +24,11 @@ class Demo extends React.Component {
       showEditor: false,
     };
     this.code = props.demo.__content.replace(/^\s*```jsx?/, '').replace(/```\s*$/, ''); // eslint-disable-line no-underscore-dangle
-
-    this.toggleEditor = this.toggleEditor.bind(this);
-    this.onCodeChange = this.onCodeChange.bind(this);
   }
 
   componentDidMount() {
     this.renderSource(this.code);
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,17 +41,6 @@ class Demo extends React.Component {
     }
   }
 
-  onCodeChange(newCode) {
-    this.renderSource(newCode);
-    this.code = newCode;
-  }
-
-  toggleEditor() {
-    this.setState({
-      showEditor: !this.state.showEditor,
-    });
-  }
-
   renderSource(code) {
     let finalCode = code.replace('mountNode', `document.getElementById("demo-${this.props.demo.order}")`);
     finalCode = finalCode.replace(/import[^;]+?;/g, '');
@@ -61,8 +49,8 @@ class Demo extends React.Component {
       plugins: ['proposal-class-properties', 'proposal-object-rest-spread'],
     }).code;
 
-    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp'];
-    const argv = [this, React, ReactDOM, PropTypes, jsonp];
+    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp', 'ComponentCard'];
+    const argv = [this, React, ReactDOM, PropTypes, jsonp, ComponentCard];
 
     Object.keys(Components).forEach(name => {
       args.push(name);

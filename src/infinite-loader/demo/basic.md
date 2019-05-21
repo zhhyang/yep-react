@@ -35,7 +35,7 @@ class Demo extends React.PureComponent {
           dataLength={this.state.items.length}
           loadMore={this.fetchMoreData}
           hasMore={true}
-          loader={<h4>Loading...</h4>}
+          loader={<h4 style={{textAlign: 'center'}}>Loading...</h4>}
         >
           {this.state.items.map((i, index) => (
             <div style={style} key={index}>

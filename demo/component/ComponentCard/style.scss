@@ -1,0 +1,29 @@
+.componentCardContainer {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px 0px rgba(76, 124, 250, 0.5);
+  border-radius: 6px;
+  margin: 28px;
+  padding: 20px;
+}
+
+.componentCardTitleContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tag {
+  width: 8px;
+  height: 40px;
+  background-color: #4c7cfa;
+  margin-right: 20px;
+}
+
+.content {
+  height: 40px;
+  line-height: 40px;
+  font-family: PingFangSC-Medium;
+  font-size: 28px;
+  color: #1e2947;
+}
+

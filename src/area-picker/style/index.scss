@@ -28,7 +28,9 @@ $effect-duration: 0.3s;
 
   &-content {
     height: $area-content-height;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     li {
       height: 74px;
       line-height: 74px;

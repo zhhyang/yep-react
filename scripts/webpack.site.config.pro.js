@@ -7,7 +7,6 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 
-
 // common function to get css loaders
 const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
   const loaders = [
@@ -26,7 +25,6 @@ const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
   return loaders;
 };
 
-
 // css files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -35,18 +33,18 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const config = {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: false,
   entry: {
     site: path.join(process.cwd(), 'site/index'),
   },
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
-    publicPath: '/',
+    publicPath: '',
     filename: '[name].[chunkhash:8].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.tsx'],
     alias: {
       '@jdcfe/yep-react': path.resolve(__dirname, '../src'),
     },
@@ -62,8 +60,8 @@ const config = {
         ],
       },
       {
-        test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src')],
+        test: /\.js$|[j|t]sx?$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -123,7 +121,7 @@ const config = {
         // its runtime that would otherwise be processed through "file" loader.
         // Also exclude `html` and `json` extensions so they get processed
         // by webpacks internal loaders.
-        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.scss$/],
+        exclude: [/\.(js|jsx|mjs|tsx)$/, /\.html$/, /\.json$/, /\.scss$/],
         loader: require.resolve('file-loader'),
         options: {
           name: '[name].[hash:8].[ext]',
@@ -132,6 +130,9 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __JD__: process.env.JD,
+    }),
     new CleanWebpackPlugin(['build/site.*', 'build/index.html'], {
       root: process.cwd(),
     }),

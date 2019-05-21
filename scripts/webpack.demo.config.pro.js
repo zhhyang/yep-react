@@ -6,20 +6,22 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+
 const config = {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: false,
   entry: {
     demo: path.join(process.cwd(), 'demo/index'),
   },
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
-    publicPath: '/',
+    publicPath: '',
     filename: '[name].[chunkhash:8].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.tsx'],
     alias: {
       '@jdcfe/yep-react': path.resolve(__dirname, '../src'),
     },
@@ -35,8 +37,8 @@ const config = {
         ],
       },
       {
-        test: /\.jsx?$/,
-        include: [path.join(process.cwd(), 'site'), path.join(process.cwd(), 'src'), path.join(process.cwd(), 'demo')],
+        test: /\.js$|[j|t]sx?$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -75,6 +77,7 @@ const config = {
       },
       {
         test: /\.scss/,
+        exclude: sassModuleRegex,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -103,6 +106,51 @@ const config = {
           },
           'sass-loader',
         ],
+      },
+      {
+        test: /\.module\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('css-loader'),
+            options: {modules: true},
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              // Necessary for external CSS imports to work
+              // https://github.com/facebookincubator/create-react-app/issues/2677
+              ident: 'postcss',
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+                pxtorem({
+                  rootValue: 100,
+                  propWhiteList: [],
+                }),
+              ],
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        // Exclude `js` files to keep "css" loader working as it injects
+        // its runtime that would otherwise be processed through "file" loader.
+        // Also exclude `html` and `json` extensions so they get processed
+        // by webpacks internal loaders.
+        exclude: [/\.(js|jsx|mjs|tsx)$/, /\.html$/, /\.json$/, /\.scss$/, /\.css$/],
+        loader: require.resolve('file-loader'),
+        options: {
+          name: '[name].[hash:8].[ext]',
+        },
       },
     ],
   },

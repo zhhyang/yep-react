@@ -1,7 +1,7 @@
-body {
-  background-color: #f2f2f2;
-  overflow-y: hidden;
-}
+//body {
+//  background-color: #f2f2f2;
+//  overflow-y: hidden;
+//}
 
 #app {
   height: 100%;
@@ -27,7 +27,7 @@ body {
   justify-content: space-between;
   padding:10px 20px;
   //height: 48px;
-  background-color: #33B077;
+  background-color: #5b9eff;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   z-index:999;
@@ -97,6 +97,19 @@ body {
   color: #ff686b;
 }
 
+.component-ul-wrapper{
+  .nav-title{
+    color:rgba(0,0,0,0.5);
+    &:hover{
+      cursor:pointer;
+      color: #ff686b;
+    }
+  }
+  .nav-title-active{
+    color: #ff686b;;
+  }
+}
+
 .l-main {
   display: flex;
   background-color: #fff;
@@ -118,7 +131,6 @@ body {
 }
 
 .l-menu .nav-item {
-  height: 40px;
   line-height: 40px;
   color: #2d3646;
   font-size: 16px;
@@ -183,7 +195,6 @@ body {
 
 .l-menu .nav-group {
   display: none;
-  padding-bottom: 40px;
 }
 
 .l-menu .nav-group .nav-link{
@@ -399,7 +410,7 @@ body {
 /*}*/
 
 .navbar-toggle {
-  background: #33B077;
+  background: #5b9eff;
   display: block;
   border-radius: 4px;
   border: 1px solid #fff;
@@ -639,3 +650,5 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help;
 }
+
+

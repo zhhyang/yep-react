@@ -12,10 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Checkbox>鱼</Checkbox>
-        <Checkbox disabled>肉</Checkbox>
-        <Checkbox defaultChecked>小龙虾</Checkbox>
-        <Checkbox checked>哈啤酒</Checkbox>
+        <Checkbox>选项</Checkbox>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Feedback
 title: 通知
 ---
 

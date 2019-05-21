@@ -82,7 +82,7 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <Button onClick={this.onShow} type={'ghost'}>
-          点我
+          默认选中地址
         </Button>
         <AreaPicker
           chooseLabel={'12321'}

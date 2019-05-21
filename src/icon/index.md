@@ -1,5 +1,5 @@
 ---
-category: Components
+category: Basic
 title: 图标
 ---
 

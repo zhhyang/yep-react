@@ -12,6 +12,7 @@ import ppt3 from './../assets/img/ppt3.png';
 import ppt4 from './../assets/img/ppt4.png';
 import iconNpm from './../assets/img/npm.png';
 import './../assets/css/home.scss';
+import {website} from '../config';
 
 class Home extends React.Component {
   constructor(props) {
@@ -33,6 +34,16 @@ class Home extends React.Component {
     document.body.ontouchmove = this.scrollFunc.bind(this);
     document.body.onscroll = this.scrollFunc.bind(this);
     loiterInit(window);
+    if(document.documentElement.clientHeight > 1300){
+      this.setState({
+        activeBeforeStartContainer: 1,
+      });
+    }
+    if(document.documentElement.clientHeight > 1900){
+      this.setState({
+        activeStartContent: 1,
+      });
+    }
     return new Rellax('.parallax-animation .rellax', {
       speed: -2,
       center: false,
@@ -60,25 +71,16 @@ class Home extends React.Component {
 
   scrollFunc() {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-
     if (document.body.clientWidth > 500) {
       //在 PC 端显示缓出动画
       if (scrollTop > 290) {
         this.setState({
           activeBeforeStartContainer: 1,
         });
-      } else {
-        this.setState({
-          activeBeforeStartContainer: 0,
-        });
       }
       if (scrollTop > 1240) {
         this.setState({
           activeStartContent: 1,
-        });
-      } else {
-        this.setState({
-          activeStartContent: 0,
         });
       }
 
@@ -86,17 +88,9 @@ class Home extends React.Component {
         this.setState({
           activeIntro: 1,
         });
-      } else {
-        this.setState({
-          activeIntro: 0,
-        });
       }
     } else {
       if (scrollTop > 880) {
-        this.setState({
-          activeIntro: 1,
-        });
-      } else {
         this.setState({
           activeIntro: 1,
         });
@@ -105,18 +99,10 @@ class Home extends React.Component {
         this.setState({
           activeBeforeStartContainer: 1,
         });
-      } else {
-        this.setState({
-          activeBeforeStartContainer: 1,
-        });
       }
       if (scrollTop > 29) {
         this.setState({
           activeStartContent: 1,
-        });
-      } else {
-        this.setState({
-          activeStartContent: 0,
         });
       }
     }
@@ -138,14 +124,19 @@ class Home extends React.Component {
               </div>
               <div className="page-home-buttons logo-animate">
                 <a
-                  href="//yep-react.jd.com/#/doc/get-started"
+                  href={`/#/doc/get-started`}
                   className="page-home-button"
                   target="_blank"
                   rel="noopener"
                 >
                   开始使用
                 </a>
-                <a href="//yep-react.jd.com/demo.html" className="page-home-button" rel="noopener" target="_blank">
+                <a
+                  href={`/demo.html`}
+                  className="page-home-button"
+                  rel="noopener"
+                  target="_blank"
+                >
                   查看示例
                   <div className="triangle-qrcode" id="triangle-qrcode">
                     <img
@@ -166,12 +157,12 @@ class Home extends React.Component {
                 </a>
               </div>
               <div className="page-home-warehouse logo-animate" id="page-home-warehouse">
-                <a href="//git.jd.com/JDC-FE/lrc-m" className="github" target="_blank">
+                <a href="//github.com/jdf2e/yep-react" className="github" target="_blank">
                   <img src={git3} alt="" />
                 </a>
                 <i className="circ" id="circ" />
-                <a href="http://npm.m.jd.com/package/@jdcfe/yep-react" className="npm" target="_blank">
-                  <img src={iconNpm} alt="" />
+                <a href="https://npmjs.com/package/@jdcfe/yep-react" className="npm" target="_blank">
+                  <img src="https://badge.fury.io/js/%40jdcfe%2Fyep-react.svg" alt="" />
                 </a>
               </div>
             </div>
@@ -231,20 +222,13 @@ class Home extends React.Component {
                 <h6>安装</h6>
                 <div className="page-home-code">
                   <code>
-                    <span className="page-home-comment"># 安装nrm</span>
-                    <span>
-                      <span className="pl-smi">npm install -g nrm</span>
-                    </span>
-                    <span className="page-home-comment"># 添加jdnpm源</span>
-                    <span>
-                      <span className="pl-smi">nrm add jdnpm2 http://registry.m.jd.com/</span>
-                    </span>
-                    <span>
-                      <span className="pl-smi">nrm use jdnpm2</span>
-                    </span>
-                    <span className="page-home-comment"># 安装组件</span>
+                    <span className="page-home-comment"># npm</span>
                     <span>
                       <span className="pl-smi">npm install --save @jdcfe/yep-react</span>
+                    </span>
+                    <span className="page-home-comment"># yarn</span>
+                    <span>
+                      <span className="pl-smi">yarn add @jdcfe/yep-react</span>
                     </span>
                   </code>
                 </div>
@@ -305,7 +289,7 @@ class Home extends React.Component {
             </div>
             <div className="right" id="phone-container">
               <div className="page-home-phone">
-                <iframe src="//yep-react.jd.com/demo.html" frameBorder="0" />
+                <iframe src={`//${website}/demo.html`} frameBorder="0" />
               </div>
             </div>
           </div>
@@ -379,7 +363,7 @@ class Home extends React.Component {
               transform: 'rotate(17deg)',
               opacity: 0.8,
               zIndex: 1,
-              backgroundColor: '#33B077',
+              backgroundColor: '#5b9eff',
             }}
             data-rellax-speed="4"
           />
@@ -393,7 +377,7 @@ class Home extends React.Component {
               right: '7%',
               transform: 'rotate(17deg)',
               opacity: 0.8,
-              backgroundColor: '#33B077',
+              backgroundColor: '#5b9eff',
             }}
             data-rellax-speed="10"
           />
@@ -426,7 +410,7 @@ class Home extends React.Component {
           />
         </div>
         <footer className="page-home-footer">
-          邮箱：<a href="mailto:yep_group@jd.com">jdf_yep@jd.com</a> | Copyright © 京东前端开发部
+          邮箱：<a href="mailto:yep@jd.com">yep@jd.com</a> | Copyright © 京东前端开发部
         </footer>
       </div>
     );

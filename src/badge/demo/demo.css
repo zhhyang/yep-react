@@ -1,0 +1,12 @@
+.shop-image {
+  width: 0.52rem;
+  height: 0.42rem;
+  display: inline-block;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url('https://img10.360buyimg.com/imagetools/jfs/t1/21791/13/11691/2155/5c91dea2Eb5850e44/9b8ec9e7de3a6733.png');
+}
+
+.badge-text {
+  margin-top: 0.2rem;
+}

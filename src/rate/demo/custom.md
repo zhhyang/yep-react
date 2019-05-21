@@ -20,20 +20,18 @@ class Demo extends React.PureComponent {
   render() {
     const {rating} = this.state;
     return (
-      <div>
-        <Rate
-          className="custom"
-          name="rate1"
-          starCount={10}
-          renderStarIcon={(index, value, name, id) => (
-            <i key={`icon_${id}`} style={{fontStyle: 'normal', fontSize: 30}}>
-              &#9733;
-            </i>
-          )}
-          value={rating}
-          onStarClick={this.onStarClick}
-        />
-      </div>
+      <Rate
+        className="custom"
+        name="rate1"
+        starCount={10}
+        renderStarIcon={(index, value, name, id) => (
+          <i key={`icon_${id}`} style={{fontStyle: 'normal', fontSize: 30}}>
+            &#9733;
+          </i>
+        )}
+        value={rating}
+        onStarClick={this.onStarClick}
+      />
     );
   }
 }

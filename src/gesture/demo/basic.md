@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Gesture, WhiteSpace} from '@jdcfe/yep-react';
+import {Gesture} from '@jdcfe/yep-react';
 const style = `
   .outter {
     display: flex;
@@ -89,26 +89,12 @@ class Demo extends React.Component {
     this.rootNode = ReactDOM.findDOMNode(this.root);
     this.rootNode.style.transform = transform;
   };
-  moveSwiper(e) {
-    const {srcEvent, moveStatus} = e;
-    const {x, y} = e.moveStatus;
-
-    this.swiperNode = ReactDOM.findDOMNode(this.refSwiper);
-    this.swiperNode.style.transform = [`translateX(${x}px)`];
-
-    // preventDefault, avoid trigger scroll event when touch moving.
-    srcEvent.preventDefault();
-  }
-
-  resetSwiper() {
-    this.swiperNode = ReactDOM.findDOMNode(this.refSwiper);
-    this.swiperNode.style.transform = [`translateX(0px)`];
-  }
 
   render() {
     return (
       <div>
         <style dangerouslySetInnerHTML={{__html: style}} />
+
         <div ref="log" style={{height: 100, overflow: 'auto', margin: 10}} />
         <div className="outter">
           <Gesture
@@ -151,31 +137,6 @@ class Demo extends React.Component {
                 this.root = el;
               }}
             />
-          </Gesture>
-        </div>
-        <div className="swiper-container">
-          <Gesture
-            direction="horizontal"
-            onPanMove={(e, args) => {
-              this.moveSwiper(e, args);
-            }}
-            onPanEnd={() => {
-              this.resetSwiper();
-            }}
-            onTouchMove={e => {
-              console.log('still run touch move');
-            }}
-          >
-            <div style={{height: 200, backgroundColor: 'red'}}>
-              <div
-                className="swiper"
-                ref={e => {
-                  this.refSwiper = e;
-                }}
-              >
-                This is simple swiper demo. Only allow horizontal direction and height=200px to test scroll event.
-              </div>
-            </div>
           </Gesture>
         </div>
       </div>

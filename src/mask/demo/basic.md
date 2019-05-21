@@ -35,6 +35,7 @@ class Demo extends React.PureComponent {
         <WhiteSpace />
         <Button onClick={this.handleToggleTransparentShow}>显示透明遮罩</Button>
         <WhiteSpace />
+
         {this.state.show && <Mask onClick={this.handleToggleShow} />}
         {this.state.transparentShow && <Mask transparent onClick={this.handleToggleTransparentShow} />}
       </div>

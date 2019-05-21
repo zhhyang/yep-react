@@ -6,13 +6,13 @@ description:
 
 ```js
 import React from 'react';
-import {Carousel} from '@jdcfe/lrc-m';
+import {Carousel} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Carousel className="bbb" isInfinite={true}>
+        <Carousel className="bbb">
           <div>
             <img src="//m.360buyimg.com/babel/jfs/t23224/35/1026004507/74414/35929bac/5b4d885bN0cdaa9f4.jpg" />
           </div>

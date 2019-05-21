@@ -8,11 +8,11 @@
   font-size: 32px;
   text-align: center;
 
-  &.mask{
+  &-mask{
     display: flex;
     justify-content: center;
   }
-  &.bottom{
+  &-bottom{
     top: 86%;
   }
   &-notice{

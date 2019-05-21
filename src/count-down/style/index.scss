@@ -1,2 +1,17 @@
 .Yep-count-down {
+  &-default {
+    color: #f03360;
+    font-size: 16px;
+    &-box {
+      display: inline-block;
+      width: 36px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 6px;
+      background-color: #f03360;
+      color: #ffffff;
+      text-align: center;
+      margin: 0 2px;
+    }
+  }
 }

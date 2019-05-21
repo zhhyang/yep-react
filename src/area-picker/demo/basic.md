@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Button, AreaPicker} from '@jdcfe/yep-react';
+import {Button, AreaPicker, Toast} from '@jdcfe/yep-react';
 import jsonp from 'jsonp';
 const province = [
   {id: 1, name: '北京'},
@@ -74,6 +74,7 @@ class Demo extends React.PureComponent {
 
   onOk = (values, index) => {
     console.log(values);
+    Toast.show('您选择的地址为:' + values.map(value => value.name).join(' '));
     this.setState({show: false});
   };
 
@@ -81,10 +82,9 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <Button onClick={this.onShow} type={'ghost'}>
-          点我
+          选择地址
         </Button>
         <AreaPicker
-          chooseLabel={'12321'}
           show={this.state.show}
           onCancel={this.onCancel}
           initialData={this.state.data}
