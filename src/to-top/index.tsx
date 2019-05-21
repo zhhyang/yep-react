@@ -91,7 +91,7 @@ export default class ToTop extends React.PureComponent<ToTopProps, State> {
     const cls = classNames(prefixCls, className);
     const defaultElement = (
       <div className={`${prefixCls}-content`}>
-        <Icon type="lego_zhiding" size="md" />
+        <Icon type="up" className={`${prefixCls}-icon`}/>
       </div>
     );
     const divProps = omit(this.props, ['prefixCls', 'className', 'children', 'displayHeight', 'visible']);

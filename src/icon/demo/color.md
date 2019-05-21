@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 自定义颜色
 description:
 ---
 
@@ -10,14 +10,14 @@ import {Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
-    const icons = ['close', 'bell', 'cart', 'more', 'close_o', 'check', 'circle', 'radio', 'checkbox', 'up'];
+    const icons = ['close', 'cart', 'more'];
 
     return (
       <div>
         <div className="iconContainer">
           {icons.map(icon => (
             <div className="iconItem">
-              <Icon type={icon} key={icon} className="iconStyle" />
+              <Icon type={icon} key={icon} className="iconStyle" color="#f0ad4e" />
               <h6 className="iconName">{icon}</h6>
             </div>
           ))}

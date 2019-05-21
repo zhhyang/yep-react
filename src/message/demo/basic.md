@@ -18,15 +18,10 @@ class Demo extends React.PureComponent {
     };
     return (
       <div>
-        <Message tipType="error">电话号码无效</Message>
+        <Message icon>电话号码无效</Message>
         <br />
-        <Message tipType="warn">
-          <p>
-            <b style={{color: 'red'}}>注意：</b>小心熊出没
-          </p>
-          <p>光头强要小心啦！</p>
-        </Message>
-        <Message tipType="error" duration={3000} position="fix-top">
+
+        <Message type="error" duration={3000} closeable position="fix-top">
           顶部通知，3秒后消失
         </Message>
         <Message
