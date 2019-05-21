@@ -11,7 +11,6 @@ interface StepsProps {
 }
 
 export default class Steps extends React.Component<StepsProps> {
-
   static defaultProps = {
     prefixCls: 'Yep-steps',
     style: {},
@@ -25,9 +24,9 @@ export default class Steps extends React.Component<StepsProps> {
   }
 
   render() {
-    const {prefixCls,className,style,stepNum, titles, desc} = this.props;
-    const wrapCls = classNames(`${prefixCls}`, className)
-      return (
+    const {prefixCls, className, style, stepNum, titles, desc} = this.props;
+    const wrapCls = classNames(`${prefixCls}`, className);
+    return (
       <div className={wrapCls} style={style}>
         <div className={`${prefixCls}-list`}>
           <div className={`${prefixCls}-line`}>

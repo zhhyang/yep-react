@@ -16,7 +16,7 @@ export interface PullToRefreshProps {
   refreshFunction?: () => void;
   refreshing: boolean;
   indicator: Indicator;
-  getScrollContainer:() => React.ReactNode;
+  getScrollContainer: () => React.ReactNode;
 }
 
 export type CurrentState = 'activate' | 'deactivate' | 'release' | 'finish';
@@ -68,9 +68,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
 
   componentDidMount() {
     this.ele = this.props.getScrollContainer() || this.container;
-    this.ele.addEventListener('touchstart', this.onStart,{ passive: false });
-    this.ele.addEventListener('touchmove', this.onMove,{ passive: false });
-    this.ele.addEventListener('touchend', this.onEnd,{ passive: false });
+    this.ele.addEventListener('touchstart', this.onStart, {passive: false});
+    this.ele.addEventListener('touchmove', this.onMove, {passive: false});
+    this.ele.addEventListener('touchend', this.onEnd, {passive: false});
 
     this.forceUpdate();
 
@@ -120,8 +120,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
       return scrollNode.scrollTop <= 0;
     }
     return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop) <= 0;
-  }
-
+  };
 
   onMove(evt: any) {
     if (!this.dragging) return;
@@ -130,7 +129,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
     // user is scrolling down to up
     if (this.currentY < this.startY) return;
 
-    if (this.isMoveEdge()){
+    if (this.isMoveEdge()) {
       //禁止整个页面下拉效果
       evt.preventDefault();
       evt.stopPropagation();
@@ -151,7 +150,6 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
       this.container.style.overflow = 'visible';
       this.setInfScrollStyle(this.currentY - this.startY);
     }
-
   }
 
   onEnd() {
