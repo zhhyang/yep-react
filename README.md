@@ -24,7 +24,3 @@
 ## 讨论 / 问题反馈 / 建议
 
 请移步 [issue 页面](https://github.com/jdf2e/yep-react/issues)。
-
-## 开发
-
-请移步[开发流程](https://github.com/jdf2e/yep-react/blob/dev/开发流程.md)

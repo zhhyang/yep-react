@@ -7,7 +7,6 @@ description:
 ```js
 import React from 'react';
 import {Rate, Toast} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   state = {
@@ -21,13 +20,7 @@ class Demo extends React.PureComponent {
 
   render() {
     const {rating} = this.state;
-    return (
-      <div>
-        <ComponentCard title="基础用法">
-          <Rate name="rate1" starCount={10} value={rating} onStarClick={this.onStarClick} />
-        </ComponentCard>
-      </div>
-    );
+    return <Rate name="rate1" starCount={10} value={rating} onStarClick={this.onStarClick} />;
   }
 }
 

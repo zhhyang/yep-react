@@ -3,7 +3,7 @@ category: Basic
 title: 手势操作
 ---
 
-为移动端 React 组件提供手势操作，inspired by hammer and
+为移动端 React 组件提供手势操作，inspired by hammer and rc-gesture
 
 <DEMO>
 
@@ -42,15 +42,16 @@ title: 手势操作
 ### Pinch
 
 pinch gesture is not enabled by default, you must set props.enablePinch = true at first;
-| 参数 | 类型 | 默认值 | 说明 |
-| ----------- | -------- | ------ | ---------------------------------------------------------------------- |
-| onPinch | function | | pinch callback, will triggered at the same time of all of below callback |
-| onPinchStart | function | | pinch start callback |
-| onPinchMove | function | | pinch move callback |
-| onPinchEnd | function | | pinch end callback |
-| onPinCancel | function | | pinch cancel callback |
-| onPinchIn | function | |pinch in callback |
-| onPinchOut | function | | pinch out callback |
+
+| 参数         | 类型     | 默认值 | 说明                                                                     |
+| ------------ | -------- | ------ | ------------------------------------------------------------------------ |
+| onPinch      | function |        | pinch callback, will triggered at the same time of all of below callback |
+| onPinchStart | function |        | pinch start callback                                                     |
+| onPinchMove  | function |        | pinch move callback                                                      |
+| onPinchEnd   | function |        | pinch end callback                                                       |
+| onPinCancel  | function |        | pinch cancel callback                                                    |
+| onPinchIn    | function |        | pinch in callback                                                        |
+| onPinchOut   | function |        | pinch out callback                                                       |
 
 ### Rotate
 
