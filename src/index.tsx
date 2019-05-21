@@ -53,3 +53,4 @@ export {default as VirtualList} from './virtual-list';
 export {default as Loading} from './loading';
 export {default as Steps} from './steps';
 export {default as PullToRefresh} from './pull-to-refresh';
+export {default as Cell} from './cell';
