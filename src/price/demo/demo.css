@@ -1,0 +1,36 @@
+.price-list {
+  padding: 0 .1rem;
+  background-color: #fff;
+  margin-top: .1rem;
+  border-radius: .1rem;
+}
+
+.price-item-wrap {
+  padding: .2rem 0 .1rem;
+  display: flex;
+  border-bottom: solid 1px #e3e5e9;
+  width: 100%;
+  align-items: center;
+}
+
+.price-item {
+  flex: 2;
+}
+
+.price-item-wrap label {
+  margin-right: .3rem;
+  font-weight: bold;
+  font-size: .28rem;
+}
+
+.yec-cont{
+  background-color: #e01222;
+}
+
+.yec-cont > span {
+  color: #fff;
+}
+
+.yec-dec{
+  text-decoration: line-through;
+}

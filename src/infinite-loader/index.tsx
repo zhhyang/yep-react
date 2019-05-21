@@ -1,25 +1,25 @@
-import * as  React from 'react';
+import * as React from 'react';
 import {throttle} from 'lodash';
-import {InfiniteLoaderPropTypes,} from './types';
+import {InfiniteLoaderPropTypes} from './types';
 import noop from '../_utils/noop';
-export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes,any> {
+export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
   static defaultProps = {
     style: {},
     className: 'Yep-infinite-loader',
-    onScroll:noop,
+    onScroll: noop,
   };
 
   throttledOnScrollListener: any;
-  _scrollableNode:any;
-  el:any;
-  _infScroll:any;
-  constructor(props:InfiniteLoaderPropTypes) {
+  _scrollableNode: any;
+  el: any;
+  _infScroll: any;
+  constructor(props: InfiniteLoaderPropTypes) {
     super(props);
     this.state = {
       showLoader: false,
       lastScrollTop: 0,
       actionTriggered: false,
-    }
+    };
     // will be populated in componentDidMount
     // based on the height of the pull down element
 
@@ -35,20 +35,19 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
 
     if (typeof this.props.initialScrollY === 'number' && this.el.scrollHeight > this.props.initialScrollY) {
       //this.el.scrollTo(0, this.props.initialScrollY) scrollTo is not a function in andriod webview
-      if (typeof this.el.scrollTo === 'function'){
-        this.el.scrollTo(0,this.props.initialScrollY)
+      if (typeof this.el.scrollTo === 'function') {
+        this.el.scrollTo(0, this.props.initialScrollY);
       } else {
         this.el.scrollTop = this.props.initialScrollY;
       }
     }
   }
 
-
   componentWillUnmount() {
     this.el.removeEventListener('scroll', this.throttledOnScrollListener);
   }
 
-  componentWillReceiveProps(props:InfiniteLoaderPropTypes) {
+  componentWillReceiveProps(props: InfiniteLoaderPropTypes) {
     // do nothing when dataLength is unchanged
     if (this.props.dataLength === props.dataLength) return;
 
@@ -72,14 +71,14 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     return null;
   }
 
-  isElementAtBottom(target:any, scrollThreshold = 0.8) {
+  isElementAtBottom(target: any, scrollThreshold = 0.8) {
     const clientHeight =
       target === document.body || target === document.documentElement ? window.screen.availHeight : target.clientHeight;
 
     return target.scrollTop + clientHeight >= scrollThreshold * target.scrollHeight;
   }
 
-  onScrollListener(event:React.TouchEvent<HTMLDivElement>) {
+  onScrollListener(event: React.TouchEvent<HTMLDivElement>) {
     if (typeof this.props.onScroll === 'function') {
       // Execute this callback in next tick so that it does not affect the
       // functionality of the library.
@@ -90,8 +89,8 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
       this.props.height || this._scrollableNode
         ? event.target
         : document.documentElement.scrollTop
-          ? document.documentElement
-          : document.body as any;
+        ? document.documentElement
+        : (document.body as any);
 
     // return immediately if the action has already been triggered,
     // prevents multiple triggers.
@@ -108,16 +107,7 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
   }
 
   render() {
-    const {
-      className,
-      style,
-      hasChildren,
-      children,
-      height,
-      hasMore,
-      endMessage,
-      loader,
-    } = this.props;
+    const {className, style, hasChildren, children, height, hasMore, endMessage, loader} = this.props;
     const componentStyle = {
       height: height || 'auto',
       overflow: 'auto',
@@ -126,12 +116,12 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     } as React.CSSProperties;
     const hasChild = hasChildren || !!(children && React.Children.count(children));
     return (
-        <div className={className} ref={infScroll => (this._infScroll = infScroll)} style={componentStyle}>
-          {children}
-          {!this.state.showLoader && !hasChild && hasMore && loader}
-          {this.state.showLoader && hasMore && loader}
-          {!hasMore && endMessage}
-        </div>
+      <div className={className} ref={infScroll => (this._infScroll = infScroll)} style={componentStyle}>
+        {children}
+        {!this.state.showLoader && !hasChild && hasMore && loader}
+        {this.state.showLoader && hasMore && loader}
+        {!hasMore && endMessage}
+      </div>
     );
   }
 }
