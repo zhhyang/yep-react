@@ -33,7 +33,7 @@
 
 ## Links
 
-- [website](https://yep-react.jd.com/)
+- [Website](https://yep-react.jd.com/)
 - [Documentation](https://yep-react.jd.com/#/doc/get-started)
 - [Changelog](https://yep-react.jd.com/#/doc/CHANGELOG)
 
