@@ -2,10 +2,10 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import ReactTestUtils from 'react-dom/test-utils';
 
-import Counter from '../index';
+import Stepper from '../index';
 
 const renderHelper = props => {
-  const testRenderer = TestRenderer.create(<Counter {...props} />);
+  const testRenderer = TestRenderer.create(<Stepper {...props} />);
   const testRoot = testRenderer.root;
   const testInstance = testRenderer.getInstance();
 
@@ -16,16 +16,16 @@ const renderHelper = props => {
   };
 };
 
-const domRenderHelper = props => ReactTestUtils.renderIntoDocument(<Counter {...props} />);
+const domRenderHelper = props => ReactTestUtils.renderIntoDocument(<Stepper {...props} />);
 
 const onChangeMock = jest.fn();
-const className = 'my-counter';
+const className = 'my-Stepper';
 let testObj;
 let testDOMInstance;
 
 jest.useFakeTimers();
 
-describe('Counter', () => {
+describe('Stepper', () => {
   beforeEach(() => {
     onChangeMock.mockReset();
     testObj = renderHelper({
@@ -88,13 +88,13 @@ describe('Counter', () => {
 
   describe('on props change', () => {
     it('should update count accourding to new props', () => {
-      testObj.renderer.update(<Counter min={20} max={100} value={10} />);
+      testObj.renderer.update(<Stepper min={20} max={100} value={10} />);
       expect(testObj.renderer.getInstance().state.count).toBe(20);
 
-      testObj.renderer.update(<Counter min={10} max={15} value={20} />);
+      testObj.renderer.update(<Stepper min={10} max={15} value={20} />);
       expect(testObj.renderer.getInstance().state.count).toBe(15);
 
-      testObj.renderer.update(<Counter min={10} max={15} value={12} />);
+      testObj.renderer.update(<Stepper min={10} max={15} value={12} />);
       expect(testObj.renderer.getInstance().state.count).toBe(12);
     });
   });

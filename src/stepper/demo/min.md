@@ -1,18 +1,18 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 最低2件起购
 description:
 ---
 
 ```js
 import React from 'react';
-import {Counter} from '@jdcfe/yep-react';
+import {Stepper} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Counter />
+        <Stepper min={2} />
       </div>
     );
   }

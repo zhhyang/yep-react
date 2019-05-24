@@ -7,7 +7,7 @@ export interface Count {
   value: number;
 }
 
-export interface CounterProps extends Count {
+export interface StepperProps extends Count {
   className?: string;
   onChange: (count: number) => {};
   prefixCls?: string;
@@ -29,19 +29,19 @@ const getCount = (props: Count) => {
   };
 };
 
-class Counter extends React.PureComponent<CounterProps, any> {
+class Stepper extends React.PureComponent<StepperProps, any> {
   timer: any = null;
 
   static defaultProps = {
     max: 99,
     min: 1,
     onChange: () => {},
-    prefixCls: 'Yep-counter',
+    prefixCls: 'Yep-stepper',
     style: {},
     value: 1,
   };
 
-  constructor(props: CounterProps) {
+  constructor(props: StepperProps) {
     super(props);
     this.state = getCount(props);
     this.change = this.change.bind(this);
@@ -53,7 +53,7 @@ class Counter extends React.PureComponent<CounterProps, any> {
   componentDidMount() {
     this.timer = null;
   }
-  componentWillReceiveProps(nextProps: CounterProps) {
+  componentWillReceiveProps(nextProps: StepperProps) {
     if (nextProps.min !== this.props.min || nextProps.max !== this.props.max || nextProps.value !== this.props.value) {
       this.setState(getCount(nextProps));
     }
@@ -140,4 +140,4 @@ class Counter extends React.PureComponent<CounterProps, any> {
   }
 }
 
-export default Counter;
+export default Stepper;

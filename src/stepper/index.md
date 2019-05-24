@@ -1,6 +1,6 @@
 ---
 category: Form
-title: 计数器
+title: 步进器
 ---
 
 temp
@@ -9,7 +9,7 @@ temp
 
 | 参数      | 说明            | 类型     | 默认值        |
 | --------- | --------------- | -------- | ------------- |
-| prefixCls | 组件 class 前缀 | string   | Yep-counter   |
+| prefixCls | 组件 class 前缀 | string   | Yep-stepper   |
 | style     | 组件样式        | object   | {}            |
 | className | 组件额外样式    | string   | -             |
 | min       | 最小值          | number   | 1             |
