@@ -12,7 +12,11 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Stepper />
+        <Stepper
+          onChange={n => {
+            console.log(n);
+          }}
+        />
       </div>
     );
   }

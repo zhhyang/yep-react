@@ -19,62 +19,29 @@ const renderHelper = props => {
 const domRenderHelper = props => ReactTestUtils.renderIntoDocument(<Stepper {...props} />);
 
 const onChangeMock = jest.fn();
+const onLessMock = jest.fn();
+const onLessCallbackMock = jest.fn();
+const onGreatMock = jest.fn();
 const className = 'my-Stepper';
 let testObj;
 let testDOMInstance;
 
-jest.useFakeTimers();
-
 describe('Stepper', () => {
   beforeEach(() => {
     onChangeMock.mockReset();
+    onLessMock.mockReset();
+    onLessCallbackMock.mockReset();
+    onGreatMock.mockReset();
     testObj = renderHelper({
       min: 5,
-      max: 100,
+      max: 10,
       className,
       onChange: onChangeMock,
-      value: 10,
     });
   });
 
   describe('initial count', () => {
-    it('should use min if provided value less than min', () => {
-      testObj = renderHelper({
-        min: 5,
-        max: 100,
-        className,
-        onChange: onChangeMock,
-        value: 1,
-      });
-
-      expect(testObj.instance.state.count).toBe(5);
-    });
-
-    it('should use max if provided value greater than max', () => {
-      testObj = renderHelper({
-        min: 5,
-        max: 100,
-        className,
-        onChange: onChangeMock,
-        value: 200,
-      });
-
-      expect(testObj.instance.state.count).toBe(100);
-    });
-
-    it('should use value if provided value between min and max', () => {
-      testObj = renderHelper({
-        min: 5,
-        max: 100,
-        className,
-        onChange: onChangeMock,
-        value: 50,
-      });
-
-      expect(testObj.instance.state.count).toBe(50);
-    });
-
-    it('should use min if no value provided', () => {
+    it('state count equal props min when initial', () => {
       testObj = renderHelper({
         min: 5,
         max: 100,
@@ -83,19 +50,6 @@ describe('Stepper', () => {
       });
 
       expect(testObj.instance.state.count).toBe(5);
-    });
-  });
-
-  describe('on props change', () => {
-    it('should update count accourding to new props', () => {
-      testObj.renderer.update(<Stepper min={20} max={100} value={10} />);
-      expect(testObj.renderer.getInstance().state.count).toBe(20);
-
-      testObj.renderer.update(<Stepper min={10} max={15} value={20} />);
-      expect(testObj.renderer.getInstance().state.count).toBe(15);
-
-      testObj.renderer.update(<Stepper min={10} max={15} value={12} />);
-      expect(testObj.renderer.getInstance().state.count).toBe(12);
     });
   });
 
@@ -103,51 +57,61 @@ describe('Stepper', () => {
     beforeEach(() => {
       testDOMInstance = domRenderHelper({
         min: 5,
-        max: 100,
+        max: 10,
         className,
         onChange: onChangeMock,
-        value: 10,
+        onLess: onLessMock,
+        onGreat: onGreatMock,
       });
     });
 
     describe('click add button', () => {
       it('should increase count by 1', () => {
         ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-add'));
-        expect(testDOMInstance.state.count).toBe(11);
+        expect(testDOMInstance.state.count).toBe(6);
       });
 
-      it('should call onChange callback', () => {
+      it('should call callback', () => {
         ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-add'));
-        expect(onChangeMock).toHaveBeenCalledWith(11);
+        expect(onChangeMock).toHaveBeenCalledWith(6);
       });
     });
 
     describe('click reduce button', () => {
       it('should reduce count by 1', () => {
+        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
+
+        ReactTestUtils.Simulate.change(inputEl, {
+          target: {
+            value: '7',
+          },
+        });
+        expect(testDOMInstance.state.count).toBe(7);
+
         ReactTestUtils.Simulate.click(
           ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-reduce')
         );
-        expect(testDOMInstance.state.count).toBe(9);
+        expect(testDOMInstance.state.count).toBe(6);
       });
 
-      it('should call onChange callback', () => {
-        ReactTestUtils.Simulate.click(
-          ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-reduce')
-        );
-        expect(onChangeMock).toHaveBeenCalledWith(9);
+      it('should call callback', () => {
+        ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-add'));
+        expect(onChangeMock).toHaveBeenCalledWith(6);
       });
     });
 
     describe('input area blur', () => {
-      it('should use min if current input is empty string', () => {
+      it('should call onLess if current input is empty string', () => {
         const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
 
-        ReactTestUtils.Simulate.blur(inputEl, {
+        ReactTestUtils.Simulate.change(inputEl, {
           target: {
             value: '',
           },
         });
-        expect(testDOMInstance.state.count).toBe(5);
+        ReactTestUtils.Simulate.blur(inputEl);
+        expect(testDOMInstance.state.count).toBe(0);
+        expect(onLessMock).toHaveBeenCalled();
       });
     });
 
@@ -160,17 +124,17 @@ describe('Stepper', () => {
             value: '10A',
           },
         });
-        expect(testDOMInstance.state.count).toBe(10);
+        expect(testDOMInstance.state.count).toBe(5);
 
         ReactTestUtils.Simulate.change(inputEl, {
           target: {
             value: '1...',
           },
         });
-        expect(testDOMInstance.state.count).toBe(10);
+        expect(testDOMInstance.state.count).toBe(5);
       });
 
-      it('should allow empty string', () => {
+      it('count is zero when user input empty', () => {
         const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
 
         ReactTestUtils.Simulate.change(inputEl, {
@@ -178,7 +142,7 @@ describe('Stepper', () => {
             value: '',
           },
         });
-        expect(testDOMInstance.state.count).toBe('');
+        expect(testDOMInstance.state.count).toBe(0);
       });
 
       it('should update input value immediately', () => {
@@ -186,22 +150,22 @@ describe('Stepper', () => {
 
         ReactTestUtils.Simulate.change(inputEl, {
           target: {
-            value: '1000',
+            value: '8',
           },
         });
-        expect(testDOMInstance.state.count).toBe(1000);
+        expect(testDOMInstance.state.count).toBe(8);
       });
 
-      it('should check if input value is OK in a timer', () => {
+      it('should call onGreat callback when user input value great than max', () => {
         const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
 
         ReactTestUtils.Simulate.change(inputEl, {
           target: {
-            value: '1000',
+            value: '88',
           },
         });
-        jest.runAllTimers();
-        expect(testDOMInstance.state.count).toBe(100);
+        expect(testDOMInstance.state.count).toBe(10);
+        expect(onGreatMock).toHaveBeenCalled();
       });
     });
   });

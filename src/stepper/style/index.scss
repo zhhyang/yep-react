@@ -1,15 +1,15 @@
-
+@import '../../style/variables.scss';
 @import '../../style/mixin';
 
 .Yep-stepper {
   @include box();
-  color: #333;
+  color: $color-text-base;
   button {
     padding: 0 5px;
     border: 0;
     background-color: transparent;
     &:disabled {
-      color: #999;
+      color: $color-text-disabled;
     }
   }
   input {

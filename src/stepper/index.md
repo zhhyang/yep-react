@@ -14,5 +14,4 @@ temp
 | className | 组件额外样式    | string   | -             |
 | min       | 最小值          | number   | 1             |
 | max       | 最大值          | number   | 99            |
-| value     | 初始值          | number   | 1             |
 | onChange  | 回调            | function | (count) => {} |
