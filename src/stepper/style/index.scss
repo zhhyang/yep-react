@@ -1,0 +1,21 @@
+@import '../../style/variables.scss';
+@import '../../style/mixin';
+
+.Yep-stepper {
+  @include box();
+  color: $color-text-base;
+  button {
+    padding: 0 5px;
+    border: 0;
+    background-color: transparent;
+    &:disabled {
+      color: $color-text-disabled;
+    }
+  }
+  input {
+    width: 80px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+}
