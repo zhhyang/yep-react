@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import {CSSTransition} from 'react-transition-group';
 import Mask from '../mask';
+import {createPortal} from 'react-dom';
 
 export interface PopupProps {
   /**
@@ -40,7 +41,7 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
     onCancel: () => {},
   };
 
-  onMaskClick = (e:any) => {
+  onMaskClick = (e: any) => {
     const {maskCloseable, onCancel} = this.props;
     if (e.target === e.currentTarget && maskCloseable && onCancel) {
       onCancel(e);
@@ -52,7 +53,7 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
 
     const cls = classNames(prefixCls, className);
 
-    return (
+    return createPortal(
       <div>
         <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit={true}>
           <Mask onClick={this.onMaskClick} />
@@ -63,7 +64,8 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
             {children}
           </div>
         </CSSTransition>
-      </div>
+      </div>,
+      document.body
     );
   }
 }
