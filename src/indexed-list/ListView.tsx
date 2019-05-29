@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import {IndexedListProps} from './index'
-export interface ListViewProps extends  IndexedListProps{
-  renderSectionHeader: (sectionData:string, sectionId:string) => React.ReactNode;
-  renderSectionBodyWrapper: (sectionId:string) => React.ReactNode;
-  sectionBodyClassName:string;
+import {IndexedListProps} from './index';
+export interface ListViewProps extends IndexedListProps {
+  renderSectionHeader: (sectionData: string, sectionId: string) => React.ReactNode;
+  renderSectionBodyWrapper: (sectionId: string) => React.ReactNode;
+  sectionBodyClassName: string;
 }
 
-export interface StaticRendererProps{
-  render:() => React.ReactNode;
+export interface StaticRendererProps {
+  render: () => React.ReactNode;
 }
 
 class StaticRenderer extends React.Component<StaticRendererProps> {
@@ -18,11 +18,11 @@ class StaticRenderer extends React.Component<StaticRendererProps> {
 }
 
 export default class ListView extends React.PureComponent<ListViewProps> {
-  listViewRef:HTMLDivElement;
+  listViewRef: HTMLDivElement;
 
   static defaultProps = {
-    renderSectionBodyWrapper: (sectionId:string) => <div key={sectionId} />,
-    renderBodyComponent:() => <div />,
+    renderSectionBodyWrapper: (sectionId: string) => <div key={sectionId} />,
+    renderBodyComponent: () => <div />,
   };
 
   render() {
@@ -39,12 +39,14 @@ export default class ListView extends React.PureComponent<ListViewProps> {
       renderRow,
       keyLabel,
       children,
+      useBodyScroll,
+      style = {},
     } = this.props;
     const rowIdentities = [] as any;
     const sectionIdentities = Object.keys(data);
     Object.keys(data).forEach((item, index) => {
       rowIdentities[index] = [];
-      data[item].forEach((ss:any) => {
+      data[item].forEach((ss: any) => {
         rowIdentities[index].push(ss[keyLabel]);
       });
     });
@@ -69,7 +71,7 @@ export default class ListView extends React.PureComponent<ListViewProps> {
         const row = (
           <StaticRenderer
             key={`r_${comboID}`}
-            render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx])}
+            render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx], rowIdx)}
           />
         );
         //@ts-ignore
@@ -86,7 +88,12 @@ export default class ListView extends React.PureComponent<ListViewProps> {
         //@ts-ignore
         contentComponents.push(
           //@ts-ignore
-          React.cloneElement(renderSectionWrapper(sectionId) as any, {}, renderSectionHeaderComponent, rowsAndSeparators)
+          React.cloneElement(
+            renderSectionWrapper(sectionId) as any,
+            {},
+            renderSectionHeaderComponent,
+            rowsAndSeparators
+          )
         );
       } else {
         //@ts-ignore
@@ -95,8 +102,17 @@ export default class ListView extends React.PureComponent<ListViewProps> {
         contentComponents.push(rowsAndSeparators);
       }
     }
+    const baseStyle = {
+      position: 'relative',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+    } as React.CSSProperties;
+    const containerStyle = {
+      ...(useBodyScroll ? {} : baseStyle),
+      ...style,
+    };
     return (
-      <div ref={el => (this.listViewRef = el as HTMLDivElement)} className={className}>
+      <div ref={el => (this.listViewRef = el as HTMLDivElement)} className={className} style={containerStyle}>
         {renderHeader && renderHeader()}
         {React.cloneElement(renderBodyComponent() as any, {}, contentComponents)}
         {renderFooter && renderFooter()}
