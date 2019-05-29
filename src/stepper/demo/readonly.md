@@ -1,6 +1,6 @@
 ---
-order: 2
-title: 最多购买 10 件
+order: 4
+title: 禁用手动输入
 description:
 ---
 
@@ -10,16 +10,9 @@ import {Stepper, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
-    const max = 10;
     return (
       <div>
-        <Stepper
-          max={max}
-          onChange={n => console.log(n)}
-          onGreat={() => {
-            Toast.show(`最多只能买${max}件哦!`);
-          }}
-        />
+        <Stepper onChange={n => console.log(n)} readonly />
       </div>
     );
   }

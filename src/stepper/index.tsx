@@ -1,18 +1,18 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-export interface IStepper {
-  min: number;
-  max: number;
-}
-
-export interface StepperProps extends IStepper {
+export interface StepperProps {
   className?: string;
+  max: number;
+  min: number;
   onChange: (count: number) => {};
   onLess: (remove: boolean, callback: () => void) => {};
   onGreat: () => {};
   prefixCls?: string;
+  readonly: boolean;
+  step: number;
   style?: React.CSSProperties;
+  value: number;
 }
 
 class Stepper extends React.PureComponent<StepperProps, any> {
@@ -23,15 +23,36 @@ class Stepper extends React.PureComponent<StepperProps, any> {
     onLess: () => {},
     onGreat: () => {},
     prefixCls: 'Yep-stepper',
+    readonly: false,
+    step: 1,
     style: {},
+    value: 1,
   };
 
   constructor(props: StepperProps) {
     super(props);
     this.state = {
-      count: props.min,
+      count: this.initCount(props),
     };
   }
+  componentWillReceiveProps(nextProps: StepperProps) {
+    if (nextProps.value !== this.props.value) {
+      this.setState({
+        count: this.initCount(nextProps),
+      });
+    }
+  }
+  initCount = (props: StepperProps) => {
+    const {max, min, value} = props;
+    let count: number = value;
+    if (value < min) {
+      count = min;
+    }
+    if (value > max) {
+      count = max;
+    }
+    return count;
+  };
   handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {max} = this.props;
     const {value} = e.target;
@@ -49,17 +70,21 @@ class Stepper extends React.PureComponent<StepperProps, any> {
   };
   handleReduce = () => {
     const {count} = this.state;
+    const {min, step} = this.props;
+    const newCount = count - step < min ? min : count - step;
     this.setState({
-      count: count - 1,
+      count: newCount,
     });
-    this.props.onChange(count - 1);
+    this.props.onChange(newCount);
   };
   handleAdd = () => {
     const {count} = this.state;
+    const {max, step} = this.props;
+    const newCount = count + step > max ? max : count + step;
     this.setState({
-      count: count + 1,
+      count: newCount,
     });
-    this.props.onChange(count + 1);
+    this.props.onChange(newCount);
   };
   handleBlur = () => {
     const {min} = this.props;
@@ -77,7 +102,7 @@ class Stepper extends React.PureComponent<StepperProps, any> {
   };
   render() {
     const {count} = this.state;
-    const {className, min, max, prefixCls} = this.props;
+    const {className, min, max, prefixCls, readonly} = this.props;
     const cls = classNames(prefixCls, className);
     const reduceDisabled = count <= min || count === 0;
     const addDisabled = count >= max || count === 0;
@@ -90,11 +115,12 @@ class Stepper extends React.PureComponent<StepperProps, any> {
         <div className="input-wrapper">
           <input
             className="input-value"
-            type="number"
-            pattern="[0-9]*"
-            value={inputValue}
-            onChange={this.handleInput}
             onBlur={this.handleBlur}
+            onChange={this.handleInput}
+            pattern="[0-9]*"
+            readOnly={readonly}
+            type="number"
+            value={inputValue}
           />
         </div>
         <button disabled={addDisabled} className="button-add" onClick={this.handleAdd}>

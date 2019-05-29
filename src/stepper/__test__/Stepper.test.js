@@ -53,6 +53,19 @@ describe('Stepper', () => {
     });
   });
 
+  describe('on props change', () => {
+    it('should update count accourding to new props', () => {
+      testObj.renderer.update(<Stepper min={20} max={100} value={10} />);
+      expect(testObj.renderer.getInstance().state.count).toBe(20);
+
+      testObj.renderer.update(<Stepper min={10} max={15} value={20} />);
+      expect(testObj.renderer.getInstance().state.count).toBe(15);
+
+      testObj.renderer.update(<Stepper min={10} max={15} value={12} />);
+      expect(testObj.renderer.getInstance().state.count).toBe(12);
+    });
+  });
+
   describe('user action', () => {
     beforeEach(() => {
       testDOMInstance = domRenderHelper({

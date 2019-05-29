@@ -1,6 +1,6 @@
 ---
 order: 1
-title: 最少2件起购
+title: 最少 2 件起购
 description:
 ---
 
