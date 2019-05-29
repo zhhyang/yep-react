@@ -28,6 +28,7 @@ export interface PopupProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
+  usePortal?: boolean;
 }
 
 export default class Popup extends React.PureComponent<PopupProps, any> {
@@ -39,6 +40,7 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
     maskTransition: 'fade',
     maskCloseable: true,
     onCancel: () => {},
+    usePortal: false,
   };
 
   onMaskClick = (e: any) => {
@@ -49,11 +51,10 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
   };
 
   render() {
-    const {show, popupTransition, maskTransition, prefixCls, className, style, children} = this.props;
+    const {show, popupTransition, maskTransition, prefixCls, className, style, usePortal, children} = this.props;
 
     const cls = classNames(prefixCls, className);
-
-    return createPortal(
+    const content = (
       <div>
         <CSSTransition in={show} timeout={300} classNames={maskTransition} unmountOnExit={true}>
           <Mask onClick={this.onMaskClick} />
@@ -64,8 +65,11 @@ export default class Popup extends React.PureComponent<PopupProps, any> {
             {children}
           </div>
         </CSSTransition>
-      </div>,
-      document.body
+      </div>
     );
+    if (usePortal) {
+      return createPortal(content, document.body);
+    }
+    return content;
   }
 }
