@@ -1,6 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import './style';
 import classNames from 'classnames';
 
 interface StepsProps {
@@ -13,15 +11,6 @@ interface StepsProps {
 }
 
 export default class Steps extends React.Component<StepsProps> {
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    stepNum: PropTypes.number,
-    titles: PropTypes.array,
-    desc: PropTypes.array,
-  };
-
   static defaultProps = {
     prefixCls: 'Yep-steps',
     style: {},
@@ -35,9 +24,9 @@ export default class Steps extends React.Component<StepsProps> {
   }
 
   render() {
-    const {prefixCls,className,style,stepNum, titles, desc} = this.props;
-    const wrapCls = classNames(`${prefixCls}`, className)
-      return (
+    const {prefixCls, className, style, stepNum, titles, desc} = this.props;
+    const wrapCls = classNames(`${prefixCls}`, className);
+    return (
       <div className={wrapCls} style={style}>
         <div className={`${prefixCls}-list`}>
           <div className={`${prefixCls}-line`}>

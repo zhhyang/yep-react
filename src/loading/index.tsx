@@ -37,10 +37,6 @@ export default class Loading extends React.PureComponent<LoadingProps, any> {
   render() {
     const {prefixCls, className, style} = this.props;
     const cls = classNames(prefixCls, className);
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}-container`} style={style} ref={(el: HTMLDivElement) => (this.el = el)} />
-      </div>
-    );
+    return <div className={cls} style={style} ref={(el: HTMLDivElement) => (this.el = el)} />;
   }
 }

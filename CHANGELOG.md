@@ -13,6 +13,77 @@ title: 更新日志
 
 ---
 
+### 0.4.3
+
+`2019-5-30`
+
+- **Bug Fix**
+
+  - 🐞 修复 SwipeAction 无法自定义 className 的问题
+  - 🐞 修复 IndexedList 组件不使用 body 做为滚动容器
+
+### 0.4.2
+
+`2019-5-29`
+
+- **Bug Fix**
+
+  - 🐞 Popup 支持使用 portal 挂载到 body 下
+
+### 0.4.1
+
+`2019-5-28`
+
+- **Feature**
+
+  - 🌟 新增 Stepper 组件@jingxijun
+  - 🌟 NavBar 组件支持定制左侧 close 组件，默认是 `关闭`
+
+### 0.4.0
+
+`2019-5-23`
+
+- **Feature**
+
+  - 🌟 新增 Price 组件@zhoujinxiu
+  - 🌟 新增 Cell 组件
+
+- **Bug Fix**
+
+  - 🐞 修复 Toast 组件存在多个的问题
+
+### 0.3.5
+
+`2019-5-8`
+
+- **Bug Fix**
+
+  - 🐞 修复 Loading 组件定位样式问题
+
+### 0.3.4
+
+`2019-4-26`
+
+- **Feature**
+
+  - 🌟 拆分 InfiniteLoader 组件，不再支持下拉刷新，下拉刷新功能拆分为 PullToRefresh 组件
+
+### 0.3.3
+
+`2019-4-25`
+
+- **Bug Fix**
+
+  - 🐞 修复 编译时丢失.d.ts 文件的问题
+
+### 0.3.1
+
+`2019-4-2`
+
+- **Bug Fix**
+
+  - 🐞 修复 IndexedList 组件使用吸顶字母未完全隐藏导致影响当前字母的 bug
+
 ### 0.3.0
 
 `2019-3-14`

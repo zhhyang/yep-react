@@ -372,9 +372,10 @@ body {
     }
   }
   &__arrow{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background-color: #167dfd;
+    opacity: .7;
     box-shadow: 2px 2px 7px 0px
     rgba(22, 125, 253, 0.3);
     border-radius: 50%;
@@ -382,8 +383,9 @@ body {
     align-items: center;
     justify-content: center;
     img{
-      width: 30px;
-      height: 30px;
+      display: block;
+      width: 20px;
+      height: 20px;
       transition: transform ease-in 200ms;
     }
 

@@ -117,10 +117,12 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
   onQuickSearch = (sectionID:string) => {
     const lv = ReactDOM.findDOMNode(this.indexedListView.listViewRef) as HTMLDivElement;
     const sec = ReactDOM.findDOMNode(this.sectionComponents[sectionID]) as HTMLDivElement;
+    const devicePixelRatio = window.devicePixelRatio || 2;
     if (this.props.useBodyScroll) {
-      setDocumentScrollTop(sec.getBoundingClientRect().top - lv.getBoundingClientRect().top + getOffsetTop(lv));
+      //保证上一个吸顶的字母不再影响当前字母
+      setDocumentScrollTop(sec.getBoundingClientRect().top - lv.getBoundingClientRect().top + getOffsetTop(lv)+devicePixelRatio);
     } else {
-      lv.scrollTop += sec.getBoundingClientRect().top - lv.getBoundingClientRect().top;
+      lv.scrollTop += sec.getBoundingClientRect().top - lv.getBoundingClientRect().top+devicePixelRatio;
     }
     this.props.onQuickSearch(sectionID);
   };

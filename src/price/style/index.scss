@@ -1,0 +1,30 @@
+.Yep-price {
+  color: #e01222;
+  display: inline-block;
+  &-sym{
+    font-size: 16px;
+  }
+
+  .int-txt{
+    font-size: 36px;
+  }
+
+  .dec-txt{
+    font-size: 16px;
+  }
+
+  .sym-sup{
+    vertical-align: top;
+  }
+
+  .dec-sup{
+    vertical-align: top;
+  }
+
+  &.del{
+    &>span{
+      color: #999;
+      text-decoration: line-through;
+    }
+  }
+}

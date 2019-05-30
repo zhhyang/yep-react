@@ -1,6 +1,6 @@
 ---
 order: 1
-title: 下拉刷新
+title: 自定义列表长度
 description:
 ---
 
@@ -28,14 +28,6 @@ class Demo extends React.PureComponent {
     }, 1500);
   };
 
-  refresh = () => {
-    setTimeout(() => {
-      this.setState({
-        items: Array.from({length: 20}),
-      });
-    }, 1500);
-  };
-
   render() {
     return (
       <div>
@@ -43,10 +35,9 @@ class Demo extends React.PureComponent {
           dataLength={this.state.items.length}
           loadMore={this.fetchMoreData}
           hasMore={true}
-          loader={<h4>Loading...</h4>}
-          pullDownToRefresh
-          refreshFunction={this.refresh}
-          pullDownToRefreshThreshold={300}
+          loader={<h4 style={{textAlign: 'center'}}>Loading...</h4>}
+          height={200}
+          initialScrollY={100}
         >
           {this.state.items.map((i, index) => (
             <div style={style} key={index}>

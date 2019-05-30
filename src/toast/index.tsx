@@ -8,8 +8,7 @@ function getInstance(props: any, callback: (notification: any) => void) {
     messageInstance = null;
   }
 
-  Notification.newInstance(props, (parameters: {notification: any}) => {
-    let notification = parameters.notification;
+  Notification.newInstance(props, (notification: any) => {
     return callback && callback(notification);
   });
 }
