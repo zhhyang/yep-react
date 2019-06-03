@@ -1,21 +1,52 @@
-@import '../../style/variables.scss';
 @import '../../style/mixin';
 
 .Yep-stepper {
   @include box();
-  color: $color-text-base;
-  button {
-    padding: 0 5px;
+  @include vertical-center();
+  height: 36px;
+  color: #262626;
+  button, input {
+    padding: 0;
     border: 0;
     background-color: transparent;
-    &:disabled {
-      color: $color-text-disabled;
+    font-size: 22px;
+  }
+  button {
+    @include box();
+    @include vertical-center();
+    width: 30px;
+  }
+  button:disabled {
+    color: #f2f2f2;
+    .Yep-icon {
+      color: #f2f2f2;
     }
   }
+  .button-reduce {
+    padding-left: 2px;
+    padding-right: 12px;
+    .Yep-icon {
+      width: 16px;
+      height: 4px;
+    }
+  }
+  .button-add {
+    padding-left: 12px;
+    padding-right: 2px;
+    .Yep-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  .input-wrapper {
+    width: 72px;
+    height: 36px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+  }
   input {
-    width: 80px;
+    width: 100%;
+    line-height: 36px;
     text-align: center;
-    background-color: #f5f5f5;
-    border-radius: 5px;
   }
 }

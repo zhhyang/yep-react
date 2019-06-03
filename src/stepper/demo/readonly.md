@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 6
 title: 禁用手动输入
 description:
 ---
@@ -9,10 +9,20 @@ import React from 'react';
 import {Stepper, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
+  state = {
+    max: 99,
+    min: 1,
+    readonly: true,
+    value: 1,
+  };
   render() {
+    const props = {
+      ...this.state,
+      onChange: value => this.setState({value}),
+    };
     return (
       <div>
-        <Stepper onChange={n => console.log(n)} readonly />
+        <Stepper {...props} />
       </div>
     );
   }

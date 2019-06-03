@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 7
 title: 组件响应 props 变动
 description:
 ---
@@ -10,6 +10,8 @@ import {Button, Stepper, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
+    max: 99,
+    min: 1,
     value: 1,
   };
   handleClick = () => {
@@ -18,9 +20,13 @@ class Demo extends React.PureComponent {
     });
   };
   render() {
+    const props = {
+      ...this.state,
+      onChange: value => this.setState({value}),
+    };
     return (
       <div>
-        <Stepper onChange={n => console.log(n)} value={this.state.value} />
+        <Stepper {...props} />
         <Button
           type="primary"
           size="sm"
