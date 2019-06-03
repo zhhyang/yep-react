@@ -13,6 +13,23 @@ title: 更新日志
 
 ---
 
+### 0.4.3
+
+`2019-5-30`
+
+- **Bug Fix**
+
+  - 🐞 修复 SwipeAction 无法自定义 className 的问题
+  - 🐞 修复 IndexedList 组件不使用 body 做为滚动容器
+
+### 0.4.2
+
+`2019-5-29`
+
+- **Bug Fix**
+
+  - 🐞 Popup 支持使用 portal 挂载到 body 下
+
 ### 0.4.1
 
 `2019-5-28`
