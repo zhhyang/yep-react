@@ -1,172 +1,58 @@
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
-import ReactTestUtils from 'react-dom/test-utils';
-
+import {shallow} from 'enzyme';
 import Stepper from '../index';
 
-const renderHelper = props => {
-  const testRenderer = TestRenderer.create(<Stepper {...props} />);
-  const testRoot = testRenderer.root;
-  const testInstance = testRenderer.getInstance();
-
-  return {
-    renderer: testRenderer,
-    root: testRoot,
-    instance: testInstance,
-  };
-};
-
-const domRenderHelper = props => ReactTestUtils.renderIntoDocument(<Stepper {...props} />);
-
 const onChangeMock = jest.fn();
-const onLessMock = jest.fn();
-const onLessCallbackMock = jest.fn();
-const onGreatMock = jest.fn();
-const className = 'my-Stepper';
-let testObj;
-let testDOMInstance;
 
 describe('Stepper', () => {
   beforeEach(() => {
     onChangeMock.mockReset();
-    onLessMock.mockReset();
-    onLessCallbackMock.mockReset();
-    onGreatMock.mockReset();
-    testObj = renderHelper({
-      min: 5,
-      max: 10,
-      className,
+  });
+
+  it('render customize class name when className prop is provided by user', () => {
+    const props = {
+      className: 'customizeClassName',
+    };
+    const wrapper = shallow(<Stepper {...props} />);
+    expect(wrapper.find('.Yep-stepper').hasClass('customizeClassName')).toBe(true);
+  });
+
+  it('input value in the component is provided by props value', () => {
+    const props = {
+      value: 5,
+    };
+    const wrapper = shallow(<Stepper {...props} />);
+    expect(wrapper.find('.input-value').prop('value')).toBe(5);
+  });
+
+  it('when user click button, component will call onChange callback with new value', () => {
+    const props = {
       onChange: onChangeMock,
-    });
+    };
+    const wrapper = shallow(<Stepper {...props} />);
+    wrapper.find('.button-add').simulate('click');
+    expect(onChangeMock.mock.calls.length).toBe(1);
+    expect(onChangeMock.mock.calls[0][0]).toBe(2);
   });
 
-  describe('initial count', () => {
-    it('state count equal props min when initial', () => {
-      testObj = renderHelper({
-        min: 5,
-        max: 100,
-        className,
-        onChange: onChangeMock,
-      });
-
-      expect(testObj.instance.state.count).toBe(5);
-    });
+  it('customize step', () => {
+    const props = {
+      step: 3,
+      onChange: onChangeMock,
+    };
+    const wrapper = shallow(<Stepper {...props} />);
+    wrapper.find('.button-add').simulate('click');
+    expect(onChangeMock.mock.calls.length).toBe(1);
+    expect(onChangeMock.mock.calls[0][0]).toBe(4);
   });
 
-  describe('user action', () => {
-    beforeEach(() => {
-      testDOMInstance = domRenderHelper({
-        min: 5,
-        max: 10,
-        className,
-        onChange: onChangeMock,
-        onLess: onLessMock,
-        onGreat: onGreatMock,
-      });
-    });
-
-    describe('click add button', () => {
-      it('should increase count by 1', () => {
-        ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-add'));
-        expect(testDOMInstance.state.count).toBe(6);
-      });
-
-      it('should call callback', () => {
-        ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-add'));
-        expect(onChangeMock).toHaveBeenCalledWith(6);
-      });
-    });
-
-    describe('click reduce button', () => {
-      it('should reduce count by 1', () => {
-        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '7',
-          },
-        });
-        expect(testDOMInstance.state.count).toBe(7);
-
-        ReactTestUtils.Simulate.click(
-          ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-reduce')
-        );
-        expect(testDOMInstance.state.count).toBe(6);
-      });
-
-      it('should call callback', () => {
-        ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'button-add'));
-        expect(onChangeMock).toHaveBeenCalledWith(6);
-      });
-    });
-
-    describe('input area blur', () => {
-      it('should call onLess if current input is empty string', () => {
-        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '',
-          },
-        });
-        ReactTestUtils.Simulate.blur(inputEl);
-        expect(testDOMInstance.state.count).toBe(0);
-        expect(onLessMock).toHaveBeenCalled();
-      });
-    });
-
-    describe('user modify input value', () => {
-      it('should not allow input of non-numbric', () => {
-        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '10A',
-          },
-        });
-        expect(testDOMInstance.state.count).toBe(5);
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '1...',
-          },
-        });
-        expect(testDOMInstance.state.count).toBe(5);
-      });
-
-      it('count is zero when user input empty', () => {
-        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '',
-          },
-        });
-        expect(testDOMInstance.state.count).toBe(0);
-      });
-
-      it('should update input value immediately', () => {
-        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '8',
-          },
-        });
-        expect(testDOMInstance.state.count).toBe(8);
-      });
-
-      it('should call onGreat callback when user input value great than max', () => {
-        const inputEl = ReactTestUtils.findRenderedDOMComponentWithClass(testDOMInstance, 'input-value');
-
-        ReactTestUtils.Simulate.change(inputEl, {
-          target: {
-            value: '88',
-          },
-        });
-        expect(testDOMInstance.state.count).toBe(10);
-        expect(onGreatMock).toHaveBeenCalled();
-      });
-    });
+  it('render customize button that user provided', () => {
+    const props = {
+      buttonAdd: <div>add</div>,
+      buttonReduce: <div>reduce</div>,
+    };
+    const wrapper = shallow(<Stepper {...props} />);
+    expect(wrapper.find('.button-add').text()).toBe('add');
+    expect(wrapper.find('.button-reduce').text()).toBe('reduce');
   });
 });
