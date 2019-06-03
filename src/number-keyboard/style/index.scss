@@ -1,0 +1,13 @@
+@import '../../style/mixin';
+
+.Yep-number-keyboard {
+  &-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    table {
+      background-color: #000;
+    }
+  }
+}
