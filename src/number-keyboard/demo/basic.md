@@ -60,12 +60,21 @@ class Demo extends React.PureComponent {
     this.showKeyboard();
   };
 
+  showPassword = () => {
+    this.setState({
+      theme: 'password',
+    });
+    this.showKeyboard();
+  };
+
   render() {
     return (
       <div>
         <InputItem value={this.state.numberValue} editable={false} onClick={this.showKeyboard} />
         <div>
           <Button onClick={this.showDefault}>弹出默认键盘</Button>
+          <WhiteSpace />
+          <Button onClick={this.showPassword}>弹出密码键盘</Button>
           <WhiteSpace />
           <Button onClick={this.showCustom}>弹出自定义键盘</Button>
         </div>

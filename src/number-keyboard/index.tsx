@@ -38,6 +38,8 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
       this.props.delete && this.props.delete();
     } else if (value === 'confirm') {
       this.props.confirm && this.props.confirm();
+    } else if (value === 'null') {
+      return null;
     } else {
       this.props.input && this.props.input(value);
     }
@@ -52,6 +54,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
   };
 
   renderDefault(): React.ReactNode {
+    const {theme} = this.props;
     return (
       <table>
         <tbody>
@@ -59,7 +62,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
           <tr>{['4', '5', '6'].map((item, i) => this.renderKeyboardItem(item, i))}</tr>
           <tr>{['7', '8', '9'].map((item, i) => this.renderKeyboardItem(item, i))}</tr>
           <tr>
-            {['.', '0'].map((item, i) => this.renderKeyboardItem(item, i))}
+            {[`${theme === 'default' ? '.' : ''}`, '0'].map((item, i) => this.renderKeyboardItem(item, i))}
             <KeyboardItem className={'keyboard-delete'} onClick={this.onKeyboardClick} key={`item-delete`}>
               删除
             </KeyboardItem>
@@ -100,13 +103,19 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
   render() {
     const {prefixCls, theme, show} = this.props;
     const wrapperCls = classnames(
-      {[`${prefixCls}-wrapper`]: theme === 'default'},
+      {[`${prefixCls}-wrapper`]: theme === 'default' || theme === 'password'},
       {[`${prefixCls}-wrapper-custom`]: theme === 'custom'},
       {[`${prefixCls}-wrapper-hide`]: !show}
     );
     return (
       <div className={wrapperCls}>
-        {theme === 'default' ? this.renderDefault() : theme === 'custom' ? this.renderCustom() : this.renderDefault()}
+        {theme === 'default'
+          ? this.renderDefault()
+          : theme === 'custom'
+          ? this.renderCustom()
+          : theme === 'password'
+          ? this.renderDefault()
+          : this.renderDefault()}
       </div>
     );
   }
@@ -140,6 +149,8 @@ class KeyboardItem extends React.PureComponent<KeyboardItemProps, any> {
       value = 'hide';
     } else if (className === 'keyboard-confirm') {
       value = 'confirm';
+    } else if (value === '') {
+      value = 'null';
     }
     return (
       <TouchFeedback activeClassName={`${prefixCls}-item-active`}>
