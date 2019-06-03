@@ -1,6 +1,6 @@
 ---
-order: 1
-title: 最少2件起购
+order: 2
+title: 最少 5 件起购
 description:
 ---
 
@@ -9,50 +9,20 @@ import React from 'react';
 import {Stepper, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
-  callback = null;
   state = {
-    min: 2,
-    show: false,
-  };
-  handleToggleShow = () => {
-    this.setState(
-      {
-        show: !this.state.show,
-      },
-      () => {
-        if (!this.state.show) {
-          this.callback();
-        }
-      }
-    );
+    max: 10,
+    min: 5,
+    value: 5,
   };
   render() {
-    const min = 2;
+    const props = {
+      ...this.state,
+      onChange: value => this.setState({value}),
+      onLess: () => Toast.show(`最少 ${this.state.min} 件起购!`),
+    };
     return (
       <div>
-        <Stepper
-          min={min}
-          onChange={n => console.log(n)}
-          onLess={(remove, callback) => {
-            if (remove) {
-              this.handleToggleShow();
-              this.callback = callback;
-            } else {
-              Toast.show(`最少购买${min}件哦!`);
-            }
-          }}
-        />
-        <ActionSheet
-          show={this.state.show}
-          onCancel={this.handleToggleShow}
-          hasCancel
-          space
-          title="确定从购物车中删除此商品？"
-          data={['确定']}
-          itemClick={(value, index) => {
-            this.handleToggleShow();
-          }}
-        />
+        <Stepper {...props} />
       </div>
     );
   }

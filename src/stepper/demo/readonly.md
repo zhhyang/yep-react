@@ -1,17 +1,18 @@
 ---
-order: 0
-title: 基础用法
+order: 6
+title: 禁用手动输入
 description:
 ---
 
 ```js
 import React from 'react';
-import {Stepper} from '@jdcfe/yep-react';
+import {Stepper, Toast} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
     max: 99,
     min: 1,
+    readonly: true,
     value: 1,
   };
   render() {

@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 基础用法
+order: 5
+title: 自定义按钮
 description:
 ---
 
@@ -18,6 +18,8 @@ class Demo extends React.PureComponent {
     const props = {
       ...this.state,
       onChange: value => this.setState({value}),
+      buttonAdd: <div>加</div>,
+      buttonReduce: <div>减</div>,
     };
     return (
       <div>
