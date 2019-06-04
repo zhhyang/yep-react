@@ -13,6 +13,7 @@ title: 数字键盘
 | style     | 组件样式                                   | object  | {}                  |
 | className | 组件额外样式                               | string  | -                   |
 | show      | 是否显示键盘                               | boolean | -                   |
+| header    | 头部组件                                   | JSX     | -                   |
 | theme     | 样式风格，可选值为 default custom password | string  | default             |
 | input     | 点击按键时触发                             | func    | (value) => {}       |
 | delete    | 点击删除按键时触发                         | func    | () => {}            |
