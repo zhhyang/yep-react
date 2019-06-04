@@ -48,6 +48,7 @@ class Demo extends React.PureComponent {
 
   showDefault = () => {
     this.setState({
+      showTitle: false,
       theme: 'default',
     });
     this.showKeyboard();
@@ -55,6 +56,7 @@ class Demo extends React.PureComponent {
 
   showCustom = () => {
     this.setState({
+      showTitle: false,
       theme: 'custom',
     });
     this.showKeyboard();
@@ -62,7 +64,15 @@ class Demo extends React.PureComponent {
 
   showPassword = () => {
     this.setState({
+      showTitle: false,
       theme: 'password',
+    });
+    this.showKeyboard();
+  };
+
+  showTitle = () => {
+    this.setState({
+      showTitle: true,
     });
     this.showKeyboard();
   };
@@ -77,6 +87,8 @@ class Demo extends React.PureComponent {
           <Button onClick={this.showPassword}>弹出密码键盘</Button>
           <WhiteSpace />
           <Button onClick={this.showCustom}>弹出自定义键盘</Button>
+          <WhiteSpace />
+          <Button onClick={this.showTitle}>弹出带标题键盘</Button>
         </div>
         <NumberKeyboard
           show={this.state.KeyboardStatus}
@@ -89,6 +101,13 @@ class Demo extends React.PureComponent {
           }}
           confirm={() => {
             this.hideKeyboard();
+          }}
+          header={() => {
+            if (this.state.showTitle) {
+              return <div className="keyboard-title">键盘标题</div>;
+            } else {
+              return <div />;
+            }
           }}
         />
       </div>

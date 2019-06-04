@@ -8,6 +8,7 @@ export interface NumberKeyboardProps {
   style?: React.CSSProperties;
   show: boolean;
   theme?: string;
+  header?: () => React.ReactNode;
   transition?: boolean;
   zIndex?: number;
   input: (value: string) => void;
@@ -101,7 +102,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
   }
 
   render() {
-    const {prefixCls, theme, show} = this.props;
+    const {prefixCls, header, theme, show} = this.props;
     const wrapperCls = classnames(
       {[`${prefixCls}-wrapper`]: theme === 'default' || theme === 'password'},
       {[`${prefixCls}-wrapper-custom`]: theme === 'custom'},
@@ -109,6 +110,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
     );
     return (
       <div className={wrapperCls}>
+        {header && header()}
         {theme === 'default'
           ? this.renderDefault()
           : theme === 'custom'
