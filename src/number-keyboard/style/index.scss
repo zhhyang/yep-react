@@ -14,7 +14,15 @@
     transition-property: transform display;
     transform: translateZ(0);
    &-hide {
-      bottom: -500px;
+      bottom: -600px;
+    }
+
+    .keyboard-title {
+      width: 100%;
+      height: 48px;
+      line-height: 48px;
+      font-size: 26px;
+      background-color: #fff;
     }
     table {
       width: 100%;

@@ -13,7 +13,7 @@ export interface NumberKeyboardProps {
   zIndex?: number;
   input: (value: string) => void;
   delete: () => void;
-  confirm: () => void;
+  confirm?: () => void;
 }
 
 export default class NumberKeyboard extends React.PureComponent<NumberKeyboardProps, any> {
@@ -34,7 +34,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
   }
 
   onKeyboardClick = (e: React.MouseEvent<HTMLTableDataCellElement>, value: string = '') => {
-    e.nativeEvent.stopImmediatePropagation();
+    e.stopPropagation();
     if (value === 'delete') {
       this.props.delete && this.props.delete();
     } else if (value === 'confirm') {
@@ -102,11 +102,12 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
   }
 
   render() {
-    const {prefixCls, header, theme, show} = this.props;
+    const {prefixCls, header, theme, show, className} = this.props;
     const wrapperCls = classnames(
-      {[`${prefixCls}-wrapper`]: theme === 'default' || theme === 'password'},
+      `${prefixCls}-wrapper`,
       {[`${prefixCls}-wrapper-custom`]: theme === 'custom'},
-      {[`${prefixCls}-wrapper-hide`]: !show}
+      {[`${prefixCls}-wrapper-hide`]: !show},
+      className
     );
     return (
       <div className={wrapperCls}>
