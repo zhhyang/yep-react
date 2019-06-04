@@ -1,0 +1,79 @@
+@import '../../style/mixin';
+
+.Yep-number-keyboard {
+
+  &-wrapper, &-wrapper-custom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10000;
+    font-family: 'PingFang SC';
+    transition-duration: 0.2s;
+    transition-property: transform display;
+    transform: translateZ(0);
+   &-hide {
+      bottom: -600px;
+    }
+
+    .keyboard-title {
+      width: 100%;
+      height: 48px;
+      line-height: 48px;
+      font-size: 26px;
+      background-color: #fff;
+    }
+    table {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border-collapse: collapse;
+      background-color: #fff;
+      @include hairline-top();
+
+      tr {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        .Yep-number-keyboard-item {
+          &-active {
+            background-color: $fill-tap;
+          }
+          vertical-align: middle;
+          width: 33.3%;
+          padding: 0;
+          margin: 0;
+          height: 120px;
+          line-height: 120px;
+          text-align: center;
+          font-size: 36px;
+          &:not(.keyboard-delete) {
+            font-size: 48px;
+          }
+
+          color: #2a2b2c;
+          @include hairline()
+        }
+      }
+    }
+  }
+
+&-wrapper-custom {
+  table {
+    tr {
+      .Yep-number-keyboard-item {
+        width: 25%;
+        &.keyboard-confirm {
+          background-color: $brand-primary;
+          color: #fff;
+        }
+        &.keyboard-delete, &.keyboard-confirm {
+          font-size: 40px;
+        }
+
+      }
+    }
+  }
+}
+}

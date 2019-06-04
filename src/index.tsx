@@ -56,3 +56,4 @@ export {default as Price} from './price';
 export {default as PullToRefresh} from './pull-to-refresh';
 export {default as Cell} from './cell';
 export {default as Stepper} from './stepper';
+export {default as NumberKeyboard} from './number-keyboard';
