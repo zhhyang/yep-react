@@ -1,20 +1,21 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 自定义长度
 description:
 ---
 
 ```js
 import React from 'react';
 import {PasswordInput, NumberKeyboard} from '@jdcfe/yep-react';
+import './style.css';
 
 class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       valueName: 'defaultValue',
-      defaultValue: '123',
-      passwordLength: 6,
+      defaultValue: '1234',
+      passwordLength: 4,
       keyboardStatus: false,
     };
   }
@@ -55,8 +56,9 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <PasswordInput
+          className="custom-password-input"
           value={defaultValue}
-          message="默认为 6 位密码"
+          gutter={10}
           length={passwordLength}
           onFocus={name => {
             this.valueName = name;

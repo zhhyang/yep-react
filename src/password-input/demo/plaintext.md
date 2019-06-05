@@ -1,21 +1,22 @@
 ---
-order: 0
-title: 基础用法
+order: 2
+title: 明文密码
 description:
 ---
 
 ```js
 import React from 'react';
 import {PasswordInput, NumberKeyboard} from '@jdcfe/yep-react';
+import './style.css';
 
 class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       valueName: 'defaultValue',
-      defaultValue: '123',
-      passwordLength: 6,
+      defaultValue: '952',
       keyboardStatus: false,
+      passwordLength: 6,
     };
   }
 
@@ -55,9 +56,9 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <PasswordInput
+          className="custom-password-input"
           value={defaultValue}
-          message="默认为 6 位密码"
-          length={passwordLength}
+          mask={false}
           onFocus={name => {
             this.valueName = name;
             this.showKeyboard();
