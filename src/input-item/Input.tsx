@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {InputEventHandler} from './types';
-export type Omit<T,K extends keyof T> = Pick<T,Exclude<keyof T,K>>;
+import {Omit} from '../_utils/types';
 
-export type HTMLInputElementProps = Omit<React.HTMLProps<HTMLInputElement>,'onFocus'|'onBlur'>
+export type HTMLInputElementProps = Omit<React.HTMLProps<HTMLInputElement>, 'onFocus' | 'onBlur'>;
 
-export interface InputProps extends HTMLInputElementProps{
+export interface InputProps extends HTMLInputElementProps {
   onFocus?: InputEventHandler;
   onBlur?: InputEventHandler;
 }
@@ -32,7 +32,7 @@ class Input extends React.PureComponent<InputProps> {
     }
   };
 
-  onClick = (e:any) => {
+  onClick = (e: any) => {
     const {readOnly, onClick} = this.props;
     if (readOnly) {
       this.inputRef.blur();
@@ -47,7 +47,7 @@ class Input extends React.PureComponent<InputProps> {
     return (
       <input
         {...restProps}
-        ref={(el:HTMLInputElement) => (this.inputRef = el)}
+        ref={(el: HTMLInputElement) => (this.inputRef = el)}
         onBlur={this.onInputBlur}
         onFocus={this.onInputFocus}
         onClick={this.onClick}
