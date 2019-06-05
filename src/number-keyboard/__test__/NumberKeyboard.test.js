@@ -1,5 +1,6 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
+import noop from '../../_utils/noop';
 import NumberKeyboard from '../index';
 
 const eventMock = jest.fn();
@@ -21,9 +22,10 @@ describe('NumberKeyboard', () => {
     const props = {
       input: eventMock,
     };
+    const nativeEvent = {nativeEvent: {stopImmediatePropagation: noop}};
     const wrapper = shallow(<NumberKeyboard {...props} />);
     for (let item in wrapper.find('.Yep-number-keyboard-item:not(.keyboard-delete)')) {
-      item.simulate('click');
+      item.simulate('click', nativeEvent);
       expect(eventMock.mock.calls.length).toBe(1);
       expect(eventMock.mock.calls[0][0]).to.equal(item.value);
     }
@@ -33,9 +35,9 @@ describe('NumberKeyboard', () => {
     const props = {
       delete: eventMock,
     };
-
+    const nativeEvent = {nativeEvent: {stopImmediatePropagation: noop}};
     const wrapper = mount(<NumberKeyboard {...props} />);
-    wrapper.find('.Yep-number-keyboard-item.keyboard-delete').simulate('click');
+    wrapper.find('.Yep-number-keyboard-item.keyboard-delete').simulate('click', nativeEvent);
     expect(eventMock.mock.calls.length).toBe(1);
   });
 
@@ -44,16 +46,15 @@ describe('NumberKeyboard', () => {
       theme: 'custom',
       confirm: eventMock,
     };
-
+    const nativeEvent = {nativeEvent: {stopImmediatePropagation: noop}};
     const wrapper = mount(<NumberKeyboard {...props} />);
-    wrapper.find('.Yep-number-keyboard-item.keyboard-confirm').simulate('click');
+    wrapper.find('.Yep-number-keyboard-item.keyboard-confirm').simulate('click', nativeEvent);
     expect(eventMock.mock.calls.length).toBe(1);
   });
 
-  // ----------------
-  // it('render customize header that user provided', () => {
-  //   const header = () => (<div className='number-keyboard-header'>header</div>)
-  //   const wrapper = shallow(<NumberKeyboard header={header}/>);
-  //   expect(wrapper.find('.number-keyboard-header').text()).toBe('header');
-  // });
+  it('render customize header that user provided', () => {
+    const header = () => <div className="number-keyboard-header">header</div>;
+    const wrapper = shallow(<NumberKeyboard header={header} />);
+    expect(wrapper.find('.number-keyboard-header').text()).toBe('header');
+  });
 });
