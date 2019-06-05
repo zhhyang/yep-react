@@ -98,11 +98,11 @@ class Stepper extends React.PureComponent<StepperProps, any> {
     });
   };
   render() {
-    const {className, prefixCls, readonly, value} = this.props;
+    const {className, prefixCls, readonly, style, value} = this.props;
     const cls = classNames(prefixCls, className);
     const inputValue = value === 0 ? '' : value;
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         {this.renderButtonReduce()}
         <div className="input-wrapper">
           <input
