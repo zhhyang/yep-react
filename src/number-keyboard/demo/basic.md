@@ -6,6 +6,7 @@ description:
 
 ```js
 import React from 'react';
+import './demo.css';
 import {NumberKeyboard, InputItem, Button, WhiteSpace} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
@@ -104,7 +105,17 @@ class Demo extends React.PureComponent {
           }}
           header={() => {
             if (this.state.showTitle) {
-              return <div className="keyboard-title">键盘标题</div>;
+              return (
+                <div className="keyboard-title">
+                  <span
+                    onClick={() => {
+                      this.hideKeyboard();
+                    }}
+                  >
+                    完成
+                  </span>
+                </div>
+              );
             } else {
               return <div />;
             }
