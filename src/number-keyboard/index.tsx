@@ -9,7 +9,7 @@ export interface NumberKeyboardProps {
   style?: React.CSSProperties;
   show: boolean;
   theme?: string;
-  header?: () => React.ReactNode;
+  header?: () => React.ReactElement;
   transition?: boolean;
   zIndex?: number;
   input: (value: string) => void;
@@ -35,16 +35,20 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
   }
 
   onKeyboardClick = (e: React.MouseEvent<HTMLTableDataCellElement>, value: string = '') => {
-    //e.nativeEvent.stopImmediatePropagation()
-    e.stopPropagation();
-    if (value === 'delete') {
-      this.props.delete && this.props.delete();
-    } else if (value === 'confirm') {
-      this.props.confirm && this.props.confirm();
-    } else if (value === 'null') {
-      return null;
+    e.nativeEvent.stopImmediatePropagation();
+
+    if (value) {
+      if (value === 'delete') {
+        this.props.delete && this.props.delete();
+      } else if (value === 'confirm') {
+        this.props.confirm && this.props.confirm();
+      } else if (value === 'null') {
+        return null;
+      } else {
+        this.props.input && this.props.input(value);
+      }
     } else {
-      this.props.input && this.props.input(value);
+      return null;
     }
   };
 
@@ -113,7 +117,7 @@ export default class NumberKeyboard extends React.PureComponent<NumberKeyboardPr
     );
     return (
       <div className={wrapperCls}>
-        {header && header()}
+        {header && React.cloneElement(header(), {onClick: this.onKeyboardClick})}
         {theme === 'default'
           ? this.renderDefault()
           : theme === 'custom'
