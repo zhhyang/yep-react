@@ -1,0 +1,9 @@
+.Yep-avatar {
+  margin-right: 10px;
+}
+.Yep-badge {
+  margin-right: 20px;
+}
+.Yep-badge .Yep-avatar {
+  margin-right: 0;
+}
