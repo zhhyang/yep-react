@@ -16,7 +16,7 @@ export interface PullToRefreshProps {
   refreshFunction?: () => void;
   refreshing: boolean;
   indicator: Indicator;
-  getScrollContainer: () => React.ReactNode;
+  getScrollContainer: () => HTMLElement;
 }
 
 export type CurrentState = 'activate' | 'deactivate' | 'release' | 'finish';
@@ -125,12 +125,8 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
       const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
       return scrollNode.scrollTop <= 0;
     }
-    const refScrollTop = container && container.scrollTop || 0;
-    const tops = [
-      window.pageYOffset || 0,
-      document.documentElement.scrollTop,
-      refScrollTop
-    ];
+    const refScrollTop = (container && container.scrollTop) || 0;
+    const tops = [window.pageYOffset || 0, document.documentElement.scrollTop, refScrollTop];
     return Math.max(...tops) <= 0;
   };
 
@@ -146,9 +142,8 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
     // 当前点与起始点形成的角度大于30度且小于150度时，下拉；其他情况不处理。
     // 公式： (startY-currY)/(startX-currX)>1/√3~=0.58
     // console.log("onMove evt", this.currentX, this.startX, this.currentY, this.startY);
-    if(this.currentX !== this.startX) {
-      let bi = (this.startY - this.currentY) / (this.startX - this.currentX);
-      bi = Math.abs(bi).toFixed(2);
+    if (this.currentX !== this.startX) {
+      const bi = Math.abs((this.startY - this.currentY) / (this.startX - this.currentX));
       if (bi < 0.58) {
         // console.log('不能下拉呀');
         return;
