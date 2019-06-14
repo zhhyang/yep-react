@@ -1,0 +1,37 @@
+
+@import '../../style/mixin';
+
+.Yep-collapse {
+  &-arrow{
+    background: url("//m.360buyimg.com/imagetools/jfs/t1/14185/35/3286/352/5c26d971E661dbae4/2874090274cfa1ad.png") no-repeat;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: auto 100%;
+    margin-left: auto;
+    transition: all .3s ease;
+  }
+  &-show-arrow{
+    transform: rotate(180deg);
+  }
+  &-hide-arrow{
+    transform: rotate(0deg);
+  }
+  &-show{
+    display: block;
+  }
+  &-hide{
+    display: none;
+  }
+  &-title{
+    display: flex;
+    padding: 0.2rem 0;
+    font-size: 30px;
+    line-height: 30px;
+  }
+  &-cont{
+    font-size: 28px;
+    color: #A4A7AE;
+    line-height: 42px;
+  }
+}
