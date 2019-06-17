@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 4
 title: 价格取整
 description:
 ---

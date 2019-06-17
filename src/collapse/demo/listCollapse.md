@@ -36,7 +36,12 @@ class Demo extends React.PureComponent {
     const {cont, itemList} = this.state;
     return (
       <div className="collapse">
-        {itemList && itemList.map(item => <Collapse title={item.title}>{item.cont}</Collapse>)}
+        {itemList &&
+          itemList.map(item => (
+            <Collapse title={item.title} key={item.title}>
+              {item.cont}
+            </Collapse>
+          ))}
       </div>
     );
   }

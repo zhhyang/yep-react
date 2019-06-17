@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 6
 title: 自定义价格样式
 description:
 ---
