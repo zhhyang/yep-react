@@ -11,10 +11,6 @@ export interface CollapseProps {
    */
   isOpen?: boolean;
   /**
-   * 折叠内容
-   */
-  cont?: any;
-  /**
    * 折叠标题
    */
   title?: string;
@@ -41,7 +37,7 @@ export default class Collapse extends React.PureComponent<CollapseProps, any> {
   };
 
   render() {
-    const {prefixCls, cont, title, className} = this.props;
+    const {prefixCls, title, className, children} = this.props;
     const {isOpen} = this.state;
     const cls = classNames(className, prefixCls);
     return (
@@ -55,7 +51,7 @@ export default class Collapse extends React.PureComponent<CollapseProps, any> {
             onClick={() => this.handleToggle()}
           />
         </div>
-        <div className={`${isOpen ? `${prefixCls}-show` : `${prefixCls}-hide`} ${prefixCls}-cont`}>{cont}</div>
+        <div className={`${isOpen ? `${prefixCls}-show` : `${prefixCls}-hide`} ${prefixCls}-cont`}>{children}</div>
       </div>
     );
   }

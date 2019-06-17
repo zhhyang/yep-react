@@ -23,9 +23,11 @@ class Demo extends React.PureComponent {
     return (
       <div className="collapse">
         <h4 className={'collapse-type'}>默认不展开：</h4>
-        <Collapse title={title} cont={cont} />
+        <Collapse title={title}>{cont}</Collapse>
         <h4 className={'collapse-type'}>展开：</h4>
-        <Collapse title={title} cont={cont} isOpen={true} />
+        <Collapse title={title} isOpen={true}>
+          {cont}
+        </Collapse>
       </div>
     );
   }
