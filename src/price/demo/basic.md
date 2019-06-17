@@ -7,7 +7,6 @@ description:
 ```js
 import React from 'react';
 import {Price} from '@jdcfe/yep-react';
-import {ComponentCard} from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {
@@ -28,8 +27,6 @@ class Demo extends React.PureComponent {
           <label>默认-人民币</label>
           <div className="price-item">
             <Price value="￥36.00" />
-          </div>
-        </div>
       </div>
     );
   }

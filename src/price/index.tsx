@@ -20,30 +20,34 @@ const dealPrice = (value: string, decLength = 2, symbol = '¥') => {
   };
 };
 
+const Price: React.FunctionComponent<PriceProps> = ({
+  prefixCls,
+  symPos,
+  decPos,
+  status,
+  className,
+  symClassName,
+  intClassName,
+  decClassName,
+  value,
+  decLength,
+  currencySym,
+}) => {
+  const cls = classNames(className ? `${className}` : '', prefixCls, {
+    del: status === 'del',
+  });
 
-const Price: React.FunctionComponent<PriceProps> = ({prefixCls, symPos, decPos, status, className, symClassName, intClassName, decClassName, value, decLength, currencySym}) => {
-  const cls = classNames(
-    className ? `${className}` : '',
-    prefixCls,
-    {
-      'del': status === 'del',
-    });
-
-  const symCls = classNames(
-    symClassName ? `${symClassName}` : '',
-    {
-      'sym-sub': symPos === 'sub',
-      'sym-sup': symPos === 'sup',
-    });
+  const symCls = classNames(symClassName ? `${symClassName}` : '', {
+    'sym-sub': symPos === 'sub',
+    'sym-sup': symPos === 'sup',
+  });
 
   const intCls = classNames(intClassName ? `${intClassName}` : '');
 
-  const decCls = classNames(
-    decClassName ? `${decClassName}` : '',
-    {
-      'dec-sub': decPos === 'sub',
-      'dec-sup': decPos === 'sup',
-    });
+  const decCls = classNames(decClassName ? `${decClassName}` : '', {
+    'dec-sub': decPos === 'sub',
+    'dec-sup': decPos === 'sup',
+  });
 
   const {symbol, intVal, decimalVal} = dealPrice(value, decLength, currencySym);
 
@@ -51,10 +55,7 @@ const Price: React.FunctionComponent<PriceProps> = ({prefixCls, symPos, decPos, 
     <div className={cls}>
       <span className={`${prefixCls}-sym ${symCls}`}>{symbol}</span>
       <span className={`${prefixCls}-txt int-txt ${intCls}`}>{intVal}</span>
-      {
-        !!decimalVal &&
-        <span className={`${prefixCls}-txt dec-txt ${decCls}`}>.{decimalVal}</span>
-      }
+      {!!decimalVal && <span className={`${prefixCls}-txt dec-txt ${decCls}`}>.{decimalVal}</span>}
     </div>
   );
 };
@@ -103,8 +104,7 @@ export interface PriceProps {
    * 价格小数部分额外样式
    */
   decClassName?: string;
-};
-
+}
 
 Price.defaultProps = {
   prefixCls: 'Yep-price',

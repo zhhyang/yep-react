@@ -6,6 +6,9 @@
   &__container {
     @include box();
   }
+  &__container--vertical{
+    @include box-direction-horizontal()
+  }
   &__item {
     display: inline-block;
     @include box();

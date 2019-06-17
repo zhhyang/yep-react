@@ -16,3 +16,4 @@ title: 弹出框
 | popupTransition | popup 弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up | string  | slide-up   |
 | maskTransition  | mask 层的动画，默认为 fade                                                  | string  | fade       |
 | maskCloseable   | 点击蒙层是否关闭                                                            | boolean | true       |
+| usePortal       | 是否需要挂载到 body 上                                                      | boolean | false      |

@@ -3,17 +3,10 @@
 
 .Yep-message {
   $fontSize: 24px;
-  .icon {
-    width: $fontSize;
-    height: $fontSize;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
+  .Yep-icon{
+    width: 24px;
+    height: 24px;
   }
-  .icon-close {
-    width: 16px;
-    height: 16px;
-  }
-
   &.fix-top {
     position: fixed;
     top: 0;
@@ -35,21 +28,29 @@
     justify-content: space-between;
     padding: 10px;
     &-info {
-      color: #fff;
-      background: #2e6da4;
+      color: #262626;
+      background: #FFFFFF;
     }
     &-warn {
       color: #fff;
       background: #f0ad4e;
+      .Yep-icon{
+        color: #f0ad4e;
+      }
+      .Yep-icon-close{
+        color: #262626;
+      }
     }
     &-error {
       color: #fff;
       background: #d9534f;
+      .Yep-icon{
+        color: #d9534f;
+      }
+      .Yep-icon-close{
+        color: #262626;
+      }
     }
-  }
-  .icon {
-    display: block;
-    font-size: $fontSize;
   }
   .message-text {
     display: block;

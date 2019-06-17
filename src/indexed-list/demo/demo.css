@@ -1,0 +1,9 @@
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  transition: all .2s;
+  background-color: #fff;
+}

@@ -10,17 +10,18 @@ export interface NavBarProps {
   leftContent: React.ReactNode;
   onLeftClick?: () => void;
   close?: boolean;
+  closeContent?: React.ReactNode;
   onCloseClick?: () => void;
   rightContent: React.ReactNode;
   share?: React.ReactNode;
   onRightClick?: () => void;
 }
-export default class NavBar extends React.PureComponent<NavBarProps,any> {
-
+export default class NavBar extends React.PureComponent<NavBarProps, any> {
   static defaultProps = {
     prefixCls: 'Yep-nav-bar',
     style: {},
     leftIcon: <Icon type="arrow-back" size="xs" />,
+    closeContent: '关闭',
     //rightContent: <Icon type="lego_gengduo" />,
     onLeftClick: noop,
     onCloseClick: noop,
@@ -37,6 +38,7 @@ export default class NavBar extends React.PureComponent<NavBarProps,any> {
       leftIcon,
       leftContent,
       close,
+      closeContent,
       onCloseClick,
       rightContent,
       share,
@@ -56,7 +58,7 @@ export default class NavBar extends React.PureComponent<NavBarProps,any> {
           </span>
           {close && (
             <div onClick={onCloseClick} className={`${prefixCls}-left-close`}>
-              关闭
+              {closeContent}
             </div>
           )}
         </div>

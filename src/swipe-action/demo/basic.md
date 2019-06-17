@@ -13,6 +13,7 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <SwipeAction
+          className="my-swipe"
           style={{backgroundColor: 'gray'}}
           autoClose
           right={[

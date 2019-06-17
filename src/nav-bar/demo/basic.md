@@ -11,7 +11,12 @@ import {NavBar, Icon} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
-      <NavBar leftContent="返回" rightContent={<Icon type="lego_gengduo" />}>
+      <NavBar
+        leftContent="返回"
+        close
+        closeContent={<Icon type="close" size="xs" />}
+        rightContent={<Icon type="lego_gengduo" />}
+      >
         页面标题
       </NavBar>
     );
