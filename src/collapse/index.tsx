@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import Icon from '../icon';
 
 export interface CollapseProps {
   prefixCls?: string;
@@ -12,7 +13,7 @@ export interface CollapseProps {
   /**
    * 折叠内容
    */
-  cont?: string;
+  cont?: any;
   /**
    * 折叠标题
    */
@@ -24,14 +25,12 @@ export default class Collapse extends React.PureComponent<CollapseProps, any> {
     prefixCls: 'Yep-collapse',
     style: {},
     isOpen: false,
-    cont: '我是折叠内容',
-    title: '我是折叠面板标题',
   };
 
   constructor(props: CollapseProps) {
     super(props);
     this.state = {
-      isOpen: false,
+      isOpen: this.props.isOpen,
     };
   }
 
@@ -47,9 +46,14 @@ export default class Collapse extends React.PureComponent<CollapseProps, any> {
     const cls = classNames(className, prefixCls);
     return (
       <div className={cls}>
-        <div onClick={() => this.handleToggle()} className={`${prefixCls}-title`}>
+        <div className={`${prefixCls}-title`}>
           <span>{title}</span>
-          <i className={`${isOpen ? `${prefixCls}-show-arrow` : `${prefixCls}-hide-arrow`} ${prefixCls}-arrow`} />
+          <Icon
+            type={'arrow-down-hollow'}
+            size={'xxs'}
+            className={`${isOpen ? `${prefixCls}-show-arrow` : `${prefixCls}-hide-arrow`} ${prefixCls}-arrow`}
+            onClick={() => this.handleToggle()}
+          />
         </div>
         <div className={`${isOpen ? `${prefixCls}-show` : `${prefixCls}-hide`} ${prefixCls}-cont`}>{cont}</div>
       </div>
