@@ -19,6 +19,7 @@ class Demo extends React.PureComponent {
       <div>
         <ComponentCard title={'常规用法'}>
           <div className="price-list">
+            <h4 className={'price-type'}>默认：</h4>
             <div className="price-item-wrap">
               <label>默认</label>
               <div className="price-item">
@@ -33,20 +34,15 @@ class Demo extends React.PureComponent {
               </div>
             </div>
 
+            <h4 className={'price-type'}>自定义货币符号：</h4>
             <div className="price-item-wrap">
-              <label>默认-美元</label>
+              <label>美元</label>
               <div className="price-item">
                 <Price value="$36.00" />
               </div>
             </div>
 
-            <div className="price-item-wrap">
-              <label>正常</label>
-              <div className="price-item">
-                <Price value="36.00" symPos="normal" decPos="normal" />
-              </div>
-            </div>
-
+            <h4 className={'price-type'}>自定义小数位置：</h4>
             <div className="price-item-wrap">
               <label>小数右上</label>
               <div className="price-item">
@@ -68,6 +64,7 @@ class Demo extends React.PureComponent {
               </div>
             </div>
 
+            <h4 className={'price-type'}>1位小数：</h4>
             <div className="price-item-wrap">
               <label>只保留一位小数</label>
               <div className="price-item">
@@ -75,6 +72,7 @@ class Demo extends React.PureComponent {
               </div>
             </div>
 
+            <h4 className={'price-type'}>价格取整：</h4>
             <div className="price-item-wrap">
               <label>不要小数</label>
               <div className="price-item">
@@ -82,6 +80,7 @@ class Demo extends React.PureComponent {
               </div>
             </div>
 
+            <h4 className={'price-type'}>划线价：</h4>
             <div className="price-item-wrap">
               <label>删除状态</label>
               <div className="price-item">
@@ -89,6 +88,7 @@ class Demo extends React.PureComponent {
               </div>
             </div>
 
+            <h4 className={'price-type'}>自定义价格样式：</h4>
             <div className="price-item-wrap">
               <label>自定义样式</label>
               <div className="price-item">

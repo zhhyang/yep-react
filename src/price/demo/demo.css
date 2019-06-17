@@ -5,6 +5,13 @@
   border-radius: .1rem;
 }
 
+.price-type{
+  color: #2196f3;
+  font-weight: bold;
+  padding: 0.3rem 0 0;
+  font-size: 0.3rem;
+}
+
 .price-item-wrap {
   padding: .2rem 0 .1rem;
   display: flex;
