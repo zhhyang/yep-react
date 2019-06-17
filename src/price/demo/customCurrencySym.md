@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 自定义货币符号
-description:
+description: 可根据传入的货币符号展示
 ---
 
 ```js

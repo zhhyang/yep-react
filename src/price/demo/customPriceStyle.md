@@ -1,7 +1,7 @@
 ---
 order: 6
 title: 自定义价格样式
-description:
+description: 可自定义价格样式，包括货币符号、价格
 ---
 
 ```js

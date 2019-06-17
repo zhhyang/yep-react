@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 可配置默认展开、默认不展开效果
 ---
 
 ```js

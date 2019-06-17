@@ -1,7 +1,7 @@
 ---
 order: 4
 title: 价格取整
-description:
+description: 将传入的价格采用四舍五入计数法保留整数，去除小数
 ---
 
 ```js

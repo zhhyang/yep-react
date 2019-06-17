@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 货币符号、价格整数位、价格小数位底端对齐的默认展示效果
 ---
 
 ```js
@@ -27,6 +27,8 @@ class Demo extends React.PureComponent {
           <label>默认-人民币</label>
           <div className="price-item">
             <Price value="￥36.00" />
+          </div>
+        </div>
       </div>
     );
   }

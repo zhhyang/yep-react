@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 只保留1位小数
-description:
+description: 将传入的价格采用四舍五入计数法保留一位小数
 ---
 
 ```js
