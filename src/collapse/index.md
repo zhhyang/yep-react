@@ -7,11 +7,11 @@ title: 折叠面板
 
 <DEMO>
 
-| 参数      | 说明             | 类型    | 默认值       |
-| --------- | ---------------- | ------- | ------------ |
-| prefixCls | 组件 class 前缀  | string  | Yep-collapse |
-| style     | 组件样式         | object  | {}           |
-| className | 组件额外样式     | string  | -            |
-| isOpen    | 是否展开折叠内容 | boolean | false        |
-| title     | 折叠面板标题     | string  | -            |
-| cont      | 折叠内容         | string  | -            |
+| 参数      | 说明             | 类型    | 默认值       | 必填  |
+| --------- | ---------------- | ------- | ------------ | ----- |
+| prefixCls | 组件 class 前缀  | string  | Yep-collapse | false |
+| style     | 组件样式         | object  | {}           | false |
+| className | 组件额外样式     | string  | -            | false |
+| isOpen    | 是否展开折叠内容 | boolean | false        | false |
+| title     | 折叠面板标题     | string  | -            | true  |
+| children  | 折叠内容         | node    | -            | true  |
