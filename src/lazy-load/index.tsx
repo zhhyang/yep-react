@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 import {on, off} from '../_utils/events';
 import scrollParent from '../_utils/scrollParent';
 import {throttle, debounce} from 'lodash';
-import {ReactInstance} from 'react';
+// import {ReactInstance} from 'react';
 export interface LazyLoadProps {
   once: boolean;
   height: number | string;
@@ -15,7 +15,7 @@ export interface LazyLoadProps {
   throttle: number | boolean;
   debounce: number | boolean;
   placeholder: React.ReactNode;
-  scrollContainer: string | object;
+  scrollContainer: string;
   unmountIfInvisible: boolean;
 }
 
@@ -32,7 +32,7 @@ try {
       passiveEventSupported = true;
     },
   });
-  window.addEventListener('test', null, opts);
+  window.addEventListener('test', () => {}, opts);
 } catch (e) {}
 // if they are supported, setup the optional params
 // IMPORTANT: FALSE doubles as the default CAPTURE value!
@@ -44,8 +44,8 @@ const passiveEvent = passiveEventSupported ? {capture: false, passive: true} : f
  * @param  {node} parent    component's scroll parent
  * @return {bool}
  */
-const checkOverflowVisible = function checkOverflowVisible(component: ReactInstance, parent: React.ReactNode) {
-  const node = ReactDom.findDOMNode(component);
+const checkOverflowVisible = function checkOverflowVisible(component: React.Component<any, any>, parent: HTMLElement) {
+  const node = ReactDom.findDOMNode(component) as HTMLElement;
 
   let parentTop;
   let parentHeight;
@@ -86,8 +86,8 @@ const checkOverflowVisible = function checkOverflowVisible(component: ReactInsta
  * @param  {node} component React component
  * @return {bool}
  */
-const checkNormalVisible = function checkNormalVisible(component) {
-  const node = ReactDom.findDOMNode(component);
+const checkNormalVisible = function checkNormalVisible(component: React.Component<any, any>) {
+  const node = ReactDom.findDOMNode(component) as HTMLElement;
 
   // If this element is hidden by css rules somehow, it's definitely invisible
   if (!(node.offsetWidth || node.offsetHeight || node.getClientRects().length)) return false;
@@ -116,8 +116,9 @@ const checkNormalVisible = function checkNormalVisible(component) {
  *
  * @param  {React} component   React component that respond to scroll and resize
  */
-const checkVisible = function checkVisible(component) {
-  const node = ReactDom.findDOMNode(component);
+
+const checkVisible = function checkVisible(component: LazyLoad) {
+  const node = ReactDom.findDOMNode(component) as HTMLElement;
   if (!(node instanceof HTMLElement)) {
     return;
   }
@@ -148,7 +149,7 @@ const checkVisible = function checkVisible(component) {
 };
 
 const purgePending = function purgePending() {
-  pending.forEach(component => {
+  pending.forEach((component: React.Component<any, any>) => {
     const index = listeners.indexOf(component);
     if (index !== -1) {
       listeners.splice(index, 1);
@@ -168,8 +169,8 @@ const lazyLoadHandler = () => {
 };
 
 // Depending on component's props
-let delayType;
-let finalLazyLoadHandler = null;
+let delayType: string;
+let finalLazyLoadHandler: any = null;
 
 const isString = (str: any) => typeof str === 'string';
 
@@ -194,11 +195,11 @@ class LazyLoad extends React.Component<LazyLoadProps, any> {
   componentDidMount() {
     // It's unlikely to change delay type on the fly, this is mainly
     // designed for tests
-    let scrollport = window;
+    let scrollport: Window | HTMLElement = window;
     const {scrollContainer} = this.props;
     if (scrollContainer) {
       if (isString(scrollContainer)) {
-        scrollport = scrollport.document.querySelector(scrollContainer);
+        scrollport = scrollport.document.querySelector(scrollContainer) as HTMLElement;
       }
     }
     const needResetFinalLazyLoadHandler =
@@ -294,16 +295,12 @@ class LazyLoad extends React.Component<LazyLoadProps, any> {
   }
 }
 
-const getDisplayName = WrappedComponent => WrappedComponent.displayName || WrappedComponent.name || 'Component';
+const getDisplayName = (WrappedComponent: any) => WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
-const decorator = (options = {}) =>
-  function lazyload(WrappedComponent) {
+const decorator = (options: LazyLoadProps) =>
+  function lazyload(WrappedComponent: any) {
     return class LazyLoadDecorated extends React.Component {
-      constructor() {
-        super();
-        this.displayName = `LazyLoad${getDisplayName(WrappedComponent)}`;
-      }
-
+      displayName = `LazyLoad${getDisplayName(WrappedComponent)}`;
       render() {
         return (
           <LazyLoad {...options}>
