@@ -3,67 +3,65 @@ category: Basic
 title: 手势操作
 ---
 
-为移动端 React 组件提供手势操作，inspired by hammer and rc-gesture
+为移动端 React 组件提供手势操作。
 
 <DEMO>
 
-## Properties
-
-### common props
+### 基本属性
 
 | 参数      | 类型   | 默认值 | 说明                                                        |
 | --------- | ------ | ------ | ----------------------------------------------------------- |
 | direction | string | `all`  | 控制允许的手势方向，可选`['all', 'vertical', 'horizontal']` |
 
-### Swipe
+### 滑动事件
 
-| 参数         | 类型     | 默认值 | 说明                                                                     |
-| ------------ | -------- | ------ | ------------------------------------------------------------------------ |
-| onSwipe      | function | -      | swipe callback, will triggered at the same time of all of below callback |
-| onSwipeLeft  | function | -      | swipe left callback                                                      |
-| onSwipeRight | function | -      | swipe right callback                                                     |
-| onSwipeUp    | function | -      | swipe Up callback                                                        |
-| onSwipeDown  | function | -      | swipe down callback                                                      |
+| 参数         | 类型     | 默认值 | 说明                                     |
+| ------------ | -------- | ------ | ---------------------------------------- |
+| onSwipe      | function | -      | 滑动事件回调函数，会在滑动事件触发时执行 |
+| onSwipeLeft  | function | -      | 向左滑动事件触发时执行                   |
+| onSwipeRight | function | -      | 向右滑动事件触发时执行                   |
+| onSwipeUp    | function | -      | 向上滑动事件触发时执行                   |
+| onSwipeDown  | function | -      | 向下滑动事件触发时执行                   |
 
 ### Pan
 
-| 参数        | 类型     | 默认值 | 说明                                                                   |
-| ----------- | -------- | ------ | ---------------------------------------------------------------------- |
-| onPan       | function |        | pan callback, will triggered at the same time of all of below callback |
-| onPanStart  | function |        | drag start callback                                                    |
-| onPanMove   | function |        | drag move callback                                                     |
-| onPanEnd    | function |        | drag end callback                                                      |
-| onPanCancel | function |        | drag cancel callback                                                   |
-| onPanLeft   | function |        | pan left callback                                                      |
-| onPanRight  | function |        | pan right callback                                                     |
-| onPanUp     | function |        | pan up callback                                                        |
-| onPanDown   | function |        | pan down callback                                                      |
+| 参数        | 类型     | 默认值 | 说明                                                 |
+| ----------- | -------- | ------ | ---------------------------------------------------- |
+| onPan       | function |        | 拖拽事件回调函数，会在下方全部拖拽事件触发同时时执行 |
+| onPanStart  | function |        | 拖拽事件开始时触发                                   |
+| onPanMove   | function |        | 拖拽事件进行中触发                                   |
+| onPanEnd    | function |        | 拖拽事件结束时触发                                   |
+| onPanCancel | function |        | 拖拽事件取消时触发                                   |
+| onPanLeft   | function |        | 向左拖拽时触发                                       |
+| onPanRight  | function |        | 向右拖拽时触发                                       |
+| onPanUp     | function |        | 向上拖拽时触发                                       |
+| onPanDown   | function |        | 向下拖拽时触发                                       |
 
-### Pinch
+### 双指捏合
 
-pinch gesture is not enabled by default, you must set props.enablePinch = true at first;
+默认不支持双指捏合事件,需要设置 props.enablePinch = true 来开启事件监听;
 
-| 参数         | 类型     | 默认值 | 说明                                                                     |
-| ------------ | -------- | ------ | ------------------------------------------------------------------------ |
-| onPinch      | function |        | pinch callback, will triggered at the same time of all of below callback |
-| onPinchStart | function |        | pinch start callback                                                     |
-| onPinchMove  | function |        | pinch move callback                                                      |
-| onPinchEnd   | function |        | pinch end callback                                                       |
-| onPinCancel  | function |        | pinch cancel callback                                                    |
-| onPinchIn    | function |        | pinch in callback                                                        |
-| onPinchOut   | function |        | pinch out callback                                                       |
+| 参数         | 类型     | 默认值 | 说明                                                 |
+| ------------ | -------- | ------ | ---------------------------------------------------- |
+| onPinch      | function |        | 捏合事件回调函数，会在下方全部捏合事件触发同时时执行 |
+| onPinchStart | function |        | 捏合事件开始时触发                                   |
+| onPinchMove  | function |        | 捏合事件进行中触发                                   |
+| onPinchEnd   | function |        | 捏合事件结束时触发                                   |
+| onPinCancel  | function |        | 捏合事件取消时触发                                   |
+| onPinchIn    | function |        | 缩小事件监听                                         |
+| onPinchOut   | function |        | 放大事件监听                                         |
 
-### Rotate
+### 旋转
 
-Rotate gesture is not enabled by default, you must set props.enableRotate = true at first;
+默认不支持旋转手势，需要设置 props.enableRotate = true 来开启监听;
 
-| 参数           | 类型     | 默认值               | 说明                                                                      |
-| -------------- | -------- | -------------------- | ------------------------------------------------------------------------- |
-| onRotate       | function |                      | rotate callback, will triggered at the same time of all of below callback |
-| onRotateStart  | function |                      | rotate start callback                                                     |
-| onRotateMove   | function | rotate move callback |
-| onRotateEnd    | function |                      | rotate end callback                                                       |
-| onRotateCancel | function |                      | rotate cancel callback                                                    |
+| 参数           | 类型     | 默认值 | 说明                                                 |
+| -------------- | -------- | ------ | ---------------------------------------------------- |
+| onRotate       | function |        | 旋转事件回调函数，会在下方全部旋转事件触发同时时执行 |
+| onRotateStart  | function |        | 旋转事件开始时触发                                   |
+| onRotateMove   | function |        | 旋转事件进行中触发                                   |
+| onRotateEnd    | function |        | 旋转事件结束时触发                                   |
+| onRotateCancel | function |        | 旋转事件取消时触发                                   |
 
 ### gesture
 
