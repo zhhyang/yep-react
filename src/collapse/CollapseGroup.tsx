@@ -1,12 +1,16 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 export interface CollapseGroupProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
+  /**
+   * 折叠内容
+   */
   children: React.ReactNode;
   /**
-   * 指定默认展开的项
+   * 指定默认展开的索引
    */
   defaultOpenIndex?: number;
 }
@@ -31,10 +35,12 @@ export default class CollapseGroup extends React.PureComponent<CollapseGroupProp
   }
 
   render() {
+    const {className, prefixCls, style} = this.props;
+    const cls = classNames(className, prefixCls);
     const {defaultOpenIndex} = this.state;
     const children = React.Children.toArray(this.props.children);
     return (
-      <div>
+      <div className={cls} style={style}>
         {children.map((item: any, index: number) =>
           React.cloneElement(item, {
             isOpen: index === defaultOpenIndex,
