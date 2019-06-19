@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 const dealPrice = (value: string, decLength = 2, symbol = '¥') => {
   // 判断value的第一位是否是货币符号
-  if (!/^[0-9]*$/.test(value.substring(0, 1))) {
+  if (value && !/^[0-9]*$/.test(value.substring(0, 1))) {
     symbol = value.substring(0, 1); // 如果是货币符号，获取符号
     value = value.substring(1); // 获取价格
   }
