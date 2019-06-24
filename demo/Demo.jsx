@@ -28,6 +28,7 @@ class Demo extends React.Component {
 
   componentDidMount() {
     this.renderSource(this.code);
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(nextProps) {

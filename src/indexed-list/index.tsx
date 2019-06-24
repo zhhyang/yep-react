@@ -28,20 +28,20 @@ export interface IndexedListProps {
   style?: React.CSSProperties;
   showIndicator?: boolean;
   data: any;
-  renderSectionHeader: (sectionData:string, sectionId:string) => React.ReactNode;
+  renderSectionHeader: (sectionData: string, sectionId: string) => React.ReactNode;
   renderRow: (item: any) => React.ReactNode;
-  renderSectionWrapper?: (sectionId:string) => React.ReactNode;
+  renderSectionWrapper?: (sectionId: string) => React.ReactNode;
   quickIndexedBarTop?: any;
   useBodyScroll?: boolean;
-  onQuickSearch: (sectionID:string, topId?:string) => void;
+  onQuickSearch: (sectionID: string, topId?: string) => void;
   indexedBarStyle?: React.CSSProperties;
   indicatorStyle?: React.CSSProperties;
   enableQuickIndexedBarTop?: boolean;
   activeBar?: string;
   keyLabel: string;
-  renderHeader?:() => React.ReactNode;
-  renderFooter?:() => React.ReactNode;
-  renderBodyComponent:() => React.ReactNode;
+  renderHeader?: () => React.ReactNode;
+  renderFooter?: () => React.ReactNode;
+  renderBodyComponent: () => React.ReactNode;
 }
 export default class IndexedList extends React.PureComponent<IndexedListProps, any> {
   static defaultProps = {
@@ -57,22 +57,22 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     onQuickSearch: noop,
     enableQuickIndexedBarTop: true,
     keyLabel: 'value',
-    renderBodyComponent:() => <div />,
+    renderBodyComponent: () => <div />,
   };
 
   sectionComponents = {} as any;
 
-  indicator:HTMLDivElement;
-  indexedBar:HTMLUListElement;
-  indexedListView:ListView;
+  indicator: HTMLDivElement;
+  indexedBar: HTMLUListElement;
+  indexedListView: ListView;
 
-  _indicatorTimer:number;
+  _indicatorTimer: number;
 
-  _hCache:any;
-  _target:any;
-  _basePos:any;
-  _qsHeight:any;
-  _avgH:any;
+  _hCache: any;
+  _target: any;
+  _basePos: any;
+  _qsHeight: any;
+  _avgH: any;
 
   constructor(props: IndexedListProps) {
     super(props);
@@ -91,20 +91,20 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     };
   }
 
-  createIndicatorRef(el:HTMLDivElement) {
+  createIndicatorRef(el: HTMLDivElement) {
     this.indicator = el;
   }
 
-  createIndexedBarRef(el:HTMLUListElement) {
+  createIndexedBarRef(el: HTMLUListElement) {
     this.indexedBar = el;
   }
 
-  _disableParent(e:any) {
+  _disableParent(e: any) {
     e.preventDefault();
     e.stopPropagation();
   }
 
-  onQuickSearchTop(sectionID:any, topId:string) {
+  onQuickSearchTop(sectionID: any, topId: string) {
     if (this.props.useBodyScroll) {
       setDocumentScrollTop(0);
     } else {
@@ -114,18 +114,22 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     this.props.onQuickSearch(sectionID, topId);
   }
 
-  onQuickSearch = (sectionID:string) => {
+  onQuickSearch = (sectionID: string) => {
     const lv = ReactDOM.findDOMNode(this.indexedListView.listViewRef) as HTMLDivElement;
     const sec = ReactDOM.findDOMNode(this.sectionComponents[sectionID]) as HTMLDivElement;
+    const devicePixelRatio = window.devicePixelRatio || 2;
     if (this.props.useBodyScroll) {
-      setDocumentScrollTop(sec.getBoundingClientRect().top - lv.getBoundingClientRect().top + getOffsetTop(lv));
+      //保证上一个吸顶的字母不再影响当前字母
+      setDocumentScrollTop(
+        sec.getBoundingClientRect().top - lv.getBoundingClientRect().top + getOffsetTop(lv) + devicePixelRatio
+      );
     } else {
-      lv.scrollTop += sec.getBoundingClientRect().top - lv.getBoundingClientRect().top;
+      lv.scrollTop += sec.getBoundingClientRect().top - lv.getBoundingClientRect().top + devicePixelRatio;
     }
     this.props.onQuickSearch(sectionID);
   };
 
-  updateIndicator(ele:HTMLDivElement, end = false) {
+  updateIndicator(ele: HTMLDivElement, end = false) {
     let el = ele;
     if (!el.getAttribute('data-index-target')) {
       el = el.parentNode as HTMLDivElement;
@@ -149,7 +153,7 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     const cls = `${this.props.prefixCls}-indexed-bar-over`;
     const activeCls = `${this.props.prefixCls}-indexed-bar-active`;
     // can not use setState to change className, it has a big performance issue!
-    this._hCache.forEach((d:any) => {
+    this._hCache.forEach((d: any) => {
       d[0].className = d[0].className.replace(cls, '').replace(activeCls, '');
       //add active class
       d[0].className = `${d[0].className} ${
@@ -161,14 +165,14 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     }
   }
 
-  onTouchStart(e:React.TouchEvent<HTMLUListElement>) {
+  onTouchStart(e: React.TouchEvent<HTMLUListElement>) {
     this._target = e.target;
     this._basePos = this.indexedBar.getBoundingClientRect();
     draggingIndexBar = true;
     this.updateIndicator(this._target);
   }
 
-  onTouchMove(e:React.TouchEvent<HTMLUListElement>) {
+  onTouchMove(e: React.TouchEvent<HTMLUListElement>) {
     e.preventDefault();
     if (this._target) {
       const ex = _event(e);
@@ -224,7 +228,7 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     const quickSearchBar = this.indexedBar;
     const height = quickSearchBar.offsetHeight;
     const hCache = [] as any;
-    [].slice.call(quickSearchBar.querySelectorAll('[data-index-target]')).forEach((d:any) => {
+    [].slice.call(quickSearchBar.querySelectorAll('[data-index-target]')).forEach((d: any) => {
       hCache.push([d]);
     });
     const _avgH = height / hCache.length;
@@ -238,10 +242,10 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
     this._hCache = hCache;
   }
 
-  componentWillReceiveProps(nextProps:IndexedListProps) {
+  componentWillReceiveProps(nextProps: IndexedListProps) {
     if (nextProps.activeBar !== this.props.activeBar) {
       const activeCls = `${this.props.prefixCls}-indexed-bar-active`;
-      this._hCache.forEach((d:any) => {
+      this._hCache.forEach((d: any) => {
         d[0].className = d[0].className.replace(activeCls, '');
         //add active class
         d[0].className = `${d[0].className} ${
@@ -328,7 +332,7 @@ export default class IndexedList extends React.PureComponent<IndexedListProps, a
                 <Item prefixCls={listPrefixCls}>{renderSectionHeader(sectionData, sectionId)}</Item>
               </div>,
               {
-                ref: (el:HTMLDivElement) => (this.sectionComponents[sectionId] = el),
+                ref: (el: HTMLDivElement) => (this.sectionComponents[sectionId] = el),
                 className: sectionHeaderClassName,
               }
             )

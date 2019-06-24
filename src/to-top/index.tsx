@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import {omit} from 'lodash';
 import {CSSTransition} from 'react-transition-group';
-import raf from 'raf';
+import * as raf from 'raf';
 import noop from '../_utils/noop';
 import Icon from '../icon';
 
@@ -10,9 +10,9 @@ const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
   const cc = c - b;
   t /= d / 2;
   if (t < 1) {
-    return cc / 2 * t * t * t + b;
+    return (cc / 2) * t * t * t + b;
   } else {
-    return cc / 2 * ((t -= 2) * t * t + 2) + b;
+    return (cc / 2) * ((t -= 2) * t * t + 2) + b;
   }
 };
 
@@ -91,7 +91,7 @@ export default class ToTop extends React.PureComponent<ToTopProps, State> {
     const cls = classNames(prefixCls, className);
     const defaultElement = (
       <div className={`${prefixCls}-content`}>
-        <Icon type="lego_zhiding" size="md" />
+        <Icon type="up" className={`${prefixCls}-icon`} />
       </div>
     );
     const divProps = omit(this.props, ['prefixCls', 'className', 'children', 'displayHeight', 'visible']);

@@ -38,3 +38,10 @@ export const CATEGORIES = [
     icon: icon.form,
   },
 ];
+
+export const clearCache = () => {
+  sessionStorage.setItem('openStatus', JSON.stringify({}));
+  sessionStorage.setItem('scrollTop', '0');
+};
+//demo需要中间跳转页的组件
+export const subListDemos = ['sticky', 'infinite-loader'];

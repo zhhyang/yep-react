@@ -18,7 +18,6 @@ const isEqualSubset = (parameters: {a: any; b: any}) => {
 };
 
 export interface VirtualListProps {
-  next: any;
   prefixCls?: string;
 
   className: string;
@@ -57,7 +56,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
 
   static defaultProps = {
     prefixCls: 'Yep',
-    itemsRenderer: (items:any,ref:any) => {
+    itemsRenderer: (items: any, ref: any) => {
       return <ul ref={ref}>{items}</ul>;
     },
     minSize: 1,
@@ -97,18 +96,17 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     this.updateFrame({cb: this.scrollTo.bind(this, jumpIndex)});
   }
 
-  componentWillReceiveProps = (parameters: VirtualListProps) => {
-    let next = parameters.next;
+  componentWillReceiveProps = (nextProps: VirtualListProps) => {
     const {from, size}: Readonly<any> = this.state;
 
     const oldIndex = this.props.jumpIndex;
-    const newIndex = next.jumpIndex;
+    const newIndex = nextProps.jumpIndex;
 
     if (oldIndex !== newIndex) {
       this.updateFrame({cb: this.scrollTo.bind(this, newIndex)});
     }
 
-    this.maybeSetState({b: this.constrain(from, size, next), cb: NOOP});
+    this.maybeSetState({b: this.constrain(from, size, nextProps), cb: NOOP});
   };
 
   componentDidUpdate() {
@@ -188,7 +186,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
         ? // Firefox always returns document.body[scrollKey] as 0 and Chrome/Safari
           // always return document.documentElement[scrollKey] as 0, so take
           // whichever has a value.
-        document.body[scrollKey] || (document.documentElement && document.documentElement[scrollKey])
+          document.body[scrollKey] || (document.documentElement && document.documentElement[scrollKey])
         : scrollParent && scrollParent[scrollKey];
     const max = this.getScrollSize() - this.getViewportSize();
 
@@ -349,7 +347,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     const {children, props = {}} = this.items;
     const itemEls = children || props.children || [];
     for (let i = 0, l = itemEls.length; i < l; ++i) {
-      const ulRef:any = findDOMNode(this.items);
+      const ulRef: any = findDOMNode(this.items);
       const height = ulRef && ulRef.children[i].offsetHeight;
       if (height > 0) {
         cache[from + i] = height;
@@ -390,7 +388,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
     return {from, size};
   };
 
-  scrollTo(index:any) {
+  scrollTo(index: any) {
     this.setScroll({offset: this.getSpaceBefore({index: index})});
   }
 
@@ -402,7 +400,7 @@ export default class VirtualList extends React.Component<VirtualListProps> {
       //@ts-ignore
       items.push(children[from + i]);
     }
-    return itemsRenderer(items, (c:any) => {
+    return itemsRenderer(items, (c: any) => {
       this.items = c;
       return this.items;
     });

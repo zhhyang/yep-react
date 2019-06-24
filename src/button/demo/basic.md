@@ -8,8 +8,6 @@ description:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Button, WhiteSpace} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
-const {ButtonGroup} = Button;
 class Demo extends React.PureComponent {
   render() {
     return (

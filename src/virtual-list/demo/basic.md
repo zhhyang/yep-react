@@ -6,7 +6,6 @@ description:
 
 ```js
 import {VirtualList} from '@jdcfe/yep-react';
-import ComponentCard from 'ComponentCard';
 
 const dataSource = [];
 
@@ -34,11 +33,9 @@ for (let i = 0; i < 1000; i++) {
 class Demo extends React.PureComponent {
   render() {
     return (
-      <ComponentCard title="基础用法">
-        <div className={'virtual-box'}>
-          <VirtualList>{dataSource}</VirtualList>
-        </div>
-      </ComponentCard>
+      <div className={'virtual-box'}>
+        <VirtualList>{dataSource}</VirtualList>
+      </div>
     );
   }
 }

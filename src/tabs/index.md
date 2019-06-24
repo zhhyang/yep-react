@@ -15,7 +15,7 @@ title: 标签页
 | className               | 组件额外样式               | string                                              | -          | false |
 | tabBarPosition          | TabBar 位置                | 'top' 'bottom' 'left' 'right' top                   | false      |
 | renderTabBar            | 替换 TabBar                | ((props: TabBarPropsType) => React.ReactNode) false |            | false |
-| initialPage             | 初始化 Tab, index or key   | number string                                       |            | false |
+| defaultIndex            | 初始化 Tab, index or key   | number string                                       |            | false |
 | page                    | 当前 Tab, index or key     | number string                                       |            | false |
 | swipeable               | 是否可以滑动内容切换       | boolean                                             | true       | false |
 | animated                | 是否开启切换动画           | boolean                                             | true       | false |

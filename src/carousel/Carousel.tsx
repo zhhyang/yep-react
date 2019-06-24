@@ -1,20 +1,27 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import {setTransform} from '../_utils/styleUtil';
 
 export interface CarouselProps {
   prefixCls: string;
+  style: React.CSSProperties;
   autoPlay?: false | number;
   className?: string;
-  initPage?: number;
-  renderPage?: (active:number,total:number) =>void;
-  onTransitionEnd: (index:number) =>void;
+  initPage: number;
+  renderPage?: (active: number, total: number) => void;
+  onTransitionEnd: (index: number) => void;
   isBounces?: boolean;
   isInfinite?: boolean;
   distance: number;
+  dots?: boolean;
+  dotsClass: string;
+  vertical?: boolean;
+  children?: React.ReactNodeArray;
 }
-export default class Carousel extends React.PureComponent<CarouselProps,any> {
+export default class Carousel extends React.PureComponent<CarouselProps, any> {
   static defaultProps = {
     prefixCls: 'Yep-carousel',
+    style: {},
     autoPlay: false,
     initPage: 0,
     renderPage: null,
@@ -22,21 +29,26 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     isInfinite: false,
     distance: 2,
     onTransitionEnd: () => {},
+    dots: true,
+    vertical: false,
   };
-  timer:number;
-  container:HTMLDivElement;
-  constructor(props:CarouselProps) {
+  timer: number;
+  container: HTMLDivElement;
+  isMoving: boolean;
+  touchStartPlace: number;
+  touchMovePlace: number;
+  width: number;
+  constructor(props: CarouselProps) {
     super(props);
+    const count = React.Children.count(props.children);
     this.state = {
-      isShow: false,
-      width: 0,
-      touchStartPlace: 0,
-      touchMovePlace: 0,
-      currentIndex: props.initPage,
-      total: 0,
-      isMoving: true,
+      currentIndex: props.isInfinite ? props.initPage + 1 : props.initPage,
+      total: props.isInfinite ? count + 2 : count,
     };
-
+    this.isMoving = true;
+    this.touchStartPlace = 0;
+    this.touchMovePlace = 0;
+    this.width = 0;
     this.renderItem = this.renderItem.bind(this);
     this.touchStartHandle = this.touchStartHandle.bind(this);
     this.touchMoveHandle = this.touchMoveHandle.bind(this);
@@ -44,40 +56,19 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     this.goPage = this.goPage.bind(this);
     this.goNextPage = this.goNextPage.bind(this);
     this.autoplayFunc = this.autoplayFunc.bind(this);
-    this.cancelAutoPaly = this.cancelAutoPaly.bind(this);
+    this.cancelAutoPlay = this.cancelAutoPlay.bind(this);
   }
 
   componentDidMount() {
-    const {children, isInfinite} = this.props;
-    const {currentIndex} = this.state;
-    let total = Object.prototype.toString.call(children) === '[object Array]' ? React.Children.count(children) : 1;
-    let currentTemp = currentIndex;
-    if (isInfinite && total > 1) {
-      currentTemp += 1;
-      total += 2;
-    }
-    this.setState(
-      {
-        width: this.container.clientWidth,
-        total,
-        currentIndex: currentTemp,
-      },
-      () => {
-        this.setState({
-          isShow: true,
-        });
-        setTimeout(() => {
-          this.setState({
-            isMoving: false,
-          });
-        }, 300);
-      }
-    );
-
+    this.width = this.props.vertical ? this.container.clientHeight : this.container.clientWidth;
+    this.setContainerStyle();
+    this.setState({
+      isShow: true,
+    });
     this.autoplayFunc();
   }
 
-  cancelAutoPaly() {
+  cancelAutoPlay() {
     if (this.timer) {
       clearInterval(this.timer);
     }
@@ -87,65 +78,73 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     const {autoPlay} = this.props;
     // 是否自动播放
     if (autoPlay) {
-      this.cancelAutoPaly();
+      this.cancelAutoPlay();
       // @ts-ignore
       this.timer = setInterval(() => {
-        if (!this.state.isMoving) {
+        if (!this.isMoving) {
           this.goNextPage();
         }
       }, autoPlay);
     }
   }
 
-  touchStartHandle(e:React.TouchEvent<HTMLDivElement>) {
-    this.cancelAutoPaly();
-    this.setState({
-      isMoving: true,
-      touchStartPlace: e.targetTouches[0].pageX,
-      touchMovePlace: e.targetTouches[0].pageX,
-    });
+  touchStartHandle(e: React.TouchEvent<HTMLDivElement>) {
+    this.cancelAutoPlay();
+    this.isMoving = true;
+    this.touchStartPlace = e.targetTouches[0].pageX;
+    this.touchMovePlace = e.targetTouches[0].pageX;
   }
 
-  touchMoveHandle(e:React.TouchEvent<HTMLDivElement>) {
-    const {currentIndex, total, touchStartPlace} = this.state;
+  touchMoveHandle(e: React.TouchEvent<HTMLDivElement>) {
+    const {currentIndex, total} = this.state;
     const {isBounces} = this.props;
     if (!isBounces) {
-      if (currentIndex === 0 && touchStartPlace <= e.targetTouches[0].pageX) {
+      if (currentIndex === 0 && this.touchStartPlace <= e.targetTouches[0].pageX) {
         return false;
-      } else if (total - 1 === currentIndex && touchStartPlace >= e.targetTouches[0].pageX) {
+      } else if (total - 1 === currentIndex && this.touchStartPlace >= e.targetTouches[0].pageX) {
         return false;
       }
     }
-    this.setState({
-      touchMovePlace: e.targetTouches[0].pageX,
-    });
+    this.touchMovePlace = e.targetTouches[0].pageX;
+
+    this.setContainerStyle();
   }
 
   touchEndHandle() {
-    const {width, touchStartPlace, touchMovePlace, currentIndex} = this.state;
+    const {currentIndex} = this.state;
     const {distance} = this.props;
-    this.setState({
-      isMoving: false,
-      touchStartPlace: 0,
-      touchMovePlace: 0,
-    });
-    const multiple = Math.round(((touchMovePlace - touchStartPlace) / width) * distance);
+
+    const multiple = Math.round(((this.touchMovePlace - this.touchStartPlace) / this.width) * distance);
     const targetIndex = currentIndex - multiple;
+    this.isMoving = false;
+    this.touchStartPlace = 0;
+    this.touchMovePlace = 0;
     this.goPage(targetIndex);
     this.autoplayFunc();
   }
 
-  goPage(index:number) {
+  setContainerStyle = () => {
+    const {vertical} = this.props;
+
+    const cs = -(this.state.currentIndex * this.width) + (this.touchMovePlace - this.touchStartPlace);
+    const transform = vertical ? `translate3d( 0px,${cs}px, 0px)` : `translate3d(${cs}px, 0px, 0px)`;
+    this.container.style.transitionDuration = this.isMoving ? '0ms' : '300ms';
+    setTransform(this.container.style, transform);
+  };
+
+  goPage(index: number) {
     const {total} = this.state;
     const {onTransitionEnd, isInfinite} = this.props;
     let targetIndex = index;
     targetIndex = targetIndex < 0 ? 0 : targetIndex;
     targetIndex = targetIndex > total - 1 ? total - 1 : targetIndex;
+    console.log(targetIndex);
     this.setState(
       {
         currentIndex: targetIndex,
       },
       () => {
+        this.setContainerStyle();
         // 当滚动临时的索引时
         let temp = targetIndex;
         // 真实的索引
@@ -156,25 +155,23 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
             realIndex = total - 1;
           } else if (temp === total - 1) {
             temp = 1;
-            realIndex = 0;
+            realIndex = 1;
           }
           setTimeout(() => {
+            this.isMoving = true;
             this.setState(
               {
                 currentIndex: temp,
-                isMoving: true,
               },
               () => {
                 setTimeout(() => {
-                  this.setState({
-                    isMoving: false,
-                  });
+                  this.isMoving = false;
                 }, 300);
               }
             );
           }, 300);
         }
-        onTransitionEnd(realIndex);
+        onTransitionEnd(realIndex - 2);
       }
     );
   }
@@ -188,24 +185,33 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
     }
   }
 
-  renderItem(item:any, index:number) {
+  renderItem(item: any, index: number) {
+    const {vertical} = this.props;
+    const style = vertical ? {height: `${this.width}px`} : {width: `${this.width}px`};
     return (
-      <div className={`${this.props.prefixCls}__item`} style={{width: `${this.state.width}px`}} key={`item${index}`}>
+      <div className={`${this.props.prefixCls}__item`} style={style} key={`item${index}`}>
         {item}
       </div>
     );
   }
 
-  /**
-   * 加载地址组件
-   * @param {当前显示的图片索引} active
-   * @param {真实页数} realTotal
-   */
-  renderPageComponent(active:number, realTotal:number) {
-    const {renderPage, isInfinite} = this.props;
+  renderPageComponent(active: number, realTotal: number) {
+    const {prefixCls, renderPage, isInfinite, dots, dotsClass} = this.props;
+    if (!dots) {
+      return null;
+    }
     const {total} = this.state;
     if (renderPage) {
-      return renderPage(active, realTotal);
+      let temp = active;
+      let realIndex = active;
+      if (isInfinite && total > 3) {
+        if (temp === 0) {
+          realIndex = total - 1;
+        } else if (temp === total - 1) {
+          realIndex = 1;
+        }
+      }
+      return renderPage(realIndex - 1, realTotal);
     }
 
     const arr = [];
@@ -214,7 +220,7 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
       arr.push(i);
     }
     return (
-      <div className={`${this.props.prefixCls}__page`}>
+      <div className={classNames(`${prefixCls}__page`, {[dotsClass]: !!dotsClass})}>
         {arr.map((item, index) => {
           let flag = false;
           if (isInfinite && realTotal > 1) {
@@ -231,7 +237,9 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
           return (
             <div
               key={`page_${item}`}
-              className={classNames(flag ? 'active' : '', `${this.props.prefixCls}__page-bullet`)}
+              className={classNames(`${prefixCls}__page-bullet`, {
+                active: flag,
+              })}
             />
           );
         })}
@@ -240,38 +248,27 @@ export default class Carousel extends React.PureComponent<CarouselProps,any> {
   }
 
   render() {
-    const {touchStartPlace, touchMovePlace, currentIndex, isMoving, width, isShow} = this.state;
-    const {prefixCls, children, className, isInfinite} = this.props;
-    let childrens = [] as any[]|React.ReactNode;
+    const {currentIndex, isShow} = this.state;
+    const {prefixCls, style, children, className, isInfinite, vertical} = this.props;
     const count = React.Children.count(children);
-    if (Object.prototype.toString.call(children) === '[object Array]') {
-      childrens = this.props.children;
-    } else {
-      childrens = [this.props.children];
-    }
-    const showStyle = isShow ? {} : {visibility: 'hidden'} as React.CSSProperties;
+    const showStyle = isShow ? {} : ({visibility: 'hidden'} as React.CSSProperties);
     return (
       <div className={classNames(prefixCls, className)} style={showStyle}>
         <div
-          className={`${prefixCls}__container`}
+          className={classNames(`${prefixCls}__container`, {[`${prefixCls}__container--vertical`]: vertical})}
           style={{
-            transform: `translate3d(${-(currentIndex * width) + (touchMovePlace - touchStartPlace)}px, 0px, 0px)`,
-            transitionDuration: isMoving ? '0ms' : '300ms',
+            ...style,
           }}
-          ref={div => this.container = div as HTMLDivElement}
+          ref={div => (this.container = div as HTMLDivElement)}
           onTouchStart={this.touchStartHandle}
           onTouchMove={this.touchMoveHandle}
           onTouchEnd={this.touchEndHandle}
         >
           {isInfinite && count > 1 && this.renderItem(React.Children.toArray(children)[count - 1], count)}
-          {
-            React.Children.map(
-              childrens,(item, index) => this.renderItem(item, index)
-            )
-          }
+          {React.Children.map(children, (item, index) => this.renderItem(item, index))}
           {isInfinite && count > 1 && this.renderItem(React.Children.toArray(children)[0], -1)}
         </div>
-        {this.renderPageComponent(currentIndex,React.Children.toArray(childrens).length)}
+        {this.renderPageComponent(currentIndex, count)}
       </div>
     );
   }

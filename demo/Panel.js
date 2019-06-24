@@ -6,10 +6,14 @@ import {toCamelCase} from '../site/lib/utils';
 
 class Panel extends React.Component {
   state = {
-    open: false,
+    open: this.props.open,
   };
 
   onClick = () => {
+    const {category} = this.props;
+    const openStatusObj = JSON.parse(sessionStorage.getItem('openStatus')) || {};
+    Object.assign(openStatusObj, {[category.name]: !this.state.open});
+    sessionStorage.setItem('openStatus', JSON.stringify(openStatusObj));
     this.setState({
       open: !this.state.open,
     });
@@ -40,7 +44,7 @@ class Panel extends React.Component {
               const component = components[componentName];
               return (
                 <li key={index}>
-                  <Link to={`/component/${componentName}?title=${component.title}`} key={index}>
+                  <Link to={`/component/${componentName}`} key={index}>
                     <div>
                       <i className="indexicon" />
                       <span style={{color: '#6a6a77'}}>
