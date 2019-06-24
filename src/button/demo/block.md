@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 常规按钮
+order: 3
+title: 通栏按钮
 description:
 ---
 
@@ -12,17 +12,8 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button
-          type="primary"
-          onClick={() => {
-            alert('去结算');
-          }}
-          style={{marginRight: '0.8rem'}}
-        >
-          去结算
-        </Button>
-        <Button type="primary" disabled>
-          去结算
+        <Button type="primary" block>
+          登录
         </Button>
       </div>
     );

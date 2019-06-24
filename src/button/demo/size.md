@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 常规按钮
+order: 1
+title: 常规按钮(小尺寸)
 description:
 ---
 
@@ -13,6 +13,7 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <Button
+          size="sm"
           type="primary"
           onClick={() => {
             alert('去结算');
@@ -21,7 +22,7 @@ class Demo extends React.PureComponent {
         >
           去结算
         </Button>
-        <Button type="primary" disabled>
+        <Button type="primary" size="sm" disabled>
           去结算
         </Button>
       </div>

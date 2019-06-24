@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 常规按钮
+order: 7
+title: 自定义组件
 description:
 ---
 
@@ -12,17 +12,8 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button
-          type="primary"
-          onClick={() => {
-            alert('去结算');
-          }}
-          style={{marginRight: '0.8rem'}}
-        >
-          去结算
-        </Button>
-        <Button type="primary" disabled>
-          去结算
+        <Button style={{width: '100%', backgroundColor: '#2A83E1', color: '#FFFFFF'}}>
+          下一步，上传医师认证相关证书
         </Button>
       </div>
     );
