@@ -6,14 +6,14 @@ description:
 
 ```js
 import React from 'react';
-import {Badge} from '@jdcfe/yep-react';
+import {Badge, Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
         <Badge text={8}>
-          <div className="shop-image" />
+          <Icon type="cart" size="lg" />
         </Badge>
         <div className="badge-text">待收货</div>
       </div>

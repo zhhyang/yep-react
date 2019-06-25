@@ -1,6 +1,6 @@
 ---
 order: 1
-title: Instagram Style
+title: 图文
 description:
 ---
 
