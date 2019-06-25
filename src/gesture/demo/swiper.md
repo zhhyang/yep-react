@@ -1,6 +1,6 @@
 ---
 order: 1
-title: 左右滑动
+title: 水平拖动
 description:
 ---
 
@@ -8,34 +8,25 @@ description:
 import React from 'react';
 import {Gesture} from '@jdcfe/yep-react';
 const style = `
-  .outter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px auto;
-    width: 80%;
-    height: 40px;
-    border-width: 1px;
-    border-color: red;
-    border-style: solid;
-    overflow: hidden;
-  }
-  .inner {
-    width: 80%;
-    height: 80%;
-    background-color: black;
-  }
   .swiper-container{
     margin: 20px 0;
   }
   .swiper{
+ 
+  color: #fff;
     display: flex;
+flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    background-color: #CCC;
+    background-color: #2a8dee;
     width: 100%;
     height: 100%;
   }
+  
+  .swiper p {
+    margin: 10px 0;
+   }
 `;
 
 class Demo extends React.Component {
@@ -80,7 +71,8 @@ class Demo extends React.Component {
                   this.refSwiper = e;
                 }}
               >
-                This is simple swiper demo. Only allow horizontal direction and height=200px to test scroll event.
+                <p>基础滑块演示</p>
+                <p>仅支持水平方向拖动</p>
               </div>
             </div>
           </Gesture>
