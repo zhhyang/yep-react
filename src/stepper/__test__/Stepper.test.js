@@ -22,7 +22,7 @@ describe('Stepper', () => {
       value: 5,
     };
     const wrapper = shallow(<Stepper {...props} />);
-    expect(wrapper.find('.input-value').prop('value')).toBe(5);
+    expect(wrapper.find('.Yep-stepper-input-value').prop('value')).toBe(5);
   });
 
   it('when user click button, component will call onChange callback with new value', () => {
@@ -30,7 +30,7 @@ describe('Stepper', () => {
       onChange: onChangeMock,
     };
     const wrapper = shallow(<Stepper {...props} />);
-    wrapper.find('.button-add').simulate('click');
+    wrapper.find('.Yep-stepper-add').simulate('click');
     expect(onChangeMock.mock.calls.length).toBe(1);
     expect(onChangeMock.mock.calls[0][0]).toBe(2);
   });
@@ -41,7 +41,7 @@ describe('Stepper', () => {
       onChange: onChangeMock,
     };
     const wrapper = shallow(<Stepper {...props} />);
-    wrapper.find('.button-add').simulate('click');
+    wrapper.find('.Yep-stepper-add').simulate('click');
     expect(onChangeMock.mock.calls.length).toBe(1);
     expect(onChangeMock.mock.calls[0][0]).toBe(4);
   });
@@ -52,7 +52,7 @@ describe('Stepper', () => {
       buttonReduce: <div>reduce</div>,
     };
     const wrapper = shallow(<Stepper {...props} />);
-    expect(wrapper.find('.button-add').text()).toBe('add');
-    expect(wrapper.find('.button-reduce').text()).toBe('reduce');
+    expect(wrapper.find('.Yep-stepper-add').text()).toBe('add');
+    expect(wrapper.find('.Yep-stepper-reduce').text()).toBe('reduce');
   });
 });
