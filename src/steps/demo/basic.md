@@ -12,11 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Steps
-          stepNum={2}
-          titles={['step-one', 'step-two', 'step-three']}
-          desc={['step_one_text', 'step_two_text', 'step_three_text']}
-        />
+        <Steps stepNum={2} titles={['步骤1', '步骤2', '步骤3']} desc={['提交申请', '负责人审核', '通过']} />
       </div>
     );
   }
