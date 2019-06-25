@@ -3,9 +3,10 @@
   width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding: 10px 0;
 }
 .iconItem {
-  width: 50px;
+  flex: 0 0 25%;
   height: 60px;
   display: flex;
   flex-direction: column;
