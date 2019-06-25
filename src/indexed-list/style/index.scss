@@ -33,7 +33,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 0;
+    z-index: 1;
     text-align: center;
     color: #000;
     font-size: 32px;
@@ -41,13 +41,23 @@
     padding: 0;
 
     li {
-      padding: 0 $h-spacing-sm;
+      color: #121212;
+      font-size: .22rem;
+      margin-top: 0.1rem;
+      padding-top: 0.04rem;
+      margin-right: 0.1rem;
+      width: .34rem;
+      height: .34rem;
     }
-
     &-over {
       background-color: $fill-mask;
     }
     &-active {
+      background: #987f4e;
+      width: .34rem;
+      height: .34rem;
+      border-radius: 50%;
+      color: #fff;
     }
   }
 
