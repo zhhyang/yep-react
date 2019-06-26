@@ -1,7 +1,7 @@
 ---
 order: 7
 title: 组件响应 props 变动
-description:
+description: 响应 props 变动渲染组件
 ---
 
 ```js

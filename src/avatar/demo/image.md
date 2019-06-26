@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 图片
-description:
+description: 支持图片类型头像
 ---
 
 ```js

@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 图标
-description:
+description: 可配合 Icon 组件使用
 ---
 
 ```js

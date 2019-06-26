@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 自定义样式
-description:
+description: 支持自定义样式效果
 ---
 
 ```js
