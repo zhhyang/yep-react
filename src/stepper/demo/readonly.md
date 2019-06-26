@@ -1,7 +1,7 @@
 ---
 order: 6
 title: 禁用手动输入
-description:
+description: 禁止手动输入数值，仅允许加减按钮操作
 ---
 
 ```js

@@ -1,7 +1,7 @@
 ---
 order: 4
 title: 配合徽标
-description:
+description: 用于展示消息提示
 ---
 
 ```js

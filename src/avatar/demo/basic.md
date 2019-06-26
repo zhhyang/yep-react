@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 支持三种尺寸，有两种形状可选
 ---
 
 ```js

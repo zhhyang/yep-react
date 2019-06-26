@@ -1,6 +1,7 @@
 ---
 category: View
 title: 走马灯
+desc: 轮播图，常用于展示一组图片
 ---
 
 <DEMO>
