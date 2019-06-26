@@ -50,8 +50,8 @@ $radius-circle: 50% !default;
 // Button Component */
 $button-border-color: #c6c7ce !default;
 
-$button-height: 50 * $hd !default;
-$button-font-size: 14 * $hd !default;
+$button-height: 54  * $hd !default;
+$button-font-size: 15 * $hd !default;
 $button-border-radius: 1 * $hd !default;
 
 $button-height-sm: 30 * $hd !default;
@@ -118,11 +118,11 @@ $input-color-icon: #ccc !default; // input clear icon 的背景色
 $input-color-icon-tap: $brand-primary !default;
 
 // switch
-$switch-fill: $brand-primary !default;
-$switch-width: 48 * $hd !default;
-$switch-height: 24 * $hd !default;
-$switch-border-radius: 24 * $hd !default;
-$switch-circle: 15 * $hd !default;
+$switch-fill: #F2270C !default;
+$switch-width: 42 * $hd !default;
+$switch-height: 18 * $hd !default;
+$switch-border-radius: 12 * $hd !default;
+$switch-circle: 24 * $hd !default;
 $switch-transform: 24 * $hd !default;
 $switch-circle-top: 4 * $hd !default;
 

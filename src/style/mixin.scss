@@ -385,3 +385,7 @@
     min-height: 1%;
   }
 }
+
+@mixin border-radius(){
+  border-radius: 24px 24px 0 0 ;
+}

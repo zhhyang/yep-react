@@ -9,10 +9,11 @@
   background-color: #fff;
   text-align: center;
   font-size: 14px;
-
+  @include border-radius();
   &-content{
     overflow: hidden;
     background: #fff;
+    border-radius: inherit ;
   }
 
   &-list {
@@ -33,6 +34,7 @@
     line-height: 1;
     color: #666;
     background-color: #fff;
+    border-radius: inherit ;
   }
 
   &-title {

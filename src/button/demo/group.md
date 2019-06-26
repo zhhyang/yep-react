@@ -14,7 +14,7 @@ class Demo extends React.PureComponent {
     return (
       <div style={{backgroundColor: '#F6F6F6', height: '1.4rem', display: 'flex', justifyContent: 'center'}}>
         <ButtonGroup style={{width: '6.9rem'}}>
-          <Button>取消</Button>
+          <Button type="white">取消</Button>
           <Button type="primary">确定</Button>
         </ButtonGroup>
       </div>

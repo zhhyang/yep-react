@@ -12,7 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button icon="lego_jiazai" circle size="sm" style={{marginRight: '0.36rem'}}>
+        <Button type="ghost" icon="lego_jiazai" circle size="sm" style={{marginRight: '0.36rem'}}>
           Loading
         </Button>
         <Button type="ghost" icon="delete" circle size="sm">

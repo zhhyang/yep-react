@@ -8,7 +8,7 @@ export interface ButtonProps {
   className?: string;
   style?: React.CSSProperties;
   disabled?: boolean;
-  type?: 'primary' | 'ghost' | 'fill' | 'light' | 'lightred' | 'checked'|'dashed';
+  type?: 'primary' | 'ghost' | 'fill' | 'light' | 'white';
   block?: boolean;
   circle?: boolean;
   size?: string;
@@ -26,8 +26,9 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
     disabled: false,
     activeStyle: {},
     onClick: () => {},
-    iconColor:'#f0250f',
-    iconSize:'xxs',
+    iconColor: '#f0250f',
+    iconSize: 'xxs',
+    type: 'primary',
   };
 
   render() {
@@ -44,19 +45,17 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
       block,
       circle,
       iconColor,
-      iconSize
+      iconSize,
     } = this.props;
 
     const cls = classNames(prefixCls, className, {
       'btn-primary': type === 'primary',
+      'btn-white': type === 'white',
       'btn-block': block,
       'btn-disabled': disabled,
       'btn-ghost': type === 'ghost',
       'btn-fill': type === 'fill',
       'btn-light': type === 'light',
-      'btn-lightred': type === 'lightred',
-      'btn-checked': type === 'checked',
-      'btn-dashed': type === 'dashed',
       'btn-sm': size === 'sm',
       'btn-xxs': size === 'xxs',
       'btn-circle': circle,
@@ -64,14 +63,7 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
     });
     return (
       <button className={cls} aria-disabled={disabled} onClick={disabled ? undefined : onClick} style={style}>
-        {icon && (
-          <Icon
-            type={icon}
-            color={iconColor}
-            size={iconSize}
-            className={`${prefixCls}-icon`}
-          />
-        )}
+        {icon && <Icon type={icon} color={iconColor} size={iconSize} className={`${prefixCls}-icon`} />}
         {children}
       </button>
     );

@@ -13,7 +13,6 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <Button
-          type="ghost"
           circle
           size="sm"
           onClick={() => {
@@ -23,6 +22,7 @@ class Demo extends React.PureComponent {
           确认收货
         </Button>
         <Button
+          type="ghost"
           circle
           size="sm"
           onClick={() => {
