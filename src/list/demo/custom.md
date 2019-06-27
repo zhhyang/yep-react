@@ -25,17 +25,16 @@ class Demo extends React.PureComponent {
             disabled={this.state.disabled}
             extra=""
             onClick={() => {
-              console.log('click', this.state.disabled);
               this.setState({disabled: !this.state.disabled});
             }}
           >
-            禁用
+            click to disable
           </Item>
           <Item>
             <select defaultValue="1">
-              <option value="1">Select选择</option>
+              <option value="1">select element</option>
               <option value="2" disabled>
-                Unable to select
+                unable to select
               </option>
               <option value="3">option 3</option>
             </select>

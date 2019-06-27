@@ -1,7 +1,7 @@
 ---
 order: 3
-title: 长文本样式
-description:
+title: 文字环绕
+description: 列表左侧支持单行或多行的文字排列，右侧可配文本或图标等元素，支持设置不同的对齐方式。
 ---
 
 ```js
@@ -10,13 +10,6 @@ import {List} from '@jdcfe/yep-react';
 const {Item} = List;
 
 class Demo extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      disabled: false,
-    };
-  }
-
   render() {
     return (
       <div>
@@ -28,7 +21,7 @@ class Demo extends React.PureComponent {
           <Item extra="extra content" multipleLine align="top" wrap>
             Multiple line and long text will wrap. Long Text Long Text Long Text
           </Item>
-          <Item extra="no arrow" arrow="empty" className="spe" wrap>
+          <Item extra="extra content" arrow="empty" className="spe" wrap>
             In rare cases, the text of right side will wrap in the single line with long text. long text long text long
             text
           </Item>
