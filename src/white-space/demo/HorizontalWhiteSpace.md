@@ -1,15 +1,17 @@
 ---
-order: 0
-title: 基础用法
-description: 给元素添加上下留白
+order: 1
+title: 左右留白
+description: 给元素添加水平留白
 ---
 
 ```js
 import React from 'react';
 import {WhiteSpace} from '@jdcfe/yep-react';
 
+const {HorizontalWhiteSpace} = WhiteSpace;
+
 const PlaceHolder = ({className = '', ...restProps}) => (
-  <div className={`${className} placeholder`} {...restProps}>
+  <div className={`${className} placeholder-horizontal`} {...restProps}>
     Block
   </div>
 );
@@ -17,11 +19,11 @@ const PlaceHolder = ({className = '', ...restProps}) => (
 class Demo extends React.PureComponent {
   render() {
     return (
-      <div>
+      <div className={'placeholder-horizontal-wrap'}>
         <PlaceHolder />
-        <WhiteSpace />
+        <HorizontalWhiteSpace />
         <PlaceHolder />
-        <WhiteSpace />
+        <HorizontalWhiteSpace />
         <PlaceHolder />
       </div>
     );

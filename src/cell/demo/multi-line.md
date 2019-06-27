@@ -1,7 +1,7 @@
 ---
-order: 4
-title: 无图标
-description: 列表项右侧不可配置图标。
+order: 1
+title: 多行
+description: 通过配置wrap为true可展示多行列表项。
 ---
 
 ```js
@@ -13,8 +13,8 @@ class Demo extends React.PureComponent {
     return (
       <div style={{background: '#f2f3f3'}}>
         <Cell>
-          <Item label="重量" icon={false}>
-            0.46kg
+          <Item label="已选" wrap={true}>
+            iPhone X 经典蓝，1件，可选服务 iPhone X 黑色，1件，可选服务
           </Item>
         </Cell>
       </div>

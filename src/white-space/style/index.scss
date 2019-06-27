@@ -21,3 +21,27 @@
     height: $v-spacing-xl;
   }
 }
+
+.Yep-whitespace-horizontal {
+  &-xs {
+    width: $v-spacing-xs;
+  }
+
+  &-sm {
+    width: $v-spacing-sm;
+  }
+
+  &-md {
+    width: $v-spacing-md;
+  }
+
+  &-lg {
+    width: $v-spacing-lg;
+  }
+
+  &-xl {
+    width: $v-spacing-xl;
+  }
+}
+
+
