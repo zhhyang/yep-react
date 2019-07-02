@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 自定义最大数
-description:
+description: 支持自定义最大数
 ---
 
 ```js

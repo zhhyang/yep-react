@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 图文
-description:
+description: Instagram 风格常用于发布图文场景
 ---
 
 ```js

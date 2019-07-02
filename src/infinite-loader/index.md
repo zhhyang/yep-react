@@ -1,9 +1,8 @@
 ---
 category: View
 title: 滚动无限加载
+desc: 滚动无限加载
 ---
-
-滚动无限加载
 
 <DEMO>
 

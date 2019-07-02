@@ -1,8 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import Icon from '../icon';
-
 export interface StepperProps {
   buttonAdd?: React.ReactElement;
   buttonReduce?: React.ReactElement;
@@ -72,28 +70,20 @@ class Stepper extends React.PureComponent<StepperProps, any> {
   renderButtonAdd = () => {
     const {buttonAdd, max, prefixCls, value} = this.props;
     const disabled = value >= max || value === 0;
-    const button = buttonAdd || (
-      <button>
-        <Icon type="stepper_add" />
-      </button>
-    );
+    const button = buttonAdd || <button>+</button>;
     return React.cloneElement(button, {
       disabled: disabled,
-      className: `${prefixCls}-add`,
+      className: `${prefixCls}-button ${prefixCls}-add`,
       onClick: this.handleAdd,
     });
   };
   renderButtonReduce = () => {
     const {buttonReduce, min, prefixCls, value} = this.props;
     const disabled = value <= min || value === 0;
-    const button = buttonReduce || (
-      <button>
-        <Icon type="stepper_reduce" />
-      </button>
-    );
+    const button = buttonReduce || <button>-</button>;
     return React.cloneElement(button, {
       disabled: disabled,
-      className: `${prefixCls}-reduce`,
+      className: `${prefixCls}-button ${prefixCls}-reduce`,
       onClick: this.handleReduce,
     });
   };

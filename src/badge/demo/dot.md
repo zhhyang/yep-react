@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 小红点
-description:
+description: 除字符形式，徽标也可以是小红点
 ---
 
 ```js

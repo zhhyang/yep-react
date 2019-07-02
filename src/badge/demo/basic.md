@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 简单的徽章展示
 ---
 
 ```js

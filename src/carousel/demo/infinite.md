@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 无限滚动
-description:
+description: 无限循环轮播
 ---
 
 ```js
