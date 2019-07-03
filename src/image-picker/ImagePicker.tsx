@@ -8,18 +8,18 @@ export interface File {
 
 export interface ImagePickerProps {
   files?: File[];
-  size?: string;
-  addImage?: (params: any) => void;
+  width?: string;
+  height?: string;
   removeImage?: (params: any) => void;
-  formDataAction?: (params: any) => void;
+  formDataAction?: (formData: object, dataUrl: object) => void;
   name?: string;
 }
 
 export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
   static defaultProps = {
     files: [],
-    size: '75px',
-    addImage: noop,
+    width: '75px',
+    height: '75px',
     removeImage: noop,
   };
   private input: HTMLInputElement | null;
@@ -28,11 +28,6 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
     super(props);
     this.state = {};
     this.fileChange = this.fileChange.bind(this);
-  }
-
-  addImagePriv(imgItem: object) {
-    const {addImage = () => {}} = this.props;
-    addImage(imgItem);
   }
 
   removeImagePriv(index: any) {
@@ -45,16 +40,16 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
     const file = e.target.files[0];
     const imgFormData = new FormData();
 
-    // 判断上传文件的类型，若不是image/jpeg类型，不执行上传操作
-    if (file.type !== 'image/jpeg') {
+    // 判断上传文件的类型，若不是jpeg jpg png gif类型，不执行上传操作
+    if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
       return;
     }
 
     imgFormData.append(`${name}`, file);
-    formDataAction && formDataAction(imgFormData);
 
     if (file.size > 500 * 1024) {
-      throw new Error('图片超过500k规定大小');
+      return;
+      // throw new Error('图片超过500k规定大小');
     }
 
     const reader = new FileReader();
@@ -65,19 +60,18 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
         return;
       }
 
-      this.addImagePriv({
-        url: dataUrl,
-      });
+      formDataAction && formDataAction(imgFormData, {url: dataUrl});
     };
 
     reader.readAsDataURL(file);
+
     if (this.input) {
       this.input.value = '';
     }
   }
 
   render() {
-    const {files, size, name} = this.props;
+    const {files, name, height, width} = this.props;
     const wrapperCls = classNames('Yep-upload-wrapper');
     return (
       <div className={wrapperCls}>
@@ -93,12 +87,12 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
               />
               <div
                 className="upload-flex-item-img"
-                style={{width: size, height: size, backgroundImage: `url(${imgItem.url})`}}
+                style={{width: width, height: height, backgroundImage: `url(${imgItem.url})`}}
               />
             </div>
           ))}
         <div className="upload-flex-item upload-add">
-          <div className="upload-add-picker" style={{width: size, height: size}}>
+          <div className="upload-add-picker" style={{width: width, height: height}}>
             <input
               ref={input => {
                 this.input = input;

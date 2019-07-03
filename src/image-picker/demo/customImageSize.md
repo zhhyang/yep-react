@@ -1,7 +1,7 @@
 ---
-order: 0
-title: 基础用法
-description: 支持图片选择，上传和删除。
+order: 1
+title: 自定义图片大小
+description: 支持自定义图片大小
 ---
 
 ```js
@@ -56,6 +56,8 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <ImagePicker
+          width={'2rem'}
+          height={'2rem'}
           files={files}
           name={'imgFormData'}
           formDataAction={this.formDataAction}
