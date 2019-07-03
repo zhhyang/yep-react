@@ -85,10 +85,7 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
                   this.removeImagePriv(index);
                 }}
               />
-              <div
-                className="upload-flex-item-img"
-                style={{width: width, height: height, backgroundImage: `url(${imgItem.url})`}}
-              />
+              <img className="upload-flex-item-img" src={`${imgItem.url}`} style={{width: width, height: height}} />
             </div>
           ))}
         <div className="upload-flex-item upload-add">
