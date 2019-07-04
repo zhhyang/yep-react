@@ -51,7 +51,7 @@ export default class Steps extends React.Component<StepsProps> {
         <div className={`${prefixCls}-list`}>
           <div className={`${prefixCls}-line`}>
             <div
-              className={`${prefixCls}-line-blue`}
+              className={`${prefixCls}-line-red`}
               style={{
                 width:
                   (100 / (titles.length * 2)) *

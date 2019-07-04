@@ -1,7 +1,7 @@
 ---
-order: 0
-title: 基础用法
-description: 左侧按钮，中间标题，右侧按钮构成一个基础类的导航条。
+order: 5
+title: 自定义样式
+description: 内置默认为白色，所有样式可自定义。
 ---
 
 ```js
@@ -11,10 +11,7 @@ import {NavBar, Icon} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
-      <NavBar
-        // leftContent="返回"
-        rightContent={<Icon type="lego_gengduo" />}
-      >
+      <NavBar className={'custom-nav-bar'} rightContent={<Icon type="lego_gengduo" />}>
         页面标题
       </NavBar>
     );

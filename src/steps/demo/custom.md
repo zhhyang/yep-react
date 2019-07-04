@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 自定义图标
-description:
+description: 支持定制步骤条图标。
 ---
 
 ```js
