@@ -22,10 +22,10 @@
   color: #ccc;
   font: 120px/1 Arial;
 }
-.widget-text {
-  line-height: 16px;
-  width: 120px;
-  text-align: left;
+.widget-text, .widget p {
+  line-height: 20px;
+  width: 80%;
+  text-align: right;
   margin: 0 auto;
 }
 .once code {
@@ -43,14 +43,15 @@
 }
 .op {
   padding: 10px;
-  width: 250px;
+  width: 100%;
   border: 1px #eee dotted;
 }
 .button-secondary {
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  background: rgb(66, 184, 221); /* this is a light blue */
+  padding: .05rem .1rem;
+  background: #167dfd; /* this is a light blue */
 }
 .quick-jump {
   width: 800px;

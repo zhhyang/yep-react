@@ -1,6 +1,6 @@
 ---
 order: 2
-title: decorator
+title: 使用装饰器
 description:
 ---
 
@@ -44,29 +44,29 @@ class Widget extends React.Component {
         {this.props.once ? (
           <div className="widget-text once">
             <code>
-              &lt;LazyLoad once&gt;
+              当前 once 属性为 true
               <br />
-              &nbsp;&nbsp;&lt;Widget /&gt;
+              更新组件时将统一刷新
               <br />
-              &lt;/LazyLoad&gt;
+              不再监听 scroll/resize 事件
             </code>
           </div>
         ) : (
           <div className="widget-text">
             <code>
-              &lt;LazyLoad&gt;
+              当前 once 属性为 false
               <br />
-              &nbsp;&nbsp;&lt;Widget /&gt;
+              更新组件时将不统一刷新
               <br />
-              &lt;/LazyLoad&gt;
+              仍监听 scroll/resize 事件
             </code>
           </div>
         )}
-        <p>render times: {this.state.count}</p>
-        <p>props from parent: {this.props.id}</p>
+        <p>渲染次数: {this.state.count}</p>
+        <p> id: {this.props.id}</p>
       </div>
     ) : (
-      <div className="widget loading">loading...</div>
+      <div className="widget loading">加载中...</div>
     );
   }
 }
@@ -74,17 +74,15 @@ class Widget extends React.Component {
 const Operation = ({type, onClickUpdate, noExtra}) => (
   <div className="op">
     {!noExtra && (
-      <div>
+      <div style={{lineHeight: '.5rem', width: '100%'}}>
         <a className="update-btn button-secondary pure-button" onClick={onClickUpdate}>
-          Update
+          更新可视区域
         </a>
         <p className="desc">
-          Clicking this button will make all <code>Widgets</code> in <strong> visible area </strong>
-          reload data from server.
+          点击上面的按钮将会触发可视区域内全部 <code>Widgets</code> 组件更新。
         </p>
         <p className="desc">
-          Pay attention to <code>props from parent</code> block in <code>Widget</code>
-          to identify how LazyLoad works.
+          <code>Widget</code> 组件通过 LazyLoad 传入的参数控制当前组件状态。
         </p>
       </div>
     )}
