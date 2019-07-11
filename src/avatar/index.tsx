@@ -14,7 +14,7 @@ export interface AvatarProps {
   style?: React.CSSProperties;
 }
 
-export default function Avatar(props: AvatarProps) {
+function Avatar(props: AvatarProps) {
   let children = props.children;
   const isString = typeof children === 'string';
   const {className, icon, prefixCls, shape, size, src, style, ...restProps} = props;
@@ -55,4 +55,6 @@ Avatar.defaultProps = {
   shape: 'circle',
   size: 'default',
   style: {},
-};
+} as Partial<AvatarProps>;
+
+export default Avatar;

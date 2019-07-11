@@ -11,7 +11,7 @@ export interface BadgeProps {
   children: React.ReactNode;
 }
 
-export default function Badge(props: BadgeProps) {
+function Badge(props: BadgeProps) {
   let {className, prefixCls, children, text, max, dot, ...restProps} = props;
   text = typeof text === 'number' && text > max ? `${max}+` : text;
 
@@ -46,4 +46,6 @@ Badge.defaultProps = {
   style: {},
   max: 99,
   dot: false,
-};
+} as Partial<BadgeProps>;
+
+export default Badge;
