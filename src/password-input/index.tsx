@@ -42,7 +42,7 @@ export default class PasswordInput extends React.PureComponent<PasswordInputProp
 
     const ulCls = classNames(`${prefixCls}-ul`, {[`${prefixCls}-hairline-surround`]: !gutter});
 
-    const points = [];
+    const points = [] as React.ReactElement[];
     const valueArray = String(value).split('');
 
     for (let i = 0; i < length; i++) {
