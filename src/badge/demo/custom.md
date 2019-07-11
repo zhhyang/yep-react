@@ -1,7 +1,7 @@
 ---
 order: 4
 title: 自定义文字和颜色
-description:
+description: 支持自定义文字和颜色，徽标可独立使用
 ---
 
 ```js

@@ -1,7 +1,7 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.3.6",
-  "description": "一套基于React的移动端组件库",
+  "version": "0.4.3",
+  "description": "一套符合京东移动端设计规范的React组件库",
   "main": "lib",
   "module": "es",
   "scripts": {
@@ -16,8 +16,7 @@
     "clean": "rimraf lib es dist",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublishOnly": "npm run clean && npm run dist && npm run compile",
-    "postpublish": "npm run deploy:jd",
+    "pre-pub": "npm run clean && npm run dist && npm run compile",
     "format": "prettier --write src/**/*.{js,jsx,md}",
     "precommit": "lint-staged",
     "predeploy": "npm run build-demo && npm run build-site",
@@ -26,7 +25,8 @@
     "deploy:jd": "gh-pages -d build -r http://git.jd.com/JDC-FE/lrc-m.git -b master",
     "predeploy:jd": "npm run build-demo && npm run build-site:jd",
     "lint-staged": "node node_modules/tslint/bin/tslint src/**/*.tsx",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "pub": "scripts/publish.sh"
   },
   "keywords": [
     "react",
@@ -132,7 +132,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@jdcfe/yep-gesture": "^0.0.1",
+    "@jdcfe/yep-gesture": "^0.0.2",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",

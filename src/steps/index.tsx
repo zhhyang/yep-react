@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Icon from '../icon';
 import classNames from 'classnames';
 
 interface StepsProps {
@@ -8,6 +9,7 @@ interface StepsProps {
   stepNum: number;
   titles: string[];
   desc: string[];
+  icon?: string[];
 }
 
 export default class Steps extends React.Component<StepsProps> {
@@ -17,10 +19,28 @@ export default class Steps extends React.Component<StepsProps> {
     stepNum: 1,
     titles: ['step1', 'step2', 'step3'],
     desc: ['step1_text', 'step2_text', 'step3_text'],
+    icon: [],
   };
 
   constructor(props: StepsProps) {
     super(props);
+  }
+
+  renderStepIcon(key: number, stepNum: number) {
+    const {prefixCls, icon} = this.props;
+    if (icon && icon.length) {
+      return (
+        <span className={`${prefixCls}-num`}>
+          <Icon
+            type={stepNum > key ? icon[0] : stepNum < key ? icon[1] : icon[2]}
+            color="#d1371d"
+            style={{width: '14px'}}
+          />
+        </span>
+      );
+    } else {
+      return <span className={`${prefixCls}-num`}> {key + 1}</span>;
+    }
   }
 
   render() {
@@ -48,7 +68,7 @@ export default class Steps extends React.Component<StepsProps> {
                 style={{width: 100 / titles.length + '%'}}
                 className={`${prefixCls}-item ${stepNum > key ? 'current' : ''}`}
               >
-                <span className={`${prefixCls}-num`}>{key + 1}</span>
+                {this.renderStepIcon(key, stepNum)}
                 <div className={`${prefixCls}-item-text`}>{item}</div>
                 <div className={`${prefixCls}-item-text fs24`}>{desc[key]}</div>
               </div>

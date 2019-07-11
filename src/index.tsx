@@ -56,3 +56,7 @@ export {default as Price} from './price';
 export {default as PullToRefresh} from './pull-to-refresh';
 export {default as Cell} from './cell';
 export {default as LazyLoad} from './lazy-load';
+export {default as Stepper} from './stepper';
+export {default as NumberKeyboard} from './number-keyboard';
+export {default as PasswordInput} from './password-input';
+export {default as Avatar} from './avatar';

@@ -1,9 +1,8 @@
 ---
 category: View
 title: 占位符
+desc: 使用 SVG 创建一个模拟将被加载的内容结构的加载器集合，类似于 Facebook 卡片加载器
 ---
-
-使用 SVG 创建一个模拟将被加载的内容结构的加载器集合，类似于 Facebook 卡片加载器
 
 ## 特性
 
