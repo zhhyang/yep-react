@@ -17,5 +17,5 @@ export interface TabPanelProps {
 TabPanel.defaultProps = {
   fixX: true,
   fixY: true,
-};
+} as Partial<TabPanelProps>;
 export default TabPanel;
