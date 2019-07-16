@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Tabbar在底部
-description:
+description: 通过设置tabBarPosition="bottom"将tab放在底部。
 ---
 
 ```js

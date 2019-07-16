@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 包含副标题
-description:
+description: 左侧标题下方可配置一个副标题，副标题可单行或多行显示。
 ---
 
 ```js
@@ -13,12 +13,22 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <List renderHeader={() => '包含副标题'}>
-          <Item arrow="horizontal" multipleLine onClick={() => {}}>
-            标题 <Brief>副标题</Brief>
+        <List>
+          <Item arrow="horizontal" icon={'arrow-right'} onClick={() => {}}>
+            Title<Brief>subtitle</Brief>
           </Item>
-          <Item arrow="horizontal" multipleLine onClick={() => {}} icon={'arrow-right'} thumb={<span>白条</span>}>
-            白条支付即享12期免息/24期息费五折
+          <Item
+            arrow="horizontal"
+            multipleLine
+            icon={
+              <img
+                style={{display: 'block', width: 15, height: 15}}
+                src="http://img13.360buyimg.com/uba/jfs/t23977/282/1022509367/2839/74d4afce/5b4dad41N005d5914.png"
+              />
+            }
+            onClick={() => {}}
+          >
+            Title<Brief>can be a multi-line subtitle</Brief>
           </Item>
           <Item
             arrow="horizontal"
@@ -32,7 +42,7 @@ class Demo extends React.PureComponent {
             }
             onClick={() => {}}
           >
-            闲置回收<Brief>以旧换新</Brief>
+            Title<Brief>subtitle</Brief>
           </Item>
         </List>
       </div>

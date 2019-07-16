@@ -42,8 +42,8 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
     super(props);
     const count = React.Children.count(props.children);
     this.state = {
-      currentIndex: props.isInfinite?props.initPage+1:props.initPage,
-      total: props.isInfinite? count+2 :count,
+      currentIndex: props.isInfinite ? props.initPage + 1 : props.initPage,
+      total: props.isInfinite ? count + 2 : count,
     };
     this.isMoving = true;
     this.touchStartPlace = 0;
@@ -61,10 +61,10 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
 
   componentDidMount() {
     this.width = this.props.vertical ? this.container.clientHeight : this.container.clientWidth;
-    this.setContainerStyle()
+    this.setContainerStyle();
     this.setState({
-      isShow:true
-    })
+      isShow: true,
+    });
     this.autoplayFunc();
   }
 
@@ -138,7 +138,7 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
     let targetIndex = index;
     targetIndex = targetIndex < 0 ? 0 : targetIndex;
     targetIndex = targetIndex > total - 1 ? total - 1 : targetIndex;
-    console.log(targetIndex)
+    console.log(targetIndex);
     this.setState(
       {
         currentIndex: targetIndex,
@@ -171,12 +171,10 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
             );
           }, 300);
         }
-        onTransitionEnd(realIndex-2);
+        onTransitionEnd(realIndex - 2);
       }
     );
   }
-
-
 
   goNextPage() {
     const {total, currentIndex} = this.state;
@@ -213,7 +211,7 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
           realIndex = 1;
         }
       }
-      return renderPage(realIndex-1,realTotal);
+      return renderPage(realIndex - 1, realTotal);
     }
 
     const arr = [];

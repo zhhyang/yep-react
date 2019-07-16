@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 支持设置当前步骤索引，可定制步骤条标题和副标题。
 ---
 
 ```js

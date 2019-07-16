@@ -43,5 +43,6 @@ export const clearCache = () => {
   sessionStorage.setItem('openStatus', JSON.stringify({}));
   sessionStorage.setItem('scrollTop', '0');
 };
+
 //demo需要中间跳转页的组件
-export const subListDemos = ['sticky', 'infinite-loader', 'lazy-load'];
+export const subListDemos = ['sticky', 'infinite-loader', 'lazy-load', 'indexed-list', 'virtual-list'];

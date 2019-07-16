@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 带徽章
-description:
+description: 可通过配置tab属性给tab添加徽章。
 ---
 
 ```js
