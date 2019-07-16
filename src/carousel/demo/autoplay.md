@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 自动轮播
-description:
+description: 定时自动进入下一张图片展示
 ---
 
 ```js

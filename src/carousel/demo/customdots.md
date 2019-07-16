@@ -1,7 +1,7 @@
 ---
 order: 4
 title: 定制原点位置
-description:
+description: 可配置指示点位置
 ---
 
 ```js

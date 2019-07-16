@@ -44,4 +44,4 @@ export const clearCache = () => {
   sessionStorage.setItem('scrollTop', '0');
 };
 //demo需要中间跳转页的组件
-export const subListDemos = ['sticky', 'infinite-loader'];
+export const subListDemos = ['sticky', 'infinite-loader', 'lazy-load'];

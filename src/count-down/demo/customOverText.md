@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 自定义结束文案、结束回调
-description:
+description: 配置结束回调文案
 ---
 
 ```js

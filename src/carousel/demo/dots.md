@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 无dots
-description:
+description: 不展示面板指示点
 ---
 
 ```js

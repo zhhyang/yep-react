@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import TouchFeedback from '../touch-feedback';
 import Icon from '../icon';
 
-export interface ListItemProps {
+export interface CellItemProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -16,7 +16,7 @@ export interface ListItemProps {
   activeStyle?: React.CSSProperties;
   children?: React.ReactNode;
 }
-export default function CellItem(props: ListItemProps) {
+function CellItem(props: CellItemProps) {
   const {
     prefixCls,
     className,
@@ -76,7 +76,7 @@ CellItem.defaultProps = {
   align: 'middle',
   wrap: false,
   icon: true,
-};
+} as Partial<CellItemProps>;
 
 export const Brief: React.FunctionComponent<BriefProps> = ({prefixCls, style, children}) => (
   <div className={`${prefixCls}-brief`} style={style}>
@@ -92,4 +92,6 @@ export interface BriefProps {
 Brief.defaultProps = {
   prefixCls: 'Yep-list',
   style: {},
-};
+} as Partial<BriefProps>;
+
+export default CellItem;

@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 最大数
-description:
+description: 超过最大数展示为 最大数+
 ---
 
 ```js

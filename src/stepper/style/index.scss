@@ -5,46 +5,32 @@
   @include vertical-center();
   height: 36px;
   color: #262626;
-  button, input {
+  &-button,
+  &-input-value {
     padding: 0;
     border: 0;
     background-color: transparent;
     font-size: 22px;
   }
-  button {
-    @include box();
+  &-button {
     @include vertical-center();
-    width: 30px;
-  }
-  button:disabled {
-    color: #f2f2f2;
-    .Yep-icon {
-      color: #f2f2f2;
+    display: block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    &:disabled {
+      color: #999;
     }
   }
-  .button-reduce {
-    padding-left: 2px;
-    padding-right: 12px;
-    .Yep-icon {
-      width: 16px;
-      height: 4px;
-    }
-  }
-  .button-add {
-    padding-left: 12px;
-    padding-right: 2px;
-    .Yep-icon {
-      width: 16px;
-      height: 16px;
-    }
-  }
-  .input-wrapper {
+  &-input-wrapper {
+    margin: 0 4px;
     width: 72px;
     height: 36px;
     background-color: #f2f2f2;
     border-radius: 4px;
   }
-  input {
+  &-input-value {
     width: 100%;
     line-height: 36px;
     text-align: center;

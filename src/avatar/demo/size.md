@@ -1,7 +1,7 @@
 ---
 order: 5
 title: 自定义尺寸
-description:
+description: 除固定的三种尺寸外，也支持自定义尺寸
 ---
 
 ```js

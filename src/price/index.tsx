@@ -113,6 +113,6 @@ Price.defaultProps = {
   symPos: 'sub',
   decLength: 2,
   decPos: 'sub',
-};
+} as Partial<PriceProps>;
 
 export default Price;
