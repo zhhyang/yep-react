@@ -7,15 +7,15 @@ title: 在rocketact中使用
 
 ---
 
-## Usage
+## 使用
 
-With [`npx`](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner), run:
+使用 [`npx`](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner), 运行:
 
 ```bash
 npx rocketact create my-awesome-project
 ```
 
-Or you can install `rocketact` globaly:
+或者全局安装 `rocketact` :
 
 ```bash
 npm install -g rocketact
@@ -23,7 +23,7 @@ rocketact create my-awesome-project
 cd my-awesome-project
 ```
 
-More info please refer to [Rocketact website](https://rocketact.js.org/).
+更多请点击 [Rocketact website](https://rocketact.js.org/).
 
 ### Available Scripts
 
@@ -136,46 +136,9 @@ $ yarn add -D babel-plugin-import
           "libraryName": "@jdcfe/yep-react",
           "style": true
         },
-        "@jdcfe/yep-react"
       ]
     ]
   }
 ```
 
 好了，现在你应该能看到页面上已经有了 Yep-React 的按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 rocketact [官方文档](https://rocketact.js.org/)。
-
-### 自定义主题
-
-按照 [配置主题](#/doc/customize-theme) 的要求，自定义主题需要用到 scss 变量覆盖功能。
-
-根目录新增`sassloader.option.config.js`
-
-定制主题较少时
-
-```js
-module.exports = {
-  option: {
-    data: '$brand-primary:#2A83E1;',
-  },
-};
-```
-
-或者定制主题较多时
-
-```js
-const theme = ['$brand-primary:#2A83E1;', '$button-height:100px;'];
-
-module.exports = {
-  option: {
-    data: theme.join(' '),
-  },
-};
-```
-
-这里利用了 [scss-loader](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_default) 的 `options data` 来进行主题配置，变量和其他配置方式可以参考 [配置主题](#/doc/customize-theme) 文档。
-
-修改后重启 `butler start`，如果看到一个蓝色的按钮就说明配置成功了。
-
-在线示例
-
-- [butler-yep-react](http://git.jd.com/zhaohongyang1/butler-yep-react)
