@@ -142,3 +142,7 @@ $ yarn add -D babel-plugin-import
 ```
 
 好了，现在你应该能看到页面上已经有了 Yep-React 的按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 rocketact [官方文档](https://rocketact.js.org/)。
+
+### 在线示例
+
+- [rockact-yep-react](https://github.com/jdf2e/rockact-yep-react)
