@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.4.3",
+  "version": "0.5.1",
   "description": "一套符合京东移动端设计规范的React组件库",
   "main": "lib",
   "module": "es",
@@ -17,7 +17,7 @@
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
     "pre-pub": "npm run clean && npm run dist && npm run compile",
-    "format": "prettier --write src/**/*.{js,jsx,md}",
+    "format": "prettier --write src/**/*.{tsx,md}",
     "precommit": "lint-staged",
     "predeploy": "npm run build-demo && npm run build-site",
     "deploy": "gh-pages -d build",

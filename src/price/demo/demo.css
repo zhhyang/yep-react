@@ -1,16 +1,16 @@
-.price-list {
-  padding: 0 .1rem;
-  background-color: #fff;
-  margin-top: .1rem;
-  border-radius: .1rem;
+.price-type{
+  color: #2196f3;
+  font-weight: bold;
+  padding: 0.3rem 0 0;
+  font-size: 0.3rem;
 }
 
 .price-item-wrap {
   padding: .2rem 0 .1rem;
   display: flex;
-  border-bottom: solid 1px #e3e5e9;
   width: 100%;
   align-items: center;
+  color: #999;
 }
 
 .price-item {

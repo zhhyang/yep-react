@@ -1,0 +1,34 @@
+
+@import '../../style/mixin';
+
+.Yep-collapse {
+  &-arrow{
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    transition: all .3s ease;
+  }
+  &-show-arrow{
+    transform: rotate(180deg);
+  }
+  &-hide-arrow{
+    transform: rotate(0deg);
+  }
+  &-show{
+    display: block;
+  }
+  &-hide{
+    display: none;
+  }
+  &-title{
+    display: flex;
+    padding: 0.2rem 0;
+    font-size: 30px;
+    line-height: 30px;
+  }
+  &-cont{
+    font-size: 28px;
+    color: #A4A7AE;
+    line-height: 42px;
+  }
+}

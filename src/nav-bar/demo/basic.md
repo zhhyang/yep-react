@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 左侧按钮，中间标题，右侧按钮构成一个基础类的导航条。
 ---
 
 ```js
@@ -12,9 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <NavBar
-        leftContent="返回"
-        close
-        closeContent={<Icon type="close" size="xs" />}
+        // leftContent="返回"
         rightContent={<Icon type="lego_gengduo" />}
       >
         页面标题

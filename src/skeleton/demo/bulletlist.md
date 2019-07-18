@@ -1,7 +1,7 @@
 ---
 order: 4
-title: BulletList Style
-description:
+title: 清单
+description: 需求清单，目录等场景
 ---
 
 ```js

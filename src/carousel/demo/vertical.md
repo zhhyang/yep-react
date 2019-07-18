@@ -1,7 +1,7 @@
 ---
 order: 6
 title: 垂直滚动
-description:
+description: 垂直滚动
 ---
 
 ```js

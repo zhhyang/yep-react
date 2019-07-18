@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 最少 5 件起购
-description:
+description: 低于最小值提示
 ---
 
 ```js

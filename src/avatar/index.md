@@ -1,6 +1,7 @@
 ---
 category: View
 title: 头像
+desc: 用户头像常用于社区、问答等场景，支持图片、图标、字符等形式
 ---
 
 <DEMO>

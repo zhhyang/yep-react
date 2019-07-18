@@ -1,7 +1,7 @@
 ---
 order: 2
-title: Code Style
-description:
+title: 代码片段
+description: 代码示例，文档页面等
 ---
 
 ```js

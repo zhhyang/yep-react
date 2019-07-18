@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 支持手动输入数量，或通过加减按钮操作
 ---
 
 ```js

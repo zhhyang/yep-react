@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 左侧是标题，右侧可配置文本、图标等元素。
 ---
 
 ```js
@@ -13,11 +13,9 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <List renderHeader={() => '头部'}>
-          <Item extra={'白条随机立减最高99'}>标题</Item>
-          <Item extra={'白条随机立减最高99'}>标题</Item>
-          <Item extra={'白条随机立减最高99'}>标题</Item>
-          <Item extra={'白条随机立减最高99'}>标题</Item>
+        <List renderHeader={() => 'Basic Style'}>
+          <Item extra={'extra content'}>Title</Item>
+          <Item icon={'arrow-right'}>Title</Item>
         </List>
       </div>
     );

@@ -22,7 +22,7 @@ class Demo extends React.PureComponent {
     return (
       <div title="Popup">
         <Button type="primary" onClick={this.handleToggleShow}>
-          显示
+          从下向上显示
         </Button>
 
         <Popup show={this.state.show} onCancel={this.handleToggleShow}>

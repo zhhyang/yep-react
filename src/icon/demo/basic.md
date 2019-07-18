@@ -17,7 +17,7 @@ class Demo extends React.PureComponent {
         <div className="iconContainer">
           {icons.map(icon => (
             <div className="iconItem">
-              <Icon type={icon} key={icon} className="iconStyle" />
+              <Icon type={icon} key={icon} color={'#d1371d'} className="iconStyle" />
               <h6 className="iconName">{icon}</h6>
             </div>
           ))}

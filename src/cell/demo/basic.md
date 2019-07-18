@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 单行列表项，列表内容溢出以...代替。
 ---
 
 ```js

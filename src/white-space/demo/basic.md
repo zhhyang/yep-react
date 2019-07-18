@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 给元素添加上下留白
 ---
 
 ```js
@@ -14,5 +14,19 @@ const PlaceHolder = ({className = '', ...restProps}) => (
   </div>
 );
 
-ReactDOM.render(<PlaceHolder />, mountNode);
+class Demo extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <PlaceHolder />
+        <WhiteSpace />
+        <PlaceHolder />
+        <WhiteSpace />
+        <PlaceHolder />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
