@@ -1,0 +1,112 @@
+@import '../../style/mixin';
+
+.Yep-jd-btn {
+  outline: 0 none;
+  border: 0;
+  height: $jd-button-height;
+  line-height: $jd-button-height;
+  padding: 0 39*$hd;
+  text-align: center;
+  border-radius: $jd-button-border-radius;
+  font-size: $jd-button-font-size;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+
+  color: $color-text-base;
+  background-color: $fill-base;
+
+  &.btn-circle{
+    border-radius: 30 * $hd;
+  }
+  &-borderfix {
+    &:before {
+      transform: scale(0.49) !important;
+    }
+  }
+
+  &.btn-disabled {
+    background-color: $fill-disabled;
+  }
+  &.btn-primary {
+    background-image: linear-gradient(135deg,
+      #f2140c 0%,
+      #f2270c 70%,
+      #f24d0c 100%);
+    color: $color-text-base-inverse;
+
+    &.btn-disabled {
+      background: $fill-disabled;
+    }
+  }
+
+  &.btn-white{
+    background: $fill-base;
+  }
+
+  &.btn-ghost {
+    background-color: $fill-base;
+    color: $brand-primary;
+
+    @include bd-all-1px($brand-primary, 30 * $hd);
+
+    &.btn-disabled {
+      background: $fill-disabled;
+      @include bd-all-1px($fill-disabled, $jd-button-border-radius);
+    }
+  }
+
+  &.btn-fill{
+    background-color: #f6f6f6;
+    @include bd-all(#f6f6f6, 30 * $hd,0PX);
+  }
+
+  &.btn-light{
+    @include bd-all-1px(#dadada, 30 * $hd);
+  }
+
+  &.btn-block {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background-image: linear-gradient(135deg,
+      #f2140c 0%,
+      #f2270c 70%,
+      #f24d0c 100%);
+    box-shadow: 0px 12px 48px 0px #faa79b;
+    border-radius: 100px;
+    color: #ffffff;
+  }
+
+  &.btn-sm {
+    font-size: $jd-button-font-size-sm;
+    height: $jd-button-height-sm;
+    line-height: $jd-button-height-sm;
+    padding: 0 $h-spacing-lg;
+  }
+  &.btn-xxs {
+    font-size: $jd-button-font-size-xxs;
+    height: $jd-button-height-xxs;
+    line-height: $jd-button-height-xxs;
+    padding: 0 $h-spacing-lg;
+  }
+
+  > .Yep-jd-btn-icon {
+    margin-right: 0.5em;
+    vertical-align: text-top;
+  }
+}
+
+.Yep-jd-btns {
+  display: flex;
+  align-items: center;
+  & .Yep-jd-btn {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

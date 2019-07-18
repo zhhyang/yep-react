@@ -46,21 +46,36 @@ $baseLineHeight: 1 !default;
 $opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
 
 $radius-circle: 50% !default;
-
 // Button Component */
 $button-border-color: #c6c7ce !default;
 
-$button-height: 54  * $hd !default;
-$button-font-size: 15 * $hd !default;
-$button-border-radius: 1 * $hd !default;
+$button-height: 45 * $hd !default;
+$button-font-size: 18 * $hd !default;
+$button-border-radius: 2 * $hd !default;
 
-$button-height-sm: 30 * $hd !default;
+$button-height-md: 50 * $hd !default;
+$button-font-size-md: 18 * $hd !default;
+$button-border-radius-md: 0 * $hd !default;
+
+$button-height-sm: 28 * $hd !default;
 $button-font-size-sm: 13 * $hd !default;
-$button-border-radius-sm: 1 * $hd !default;
+$button-border-radius-sm: 2 * $hd !default;
 
-$button-height-xxs: 27 * $hd !default;
-$button-font-size-xxs: 12 * $hd !default;
-$button-border-radius-xxs: 27 * $hd !default;
+$link-button-font-size: 16 * $hd !default;
+// JdButton Component */
+$jd-button-border-color: #c6c7ce !default;
+
+$jd-button-height: 54  * $hd !default;
+$jd-button-font-size: 15 * $hd !default;
+$jd-button-border-radius: 1 * $hd !default;
+
+$jd-button-height-sm: 30 * $hd !default;
+$jd-button-font-size-sm: 13 * $hd !default;
+$jd-button-border-radius-sm: 1 * $hd !default;
+
+$jd-button-height-xxs: 27 * $hd !default;
+$jd-button-font-size-xxs: 12 * $hd !default;
+$jd-button-border-radius-xxs: 27 * $hd !default;
 
 $link-button-font-size: 16 * $hd !default;
 // Tabbar Component */

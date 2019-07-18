@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+
 export interface ButtonGroupProps {
   prefixCls?: string;
   className?: string;
@@ -17,7 +18,7 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({prefixCls, clas
 };
 
 ButtonGroup.defaultProps = {
-  prefixCls: 'Yep-btns',
-} as Partial<ButtonGroupProps>;
+  prefixCls: 'Yep-jd-btns',
+};
 
 export default ButtonGroup;

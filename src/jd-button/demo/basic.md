@@ -1,19 +1,18 @@
 ---
-order: 1
-title: 常规按钮(小尺寸)
+order: 0
+title: 常规按钮
 description:
 ---
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
+import {JdButton} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button
-          size="sm"
+        <JdButton
           type="primary"
           onClick={() => {
             alert('去结算');
@@ -21,10 +20,10 @@ class Demo extends React.PureComponent {
           style={{marginRight: '0.8rem'}}
         >
           去结算
-        </Button>
-        <Button type="primary" size="sm" disabled>
+        </JdButton>
+        <JdButton type="primary" disabled>
           去结算
-        </Button>
+        </JdButton>
       </div>
     );
   }

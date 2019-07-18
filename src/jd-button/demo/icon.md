@@ -7,17 +7,17 @@ description:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
+import {JdButton} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button type="ghost" icon="lego_jiazai" circle size="sm" style={{marginRight: '0.36rem'}}>
+        <JdButton type="ghost" icon="lego_jiazai" circle size="sm" style={{marginRight: '0.36rem'}}>
           Loading
-        </Button>
-        <Button type="ghost" icon="delete" circle size="sm">
+        </JdButton>
+        <JdButton type="ghost" icon="delete" circle size="sm">
           快速清理
-        </Button>
+        </JdButton>
       </div>
     );
   }

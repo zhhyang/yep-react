@@ -1,6 +1,6 @@
 ---
-order: 2
-title: 均分按钮
+order: 3
+title: 按钮组
 description:
 ---
 
@@ -12,10 +12,10 @@ const {ButtonGroup} = Button;
 class Demo extends React.PureComponent {
   render() {
     return (
-      <div style={{backgroundColor: '#F6F6F6', height: '1.4rem', display: 'flex', justifyContent: 'center'}}>
-        <ButtonGroup style={{width: '6.9rem'}}>
-          <Button type="white">取消</Button>
-          <Button type="primary">确定</Button>
+      <div>
+        <ButtonGroup>
+          <Button>确定</Button>
+          <Button type="primary">取消</Button>
         </ButtonGroup>
       </div>
     );

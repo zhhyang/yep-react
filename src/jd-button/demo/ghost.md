@@ -7,12 +7,12 @@ description:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
+import {JdButton} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button
+        <JdButton
           circle
           size="sm"
           onClick={() => {
@@ -20,8 +20,8 @@ class Demo extends React.PureComponent {
           }}
         >
           确认收货
-        </Button>
-        <Button
+        </JdButton>
+        <JdButton
           type="ghost"
           circle
           size="sm"
@@ -30,8 +30,8 @@ class Demo extends React.PureComponent {
           }}
         >
           再次购买
-        </Button>
-        <Button
+        </JdButton>
+        <JdButton
           type="fill"
           circle
           size="sm"
@@ -40,8 +40,8 @@ class Demo extends React.PureComponent {
           }}
         >
           查看物流
-        </Button>
-        <Button
+        </JdButton>
+        <JdButton
           type="light"
           circle
           size="sm"
@@ -50,7 +50,7 @@ class Demo extends React.PureComponent {
           }}
         >
           降价通知
-        </Button>
+        </JdButton>
       </div>
     );
   }

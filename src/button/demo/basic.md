@@ -1,28 +1,57 @@
 ---
 order: 0
-title: 常规按钮
+title: 基础用法
 description:
 ---
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
+import {Button, WhiteSpace} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
         <Button
+          onClick={() => {
+            alert('default');
+          }}
+        >
+          default
+        </Button>
+        <WhiteSpace />
+        <Button disabled>default disabled</Button>
+        <WhiteSpace />
+        <Button
           type="primary"
           onClick={() => {
-            alert('去结算');
+            alert('primary');
           }}
-          style={{marginRight: '0.8rem'}}
         >
-          去结算
+          primary
         </Button>
+        <WhiteSpace />
         <Button type="primary" disabled>
-          去结算
+          primary disabled
+        </Button>
+        <WhiteSpace />
+        <Button
+          type="ghost"
+          onClick={() => {
+            alert('ghost');
+          }}
+        >
+          ghost
+        </Button>
+        <WhiteSpace />
+        <Button
+          type="ghost"
+          disabled
+          onClick={() => {
+            alert('ghost');
+          }}
+        >
+          ghost disabled
         </Button>
       </div>
     );

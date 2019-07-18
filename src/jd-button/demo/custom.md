@@ -1,20 +1,20 @@
 ---
-order: 3
-title: 通栏按钮
+order: 7
+title: 自定义组件
 description:
 ---
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
+import {JdButton} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Button type="primary" block>
-          登录
-        </Button>
+        <JdButton style={{width: '100%', background: '#2A83E1', color: '#FFFFFF'}}>
+          下一步，上传医师认证相关证书
+        </JdButton>
       </div>
     );
   }
