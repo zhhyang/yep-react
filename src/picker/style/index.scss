@@ -9,6 +9,7 @@
   background-color: #fff;
   text-align: center;
   font-size: 14px;
+  @include border-radius();
 }
 
 .Yep-popup-picker-header{
