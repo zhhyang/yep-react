@@ -138,7 +138,16 @@ $effect-duration: 0.3s;
 
   &-underline {
     position: absolute;
-    border: $border-width $tabs-color solid;
+    display: flex;
+    justify-content: center;
+    border: none;
+    &-bar{
+      width: 52px;
+      height: 6px;
+      background-image: linear-gradient(90deg,
+        #f5503a 0%,
+        #fad1cb 100%);
+    }
   }
 
   &-animated &-content {
@@ -181,28 +190,14 @@ $effect-duration: 0.3s;
       }
 
       &-underline {
-        bottom: 0;
+        bottom: 12px;
       }
     }
   }
 
-  &-top {
-    .#{$tabs-default-bar-prefix-cls} {
-      &-tab {
-        //.hairline('bottom');
-        @include border-bottom-1px();
-      }
-    }
-  }
 
-  &-bottom {
-    .#{$tabs-default-bar-prefix-cls} {
-      &-tab {
-        //.hairline('top');
-        @include border-top-1px();
-      }
-    }
-  }
+
+
 
   &-left,
   &-right {
@@ -224,11 +219,18 @@ $effect-duration: 0.3s;
   &-left {
     .#{$tabs-default-bar-prefix-cls} {
       &-underline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: none;
         right: 0;
-      }
-      &-tab {
-        //.hairline('right');
-        @include border-right-1px();
+        &-bar{
+          width: 6px;
+          height: 52px;
+          background-image: linear-gradient(0deg,
+            #f5503a 0%,
+            #fad1cb 100%);
+        }
       }
     }
   }
@@ -237,9 +239,13 @@ $effect-duration: 0.3s;
     .#{$tabs-default-bar-prefix-cls} {
       &-underline {
         left: 0;
-      }
-      &-tab {
-        @include border-left-1px();
+        &-bar{
+          width: 6px;
+          height: 52px;
+          background-image: linear-gradient(0deg,
+            #f5503a 0%,
+            #fad1cb 100%);
+        }
       }
     }
   }
