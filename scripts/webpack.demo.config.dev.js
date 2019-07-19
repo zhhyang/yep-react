@@ -66,7 +66,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: [require.resolve('react-dev-utils/webpackHotDevClient'), path.join(process.cwd(), 'demo/index')],
+  entry: [require.resolve('react-dev-utils/webpackHotDevClient'), path.join(process.cwd(), 'demo-link/index')],
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'dist/demo'),

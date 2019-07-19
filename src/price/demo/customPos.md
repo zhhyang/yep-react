@@ -7,7 +7,6 @@ description: 可配置货币符号、小数位于左上或者右上
 ```js
 import React from 'react';
 import {Price} from '@jdcfe/yep-react';
-import {ComponentCard} from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {

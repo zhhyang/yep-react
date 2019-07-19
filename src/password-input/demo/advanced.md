@@ -7,7 +7,7 @@ description:
 ```js
 import React from 'react';
 import {PasswordInput, NumberKeyboard} from '@jdcfe/yep-react';
-import './style.css';
+import './demo.css';
 
 class Demo extends React.PureComponent {
   constructor(props) {

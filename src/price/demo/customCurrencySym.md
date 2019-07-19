@@ -7,7 +7,6 @@ description: 可根据传入的货币符号展示
 ```js
 import React from 'react';
 import {Price} from '@jdcfe/yep-react';
-import {ComponentCard} from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {

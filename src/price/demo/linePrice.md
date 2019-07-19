@@ -7,7 +7,6 @@ description: 在进行价格对比时，常用到划线价
 ```js
 import React from 'react';
 import {Price} from '@jdcfe/yep-react';
-import {ComponentCard} from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {

@@ -12,7 +12,7 @@ const config = {
   mode: 'production',
   devtool: false,
   entry: {
-    demo: path.join(process.cwd(), 'demo/index'),
+    demo: path.join(process.cwd(), 'demo-link/index'),
   },
   output: {
     pathinfo: true,

@@ -5,6 +5,7 @@ description: 使用 jumpIndex 设置初始位置，可配置跳转到指定列�
 ---
 
 ```js
+import React from 'react';
 import {VirtualList, Button} from '@jdcfe/yep-react';
 
 const dataSource = [];

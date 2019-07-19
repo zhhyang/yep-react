@@ -6,6 +6,7 @@ description:
 
 ```js
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Gesture} from '@jdcfe/yep-react';
 const style = `
   .outter {
