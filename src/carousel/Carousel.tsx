@@ -82,7 +82,6 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
       this.cancelAutoPlay();
       // @ts-ignore
       this.timer = setInterval(() => {
-        console.log(this.isMoving);
         if (!this.isMoving) {
           this.goNextPage();
         }
@@ -148,7 +147,6 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
     let targetIndex = index;
     targetIndex = targetIndex < 0 ? 0 : targetIndex;
     targetIndex = targetIndex > total - 1 ? total - 1 : targetIndex;
-    console.log(targetIndex);
     this.setState(
       {
         currentIndex: targetIndex,
