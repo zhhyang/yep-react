@@ -91,3 +91,21 @@
   transform: translateX(100%);
   transition: all 300ms ease-in;
 }
+
+.slide-left-enter {
+  transform: translateX(-100%);
+}
+
+.slide-left-enter-active {
+  transform: translateX(0%);
+  transition: all 300ms ease-out;
+}
+
+.slide-left-exit {
+  transform: translateX(0%);
+}
+
+.slide-left-exit-active {
+  transform: translateX(-100%);
+  transition: all 300ms ease-in;
+}

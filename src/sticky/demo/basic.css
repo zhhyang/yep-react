@@ -22,8 +22,7 @@ h2 {
   padding: .5rem;
 }
 .sticky-header {
-  height: 80px;
-  overflow: auto;
+  height: 40px;
   background: #aaa;
 }
 .container {
@@ -41,4 +40,8 @@ h2 {
 }
 .container.relative {
   overflow-y: auto;
+}
+
+.index{
+  line-height: 40px;
 }

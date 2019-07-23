@@ -26,32 +26,7 @@ class Demo extends React.PureComponent {
         </Button>
 
         <Popup show={this.state.show} onCancel={this.handleToggleShow}>
-          <div className="ul">
-            <div
-              className="cur"
-              onClick={() => {
-                alert('未婚');
-              }}
-            >
-              未婚
-            </div>
-            <div
-              className=""
-              onClick={() => {
-                alert('已婚');
-              }}
-            >
-              已婚
-            </div>
-            <div
-              className=""
-              onClick={() => {
-                alert('离异');
-              }}
-            >
-              离异
-            </div>
-          </div>
+          <div className="up" />
         </Popup>
       </div>
     );
