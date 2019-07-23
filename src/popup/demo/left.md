@@ -1,6 +1,6 @@
 ---
-order: 2
-title: 从右向左显示
+order: 3
+title: 从左向右显示
 description:
 ---
 
@@ -21,16 +21,10 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div title="Popup">
-        <Button type="primary" onClick={this.handleToggleSlideRightShow}>
-          从右向左显示
-        </Button>
+        <Button onClick={this.handleToggleSlideRightShow}>从左向右显示</Button>
 
-        <Popup
-          show={this.state.slideRightShow}
-          onCancel={this.handleToggleSlideRightShow}
-          popupTransition="slide-right"
-        >
-          <div className="right" />
+        <Popup show={this.state.slideRightShow} onCancel={this.handleToggleSlideRightShow} popupTransition="slide-left">
+          <div className="left" />
         </Popup>
       </div>
     );
