@@ -56,7 +56,7 @@ class Header extends React.Component {
   render() {
     const {style, name} = this.props;
     return (
-      <div className={'sticky-header Yep-list-body'}>
+      <div className={'sticky-header1 Yep-list-body'}>
         <Item
           style={{
             ...style,
