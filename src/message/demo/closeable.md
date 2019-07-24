@@ -1,7 +1,7 @@
 ---
 order: 1
-title: 可关闭
-description:
+title: 可关闭通知
+description: 通知默认常显，可通过右侧关闭按钮关闭。
 ---
 
 ```js

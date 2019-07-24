@@ -7,12 +7,13 @@ title: 通知
 
 <DEMO>
 
-| 参数      | 说明                                                           | 类型    | 默认值      |
-| --------- | -------------------------------------------------------------- | ------- | ----------- |
-| prefixCls | 组件 class 前缀                                                | string  | Yep-message |
-| style     | 组件样式                                                       | object  | {}          |
-| className | 组件额外样式                                                   | string  | -           |
-| duration  | 通知显示时长，单位为毫秒，-1 代表一直显示                      | number  | -1          |
-| tipType   | 通知类型，内置三种：普通 info，警告 warn，错误 error           | string  | info        |
-| position  | 通知显示位置：顶部 fix-top，底部 fix-bottom，保持不变 in-place | string  | in-place    |
-| icon      | 是否显示通知图标                                               | boolean | false       |
+| 参数      | 说明                                                           | 类型    | 默认值                                 |
+| --------- | -------------------------------------------------------------- | ------- | -------------------------------------- |
+| prefixCls | 组件 class 前缀                                                | string  | Yep-message                            |
+| style     | 组件样式                                                       | object  | {}                                     |
+| className | 组件额外样式                                                   | string  | -                                      |
+| duration  | 通知显示时长，单位为毫秒，-1 代表一直显示                      | number  | -1                                     |
+| tipType   | 通知类型，内置三种：普通 info，警告 warn，错误 error           | string  | info                                   |
+| position  | 通知显示位置：顶部 fix-top，底部 fix-bottom，保持不变 in-place | string  | in-place                               |
+| icon      | 是否显示通知左侧图标                                           | boolean | false                                  |
+| closeable | 是否显示右侧关闭按钮                                           | boolean | false（若为 true，表示可手动关闭通知） |
