@@ -22,8 +22,10 @@ class ComponentTitle extends PureComponent {
     const {title, englishTitle, desc} = this.props;
     return (
       <div className={style.componentTitleContainer}>
-        <h6 className={style.title}>{title}</h6>
-        <p className={style.desc}>{englishTitle}</p>
+        <h6 className={style.title}>
+          {title}
+          <span className={style.englishTitle}>{englishTitle}</span>
+        </h6>
         <p className={style.desc}>{desc}</p>
       </div>
     );
