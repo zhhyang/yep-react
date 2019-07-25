@@ -1,6 +1,6 @@
 ---
-order: 0
-title: 弹出框和输入框等宽
+order: 1
+title: 自定义命中字符样式
 description:
 ---
 
@@ -19,6 +19,7 @@ class Demo extends React.PureComponent {
           onChange={v => {
             console.log(v);
           }}
+          matchedStyle="color:blue"
           source={['愿得一人心，白首不分离', '后宫佳丽三千人，三千宠爱在一身']}
         />
         <AutoComplete
@@ -28,6 +29,7 @@ class Demo extends React.PureComponent {
           onChange={v => {
             console.log(v);
           }}
+          matchedStyle="color:red"
           source={['愿得一人心，白首不分离', '后宫佳丽三千人，三千宠爱在一身']}
         />
       </div>

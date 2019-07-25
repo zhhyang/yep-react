@@ -10,7 +10,7 @@ export interface AutoCompleteProps {
 
   // 待搜索的数据源
   source: [];
-
+  matchedStyle: string;
   // 输入框的值
   value: string;
 
@@ -36,7 +36,8 @@ export interface AutoCompleteProps {
 }
 
 class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
-  lastValue:any;
+  lastValue: any;
+
   constructor(props: AutoCompleteProps) {
     super(props);
     this.state = {
@@ -51,12 +52,12 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     prefixCls: 'Yep-auto-complete',
   };
 
-  componentWillReceiveProps(nextProps:AutoCompleteProps) {
+  componentWillReceiveProps(nextProps: AutoCompleteProps) {
     'value' in nextProps && this.setState({value: nextProps.value});
     'source' in nextProps && this.setState({result: nextProps.source});
   }
 
-  handleInput = (value:any) => {
+  handleInput = (value: any) => {
     this.lastValue = value;
     const state = {value} as any;
     if (!value) {
@@ -66,14 +67,14 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     } else {
       // reset tab index
       state.index = -1;
-      state.result = this.props.source.filter((item:string) => item.indexOf(value) > -1);
+      state.result = this.props.source.filter((item: string) => item.indexOf(value) > -1);
       state.open = !!state.result.length;
       this.setState(state);
     }
     this.props.onChange && this.props.onChange(value);
-  }
+  };
 
-  handleSelect(value:any) {
+  handleSelect(value: any) {
     this.setState({
       value,
       open: false,
@@ -81,7 +82,7 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     this.props.onChange && this.props.onChange(value);
   }
 
-  handleKeyDown = (e:any) => {
+  handleKeyDown = (e: any) => {
     const {open, result} = this.state;
     if (open) {
       const input = e.target;
@@ -107,15 +108,16 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
         input.blur();
       }
     }
-  }
+  };
 
   render() {
     const {open, index, result, value} = this.state;
-    const {prefixCls, source,  onChange, disabled, isOpen, ...other} = this.props;
+    const {prefixCls, source, onChange, disabled, isOpen, matchedStyle, ...other} = this.props;
     const inputProps = {
       ...other,
-      onKeyDown:this.handleKeyDown
-    }
+      onKeyDown: this.handleKeyDown,
+    };
+    console.log(matchedStyle);
     return (
       <Dropdown
         open={isOpen || open}
@@ -125,25 +127,27 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
         overlay={
           <div className={`${prefixCls}__popover`}>
             <ul className={`${prefixCls}__result`}>
-              {result.map((item:any, i:number) => (
+              {result.map((item: any, i: number) => (
                 <li
                   key={item}
                   className={classNames({[`${prefixCls}__option--active`]: index === i})}
                   onClick={this.handleSelect.bind(this, item)}
                 >
-                  {item}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        value === ''
+                          ? item
+                          : `${item.replace(value, '<span style="' + matchedStyle + '">' + value + '</span>')}`,
+                    }}
+                  />
                 </li>
               ))}
             </ul>
           </div>
         }
       >
-        <InputItem
-          value={value}
-          onChange={this.handleInput}
-          disabled={disabled}
-          {...inputProps}
-        />
+        <InputItem value={value} onChange={this.handleInput} disabled={disabled} {...inputProps} />
       </Dropdown>
     );
   }
