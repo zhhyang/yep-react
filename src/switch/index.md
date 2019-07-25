@@ -1,6 +1,7 @@
 ---
 category: Form
 title: 滑动开关
+desc: 在两个互斥对象进行选择，例如:开或关、
 ---
 
 <DEMO>

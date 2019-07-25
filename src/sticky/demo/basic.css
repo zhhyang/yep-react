@@ -23,8 +23,10 @@ h2 {
 }
 .sticky-header {
   height: 80px;
-  overflow: auto;
   background: #aaa;
+}
+.sticky-header1 {
+  height: 40px;
 }
 .container {
   height: 500px;
@@ -41,4 +43,8 @@ h2 {
 }
 .container.relative {
   overflow-y: auto;
+}
+
+.index{
+  line-height: 40px;
 }

@@ -1,7 +1,7 @@
 ---
 order: 4
 title: 垂直样式
-description:
+description: 通过设置tabBarPosition为left，tabDirection为vertical将tab放置在左侧并垂直排列。
 ---
 
 ```js

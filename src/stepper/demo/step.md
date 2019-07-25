@@ -1,7 +1,7 @@
 ---
 order: 4
-title: 自定义步进值 step 为 3
-description:
+title: 自定义步进值
+description: 自定义步进值 step 为 3
 ---
 
 ```js

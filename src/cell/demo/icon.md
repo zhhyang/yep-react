@@ -1,13 +1,13 @@
 ---
-order: 2
+order: 4
 title: 无图标
-description:
+description: 列表项右侧不可配置图标。
 ---
 
 ```js
 import React from 'react';
 import {Cell} from '@jdcfe/yep-react';
-const {Item, Brief} = Cell;
+const {Item} = Cell;
 class Demo extends React.PureComponent {
   render() {
     return (

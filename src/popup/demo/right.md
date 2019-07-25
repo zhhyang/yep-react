@@ -30,16 +30,7 @@ class Demo extends React.PureComponent {
           onCancel={this.handleToggleSlideRightShow}
           popupTransition="slide-right"
         >
-          <div className="right">
-            <div
-              className="cur"
-              onClick={() => {
-                alert('未婚');
-              }}
-            >
-              未婚
-            </div>
-          </div>
+          <div className="right" />
         </Popup>
       </div>
     );

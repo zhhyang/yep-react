@@ -1,7 +1,7 @@
 ---
 order: 1
 title: ActionSheet 删除
-description:
+description: 移除购物车示例
 ---
 
 ```js

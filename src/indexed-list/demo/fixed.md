@@ -1,12 +1,12 @@
 ---
 order: 1
-title: 不使用body做为滚动容器
-description:
+title: 不以body为滚动容器
+description: 可在自定义的容器内使用
 ---
 
 ```js
 import React from 'react';
-import {IndexedList, List, Sticky, Popup} from '@jdcfe/yep-react';
+import {IndexedList, List, Sticky, Popup, Button} from '@jdcfe/yep-react';
 const {Item} = List;
 const {StickyContainer} = Sticky;
 
@@ -28,8 +28,8 @@ class Header extends React.Component {
         style={{
           ...style,
           zIndex: 3,
-          backgroundColor: sectionData.charCodeAt(0) % 2 ? '#5890ff' : '#F8591A',
-          color: 'white',
+          color: '#121212',
+          fontSize: '0.34rem',
         }}
       >
         {sectionData}
@@ -41,6 +41,7 @@ class Header extends React.Component {
 class Demo extends React.PureComponent {
   state = {
     key: '',
+    showPopup: false,
   };
 
   change = key => {
@@ -49,80 +50,49 @@ class Demo extends React.PureComponent {
 
   render() {
     const data = {
-      A: [
-        {label: '安徽省', id: '34'},
-        {label: '安徽省0', id: '340'},
-        {label: '安徽省1', id: '341'},
-        {label: '安徽省2', id: '342'},
-        {label: '安徽省3', id: '343'},
-      ],
-      B: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
-      ],
-      C: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
-      ],
-      D: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
-      ],
-      E: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
-      ],
-      F: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
-      ],
+      A: [{label: '安徽', id: '01'}, {label: '澳门特别行政区', id: '340'}],
+      B: [{label: '北京', id: '01'}],
+      C: [{label: '重庆', id: '01'}],
+      F: [{label: '福建', id: '01'}],
       G: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
+        {label: '广州', id: '01'},
+        {label: '广东', id: '340'},
+        {label: '广西', id: '341'},
+        {label: '甘肃', id: '342'},
+        {label: '贵州', id: '343'},
       ],
       H: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
+        {label: '河南', id: '01'},
+        {label: '河北', id: '340'},
+        {label: '湖南', id: '341'},
+        {label: '湖北', id: '342'},
+        {label: '海南', id: '343'},
+        {label: '黑龙江', id: '344'},
       ],
-      I: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
+      J: [{label: '江西', id: '01'}, {label: '江苏', id: '340'}, {label: '吉林', id: '341'}],
+      L: [{label: '辽宁', id: '01'}],
+      Q: [{label: '青海', id: '01'}],
+      S: [
+        {label: '四川', id: '01'},
+        {label: '陕西', id: '340'},
+        {label: '山东', id: '341'},
+        {label: '山西', id: '342'},
+        {label: '上海', id: '343'},
       ],
-      J: [
-        {label: '北京市', id: '01'},
-        {label: '北京市0', id: '340'},
-        {label: '北京市1', id: '341'},
-        {label: '北京市2', id: '342'},
-        {label: '北京市3', id: '343'},
-      ],
+      T: [{label: '台湾', id: '01'}, {label: '天津', id: '340'}],
+      X: [{label: '香港特别行政区', id: '01'}],
+      Y: [{label: '云南', id: '01'}],
+      Z: [{label: '浙江', id: '01'}],
     };
     return (
       <div>
-        <Popup show={true} popupTransition="slide-right">
+        <Button onClick={() => this.setState({showPopup: true})}>右侧展开地址选择</Button>
+        <Popup
+          show={this.state.showPopup}
+          maskCloseable={true}
+          onCancel={() => this.setState({showPopup: false})}
+          popupTransition="slide-right"
+        >
           <div className="right">
             <IndexedList
               style={{height: 500}}
@@ -145,7 +115,7 @@ class Demo extends React.PureComponent {
                   )}
                 </Sticky>
               )}
-              renderHeader={() => <div>123</div>}
+              renderHeader={() => <div>自定义头部</div>}
             />
           </div>
         </Popup>

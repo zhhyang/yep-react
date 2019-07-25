@@ -1,9 +1,8 @@
 ---
 category: Navigation
 title: 步骤条
+desc: 拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
 ---
-
-引导用户按照步骤完成任务的导航条。
 
 <DEMO>
 
@@ -15,3 +14,4 @@ title: 步骤条
 | stepNum   | 当前步骤索引    | number              | 1                                          |
 | titles    | 步骤条标题      | string[]            | ['step1', 'step2', 'step3']                |
 | className | 步骤条描述      | string[]            | ['step1_text', 'step2_text', 'step3_text'] |
+| icon      | 步骤条图标      | string[]            | -                                          |

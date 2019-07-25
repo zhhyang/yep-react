@@ -1,6 +1,7 @@
 ---
 category: View
 title: 倒计时
+desc: 倒计时组件
 ---
 
 倒计时组件
@@ -28,5 +29,3 @@ title: 倒计时
 | hourNum   | 剩余小时数                         | number | 0      |
 | minuteNum | 剩余分钟数                         | number | 0      |
 | secondNum | 剩余秒数。                         | number | 0      |
-
-s

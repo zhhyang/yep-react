@@ -23,16 +23,7 @@ class Demo extends React.PureComponent {
       <div title="Popup">
         <Button onClick={this.handleToggleSlideDownShow}>从上向下显示</Button>
         <Popup show={this.state.slideDownShow} onCancel={this.handleToggleSlideDownShow} popupTransition="slide-down">
-          <div className="up">
-            <div
-              className="cur"
-              onClick={() => {
-                alert('未婚');
-              }}
-            >
-              未婚
-            </div>
-          </div>
+          <div className="down" />
         </Popup>
       </div>
     );

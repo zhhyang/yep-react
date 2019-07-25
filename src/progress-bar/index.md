@@ -1,6 +1,7 @@
 ---
 category: Feedback
 title: 进度条
+desc: 表示某个任务的当前进度
 ---
 
 <DEMO>

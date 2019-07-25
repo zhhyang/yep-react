@@ -10,13 +10,15 @@ import {Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
-    const icons = ['close', 'bell', 'cart', 'more', 'close_o', 'check'];
+    const icons = ['cart', 'cart', 'cart', 'cart', 'cart'];
+
+    let size = ['xxs', 'xs', 'sm', 'md', 'lg'];
 
     return (
       <div className="iconContainer">
-        {icons.map(icon => (
+        {icons.map((icon, index) => (
           <div className="iconItem">
-            <Icon type={icon} key={icon} size="xxs" />
+            <Icon type={icon} key={icon} color="#588ceb" size={size[index]} />
             <h6 className="iconName">{icon}</h6>
           </div>
         ))}

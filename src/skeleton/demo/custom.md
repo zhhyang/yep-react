@@ -1,7 +1,7 @@
 ---
 order: 5
-title: Custom Style
-description:
+title: 自定义
+description: 自定义样式
 ---
 
 ```js

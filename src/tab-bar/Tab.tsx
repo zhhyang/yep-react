@@ -3,23 +3,22 @@ import classNames from 'classnames';
 import Badge from '../badge';
 import noop from '../_utils/noop';
 
-export interface TabProps{
+export interface TabProps {
   prefixCls?: string;
-  style?:React.CSSProperties;
-  className?:string;
+  style?: React.CSSProperties;
+  className?: string;
   tintColor?: string;
   unselectedTintColor?: string;
   dot?: boolean;
-  badge?: string| number;
+  badge?: string | number;
   selected?: boolean;
-  selectedIcon: React.ReactNode| string;
-  icon: React.ReactNode| string;
+  selectedIcon: React.ReactNode | string;
+  icon: React.ReactNode | string;
   title: string;
   onClick?: () => void;
 }
 
 export default class Tab extends React.PureComponent<TabProps> {
-
   static defaultProps = {
     prefixCls: 'Yep-tab-bar-tab',
     tintColor: '#ec3838',
@@ -29,7 +28,7 @@ export default class Tab extends React.PureComponent<TabProps> {
     onClick: noop,
   };
 
-  constructor(props:TabProps) {
+  constructor(props: TabProps) {
     super(props);
     this.onClick = this.onClick.bind(this);
     this.renderIcon = this.renderIcon.bind(this);
@@ -45,7 +44,7 @@ export default class Tab extends React.PureComponent<TabProps> {
   renderIcon() {
     const {selected, selectedIcon, icon, title, prefixCls, badge, dot} = this.props;
 
-    const iconVal = selected ? selectedIcon : icon as any;
+    const iconVal = selected ? selectedIcon : (icon as any);
 
     const iconDom = React.isValidElement(iconVal) ? (
       iconVal

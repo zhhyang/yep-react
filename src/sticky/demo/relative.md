@@ -1,6 +1,6 @@
 ---
 order: 1
-title: Relative
+title: 局部滚动吸顶(滚动容器非body)
 description:
 ---
 
@@ -21,7 +21,7 @@ class Header extends React.Component {
       <div className={'sticky-header ' + className} style={style}>
         <h2>
           <span className="pull-left">
-            {'<Sticky /> '}
+            吸顶块
             {renderCount ? <small>(invocation: #{renderCount})</small> : null}
           </span>
         </h2>
@@ -40,7 +40,7 @@ class Relative extends React.Component {
             <div className="gap short" />
             <Sticky relative={true}>{({style}) => <Header style={style} renderCount={renderCount++} />}</Sticky>
             <div className="gap short" />
-            <h2>scrolling container</h2>
+            <h2>局部滚动容器(非body)</h2>
           </div>
         </StickyContainer>
       </div>

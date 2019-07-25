@@ -84,7 +84,7 @@ export default class Message extends React.PureComponent<MessageProps, any> {
   render() {
     if (!this.state.isShow) return null;
 
-    const {prefixCls, className, style, type, position, icon,closeable,children} = this.props;
+    const {prefixCls, className, style, type, position, icon, closeable, children} = this.props;
 
     const wrapperCls = classNames(prefixCls, position, className);
     const box = classNames('box', `box-${type}`);
@@ -95,7 +95,7 @@ export default class Message extends React.PureComponent<MessageProps, any> {
         <div className={box}>
           {icon && <Icon type="bell" />}
           <div className="message-text">{children}</div>
-          {closeable && <Icon onClick={this.closeMessage} type="close"  />}
+          {closeable && <Icon onClick={this.closeMessage} type="close" />}
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 ---
 category: Form
 title: 复选框
+desc: 多项选择
 ---
 
 <DEMO>

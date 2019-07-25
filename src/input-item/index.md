@@ -1,6 +1,7 @@
 ---
 category: Form
 title: 输入框
+desc: 输入框，可以带清空按钮
 ---
 
 输入框，可以带清空按钮
