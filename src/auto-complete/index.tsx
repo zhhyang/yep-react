@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Dropdown from '../dropdown';
+import ToolTip from '../tooltip';
 import InputItem from '../input-item';
 
 export interface AutoCompleteProps {
@@ -119,7 +119,7 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
     };
     console.log(matchedStyle);
     return (
-      <Dropdown
+      <ToolTip
         open={isOpen || open}
         disabled={disabled}
         aligned={true}
@@ -148,7 +148,7 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
         }
       >
         <InputItem value={value} onChange={this.handleInput} disabled={disabled} {...inputProps} />
-      </Dropdown>
+      </ToolTip>
     );
   }
 }

@@ -498,7 +498,7 @@ title: 更新日志
 
 * **Bug Fix**
 
-  - 🐞 重构 `Dropdown` 组件，修改 props
+  - 🐞 重构 `ToolTip` 组件，修改 props
   - 🐞 修复 `AutoComplete` 组件
 
 * **Enhancement**
@@ -515,7 +515,7 @@ title: 更新日志
 
 * **Bug Fix**
 
-  - 🐞 修复 Dropdown 组件的 bug
+  - 🐞 修复 ToolTip 组件的 bug
 
 * **Enhancement**
 
@@ -580,7 +580,7 @@ title: 更新日志
   - 🌟 重新设计全部组件规范，支持自定义主题。组件按需加载支持引入 css 和 scss 源文件
   - 🌟 新增 Tips 组件
   - 🌟 新增 AutoComplete 组件
-  - 🌟 新增 Dropdown 组件
+  - 🌟 新增 ToolTip 组件
   - 🌟 新增 InputItem 组件
   - 🌟 新增 Carousel 组件
   - 🌟 新增 Rate 组件
@@ -867,7 +867,7 @@ title: 更新日志
 - **Feature**
 
   - 🌟 新增 AutoComplete 组件
-  - 🌟 新增 Dropdown 组件
+  - 🌟 新增 ToolTip 组件
   - 🌟 新增 Input 组件
   - 🌟 样式按需加载提供 css 的引入方式
 
