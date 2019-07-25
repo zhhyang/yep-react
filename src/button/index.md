@@ -1,6 +1,7 @@
 ---
 category: Basic
 title: 按钮
+desc: 通用按钮组件，点击触发一个操作
 ---
 
 <DEMO>

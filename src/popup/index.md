@@ -1,9 +1,10 @@
 ---
 category: Basic
 title: 弹出框
+desc: 作为 Dialog Picker 和 ActionSheet 组件的模态框容器组件实现
 ---
 
-作为 Picker 和 ActionSheet 组件的容器组件实现
+作为 Dialog Picker 和 ActionSheet 组件的容器组件实现
 
 <DEMO>
 
