@@ -11,6 +11,7 @@ class ComponentTitle extends PureComponent {
   static defaultProps = {
     title: '组件',
     englishTitle: 'Component',
+    desc: '1',
   };
 
   constructor() {
@@ -18,11 +19,14 @@ class ComponentTitle extends PureComponent {
   }
 
   render() {
-    const {title, englishTitle} = this.props;
+    const {title, englishTitle, desc} = this.props;
     return (
       <div className={style.componentTitleContainer}>
-        <h6 className={style.title}>{title}</h6>
-        <p className={style.desc}>{englishTitle}</p>
+        <h6 className={style.title}>
+          {title}
+          <span className={style.englishTitle}>{englishTitle}</span>
+        </h6>
+        <p className={style.desc}>{desc}</p>
       </div>
     );
   }

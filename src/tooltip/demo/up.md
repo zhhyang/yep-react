@@ -1,20 +1,20 @@
 ---
-order: 0
-title: 基础用法
+order: 1
+title: 通过direction控制依附在上方
 description:
 ---
 
 ```js
 import React from 'react';
-import {Dropdown} from '@jdcfe/yep-react';
+import {ToolTip} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Dropdown overlay={'这是一个下拉框'}>
+        <ToolTip overlay={'这是一个提示框'} direction={'up'}>
           <button>Open</button>
-        </Dropdown>
+        </ToolTip>
       </div>
     );
   }

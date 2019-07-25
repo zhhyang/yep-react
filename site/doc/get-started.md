@@ -3,7 +3,7 @@ order: 0
 title: 快速上手
 ---
 
-如果是在[butler](http://butler.jd.com/#/)中使用，请直接访问[在 butler 中使用](#/doc/use-with-butler).
+如果是在[rocketact](https://rocketact.js.org/)中使用，请直接访问[在 rocketact 中使用](#/doc/use-with-rocketact).
 
 ### 安装
 

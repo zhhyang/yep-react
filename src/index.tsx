@@ -39,7 +39,7 @@ export {default as SwipeAction} from './swipe-action';
 export {default as CountDown} from './count-down';
 export {default as Message} from './message';
 export {default as AutoComplete} from './auto-complete';
-export {default as Dropdown} from './dropdown';
+export {default as ToolTip} from './tooltip';
 export {default as InputItem} from './input-item';
 export {default as NavBar} from './nav-bar';
 export {default as Carousel} from './carousel';

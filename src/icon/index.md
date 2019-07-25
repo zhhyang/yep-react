@@ -1,6 +1,7 @@
 ---
 category: Basic
 title: 图标
+desc: svg图标库
 ---
 
 <DEMO>

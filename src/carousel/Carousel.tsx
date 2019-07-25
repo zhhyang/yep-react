@@ -45,7 +45,7 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
       currentIndex: props.isInfinite ? props.initPage + 1 : props.initPage,
       total: props.isInfinite ? count + 2 : count,
     };
-    this.isMoving = true;
+    this.isMoving = false;
     this.touchStartPlace = 0;
     this.touchMovePlace = 0;
     this.width = 0;
@@ -76,6 +76,7 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
 
   autoplayFunc() {
     const {autoPlay} = this.props;
+
     // 是否自动播放
     if (autoPlay) {
       this.cancelAutoPlay();
@@ -89,23 +90,31 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
   }
 
   touchStartHandle(e: React.TouchEvent<HTMLDivElement>) {
+    const {vertical} = this.props;
     this.cancelAutoPlay();
     this.isMoving = true;
-    this.touchStartPlace = e.targetTouches[0].pageX;
-    this.touchMovePlace = e.targetTouches[0].pageX;
+
+    this.touchStartPlace = vertical ? e.targetTouches[0].pageY : e.targetTouches[0].pageX;
+    this.touchMovePlace = vertical ? e.targetTouches[0].pageY : e.targetTouches[0].pageX;
   }
 
   touchMoveHandle(e: React.TouchEvent<HTMLDivElement>) {
     const {currentIndex, total} = this.state;
-    const {isBounces} = this.props;
+    const {isBounces, vertical} = this.props;
     if (!isBounces) {
-      if (currentIndex === 0 && this.touchStartPlace <= e.targetTouches[0].pageX) {
+      if (
+        currentIndex === 0 &&
+        this.touchStartPlace <= (vertical ? e.targetTouches[0].pageY : e.targetTouches[0].pageX)
+      ) {
         return false;
-      } else if (total - 1 === currentIndex && this.touchStartPlace >= e.targetTouches[0].pageX) {
+      } else if (
+        total - 1 === currentIndex &&
+        this.touchStartPlace >= (vertical ? e.targetTouches[0].pageY : e.targetTouches[0].pageX)
+      ) {
         return false;
       }
     }
-    this.touchMovePlace = e.targetTouches[0].pageX;
+    this.touchMovePlace = vertical ? e.targetTouches[0].pageY : e.targetTouches[0].pageX;
 
     this.setContainerStyle();
   }
@@ -138,7 +147,6 @@ export default class Carousel extends React.PureComponent<CarouselProps, any> {
     let targetIndex = index;
     targetIndex = targetIndex < 0 ? 0 : targetIndex;
     targetIndex = targetIndex > total - 1 ? total - 1 : targetIndex;
-    console.log(targetIndex);
     this.setState(
       {
         currentIndex: targetIndex,

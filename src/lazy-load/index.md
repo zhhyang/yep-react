@@ -1,6 +1,7 @@
 ---
 category: Basic
 title: 懒加载组件
+desc: 懒加载组件,常用于延迟加载图片等
 ---
 
 <DEMO>

@@ -10,6 +10,8 @@
   text-align: center;
   font-size: 14px;
   @include border-radius();
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
   &-content{
     overflow: hidden;
     background: #fff;

@@ -1,6 +1,6 @@
 ---
 order: 0
-title: 基础用法
+title: 弹出框和输入框等宽
 description:
 ---
 
@@ -11,15 +11,26 @@ import {AutoComplete} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
-      <AutoComplete
-        placeholder="输入关键词"
-        size={'lg'}
-        clear={true}
-        onChange={v => {
-          console.log(v);
-        }}
-        source={['愿得一人心', '后宫佳丽三千人']}
-      />
+      <div>
+        <AutoComplete
+          placeholder="输入关键词"
+          size={'lg'}
+          clear={true}
+          onChange={v => {
+            console.log(v);
+          }}
+          source={['愿得一人心，白首不分离', '后宫佳丽三千人，三千宠爱在一身']}
+        />
+        <AutoComplete
+          placeholder="输入关键词"
+          size={'lg'}
+          clear={true}
+          onChange={v => {
+            console.log(v);
+          }}
+          source={['愿得一人心，白首不分离', '后宫佳丽三千人，三千宠爱在一身']}
+        />
+      </div>
     );
   }
 }

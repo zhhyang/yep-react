@@ -21,7 +21,7 @@ class Header extends React.Component {
       <div className={'sticky-header ' + className} style={style}>
         <h2>
           <span className="pull-left">
-            {'<Sticky /> '}
+            吸顶块
             {renderCount ? <small>(invocation: #{renderCount})</small> : null}
           </span>
         </h2>
@@ -35,15 +35,15 @@ class Basic extends React.Component {
   render() {
     return (
       <div>
-        <h2>Content before the Sticky...</h2>
+        <h2>吸顶块之前的填充内容</h2>
         <div className="gap short" style={{background: 'linear-gradient(#fff, #ddd)'}} />
         <StickyContainer className="container">
           <Sticky>{({style}) => <Header style={style} renderCount={renderCount++} />}</Sticky>
 
-          <h2 className="text-center">{'<StickyContainer />'}</h2>
+          <h2 className="text-center">保持吸顶状态的内容</h2>
         </StickyContainer>
         <div className="gap tall" style={{background: 'linear-gradient(#ddd, #fff)'}}>
-          <h2>Content after the Sticky...</h2>
+          <h2>滚动到此处不再吸顶</h2>
         </div>
       </div>
     );

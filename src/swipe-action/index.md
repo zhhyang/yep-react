@@ -1,6 +1,7 @@
 ---
 category: Feedback
 title: 滑动操作
+desc: 结合手势左右滑动，从屏幕一侧唤出操作
 ---
 
 滑动操作组件

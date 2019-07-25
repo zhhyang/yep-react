@@ -1,6 +1,7 @@
 ---
 category: Layout
 title: 吸顶
+desc: 使某块区域固定顶部
 ---
 
 Make your React components sticky!

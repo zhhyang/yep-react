@@ -29,7 +29,7 @@ export interface IndexedListProps {
   showIndicator?: boolean;
   data: any;
   renderSectionHeader: (sectionData: string, sectionId: string) => React.ReactNode;
-  renderRow: (item: any) => React.ReactNode;
+  renderRow: (rowData: any, index?: number, sectionID?: string) => React.ReactNode;
   renderSectionWrapper?: (sectionId: string) => React.ReactNode;
   quickIndexedBarTop?: any;
   useBodyScroll?: boolean;

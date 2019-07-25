@@ -1,6 +1,7 @@
 ---
 category: Basic
 title: 手势操作
+desc: 为移动端 React 组件提供手势操作。
 ---
 
 为移动端 React 组件提供手势操作。
