@@ -35,16 +35,18 @@ yarn add -D postcss-pxtorem
 
 入口页面 (html 或 模板) 相关设置：
 
-> 屏幕适配(更多参考 [wiki](https://github.com/jdf2e/yep-react/wikis/%E7%BB%84%E4%BB%B6%E5%BA%93%E5%9F%BA%E4%BA%8E750%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D))
+> 屏幕适配(flexible、vw、媒体查询 方案自己选择)
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-</head>
-<body>
-</body>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+  </head>
+  <body></body>
 </html>
 ```
 
@@ -54,7 +56,7 @@ yarn add -D postcss-pxtorem
 const pxtorem = require('postcss-pxtorem');
 pxtorem({
   rootValue: 100,
-  propList: [],
+  propWhiteList: [],
 });
 ```
 
@@ -77,22 +79,13 @@ import '@jdcfe/yep-react/dist/@jdcfe/yep-react.css';
 
 下面两种方式都可以**只加载**用到的组件，选择其中一种方式即可。
 
-* 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)（推荐）。
-
-  ```javascript
-  // babel 6  .babelrc or babel-loader option
-  {
-    "plugins": [
-      ["import", { libraryName: "@jdcfe/yep-react", style: "css" }] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
-    ]
-  }
-  ```
+- 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)（推荐）。
 
   ```javascript
     // babel 7  .babelrc or babel-loader option
     {
       "plugins": [
-        ["import", { libraryName: "@jdcfe/yep-react", style: "css" },"@jdcfe/yep-react"] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
+        ["import", { libraryName: "@jdcfe/yep-react", style: true }] //`style: "css"`会加载css文件, `style: true` 会加载 scss 文件,则必须引入sass-loader
       ]
     }
   ```
@@ -104,7 +97,7 @@ import '@jdcfe/yep-react/dist/@jdcfe/yep-react.css';
   import {Button} from '@jdcfe/yep-react';
   ```
 
-* 手动引入
+- 手动引入
 
   ```jsx
   import Button from '@jdcfe/yep-react/lib/button'; // 加载 JS

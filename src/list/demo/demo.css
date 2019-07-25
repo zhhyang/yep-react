@@ -1,0 +1,8 @@
+.custom-item-style .Yep-list-line .Yep-list-content {
+  flex: none;
+  width: 1.8rem;
+}
+
+.custom-item-style  .Yep-list-line .Yep-list-extra{
+  overflow: initial;
+}

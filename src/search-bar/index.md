@@ -1,6 +1,7 @@
 ---
 category: Form
 title: 搜索
+desc: 一般位于顶部导航下方，输入内容搜索
 ---
 
 搜索

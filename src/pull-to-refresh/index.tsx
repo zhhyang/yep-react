@@ -16,7 +16,7 @@ export interface PullToRefreshProps {
   refreshFunction?: () => void;
   refreshing: boolean;
   indicator: Indicator;
-  getScrollContainer: () => React.ReactNode;
+  getScrollContainer: () => HTMLElement;
 }
 
 export type CurrentState = 'activate' | 'deactivate' | 'release' | 'finish';
@@ -46,7 +46,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   };
 
   startY: number;
+  startX: number;
   currentY: number;
+  currentX: number;
   dragging: boolean;
 
   constructor(props: PullToRefreshProps) {
@@ -56,7 +58,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
     };
     // variables to keep track of pull down behaviour
     this.startY = 0;
+    this.startX = 0;
     this.currentY = 0;
+    this.currentX = 0;
     this.dragging = false;
 
     // will be populated in componentDidMount
@@ -107,7 +111,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   onStart(evt: any) {
     this.dragging = true;
     this.startY = evt.pageY || evt.touches[0].pageY;
+    this.startX = evt.pageX || evt.touches[0].pageX;
     this.currentY = this.startY;
+    this.currentX = this.startX;
 
     this.container.style.willChange = 'transform';
     this.container.style.transition = `transform 0.2s cubic-bezier(0,0,0.31,1)`;
@@ -119,15 +125,30 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
       const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
       return scrollNode.scrollTop <= 0;
     }
-    return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop) <= 0;
+    const refScrollTop = (container && container.scrollTop) || 0;
+    const tops = [window.pageYOffset || 0, document.documentElement.scrollTop, refScrollTop];
+    return Math.max(...tops) <= 0;
   };
 
   onMove(evt: any) {
     if (!this.dragging) return;
+
     this.currentY = evt.pageY || evt.touches[0].pageY;
+    this.currentX = evt.pageX || evt.touches[0].pageX;
 
     // user is scrolling down to up
     if (this.currentY < this.startY) return;
+
+    // 当前点与起始点形成的角度大于30度且小于150度时，下拉；其他情况不处理。
+    // 公式： (startY-currY)/(startX-currX)>1/√3~=0.58
+    // console.log("onMove evt", this.currentX, this.startX, this.currentY, this.startY);
+    if (this.currentX !== this.startX) {
+      const bi = Math.abs((this.startY - this.currentY) / (this.startX - this.currentX));
+      if (bi < 0.58) {
+        // console.log('不能下拉呀');
+        return;
+      }
+    }
 
     if (this.isMoveEdge()) {
       //禁止整个页面下拉效果
@@ -154,7 +175,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
 
   onEnd() {
     this.startY = 0;
+    this.startX = 0;
     this.currentY = 0;
+    this.currentX = 0;
 
     this.dragging = false;
     if (this.state.currentState === 'activate') {

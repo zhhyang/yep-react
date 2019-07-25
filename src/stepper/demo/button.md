@@ -1,7 +1,7 @@
 ---
 order: 5
 title: 自定义按钮
-description:
+description: 加减按钮支持自定义
 ---
 
 ```js

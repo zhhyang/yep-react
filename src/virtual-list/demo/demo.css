@@ -1,5 +1,5 @@
 .virtual-box {
-  height: 200px;
+  height: 400px;
   border: 1px solid #ddd;
   overflow: auto;
 }
@@ -12,3 +12,8 @@
   padding-left: 10px;
   border-bottom: 1px solid #333;
 }
+
+.virtual-box li .serial-number{
+  margin-top: 10px;
+}
+

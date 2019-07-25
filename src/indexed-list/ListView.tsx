@@ -71,7 +71,7 @@ export default class ListView extends React.PureComponent<ListViewProps> {
         const row = (
           <StaticRenderer
             key={`r_${comboID}`}
-            render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx], rowIdx)}
+            render={renderRow.bind(null, data[sectionIdentities[sectionIdx]][rowIdx], rowIdx, sectionId)}
           />
         );
         //@ts-ignore

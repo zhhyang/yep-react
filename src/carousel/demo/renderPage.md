@@ -1,7 +1,7 @@
 ---
 order: 5
 title: 定制原点样式
-description:
+description: 自定义指示点样式 如分页样式
 ---
 
 ```js

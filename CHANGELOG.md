@@ -13,6 +13,47 @@ title: 更新日志
 
 ---
 
+### 0.5.3
+
+`2019-7-25`
+
+- **Bug Fix**
+
+  - 🐞 IndexedList 组件 renderRow 函数签名，添加 index 和 sectionId
+
+### 0.5.2
+
+`2019-7-19`
+
+- **Bug Fix**
+
+  - 🐞 修复 Carousel 组件垂直方向轮播未监听上下滑动事件、修复自动轮播机制
+
+### 0.5.1
+
+`2019-7-18`
+
+- **Feature**
+
+  - 🌟 新增 Collapse 组件@zhoujinxiu
+
+### 0.5.0
+
+`2019-7-16`
+
+- **Feature**
+
+  - 🌟 新增 LazyLoad 组件@wangkang
+  - 🌟 新增 Stepper 组件@jingxijun
+  - 🌟 新增 NumberKeyboard 组件@wangkang
+  - 🌟 新增 PasswordInput 组件@wangkang
+  - 🌟 新增 Avatar 组件@wangkang
+  - 🌟 新增 use-with-rocketact 使用说明
+
+- **Bug Fix**
+
+  - 🐞 修复 function 组件生成.d.ts 时多个默认导出的问题
+
 ### 0.4.3
 
 `2019-5-30`

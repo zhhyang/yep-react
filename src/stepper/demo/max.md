@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 最多购买 10 件
-description:
+description: 超过最大值提示
 ---
 
 ```js

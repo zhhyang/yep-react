@@ -1,6 +1,7 @@
 ---
 category: Feedback
 title: 对话框
+desc: 用于显示系统的重要信息，并请求用户进行操作反馈
 ---
 
 <DEMO>

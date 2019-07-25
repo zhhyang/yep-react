@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 自定义渲染组件
-description:
+description: 渲染内容可以通过 renderText 自定义
 ---
 
 ```js

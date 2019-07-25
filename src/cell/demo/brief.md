@@ -1,7 +1,7 @@
 ---
-order: 1
-title: 多行
-description:
+order: 2
+title: 辅助说明
+description: 列表内容下方可配置辅助说明。
 ---
 
 ```js
@@ -13,10 +13,9 @@ class Demo extends React.PureComponent {
     return (
       <div style={{background: '#f2f3f3'}}>
         <Cell>
-          <Item label="白条" align="top">
+          <Item label="白条">
             白条随机立减最高99 每个用户限用1次<Brief>现货，11：00前下单，预计今日送达</Brief>{' '}
           </Item>
-          <Item label="已选">iPhone X 经典蓝，1件，可选服务</Item>
         </Cell>
       </div>
     );

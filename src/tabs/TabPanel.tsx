@@ -7,7 +7,7 @@ const TabPanel: React.FunctionComponent<TabPanelProps> = ({className, prefixCls,
 };
 export interface TabPanelProps {
   tab?: React.ReactNode;
-  prefixCls?: string; //
+  prefixCls?: string;
   className?: string;
   active?: boolean;
   fixX?: boolean;
@@ -17,5 +17,5 @@ export interface TabPanelProps {
 TabPanel.defaultProps = {
   fixX: true,
   fixY: true,
-};
+} as Partial<TabPanelProps>;
 export default TabPanel;

@@ -1,6 +1,7 @@
 ---
 category: Form
 title: 选择器
+desc: 在一组预设的数据中进行选择，例如：性别、地址
 ---
 
 <DEMO>

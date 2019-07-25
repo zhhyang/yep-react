@@ -2,15 +2,17 @@ import * as React from 'react';
 
 import classNames from 'classnames';
 import noop from '../_utils/noop';
+import HorizontalWhiteSpace from './HorizontalWhiteSpace';
 
-export interface WhiteSpaceProps{
-  prefixCls?: string,
-  className?: string,
+export interface WhiteSpaceProps {
+  prefixCls?: string;
+  className?: string;
   style?: React.CSSProperties;
   onClick: () => void;
-  size: 'xs'| 'sm'| 'md'|'lg'| 'xl';
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 export default class WhiteSpace extends React.PureComponent<WhiteSpaceProps> {
+  static HorizontalWhiteSpace = HorizontalWhiteSpace;
 
   static defaultProps = {
     prefixCls: 'Yep-whitespace',
@@ -26,3 +28,5 @@ export default class WhiteSpace extends React.PureComponent<WhiteSpaceProps> {
     return <div className={wrapCls} style={style} onClick={onClick} />;
   }
 }
+
+WhiteSpace.HorizontalWhiteSpace = HorizontalWhiteSpace;
