@@ -305,7 +305,7 @@ class Home extends React.Component {
                   <h6 className="intro-title">50+ 功能丰富的组件</h6>
                   <p className="intro-motto">满足一站式页面构建</p>
                   <p className="intro-content">
-                    基础、布局、视图、操作反馈及表单共5大组件类型，分类明确，功能全面，覆盖各种应用场景；
+                    基础、布局、视图、操作反馈及表单共6大组件类型，分类明确，功能全面，覆盖各种应用场景；
                   </p>
                 </div>
               </li>
