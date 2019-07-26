@@ -9,8 +9,8 @@ import {VirtualList, Button} from '@jdcfe/yep-react';
 
 const dataSource = [];
 
-function generateLi(i) {
-  const goods = [
+const generateLi = () => {
+  return [
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/3239/32/15737/216163/5be00b23Edc8033ba/0a2b4f5fbe02b898.jpg',
       jdPrice: 15.9,
@@ -106,55 +106,95 @@ function generateLi(i) {
       jdPrice: 27.9,
       name: '韩国进口三养（SAMYANG）方便面 火鸡面 超辣鸡肉味拌面 700g（140g*5',
     },
+    {
+      image: 'https://m.360buyimg.com/babel/jfs/t3178/59/6909156955/181313/3a433a29/58ace575Nd8b5d855.jpg',
+      jdPrice: 5.5,
+      name: '李锦记 蒜蓉香辣酱 凉拌酱烧烤火锅 160g',
+    },
+    {
+      image: 'https://m.360buyimg.com/babel/jfs/t1/28992/23/12174/191465/5c96002bEa1bc6c67/9068490c61459a70.jpg',
+      jdPrice: 9.5,
+      name: '厨邦 酱油 特级生抽 410ml',
+    },
+    {
+      image: 'https://m.360buyimg.com/babel/jfs/t1/24508/12/9764/220496/5c82323aE3ed5e73e/9879b9059c5e5958.jpg',
+      jdPrice: 10.9,
+      name: '升林 粉丝 龙口粉丝的产地 火锅凉拌方便干货扇贝蒜蓉米粉米线300g 新旧',
+    },
+    {
+      image: 'https://m.360buyimg.com/babel/jfs/t1/28864/30/14821/101698/5cac110fE2966a926/339ce65312b2c8bb.jpg',
+      jdPrice: 19.9,
+      name: '润本（RUNBEN) 防蚊扣 驱蚊贴 婴童防蚊驱蚊 防蚊驱蚊水手环 植物精油 3个',
+    },
+    {
+      image: 'https://m.360buyimg.com/babel/jfs/t1/27209/19/13054/126720/5c9d7fa3Ee262a2ad/879cfd7a0b9c935c.jpg',
+      jdPrice: 24.8,
+      name: '香雪 美味富强粉 面粉 中粮出品5kg （新老包材随机发货）',
+    },
+    {
+      image: 'https://m.360buyimg.com/babel/jfs/t1/28236/6/10534/98462/5c8898b0E17327b8b/d238202ec9fb595b.jpg',
+      jdPrice: 20,
+      name: '伊利原味牛奶片160g/盒',
+    },
   ];
-  return goods.map((item, index) => (
-    <li
-      style={{
-        display: 'flex',
-        justifyContent: 'space-around',
-        borderBottom: '1px solid #eee',
-        padding: 10,
-        marginBottom: 10,
-      }}
-      key={index}
-    >
-      <div style={{flex: 1}}>
-        <img src={item.image} />
-      </div>
-      <div style={{flex: 2, paddingLeft: 10}}>
-        <div style={{lineHeight: 1.2, color: '#333', marginBottom: 10}}>{item.name}</div>
-        <div>
-          京东价：<span style={{color: 'red'}}>¥ {item.jdPrice}</span>
-        </div>
-        <div class="serial-number">排行：{i}</div>
-      </div>
-    </li>
-  ));
-}
-function generateData(len) {
-  for (let i = 0; i < len; i++) {
-    dataSource.push(generateLi(i));
-  }
+};
+
+for (let i = 0; i < 1000; i++) {
+  dataSource.push(...generateLi());
 }
 
-class Demo extends React.Component {
+class Demo extends React.PureComponent {
   state = {
-    initial: 100,
-    dataSource: generateData(1000),
+    initial: 10,
   };
   onClick = () => {
     this.setState({
-      initial: this.state.initial + 100,
+      initial: this.state.initial + 10,
     });
+  };
+  renderItem = ({style, index}) => {
+    const item = dataSource[index];
+    return (
+      <div
+        className="Row"
+        style={{
+          ...style,
+          display: 'flex',
+          justifyContent: 'space-around',
+          borderBottom: '1px solid #eee',
+          padding: 10,
+          marginBottom: 10,
+        }}
+        key={index}
+      >
+        <div style={{flex: 1}}>
+          <img src={item.image} />
+        </div>
+        <div style={{flex: 2, paddingLeft: 10}}>
+          <div style={{lineHeight: 1.2, color: '#333', marginBottom: 10}}>{item.name}</div>
+          <div>
+            京东价：<span style={{color: 'red'}}>¥ {item.jdPrice}</span>
+          </div>
+        </div>
+      </div>
+    );
   };
   render() {
     return (
       <div>
-        <Button onClick={this.onClick}>jump to {this.state.initial + 100}</Button>
+        <Button onClick={this.onClick}>jump to {this.state.initial + 10}</Button>
         <br />
         <br />
         <div className={'virtual-box'}>
-          <VirtualList jumpIndex={this.state.initial}>{dataSource}</VirtualList>
+          <VirtualList
+            scrollToIndex={this.state.initial}
+            width="auto"
+            height={400}
+            itemCount={1000}
+            renderItem={this.renderItem}
+            itemSize={120}
+            className="VirtualList"
+          />
         </div>
       </div>
     );
