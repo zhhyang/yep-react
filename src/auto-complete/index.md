@@ -1,6 +1,7 @@
 ---
 category: Feedback
 title: 自动完成
+desc: 根据用户输入筛选命中选项并高亮展示
 ---
 
 自动完成

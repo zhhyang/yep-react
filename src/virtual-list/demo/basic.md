@@ -9,8 +9,8 @@ import {VirtualList} from '@jdcfe/yep-react';
 
 const dataSource = [];
 
-const generateLi = (index = 'index') => {
-  const goods = [
+const generateLi = () => {
+  return [
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/3239/32/15737/216163/5be00b23Edc8033ba/0a2b4f5fbe02b898.jpg',
       jdPrice: 15.9,
@@ -137,39 +137,51 @@ const generateLi = (index = 'index') => {
       name: '伊利原味牛奶片160g/盒',
     },
   ];
-  return goods.map((item, index) => (
-    <li
-      style={{
-        display: 'flex',
-        justifyContent: 'space-around',
-        borderBottom: '1px solid #eee',
-        padding: 10,
-        marginBottom: 10,
-      }}
-      key={index}
-    >
-      <div style={{flex: 1}}>
-        <img src={item.image} />
-      </div>
-      <div style={{flex: 2, paddingLeft: 10}}>
-        <div style={{lineHeight: 1.2, color: '#333', marginBottom: 10}}>{item.name}</div>
-        <div>
-          京东价：<span style={{color: 'red'}}>¥ {item.jdPrice}</span>
-        </div>
-      </div>
-    </li>
-  ));
 };
 
 for (let i = 0; i < 1000; i++) {
-  dataSource.push(generateLi(i));
+  dataSource.push(...generateLi());
 }
 
 class Demo extends React.PureComponent {
+  renderItem = ({style, index}) => {
+    const item = dataSource[index];
+    return (
+      <div
+        className="Row"
+        style={{
+          ...style,
+          display: 'flex',
+          justifyContent: 'space-around',
+          borderBottom: '1px solid #eee',
+          padding: 10,
+          marginBottom: 10,
+        }}
+        key={index}
+      >
+        <div style={{flex: 1}}>
+          <img src={item.image} />
+        </div>
+        <div style={{flex: 2, paddingLeft: 10}}>
+          <div style={{lineHeight: 1.2, color: '#333', marginBottom: 10}}>{item.name}</div>
+          <div>
+            京东价：<span style={{color: 'red'}}>¥ {item.jdPrice}</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
   render() {
     return (
       <div className={'virtual-box'}>
-        <VirtualList>{dataSource}</VirtualList>
+        <VirtualList
+          width="auto"
+          height={400}
+          itemCount={1000}
+          renderItem={this.renderItem}
+          itemSize={120}
+          className="VirtualList"
+        />
       </div>
     );
   }

@@ -1,7 +1,6 @@
 ---
 order: 0
 title: 弹出框和输入框等宽
-description:
 ---
 
 ```js
