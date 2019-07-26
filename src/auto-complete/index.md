@@ -21,3 +21,4 @@ desc: 根据用户输入筛选命中选项并高亮展示
 | disabled     | 输入框是否禁用           | bool             | -                 |
 | placeholder  | 输入框的 placeholder     | string           | -                 |
 | clear        | 输入框是否显示清空按钮   | bool             | -                 |
+| matchedStyle | 自定义命中字符样式       | string           | -                 |
