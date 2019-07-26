@@ -117,7 +117,6 @@ class AutoComplete extends React.PureComponent<AutoCompleteProps, any> {
       ...other,
       onKeyDown: this.handleKeyDown,
     };
-    console.log(matchedStyle);
     return (
       <ToolTip
         open={isOpen || open}

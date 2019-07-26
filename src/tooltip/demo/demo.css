@@ -1,0 +1,12 @@
+.Yep-dropdown {
+
+}
+
+.Yep-dropdown-toggle {
+  display: block;
+  border:1px solid rgba(76, 124, 250,0.5);
+  margin:50px auto;
+  vertical-align: middle;
+  text-align: center;
+  width:50px;
+}

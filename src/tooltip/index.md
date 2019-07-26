@@ -1,7 +1,7 @@
 ---
 category: Feedback
-title: 下拉框
-desc: 下拉框
+title: 提示框
+desc: 可以依附在触发器四周出现的提示框
 ---
 
 下拉框
