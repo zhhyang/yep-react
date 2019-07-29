@@ -6,7 +6,7 @@ description: 可在自定义的容器内使用
 
 ```js
 import React from 'react';
-import {IndexedList, List, Sticky, Popup} from '@jdcfe/yep-react';
+import {IndexedList, List, Sticky, Popup, Button} from '@jdcfe/yep-react';
 const {Item} = List;
 const {StickyContainer} = Sticky;
 
@@ -41,6 +41,7 @@ class Header extends React.Component {
 class Demo extends React.PureComponent {
   state = {
     key: '',
+    showPopup: false,
   };
 
   change = key => {
@@ -85,7 +86,13 @@ class Demo extends React.PureComponent {
     };
     return (
       <div>
-        <Popup show={true} popupTransition="slide-right">
+        <Button onClick={() => this.setState({showPopup: true})}>右侧展开地址选择</Button>
+        <Popup
+          show={this.state.showPopup}
+          maskCloseable={true}
+          onCancel={() => this.setState({showPopup: false})}
+          popupTransition="slide-right"
+        >
           <div className="right">
             <IndexedList
               style={{height: 500}}

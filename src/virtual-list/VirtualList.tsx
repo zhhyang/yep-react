@@ -1,449 +1,385 @@
 import * as React from 'react';
-import classNames from 'classnames';
-import {findDOMNode} from 'react-dom';
-import * as events from '../_utils/events';
+import * as PropTypes from 'prop-types';
+import SizeAndPositionManager, {ItemSize} from './SizeAndPositionManager';
+import {
+  ALIGNMENT,
+  DIRECTION,
+  SCROLL_CHANGE_REASON,
+  marginProp,
+  oppositeMarginProp,
+  positionProp,
+  scrollProp,
+  sizeProp,
+} from './constants';
 
-const NOOP = () => {};
-const MAX_SYNC_UPDATES = 100;
+export {DIRECTION as ScrollDirection} from './constants';
 
-const isEqualSubset = (parameters: {a: any; b: any}) => {
-  let {a, b} = parameters;
-  for (const key in b) {
-    if (a[key] !== b[key]) {
-      return false;
-    }
-  }
+export type ItemPosition = 'absolute' | 'sticky';
 
-  return true;
+export interface ItemStyle {
+  position: ItemPosition;
+  top?: number;
+  left: number;
+  width: string | number;
+  height?: number;
+  marginTop?: number;
+  marginLeft?: number;
+  marginRight?: number;
+  marginBottom?: number;
+  zIndex?: number;
+}
+
+interface StyleCache {
+  [id: number]: ItemStyle;
+}
+
+export interface ItemInfo {
+  index: number;
+  style: ItemStyle;
+}
+
+export interface RenderedRows {
+  startIndex: number;
+  stopIndex: number;
+}
+
+export interface Props {
+  className?: string;
+  estimatedItemSize?: number;
+  height: number | string;
+  itemCount: number;
+  itemSize: ItemSize;
+  overscanCount?: number;
+  scrollOffset?: number;
+  scrollToIndex?: number;
+  scrollToAlignment?: ALIGNMENT;
+  scrollDirection?: DIRECTION;
+  stickyIndices?: number[];
+  style?: React.CSSProperties;
+  width?: number | string;
+  onItemsRendered?({startIndex, stopIndex}: RenderedRows): void;
+  onScroll?(offset: number, event: UIEvent): void;
+  renderItem(itemInfo: ItemInfo): React.ReactNode;
+}
+
+export interface State {
+  offset: number;
+  scrollChangeReason: SCROLL_CHANGE_REASON;
+}
+
+const STYLE_WRAPPER: React.CSSProperties = {
+  overflow: 'auto',
+  willChange: 'transform',
+  WebkitOverflowScrolling: 'touch',
 };
 
-export interface VirtualListProps {
-  prefixCls?: string;
+const STYLE_INNER: React.CSSProperties = {
+  position: 'relative',
+  width: '100%',
+  minHeight: '100%',
+};
 
-  className: string;
-  /**
-   * 渲染的子节点
-   */
-  children: any;
-  /**
-   * 最小加载数量
-   */
-  minSize: number;
-  /**
-   * 一屏数量
-   */
-  pageSize: number;
-  /**
-   * 父渲染函数，默认为 (items, ref) => <ul ref={ref}>{items}</ul>
-   */
-  itemsRenderer: (items: any, ref: any) => React.ReactNode;
-  /**
-   * 缓冲区高度
-   */
-  threshold: number;
-  /**
-   * 获取item高度的函数
-   */
-  itemSizeGetter: () => number;
-  /**
-   * 设置跳转位置，需要设置 itemSizeGetter 才能生效, 不设置认为元素等高并取第一个元素高度作为默认高
-   */
-  jumpIndex?: number;
-}
-/** VirtualList */
-export default class VirtualList extends React.Component<VirtualListProps> {
-  static displayName = 'VirtualList';
+const STYLE_ITEM: {
+  position: ItemStyle['position'];
+  top: ItemStyle['top'];
+  left: ItemStyle['left'];
+  width: ItemStyle['width'];
+} = {
+  position: 'absolute' as ItemPosition,
+  top: 0,
+  left: 0,
+  width: '100%',
+};
 
+const STYLE_STICKY_ITEM = {
+  ...STYLE_ITEM,
+  position: 'sticky' as ItemPosition,
+};
+
+export default class VirtualList extends React.PureComponent<Props, State> {
   static defaultProps = {
-    prefixCls: 'Yep',
-    itemsRenderer: (items: any, ref: any) => {
-      return <ul ref={ref}>{items}</ul>;
-    },
-    minSize: 1,
-    pageSize: 10,
-    jumpIndex: 0,
-    threshold: 100,
+    overscanCount: 3,
+    scrollDirection: DIRECTION.VERTICAL,
+    width: '100%',
   };
-  private cache: {};
-  private cachedScroll: number;
-  private unstable: boolean;
-  private updateCounter: number;
-  private scrollParent: any;
-  private updateCounterTimeoutId: number;
-  private el: any;
-  private items: any;
-  private defaultItemHeight: number;
 
-  constructor(props: VirtualListProps) {
-    super(props);
-    const {jumpIndex} = props;
-    const {from, size} = this.constrain(jumpIndex, 0, props);
-    this.state = {from, size};
-    this.cache = {};
-    this.scrollTo = this.scrollTo.bind(this);
-    this.cachedScroll = 0;
-    this.unstable = false;
-    this.updateCounter = 0;
-  }
+  static propTypes = {
+    estimatedItemSize: PropTypes.number,
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    itemCount: PropTypes.number.isRequired,
+    itemSize: PropTypes.oneOfType([PropTypes.number, PropTypes.array, PropTypes.func]).isRequired,
+    onScroll: PropTypes.func,
+    onItemsRendered: PropTypes.func,
+    overscanCount: PropTypes.number,
+    renderItem: PropTypes.func.isRequired,
+    scrollOffset: PropTypes.number,
+    scrollToIndex: PropTypes.number,
+    scrollToAlignment: PropTypes.oneOf([ALIGNMENT.AUTO, ALIGNMENT.START, ALIGNMENT.CENTER, ALIGNMENT.END]),
+    scrollDirection: PropTypes.oneOf([DIRECTION.HORIZONTAL, DIRECTION.VERTICAL]),
+    stickyIndices: PropTypes.arrayOf(PropTypes.number),
+    style: PropTypes.object,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  };
+
+  itemSizeGetter = (itemSize: Props['itemSize']) => {
+    return (index: number) => this.getSize(index, itemSize);
+  };
+
+  sizeAndPositionManager = new SizeAndPositionManager({
+    itemCount: this.props.itemCount,
+    itemSizeGetter: this.itemSizeGetter(this.props.itemSize),
+    estimatedItemSize: this.getEstimatedItemSize(),
+  });
+
+  readonly state: State = {
+    offset:
+      this.props.scrollOffset ||
+      (this.props.scrollToIndex != null && this.getOffsetForIndex(this.props.scrollToIndex)) ||
+      0,
+    scrollChangeReason: SCROLL_CHANGE_REASON.REQUESTED,
+  };
+
+  private rootNode: HTMLElement;
+
+  private styleCache: StyleCache = {};
 
   componentDidMount() {
-    const {jumpIndex} = this.props;
+    const {scrollOffset, scrollToIndex} = this.props;
+    this.rootNode.addEventListener('scroll', this.handleScroll, {
+      passive: true,
+    });
 
-    this.updateFrameAndClearCache = this.updateFrameAndClearCache.bind(this);
-
-    events.on(window, 'resize', this.updateFrameAndClearCache, false);
-
-    this.updateFrame({cb: this.scrollTo.bind(this, jumpIndex)});
+    if (scrollOffset != null) {
+      this.scrollTo(scrollOffset);
+    } else if (scrollToIndex != null) {
+      this.scrollTo(this.getOffsetForIndex(scrollToIndex));
+    }
   }
 
-  componentWillReceiveProps = (nextProps: VirtualListProps) => {
-    const {from, size}: Readonly<any> = this.state;
+  componentWillReceiveProps(nextProps: Props) {
+    const {estimatedItemSize, itemCount, itemSize, scrollOffset, scrollToAlignment, scrollToIndex} = this.props;
+    const scrollPropsHaveChanged =
+      nextProps.scrollToIndex !== scrollToIndex || nextProps.scrollToAlignment !== scrollToAlignment;
+    const itemPropsHaveChanged =
+      nextProps.itemCount !== itemCount ||
+      nextProps.itemSize !== itemSize ||
+      nextProps.estimatedItemSize !== estimatedItemSize;
 
-    const oldIndex = this.props.jumpIndex;
-    const newIndex = nextProps.jumpIndex;
-
-    if (oldIndex !== newIndex) {
-      this.updateFrame({cb: this.scrollTo.bind(this, newIndex)});
+    if (nextProps.itemSize !== itemSize) {
+      this.sizeAndPositionManager.updateConfig({
+        itemSizeGetter: this.itemSizeGetter(nextProps.itemSize),
+      });
     }
 
-    this.maybeSetState({b: this.constrain(from, size, nextProps), cb: NOOP});
-  };
-
-  componentDidUpdate() {
-    // If the list has reached an unstable state, prevent an infinite loop.
-    if (this.unstable) {
-      return;
+    if (nextProps.itemCount !== itemCount || nextProps.estimatedItemSize !== estimatedItemSize) {
+      this.sizeAndPositionManager.updateConfig({
+        itemCount: nextProps.itemCount,
+        estimatedItemSize: this.getEstimatedItemSize(nextProps),
+      });
     }
 
-    if (++this.updateCounter > MAX_SYNC_UPDATES) {
-      this.unstable = true;
+    if (itemPropsHaveChanged) {
+      this.recomputeSizes();
     }
 
-    if (!this.updateCounterTimeoutId) {
-      this.updateCounterTimeoutId = window.setTimeout(() => {
-        this.updateCounter = 0;
-        delete this.updateCounterTimeoutId;
-      }, 0);
+    if (nextProps.scrollOffset !== scrollOffset) {
+      this.setState({
+        offset: nextProps.scrollOffset || 0,
+        scrollChangeReason: SCROLL_CHANGE_REASON.REQUESTED,
+      });
+    } else if (typeof nextProps.scrollToIndex === 'number' && (scrollPropsHaveChanged || itemPropsHaveChanged)) {
+      this.setState({
+        offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount),
+        scrollChangeReason: SCROLL_CHANGE_REASON.REQUESTED,
+      });
     }
+  }
 
-    this.updateFrame({cb: NOOP});
+  componentDidUpdate(_: Props, prevState: State) {
+    const {offset, scrollChangeReason} = this.state;
+
+    if (prevState.offset !== offset && scrollChangeReason === SCROLL_CHANGE_REASON.REQUESTED) {
+      this.scrollTo(offset);
+    }
   }
 
   componentWillUnmount() {
-    events.off(window, 'resize', this.updateFrameAndClearCache, false);
-
-    events.off(this.scrollParent, 'scroll', this.updateFrameAndClearCache, false);
-    events.off(this.scrollParent, 'mousewheel', NOOP, false);
+    this.rootNode.removeEventListener('scroll', this.handleScroll);
   }
 
-  maybeSetState(parameters: {b: any; cb: any}) {
-    let {b, cb} = parameters;
-    if (isEqualSubset({a: this.state, b: b})) {
-      return cb();
-    }
+  scrollTo(value: number) {
+    const {scrollDirection = DIRECTION.VERTICAL} = this.props;
 
-    this.setState(b, cb);
+    // @ts-ignore
+    this.rootNode[scrollProp[scrollDirection]] = value;
   }
 
-  getOffset(parameters: {el: any}) {
-    let el = parameters.el;
-    let offset = el.clientLeft || 0;
-    do {
-      offset += el.offsetTop || 0;
-      el = el.offsetParent;
-    } while (el);
-    return offset;
-  }
+  getOffsetForIndex(
+    index: number,
+    scrollToAlignment = this.props.scrollToAlignment,
+    itemCount: number = this.props.itemCount
+  ): number {
+    const {scrollDirection = DIRECTION.VERTICAL} = this.props;
 
-  getEl() {
-    return this.el || this.items || {};
-  }
-
-  getScrollParent() {
-    let el = this.getEl();
-    el = el.parentElement;
-
-    switch (window.getComputedStyle(el).overflowY) {
-      case 'auto':
-      case 'scroll':
-      case 'overlay':
-      case 'visible':
-        return el;
+    if (index < 0 || index >= itemCount) {
+      index = 0;
     }
 
-    return window;
-  }
-
-  getScroll() {
-    // Cache scroll position as this causes a forced synchronous layout.
-    // if (typeof this.cachedScroll === 'number') {
-    //     return this.cachedScroll;
-    // }
-    const {scrollParent} = this;
-    const scrollKey = 'scrollTop';
-    const actual =
-      scrollParent === window
-        ? // Firefox always returns document.body[scrollKey] as 0 and Chrome/Safari
-          // always return document.documentElement[scrollKey] as 0, so take
-          // whichever has a value.
-          document.body[scrollKey] || (document.documentElement && document.documentElement[scrollKey])
-        : scrollParent && scrollParent[scrollKey];
-    const max = this.getScrollSize() - this.getViewportSize();
-
-    const scroll = Math.max(0, Math.min(actual, max));
-    const el = this.getEl();
-    this.cachedScroll = this.getOffset({el: scrollParent}) + scroll - this.getOffset({el: el});
-
-    return this.cachedScroll;
-  }
-
-  setScroll(parameters: {offset: any}) {
-    let offset = parameters.offset;
-    const {scrollParent} = this;
-    let win: any;
-    win = window;
-    offset += this.getOffset({el: this.getEl()});
-    if (scrollParent === win) {
-      return win.scrollTo(0, offset);
-    }
-
-    offset -= this.getOffset({el: this.scrollParent});
-    scrollParent.scrollTop = offset;
-  }
-
-  getViewportSize() {
-    const {scrollParent} = this;
-    return scrollParent === window ? window.innerHeight : scrollParent.clientHeight;
-  }
-
-  getScrollSize() {
-    const {scrollParent} = this;
-    const {body, documentElement} = document;
-    const key = 'scrollHeight';
-    return scrollParent === window
-      ? Math.max(body[key], documentElement ? documentElement[key] : 0)
-      : scrollParent[key];
-  }
-
-  getStartAndEnd(threshold = this.props.threshold) {
-    const scroll = this.getScroll();
-
-    const trueScroll = scroll;
-    const start = Math.max(0, trueScroll - threshold);
-    const end = trueScroll + this.getViewportSize() + threshold;
-
-    return {start, end};
-  }
-
-  // Called by 'scroll' and 'resize' events, clears scroll position cache.
-  updateFrameAndClearCache(parameters: {cb: any}) {
-    let cb = parameters.cb;
-    this.cachedScroll = 0;
-    return this.updateFrame({cb: cb});
-  }
-
-  updateFrame(parameters: {cb: any}) {
-    let cb = parameters.cb;
-    this.updateScrollParent();
-
-    if (typeof cb !== 'function') {
-      cb = NOOP;
-    }
-
-    return this.updateVariableFrame({cb: cb});
-  }
-
-  updateScrollParent() {
-    const prev = this.scrollParent;
-    this.scrollParent = this.getScrollParent();
-
-    if (prev === this.scrollParent) {
-      return;
-    }
-    if (prev) {
-      events.off(prev, 'scroll', this.updateFrameAndClearCache, false);
-      events.off(prev, 'mousewheel', NOOP, false);
-    }
-
-    events.on(this.scrollParent, 'scroll', this.updateFrameAndClearCache, false);
-    events.on(this.scrollParent, 'mousewheel', NOOP, false);
-
-    // You have to attach mousewheel listener to the scrollable element.
-    // Just an empty listener. After that onscroll events will be fired synchronously.
-  }
-
-  updateVariableFrame(parameters: {cb: any}) {
-    let cb = parameters.cb;
-    if (!this.props.itemSizeGetter) {
-      this.cacheSizes();
-    }
-
-    const {start, end} = this.getStartAndEnd();
-    const {pageSize, children} = this.props;
-    const length = children.length;
-    let space = 0;
-    let from = 0;
-    let size = 0;
-    const maxFrom = length - 1;
-
-    while (from < maxFrom) {
-      const itemSize = this.getSizeOf({index: from});
-      if (itemSize === null || itemSize === undefined || space + itemSize > start) {
-        break;
-      }
-      space += itemSize;
-      ++from;
-    }
-
-    const maxSize = length - from;
-
-    while (size < maxSize && space < end) {
-      const itemSize = this.getSizeOf({index: from + size});
-      if (itemSize === null || itemSize === undefined) {
-        size = Math.min(size + pageSize, maxSize);
-        break;
-      }
-      space += itemSize;
-      ++size;
-    }
-
-    this.maybeSetState({b: {from, size}, cb: cb});
-  }
-
-  getSpaceBefore(parameters: {index: any; cache?: any}) {
-    let {index, cache = {}} = parameters;
-    if (!index) {
-      return 0;
-    }
-    if (cache[index] !== null && cache[index] !== undefined) {
-      return cache[index] || 0;
-    }
-
-    // Find the closest space to index there is a cached value for.
-    let from = index;
-    while (from > 0 && (cache[from] === null || cache[from] === undefined)) {
-      from--;
-    }
-
-    // Finally, accumulate sizes of items from - index.
-    let space = cache[from] || 0;
-    for (let i = from; i < index; ++i) {
-      cache[i] = space;
-      const itemSize = this.getSizeOf({index: i});
-      if (itemSize === null || itemSize === undefined) {
-        break;
-      }
-      space += itemSize;
-    }
-
-    cache[index] = space;
-
-    return cache[index] || 0;
-  }
-
-  cacheSizes() {
-    const {cache}: Readonly<any> = this;
-    const {from}: Readonly<any> = this.state;
-    const {children, props = {}} = this.items;
-    const itemEls = children || props.children || [];
-    for (let i = 0, l = itemEls.length; i < l; ++i) {
-      const ulRef: any = findDOMNode(this.items);
-      const height = ulRef && ulRef.children[i].offsetHeight;
-      if (height > 0) {
-        cache[from + i] = height;
-      }
-    }
-  }
-
-  getSizeOf(index: any) {
-    const {cache}: Readonly<any> = this;
-    const {itemSizeGetter, jumpIndex}: Readonly<any> = this.props;
-
-    // Try the cache.
-    if (index in cache) {
-      return cache[index];
-    }
-    if (itemSizeGetter) {
-      return itemSizeGetter(index);
-    }
-
-    const height = (Object as any).values(this.cache).pop();
-    if (!this.defaultItemHeight && jumpIndex > -1 && height) {
-      this.defaultItemHeight = height;
-    }
-
-    if (this.defaultItemHeight) {
-      return this.defaultItemHeight;
-    }
-  }
-
-  constrain = (from: any, size: any, {children, minSize}: any) => {
-    const length = children && children.length;
-    size = Math.max(size, minSize);
-    if (size > length) {
-      size = length;
-    }
-    from = from ? Math.max(Math.min(from, length - size), 0) : 0;
-
-    return {from, size};
-  };
-
-  scrollTo(index: any) {
-    this.setScroll({offset: this.getSpaceBefore({index: index})});
-  }
-
-  renderMenuItems() {
-    const {children, itemsRenderer} = this.props;
-    const {from, size}: Readonly<any> = this.state;
-    const items = [];
-    for (let i = 0; i < size; ++i) {
-      //@ts-ignore
-      items.push(children[from + i]);
-    }
-    return itemsRenderer(items, (c: any) => {
-      this.items = c;
-      return this.items;
+    return this.sizeAndPositionManager.getUpdatedOffsetForIndex({
+      align: scrollToAlignment,
+      // @ts-ignore
+      containerSize: this.props[sizeProp[scrollDirection]],
+      currentOffset: (this.state && this.state.offset) || 0,
+      targetIndex: index,
     });
+  }
+
+  recomputeSizes(startIndex = 0) {
+    this.styleCache = {};
+    this.sizeAndPositionManager.resetItem(startIndex);
   }
 
   render() {
-    const {children = [], prefixCls, className} = this.props;
-    const length = React.Children.count(children);
-    const {from}: Readonly<any> = this.state;
-    const items = this.renderMenuItems();
+    const {
+      estimatedItemSize,
+      height,
+      overscanCount = 3,
+      renderItem,
+      itemCount,
+      itemSize,
+      onItemsRendered,
+      onScroll,
+      scrollDirection = DIRECTION.VERTICAL,
+      scrollOffset,
+      scrollToIndex,
+      scrollToAlignment,
+      stickyIndices,
+      style,
+      width,
+      ...props
+    } = this.props;
+    const {offset} = this.state;
 
-    let style = {height: 'auto', position: 'relative' as 'relative'};
-    const cache = {};
-
-    const size = this.getSpaceBefore({index: length, cache: cache});
-
-    if (size) {
-      style.height = size;
-    }
-    const offset = this.getSpaceBefore({index: from, cache: cache});
-    const transform = `translate(0px, ${offset}px)`;
-    const listStyle = {
-      msTransform: transform,
-      WebkitTransform: transform,
-      transform,
+    const {start, stop} = this.sizeAndPositionManager.getVisibleRange({
+      // @ts-ignore
+      containerSize: this.props[sizeProp[scrollDirection]] || 0,
+      offset,
+      overscanCount,
+    });
+    const items: React.ReactNode[] = [];
+    const wrapperStyle = {...STYLE_WRAPPER, ...style, height, width};
+    const innerStyle = {
+      ...STYLE_INNER,
+      [sizeProp[scrollDirection]]: this.sizeAndPositionManager.getTotalSize(),
     };
 
-    const cls = classNames({
-      [`${prefixCls}-virtual-list-wrapper`]: true,
-      [className]: !!className,
-    });
+    if (stickyIndices != null && stickyIndices.length !== 0) {
+      stickyIndices.forEach((index: number) =>
+        items.push(
+          renderItem({
+            index,
+            style: this.getStyle(index, true),
+          })
+        )
+      );
+
+      if (scrollDirection === DIRECTION.HORIZONTAL) {
+        innerStyle.display = 'flex';
+      }
+    }
+
+    if (typeof start !== 'undefined' && typeof stop !== 'undefined') {
+      for (let index = start; index <= stop; index++) {
+        if (stickyIndices != null && stickyIndices.includes(index)) {
+          continue;
+        }
+
+        items.push(
+          renderItem({
+            index,
+            style: this.getStyle(index, false),
+          })
+        );
+      }
+
+      if (typeof onItemsRendered === 'function') {
+        onItemsRendered({
+          startIndex: start,
+          stopIndex: stop,
+        });
+      }
+    }
 
     return (
-      <div
-        className={cls}
-        style={style}
-        ref={c => {
-          this.el = c;
-          return this.el;
-        }}
-      >
-        <div style={listStyle}>{items}</div>
+      <div ref={this.getRef} {...props} style={wrapperStyle}>
+        <div style={innerStyle}>{items}</div>
       </div>
     );
+  }
+
+  private getRef = (node: HTMLDivElement): void => {
+    this.rootNode = node;
+  };
+
+  private handleScroll = (event: UIEvent) => {
+    const {onScroll} = this.props;
+    const offset = this.getNodeOffset();
+
+    if (offset < 0 || this.state.offset === offset || event.target !== this.rootNode) {
+      return;
+    }
+
+    this.setState({
+      offset,
+      scrollChangeReason: SCROLL_CHANGE_REASON.OBSERVED,
+    });
+
+    if (typeof onScroll === 'function') {
+      onScroll(offset, event);
+    }
+  };
+
+  private getNodeOffset() {
+    const {scrollDirection = DIRECTION.VERTICAL} = this.props;
+
+    // @ts-ignore
+    return this.rootNode[scrollProp[scrollDirection]];
+  }
+
+  private getEstimatedItemSize(props = this.props) {
+    return props.estimatedItemSize || (typeof props.itemSize === 'number' && props.itemSize) || 50;
+  }
+
+  private getSize(index: number, itemSize: any) {
+    if (typeof itemSize === 'function') {
+      return itemSize(index);
+    }
+
+    return Array.isArray(itemSize) ? itemSize[index] : itemSize;
+  }
+
+  private getStyle(index: number, sticky: boolean) {
+    const style = this.styleCache[index];
+
+    if (style) {
+      return style;
+    }
+
+    const {scrollDirection = DIRECTION.VERTICAL} = this.props;
+    const {size, offset} = this.sizeAndPositionManager.getSizeAndPositionForIndex(index);
+
+    return (this.styleCache[index] = sticky
+      ? {
+          ...STYLE_STICKY_ITEM,
+          [sizeProp[scrollDirection]]: size,
+          [marginProp[scrollDirection]]: offset,
+          [oppositeMarginProp[scrollDirection]]: -(offset + size),
+          zIndex: 1,
+        }
+      : {
+          ...STYLE_ITEM,
+          [sizeProp[scrollDirection]]: size,
+          [positionProp[scrollDirection]]: offset,
+        });
   }
 }

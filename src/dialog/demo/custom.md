@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Dialog, Button} from '@jdcfe/yep-react';
+import {Dialog, Button, Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   onClose = () => {
@@ -24,9 +24,12 @@ class Demo extends React.PureComponent {
               '标题',
               <div>
                 <div>确定要加入购物车吗？</div>
-                <Button size="sm" inline type="ghost" onClick={this.onClose}>
-                  自定义关闭按钮
-                </Button>
+                <Icon
+                  type={'close'}
+                  size="xxs"
+                  onClick={this.onClose}
+                  style={{position: 'absolute', bottom: 68, right: 10}}
+                />
               </div>,
               []
             );

@@ -2,6 +2,7 @@
 @import '../../style/mixin';
 
 
+
 .Yep-auto-complete__popover {
   .Yep-popover__content {
     max-width: none;
@@ -25,8 +26,13 @@
 }
 
 .Yep-auto-complete__result {
-  max-height: 180px;
   overflow: auto;
+  li{
+    line-height: 60px;
+    height: 60px;
+    padding: 0 20px;
+    cursor: pointer;
+  }
 }
 
 .Yep-auto-complete__option--active {

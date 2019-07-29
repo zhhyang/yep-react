@@ -1,4 +1,4 @@
-.componentTitleContainer{
+.componentTitleContainer {
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 28px;
@@ -11,10 +11,19 @@
   color: #4c7cfa;
 }
 
+.englishTitle {
+  padding-left: 14px;
+  font-style: oblique;
+  font-weight: 500;
+}
+
 .desc {
-  margin-top: 6px;
+  margin-top: 20px;
+  padding-right: 28px;
+  line-height: 30px;
   font-family: PingFangSC-Regular;
   font-size: 26px;
+  letter-spacing: 0.5px;
   font-weight: 200;
-  color: #525252;
+  color: #888;
 }

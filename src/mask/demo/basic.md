@@ -1,28 +1,22 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 常与弹框、选择器等配合
 ---
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Mask, Button, WhiteSpace} from '@jdcfe/yep-react';
+import {Mask, Button} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {
     show: false,
-    transparentShow: false,
   };
 
   handleToggleShow = () => {
     this.setState({
       show: !this.state.show,
-    });
-  };
-  handleToggleTransparentShow = () => {
-    this.setState({
-      transparentShow: !this.state.transparentShow,
     });
   };
 
@@ -32,12 +26,7 @@ class Demo extends React.PureComponent {
         <Button type="primary" onClick={this.handleToggleShow}>
           显示
         </Button>
-        <WhiteSpace />
-        <Button onClick={this.handleToggleTransparentShow}>显示透明遮罩</Button>
-        <WhiteSpace />
-
         {this.state.show && <Mask onClick={this.handleToggleShow} />}
-        {this.state.transparentShow && <Mask transparent onClick={this.handleToggleTransparentShow} />}
       </div>
     );
   }

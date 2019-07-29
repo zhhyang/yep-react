@@ -82,7 +82,7 @@ const Operation = ({type, onClickUpdate, noExtra}) => (
           点击上面的按钮将会触发可视区域内全部 <code>Widgets</code> 组件更新。
         </p>
         <p className="desc">
-          <code>Widget</code> 组件通过 LazyLoad 传入的参数控制当前组件状态。
+          <code>@lazyload</code>装饰 Widget 组件 通过 LazyLoad 传入的参数控制当前组件状态。
         </p>
       </div>
     )}
