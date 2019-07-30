@@ -26,7 +26,6 @@ import {withRouter} from 'react-router-dom';
 import qs from 'qs';
 import {NavBar, Button} from '@jdcfe/yep-react';
 import comps from '../../comps';
-import Demo from '../../../demo/Demo';
 import ComponentTitle from '../../../demo/component/ComponentTitle';
 
 import {Helmet} from 'react-helmet';
@@ -34,8 +33,8 @@ import {toCamelCase} from '../../../site/lib/utils';
 
 import '../../../demo/Content.scss';
 import Image from '../../../demo/image';
-
-import {CATEGORIES, subListDemos} from '../../../demo/utils';
+import subListDemos from '../../../demo/subListDemos';
+import {CATEGORIES} from '../../../demo/utils';
 ${comps}
 import ComponentCard from '../../../demo/component/ComponentCard';
 const Content = ({history, location: {pathname, search}}) => {
@@ -170,10 +169,6 @@ Object.keys(components).forEach(componentName => {
 const comps = Object.keys(components).map(componentName =>
   omit(components[componentName], ['demos', '__content', 'style'])
 );
-
-fs.writeFile(path.join(__dirname, `../demo-link/`, `content.js`), render, err => {
-  if (err) throw err;
-});
 
 fs.writeFile(
   path.join(__dirname, `../demo-link/`, `comps.js`),
