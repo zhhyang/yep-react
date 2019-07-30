@@ -13,7 +13,8 @@ import App from './App';
 import './Content.scss';
 import Image from './image';
 
-import {CATEGORIES, subListDemos} from './utils';
+import {CATEGORIES} from './utils';
+import subListDemos from './subListDemos';
 import ComponentCard from './component/ComponentCard';
 const Content = ({history, location: {pathname, search}}) => {
   if (pathname.match(/\/component\//)) {

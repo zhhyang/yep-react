@@ -78,8 +78,6 @@ export default withRouter(Content);
 let lazyComponentsStr = '';
 let lazyComponentsRouteStr = '';
 Object.keys(components).forEach(componentName => {
-  //console.log(components[componentName].demos)
-
   lazyComponentsStr += `const ${dash2Camel(
     componentName
   )}Content = lazy(() => import('./pages/${componentName}/content'));\n`;
@@ -213,7 +211,6 @@ const routes = (
 );
 export default routes;
 `;
-console.log(router);
 fs.writeFile(path.join(__dirname, `../demo-link/`, `router.js`), router, err => {
   if (err) throw err;
 });
