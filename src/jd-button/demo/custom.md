@@ -1,22 +1,20 @@
 ---
-order: 3
-title: 按钮组
+order: 7
+title: 自定义组件
 description:
 ---
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
-const {ButtonGroup} = Button;
+import {JdButton} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <ButtonGroup>
-          <Button>确定</Button>
-          <Button type="primary">取消</Button>
-        </ButtonGroup>
+        <JdButton style={{width: '100%', background: '#2A83E1', color: '#FFFFFF'}}>
+          下一步，上传医师认证相关证书
+        </JdButton>
       </div>
     );
   }

@@ -9,7 +9,7 @@ import React from 'react';
 import {InfiniteLoader, Popup, PullToRefresh, Button} from '@jdcfe/yep-react';
 const style = {
   height: 50,
-  border: '1px solid green',
+  border: '1px solid #4c7cfa',
   margin: 6,
   padding: 8,
 };

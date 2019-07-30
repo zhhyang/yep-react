@@ -1,7 +1,7 @@
 ---
 category: Basic
-title: 按钮
-desc: 通用按钮组件，点击触发一个操作
+title: 京东APP风格按钮
+desc: 京东APP风格按钮
 ---
 
 <DEMO>
@@ -12,7 +12,7 @@ desc: 通用按钮组件，点击触发一个操作
 | style     | 组件样式                                          | object  | {}      |
 | className | 额外要添加的 CSS 类名                             | string  | -       |
 | disabled  | 是否不可用                                        | boolean | false   |
-| type      | 按钮类型,可选值为 primary/ghost 或者不设          | string  | -       |
+| type      | 按钮类型,可选值为 primary/ghost、block 或者不设   | string  | -       |
 | size      | 按钮大小,可选值为 sm、md                          | string  | -       |
 | onClick   | 点击按钮的点击回调函数                            | func    | -       |
 | inline    | 是否设置为行内按钮                                | boolean | false   |

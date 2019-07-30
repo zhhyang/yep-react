@@ -246,7 +246,13 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
             style={transformStyle}
           >
             {Tabs}
-            {renderUnderline ? renderUnderline(underlineProps) : <div {...underlineProps} />}
+            {renderUnderline ? (
+              renderUnderline(underlineProps)
+            ) : (
+              <div {...underlineProps}>
+                <div className={`${prefixCls}-underline-bar`} />
+              </div>
+            )}
           </div>
         </Gesture>
         {showNext && <div className={`${prefixCls}-nextpage`} />}

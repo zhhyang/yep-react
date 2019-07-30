@@ -6,15 +6,14 @@ export interface SwitchProps {
   className?: string;
   style: React.CSSProperties;
   currentStatus?: boolean;
-  handleSwitch?: (checked:boolean) => void,
-  onClick?: (value:boolean) => void,
+  handleSwitch?: (checked: boolean) => void;
+  onClick?: (value: boolean) => void;
   disabled?: boolean;
   name?: string;
   color?: string;
 }
 
 export default class Switch extends React.PureComponent<SwitchProps> {
-
   static defaultProps = {
     prefixCls: 'Yep-switch',
     style: {},
@@ -25,20 +24,20 @@ export default class Switch extends React.PureComponent<SwitchProps> {
     handleSwitch: () => {},
   };
 
-  constructor(props:SwitchProps) {
+  constructor(props: SwitchProps) {
     super(props);
     this.onClick = this.onClick.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(e:any) {
+  onChange(e: any) {
     const {checked} = e.target;
     if (this.props.handleSwitch) {
       this.props.handleSwitch(checked);
     }
   }
 
-  onClick(e:any) {
+  onClick(e: any) {
     const {onClick, currentStatus: checked} = this.props;
     if (onClick) {
       let val;
@@ -54,8 +53,13 @@ export default class Switch extends React.PureComponent<SwitchProps> {
   render() {
     const {disabled, prefixCls, className, style, color, name, currentStatus: checked} = this.props;
     const wrapperCls = classNames(prefixCls, className);
-    const innerCls = classNames('checkbox', {
-      [`checkbox-disabled`]: disabled,
+    const innerCls = classNames(`${prefixCls}-inner`, {
+      [`${prefixCls}-inner-checked`]: checked,
+      [`${prefixCls}-inner-disabled`]: disabled,
+    });
+    const circleCls = classNames(`${prefixCls}-circle`, {
+      [`${prefixCls}-circle-unchecked`]: !checked,
+      [`${prefixCls}-circle-checked`]: checked,
     });
 
     if (color && checked) {
@@ -74,7 +78,8 @@ export default class Switch extends React.PureComponent<SwitchProps> {
           value={checked ? 'on' : 'off'}
           {...(!disabled ? {onClick: this.onClick} : {})}
         />
-        <div className={innerCls} style={style} {...(disabled ? {onClick: this.onClick} : {})} />
+        <div className={innerCls} style={style} />
+        <div className={circleCls} />
       </label>
     );
   }

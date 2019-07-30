@@ -30,12 +30,12 @@ const generateLi = () => {
     {
       image: 'https://m.360buyimg.com/babel/jfs/t14794/317/1848512418/235575/2ca5461e/5a5c1b70Naec68239.jpg',
       jdPrice: 10.8,
-      name: '韩国进口 海牌海苔 香脆紫菜烤海苔 休闲零食 经典原味 16g',
+      name: '韩国进口 海牌海苔  经典原味 16g',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t28402/112/750658684/76640/4aedab47/5cd5272fNb2a40c75.jpg',
       jdPrice: 49,
-      name: '小猪酷琦 儿童坐便器 婴儿坐便圈男女宝宝马桶圈坐垫小孩便盆尿盆',
+      name: '小猪酷琦 儿童坐便器',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t20998/292/1875203961/206853/151f42a5/5b3dc467Nadde5e9a.jpg',
@@ -50,7 +50,7 @@ const generateLi = () => {
     {
       image: 'https://m.360buyimg.com/babel/jfs/t29170/164/1535753357/247929/9eed92ac/5ce3c71cN0b627b05.jpg',
       jdPrice: 119,
-      name: '欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜 30ml（欧莱雅彩妆 BB霜 粉BB',
+      name: '欧莱雅（LOREAL）（欧莱雅彩妆 BB霜 粉BB',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t6271/188/1097646384/363056/91e4ace8/594b1f21N5db82bc4.jpg',
@@ -75,7 +75,7 @@ const generateLi = () => {
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/9822/14/176/389727/5bc94b99E76cce301/04a3fd4ffca4342e.jpg',
       jdPrice: 7.5,
-      name: '欣和 调味酱 豆瓣酱 葱伴侣 六月香 豆瓣酱 300g',
+      name: '欣和 调味酱  豆瓣酱 300g',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t25231/11/2696040579/97759/3c238231/5becd70aN6db7f84a.jpg',
@@ -85,12 +85,12 @@ const generateLi = () => {
     {
       image: 'https://m.360buyimg.com/babel/jfs/t12034/35/836883436/344689/3897bccf/5a14e3adN06b2e0eb.jpg',
       jdPrice: 1.4,
-      name: '展艺 烘焙原料 无铝双效泡打粉 戚风蛋糕材料膨松剂烘焙用原装50克',
+      name: '展艺 烘焙原料 无铝双效泡打粉 50克',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t3526/269/2117689366/198878/8bfc57c3/584230dfNb54c8a6b.jpg',
       jdPrice: 14.5,
-      name: '烘焙原料 展艺 麦芽糖 搅搅糖 糖果糖浆糖稀 儿时饴糖 454g',
+      name: '烘焙原料 展艺 儿时饴糖 454g',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t23824/129/578792649/170763/db19dc16/5b35f9f3N64638dcd.jpg',
@@ -100,12 +100,12 @@ const generateLi = () => {
     {
       image: 'https://m.360buyimg.com/babel/jfs/t25543/113/1972177031/333951/1ebaa717/5bc041a3Ncc7f96e2.jpg',
       jdPrice: 89.9,
-      name: '秋林里道斯 红肠 哈尔滨红肠 110g每袋*10 方便速食 熟食 香肠 火腿肠',
+      name: '秋林里道斯 红肠 香肠 火腿肠',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t11347/222/2729840063/345826/c4e58ce6/5cd541d9N04f2a833.jpg',
       jdPrice: 27.9,
-      name: '韩国进口三养（SAMYANG）方便面 火鸡面 超辣鸡肉味拌面 700g（140g*5',
+      name: '韩国进口三养（SAMYANG）700g（140g*5',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t3178/59/6909156955/181313/3a433a29/58ace575Nd8b5d855.jpg',
@@ -120,17 +120,17 @@ const generateLi = () => {
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/24508/12/9764/220496/5c82323aE3ed5e73e/9879b9059c5e5958.jpg',
       jdPrice: 10.9,
-      name: '升林 粉丝 龙口粉丝的产地 火锅凉拌方便干货扇贝蒜蓉米粉米线300g 新旧',
+      name: '升林 粉丝 龙口粉丝的产地  新旧',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/28864/30/14821/101698/5cac110fE2966a926/339ce65312b2c8bb.jpg',
       jdPrice: 19.9,
-      name: '润本（RUNBEN) 防蚊扣 驱蚊贴 婴童防蚊驱蚊 防蚊驱蚊水手环 植物精油 3个',
+      name: '润本（RUNBEN) 防蚊扣 植物精油 3个',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/27209/19/13054/126720/5c9d7fa3Ee262a2ad/879cfd7a0b9c935c.jpg',
       jdPrice: 24.8,
-      name: '香雪 美味富强粉 面粉 中粮出品5kg （新老包材随机发货）',
+      name: '香雪 美味富强粉 新老包材随机发货）',
     },
     {
       image: 'https://m.360buyimg.com/babel/jfs/t1/28236/6/10534/98462/5c8898b0E17327b8b/d238202ec9fb595b.jpg',

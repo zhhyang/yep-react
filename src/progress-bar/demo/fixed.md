@@ -25,7 +25,7 @@ class Demo extends React.PureComponent {
     return (
       <div title="ProgressBar">
         <ProgressBar percent={this.state.percent} fixed />
-        <Button onClick={this.add}>(+-)10</Button>
+        <Button onClick={this.add}>顶部进度条加10%</Button>
       </div>
     );
   }

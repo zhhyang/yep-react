@@ -4,14 +4,15 @@ $font-family: PingFangSC, 'Microsoft YaHei', Helvetica, 'Droid Sans', Arial, san
 //色彩
 // 文字色
 $color-text-base-inverse: #fff; // 基本 - 反色
-$color-text-base: #3d3f52 !default; //一级信息：重要文字&标题等
-$color-text-secondary: #6c707d !default; // 二级信息：重要文字等
+$color-text-base: #2E2D2D !default; //一级信息：重要文字&标题等
+$color-text-secondary: #848484 !default; // 二级信息：重要文字等
 $color-text-placeholder: #c6c7ce !default; // 文本框提示placeholder
 $color-text-disabled: #999baa !default; // 失效
 $color-text-caption: #999baa !default; // 三级信息：辅助类文字
 
 //全局/品牌色
-$brand-primary: #2A83E1 !default; //品牌标准色：重要内容信息
+$brand-primary: #F0250F !default; //品牌标准色：重要内容信息
+
 $brand-primary-tap: #0e80d2 !default;
 $brand-success: #85c859 !default; //辅助色：区别强调信息
 $brand-warning: #ed2945 !default; //辅助色：价格&警告信息 小红点
@@ -25,7 +26,8 @@ $fill-disabled: #b5b5b5 !default; // 通用失效背景
 $fill-mask: rgba(0, 0, 0, 0.65) !default; // 遮罩背景
 
 // 边框色
-$border-color-base: #e3e5e9 !default; //分割线：全局
+$border-color-base: #DADADA !default; //分割线：全局 适用于背景是F6F6F6的分割线，以及普通状态的按钮描边
+$border-color-bg-white: #F6F6F6 !default; //背景底色和背景为白色时的分割线
 //边框
 $border-width: 1px !default;
 $border-width-lg: 2 * $hd !default;
@@ -44,23 +46,36 @@ $baseLineHeight: 1 !default;
 $opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
 
 $radius-circle: 50% !default;
-
 // Button Component */
 $button-border-color: #c6c7ce !default;
 
-
-
-$button-height: 50 * $hd !default;
+$button-height: 45 * $hd !default;
 $button-font-size: 18 * $hd !default;
-$button-border-radius: 0 * $hd !default;
+$button-border-radius: 2 * $hd !default;
 
-$button-height-sm: 40 * $hd !default;
-$button-font-size-sm: 18 * $hd !default;
+$button-height-md: 50 * $hd !default;
+$button-font-size-md: 18 * $hd !default;
+$button-border-radius-md: 0 * $hd !default;
+
+$button-height-sm: 28 * $hd !default;
+$button-font-size-sm: 13 * $hd !default;
 $button-border-radius-sm: 2 * $hd !default;
 
-$button-height-xxs: 28 * $hd !default;
-$button-font-size-xxs: 13 * $hd !default;
-$button-border-radius-xxs: 2 * $hd !default;
+$link-button-font-size: 16 * $hd !default;
+// JdButton Component */
+$jd-button-border-color: #c6c7ce !default;
+
+$jd-button-height: 54  * $hd !default;
+$jd-button-font-size: 15 * $hd !default;
+$jd-button-border-radius: 1 * $hd !default;
+
+$jd-button-height-sm: 30 * $hd !default;
+$jd-button-font-size-sm: 13 * $hd !default;
+$jd-button-border-radius-sm: 1 * $hd !default;
+
+$jd-button-height-xxs: 27 * $hd !default;
+$jd-button-font-size-xxs: 12 * $hd !default;
+$jd-button-border-radius-xxs: 27 * $hd !default;
 
 $link-button-font-size: 16 * $hd !default;
 // Tabbar Component */
@@ -118,24 +133,14 @@ $input-color-icon: #ccc !default; // input clear icon 的背景色
 $input-color-icon-tap: $brand-primary !default;
 
 // switch
-$switch-fill: $brand-primary !default;
-$switch-width: 50 * $hd !default;
-$switch-height: 30 * $hd !default;
-$switch-border-radius: 30 * $hd !default;
-$switch-circle: 28 * $hd !default;
-$switch-transform: 20 * $hd !default;
-$switch-circle-top: 1 * $hd !default;
+$switch-fill: #F2270C !default;
+$switch-width: 42 * $hd !default;
+$switch-height: 18 * $hd !default;
+$switch-border-radius: 12 * $hd !default;
+$switch-circle: 24 * $hd !default;
+$switch-transform: 24 * $hd !default;
+$switch-circle-top: 4 * $hd !default;
+
 
 $area-tabs-height: 28 * $hd !default;
 $area-content-height: 478 * $hd !default;
-
-// avatar
-$avatar-size-base: 32 * $hd;
-$avatar-size-lg: 40 * $hd;
-$avatar-size-sm: 24 * $hd;
-$avatar-font-size-base: 16 * $hd;
-$avatar-font-size-lg: 20 * $hd;
-$avatar-font-size-sm: 12 * $hd;
-$avatar-bg: #ccc;
-$avatar-color: #fff;
-$avatar-border-radius: 4 * $hd;

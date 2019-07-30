@@ -1,22 +1,20 @@
 ---
 order: 3
-title: 按钮组
+title: 通栏按钮
 description:
 ---
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from '@jdcfe/yep-react';
-const {ButtonGroup} = Button;
+import {JdButton} from '@jdcfe/yep-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <ButtonGroup>
-          <Button>确定</Button>
-          <Button type="primary">取消</Button>
-        </ButtonGroup>
+        <JdButton type="primary" block>
+          登录
+        </JdButton>
       </div>
     );
   }
