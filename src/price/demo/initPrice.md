@@ -7,7 +7,6 @@ description: 将传入的价格采用四舍五入计数法保留整数，去除�
 ```js
 import React from 'react';
 import {Price} from '@jdcfe/yep-react';
-import {ComponentCard} from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {

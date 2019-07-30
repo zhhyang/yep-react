@@ -5,6 +5,7 @@ description: 根据滚动容器元素的可视区域来渲染长列表数据中�
 ---
 
 ```js
+import React from 'react';
 import {VirtualList} from '@jdcfe/yep-react';
 
 const dataSource = [];

@@ -7,7 +7,6 @@ description: 可自定义价格样式，包括货币符号、价格
 ```js
 import React from 'react';
 import {Price} from '@jdcfe/yep-react';
-import {ComponentCard} from 'ComponentCard';
 
 class Demo extends React.PureComponent {
   constructor() {

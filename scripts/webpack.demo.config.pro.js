@@ -12,13 +12,13 @@ const config = {
   mode: 'production',
   devtool: false,
   entry: {
-    demo: path.join(process.cwd(), 'demo/index'),
+    demo: path.join(process.cwd(), 'demo-link/index'),
   },
   output: {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
     publicPath: '',
-    filename: '[name].[chunkhash:8].js',
+    filename: 'demo/[name].[chunkhash:8].js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx'],
@@ -149,7 +149,7 @@ const config = {
         exclude: [/\.(js|jsx|mjs|tsx)$/, /\.html$/, /\.json$/, /\.scss$/, /\.css$/],
         loader: require.resolve('file-loader'),
         options: {
-          name: '[name].[hash:8].[ext]',
+          name: 'demo/[name].[hash:8].[ext]',
         },
       },
     ],
@@ -164,11 +164,11 @@ const config = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['build/demo.*', 'build/demo.html'], {
+    new CleanWebpackPlugin(['build/demo/', 'build/demo.html'], {
       root: process.cwd(),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash:8].css',
+      filename: 'demo/[name].[chunkhash:8].css',
     }),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({

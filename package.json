@@ -14,6 +14,7 @@
     "watch-css-dist": "yep-tools watch",
     "dist": "yep-tools dist",
     "clean": "rimraf lib es dist",
+    "prebuild-demo": "node scripts/generateDemo.js",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
     "pre-pub": "npm run clean && npm run dist && npm run compile",
@@ -26,7 +27,8 @@
     "predeploy:jd": "npm run build-demo && npm run build-site:jd",
     "lint-staged": "node node_modules/tslint/bin/tslint src/**/*.tsx",
     "tsc": "tsc",
-    "pub": "scripts/publish.sh"
+    "pub": "scripts/publish.sh",
+    "preview": "serve -s build -p 9999"
   },
   "keywords": [
     "react",
@@ -44,6 +46,7 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import":"^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
