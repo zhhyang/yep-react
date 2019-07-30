@@ -29,14 +29,6 @@ const config = {
   module: {
     rules: [
       {
-        test: /allDocData\.js$/,
-        use: [
-          {
-            loader: 'val-loader',
-          },
-        ],
-      },
-      {
         test: /\.js$|[j|t]sx?$/,
         exclude: /node_modules/,
         use: [

@@ -6,7 +6,7 @@ description:
 
 ```js
 import React from 'react';
-import {Rate} from '@jdcfe/yep-react';
+import {Rate, Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   state = {

@@ -184,7 +184,7 @@ import React, {Fragment, lazy, Suspense} from 'react';
 import {Route, Switch} from 'react-router';
 import {Loading} from '@jdcfe/yep-react';
 import {Helmet} from 'react-helmet';
-const Index = lazy(() => import('../demo/App'));
+const Index = lazy(() => import('./app'));
 
 ${lazyComponentsStr}
 
@@ -253,7 +253,7 @@ export default class App extends PureComponent {
           }}
         />
         <div className="logo">
-          <img src="http://yep-react.jd.com/logo.de07a481.png" alt="" />
+          <img src="https://storage.jd.com/imgtools/a88936e68d-2f02ea30-b2ac-11e9-b365-ffed7307867d.png" alt="" />
         </div>
         <div className="page-title">Yep-React</div>
         <div className="page-module-list">

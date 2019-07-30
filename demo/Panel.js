@@ -21,6 +21,7 @@ class Panel extends React.Component {
 
   render() {
     const {category, components} = this.props;
+
     return (
       <div className="page-module-list__item--wrapper">
         <div className="page-module-list__item" onClick={this.onClick}>
@@ -38,24 +39,40 @@ class Panel extends React.Component {
           </div>
         </div>
         <ul className={classNames({open: this.state.open})}>
-          {Object.keys(components)
-            .filter(componentName => components[componentName].category === category.name)
-            .map((componentName, index) => {
-              const component = components[componentName];
-              return (
-                <li key={index}>
-                  <Link to={`/component/${componentName}`} key={index}>
-                    <div>
-                      <i className="indexicon" />
-                      <span style={{color: '#6a6a77'}}>
-                        {toCamelCase(componentName)} {component.title}
-                      </span>
-                      <s />
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
+          {Array.isArray(components)
+            ? components
+                .filter(com => com.category === category.name)
+                .map((component, index) => (
+                  <li key={index}>
+                    <Link to={`/component/${component.name}`} key={index}>
+                      <div>
+                        <i className="indexicon" />
+                        <span style={{color: '#6a6a77'}}>
+                          {toCamelCase(component.name)} {component.title}
+                        </span>
+                        <s />
+                      </div>
+                    </Link>
+                  </li>
+                ))
+            : Object.keys(components)
+                .filter(componentName => components[componentName].category === category.name)
+                .map((componentName, index) => {
+                  const component = components[componentName];
+                  return (
+                    <li key={index}>
+                      <Link to={`/component/${componentName}`} key={index}>
+                        <div>
+                          <i className="indexicon" />
+                          <span style={{color: '#6a6a77'}}>
+                            {toCamelCase(componentName)} {component.title}
+                          </span>
+                          <s />
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                })}
         </ul>
       </div>
     );
