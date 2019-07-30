@@ -204,7 +204,7 @@ class Home extends React.Component {
                 <h1>Feature</h1>
                 <ul>
                   <li>基于 React 16 开发的 UI 组件</li>
-                  <li>使用 npm + webpack + babel 的工作流，支持 ES2015</li>
+                  <li>使用 npm + webpack + babel 的工作流，支持 TS</li>
                   <li>CSS 使用sass，推荐使用postcss和babel-plugin-import方便处理样式和解决样式按需加载问题</li>
                 </ul>
                 <div className="read-more" data-position="2605" onClick={this.scrollTo}>
@@ -302,38 +302,38 @@ class Home extends React.Component {
               <li className={`${activeIntro === 0 ? 'card-init' : 'card-complete'}`}>
                 <img src={ppt1} alt="" className="left" />
                 <div className="right">
-                  <h6 className="intro-title">组件丰富 功能全面</h6>
-                  <p className="intro-motto">小体量，大功能</p>
+                  <h6 className="intro-title">50+ 功能丰富的组件</h6>
+                  <p className="intro-motto">满足一站式页面构建</p>
                   <p className="intro-content">
-                    提供了 40+ 基础组件、覆盖各类场景，组件符合京东APP视觉、交互规范，组件特性丰富、满足各种功能需求。
+                    基础、布局、视图、操作反馈及表单共6大组件类型，分类明确，功能全面，覆盖各种应用场景；
                   </p>
                 </div>
               </li>
               <li className={`${activeIntro === 0 ? 'card-init' : 'card-complete'}`}>
                 <div className="left">
-                  <h6 className="intro-title">一步上手 按需加载</h6>
-                  <p className="intro-motto">多模块化加载，去除冗余</p>
-                  <p className="intro-content">
-                    上手足够简单，既可以一次加载所有代码、也可以只加载用到的某几个组件的代码、避免冗余.
-                  </p>
+                  <h6 className="intro-title">灵活、规范的设计实现</h6>
+                  <p className="intro-motto">JDC设计规范 支持自定义主题</p>
+                  <p className="intro-content">组件符合JDC出品的京东APP 8.0 视觉、交互规范，支持根据屏幕大小自动适配样式及方便灵活的样式定制，满足快速搭建及个性化产品需求;</p>
                 </div>
-                <img src={ppt2} alt="" className="right" />
+                <img src={ppt4} alt="" className="right" />
               </li>
               <li className={`${activeIntro === 0 ? 'card-init' : 'card-complete'}`}>
                 <img src={ppt3} alt="" className="left" />
                 <div className="right">
-                  <h6 className="intro-title">体积小巧 性能出众</h6>
-                  <p className="intro-motto">顺滑体验，性能无忧</p>
-                  <p className="intro-content">在不损失功能的基础上，尽量保证了单个组件的体积最小、性能最优。</p>
+                  <h6 className="intro-title">触达人心的用户体验</h6>
+                  <p className="intro-motto">性能出众 操控如丝般顺滑</p>
+                  <p className="intro-content">对公共组件进行抽象，保证单个组件体积和性能最优的同时支持模块化按需加载，满足极速、流畅体验；</p>
                 </div>
               </li>
               <li className={`${activeIntro === 0 ? 'card-init' : 'card-complete'}`}>
                 <div className="left">
-                  <h6 className="intro-title">简易定制 多种风格</h6>
-                  <p className="intro-motto">支持自定义主题</p>
-                  <p className="intro-content">支持灵活的样式定制，简易生成多种风格，满足个性化产品需求。</p>
+                  <h6 className="intro-title">严谨强壮 上手简单</h6>
+                  <p className="intro-motto">使用TS重构 JEST单元测试</p>
+                  <p className="intro-content">
+                    友好的组件参数提示，清晰的示例和说明文档，完善的单元测试，使用方便，上手简单；
+                  </p>
                 </div>
-                <img src={ppt4} alt="" className="right" />
+                <img src={ppt2} alt="" className="right" />
               </li>
             </ul>
           </div>

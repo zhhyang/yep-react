@@ -1,0 +1,146 @@
+$hd: 2px !default; //设计稿两倍尺寸
+//字体
+$font-family: PingFangSC, 'Microsoft YaHei', Helvetica, 'Droid Sans', Arial, sans-serif !default;
+//色彩
+// 文字色
+$color-text-base-inverse: #fff; // 基本 - 反色
+$color-text-base: #2E2D2D !default; //一级信息：重要文字&标题等
+$color-text-secondary: #848484 !default; // 二级信息：重要文字等
+$color-text-placeholder: #c6c7ce !default; // 文本框提示placeholder
+$color-text-disabled: #999baa !default; // 失效
+$color-text-caption: #999baa !default; // 三级信息：辅助类文字
+
+//全局/品牌色
+$brand-primary: #F0250F !default; //品牌标准色：重要内容信息
+
+$brand-primary-tap: #0e80d2 !default;
+$brand-success: #85c859 !default; //辅助色：区别强调信息
+$brand-warning: #ed2945 !default; //辅助色：价格&警告信息 小红点
+$brand-important: #fba144 !default; // 辅助色：辅助提示信息
+
+// 背景色
+$fill-base: #fff !default; // 内容层：全局
+$fill-body: #f8f8f8 !default; // 背景层：全局
+$fill-tap: #ddd !default; // 组件默认背景 - 按下
+$fill-disabled: #b5b5b5 !default; // 通用失效背景
+$fill-mask: rgba(0, 0, 0, 0.65) !default; // 遮罩背景
+
+// 边框色
+$border-color-base: #DADADA !default; //分割线：全局 适用于背景是F6F6F6的分割线，以及普通状态的按钮描边
+$border-color-bg-white: #F6F6F6 !default; //背景底色和背景为白色时的分割线
+//边框
+$border-width: 1px !default;
+$border-width-lg: 2 * $hd !default;
+// 字体尺寸
+// ---
+$font-size-icontext: 10 * $hd !default; //标签等次要信息
+$font-size-tags: 10 * $hd !default; //标签等次要信息
+$font-size-help: 12 * $hd !default; //辅助等次要信息
+$font-size-tips: 13 * $hd !default; //提示等次要信息
+$font-size-base: 14 * $hd !default; //TAB、内容等信息
+$font-size-caption: 16 * $hd !default; //标题、列表、输入框等重要信息
+$font-size-heading: 18 * $hd !default; //导航栏标题、主按钮等重要信息
+
+$baseLineHeight: 1 !default;
+// 透明度
+$opacity-disabled: 0.3 !default; // switch checkbox radio 等组件禁用的透明度
+
+$radius-circle: 50% !default;
+// Button Component */
+$button-border-color: #c6c7ce !default;
+
+$button-height: 45 * $hd !default;
+$button-font-size: 18 * $hd !default;
+$button-border-radius: 2 * $hd !default;
+
+$button-height-md: 50 * $hd !default;
+$button-font-size-md: 18 * $hd !default;
+$button-border-radius-md: 0 * $hd !default;
+
+$button-height-sm: 28 * $hd !default;
+$button-font-size-sm: 13 * $hd !default;
+$button-border-radius-sm: 2 * $hd !default;
+
+$link-button-font-size: 16 * $hd !default;
+// JdButton Component */
+$jd-button-border-color: #c6c7ce !default;
+
+$jd-button-height: 54  * $hd !default;
+$jd-button-font-size: 15 * $hd !default;
+$jd-button-border-radius: 1 * $hd !default;
+
+$jd-button-height-sm: 30 * $hd !default;
+$jd-button-font-size-sm: 13 * $hd !default;
+$jd-button-border-radius-sm: 1 * $hd !default;
+
+$jd-button-height-xxs: 27 * $hd !default;
+$jd-button-font-size-xxs: 12 * $hd !default;
+$jd-button-border-radius-xxs: 27 * $hd !default;
+
+$link-button-font-size: 16 * $hd !default;
+// Tabbar Component */
+// tab-bar
+$tab-bar-height: 51 * $hd !default;
+$tab-bar-image-height: 25 * $hd !default;
+
+// tabs
+$tabs-color: $brand-primary !default;
+$tabs-height: 44 * $hd !default;
+$tabs-font-size-heading: 14 * $hd !default;
+$tabs-ink-bar-height: $border-width-lg !default;
+
+//NavBar
+$nav-bar-height: 44 * $hd !default;
+
+// z-index */
+$z-index-normal: 1 !default;
+$maskZIndex: 222 !default;
+$popupZIndex: 666 !default;
+$toastZIndex: 777 !default;
+$tab-barZIndex: 200 !default;
+$progressZIndex: 999 !default; //progress fixed 应该是最大的z-index
+$indexedIndicatorZIndex: 1999 !default; //索引列表
+$loadingZIndex: 999 !default; //loading
+
+// 图标尺寸
+// ---
+$icon-size-xxs: 15 * $hd !default;
+$icon-size-xs: 18 * $hd !default;
+$icon-size-sm: 21 * $hd !default;
+$icon-size-md: 22 * $hd !default; // 导航条上的图标、grid的图标大小
+$icon-size-lg: 36 * $hd !default;
+
+// 水平间距
+$h-spacing-sm: 5 * $hd !default;
+$h-spacing-md: 8 * $hd !default;
+$h-spacing-lg: 15 * $hd !default;
+// 垂直间距
+$v-spacing-xs: 3 * $hd !default;
+$v-spacing-sm: 6 * $hd !default;
+$v-spacing-md: 9 * $hd !default;
+$v-spacing-lg: 15 * $hd !default;
+$v-spacing-xl: 21 * $hd !default;
+
+// list
+$list-title-height: 30 * $hd !default;
+$list-item-height-sm: 35 * $hd !default;
+$list-item-height: 44 * $hd !default;
+
+// input
+$input-label-width: 16 * $hd !default; // InputItem、TextareaItem 文字长度基础值
+$input-font-size: 16 * $hd !default;
+$input-color-icon: #ccc !default; // input clear icon 的背景色
+$input-color-icon-tap: $brand-primary !default;
+
+// switch
+$switch-fill: #F2270C !default;
+$switch-width: 42 * $hd !default;
+$switch-height: 18 * $hd !default;
+$switch-border-radius: 12 * $hd !default;
+$switch-circle: 24 * $hd !default;
+$switch-transform: 24 * $hd !default;
+$switch-circle-top: 4 * $hd !default;
+
+
+$area-tabs-height: 28 * $hd !default;
+$area-content-height: 478 * $hd !default;

@@ -13,7 +13,8 @@ import App from './App';
 import './Content.scss';
 import Image from './image';
 
-import {CATEGORIES, subListDemos} from './utils';
+import {CATEGORIES} from './utils';
+import subListDemos from './subListDemos';
 import ComponentCard from './component/ComponentCard';
 const Content = ({history, location: {pathname, search}}) => {
   if (pathname.match(/\/component\//)) {
@@ -42,7 +43,11 @@ const Content = ({history, location: {pathname, search}}) => {
           {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">
-          <ComponentTitle title={currentComponent.title} englishTitle={toCamelCase(componentName)} />
+          <ComponentTitle
+            title={currentComponent.title}
+            desc={currentComponent.desc}
+            englishTitle={toCamelCase(componentName)}
+          />
           <Helmet title={toCamelCase(componentName)} />
           {currentComponent && currentComponent.demos ? (
             query.order ? (

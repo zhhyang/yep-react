@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 切换无动画
-description:
+description: 通过设置animated={false}，当切换tab时，去除动画效果。
 ---
 
 ```js

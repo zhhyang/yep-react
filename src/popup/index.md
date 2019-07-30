@@ -1,9 +1,10 @@
 ---
 category: Basic
 title: 弹出框
+desc: 作为 Dialog Picker 和 ActionSheet 组件的模态框容器组件实现
 ---
 
-作为 Picker 和 ActionSheet 组件的容器组件实现
+作为 Dialog Picker 和 ActionSheet 组件的容器组件实现
 
 <DEMO>
 
@@ -16,3 +17,4 @@ title: 弹出框
 | popupTransition | popup 弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up | string  | slide-up   |
 | maskTransition  | mask 层的动画，默认为 fade                                                  | string  | fade       |
 | maskCloseable   | 点击蒙层是否关闭                                                            | boolean | true       |
+| usePortal       | 是否需要挂载到 body 上                                                      | boolean | false      |

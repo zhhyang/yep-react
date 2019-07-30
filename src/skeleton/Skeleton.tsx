@@ -2,9 +2,11 @@ import * as React from 'react';
 
 import Wrap from './Wrap';
 
-const InitialComponent:React.FunctionComponent<SkeletonProps> = props => <rect x="0" y="0" rx="5" ry="5" width={props.width} height={props.height} />;
+const InitialComponent: React.FunctionComponent<SkeletonProps> = props => (
+  <rect x="0" y="0" rx="5" ry="5" width={props.width} height={props.height} />
+);
 
-const Skeleton:React.FunctionComponent<SkeletonProps> = props => {
+const Skeleton: React.FunctionComponent<SkeletonProps> = props => {
   const {children, ...restProps} = props;
 
   return <Wrap {...restProps}>{children ? children : <InitialComponent {...restProps} />}</Wrap>;
@@ -35,6 +37,6 @@ Skeleton.defaultProps = {
   secondaryColor: '#e0e0e0',
   primaryOpacity: 1,
   secondaryOpacity: 1,
-};
+} as Partial<SkeletonProps>;
 
 export default Skeleton;

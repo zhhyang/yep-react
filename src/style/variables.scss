@@ -11,7 +11,7 @@ $color-text-disabled: #999baa !default; // 失效
 $color-text-caption: #999baa !default; // 三级信息：辅助类文字
 
 //全局/品牌色
-$brand-primary: #ec3838 !default; //品牌标准色：重要内容信息
+$brand-primary: #2A83E1 !default; //品牌标准色：重要内容信息
 $brand-primary-tap: #0e80d2 !default;
 $brand-success: #85c859 !default; //辅助色：区别强调信息
 $brand-warning: #ed2945 !default; //辅助色：价格&警告信息 小红点
@@ -48,17 +48,19 @@ $radius-circle: 50% !default;
 // Button Component */
 $button-border-color: #c6c7ce !default;
 
-$button-height: 45 * $hd !default;
+
+
+$button-height: 50 * $hd !default;
 $button-font-size: 18 * $hd !default;
-$button-border-radius: 2 * $hd !default;
+$button-border-radius: 0 * $hd !default;
 
-$button-height-md: 50 * $hd !default;
-$button-font-size-md: 18 * $hd !default;
-$button-border-radius-md: 0 * $hd !default;
-
-$button-height-sm: 28 * $hd !default;
-$button-font-size-sm: 13 * $hd !default;
+$button-height-sm: 40 * $hd !default;
+$button-font-size-sm: 18 * $hd !default;
 $button-border-radius-sm: 2 * $hd !default;
+
+$button-height-xxs: 28 * $hd !default;
+$button-font-size-xxs: 13 * $hd !default;
+$button-border-radius-xxs: 2 * $hd !default;
 
 $link-button-font-size: 16 * $hd !default;
 // Tabbar Component */
@@ -116,11 +118,24 @@ $input-color-icon: #ccc !default; // input clear icon 的背景色
 $input-color-icon-tap: $brand-primary !default;
 
 // switch
-$switch-fill: #f23030 !default;
+$switch-fill: $brand-primary !default;
 $switch-width: 50 * $hd !default;
 $switch-height: 30 * $hd !default;
 $switch-border-radius: 30 * $hd !default;
 $switch-circle: 28 * $hd !default;
+$switch-transform: 20 * $hd !default;
+$switch-circle-top: 1 * $hd !default;
 
 $area-tabs-height: 28 * $hd !default;
 $area-content-height: 478 * $hd !default;
+
+// avatar
+$avatar-size-base: 32 * $hd;
+$avatar-size-lg: 40 * $hd;
+$avatar-size-sm: 24 * $hd;
+$avatar-font-size-base: 16 * $hd;
+$avatar-font-size-lg: 20 * $hd;
+$avatar-font-size-sm: 12 * $hd;
+$avatar-bg: #ccc;
+$avatar-color: #fff;
+$avatar-border-radius: 4 * $hd;

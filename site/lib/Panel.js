@@ -15,6 +15,22 @@ export default class Panel extends React.Component{
     });
   };
 
+  handleResetScrollStatus() {
+    if (document.querySelector('.l-header').style.left == '') {
+      document.querySelector('.l-header').style.left = '220px';
+    } else if (document.querySelector('.l-header').style.left == '220px') {
+      document.querySelector('.l-header').style.left = '';
+    }
+    if (
+      document.querySelector('.l-menu').style.marginLeft == '' ||
+      document.querySelector('.l-menu').style.marginLeft == '-220px'
+    ) {
+      document.querySelector('.l-menu').style.marginLeft = '0';
+    } else if (document.querySelector('.l-menu').style.marginLeft == '0px') {
+      document.querySelector('.l-menu').style.marginLeft = '-220px';
+    }
+  }
+
   render() {
     const {components,category,location} = this.props;
     const isActive = Object.keys(components).includes(location.pathname.split('/').reverse()[0]) && components[location.pathname.split('/').reverse()[0]].category===category.name

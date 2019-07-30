@@ -1,7 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-const ProgressBar:React.FunctionComponent<ProgressBarProps> = ({prefixCls, className, style, percent, backgroundColor, colorStart, colorEnd, fixed}) => {
+const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({
+  prefixCls,
+  className,
+  style,
+  percent,
+  backgroundColor,
+  colorStart,
+  colorEnd,
+  fixed,
+}) => {
   const absPercent = Math.abs(percent);
   const comPercent = percent ? Math.min(absPercent, 100) + '%' : 0;
 
@@ -39,6 +48,6 @@ ProgressBar.defaultProps = {
   percent: 0,
   backgroundColor: '#ec3838',
   fixed: false,
-};
+} as Partial<ProgressBarProps>;
 
 export default ProgressBar;

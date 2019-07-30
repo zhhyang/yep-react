@@ -4,13 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
-const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // common function to get css loaders
 const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
   const loaders = [
-    require.resolve('style-loader'),
+    MiniCssExtractPlugin.loader,
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -41,7 +40,7 @@ const config = {
     pathinfo: true,
     path: path.join(process.cwd(), 'build'),
     publicPath: '',
-    filename: '[name].[chunkhash:8].js',
+    filename: 'site/[name].[chunkhash:8].js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx'],
@@ -124,7 +123,7 @@ const config = {
         exclude: [/\.(js|jsx|mjs|tsx)$/, /\.html$/, /\.json$/, /\.scss$/],
         loader: require.resolve('file-loader'),
         options: {
-          name: '[name].[hash:8].[ext]',
+          name: 'site/[name].[hash:8].[ext]',
         },
       },
     ],
@@ -133,8 +132,11 @@ const config = {
     new webpack.DefinePlugin({
       __JD__: process.env.JD,
     }),
-    new CleanWebpackPlugin(['build/site.*', 'build/index.html'], {
+    new CleanWebpackPlugin(['build/site/', 'build/index.html'], {
       root: process.cwd(),
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'site/[name].[chunkhash:8].css',
     }),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({

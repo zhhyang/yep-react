@@ -6,3 +6,17 @@
   line-height: .6rem;
   width: 100%;
 }
+
+.placeholder-horizontal{
+  background-color: #ebebef;
+  color: #bbb;
+  text-align: center;
+  height: .6rem;
+  line-height: .6rem;
+  width: 30%;
+}
+
+
+.placeholder-horizontal-wrap{
+  display: flex;
+}

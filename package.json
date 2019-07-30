@@ -1,7 +1,7 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "0.3.6",
-  "description": "一套基于React的移动端组件库",
+  "version": "0.5.3",
+  "description": "一套符合京东移动端设计规范的React组件库",
   "main": "lib",
   "module": "es",
   "scripts": {
@@ -14,11 +14,11 @@
     "watch-css-dist": "yep-tools watch",
     "dist": "yep-tools dist",
     "clean": "rimraf lib es dist",
+    "prebuild-demo": "node scripts/generateDemo.js",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",
-    "prepublishOnly": "npm run clean && npm run dist && npm run compile",
-    "postpublish": "npm run deploy:jd",
-    "format": "prettier --write src/**/*.{js,jsx,md}",
+    "pre-pub": "npm run clean && npm run dist && npm run compile",
+    "format": "prettier --write src/**/*.{tsx,md}",
     "precommit": "lint-staged",
     "predeploy": "npm run build-demo && npm run build-site",
     "deploy": "gh-pages -d build",
@@ -26,7 +26,9 @@
     "deploy:jd": "gh-pages -d build -r http://git.jd.com/JDC-FE/lrc-m.git -b master",
     "predeploy:jd": "npm run build-demo && npm run build-site:jd",
     "lint-staged": "node node_modules/tslint/bin/tslint src/**/*.tsx",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "pub": "scripts/publish.sh",
+    "preview": "serve -s build -p 9999"
   },
   "keywords": [
     "react",
@@ -44,6 +46,7 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import":"^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
@@ -132,7 +135,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@jdcfe/yep-gesture": "^0.0.1",
+    "@jdcfe/yep-gesture": "^0.0.2",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",

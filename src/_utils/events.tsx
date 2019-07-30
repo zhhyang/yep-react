@@ -4,8 +4,10 @@
  * @param  {String}   eventName  事件名
  * @param  {Function} callback   回调方法
  * @param  {Boolean}   [useCapture=false] 是否开启事件捕获优先
+ * or captureObject 类型
  */
-export function off(node:any, eventName:string, callback:Function, useCapture:boolean) {
+type captureObject = {capture: boolean; passive: boolean};
+export function off(node: any, eventName: string, callback: Function, useCapture: boolean | captureObject) {
   /* istanbul ignore else */
   if (node.removeEventListener) {
     node.removeEventListener(eventName, callback, useCapture || false);
@@ -27,7 +29,7 @@ export function off(node:any, eventName:string, callback:Function, useCapture:bo
  * // 取消事件绑定
  * handler.off();
  */
-export function on(node:any, eventName:string, callback:Function, useCapture:boolean) {
+export function on(node: any, eventName: string, callback: Function, useCapture: boolean | captureObject) {
   /* istanbul ignore else */
   if (node.addEventListener) {
     node.addEventListener(eventName, callback, useCapture || false);
@@ -46,11 +48,11 @@ export function on(node:any, eventName:string, callback:Function, useCapture:boo
  * @param  {Boolean}   useCapture 是否开启事件捕获优先
  * @return {Function}             返回的object中包含一个off方法，用于取消事件监听
  */
-export function once(node:any, eventName:string, callback:Function, useCapture:boolean) {
+export function once(node: any, eventName: string, callback: Function, useCapture: boolean) {
   return on(
     node,
     eventName,
-    function __fn(...args:any) {
+    function __fn(...args: any) {
       callback.apply(this, args);
 
       // 由于addEventListener中的参数options只在Chrome 55、Firefox(Gecko)以上版本支持，故还是用传统的方法实现once

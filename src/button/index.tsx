@@ -20,9 +20,8 @@ export interface ButtonProps {
   children: React.ReactNode;
 }
 
-export default class Button extends React.PureComponent<ButtonProps,any> {
-
-  static ButtonGroup= ButtonGroup;
+export default class Button extends React.PureComponent<ButtonProps, any> {
+  static ButtonGroup = ButtonGroup;
   static defaultProps = {
     prefixCls: 'Yep-btn',
     disabled: false,

@@ -1,6 +1,7 @@
 ---
 category: Form
 title: 单选框
+desc: 单项选择，例如:性别
 ---
 
 <DEMO>

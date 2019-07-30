@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {createPortal} from 'react-dom';
 import classNames from 'classnames';
-import {CSSTransition} from 'react-transition-group';
-import Mask from '../mask';
 import noop from '../_utils/noop';
 import confirm from './confirm';
+import Popup from '../popup';
 
 export interface DialogProps {
   prefixCls?: string;
@@ -12,16 +10,15 @@ export interface DialogProps {
   title: string;
   footer: React.ReactNode;
   style?: React.CSSProperties;
-  bodyStyle?:React.CSSProperties;
-  onClose?: (e:any) => void,
+  bodyStyle?: React.CSSProperties;
+  onClose?: (e: any) => void;
   show?: boolean;
   maskCloseable?: boolean;
-  dialogTransition: string,
-  maskTransition: string,
+  dialogTransition: string;
+  maskTransition: string;
 }
 
-export default class Dialog extends React.PureComponent<DialogProps,any> {
-
+export default class Dialog extends React.PureComponent<DialogProps, any> {
   static confirm = confirm;
   static defaultProps = {
     prefixCls: 'Yep-dialog',
@@ -34,7 +31,7 @@ export default class Dialog extends React.PureComponent<DialogProps,any> {
     onClose: noop,
   };
 
-  constructor(props:DialogProps) {
+  constructor(props: DialogProps) {
     super(props);
     this.renderHeader = this.renderHeader.bind(this);
     this.renderBody = this.renderBody.bind(this);
@@ -52,20 +49,20 @@ export default class Dialog extends React.PureComponent<DialogProps,any> {
     });
   }
 
-  componentWillReceiveProps(nextProps:any) {
+  componentWillReceiveProps(nextProps: any) {
     this.setState({
       show: nextProps.show,
     });
   }
 
-  close(e:any) {
+  close(e: any) {
     const {onClose} = this.props;
     if (onClose) {
       onClose(e);
     }
   }
 
-  onMaskClick(e:any) {
+  onMaskClick(e: any) {
     const {maskCloseable} = this.props;
     if (e.target === e.currentTarget && maskCloseable) {
       this.close(e);
@@ -100,24 +97,24 @@ export default class Dialog extends React.PureComponent<DialogProps,any> {
 
     const cls = classNames(prefixCls, className, `${prefixCls}-transparent`);
 
-    return createPortal(
-      <div>
-        <CSSTransition in={this.state.show} timeout={300} classNames={maskTransition} unmountOnExit={true}>
-          <Mask onClick={this.onMaskClick} />
-        </CSSTransition>
-        <CSSTransition in={this.state.show} timeout={300} classNames={dialogTransition} unmountOnExit={true}>
-          <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
-            <div className={cls} style={style}>
-              <div className={`${prefixCls}-content`}>
-                {title && this.renderHeader()}
-                {this.renderBody()}
-                {this.renderFooter()}
-              </div>
+    return (
+      <Popup
+        show={this.state.show}
+        maskTransition={maskTransition}
+        popupTransition={dialogTransition}
+        maskCloseable={false}
+        usePortal={true}
+      >
+        <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
+          <div className={cls} style={style}>
+            <div className={`${prefixCls}-content`}>
+              {title && this.renderHeader()}
+              {this.renderBody()}
+              {this.renderFooter()}
             </div>
           </div>
-        </CSSTransition>
-      </div>,
-      document.body
+        </div>
+      </Popup>
     );
   }
 }
