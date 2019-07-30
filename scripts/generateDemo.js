@@ -62,9 +62,8 @@ const Content = ({history, location: {pathname, search}}) => {
           {CATEGORIES.find(item => item.name === currentComponent.category).label}
         </NavBar>
         <div className="page-wrapper">
-          <ComponentTitle title={currentComponent.title} englishTitle={toCamelCase(componentName)} />
+          <ComponentTitle title={currentComponent.title} desc={currentComponent.desc} englishTitle={toCamelCase(componentName)} />
           <Helmet title={toCamelCase(componentName)} />
-          
           ${str}
         </div>
       </Fragment>
