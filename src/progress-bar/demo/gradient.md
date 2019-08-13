@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 背景色渐变
-description:
+description: 可通过配置colorStart与colorEnd给进度条添加渐变色
 ---
 
 ```js
