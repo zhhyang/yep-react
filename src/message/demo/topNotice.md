@@ -36,13 +36,7 @@ class Demo extends React.PureComponent {
           3秒后消失的顶部通知
         </a>
         {show && (
-          <Message
-            type="error"
-            duration={duration}
-            closeable
-            position="fix-top"
-            ref={message => (this.messageInstance = message)}
-          >
+          <Message type="error" duration={duration} closeable position="fix-top">
             顶部通知，3秒后消失
           </Message>
         )}
