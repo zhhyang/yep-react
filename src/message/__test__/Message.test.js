@@ -1,16 +1,10 @@
 import React from 'react';
-import {mount, render, shallow} from 'enzyme';
+import {mount, render} from 'enzyme';
 import Message from '../index';
-
-const onCloseMock = jest.fn();
 
 jest.useFakeTimers();
 
 describe('Message', () => {
-  beforeEach(() => {
-    onCloseMock.mockReset();
-  });
-
   it('default case', () => {
     const wrapper = render(<Message />);
     expect(wrapper.find('.Yep-icon-bell').length).toBe(1);
