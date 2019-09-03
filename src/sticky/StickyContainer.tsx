@@ -1,15 +1,11 @@
 import * as React from 'react';
 
 import * as PropTypes from 'prop-types';
-// @ts-ignore
 import raf from 'raf';
 
-export interface StickyContainerProps {
+export interface StickyContainerProps {}
 
-}
-
-export default class StickyContainer extends React.PureComponent<StickyContainerProps,any> {
-
+export default class StickyContainer extends React.PureComponent<StickyContainerProps, any> {
   static defaultProps = {};
 
   static childContextTypes = {
@@ -25,11 +21,11 @@ export default class StickyContainer extends React.PureComponent<StickyContainer
       getParent: this.getParent,
     };
   }
-  node:HTMLDivElement;
-  subscribers = []
-  events = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load']
-  framePending:boolean;
-  constructor(props:StickyContainerProps) {
+  node: HTMLDivElement;
+  subscribers = [];
+  events = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load'];
+  framePending: boolean;
+  constructor(props: StickyContainerProps) {
     super(props);
     this.createRef = this.createRef.bind(this);
     this.getParent = this.getParent.bind(this);
@@ -38,21 +34,21 @@ export default class StickyContainer extends React.PureComponent<StickyContainer
     this.notifySubscribers = this.notifySubscribers.bind(this);
   }
 
-  subscribe(handler:any) {
+  subscribe(handler: any) {
     this.subscribers = this.subscribers.concat(handler);
   }
 
-  unsubscribe(handler:any) {
+  unsubscribe(handler: any) {
     this.subscribers = this.subscribers.filter(current => current !== handler);
   }
 
-  notifySubscribers(evt:any) {
+  notifySubscribers(evt: any) {
     if (!this.framePending) {
       const {currentTarget} = evt;
       raf(() => {
         this.framePending = false;
         const {top, bottom} = this.node.getBoundingClientRect();
-        this.subscribers.forEach((handler:any) =>
+        this.subscribers.forEach((handler: any) =>
           handler({
             distanceFromTop: top,
             distanceFromBottom: bottom,
@@ -64,7 +60,7 @@ export default class StickyContainer extends React.PureComponent<StickyContainer
     }
   }
 
-  createRef(node:HTMLDivElement) {
+  createRef(node: HTMLDivElement) {
     this.node = node;
   }
 

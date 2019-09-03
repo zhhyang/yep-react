@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import {omit} from 'lodash';
 import {CSSTransition} from 'react-transition-group';
-import * as raf from 'raf';
+import raf from 'raf';
 import noop from '../_utils/noop';
 import Icon from '../icon';
 
