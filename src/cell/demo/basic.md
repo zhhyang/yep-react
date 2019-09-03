@@ -51,7 +51,7 @@ class Demo extends React.PureComponent {
           onCancel={this.onClick}
           initialData={this.state.data}
           onOk={this.onOk}
-          fetchAction={(city, index) => getArea(city.id)}
+          fetchAction={city => getArea(city.id)}
         />
       </div>
     );

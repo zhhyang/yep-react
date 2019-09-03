@@ -14,7 +14,7 @@ class Demo extends React.PureComponent {
       <div style={{background: '#f2f3f3'}}>
         <Cell>
           <Item label="白条" align="top">
-            白条随机立减最高99 每个用户限用1次<Brief>现货，11：00前下单，预计今日送达</Brief>{' '}
+            白条随机立减最高99 每个用户限用1次<Brief>现货，11：00前下单，预计今日送达</Brief>
           </Item>
         </Cell>
       </div>
