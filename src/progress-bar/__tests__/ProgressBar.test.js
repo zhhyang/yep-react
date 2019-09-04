@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import ProgressBar from '../index';
 
 const onChangeMock = jest.fn();
@@ -13,7 +13,7 @@ describe('ProgressBar', () => {
     const props = {
       className: 'customizeClassName',
     };
-    const wrapper = mount(<ProgressBar {...props} />);
+    const wrapper = shallow(<ProgressBar {...props} />);
     expect(wrapper.find('.Yep-progress').hasClass('customizeClassName')).toBe(true);
   });
 
@@ -21,21 +21,18 @@ describe('ProgressBar', () => {
     const props = {
       percent: 50,
     };
-    const wrapper = mount(<ProgressBar {...props} />);
-    expect(wrapper.html()).toEqual(
-      '<div class="Yep-progress"><div class="Yep-progress-bar" style="width: 50%; background: rgb(236, 56, 56);"></div></div>'
-    );
+    const wrapper = shallow(<ProgressBar {...props} />);
+    expect(wrapper.find('.Yep-progress-bar').get(0).props.style).toHaveProperty('width', '50%');
   });
 
   it('backgroundColor value in the component is provided by props backgroundColor', () => {
     const props = {
-      backgroundColor: '#000',
+      backgroundColor: 'red',
       percent: 60,
     };
-    const wrapper = mount(<ProgressBar {...props} />);
-    expect(wrapper.html()).toEqual(
-      '<div class="Yep-progress"><div class="Yep-progress-bar" style="width: 60%; background: rgb(0, 0, 0);"></div></div>'
-    );
+    const wrapper = shallow(<ProgressBar {...props} />);
+    expect(wrapper.find('.Yep-progress-bar').get(0).props.style).toHaveProperty('background', 'red');
+    expect(wrapper.find('.Yep-progress-bar').get(0).props.style).toHaveProperty('width', '60%');
   });
 
   it('When fixed assigns true, the progress bar is at the top of the page.', () => {
@@ -43,7 +40,7 @@ describe('ProgressBar', () => {
       fixed: true,
       percent: 60,
     };
-    const wrapper = mount(<ProgressBar {...props} />);
+    const wrapper = shallow(<ProgressBar {...props} />);
     expect(wrapper.find('.Yep-progress').hasClass('Yep-progress-fixed')).toBe(true);
   });
 });
