@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 输入内容进行搜索，可一键清空搜索内容。
 ---
 
 ```js

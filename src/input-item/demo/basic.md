@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 输入框，可以带清空按钮，可通过设置disabled禁用，可自定义placeholder内容以及默认值，右侧可配置图标。
 ---
 
 ```js
