@@ -4,7 +4,7 @@ import WhiteSpace from '../index';
 
 const onChangeMock = jest.fn();
 
-describe('Collapse', () => {
+describe('WhiteSpace', () => {
   beforeEach(() => {
     onChangeMock.mockReset();
   });

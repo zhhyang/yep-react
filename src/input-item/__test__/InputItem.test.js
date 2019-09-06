@@ -3,7 +3,7 @@ import {shallow, render, mount} from 'enzyme';
 import InputItem from '../index';
 import {Icon} from '../../icon';
 
-describe('SearchBar', () => {
+describe('InputItem', () => {
   it('render customize class name when className prop is provided by user', () => {
     const props = {
       className: 'customizeClassName',
