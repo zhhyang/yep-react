@@ -30,6 +30,7 @@ desc: 常用于平级区域大块内容的的收纳和展现，支持手势在�
 | tabBarInactiveTextColor | tabBar 非激活 Tab 文字颜色 | string                                              |            | false |
 | tabBarTextStyle         | tabBar 文字样式            | React.CSSProperties any                             |            | false |
 | renderTab               | 替换 TabBar 的 Tab         | (tab: Models.TabData) => React.ReactNode            |            | false |
+| distanceToChangeTab     | 触发 Tab 改变的滑动距离    | number                                              | 0          | false |
 
 ### Tabs.DefaultTabBar
 
