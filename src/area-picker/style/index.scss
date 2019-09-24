@@ -74,9 +74,26 @@ $tabs-default-bar-prefix-cls: Yep-area-picker-tabs-bar;
     margin-left: 20px;
   }
 
+  &-underline{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    border: none;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+
+  &-underline-bar{
+    width: 52px;
+    height: 6px;
+    background-image: linear-gradient(90deg,
+      #f5503a 0%,
+      #fad1cb 100%);
+  }
+
   &-tab-active {
     color: $tabs-color;
-    @include border-bottom-1px($tabs-color);
   }
 
   &-animated &-content {
@@ -92,11 +109,9 @@ $tabs-default-bar-prefix-cls: Yep-area-picker-tabs-bar;
         display: flex;
         width: 100%;
         flex-direction: row;
-        @include border-bottom-1px();
 
         .#{$tabs-default-bar-prefix-cls}-tab-active {
           color: $tabs-color;
-          @include border-bottom-1px($tabs-color);
         }
       }
     }

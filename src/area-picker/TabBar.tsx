@@ -15,34 +15,25 @@ export interface TabBarProps {
   tabBarInactiveTextColor?: string;
 }
 export default class TabBar extends React.PureComponent<TabBarProps> {
-
   static defaultProps = {
     prefixCls: 'Yep-area-picker-tabs-bar',
     onTabClick: noop,
     activeTab: 0,
-    page: 5,
-    tabBarPosition: 'top',
   };
 
-  constructor(props:TabBarProps) {
+  constructor(props: TabBarProps) {
     super(props);
-    this.state = {
-      transform: '',
-      isMoving: false,
-      showPrev: false,
-      showNext: false,
-    };
     this.renderTab = this.renderTab.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick = (index:number) => {
+  onClick = (index: number) => {
     const {goToTab, onTabClick, tabs} = this.props;
     onTabClick && onTabClick(tabs[index], index);
     goToTab && goToTab(index);
   };
 
-  renderTab = (t:any, i:number, ) => {
+  renderTab = (t: any, i: number) => {
     const {
       prefixCls,
       renderTab,
@@ -73,6 +64,11 @@ export default class TabBar extends React.PureComponent<TabBarProps> {
         onClick={() => this.onClick(i)}
       >
         {renderTab ? renderTab(t) : t.title}
+        {activeTab === i && (
+          <div className={`${prefixCls}-underline`}>
+            <div className={`${prefixCls}-underline-bar`} />
+          </div>
+        )}
       </div>
     );
   };
@@ -82,7 +78,7 @@ export default class TabBar extends React.PureComponent<TabBarProps> {
     const cls = classNames(prefixCls, `${prefixCls}-top`);
 
     const Tabs = tabs.map((t, i) => {
-      return this.renderTab(t, i,);
+      return this.renderTab(t, i);
     });
 
     return (
