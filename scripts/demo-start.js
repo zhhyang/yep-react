@@ -6,7 +6,7 @@ const webpackConfig = require('./webpack.demo.config.dev');
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';
 const ip = require('address').ip();
-const defaultPort = 8081;
+const defaultPort = 7788;
 
 const devServerOptions = {
   disableHostCheck: true,
