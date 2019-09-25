@@ -106,7 +106,7 @@ $loadingZIndex: 999 !default; //loading
 // ---
 $icon-size-xxs: 15 * $hd !default;
 $icon-size-xs: 18 * $hd !default;
-$icon-size-sm: 21 * $hd !default;
+$icon-size-sm: 20 * $hd !default;
 $icon-size-md: 22 * $hd !default; // 导航条上的图标、grid的图标大小
 $icon-size-lg: 36 * $hd !default;
 
@@ -144,3 +144,14 @@ $switch-circle-top: 4 * $hd !default;
 
 $area-tabs-height: 28 * $hd !default;
 $area-content-height: 478 * $hd !default;
+
+// avatar
+$avatar-size-base: 32 * $hd;
+$avatar-size-lg: 40 * $hd;
+$avatar-size-sm: 24 * $hd;
+$avatar-font-size-base: 16 * $hd;
+$avatar-font-size-lg: 20 * $hd;
+$avatar-font-size-sm: 12 * $hd;
+$avatar-bg: #ccc;
+$avatar-color: #fff;
+$avatar-border-radius: 4 * $hd;
