@@ -118,7 +118,7 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
         <div className={cls} style={style}>
           <div className={`${prefixCls}-title-wrapper`}>
             <h1 className={`${prefixCls}-title`}>{title}</h1>
-            <Icon type={'close_o'} size={'xxs'} onClick={onCancel} />
+            <Icon type={'close_o'} size={'sm'} onClick={onCancel} />
           </div>
 
           <Tabs

@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "一套符合京东移动端设计规范的React组件库",
   "main": "lib",
   "module": "es",
@@ -137,7 +137,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@jdcfe/yep-gesture": "^0.0.2",
+    "@jdcfe/yep-gesture": "^0.0.3",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",
