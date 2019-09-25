@@ -133,10 +133,10 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
                   <ul>
                     {item.map((city: any) => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
-                        {nameExtractor(city)}
                         {tabs[index] && keyExtractor(tabs[index]) === keyExtractor(city) && (
                           <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
                         )}
+                        {nameExtractor(city)}
                       </li>
                     ))}
                   </ul>
