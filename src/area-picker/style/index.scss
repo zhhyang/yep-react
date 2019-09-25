@@ -24,7 +24,7 @@ $effect-duration: 0.3s;
       justify-content: space-between;
       align-items: center;
       height: 80px;
-      padding: 20px 20px 0 20px;
+      padding: 48px 36px 48px 36px;
     }
   }
 
@@ -34,9 +34,9 @@ $effect-duration: 0.3s;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     li {
-      height: 74px;
-      line-height: 74px;
-      padding: 0 20px;
+      //height: 74px;
+      line-height: 1;
+      padding: 48px 36px 0 36px;
       color: #333;
       font-size: 24px;
       text-align: left;
@@ -71,7 +71,10 @@ $tabs-default-bar-prefix-cls: Yep-area-picker-tabs-bar;
     font-size: $tabs-font-size-heading;
     height: $area-tabs-height;
     line-height: $area-tabs-height;
-    margin-left: 20px;
+    margin-left: 48px;
+    &:first-of-type{
+      margin-left:36px
+    }
   }
 
   &-underline{
@@ -79,7 +82,7 @@ $tabs-default-bar-prefix-cls: Yep-area-picker-tabs-bar;
     display: flex;
     justify-content: center;
     border: none;
-    bottom: 0;
+    bottom: -8px;
     width: 100%;
     left: 0;
   }
