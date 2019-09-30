@@ -73,7 +73,7 @@ class Header extends React.Component {
   }
 }
 
-class Stacked extends React.Component {
+class Demo extends React.Component {
   render() {
     const keys = Object.keys(data);
     return (
@@ -91,5 +91,5 @@ class Stacked extends React.Component {
   }
 }
 
-ReactDOM.render(<Stacked />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```

@@ -118,25 +118,25 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
         <div className={cls} style={style}>
           <div className={`${prefixCls}-title-wrapper`}>
             <h1 className={`${prefixCls}-title`}>{title}</h1>
-            <Icon type={'lego_cuowu2'} size={'xxs'} onClick={onCancel} />
+            <Icon type={'close_o'} size={'sm'} onClick={onCancel} />
           </div>
 
           <Tabs
             defaultIndex={defaultIndex}
             distanceToChangeTab={distanceToChangeTab}
-            ref={ref => this.tabs = ref as Tabs}
+            ref={ref => (this.tabs = ref as Tabs)}
             renderTabBar={props => <TabBar {...props} />}
           >
-            {data.map((item:any, index:number) => (
+            {data.map((item: any, index: number) => (
               <TabPanel tab={(tabs[index] && nameExtractor(tabs[index])) || chooseLabel} key={index}>
                 <div className={`${prefixCls}-content Yep-scroller`}>
                   <ul>
-                    {item.map((city:any) => (
+                    {item.map((city: any) => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
-                        {nameExtractor(city)}
                         {tabs[index] && keyExtractor(tabs[index]) === keyExtractor(city) && (
                           <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
                         )}
+                        {nameExtractor(city)}
                       </li>
                     ))}
                   </ul>

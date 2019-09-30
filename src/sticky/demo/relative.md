@@ -31,7 +31,7 @@ class Header extends React.Component {
 }
 
 let renderCount = 0;
-class Relative extends React.Component {
+class Demo extends React.Component {
   render() {
     return (
       <div>
@@ -48,5 +48,5 @@ class Relative extends React.Component {
   }
 }
 
-ReactDOM.render(<Relative />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
