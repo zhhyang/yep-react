@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 列表
-description: 常规列表
+description: 常规列表。
 ---
 
 ```js

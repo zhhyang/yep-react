@@ -1,7 +1,7 @@
 ---
 order: 4
 title: 清单
-description: 需求清单，目录等场景
+description: 需求清单，目录等场景。
 ---
 
 ```js

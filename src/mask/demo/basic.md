@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description: 常与弹框、选择器等配合
+description: 常与弹框、选择器等配合使用。
 ---
 
 ```js

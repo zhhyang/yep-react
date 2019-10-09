@@ -1,7 +1,7 @@
 ---
 order: 5
 title: 超出可滑动
-description:
+description: 超出给定区域后，支持滑动，选中某一tab标签可切换到对应的区域。
 ---
 
 ```js
