@@ -61,7 +61,6 @@ export default class Steps extends React.Component<StepsProps> {
             />
           </div>
           {titles.map((item: any, key: number) => {
-            console.log(stepNum);
             return (
               <div
                 key={key}
