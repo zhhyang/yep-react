@@ -14,6 +14,7 @@ desc: 一般位于顶部导航下方，输入内容进行搜索，可一键清�
 | style       | 组件样式             | object   | {}             |
 | className   | 组件额外样式         | string   | -              |
 | value       | 输入框的值           | string   | -              |
+| type        | 输入框的值类型       | string   | -              |
 | onChange    | 输入改变后的回调     | function | -              |
 | disabled    | 是否禁用             | bool     | -              |
 | placeholder | 同 input placeholder | string   | -              |
