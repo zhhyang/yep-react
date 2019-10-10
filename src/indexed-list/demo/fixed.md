@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 不以body为滚动容器
-description: 可在自定义的容器内使用
+description: 可在自定义宽高的容器内使用。
 ---
 
 ```js

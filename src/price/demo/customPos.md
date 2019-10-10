@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 自定义货币符号&小数位置
-description: 可配置货币符号、小数位于左上或者右上
+description: 可配置货币符号、小数位于左上或者右上。
 ---
 
 ```js

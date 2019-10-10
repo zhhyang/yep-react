@@ -11,7 +11,6 @@ describe('ImagePicker', () => {
 
   it('delete img', () => {
     const props = {
-      name: 'imgFormData',
       files: [
         {
           url:

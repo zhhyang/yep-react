@@ -1,7 +1,7 @@
 ---
 order: 5
 title: 划线价
-description: 在进行价格对比时，常用到划线价
+description: 在进行价格对比时，常用到划线价。
 ---
 
 ```js
