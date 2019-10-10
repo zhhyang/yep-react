@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 刮开涂层，展示结果。
 ---
 
 ```js
