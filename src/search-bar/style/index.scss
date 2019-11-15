@@ -5,11 +5,11 @@
   width: 100%;
   background: #fff;
   display: flex;
-  align-items:center; 
+  align-items:center;
   .yep-search-bar-cancel {
     color: $brand-primary;
     font-size: 28px;
-    margin: 0 0 0 36px;
+    margin: 0 0 0 10px;
   }
   .Yep-search-bar-wrapper {
       position: relative;
@@ -18,8 +18,7 @@
       width: 584px;
       border-radius: 40px;
       display: flex;
-      align-items:center; 
-      margin: 0 0 0 26px;
+      align-items:center;
       .Yep-icon-lego_sousuo{
         margin: 0 20px 0 20px;
       }
@@ -42,7 +41,7 @@
   }
 }
 
-  
+
   .Yep-search-bar__clear {
     position: absolute;
     top: 50%;

@@ -77,7 +77,6 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
       <div className={wrapperCls}>
         {files &&
           files.map((imgItem, index) => (
-            /* eslint-disable react/no-array-index-key */
             <div className="upload-flex-item" key={index}>
               <div
                 className="upload-flex-item-del"

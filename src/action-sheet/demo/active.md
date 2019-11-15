@@ -1,7 +1,7 @@
 ---
 order: 2
 title: 打开时选中已选择的选项
-description:
+description: 通过配置active设置默认选中项。
 ---
 
 ```js

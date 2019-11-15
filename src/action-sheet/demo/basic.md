@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 默认从底部弹出动作面板，选中每一项时可传递回调函数。
 ---
 
 ```js

@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description:
+description: 可通过配置percent设置进度条进度
 ---
 
 ```js

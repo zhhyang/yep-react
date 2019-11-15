@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 带取消按钮
-description:
+description: 可用过配置hasCancel为true展示取消按钮，点击取消按钮可隐藏动作面板。
 ---
 
 ```js

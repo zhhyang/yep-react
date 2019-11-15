@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 自定义背景色
-description:
+description: 可通过配置backgroundColor自定义进度条背景色
 ---
 
 ```js

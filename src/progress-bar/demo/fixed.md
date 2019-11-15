@@ -1,7 +1,7 @@
 ---
 order: 3
 title: 顶部固定
-description:
+description: 可通过配置fixed为true将进度条设置为顶部固定
 ---
 
 ```js

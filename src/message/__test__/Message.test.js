@@ -62,4 +62,20 @@ describe('Message', () => {
     wrapper.find('.Yep-icon-close').simulate('click');
     expect(wrapper.state().isShow).toBe(false);
   });
+
+  it('When position assigns fix-bottom, message notifications are displayed at the bottom of the page', () => {
+    const props = {
+      position: 'fix-bottom',
+    };
+    const wrapper = mount(<Message {...props} />);
+    expect(wrapper.find('.Yep-message').hasClass('fix-bottom')).toBe(true);
+  });
+
+  it('When position assigns fix-top, message notifications are displayed at the top of the page', () => {
+    const props = {
+      position: 'fix-top',
+    };
+    const wrapper = mount(<Message {...props} />);
+    expect(wrapper.find('.Yep-message').hasClass('fix-top')).toBe(true);
+  });
 });

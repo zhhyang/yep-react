@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 文章
-description: Facebook 风格常用于文章类场景
+description: Facebook 风格常用于文章类场景。
 ---
 
 ```js

@@ -1,7 +1,7 @@
 ---
 order: 1
 title: 自定义图片大小
-description: 支持自定义图片大小
+description: 支持自定义图片大小。
 ---
 
 ```js

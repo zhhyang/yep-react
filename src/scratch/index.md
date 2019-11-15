@@ -1,7 +1,7 @@
 ---
 category: Feedback
 title: 刮奖
-desc: 刮开涂层，展示结果
+desc: 刮开涂层，展示结果。
 ---
 
 <DEMO>
