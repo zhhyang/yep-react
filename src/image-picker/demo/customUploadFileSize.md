@@ -1,7 +1,7 @@
 ---
-order: 1
-title: 自定义图片宽高
-description: 支持自定义图片宽高。
+order: 2
+title: 自定义上传图片大小
+description: customSize设置为0时表示默认上传1M的图片，不设置customSize表示不限制图片大小。
 ---
 
 ```js
@@ -51,17 +51,21 @@ class Demo extends React.PureComponent {
     });
   }
 
+  fileLimitCallback() {
+    alert('图片超过默认规定大小');
+  }
+
   render() {
     const {files} = this.state;
     return (
       <div>
         <ImagePicker
-          width={'2rem'}
-          height={'2rem'}
           files={files}
           name={'imgFormData'}
           formDataAction={this.formDataAction}
           removeImage={this.removeImage}
+          customSize={0}
+          fileLimitCallback={this.fileLimitCallback}
         />
       </div>
     );
