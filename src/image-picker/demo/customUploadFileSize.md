@@ -1,7 +1,7 @@
 ---
-order: 0
-title: 基础用法
-description: 支持图片选择，上传和删除。
+order: 2
+title: 自定义上传图片大小
+description: customSize设置为0时表示默认上传1M的图片，不设置customSize表示不限制图片大小。
 ---
 
 ```js
@@ -51,12 +51,6 @@ class Demo extends React.PureComponent {
     });
   }
 
-  fileLimitCallback(file) {
-    if (file && file.size > 500 * 1024) {
-      alert('图片超过规定大小');
-    }
-  }
-
   render() {
     const {files} = this.state;
     return (
@@ -66,8 +60,7 @@ class Demo extends React.PureComponent {
           name={'imgFormData'}
           formDataAction={this.formDataAction}
           removeImage={this.removeImage}
-          customSize={500}
-          fileLimitCallback={this.fileLimitCallback}
+          customSize={0}
         />
       </div>
     );
