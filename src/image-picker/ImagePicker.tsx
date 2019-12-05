@@ -13,8 +13,8 @@ export interface ImagePickerProps {
   removeImage?: (params: any) => void;
   formDataAction?: (formData: object, dataUrl: object) => void;
   name?: string;
-  customSize?: number;
-  fileLimitCallback?: () => void;
+  customSize: number;
+  fileLimitCallback?: (file: object) => void;
 }
 
 export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
@@ -44,16 +44,18 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
     const imgFormData = new FormData();
 
     // 判断上传文件的类型，若不是jpeg jpg png gif类型，不执行上传操作
-    if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+    if (file && (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif')) {
       return;
     }
 
-    imgFormData.append(`${name}`, file);
+    imgFormData.append(`${name}`, file && file);
 
-    // 若customSize设置为0，则使用默认设置的图片大小，此时会判断若上传图片超出默认设置的图片大小，则不允许上传
-    if (customSize === 0) {
-      fileLimitCallback && fileLimitCallback();
-      return;
+    // 若customSize设置为0表示不限制图片大小，不设置或者设置为其他值表示采用默认图片大小
+    if (customSize !== 0) {
+      fileLimitCallback && fileLimitCallback(file && file);
+      if (file && file.size > customSize * 1024) {
+        return;
+      }
     }
 
     const reader = new FileReader();
@@ -67,7 +69,7 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
       formDataAction && formDataAction(imgFormData, {url: dataUrl});
     };
 
-    reader.readAsDataURL(file);
+    file && reader.readAsDataURL(file);
 
     if (this.input) {
       this.input.value = '';

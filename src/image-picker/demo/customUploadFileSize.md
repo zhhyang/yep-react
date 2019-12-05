@@ -51,10 +51,6 @@ class Demo extends React.PureComponent {
     });
   }
 
-  fileLimitCallback() {
-    alert('图片超过默认规定大小');
-  }
-
   render() {
     const {files} = this.state;
     return (
@@ -65,7 +61,6 @@ class Demo extends React.PureComponent {
           formDataAction={this.formDataAction}
           removeImage={this.removeImage}
           customSize={0}
-          fileLimitCallback={this.fileLimitCallback}
         />
       </div>
     );
