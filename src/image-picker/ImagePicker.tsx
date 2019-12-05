@@ -47,11 +47,6 @@ export default class ImagePicker extends React.PureComponent<ImagePickerProps> {
 
     imgFormData.append(`${name}`, file);
 
-    if (file.size > 500 * 1024) {
-      return;
-      // throw new Error('图片超过500k规定大小');
-    }
-
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const {currentTarget} = e;
