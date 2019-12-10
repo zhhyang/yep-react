@@ -1,10 +1,15 @@
 import * as React from 'react';
-import BaseCheckbox,{BaseCheckboxProps} from './BaseCheckbox';
+import BaseCheckbox, {BaseCheckboxProps} from './BaseCheckbox';
 import classNames from 'classnames';
-export interface CheckboxProps extends BaseCheckboxProps{
-  children:string;
+import CheckBoxGroup from './CheckBoxGroup';
+export interface CheckboxProps extends BaseCheckboxProps {
+  children: string;
 }
 export default class Checkbox extends React.PureComponent<CheckboxProps> {
+  static displayName = 'Checkbox';
+
+  static CheckBoxGroup = CheckBoxGroup;
+
   static defaultProps = {
     prefixCls: 'Yep-checkbox',
   };

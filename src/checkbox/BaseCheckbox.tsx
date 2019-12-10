@@ -20,7 +20,7 @@ export interface BaseCheckboxProps {
   tabIndex?: string;
   readOnly?: boolean;
   autoFocus?: boolean;
-  value?: any;
+  value?: any | null | undefined;
 }
 
 export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps, any> {

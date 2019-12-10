@@ -110,10 +110,7 @@ export default class Scratch extends React.PureComponent<ScratchProps, State> {
       }
     }
     //@ts-ignore
-    if (
-      ((transPixs.length / (pixles.length / 4)) * 100).toFixed(2) >
-      (this.props.resPercent >= 0 ? this.props.resPercent : 60)
-    ) {
+    if ((transPixs.length / (pixles.length / 4)) * 100 > (this.props.resPercent >= 0 ? this.props.resPercent : 60)) {
       this.props.resCallback();
       this.setState({
         isAreaShow: false,
