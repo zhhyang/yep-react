@@ -4,6 +4,7 @@
   position: fixed;
   width: 100%;
   top: 40%;
+  left: 0;
   z-index: $toastZIndex;
   font-size: 32px;
   text-align: center;
@@ -20,6 +21,7 @@
     border-radius: 12px;
     color: #fff;
     min-width: 208px;
+    max-width: 412px;
     background: rgba(0, 0, 0, .7);
     &-message{
 

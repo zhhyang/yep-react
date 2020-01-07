@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "description": "一套符合京东移动端设计规范的React组件库",
   "main": "lib",
   "module": "es",
@@ -13,7 +13,7 @@
     "dev:demo": "node scripts/demo-start.js",
     "watch-css-dist": "yep-tools watch",
     "dist": "yep-tools dist",
-    "clean": "rimraf lib es dist",
+    "clean": "rimraf lib es dist build demo-link",
     "prebuild-demo": "node scripts/generateDemo.js",
     "build-demo": "webpack --config scripts/webpack.demo.config.pro.js",
     "build-site": "webpack --config scripts/webpack.site.config.pro.js",

@@ -13,7 +13,7 @@ class Demo extends React.PureComponent {
     return (
       <Button
         onClick={() => {
-          Toast.show('This is a toast tips !!!');
+          Toast.show('这是一个特别特别特别特别特别长的提示!!!');
         }}
       >
         显示
