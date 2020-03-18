@@ -12,7 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <CountDown leftTime={5} overText="活动已结束" onEnd={() => Toast.show('活动结束了')} />
+        <CountDown leftTime={5.5} overText="活动已结束" onEnd={() => Toast.show('活动结束了')} />
       </div>
     );
   }

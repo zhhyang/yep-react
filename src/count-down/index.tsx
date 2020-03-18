@@ -64,7 +64,7 @@ export default class CountDown extends React.PureComponent<CountDownProps, Count
 
   constructor(props: CountDownProps) {
     super(props);
-    this.state = {seconds: props.leftTime};
+    this.state = {seconds: Math.round(props.leftTime)};
     this.countDown = this.countDown.bind(this);
     this.renderText = this.renderText.bind(this);
   }
@@ -83,7 +83,7 @@ export default class CountDown extends React.PureComponent<CountDownProps, Count
     this.setState({
       seconds,
     });
-    if (seconds === 0) {
+    if (seconds <= 0) {
       TimerService.unregister(this.countDown);
       onEnd();
     }

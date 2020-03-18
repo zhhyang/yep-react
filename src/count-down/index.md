@@ -8,14 +8,14 @@ desc: 倒计时组件
 
 <DEMO>
 
-| 参数      | 说明                         | 类型     | 默认值         |
-| --------- | ---------------------------- | -------- | -------------- |
-| prefixCls | 组件 class 前缀              | string   | Yep-count-down |
-| style     | 组件样式                     | object   | {}             |
-| className | 组件额外样式                 | string   | -              |
-| leftTime  | 需要倒计时的时间，单位为秒。 | number   | -              |
-| onEnd     | 倒计时结束时的回调函数       | function | () => null     |
-| overText  | 倒计时结束后展示文案。       | string   | 活动结束       |
+| 参数      | 说明                                                         | 类型     | 默认值         |
+| --------- | ------------------------------------------------------------ | -------- | -------------- |
+| prefixCls | 组件 class 前缀                                              | string   | Yep-count-down |
+| style     | 组件样式                                                     | object   | {}             |
+| className | 组件额外样式                                                 | string   | -              |
+| leftTime  | 需要倒计时的时间，单位为秒。如果不是整数，会按照四舍五入取整 | number   | -              |
+| onEnd     | 倒计时结束时的回调函数                                       | function | () => null     |
+| overText  | 倒计时结束后展示文案。                                       | string   | 活动结束       |
 
 ## children props
 
