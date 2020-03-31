@@ -7,7 +7,7 @@ export interface NotificationProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   icon?: string;
-  message: string;
+  message: string | React.ReactNode;
   bottom?: boolean;
   duration?: number;
   onClose: () => {};

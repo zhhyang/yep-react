@@ -24,10 +24,10 @@ Toast.info(message, duration, onClose, mask)
 
 Toast.loading(message, duration, onClose, mask)
 
-| 参数     | 说明                   | 类型   | 默认值  |
-| -------- | ---------------------- | ------ | ------- |
-| message  | 提示内容               | string | -       |
-| duration | 自动关闭的延时，单位秒 | number | 3       |
-| onClose  | 关闭后回调             | func   | () =>{} |
+| 参数     | 说明                   | 类型              | 默认值  |
+| -------- | ---------------------- | ----------------- | ------- |
+| message  | 提示内容               | string、ReactNode | -       |
+| duration | 自动关闭的延时，单位秒 | number            | 3       |
+| onClose  | 关闭后回调             | func              | () =>{} |
 
 duration: Toast.SHORT 3s Toast.LONG 8s
