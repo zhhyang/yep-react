@@ -27,6 +27,10 @@ $effect-duration: 0.3s;
       padding: 48px 36px 48px 36px;
     }
   }
+  &-icon-close{
+    width: $icon-size-sm;
+    height: $icon-size-sm;
+  }
 
   &-content {
     height: $area-content-height;
@@ -43,6 +47,9 @@ $effect-duration: 0.3s;
       display: flex;
       align-items: center;
       .Yep-area-picker-area--selected {
+        font-size: 30px;
+        width: $icon-size-xxs;
+        height: $icon-size-xxs;
         margin-right: 16px;
         color: $brand-primary;
       }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import Icon from '../icon';
+import Icon from '@jdcfe/yep-icons';
 
 export interface AvatarProps {
   children: React.ReactNode;
@@ -39,7 +39,7 @@ function Avatar(props: AvatarProps) {
   if (isString) {
     children = `${children}`.slice(0, 1);
   } else if (icon) {
-    children = <Icon type={icon} />;
+    children = <Icon component={icon} />;
   } else if (src) {
     children = <img src={src} />;
   }

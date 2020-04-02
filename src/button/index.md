@@ -16,5 +16,4 @@ desc: 通用按钮组件，点击触发一个操作
 | size      | 按钮大小,可选值为 sm、md                          | string  | -       |
 | onClick   | 点击按钮的点击回调函数                            | func    | -       |
 | inline    | 是否设置为行内按钮                                | boolean | false   |
-| icon      | 可以是 Icon 组件里内置的某个 icon 的 type 值      | string  | -       |
 | submit    | 是否是提交按钮，如果是，则是 button type=‘submit’ | boolean | false   |

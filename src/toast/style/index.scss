@@ -23,11 +23,26 @@
     min-width: 208px;
     max-width: 412px;
     background: rgba(0, 0, 0, .7);
+    &-icon{
+      font-size: $icon-size-lg;
+      &-jiazai {
+        font-size: 30px;
+        width: $icon-size-lg;
+        height: $icon-size-lg;
+        animation: cirle-anim 1s linear infinite;
+      }
+
+      @keyframes cirle-anim {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
     &-message{
 
       //padding: 10px 30px;
     }
-    .Yep-icon + &-message{
+    .Yepicon + &-message{
       margin-top: 25px;
     }
   }

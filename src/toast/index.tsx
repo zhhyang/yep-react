@@ -1,5 +1,9 @@
 import * as React from 'react';
+import CheckCircleOutlined from '@jdcfe/yep-icons/CheckCircleOutlined';
+import TipOutlined from '@jdcfe/yep-icons/TipOutlined';
+import Icon from '@jdcfe/yep-icons';
 import Notification from './Notification';
+import JiaZai from '../icon/svgs/JiaZai';
 
 let messageInstance: any = null;
 
@@ -45,12 +49,12 @@ export default {
     return notice(message, null, duration, onClose);
   },
   success(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, 'lego_duohao1', duration, onClose);
+    return notice(message, <CheckCircleOutlined />, duration, onClose);
   },
   fail(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, 'shop-shuoming', duration, onClose);
+    return notice(message, <TipOutlined />, duration, onClose);
   },
   loading(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, 'lego_jiazai', duration, onClose);
+    return notice(message, <Icon component={JiaZai} className={'Yep-toast-notice-icon-jiazai'} />, duration, onClose);
   },
 };

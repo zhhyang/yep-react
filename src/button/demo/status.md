@@ -16,9 +16,9 @@ class Demo extends React.PureComponent {
           下一步，上传医师认证相关证书
         </Button>
         <WhiteSpace />
-        <Button icon="lego_jiazai">Loading Button</Button>
+        <Button>Loading Button</Button>
         <WhiteSpace />
-        <Button icon="delete">with icon</Button>
+        <Button>with icon</Button>
       </div>
     );
   }

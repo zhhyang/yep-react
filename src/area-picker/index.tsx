@@ -1,9 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Popup from '../popup';
-import Icon from '../icon';
+import Icon from '@jdcfe/yep-icons';
+import CheckOutlined from '@jdcfe/yep-icons/CheckOutlined';
 import Tabs from '../tabs';
 import TabBar from './TabBar';
+import CloseO from '../icon/svgs/CloseO';
 const {TabPanel} = Tabs;
 
 export interface Data {}
@@ -118,7 +120,7 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
         <div className={cls} style={style}>
           <div className={`${prefixCls}-title-wrapper`}>
             <h1 className={`${prefixCls}-title`}>{title}</h1>
-            <Icon type={'close_o'} size={'sm'} onClick={onCancel} />
+            <Icon component={CloseO} className={`${prefixCls}-icon-close`} onClick={onCancel} />
           </div>
 
           <Tabs
@@ -134,7 +136,7 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
                     {item.map((city: any) => (
                       <li key={keyExtractor(city, index)} onClick={() => this.onClick(city, index)}>
                         {tabs[index] && keyExtractor(tabs[index]) === keyExtractor(city) && (
-                          <Icon className={`${prefixCls}-area--selected`} type={'shop-baocun'} size={'xxs'} />
+                          <CheckOutlined className={`${prefixCls}-area--selected`} />
                         )}
                         {nameExtractor(city)}
                       </li>

@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {CSSTransition} from 'react-transition-group';
 import classNames from 'classnames';
-import Icon from '../icon';
 export interface NotificationProps {
   prefixCls?: string;
   style?: React.CSSProperties;
@@ -81,7 +80,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
       <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit={true}>
         <div className={cls} style={style}>
           <div className={`${prefixCls}-notice`}>
-            {icon && <Icon type={icon} size="lg" />}
+            {icon && <div className={`${prefixCls}-notice-icon`}>{icon}</div>}
             <div className={`${prefixCls}-notice-message`}>{message}</div>
           </div>
         </div>
