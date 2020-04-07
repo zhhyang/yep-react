@@ -158,6 +158,7 @@ class Demo extends React.PureComponent {
           cols={1}
           show={this.state.show}
           onCancel={this.handleToggleShow}
+          defaultSelectedValue={['主治医师']}
           onOk={value => {
             this.handleToggleShow();
             alert(value);
@@ -176,6 +177,7 @@ class Demo extends React.PureComponent {
           hasCancel
           space
           data={city}
+          defaultSelectedValue={[2]}
           onChange={v => {
             this.setState({pickerValue: v});
             console.log(v);
