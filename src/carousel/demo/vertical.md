@@ -16,7 +16,7 @@ class Demo extends React.PureComponent {
           <i>拍卖</i>
           <s className="">头条</s>
         </div>
-        <Carousel vertical={true} autoPlay={3000} isInfinite style={{height: '.6rem'}} dots={false}>
+        <Carousel vertical={true} autoPlay={3000} isInfinite dots={false}>
           <div className="news-item">
             <i>热</i>母亲节走心好礼特惠精选，放价到底！
           </div>

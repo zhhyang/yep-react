@@ -1,0 +1,32 @@
+import * as React from 'react';
+import {ReactNode} from 'react';
+export interface CarouselProps {
+  prefixCls: string;
+  style: React.CSSProperties;
+  autoPlay: false | number;
+  className: string;
+  initPage: number;
+  renderPage: (current: number, total: number) => ReactNode;
+  onTransitionEnd: (index: number, item?: any) => void;
+  onChange: (index: number, item?: any) => void;
+  isBounces?: boolean;
+  isInfinite?: boolean;
+  distance: number;
+  dots?: boolean;
+  dotsClass: string;
+  vertical: boolean;
+  showPager?: boolean;
+  children?: React.ReactNodeArray;
+  onClickItem?: (index: number, item: any) => void;
+  verticalSwipe?: 'natural' | 'standard';
+  width?: number | string;
+  dynamicHeight?: boolean;
+  centerMode?: boolean;
+  centerSlidePercentage: number;
+  onSwipeStart: (event: any) => void;
+  onSwipeEnd: (event: any) => void;
+  onSwipeMove: (event: any) => void;
+  renderIndicator: (onClickHandler: any, isSelected: boolean, index: number, label: any) => ReactNode;
+  renderItem: (item: any, xx: any) => ReactNode;
+  transitionTime: number;
+}
