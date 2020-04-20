@@ -1,7 +1,7 @@
 ---
-order: 5
-title: 显示分页
-description: 显示分页样式
+order: 7
+title: centerMode
+description: centerMode
 ---
 
 ```js
@@ -12,7 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Carousel isInfinite={true} showPager>
+        <Carousel centerMode>
           <div>
             <img src="//m.360buyimg.com/babel/jfs/t23224/35/1026004507/74414/35929bac/5b4d885bN0cdaa9f4.jpg" />
           </div>

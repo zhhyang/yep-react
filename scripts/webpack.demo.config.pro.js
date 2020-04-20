@@ -51,7 +51,7 @@ const config = {
               ident: 'postcss',
               plugins: () => [
                 autoprefixer({
-                  browsers: [
+                  overrideBrowserslist: [
                     '>1%',
                     'last 4 versions',
                     'Firefox ESR',

@@ -35,7 +35,7 @@ const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
           require('postcss-flexbugs-fixes'),
           autoprefixer({
             flexbox: 'no-2009',
-            browsers: [
+            overrideBrowserslist: [
               'iOS >= 7',
               'Android >= 4.1', //移动端项目，参考WeUI的配置
             ],
