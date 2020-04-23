@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import Icon from '@jdcfe/yep-icons';
+import Icon from '@jdcfe/icons-react';
 
 export interface AvatarProps {
   children: React.ReactNode;

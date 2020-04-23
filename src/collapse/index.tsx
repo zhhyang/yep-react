@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import DownOutlined from '@jdcfe/icons-react/DownOutlined';
 import CollapseGroup from './CollapseGroup';
 
 export interface CollapseProps {
@@ -69,9 +69,7 @@ export default class Collapse extends React.PureComponent<CollapseProps, Collaps
       <div className={cls} style={style}>
         <div className={`${prefixCls}-title`} onClick={this.handleToggle}>
           <span>{title}</span>
-          <Icon
-            type={'arrow-down-hollow'}
-            size={'xxs'}
+          <DownOutlined
             className={`${isOpen ? `${prefixCls}-show-arrow` : `${prefixCls}-hide-arrow`} ${prefixCls}-arrow`}
           />
         </div>

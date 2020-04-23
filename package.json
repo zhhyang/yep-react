@@ -138,7 +138,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@jdcfe/yep-gesture": "^0.0.3",
-    "@jdcfe/yep-icons": "^1.0.1",
+    "@jdcfe/icons-react": "^1.1.0",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",

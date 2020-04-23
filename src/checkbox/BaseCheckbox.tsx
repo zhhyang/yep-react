@@ -1,6 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import CircleOutlined from '@jdcfe/icons-react/CircleOutlined';
+import CircleTwoTone from '@jdcfe/icons-react/CircleTwoTone';
+import CheckCircleFilled from '@jdcfe/icons-react/CheckCircleFilled';
 
 export interface BaseCheckboxProps {
   prefixCls?: string;
@@ -150,7 +152,15 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
           value={value}
           {...globalProps}
         />
-        <Icon type={checked ? type : 'circle'} color={checked ? '' : '#8c8c8c'} className={`${prefixCls}-inner`} />
+        {checked ? (
+          type === 'checkbox' ? (
+            <CheckCircleFilled className={`${prefixCls}-inner`} style={{color: '#F0250F'}} />
+          ) : (
+            <CircleTwoTone style={{color: '#F0250F'}} className={`${prefixCls}-inner`} />
+          )
+        ) : (
+          <CircleOutlined className={`${prefixCls}-inner`} style={{color: '#8c8c8c'}} />
+        )}
         <span className={`${prefixCls}-label`}>{label}</span>
       </span>
     );

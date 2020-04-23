@@ -5,7 +5,7 @@ import Input from './Input';
 import noop from '../_utils/noop';
 import {InputItemPropsType} from './types';
 import {omit} from 'lodash';
-import CloseCircleOutlined from '@jdcfe/yep-icons/CloseCircleOutlined';
+import CloseCircleOutlined from '@jdcfe/icons-react/CloseCircleOutlined';
 
 type State = {
   value?: string | number;

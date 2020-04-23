@@ -1,7 +1,7 @@
 import * as React from 'react';
-import CheckCircleOutlined from '@jdcfe/yep-icons/CheckCircleOutlined';
-import TipOutlined from '@jdcfe/yep-icons/TipOutlined';
-import Icon from '@jdcfe/yep-icons';
+import CheckCircleOutlined from '@jdcfe/icons-react/CheckCircleOutlined';
+import TipOutlined from '@jdcfe/icons-react/TipOutlined';
+import Icon from '@jdcfe/icons-react';
 import Notification from './Notification';
 import JiaZai from '../icon/svgs/JiaZai';
 

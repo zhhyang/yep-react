@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Popup from '../popup';
-import Icon from '@jdcfe/yep-icons';
-import CheckOutlined from '@jdcfe/yep-icons/CheckOutlined';
+import Icon from '@jdcfe/icons-react';
+import CheckOutlined from '@jdcfe/icons-react/CheckOutlined';
 import Tabs from '../tabs';
 import TabBar from './TabBar';
 import CloseO from '../icon/svgs/CloseO';

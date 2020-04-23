@@ -1,3 +1,3 @@
 import '../../style';
-import '../../icon';
+import '../../icon/style';
 import './index.scss';
