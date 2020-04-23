@@ -14,20 +14,25 @@ desc: 一种轻量级反馈/提示，可以用来显示不会打断用户操作�
 
 API
 
-Toast.show(message, duration, onClose, mask)
+- `Toast.show(message, duration, onClose, mask)`
 
-Toast.success(message, duration, onClose, mask)
+- `Toast.success(message, duration, onClose, mask)`
 
-Toast.fail(message, duration, onClose, mask)
+- `Toast.fail(message, duration, onClose, mask)`
 
-Toast.info(message, duration, onClose, mask)
+- `Toast.info(message, duration, onClose, mask)`
 
-Toast.loading(message, duration, onClose, mask)
+- `Toast.loading(message, duration, onClose, mask)`
 
-| 参数     | 说明                   | 类型              | 默认值  |
-| -------- | ---------------------- | ----------------- | ------- |
-| message  | 提示内容               | string、ReactNode | -       |
-| duration | 自动关闭的延时，单位秒 | number            | 3       |
-| onClose  | 关闭后回调             | func              | () =>{} |
+| 参数     | 说明                             | 类型              | 默认值    |
+| -------- | -------------------------------- | ----------------- | --------- |
+| message  | 提示内容                         | string、ReactNode | -         |
+| duration | 自动关闭的延时，单位秒           | number            | 3         |
+| onClose  | 关闭后回调                       | func              | () =>void |
+| mask     | 是否需要显示透明遮罩防止滑动穿透 | boolean           | false     |
 
-duration: Toast.SHORT 3s Toast.LONG 8s
+`duration: Toast.SHORT 3s Toast.LONG 8s`
+
+提供了全局配置方法:
+
+- `Toast.config({duration,mask})`
