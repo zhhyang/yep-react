@@ -68,6 +68,12 @@ export default {
   loading(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
     return notice(message, 'lego_jiazai', duration, onClose, mask);
   },
+  hide() {
+    if (messageInstance) {
+      messageInstance.destroy();
+      messageInstance = null;
+    }
+  },
   config(option: Partial<IToastOptions> = {}) {
     const {duration = SHORT, mask} = option;
     options.duration = duration;

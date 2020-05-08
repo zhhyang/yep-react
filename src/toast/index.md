@@ -24,6 +24,8 @@ API
 
 - `Toast.loading(message, duration, onClose, mask)`
 
+- `Toast.hide()` // 关闭 Toast 方法
+
 | 参数     | 说明                             | 类型              | 默认值    |
 | -------- | -------------------------------- | ----------------- | --------- |
 | message  | 提示内容                         | string、ReactNode | -         |

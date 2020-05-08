@@ -7,7 +7,7 @@ description:
 ```js
 import React from 'react';
 import {Toast, Button} from '@jdcfe/yep-react';
-Toast.config({mask: true});
+//Toast.config({mask: false});
 class Demo extends React.PureComponent {
   render() {
     return (
