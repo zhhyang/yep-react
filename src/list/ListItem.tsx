@@ -1,25 +1,24 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import TouchFeedback from '../touch-feedback';
-import Icon from '../icon';
+import RightOutlined from '@jdcfe/icons-react/RightOutlined';
 export interface ListItemProps {
   prefixCls?: string;
   className?: string;
   role?: string;
   style?: React.CSSProperties;
   onClick?: () => void;
-  align?: 'top'| 'middle'| 'bottom';
+  align?: 'top' | 'middle' | 'bottom';
   disabled?: boolean;
   multipleLine?: boolean;
-  thumb?: React.ReactNode| string;
+  thumb?: React.ReactNode | string;
   extra?: React.ReactNode;
-  icon?: React.ReactNode| string;
+  icon?: React.ReactNode | boolean;
   wrap?: boolean;
   activeStyle?: React.CSSProperties;
   error?: boolean;
 }
-export default class ListItem extends React.PureComponent<ListItemProps,any> {
-
+export default class ListItem extends React.PureComponent<ListItemProps, any> {
   static defaultProps = {
     prefixCls: 'Yep-list',
     align: 'middle',
@@ -85,7 +84,7 @@ export default class ListItem extends React.PureComponent<ListItemProps,any> {
             {extra !== undefined && <div className={`${prefixCls}-extra`}>{extra}</div>}
             {icon && (
               <div className={arrowCls} aria-hidden="true">
-                {typeof icon === 'string' ? <Icon type={icon} size="xxs" /> : icon}
+                {typeof icon === 'boolean' ? <RightOutlined className="Yep-icon-xxs" /> : icon}
               </div>
             )}
           </div>
@@ -95,7 +94,7 @@ export default class ListItem extends React.PureComponent<ListItemProps,any> {
   }
 }
 
-export const Brief:React.FunctionComponent<BriefProps> = ({prefixCls, style, children}) => (
+export const Brief: React.FunctionComponent<BriefProps> = ({prefixCls, style, children}) => (
   <div className={`${prefixCls}-brief`} style={style}>
     {children}
   </div>

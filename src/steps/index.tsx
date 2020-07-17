@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Icon from '../icon';
 import classNames from 'classnames';
 
 interface StepsProps {
@@ -9,7 +8,7 @@ interface StepsProps {
   stepNum: number;
   titles: string[];
   desc: string[];
-  icon?: string[];
+  icon?: React.ReactElement[];
 }
 
 export default class Steps extends React.Component<StepsProps> {
@@ -31,11 +30,9 @@ export default class Steps extends React.Component<StepsProps> {
     if (icon && icon.length) {
       return (
         <span className={`${prefixCls}-num`}>
-          <Icon
-            type={stepNum > key ? icon[0] : stepNum < key ? icon[1] : icon[2]}
-            color="#d1371d"
-            style={{width: '14px'}}
-          />
+          {React.cloneElement(stepNum > key ? icon[0] : stepNum < key ? icon[1] : icon[2], {
+            className: 'Yep-steps-icon',
+          })}
         </span>
       );
     } else {

@@ -3,6 +3,12 @@
 .Yep-steps {
   background: #ffffff;
   position: relative;
+
+  &-icon {
+    width: 28px;
+    color: #d1371d;
+  }
+
   &-item {
     flex: 1;
     display: flex;
