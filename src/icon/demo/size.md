@@ -6,22 +6,31 @@ description:
 
 ```js
 import React from 'react';
-import {Icon} from '@jdcfe/yep-react';
 
 class Demo extends React.PureComponent {
   render() {
-    const icons = ['cart', 'cart', 'cart', 'cart', 'cart'];
-
-    let size = ['xxs', 'xs', 'sm', 'md', 'lg'];
-
     return (
       <div className="iconContainer">
-        {icons.map((icon, index) => (
-          <div className="iconItem">
-            <Icon type={icon} key={icon} color="#588ceb" size={size[index]} />
-            <h6 className="iconName">{icon}</h6>
-          </div>
-        ))}
+        <div className="iconItem">
+          <CircleOutlined className="Yep-icon-lg" />
+          <h6 className="iconName">lg</h6>
+        </div>
+        <div className="iconItem">
+          <CircleOutlined className="Yep-icon-md" />
+          <h6 className="iconName">md</h6>
+        </div>
+        <div className="iconItem">
+          <CircleOutlined className="Yep-icon-sm" />
+          <h6 className="iconName">sm</h6>
+        </div>
+        <div className="iconItem">
+          <CircleOutlined className="Yep-icon-xs" />
+          <h6 className="iconName">xs</h6>
+        </div>
+        <div className="iconItem">
+          <CircleOutlined className="Yep-icon-xxs" />
+          <h6 className="iconName">xxs</h6>
+        </div>
       </div>
     );
   }

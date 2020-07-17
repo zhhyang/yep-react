@@ -50,8 +50,8 @@ class Demo extends React.Component {
       plugins: ['proposal-class-properties', 'proposal-object-rest-spread'],
     }).code;
 
-    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp', 'ComponentCard'];
-    const argv = [this, React, ReactDOM, PropTypes, jsonp, ComponentCard];
+    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp', 'ComponentCard', 'IconComponents'];
+    const argv = [this, React, ReactDOM, PropTypes, jsonp, ComponentCard, IconComponents];
 
     Object.keys(Components).forEach(name => {
       args.push(name);
