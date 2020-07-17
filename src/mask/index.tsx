@@ -13,7 +13,7 @@ export interface MaskProps {
    *
    */
   transparent?: boolean;
-  onClick:(e?:any) => void
+  onClick?: (e?: any) => void;
 }
 
 /**

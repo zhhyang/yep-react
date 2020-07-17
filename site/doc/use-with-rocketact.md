@@ -73,30 +73,13 @@ ReactDOM.render(
 );
 ```
 
-根目录修改 `postcss.config.js`文件
+## 安装 rocketact-plugin-yep-react
 
 ```bash
-$ yarn add -D  postcss-pxtorem
+$ yarn add -D rocketact-plugin-yep-react
 ```
 
-```js
-const autoprefixer = require('autoprefixer');
-const postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
-const pxtorem = require('postcss-pxtorem');
-module.exports = {
-  ident: 'postcss',
-  plugins: [
-    postcssFlexbugsFixes,
-    autoprefixer({
-      flexbox: 'no-2009',
-    }),
-    pxtorem({
-      rootValue: 100,
-      propWhiteList: [],
-    }),
-  ],
-};
-```
+## 修改 app.html
 
 修改 `src/pages/app.html`,在 head 中添加如下
 
@@ -119,30 +102,8 @@ module.exports = {
 </script>
 ```
 
-### 使用 babel-plugin-import 实现按需加载
-
-[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 是一个用于按需加载组件代码和样式的 babel 插件，现在我们尝试安装它并在项目 package.json 新增 babel 配置。
-
-```bash
-$ yarn add -D babel-plugin-import
-```
-
-```package.json
-  "babel": {
-    "plugins": [
-      [
-        "import",
-        {
-          "libraryName": "@jdcfe/yep-react",
-          "style": true
-        },
-      ]
-    ]
-  }
-```
-
 好了，现在你应该能看到页面上已经有了 Yep-React 的按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 rocketact [官方文档](https://rocketact.js.org/)。
 
-### 在线示例
+## 在线示例
 
 - [rockact-yep-react](https://github.com/jdf2e/rockact-yep-react)

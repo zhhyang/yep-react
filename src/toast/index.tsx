@@ -2,12 +2,21 @@ import * as React from 'react';
 import CheckCircleOutlined from '@jdcfe/icons-react/CheckCircleOutlined';
 import TipOutlined from '@jdcfe/icons-react/TipOutlined';
 import Icon from '@jdcfe/icons-react';
-import Notification from './Notification';
 import JiaZai from '../icon/svgs/JiaZai';
+import Notification, {NotificationProps} from './Notification';
 
 let messageInstance: any = null;
+interface IToastOptions {
+  duration: number;
+  mask: boolean;
+}
+const SHORT = 3;
+const options: IToastOptions = {
+  duration: SHORT,
+  mask: false,
+};
 
-function getInstance(props: any, callback: (notification: any) => void) {
+function getInstance(props: NotificationProps, callback: (notification: any) => void) {
   if (messageInstance) {
     messageInstance.destroy();
     messageInstance = null;
@@ -18,7 +27,13 @@ function getInstance(props: any, callback: (notification: any) => void) {
   });
 }
 
-function notice(message: string | React.ReactNode, icon: any, duration: number = 3, onClose?: () => void) {
+function notice(
+  message: string | React.ReactNode,
+  icon: any,
+  duration = options.duration,
+  onClose: (() => void) | undefined | null,
+  mask = options.mask
+) {
   function close() {
     if (messageInstance) {
       messageInstance.destroy();
@@ -35,6 +50,7 @@ function notice(message: string | React.ReactNode, icon: any, duration: number =
       icon,
       duration,
       onClose: close,
+      mask,
     },
     (notification: any) => {
       messageInstance = notification;
@@ -43,18 +59,37 @@ function notice(message: string | React.ReactNode, icon: any, duration: number =
 }
 
 export default {
-  SHORT: 3,
+  SHORT,
   LONG: 8,
-  show(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, null, duration, onClose);
+  show(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
+    return notice(message, null, duration, onClose, mask);
   },
-  success(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, <CheckCircleOutlined />, duration, onClose);
+  success(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
+    return notice(message, <CheckCircleOutlined />, duration, onClose, mask);
   },
-  fail(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, <TipOutlined />, duration, onClose);
+  fail(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
+    return notice(message, <TipOutlined />, duration, onClose, mask);
   },
-  loading(message: string | React.ReactNode, duration?: number, onClose?: () => void) {
-    return notice(message, <Icon component={JiaZai} className={'Yep-toast-notice-icon-jiazai'} />, duration, onClose);
+  loading(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
+    return notice(
+      message,
+      <Icon component={JiaZai} className={'Yep-toast-notice-icon-jiazai'} />,
+      duration,
+      onClose,
+      mask
+    );
+  },
+  hide() {
+    if (messageInstance) {
+      messageInstance.destroy();
+      messageInstance = null;
+    }
+  },
+  config(option: Partial<IToastOptions> = {}) {
+    const {duration = SHORT, mask} = option;
+    options.duration = duration;
+    if (mask === true) {
+      options.mask = true;
+    }
   },
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {CSSTransition} from 'react-transition-group';
 import classNames from 'classnames';
+import Mask from '../mask';
 export interface NotificationProps {
   prefixCls?: string;
   style?: React.CSSProperties;
@@ -9,8 +10,9 @@ export interface NotificationProps {
   message: string | React.ReactNode;
   bottom?: boolean;
   duration?: number;
-  onClose: () => {};
+  onClose: () => void;
   className?: string;
+  mask?: boolean;
 }
 
 interface State {
@@ -24,9 +26,10 @@ export default class Notification extends React.PureComponent<NotificationProps,
     //show:false,
     bottom: false,
     duration: 1.5,
+    mask: false,
   };
   private closeTimer: number;
-  static newInstance: (properties: any, callback: any) => void;
+  static newInstance: (properties: NotificationProps, callback: any) => void;
   constructor(props: NotificationProps) {
     super(props);
     this.close = this.close.bind(this);
@@ -71,20 +74,27 @@ export default class Notification extends React.PureComponent<NotificationProps,
   }
 
   render() {
-    const {className, prefixCls, style, icon, message, bottom} = this.props;
+    const {className, prefixCls, style, icon, message, bottom, mask} = this.props;
     const {show} = this.state;
     const cls = classNames(prefixCls, className, `${prefixCls}-mask`, {
       [`${prefixCls}-bottom`]: bottom,
     });
     return (
-      <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit={true}>
-        <div className={cls} style={style}>
-          <div className={`${prefixCls}-notice`}>
-            {icon && <div className={`${prefixCls}-notice-icon`}>{icon}</div>}
-            <div className={`${prefixCls}-notice-message`}>{message}</div>
+      <>
+        {mask && (
+          <CSSTransition in={show} timeout={300} classNames={'fade'} unmountOnExit={true}>
+            <Mask transparent={true} />
+          </CSSTransition>
+        )}
+        <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit={true}>
+          <div className={cls} style={style}>
+            <div className={`${prefixCls}-notice`}>
+              {icon && <div className={`${prefixCls}-notice-icon`}>{icon}</div>}
+              <div className={`${prefixCls}-notice-message`}>{message}</div>
+            </div>
           </div>
-        </div>
-      </CSSTransition>
+        </CSSTransition>
+      </>
     );
   }
 }

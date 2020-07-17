@@ -13,14 +13,13 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <p>使用dayStr, hourStr, minuteStr, secondStr字段</p>
-        <CountDown
-          leftTime={100000}
-          renderText={({dayStr, hourStr, minuteStr, secondStr}) => (
+        <CountDown leftTime={100000}>
+          {({dayStr, hourStr, minuteStr, secondStr}) => (
             <p>
               倒计时剩余： {dayStr}天{hourStr}小时{minuteStr}分钟{secondStr}秒
             </p>
           )}
-        />
+        </CountDown>
       </div>
     );
   }
