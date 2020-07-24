@@ -13,6 +13,14 @@ title: 更新日志
 
 ---
 
+### 1.0.0-beta.1
+
+`2020-07-24`
+
+- **Feature**
+
+  - 🌟 Icon 组件重构，封装单独的 svg 图标库[@jdcfe/icon-react](https://www.npmjs.com/package/@jdcfe/icons-react)
+
 ### 1.0.0-alpha.15
 
 `2020-04-27`
