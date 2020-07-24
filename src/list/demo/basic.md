@@ -15,7 +15,7 @@ class Demo extends React.PureComponent {
       <div>
         <List renderHeader={() => 'Basic Style'}>
           <Item extra={'extra content'}>Title</Item>
-          <Item icon={'arrow-right'}>Title</Item>
+          <Item icon>Title</Item>
         </List>
       </div>
     );

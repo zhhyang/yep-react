@@ -23,21 +23,16 @@
     min-width: 208px;
     max-width: 412px;
     background: rgba(0, 0, 0, .7);
+    &-icon{
+      font-size: $icon-size-lg;
+    }
     &-message{
 
       //padding: 10px 30px;
     }
-    .Yep-icon + &-message{
+    &-icon + &-message{
       margin-top: 25px;
     }
-  }
-  & .Yep-icon{
-    /*&.shop-zhengque{
-      color: #1aad19;
-    }
-    &.shop-zhuyi{
-      color: $brand-primary;
-    }*/
   }
 }
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import RemindOutlined from '@jdcfe/icons-react/RemindOutlined';
+import CloseOutlined from '@jdcfe/icons-react/CloseOutlined';
 export interface MessageProps {
   prefixCls?: string;
   className?: string;
@@ -93,9 +94,9 @@ export default class Message extends React.PureComponent<MessageProps, any> {
     return (
       <div className={wrapperCls} style={style}>
         <div className={box}>
-          {icon && <Icon type="bell" />}
+          {icon && <RemindOutlined className={`${prefixCls}-icon-remind`} />}
           <div className="message-text">{children}</div>
-          {closeable && <Icon onClick={this.closeMessage} type="close" />}
+          {closeable && <CloseOutlined onClick={this.closeMessage} className={`${prefixCls}-icon-close`} />}
         </div>
       </div>
     );

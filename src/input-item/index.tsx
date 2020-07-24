@@ -4,9 +4,8 @@ import classNames from 'classnames';
 import Input from './Input';
 import noop from '../_utils/noop';
 import {InputItemPropsType} from './types';
-import TouchFeedback from '../touch-feedback';
 import {omit} from 'lodash';
-import Icon from '../icon';
+import CloseCircleOutlined from '@jdcfe/icons-react/CloseCircleOutlined';
 
 type State = {
   value?: string | number;
@@ -16,8 +15,8 @@ type State = {
 
 class InputItem extends React.PureComponent<InputItemPropsType, State> {
   inputRef: Input | null;
-  debounceTimeout:any;
-  constructor(props:InputItemPropsType) {
+  debounceTimeout: any;
+  constructor(props: InputItemPropsType) {
     super(props);
     this.state = {
       value: props.defaultValue || props.value || '',
@@ -45,7 +44,7 @@ class InputItem extends React.PureComponent<InputItemPropsType, State> {
     updatePlaceholder: false,
   };
 
-  componentWillReceiveProps(nextProps:any) {
+  componentWillReceiveProps(nextProps: any) {
     if ('placeholder' in nextProps && !nextProps.updatePlaceholder) {
       this.setState({
         placeholder: nextProps.placeholder,
@@ -216,11 +215,9 @@ class InputItem extends React.PureComponent<InputItemPropsType, State> {
             />
           </div>
           {clear && editable && !disabled && (value && `${value}`.length > 0) ? (
-            <TouchFeedback activeClassName={`${prefixCls}-clear-active`}>
-              <div className={`${prefixCls}-clear`} onClick={this.clearInput}>
-                {React.isValidElement(clearIcon) ? clearIcon : <Icon type={'close'} size={'xxs'} color={'#999BAA'} />}
-              </div>
-            </TouchFeedback>
+            <div className={`${prefixCls}-clear`} onClick={this.clearInput}>
+              {React.isValidElement(clearIcon) ? clearIcon : <CloseCircleOutlined style={{color: '#999BAA'}} />}
+            </div>
           ) : null}
           {error ? <div className={`${prefixCls}-error-extra`} onClick={onErrorClick} /> : null}
           {extra !== '' ? (

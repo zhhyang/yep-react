@@ -11,6 +11,7 @@
     "test": "jest",
     "dev:site": "node scripts/start.js",
     "dev:demo": "node scripts/demo-start.js",
+    "dev:demo:lazy": "cross-env LAZY=true node scripts/demo-start.js",
     "watch-css-dist": "yep-tools watch",
     "dist": "yep-tools dist",
     "clean": "rimraf lib es dist build demo-link",
@@ -138,12 +139,14 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@jdcfe/yep-gesture": "^0.0.3",
+    "@jdcfe/icons-react": "^1.1.0",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",
     "lottie-web": "^5.4.4",
     "raf": "^3.4.0",
-    "react-transition-group": "^2.3.1"
+    "react-transition-group": "^2.3.1",
+    "warning": "^4.0.3"
   },
   "browserslist": [
     "iOS >= 7",

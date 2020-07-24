@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import BackOutlined from '@jdcfe/icons-react/BackOutlined';
 import noop from '../_utils/noop';
 export interface NavBarProps {
   prefixCls?: string;
@@ -20,9 +20,8 @@ export default class NavBar extends React.PureComponent<NavBarProps, any> {
   static defaultProps = {
     prefixCls: 'Yep-nav-bar',
     style: {},
-    leftIcon: <Icon type="arrow-back" size="xs" />,
+    leftIcon: <BackOutlined className="Yep-icon-xs" />,
     closeContent: '关闭',
-    //rightContent: <Icon type="lego_gengduo" />,
     onLeftClick: noop,
     onCloseClick: noop,
     onRightClick: noop,

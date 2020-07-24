@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import TouchFeedback from '../touch-feedback';
-import Icon from '../icon';
+import MoreOutlined from '@jdcfe/icons-react/MoreOutlined';
 
 export interface CellItemProps {
   prefixCls?: string;
@@ -62,7 +62,7 @@ function CellItem(props: CellItemProps) {
           {children !== undefined && <div className={`${prefixCls}-content`}>{children}</div>}
           {icon && (
             <div className={`${prefixCls}-arrow`} aria-hidden="true">
-              <Icon type="more" size="xs" />
+              <MoreOutlined />
             </div>
           )}
         </div>

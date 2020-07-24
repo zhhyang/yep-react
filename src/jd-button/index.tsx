@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import ButtonGroup from './ButtonGroup';
-import Icon from '../icon';
 
 export interface ButtonProps {
   prefixCls?: string;
@@ -13,9 +12,7 @@ export interface ButtonProps {
   circle?: boolean;
   size?: string;
   onClick?: () => void;
-  icon?: string;
-  iconColor?: string;
-  iconSize?: 'xxs' | 'md';
+  icon?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -26,27 +23,11 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
     disabled: false,
     activeStyle: {},
     onClick: () => {},
-    iconColor: '#f0250f',
-    iconSize: 'xxs',
     type: 'primary',
   };
 
   render() {
-    const {
-      prefixCls,
-      className,
-      type,
-      disabled,
-      onClick,
-      icon,
-      style,
-      size,
-      children,
-      block,
-      circle,
-      iconColor,
-      iconSize,
-    } = this.props;
+    const {prefixCls, className, type, disabled, onClick, icon, style, size, children, block, circle} = this.props;
 
     const cls = classNames(prefixCls, className, {
       'btn-primary': type === 'primary',
@@ -63,7 +44,7 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
     });
     return (
       <button className={cls} aria-disabled={disabled} onClick={disabled ? undefined : onClick} style={style}>
-        {icon && <Icon type={icon} color={iconColor} size={iconSize} className={`${prefixCls}-icon`} />}
+        {icon}
         {children}
       </button>
     );

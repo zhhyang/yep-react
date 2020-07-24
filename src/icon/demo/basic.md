@@ -6,25 +6,17 @@ description:
 
 ```js
 import React from 'react';
-import {Icon} from '@jdcfe/yep-react';
-
-class Demo extends React.PureComponent {
-  render() {
-    const icons = ['close', 'bell', 'cart', 'more', 'close_o', 'check', 'circle', 'radio', 'checkbox', 'up'];
-
-    return (
-      <div>
-        <div className="iconContainer">
-          {icons.map(icon => (
-            <div className="iconItem">
-              <Icon type={icon} key={icon} color={'#d1371d'} className="iconStyle" />
-              <h6 className="iconName">{icon}</h6>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-}
+import * as IconComponents from '@jdcfe/icons-react/es/icons';
+console.log(IconComponents);
+const Demo = () => (
+  <div>
+    <div className="iconContainer">
+      {Object.keys(IconComponents).map(iconName => {
+        const Component = IconComponents[iconName];
+        return <Component style={{fontSize: '24px'}} key={iconName} />;
+      })}
+    </div>
+  </div>
+);
 ReactDOM.render(<Demo />, mountNode);
 ```

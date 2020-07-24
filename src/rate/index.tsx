@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import Star from '../icon/svgs/Star';
+import StarO from '../icon/svgs/StarO';
 
 export interface RateProps {
   prefixCls?: string;
@@ -15,8 +16,8 @@ export interface RateProps {
   renderStarIconHalf?: (index: number, value: any, name: any, id: any) => React.ReactNode;
 }
 
-interface State  {
-  value: number,
+interface State {
+  value: number;
 }
 
 export default class Rate extends React.PureComponent<RateProps, State> {
@@ -25,10 +26,10 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     style: {},
     starCount: 5,
     editing: true,
-    value:0,
+    value: 0,
   };
 
-  constructor(props:RateProps) {
+  constructor(props: RateProps) {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
@@ -38,7 +39,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     };
   }
 
-  componentWillReceiveProps(nextProps:RateProps) {
+  componentWillReceiveProps(nextProps: RateProps) {
     const {value} = nextProps;
 
     if (value != null && value !== this.state.value) {
@@ -46,7 +47,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     }
   }
 
-  onChange(inputValue:any) {
+  onChange(inputValue: any) {
     const {editing, value} = this.props;
 
     if (!editing) {
@@ -61,7 +62,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     this.setState({value: inputValue});
   }
 
-  onStarClick(index:number, value:any, name?:string, e?:any) {
+  onStarClick(index: number, value: any, name?: string, e?: any) {
     e.stopPropagation();
 
     const {onStarClick, editing} = this.props;
@@ -120,7 +121,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
     return starNodes.length ? starNodes : null;
   }
 
-  renderIcon(index:number, value:any, name?:string, id?:string) {
+  renderIcon(index: number, value: any, name?: string, id?: string) {
     const {renderStarIcon, renderStarIconHalf} = this.props;
 
     if (typeof renderStarIconHalf === 'function' && Math.ceil(value) === index && value % 1 !== 0) {
@@ -131,7 +132,7 @@ export default class Rate extends React.PureComponent<RateProps, State> {
       return renderStarIcon(index, value, name, id);
     }
 
-    return <Icon key={`icon_${id}`} type={value >= index ? 'star' : 'star-o'} />;
+    return value >= index ? <Star className="Yep-icon-xs" /> : <StarO className="Yep-icon-xs" />;
   }
 
   render() {

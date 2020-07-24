@@ -2,7 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 import ButtonGroup from './ButtonGroup';
 import TouchFeedback from '../touch-feedback';
-import Icon from '../icon';
 
 export interface ButtonProps {
   prefixCls?: string;
@@ -16,7 +15,6 @@ export interface ButtonProps {
   onClick?: () => void;
   activeClassName?: string;
   activeStyle?: React.CSSProperties;
-  icon?: string;
   children: React.ReactNode;
 }
 
@@ -37,7 +35,6 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
       submit,
       disabled,
       onClick,
-      icon,
       inline,
       style,
       size,
@@ -54,7 +51,6 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
       'btn-inline': !!inline,
       'btn-sm': size === 'sm',
       'btn-md': size === 'md',
-      [`${prefixCls}-icon`]: !!icon,
     });
     return (
       <TouchFeedback
@@ -70,7 +66,6 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
           style={style}
           {...(submit ? {type: 'submit'} : {})}
         >
-          {icon && <Icon type={icon} size={size === 'sm' ? 'xxs' : 'md'} className={`${prefixCls}-icon`} />}
           {children}
         </El>
       </TouchFeedback>

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as Components from '@jdcfe/yep-react'; // eslint-disable-line
+import * as IconComponents from '@jdcfe/icons-react/es/icons'; // eslint-disable-line
 import {transform} from '@babel/standalone';
 import jsonp from 'jsonp';
 import ComponentCard from './component/ComponentCard';
@@ -49,12 +50,16 @@ class Demo extends React.Component {
       plugins: ['proposal-class-properties', 'proposal-object-rest-spread'],
     }).code;
 
-    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp', 'ComponentCard'];
-    const argv = [this, React, ReactDOM, PropTypes, jsonp, ComponentCard];
+    const args = ['context', 'React', 'ReactDOM', 'PropTypes', 'jsonp', 'ComponentCard', 'IconComponents'];
+    const argv = [this, React, ReactDOM, PropTypes, jsonp, ComponentCard, IconComponents];
 
     Object.keys(Components).forEach(name => {
       args.push(name);
       argv.push(Components[name]);
+    });
+    Object.keys(IconComponents).forEach(name => {
+      args.push(name);
+      argv.push(IconComponents[name]);
     });
 
     args.push(transformedCode);

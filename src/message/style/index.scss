@@ -3,9 +3,12 @@
 
 .Yep-message {
   $fontSize: 24px;
-  .Yep-icon{
-    width: 24px;
-    height: 24px;
+  &-icon-remind{
+    font-size: 24px;
+  }
+  &-icon-close{
+    font-size: 24px;
+    color: #262626;
   }
   &.fix-top {
     position: fixed;
@@ -34,22 +37,10 @@
     &-warn {
       color: #fff;
       background: #f0ad4e;
-      .Yep-icon{
-        color: #f0ad4e;
-      }
-      .Yep-icon-close{
-        color: #262626;
-      }
     }
     &-error {
       color: #fff;
       background: #d9534f;
-      .Yep-icon{
-        color: #d9534f;
-      }
-      .Yep-icon-close{
-        color: #262626;
-      }
     }
   }
   .message-text {

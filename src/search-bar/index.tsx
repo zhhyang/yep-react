@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import Icon from './../icon';
+import SearchOutlined from '@jdcfe/icons-react/SearchOutlined';
+import CloseCircleOutlined from '@jdcfe/icons-react/CloseCircleOutlined';
 
 export interface SearchBarProps {
   prefixCls?: string;
@@ -85,10 +86,10 @@ class SearchBar extends React.PureComponent<SearchBarProps> {
     return (
       <div className="yep-search-bar-bj">
         <div className={classNames('Yep-search-bar-wrapper', className)} style={style}>
-          <Icon type={'lego_sousuo'} key={'lego_sousuo'} size={'xxs'} />
+          <SearchOutlined className="Yep-icon-lego_sousuo Yep-icon-xxs" />
           <input className={inputCls} {...inputProps} onChange={this.handleChange} />
           {(value || value === 0 || Number.isNaN(value)) && clearable && (
-            <Icon type={'lego_cuowu1'} size={'xxs'} className="Yep-search-bar__clear" onClick={this.handleClear} />
+            <CloseCircleOutlined className="Yep-search-bar__clear Yep-icon-xxs" onClick={this.handleClear} />
           )}
         </div>
         {(value || value === 0 || Number.isNaN(value)) && clearable && (

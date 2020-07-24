@@ -14,7 +14,7 @@ class Demo extends React.PureComponent {
     return (
       <div>
         <List>
-          <Item arrow="horizontal" icon={'arrow-right'} onClick={() => {}}>
+          <Item arrow="horizontal" icon onClick={() => {}}>
             Title<Brief>subtitle</Brief>
           </Item>
           <Item

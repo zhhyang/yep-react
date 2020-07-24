@@ -8,7 +8,7 @@ description: 固定在底部，支持自定义图标以及样式，切换可跳�
 import React from 'react';
 import {TabBar, Icon} from '@jdcfe/yep-react';
 const {Tab} = TabBar;
-
+import {HomeOutlined, CartOutlined, MineOutlined, RankOutlined} from '@jdcfe/icons-react';
 class Demo extends React.PureComponent {
   state = {
     index: 0,
@@ -39,32 +39,32 @@ class Demo extends React.PureComponent {
 
         <TabBar hidden={this.state.hidden}>
           <Tab
-            icon={<Icon type="dongdong" />}
+            icon={<HomeOutlined className="Yep-icon-md" />}
             title="首页"
             dot
-            selectedIcon={<Icon type="dongdong" color="#ec3838" />}
+            selectedIcon={<HomeOutlined className="Yep-icon-md" color="#ec3838" />}
             selected={this.state.index === 0}
             onClick={() => this.onClick(0)}
           />
           <Tab
-            icon={<Icon type="category" />}
-            title="分类"
+            icon={<RankOutlined className="Yep-icon-md" />}
+            title="排行"
             badge={6}
-            selectedIcon={<Icon type="category" />}
+            selectedIcon={<RankOutlined className="Yep-icon-md" color="#ec3838" />}
             selected={this.state.index === 1}
             onClick={() => this.onClick(1)}
           />
           <Tab
-            icon={<Icon type="lego_gouwuche" />}
+            icon={<CartOutlined className="Yep-icon-md" />}
             title="购物车"
-            selectedIcon={<Icon type="lego_gouwuche" />}
+            selectedIcon={<CartOutlined className="Yep-icon-md" color="#ec3838" />}
             selected={this.state.index === 2}
             onClick={() => this.onClick(2)}
           />
           <Tab
-            icon={<Icon type="lego_yonghu" />}
+            icon={<MineOutlined className="Yep-icon-md" />}
             title="我的"
-            selectedIcon={<Icon type="lego_yonghu" />}
+            selectedIcon={<MineOutlined className="Yep-icon-md" color="#ec3838" />}
             selected={this.state.index === 3}
             onClick={() => this.onClick(3)}
           />
