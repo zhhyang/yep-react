@@ -6,8 +6,8 @@ description:
 
 ```js
 import React from 'react';
-import {Dialog, Button, Icon} from '@jdcfe/yep-react';
-
+import {Dialog, Button} from '@jdcfe/yep-react';
+import {CloseOutlined} from '@jdcfe/icons-react';
 class Demo extends React.PureComponent {
   onClose = () => {
     if (this.confirmInstance) {
@@ -24,9 +24,8 @@ class Demo extends React.PureComponent {
               '标题',
               <div>
                 <div>确定要加入购物车吗？</div>
-                <Icon
-                  type={'close'}
-                  size="xxs"
+                <CloseOutlined
+                  className="Yep-icon-xxs"
                   onClick={this.onClose}
                   style={{position: 'absolute', bottom: 68, right: 10}}
                 />

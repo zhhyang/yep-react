@@ -70,7 +70,9 @@ export default class Collapse extends React.PureComponent<CollapseProps, Collaps
         <div className={`${prefixCls}-title`} onClick={this.handleToggle}>
           <span>{title}</span>
           <DownOutlined
-            className={`${isOpen ? `${prefixCls}-show-arrow` : `${prefixCls}-hide-arrow`} ${prefixCls}-arrow`}
+            className={`${
+              isOpen ? `${prefixCls}-show-arrow` : `${prefixCls}-hide-arrow`
+            } ${prefixCls}-arrow Yep-icon-xxs`}
           />
         </div>
         <div className={`${isOpen ? `${prefixCls}-show` : `${prefixCls}-hide`} ${prefixCls}-cont`}>{children}</div>

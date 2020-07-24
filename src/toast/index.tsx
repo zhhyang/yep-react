@@ -1,10 +1,9 @@
 import * as React from 'react';
 import CheckCircleOutlined from '@jdcfe/icons-react/CheckCircleOutlined';
 import TipOutlined from '@jdcfe/icons-react/TipOutlined';
-import Icon from '@jdcfe/icons-react';
-import JiaZai from '../icon/svgs/JiaZai';
+import Icon from '../icon';
 import Notification, {NotificationProps} from './Notification';
-
+const {JiaZai} = Icon;
 let messageInstance: any = null;
 interface IToastOptions {
   duration: number;
@@ -71,13 +70,7 @@ export default {
     return notice(message, <TipOutlined />, duration, onClose, mask);
   },
   loading(message: string | React.ReactNode, duration?: number, onClose?: () => void, mask?: boolean) {
-    return notice(
-      message,
-      <Icon component={JiaZai} className={'Yep-toast-notice-icon-jiazai'} />,
-      duration,
-      onClose,
-      mask
-    );
+    return notice(message, <JiaZai className={'Yep-toast-notice-icon Yep-icon-jiazai'} />, duration, onClose, mask);
   },
   hide() {
     if (messageInstance) {

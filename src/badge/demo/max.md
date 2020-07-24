@@ -6,14 +6,14 @@ description: 超过最大数展示为 最大数+
 
 ```js
 import React from 'react';
-import {Badge, Icon} from '@jdcfe/yep-react';
-
+import {Badge} from '@jdcfe/yep-react';
+import CartOutlined from '@jdcfe/icons-react/CartOutlined';
 class Demo extends React.PureComponent {
   render() {
     return (
       <div>
         <Badge text={200}>
-          <Icon type="cart" size="lg" />
+          <CartOutlined className="Yep-icon-md" />
         </Badge>
         <div className="badge-text">待收货</div>
       </div>

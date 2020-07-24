@@ -12,7 +12,7 @@ export interface PopupProps {
   /**
    * popup弹出动画，默认提供 slide-up、slide-down、slide-right，默认为 slide-up
    */
-  popupTransition: 'slide-up' | 'slide-down' | 'slide-right' | 'slide-right' | string;
+  popupTransition: 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | string;
   /**
    * mask层的动画，默认为fade
    */

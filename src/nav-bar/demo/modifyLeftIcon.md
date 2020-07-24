@@ -6,12 +6,12 @@ description: 通过将leftIcon置为null以及配置leftContent修改左侧图�
 
 ```js
 import React from 'react';
-import {NavBar, Icon} from '@jdcfe/yep-react';
-
+import {NavBar} from '@jdcfe/yep-react';
+import {MoreOutlined} from '@jdcfe/icons-react';
 class Demo extends React.PureComponent {
   render() {
     return (
-      <NavBar leftIcon={null} leftContent="返回" rightContent={<Icon type="lego_gengduo" />}>
+      <NavBar leftIcon={null} leftContent="返回" rightContent={<MoreOutlined />}>
         页面标题
       </NavBar>
     );

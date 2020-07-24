@@ -25,34 +25,14 @@
     background: rgba(0, 0, 0, .7);
     &-icon{
       font-size: $icon-size-lg;
-      &-jiazai {
-        font-size: 30px;
-        width: $icon-size-lg;
-        height: $icon-size-lg;
-        animation: cirle-anim 1s linear infinite;
-      }
-
-      @keyframes cirle-anim {
-        100% {
-          transform: rotate(360deg);
-        }
-      }
     }
     &-message{
 
       //padding: 10px 30px;
     }
-    .Yepicon + &-message{
+    &-icon + &-message{
       margin-top: 25px;
     }
-  }
-  & .Yep-icon{
-    /*&.shop-zhengque{
-      color: #1aad19;
-    }
-    &.shop-zhuyi{
-      color: $brand-primary;
-    }*/
   }
 }
 

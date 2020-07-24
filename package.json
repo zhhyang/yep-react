@@ -11,6 +11,7 @@
     "test": "jest",
     "dev:site": "node scripts/start.js",
     "dev:demo": "node scripts/demo-start.js",
+    "dev:demo:lazy": "cross-env LAZY=true node scripts/demo-start.js",
     "watch-css-dist": "yep-tools watch",
     "dist": "yep-tools dist",
     "clean": "rimraf lib es dist build demo-link",

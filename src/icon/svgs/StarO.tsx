@@ -10,5 +10,5 @@ const starOSvg = (props: any) => (
   </svg>
 );
 
-const starO = (props: any) => <Icon component={starOSvg} {...props} />;
-export default starO;
+const StarO = (props: any) => <Icon component={starOSvg} {...props} />;
+export default StarO;

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Popup from '../popup';
-import Icon from '@jdcfe/icons-react';
+
 import CheckOutlined from '@jdcfe/icons-react/CheckOutlined';
 import Tabs from '../tabs';
 import TabBar from './TabBar';
-import CloseO from '../icon/svgs/CloseO';
+import Icon from '../icon';
 const {TabPanel} = Tabs;
-
+const {CloseO} = Icon;
 export interface Data {}
 
 export interface AreaPickerProps {
@@ -120,7 +120,7 @@ export default class AreaPicker extends React.PureComponent<AreaPickerProps, any
         <div className={cls} style={style}>
           <div className={`${prefixCls}-title-wrapper`}>
             <h1 className={`${prefixCls}-title`}>{title}</h1>
-            <Icon component={CloseO} className={`${prefixCls}-icon-close`} onClick={onCancel} />
+            <CloseO className="Yep-icon-sm" onClick={onCancel} />
           </div>
 
           <Tabs

@@ -7,13 +7,13 @@ description: 左侧按钮，中间标题，右侧按钮构成一个基础类的�
 ```js
 import React from 'react';
 import {NavBar, Icon} from '@jdcfe/yep-react';
-
+import {MoreOutlined} from '@jdcfe/icons-react';
 class Demo extends React.PureComponent {
   render() {
     return (
       <NavBar
         // leftContent="返回"
-        rightContent={<Icon type="lego_gengduo" />}
+        rightContent={<MoreOutlined />}
       >
         页面标题
       </NavBar>
