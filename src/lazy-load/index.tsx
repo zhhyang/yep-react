@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {on, off} from '../_utils/events';
 import scrollParent from '../_utils/scrollParent';
-import {throttle, debounce} from 'lodash';
+import {throttle, debounce} from 'lodash-es';
 // import {ReactInstance} from 'react';
 export interface LazyLoadProps {
   once: boolean;

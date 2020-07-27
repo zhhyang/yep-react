@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {omit} from 'lodash';
+import {omit} from 'lodash-es';
 import Gesture from '../gesture';
 import noop from '../_utils/noop';
 import closest from '../_utils/closest';

@@ -1,0 +1,10 @@
+.Yep-loading {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+  top: calc(50% - 0.60rem);
+  left: calc(50% - 0.60rem);
+  width: 1.20rem;
+  height: 1.20rem;
+}
