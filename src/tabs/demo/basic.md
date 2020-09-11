@@ -12,6 +12,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <Tabs
+        ref={node => (this.tabs = node)}
         onChange={index => {
           console.log(index);
         }}
@@ -27,7 +28,7 @@ class Demo extends React.PureComponent {
               backgroundColor: '#fff',
             }}
           >
-            选项卡一内容
+            <a onClick={() => this.tabs.goToTab(2)}> 点我切第三个卡片</a>
           </div>
         </TabPanel>
         <TabPanel tab="选项卡二">
