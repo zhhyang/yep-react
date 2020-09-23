@@ -1,0 +1,55 @@
+._2oX_m-WuPWDTAjiylFiIf7{margin-top:0.3rem;margin-bottom:0.3rem;margin-left:0.28rem}.rwYtPwQ_aCaP9BMoRtZW1{font-family:PingFangSC-Medium;font-size:0.38rem;letter-spacing:0.02rem;color:#4c7cfa}._18cu1W87A851eFMPTbdOcC{padding-left:0.14rem;font-style:oblique;font-weight:500}._2z4dqZO0orYZ7O__Kl-LIO{margin-top:0.2rem;padding-right:0.28rem;line-height:0.3rem;font-family:PingFangSC-Regular;font-size:0.26rem;letter-spacing:0.005rem;font-weight:200;color:#888}
+
+.github{width:.5rem;height:.5rem}.demo-wingblank{margin:0.28rem}
+
+h1 {
+  line-height: 2rem;
+  display: inline-block;
+}
+h2 {
+  line-height: 1.5rem;
+  display: inline-block;
+}
+.app {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+@media (max-width: 700px) {
+  .app {
+    grid-template-columns: unset;
+  }
+}
+.navbar {
+  padding: .5rem;
+}
+.navbar .nav-link {
+  padding: .5rem;
+}
+.sticky-header {
+  height: 80px;
+  background: #aaa;
+}
+.sticky-header1 {
+  height: 40px;
+}
+.container {
+  height: 500px;
+  background: #ddd;
+}
+.gap {
+  height: 500px;
+}
+.gap.short {
+  height: 250px;
+}
+.gap.tall {
+  height: 1000px;
+}
+.container.relative {
+  overflow-y: auto;
+}
+
+.index{
+  line-height: 40px;
+}
+
