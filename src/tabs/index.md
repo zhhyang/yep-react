@@ -44,6 +44,7 @@ desc: 常用于平级区域大块内容的的收纳和展现，支持手势在�
 | renderTab  | 替换 TabBar 的 Tab | (tab: {title,index}) => React.ReactNode     |                      | false |
 | page       | Tab 分页大小       | number                                      | 5                    | false |
 | onTabClick | tab 被点击的回调   | (tab: {title,index}, index: number) => void |                      | false |
+| style      | TabBar 样式        | CSSProperties                               |                      | false |
 
 ### 手动触发切换
 
