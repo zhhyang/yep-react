@@ -12,3 +12,6 @@ echo "npm publish success"
 
 echo "deploy:jd"
 npm run deploy:jd
+
+echo "deploy:github"
+npm run deploy
