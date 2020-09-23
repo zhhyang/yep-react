@@ -46,6 +46,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     activeTab: 0,
     page: 5,
     animated: true,
+    tabBarBackgroundColor: '#FFF',
   };
 
   constructor(props: DefaultTabBarProps) {
@@ -201,6 +202,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
       tabBarUnderlineStyle,
       tabBarPosition,
       renderUnderline,
+      style,
     } = this.props;
     const {isMoving, transform, showNext, showPrev} = this.state;
     const cls = classNames(prefixCls, `${prefixCls}-${tabBarPosition}`, {
@@ -215,7 +217,8 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
       return this.renderTab(t, i, size, isTabBarVertical);
     });
 
-    const style = {
+    const styles = {
+      ...style,
       backgroundColor: tabBarBackgroundColor || '',
     };
 
@@ -237,7 +240,7 @@ export default class DefaultTabBar extends React.PureComponent<DefaultTabBarProp
     };
 
     return (
-      <div className={cls} style={style}>
+      <div className={cls} style={styles}>
         {showPrev && <div className={`${prefixCls}-prevpage`} />}
         <Gesture {...onPan} direction={isTabBarVertical ? 'vertical' : 'horizontal'}>
           <div

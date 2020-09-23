@@ -32,7 +32,7 @@ class Demo extends React.Component {
     const {demo, componentName} = this.props;
     const {protocol, hostname, host, port, pathname} = window.location;
     const src = `${protocol}//${
-      port ? hostname + ':8081' : host + pathname + 'demo.html'
+      port ? hostname + ':7788' : host + pathname + 'demo.html'
     }#/component/${componentName}?order=${demo.order}`;
     console.log(src);
     return (
