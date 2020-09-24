@@ -46,6 +46,7 @@ export interface CountDownProps {
   style?: React.CSSProperties;
   leftTime: number;
   onEnd: () => void;
+  onChange?: (value: number) => void;
   overText?: React.ReactNode;
   children: (date: any) => React.ReactNode;
 }
@@ -77,12 +78,28 @@ export default class CountDown extends React.PureComponent<CountDownProps, Count
     TimerService.unregister(this.countDown);
   }
 
+  componentDidUpdate(prevProps: CountDownProps) {
+    if (this.props.leftTime !== prevProps.leftTime) {
+      //清掉定时器，再重新注册定时器，才能保证1s后减1，否则是按之前的定时器去减
+      //暂时不按这种方式，有性能
+      //TimerService.unregister(this.countDown);
+      //TimerService.register(this.countDown);
+      this.setState({
+        seconds: Math.round(this.props.leftTime),
+      });
+    }
+    if (this.props.leftTime >= 0 && this.state.seconds <= 0) {
+      TimerService.register(this.countDown);
+    }
+  }
+
   countDown() {
-    const {onEnd} = this.props;
+    const {onEnd, onChange} = this.props;
     const seconds = this.state.seconds - 1;
     this.setState({
       seconds,
     });
+    onChange && onChange(seconds);
     if (seconds <= 0) {
       TimerService.unregister(this.countDown);
       onEnd();

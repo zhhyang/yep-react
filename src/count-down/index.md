@@ -8,14 +8,15 @@ desc: 倒计时组件
 
 <DEMO>
 
-| 参数      | 说明                                                         | 类型     | 默认值         |
-| --------- | ------------------------------------------------------------ | -------- | -------------- |
-| prefixCls | 组件 class 前缀                                              | string   | Yep-count-down |
-| style     | 组件样式                                                     | object   | {}             |
-| className | 组件额外样式                                                 | string   | -              |
-| leftTime  | 需要倒计时的时间，单位为秒。如果不是整数，会按照四舍五入取整 | number   | -              |
-| onEnd     | 倒计时结束时的回调函数                                       | function | () => null     |
-| overText  | 倒计时结束后展示文案。                                       | string   | 活动结束       |
+| 参数      | 说明                                                         | 类型     | 默认值                 |
+| --------- | ------------------------------------------------------------ | -------- | ---------------------- |
+| prefixCls | 组件 class 前缀                                              | string   | Yep-count-down         |
+| style     | 组件样式                                                     | object   | {}                     |
+| className | 组件额外样式                                                 | string   | -                      |
+| leftTime  | 需要倒计时的时间，单位为秒。如果不是整数，会按照四舍五入取整 | number   | -                      |
+| onEnd     | 倒计时结束时的回调函数                                       | function | () => null             |
+| onChange  | 倒计时的回调函数                                             | function | (value:number) => null |
+| overText  | 倒计时结束后展示文案。                                       | string   | 活动结束               |
 
 ## children props
 
@@ -29,3 +30,8 @@ desc: 倒计时组件
 | hourNum   | 剩余小时数                         | number | 0      |
 | minuteNum | 剩余分钟数                         | number | 0      |
 | secondNum | 剩余秒数。                         | number | 0      |
+
+## Tips
+
+对于需要重新刷新剩余时间的场景，这时候需要把倒计时组件当做`受控组件`，`onChange`回调会返回剩余的时间，页面需要接收这个时间`value`，再通过`leftTime`props 传给倒计时组件
+可参考示例 4
