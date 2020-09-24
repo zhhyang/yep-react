@@ -3,7 +3,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 .componentCardContainer{background-color:#ffffff;-webkit-box-shadow:0 0 0.08rem 0 rgba(76,124,250,0.5);box-shadow:0 0 0.08rem 0 rgba(76,124,250,0.5);border-radius:0.06rem;margin:0.28rem;padding:0.2rem}.componentCardTitleContainer{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin-bottom:0.2rem}.tag{width:0.08rem;height:0.4rem;background-color:#4c7cfa;margin-right:0.2rem}.content{height:0.4rem;line-height:0.4rem;font-family:PingFangSC-Medium;font-size:0.28rem;color:#1e2947}
 
 /*!
- * @jdcfe/yep-react v1.0.0-beta.2 (https://yep-react.jd.com)
+ * @jdcfe/yep-react v1.0.0-beta.3 (https://yep-react.jd.com)
  * Copyright 2020 JDCF2E, Inc.
  * Licensed under the MIT license
  */
@@ -2310,6 +2310,23 @@ a {
   overflow: auto;
   outline: 0; }
 
+.Yep-price {
+  color: #e01222;
+  display: inline-block; }
+  .Yep-price-sym {
+    font-size: 0.16rem; }
+  .Yep-price .int-txt {
+    font-size: 0.36rem; }
+  .Yep-price .dec-txt {
+    font-size: 0.16rem; }
+  .Yep-price .sym-sup {
+    vertical-align: top; }
+  .Yep-price .dec-sup {
+    vertical-align: top; }
+  .Yep-price.del > span {
+    color: #999;
+    text-decoration: line-through; }
+
 .Yep-progress {
   border-radius: 0.5rem;
   height: 0.1rem;
@@ -2327,23 +2344,6 @@ a {
     -webkit-transition: width 1s;
     -o-transition: width 1s;
     transition: width 1s; }
-
-.Yep-price {
-  color: #e01222;
-  display: inline-block; }
-  .Yep-price-sym {
-    font-size: 0.16rem; }
-  .Yep-price .int-txt {
-    font-size: 0.36rem; }
-  .Yep-price .dec-txt {
-    font-size: 0.16rem; }
-  .Yep-price .sym-sup {
-    vertical-align: top; }
-  .Yep-price .dec-sup {
-    vertical-align: top; }
-  .Yep-price.del > span {
-    color: #999;
-    text-decoration: line-through; }
 
 .Yep-pull-to-refresh-indicator {
   color: grey;
