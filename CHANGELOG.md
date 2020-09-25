@@ -32,6 +32,7 @@ title: 更新日志
 - **Docs**
 
   - 增加 Tabs DefaultTabBar 配合 Sticky 实现 TabBar 吸顶
+  - Tabs.DefaultTabBar 增加了`tabBarBackgroundColor`默认值 `#FFF`，如果有用到注意修改兼容
 
 ### 1.0.0-beta.1
 

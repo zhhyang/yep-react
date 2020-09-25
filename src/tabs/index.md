@@ -25,7 +25,7 @@ desc: 常用于平级区域大块内容的的收纳和展现，支持手势在�
 | usePaged                | 是否启用分页模式           | boolean                                             | true       | false |
 | tabDirection            | Tab 方向                   | 'horizontal' 'vertical'                             | horizontal | false |
 | tabBarUnderlineStyle    | tabBar 下划线样式          | React.CSSProperties any                             |            | false |
-| tabBarBackgroundColor   | tabBar 背景色              | string                                              |            | false |
+| tabBarBackgroundColor   | tabBar 背景色              | string                                              | #FFF       | false |
 | tabBarActiveTextColor   | tabBar 激活 Tab 文字颜色   | string                                              |            | false |
 | tabBarInactiveTextColor | tabBar 非激活 Tab 文字颜色 | string                                              |            | false |
 | tabBarTextStyle         | tabBar 文字样式            | React.CSSProperties any                             |            | false |
