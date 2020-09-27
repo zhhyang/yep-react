@@ -59,7 +59,6 @@ export default class CountDown extends React.PureComponent<CountDownProps, Count
   static defaultProps = {
     prefixCls: 'Yep-count-down',
     style: {},
-    overText: '活动结束',
     onEnd: noop,
   };
 
@@ -126,7 +125,7 @@ export default class CountDown extends React.PureComponent<CountDownProps, Count
     const cls = classNames(prefixCls, className);
     const restTime = this.state.seconds;
     const isOver = restTime <= 0;
-    const date = (!isOver && getFormateTime(restTime)) as dateProps;
-    return <div className={cls}>{isOver ? overText : this.renderText(date)}</div>;
+    const date = getFormateTime(restTime) as dateProps;
+    return <div className={cls}>{isOver && overText ? overText : this.renderText(date)}</div>;
   }
 }
