@@ -23,6 +23,7 @@ export interface BaseCheckboxProps {
   readOnly?: boolean;
   autoFocus?: boolean;
   value?: any | null | undefined;
+  icon?: React.ReactNode;
 }
 
 export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps, any> {
@@ -115,6 +116,7 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
       autoFocus,
       value,
       label,
+      icon,
       ...others
     } = this.props;
 
@@ -153,7 +155,9 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
           {...globalProps}
         />
         {checked ? (
-          type === 'checkbox' ? (
+          icon ? (
+            icon
+          ) : type === 'checkbox' ? (
             <CheckCircleFilled className={`${prefixCls}-inner`} style={{color: '#F0250F'}} />
           ) : (
             <CircleTwoTone style={{color: '#F0250F'}} className={`${prefixCls}-inner`} />

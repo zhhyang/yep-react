@@ -6,21 +6,20 @@ export interface StickyProps {
   topOffset: number;
   bottomOffset: number;
   relative?: boolean;
-  children: (props:any) => any;
-  disableCompensation:boolean;
-  disableHardwareAcceleration:boolean;
+  children: (props: any) => any;
+  disableCompensation: boolean;
+  disableHardwareAcceleration: boolean;
 }
 
 interface State {
   isSticky: boolean;
   wasSticky: boolean;
   style: React.CSSProperties;
-  calculatedHeight:number;
-  distanceFromTop?:number;
-  distanceFromBottom?:number;
+  calculatedHeight: number;
+  distanceFromTop?: number;
+  distanceFromBottom?: number;
 }
-export default class Sticky extends React.PureComponent<StickyProps,State> {
-
+export default class Sticky extends React.PureComponent<StickyProps, State> {
   static StickyContainer = StickyContainer;
 
   static defaultProps = {
@@ -37,10 +36,10 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
     getParent: PropTypes.func,
   };
 
-  placeholder:any;
-  content:any;
+  placeholder: any;
+  content: any;
 
-  constructor(props:StickyProps) {
+  constructor(props: StickyProps) {
     super(props);
     this.createPlaceholderRef = this.createPlaceholderRef.bind(this);
     this.createContentRef = this.createContentRef.bind(this);
@@ -49,7 +48,7 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
       isSticky: false,
       wasSticky: false,
       style: {},
-      calculatedHeight:0,
+      calculatedHeight: 0,
     };
   }
 
@@ -84,7 +83,7 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
     const calculatedHeight = contentClientRect.height;
 
     const bottomDifference = distanceFromBottom - bottomOffset - calculatedHeight;
-    const wasSticky = !!this.state.isSticky;
+    const wasSticky = this.state.isSticky;
 
     const isSticky = preventingStickyStateChanges
       ? wasSticky
@@ -93,7 +92,7 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
       (this.props.relative ? parent.scrollHeight - parent.scrollTop : distanceFromBottom) - calculatedHeight;
     const style = !isSticky
       ? {}
-      : {
+      : ({
           position: 'fixed',
           top:
             bottomDifference > 0
@@ -103,7 +102,7 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
               : bottomDifference,
           left: placeholderClientRect.left,
           width: placeholderClientRect.width,
-        } as React.CSSProperties;
+        } as React.CSSProperties);
     if (!disableHardwareAcceleration) {
       style.transform = 'translateZ(0)';
     }
@@ -118,11 +117,11 @@ export default class Sticky extends React.PureComponent<StickyProps,State> {
     });
   }
 
-  createPlaceholderRef(placeholder:HTMLDivElement) {
+  createPlaceholderRef(placeholder: HTMLDivElement) {
     this.placeholder = placeholder;
   }
 
-  createContentRef(content:HTMLDivElement) {
+  createContentRef(content: HTMLDivElement) {
     this.content = ReactDOM.findDOMNode(content);
   }
 
