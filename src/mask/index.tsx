@@ -4,6 +4,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import fixMask from './fixMask';
+import {createPortal} from 'react-dom';
 
 export interface MaskProps {
   prefixCls: string;
@@ -14,6 +15,7 @@ export interface MaskProps {
    */
   transparent?: boolean;
   onClick?: (e?: any) => void;
+  usePortal?: boolean;
 }
 
 /**
@@ -46,7 +48,7 @@ export default class Mask extends React.PureComponent<MaskProps, any> {
     this.destroy();
   }
   render() {
-    const {transparent, className, prefixCls, ...others} = this.props;
+    const {transparent, className, prefixCls, usePortal, ...others} = this.props;
     const clz = classNames(
       {
         [prefixCls]: !transparent,
@@ -54,7 +56,10 @@ export default class Mask extends React.PureComponent<MaskProps, any> {
       },
       className
     );
-
-    return <div className={clz} {...others} />;
+    const content = <div className={clz} {...others} />;
+    if (usePortal) {
+      return createPortal(content, document.body);
+    }
+    return content;
   }
 }

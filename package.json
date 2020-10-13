@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "一套符合京东移动端设计规范的React组件库",
   "main": "lib",
   "module": "es",
