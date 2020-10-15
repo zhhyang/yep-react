@@ -107,6 +107,7 @@
     "qrcode.react": "^0.8.0",
     "qs": "^6.5.2",
     "react": "^16.2.0",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dev-utils": "^6.1.1",
     "react-dom": "^16.3.0",
     "react-helmet": "^5.2.0",
@@ -138,8 +139,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@jdcfe/yep-gesture": "^0.0.3",
     "@jdcfe/icons-react": "^1.1.0",
+    "@jdcfe/yep-gesture": "^0.0.3",
     "@jdcfe/yep-popover": "^0.0.1",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",

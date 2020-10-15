@@ -350,3 +350,34 @@
     }
   }
 }
+
+.icons-container{
+  display: flex;
+  flex-flow: row wrap;
+  width: 80vw;
+  margin: auto;
+}
+.card{
+  height: 100px;
+  margin: 12px 0 16px;
+  width: 16.66%;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+    background-color: #5b9eff;
+    .icon {
+      transform: scale(1.4);
+    }
+    .name-description {
+      color: #fff;
+    }
+  }
+}
+.name-description{
+  display: block;
+  text-align: center;
+  transform: scale(0.83);
+  font-family: 'Lucida Console', Consolas;
+  white-space: nowrap;
+}

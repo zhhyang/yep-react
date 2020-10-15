@@ -10,6 +10,7 @@ import Home from './lib/Home';
 import NavHeader from './lib/NavHeader';
 
 import {toCamelCase} from './lib/utils';
+import AllIconDemo from './componnets/Icons';
 
 function handleResetScrollStatus() {
   document.querySelector('.l-header').style.left = '';
@@ -37,7 +38,7 @@ const Routes = ({history, location: {pathname}}) => {
   }
 
   if (pathname.match(/\/component\//)) {
-    require( './assets/css/doc.scss');
+    require('./assets/css/doc.scss');
     const componentName = pathname.split('/').reverse()[0];
     const currentComponent = allDocData.components[componentName];
     if (!currentComponent) {
@@ -59,6 +60,7 @@ const Routes = ({history, location: {pathname}}) => {
               <h1>
                 {toCamelCase(componentName)} {currentComponent.title}
               </h1>
+              {pathname === '/doc/component/icon' && <AllIconDemo />}
               <div dangerouslySetInnerHTML={{__html: marked(contents[0])}} />
               {currentComponent && currentComponent.demos ? <h2>Demo</h2> : null}
               {currentComponent && currentComponent.demos
@@ -78,7 +80,7 @@ const Routes = ({history, location: {pathname}}) => {
   }
 
   if (pathname.match(/^\/doc\/(\S+)/)) {
-    require( './assets/css/doc.scss');
+    require('./assets/css/doc.scss');
     const pageId = pathname.replace(/^\/doc\//, '');
     const page = allDocData.docs.find(d => d.id === pageId);
 
