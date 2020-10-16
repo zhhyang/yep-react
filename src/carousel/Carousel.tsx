@@ -572,8 +572,8 @@ class Carousel extends React.Component<CarouselProps, any> {
     }
 
     const itemsClone = this.renderItems(true);
-    const firstClone = itemsClone.shift();
-    const lastClone = itemsClone.pop();
+    const firstClone = itemsClone!.shift();
+    const lastClone = itemsClone!.pop();
 
     let swiperProps = {
       onSwipeMove: this.onSwipeMove,
