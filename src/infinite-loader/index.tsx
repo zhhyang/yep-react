@@ -2,7 +2,7 @@ import * as React from 'react';
 import {throttle} from 'lodash';
 import {InfiniteLoaderPropTypes} from './types';
 import noop from '../_utils/noop';
-export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
+class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
   static defaultProps = {
     style: {},
     className: 'Yep-infinite-loader',
@@ -125,3 +125,5 @@ export default class InfiniteLoader extends React.PureComponent<InfiniteLoaderPr
     );
   }
 }
+
+export default InfiniteLoader;

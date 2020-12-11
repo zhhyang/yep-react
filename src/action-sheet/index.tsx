@@ -38,53 +38,61 @@ export interface ActionSheetProps {
   active: number | string;
 }
 
-export default class ActionSheet extends React.PureComponent<ActionSheetProps, any> {
-  static defaultProps = {
-    show: false,
-    onCancel: () => {},
-    prefixCls: 'Yep-action-sheet',
-    hasCancel: false,
-    space: false,
-    data: [],
-    itemClick: () => {},
-  };
-
-  onItemClick = (item: string, index: number) => {
-    const {itemClick} = this.props;
+const ActionSheet: React.FC<ActionSheetProps> = ({
+  show,
+  onCancel,
+  prefixCls,
+  className,
+  style,
+  title,
+  space,
+  hasCancel,
+  data,
+  active,
+  itemClick,
+}) => {
+  const onItemClick = (item: string, index: number) => {
     itemClick(item, index);
   };
-
-  render() {
-    const {show, onCancel, prefixCls, className, style, title, space, hasCancel, data, active} = this.props;
-
-    const cls = classNames(prefixCls, className);
-    return (
-      <Popup show={show} onCancel={onCancel}>
-        <div className={cls} style={style}>
-          {title && <h1 className={`${prefixCls}-title border-bottom-1px`}>{title}</h1>}
-          <div className={`${prefixCls}-content`}>
-            <ul className={`${prefixCls}-list`}>
-              {data.map((item, index) => (
-                <li
-                  key={index}
-                  className={classNames(`${prefixCls}-item`, 'border-bottom-1px', {
-                    [`${prefixCls}-item_active`]: index === active || item === active,
-                  })}
-                  onClick={() => this.onItemClick(item, index)}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          {hasCancel && space && <div className={`${prefixCls}-space`} />}
-          {hasCancel && (
-            <div className={`${prefixCls}-cancel`} onClick={onCancel}>
-              <span>取消</span>
-            </div>
-          )}
+  const cls = classNames(prefixCls, className);
+  return (
+    <Popup show={show} onCancel={onCancel}>
+      <div className={cls} style={style}>
+        {title && <h1 className={`${prefixCls}-title border-bottom-1px`}>{title}</h1>}
+        <div className={`${prefixCls}-content`}>
+          <ul className={`${prefixCls}-list`}>
+            {data.map((item, index) => (
+              <li
+                key={index}
+                className={classNames(`${prefixCls}-item`, 'border-bottom-1px', {
+                  [`${prefixCls}-item_active`]: index === active || item === active,
+                })}
+                onClick={() => onItemClick(item, index)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-      </Popup>
-    );
-  }
-}
+        {hasCancel && space && <div className={`${prefixCls}-space`} />}
+        {hasCancel && (
+          <div className={`${prefixCls}-cancel`} onClick={onCancel}>
+            <span>取消</span>
+          </div>
+        )}
+      </div>
+    </Popup>
+  );
+};
+
+ActionSheet.defaultProps = {
+  show: false,
+  onCancel: () => {},
+  prefixCls: 'Yep-action-sheet',
+  hasCancel: false,
+  space: false,
+  data: [],
+  itemClick: () => {},
+};
+
+export default ActionSheet;
