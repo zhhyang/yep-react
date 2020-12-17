@@ -72,8 +72,7 @@ class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
   }
 
   isElementAtBottom(target: any, scrollThreshold = 0.8) {
-    const clientHeight =
-      target === document.body || target === document.documentElement ? window.screen.availHeight : target.clientHeight;
+    const clientHeight = target.clientHeight;
 
     return target.scrollTop + clientHeight >= scrollThreshold * target.scrollHeight;
   }
