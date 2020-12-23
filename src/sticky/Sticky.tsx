@@ -19,7 +19,11 @@ interface State {
   distanceFromTop?: number;
   distanceFromBottom?: number;
 }
-export default class Sticky extends React.PureComponent<StickyProps, State> {
+
+/**
+ * @deprecated please use CSS: position: sticky; top: 0;
+ */
+class Sticky extends React.PureComponent<StickyProps, State> {
   static StickyContainer = StickyContainer;
 
   static defaultProps = {
@@ -147,3 +151,5 @@ export default class Sticky extends React.PureComponent<StickyProps, State> {
     );
   }
 }
+
+export default Sticky;
