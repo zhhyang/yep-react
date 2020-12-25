@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Input from './Input';
 import noop from '../_utils/noop';
 import {InputItemPropsType} from './types';
-import {omit} from 'lodash';
+import omit from 'lodash/omit';
 import CloseCircleOutlined from '@jdcfe/icons-react/CloseCircleOutlined';
 
 type State = {
@@ -214,7 +214,7 @@ class InputItem extends React.PureComponent<InputItemPropsType, State> {
               onBlur={this.onInputBlur}
             />
           </div>
-          {clear && editable && !disabled && (value && `${value}`.length > 0) ? (
+          {clear && editable && !disabled && value && `${value}`.length > 0 ? (
             <div className={`${prefixCls}-clear`} onClick={this.clearInput}>
               {React.isValidElement(clearIcon) ? clearIcon : <CloseCircleOutlined style={{color: '#999BAA'}} />}
             </div>

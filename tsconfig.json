@@ -10,7 +10,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "es6",
-    "lib": ["dom", "es7"]
+    "lib": ["dom", "es7"],
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src", "typings"]
 }
