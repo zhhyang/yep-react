@@ -21,16 +21,16 @@ export interface ToTopProps {
   className?: string;
   style?: React.CSSProperties;
   onClick?: (e: any) => void;
-  children: React.ReactNode;
-  displayHeight: number;
-  visible: boolean;
+  children?: React.ReactNode;
+  displayHeight?: number;
+  visible?: boolean;
 }
 
 export interface State {
   visible: boolean;
 }
 
-export default class ToTop extends React.PureComponent<ToTopProps, State> {
+class ToTop extends React.PureComponent<ToTopProps, State> {
   static defaultProps = {
     prefixCls: 'Yep-to-top',
     style: {},
@@ -63,7 +63,7 @@ export default class ToTop extends React.PureComponent<ToTopProps, State> {
   handleScroll = () => {
     const {displayHeight} = this.props;
     this.setState({
-      visible: window.pageYOffset > displayHeight,
+      visible: window.pageYOffset > displayHeight!,
     });
   };
 
@@ -105,3 +105,5 @@ export default class ToTop extends React.PureComponent<ToTopProps, State> {
     );
   }
 }
+
+export default ToTop;
