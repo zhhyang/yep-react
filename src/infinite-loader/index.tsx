@@ -78,10 +78,11 @@ class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
   }
 
   onScrollListener(event: React.TouchEvent<HTMLDivElement>) {
-    if (typeof this.props.onScroll === 'function') {
+    const {onScroll} = this.props;
+    if (onScroll && typeof onScroll === 'function') {
       // Execute this callback in next tick so that it does not affect the
       // functionality of the library.
-      setTimeout(() => this.props.onScroll(event), 0);
+      setTimeout(() => onScroll(event), 0);
     }
 
     const target =
