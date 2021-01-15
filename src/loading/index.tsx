@@ -4,14 +4,14 @@ export interface LoadingProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  loadingImg: string;
+  loadingImg?: string;
 }
 const Loading: React.FC<LoadingProps> = props => {
   const {prefixCls, className, style, loadingImg} = props;
   const cls = classNames(prefixCls, className);
   return (
     <div className={cls} style={style}>
-      <img src={loadingImg} />
+      <img src={loadingImg} alt="loading" />
     </div>
   );
 };
