@@ -13,6 +13,14 @@ title: 更新日志
 
 ---
 
+### 1.0.4
+
+`2021-01-15`
+
+- **Feature**
+
+  - 🌟 `Loading` 组件不再使用`lottie`实现，改为`apng`，如果想使用之前的`lottie`的实现，请使用[`@jdcfe/lottie-loading`](https://www.npmjs.com/package/@jdcfe/lottie-loading)
+
 ### 1.0.3
 
 `2020-12-25`
