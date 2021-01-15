@@ -15,3 +15,6 @@ npm run deploy:jd
 
 echo "deploy:github"
 npm run deploy
+
+echo "github tag start"
+npm run tag

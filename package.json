@@ -29,6 +29,7 @@
     "predeploy:jd": "npm run build-demo && npm run build-site:jd",
     "lint-staged": "node node_modules/tslint/bin/tslint src/**/*.tsx",
     "tsc": "tsc",
+    "tag": "node scripts/github.js",
     "pub": "scripts/publish.sh",
     "pub:local": "scripts/local_publish.sh",
     "preview": "serve -s build -p 9999"
@@ -119,7 +120,7 @@
     "rellax": "^1.7.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.1.0",
-    "ssh2-sftp-client": "^2.1.0",
+    "shelljs": "^0.8.4",
     "style-loader": "^0.21.0",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.18.0",
