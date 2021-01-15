@@ -1,7 +1,7 @@
 ---
 order: 0
 title: 基础用法
-description: 基于 apng 实现的京东 7.0 统一 loading 动画。
+description: 基于 apng 实现的京东 9.0 统一 loading 动画。
 ---
 
 ```js

@@ -15,7 +15,6 @@ export interface ButtonProps {
   onClick?: () => void;
   activeClassName?: string;
   activeStyle?: React.CSSProperties;
-  children: React.ReactNode;
 }
 
 export default class Button extends React.PureComponent<ButtonProps, any> {
