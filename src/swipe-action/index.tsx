@@ -16,13 +16,13 @@ export interface SwipeActionProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  autoClose: boolean;
-  disabled: boolean;
-  left: ActionModel[];
-  right: ActionModel[];
-  onOpen: () => void;
-  onClose: () => void;
-  onMovingDistance: (distance: number) => void;
+  autoClose?: boolean;
+  disabled?: boolean;
+  left?: ActionModel[];
+  right?: ActionModel[];
+  onOpen?: () => void;
+  onClose?: () => void;
+  onMovingDistance?: (distance: number) => void;
 }
 
 export default class SwipeAction extends React.PureComponent<SwipeActionProps, any> {
@@ -125,7 +125,7 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps, a
       this.cover.style.display = Math.abs(value) > 0 ? 'block' : 'none';
       this.cover.style.left = `${contentLeft}px`;
     }
-    onMovingDistance(contentLeft);
+    onMovingDistance!(contentLeft);
   };
 
   open(value: number, openedLeft: boolean, openedRight: boolean) {
@@ -165,8 +165,8 @@ export default class SwipeAction extends React.PureComponent<SwipeActionProps, a
       return;
     }
     const {left, right} = this.props;
-    this.needShowRight = isLeft && right.length > 0;
-    this.needShowLeft = isRight && left.length > 0;
+    this.needShowRight = isLeft && right!.length > 0;
+    this.needShowLeft = isRight && left!.length > 0;
     if (this.left) {
       this.left.style.visibility = this.needShowRight ? 'hidden' : 'visible';
     }

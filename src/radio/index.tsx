@@ -13,7 +13,7 @@ export interface RadioProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  onChange: (value:any) => void;
+  onChange?: (value: any) => void;
   name?: string;
   /**
    * ['option1','option2']
@@ -36,7 +36,7 @@ export interface RadioProps {
    *
    *
    */
-  options: any;
+  options: Option[];
   checked?: string | number;
   /**
    * 是否水平排列
@@ -64,11 +64,11 @@ export default class Radio extends React.PureComponent<RadioProps, any> {
     this.setState({
       value,
     });
-    onChange(value);
+    onChange && onChange(value);
   }
 
   render() {
-    const {className, style, options, horizontal, onChange,...restProps} = this.props;
+    const {className, style, options, horizontal, onChange, ...restProps} = this.props;
 
     const {prefixCls} = restProps;
     const wrapCls = classNames(`${prefixCls}-wrapper`, className, {
@@ -77,7 +77,7 @@ export default class Radio extends React.PureComponent<RadioProps, any> {
     });
     return (
       <div className={wrapCls} style={style}>
-        {options.map((option:any, index:number) => (
+        {options.map((option: any, index: number) => (
           <BaseCheckbox
             key={index}
             type="radio"

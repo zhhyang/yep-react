@@ -45,10 +45,10 @@ export interface CountDownProps {
   className?: string;
   style?: React.CSSProperties;
   leftTime: number;
-  onEnd: () => void;
+  onEnd?: () => void;
   onChange?: (value: number) => void;
   overText?: React.ReactNode;
-  children: (date: any) => React.ReactNode;
+  children?: (date: any) => React.ReactNode;
 }
 
 export interface CountDownState {
@@ -101,7 +101,7 @@ export default class CountDown extends React.PureComponent<CountDownProps, Count
     onChange && onChange(seconds);
     if (seconds <= 0) {
       TimerService.unregister(this.countDown);
-      onEnd();
+      onEnd && onEnd();
     }
   }
 

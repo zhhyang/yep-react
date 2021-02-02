@@ -11,12 +11,12 @@ export interface PullToRefreshProps {
   prefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
-  pullDownToRefreshThreshold: number;
-  maxPullDownDistance: number;
+  pullDownToRefreshThreshold?: number;
+  maxPullDownDistance?: number;
   refreshFunction?: () => void;
   refreshing: boolean;
-  indicator: Indicator;
-  getScrollContainer: () => HTMLElement;
+  indicator?: Indicator;
+  getScrollContainer?: () => HTMLElement;
 }
 
 export type CurrentState = 'activate' | 'deactivate' | 'release' | 'finish';
@@ -71,7 +71,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   }
 
   componentDidMount() {
-    this.ele = this.props.getScrollContainer() || this.container;
+    this.ele = this.props.getScrollContainer!() || this.container;
     this.ele.addEventListener('touchstart', this.onStart, {passive: false});
     this.ele.addEventListener('touchmove', this.onMove, {passive: false});
     this.ele.addEventListener('touchend', this.onEnd, {passive: false});
@@ -102,7 +102,9 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   triggerPullToRefresh = () => {
     if (this.props.refreshing) {
       // change dom need after setState
-      this.setState({currentState: 'release'}, () => this.setInfScrollStyle(this.props.pullDownToRefreshThreshold + 1));
+      this.setState({currentState: 'release'}, () =>
+        this.setInfScrollStyle(this.props.pullDownToRefreshThreshold! + 1)
+      );
     } else {
       this.setState({currentState: 'finish'}, () => this.reset());
     }
@@ -120,7 +122,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
   }
 
   isMoveEdge = () => {
-    const container = this.props.getScrollContainer();
+    const container = this.props.getScrollContainer!();
     if (container && container === document.body) {
       const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
       return scrollNode.scrollTop <= 0;
@@ -154,7 +156,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
       //禁止整个页面下拉效果
       evt.preventDefault();
       evt.stopPropagation();
-      if (this.currentY - this.startY >= this.props.pullDownToRefreshThreshold) {
+      if (this.currentY - this.startY >= this.props.pullDownToRefreshThreshold!) {
         if (this.state.currentState === 'deactivate') {
           this.setState({
             currentState: 'activate',
@@ -166,7 +168,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
         }
       }
 
-      if (this.currentY - this.startY > this.props.maxPullDownDistance) return;
+      if (this.currentY - this.startY > this.props.maxPullDownDistance!) return;
 
       this.container.style.overflow = 'visible';
       this.setInfScrollStyle(this.currentY - this.startY);
@@ -215,7 +217,7 @@ export default class PullToRefresh extends React.PureComponent<PullToRefreshProp
       <div style={outerDivStyle}>
         <div className={className} ref={this.containerRef} style={componentStyle}>
           <div className={`${prefixCls}-indicator`}>
-            {indicator[this.state.currentState] || INDICATOR[this.state.currentState]}
+            {indicator![this.state.currentState] || INDICATOR[this.state.currentState]}
           </div>
           {children}
         </div>

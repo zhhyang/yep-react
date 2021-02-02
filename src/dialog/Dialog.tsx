@@ -7,18 +7,22 @@ import Popup from '../popup';
 export interface DialogProps {
   prefixCls?: string;
   className?: string;
-  title: string;
-  footer: React.ReactNode;
   style?: React.CSSProperties;
+  title?: string;
+  footer?: React.ReactNode;
   bodyStyle?: React.CSSProperties;
   onClose?: (e: any) => void;
   show?: boolean;
   maskCloseable?: boolean;
-  dialogTransition: string;
-  maskTransition: string;
+  dialogTransition?: string;
+  maskTransition?: string;
 }
 
-export default class Dialog extends React.PureComponent<DialogProps, any> {
+interface DialogState {
+  show?: boolean;
+}
+
+export default class Dialog extends React.PureComponent<DialogProps, DialogState> {
   static confirm = confirm;
   static defaultProps = {
     prefixCls: 'Yep-dialog',
@@ -39,14 +43,8 @@ export default class Dialog extends React.PureComponent<DialogProps, any> {
     this.close = this.close.bind(this);
     this.onMaskClick = this.onMaskClick.bind(this);
     this.state = {
-      show: false,
+      show: props.show,
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      show: this.props.show,
-    });
   }
 
   componentWillReceiveProps(nextProps: any) {
@@ -93,7 +91,7 @@ export default class Dialog extends React.PureComponent<DialogProps, any> {
   }
 
   render() {
-    const {prefixCls, className, style, title, maskTransition, dialogTransition} = this.props;
+    const {prefixCls, className, style, title, maskTransition, dialogTransition, footer} = this.props;
 
     const cls = classNames(prefixCls, className, `${prefixCls}-transparent`);
 
@@ -110,7 +108,7 @@ export default class Dialog extends React.PureComponent<DialogProps, any> {
             <div className={`${prefixCls}-content`}>
               {title && this.renderHeader()}
               {this.renderBody()}
-              {this.renderFooter()}
+              {footer && this.renderFooter()}
             </div>
           </div>
         </div>

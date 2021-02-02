@@ -98,7 +98,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
     if (prevProps.initPage !== this.props.initPage || prevProps.centerMode !== this.props.centerMode) {
       this.updateSizes();
-      this.moveTo(this.props.initPage);
+      this.moveTo(this.props.initPage!);
     }
 
     if (prevProps.autoPlay !== this.props.autoPlay) {
@@ -267,7 +267,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     this.setState({
       swiping: true,
     });
-    this.props.onSwipeStart(event);
+    this.props.onSwipeStart && this.props.onSwipeStart(event);
     this.clearAutoPlay();
   };
 
@@ -276,12 +276,12 @@ class Carousel extends React.Component<CarouselProps, any> {
       swiping: false,
       cancelClick: false,
     });
-    this.props.onSwipeEnd(event);
+    this.props.onSwipeEnd && this.props.onSwipeEnd(event);
     this.autoPlay();
   };
 
   onSwipeMove = (delta: any, event: any) => {
-    this.props.onSwipeMove(event);
+    this.props.onSwipeMove && this.props.onSwipeMove(event);
     const isHorizontal = this.props.vertical === false;
     const childrenLength = React.Children.count(this.props.children);
 
@@ -321,7 +321,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     this.setPosition(position);
 
     // allows scroll if the swipe was within the tolerance
-    const hasMoved = Math.abs(axisDelta) > this.props.distance;
+    const hasMoved = Math.abs(axisDelta) > this.props.distance!;
 
     if (hasMoved && !this.state.cancelClick) {
       this.setState({
@@ -332,7 +332,8 @@ class Carousel extends React.Component<CarouselProps, any> {
     return hasMoved;
   };
 
-  getPosition(index: number) {
+  getPosition = (index: number) => {
+    const {centerSlidePercentage} = this.props;
     if (this.props.isInfinite) {
       // index has to be added by 1 because of the first cloned slide
       ++index;
@@ -344,20 +345,20 @@ class Carousel extends React.Component<CarouselProps, any> {
 
     const childrenLength = React.Children.count(this.props.children);
     if (this.props.centerMode && this.props.vertical === false) {
-      let currentPosition = -index * this.props.centerSlidePercentage;
+      let currentPosition = -index * centerSlidePercentage!;
       const lastPosition = childrenLength - 1;
 
       if (index && (index !== lastPosition || this.props.isInfinite)) {
-        currentPosition += (100 - this.props.centerSlidePercentage) / 2;
+        currentPosition += (100 - centerSlidePercentage!) / 2;
       } else if (index === lastPosition) {
-        currentPosition += 100 - this.props.centerSlidePercentage;
+        currentPosition += 100 - centerSlidePercentage!;
       }
 
       return currentPosition;
     }
 
     return -index * 100;
-  }
+  };
 
   setPosition = (position: string | number, forceReflow: boolean) => {
     const list = ReactDOM.findDOMNode(this.listRef);
@@ -386,6 +387,7 @@ class Carousel extends React.Component<CarouselProps, any> {
   };
 
   moveTo = (position: number, fromSwipe?: boolean) => {
+    const {centerSlidePercentage} = this.props;
     const lastPosition = React.Children.count(this.props.children) - 1;
     const needClonedSlide = this.props.isInfinite && !fromSwipe && (position < 0 || position > lastPosition);
     const oldPosition = position;
@@ -409,8 +411,7 @@ class Carousel extends React.Component<CarouselProps, any> {
           if (oldPosition < 0) {
             if (this.props.centerMode && !this.props.vertical) {
               this.setPosition(
-                `-${(lastPosition + 2) * this.props.centerSlidePercentage -
-                  (100 - this.props.centerSlidePercentage) / 2}%`,
+                `-${(lastPosition + 2) * centerSlidePercentage! - (100 - centerSlidePercentage!) / 2}%`,
                 true
               );
             } else {
@@ -466,9 +467,9 @@ class Carousel extends React.Component<CarouselProps, any> {
 
   getInitialImage = () => {
     const selectedItem = this.props.initPage;
-    const item = this.itemsRef && this.itemsRef[selectedItem];
+    const item = this.itemsRef && this.itemsRef[selectedItem!];
     const images = item && item.getElementsByTagName('img');
-    return images && images[selectedItem];
+    return images && images[selectedItem!];
   };
 
   getVariableImageHeight = (position: number) => {
@@ -510,7 +511,7 @@ class Carousel extends React.Component<CarouselProps, any> {
         };
       }
 
-      return <li {...slideProps}>{this.props.renderItem(item, {isSelected: index === this.state.selectedItem})}</li>;
+      return <li {...slideProps}>{this.props.renderItem!(item, {isSelected: index === this.state.selectedItem})}</li>;
     });
   }
 
@@ -523,7 +524,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     return (
       <ul className={classNames('Yep-control-dots', {[`${dotsClass}`]: !!dotsClass})}>
         {React.Children.map(this.props.children, (item: any, index: number) => {
-          return this.props.renderIndicator(this.changeItem, index === this.state.selectedItem, index, item);
+          return this.props.renderIndicator!(this.changeItem, index === this.state.selectedItem, index, item);
         })}
       </ul>
     );
@@ -536,7 +537,7 @@ class Carousel extends React.Component<CarouselProps, any> {
 
     return (
       <p className={`${this.props.prefixCls}-status`}>
-        {this.props.renderPage(this.state.selectedItem + 1, React.Children.count(this.props.children))}
+        {this.props.renderPage!(this.state.selectedItem + 1, React.Children.count(this.props.children))}
       </p>
     );
   }
@@ -554,7 +555,7 @@ class Carousel extends React.Component<CarouselProps, any> {
     const currentPosition = this.getPosition(this.state.selectedItem);
 
     // if 3d is available, let's take advantage of the performance of transform
-    const transformProp = CSSTranslate(currentPosition + '%', this.props.vertical);
+    const transformProp = CSSTranslate(currentPosition + '%', this.props.vertical!);
 
     const transitionTime = this.props.transitionTime + 'ms';
 
@@ -611,10 +612,10 @@ class Carousel extends React.Component<CarouselProps, any> {
       containerStyles.height = this.state.itemSize;
     }
     return (
-      <div className={klass.ROOT(this.props.className)} ref={this.setCarouselWrapperRef}>
+      <div className={klass.ROOT(this.props.className)} style={this.props.style} ref={this.setCarouselWrapperRef}>
         <div className={klass.CAROUSEL(true)} style={{width: this.props.width}}>
           <div
-            className={klass.WRAPPER(true, this.props.vertical)}
+            className={klass.WRAPPER(true, this.props.vertical!)}
             style={containerStyles}
             ref={this.setItemsWrapperRef}
           >

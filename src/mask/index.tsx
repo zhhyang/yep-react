@@ -7,7 +7,7 @@ import fixMask from './fixMask';
 import {createPortal} from 'react-dom';
 
 export interface MaskProps {
-  prefixCls: string;
+  prefixCls?: string;
   className?: string;
   /**
    * Whather mask should be transparent (no color)
@@ -51,7 +51,7 @@ export default class Mask extends React.PureComponent<MaskProps, any> {
     const {transparent, className, prefixCls, usePortal, ...others} = this.props;
     const clz = classNames(
       {
-        [prefixCls]: !transparent,
+        [prefixCls!]: !transparent,
         [`${prefixCls}_transparent`]: transparent,
       },
       className

@@ -30,7 +30,7 @@ class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
 
   componentDidMount() {
     this._scrollableNode = this.getScrollableTarget();
-    this.el = this.props.height ? this._infScroll : this._scrollableNode || window;
+    this.el = this.props.height ? this._infScroll : this.props.scrollableTarget ? this._scrollableNode : window;
     this.el.addEventListener('scroll', this.throttledOnScrollListener);
 
     if (typeof this.props.initialScrollY === 'number' && this.el.scrollHeight > this.props.initialScrollY) {
@@ -63,12 +63,7 @@ class InfiniteLoader extends React.PureComponent<InfiniteLoaderPropTypes, any> {
     if (typeof this.props.scrollableTarget === 'string') {
       return document.getElementById(this.props.scrollableTarget);
     }
-    if (this.props.scrollableTarget === null) {
-      console.warn(`You are trying to pass scrollableTarget but it is null. This might
-        happen because the element may not have been added to DOM yet.
-      `);
-    }
-    return null;
+    return this.el && this.el.parentNode;
   }
 
   isElementAtBottom(target: any, scrollThreshold = 0.8) {

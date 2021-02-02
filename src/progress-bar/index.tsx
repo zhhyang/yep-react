@@ -11,7 +11,7 @@ const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({
   colorEnd,
   fixed,
 }) => {
-  const absPercent = Math.abs(percent);
+  const absPercent = Math.abs(percent!);
   const comPercent = percent ? Math.min(absPercent, 100) + '%' : 0;
 
   const wrapCls = classNames(prefixCls, className, {
@@ -35,7 +35,7 @@ export interface ProgressBarProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   className?: string;
-  percent: number;
+  percent?: number;
   backgroundColor?: string;
   colorStart?: string;
   colorEnd?: string;

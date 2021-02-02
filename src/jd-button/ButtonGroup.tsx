@@ -19,6 +19,6 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({prefixCls, clas
 
 ButtonGroup.defaultProps = {
   prefixCls: 'Yep-jd-btns',
-};
+} as Partial<ButtonGroupProps>;
 
 export default ButtonGroup;

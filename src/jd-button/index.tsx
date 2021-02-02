@@ -12,43 +12,41 @@ export interface ButtonProps {
   circle?: boolean;
   size?: string;
   onClick?: () => void;
-  icon?: React.ReactNode;
   children: React.ReactNode;
 }
 
-export default class Button extends React.PureComponent<ButtonProps, any> {
-  static JdButtonGroup = ButtonGroup;
-  static defaultProps = {
-    prefixCls: 'Yep-jd-btn',
-    disabled: false,
-    activeStyle: {},
-    onClick: () => {},
-    type: 'primary',
+export default function Button(props: ButtonProps) {
+  const {prefixCls, className, type, disabled, onClick, style, size, children, block, circle} = props;
+
+  const cls = classNames(prefixCls, className, {
+    'btn-primary': type === 'primary',
+    'btn-white': type === 'white',
+    'btn-block': block,
+    'btn-disabled': disabled,
+    'btn-ghost': type === 'ghost',
+    'btn-fill': type === 'fill',
+    'btn-light': type === 'light',
+    'btn-sm': size === 'sm',
+    'btn-xxs': size === 'xxs',
+    'btn-circle': circle,
+  });
+
+  const onPress = () => {
+    if (disabled) return;
+    onClick && onClick();
   };
-
-  render() {
-    const {prefixCls, className, type, disabled, onClick, icon, style, size, children, block, circle} = this.props;
-
-    const cls = classNames(prefixCls, className, {
-      'btn-primary': type === 'primary',
-      'btn-white': type === 'white',
-      'btn-block': block,
-      'btn-disabled': disabled,
-      'btn-ghost': type === 'ghost',
-      'btn-fill': type === 'fill',
-      'btn-light': type === 'light',
-      'btn-sm': size === 'sm',
-      'btn-xxs': size === 'xxs',
-      'btn-circle': circle,
-      [`${prefixCls}-icon`]: !!icon,
-    });
-    return (
-      <button className={cls} aria-disabled={disabled} onClick={disabled ? undefined : onClick} style={style}>
-        {icon}
-        {children}
-      </button>
-    );
-  }
+  return (
+    <button className={cls} aria-disabled={disabled} onClick={onPress} style={style}>
+      {children}
+    </button>
+  );
 }
+
+Button.defaultProps = {
+  prefixCls: 'Yep-jd-btn',
+  disabled: false,
+  onClick: () => {},
+  type: 'primary',
+} as Partial<ButtonProps>;
 
 Button.JdButtonGroup = ButtonGroup;

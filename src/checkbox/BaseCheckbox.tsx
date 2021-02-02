@@ -7,7 +7,7 @@ import CheckCircleFilled from '@jdcfe/icons-react/CheckCircleFilled';
 export interface BaseCheckboxProps {
   prefixCls?: string;
   className?: string;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
   name?: string;
   id?: string;
   type: 'checkbox' | 'radio';
@@ -17,7 +17,7 @@ export interface BaseCheckboxProps {
   disabled?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
-  onChange: (cb: any) => void;
+  onChange?: (cb: any) => void;
   onClick?: () => void;
   tabIndex?: string;
   readOnly?: boolean;
@@ -84,7 +84,7 @@ export default class BaseCheckbox extends React.PureComponent<BaseCheckboxProps,
         checked: e.target.checked,
       });
     }
-    onChange({
+    onChange!({
       target: {
         ...this.props,
         checked: e.target.checked,

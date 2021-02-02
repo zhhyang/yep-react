@@ -24,14 +24,13 @@ export interface TabsProps {
   style?: React.CSSProperties;
   defaultIndex?: number;
   children: React.ReactNode;
-  lazy?: boolean;
   onChange?: (index: number) => void;
   tabBarPosition?: 'top' | 'bottom' | 'left' | 'right';
   tabDirection?: 'horizontal' | 'vertical';
   animated?: boolean;
   swipeable?: boolean;
   usePaged?: boolean;
-  renderTabBar: ((props: any) => React.ReactNode) | false;
+  renderTabBar?: ((props: any) => React.ReactNode) | false;
   onTabClick?: () => void;
   tabBarActiveTextColor?: string;
   tabBarBackgroundColor?: string;
@@ -39,7 +38,7 @@ export interface TabsProps {
   tabBarTextStyle?: React.CSSProperties;
   tabBarUnderlineStyle?: React.CSSProperties;
   renderTab?: (props: any) => React.ReactNode;
-  distanceToChangeTab: number;
+  distanceToChangeTab?: number;
   page?: number;
 }
 
@@ -54,7 +53,6 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     style: {},
     defaultIndex: 0,
     className: '',
-    lazy: true,
     onChange: noop,
     tabBarPosition: 'top',
     tabDirection: 'horizontal',
@@ -258,9 +256,9 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
     const index = Math.floor(ratio);
     switch (direction) {
       case '<':
-        return distance > threshold ? index + 1 : index;
+        return distance > threshold! ? index + 1 : index;
       case '>':
-        return distance < threshold ? index + 1 : index;
+        return distance < threshold! ? index + 1 : index;
       default:
         return Math.round(ratio);
     }
@@ -329,7 +327,7 @@ export default class Tabs extends React.PureComponent<TabsProps, State> {
         } as React.CSSProperties);
     return (
       <div className={cls} style={contentStyle} ref={this.createContentLayoutRef}>
-        {React.Children.map(children, (child:any, index) => {
+        {React.Children.map(children, (child: any, index) => {
           const panelCls = classNames({
             [`${prefixCls}-pane-wrap`]: true,
             [`${prefixCls}-pane-wrap-${currentTab === index ? '' : 'in'}active`]: true,

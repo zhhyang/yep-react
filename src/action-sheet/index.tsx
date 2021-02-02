@@ -15,7 +15,7 @@ export interface ActionSheetProps {
   /**
    * 点击事件回调
    */
-  itemClick: (item: string, index: number) => void;
+  itemClick?: (item: string, index: number) => void;
 
   prefixCls?: string;
   className?: string;
@@ -34,8 +34,8 @@ export interface ActionSheetProps {
    */
   hasCancel?: boolean;
 
-  data: [];
-  active: number | string;
+  data?: [];
+  active?: number | string;
 }
 
 const ActionSheet: React.FC<ActionSheetProps> = ({
@@ -52,7 +52,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
   itemClick,
 }) => {
   const onItemClick = (item: string, index: number) => {
-    itemClick(item, index);
+    itemClick!(item, index);
   };
   const cls = classNames(prefixCls, className);
   return (
@@ -61,7 +61,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
         {title && <h1 className={`${prefixCls}-title border-bottom-1px`}>{title}</h1>}
         <div className={`${prefixCls}-content`}>
           <ul className={`${prefixCls}-list`}>
-            {data.map((item, index) => (
+            {data!.map((item, index) => (
               <li
                 key={index}
                 className={classNames(`${prefixCls}-item`, 'border-bottom-1px', {
@@ -93,6 +93,6 @@ ActionSheet.defaultProps = {
   space: false,
   data: [],
   itemClick: () => {},
-};
+} as Partial<ActionSheetProps>;
 
 export default ActionSheet;

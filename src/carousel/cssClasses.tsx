@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 
 export default {
-  ROOT: (customClassName: string) =>
+  ROOT: (customClassName?: string) =>
     classNames({
       'Yep-carousel-root': true,
-      [customClassName]: !!customClassName,
+      customClassName,
     }),
 
   CAROUSEL: (isSlider: boolean) =>

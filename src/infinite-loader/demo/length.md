@@ -151,13 +151,13 @@ class Demo extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <div style={{height: 300, overflow: 'scroll'}} id="infi">
         <InfiniteLoader
           dataLength={this.state.items.length}
           loadMore={this.fetchMoreData}
           hasMore={true}
           loader={<h4 style={{textAlign: 'center'}}>Loading...</h4>}
-          height={200}
+          scrollableTarget={'infi'}
           initialScrollY={100}
         >
           {this.state.items.map((i, index) => (

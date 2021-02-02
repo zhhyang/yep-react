@@ -3,11 +3,9 @@ import BaseCheckbox, {BaseCheckboxProps} from './BaseCheckbox';
 import classNames from 'classnames';
 import CheckBoxGroup from './CheckBoxGroup';
 export interface CheckboxProps extends BaseCheckboxProps {
-  children: string;
+  children: any;
 }
 export default class Checkbox extends React.PureComponent<CheckboxProps> {
-  static displayName = 'Checkbox';
-
   static CheckBoxGroup = CheckBoxGroup;
 
   static defaultProps = {

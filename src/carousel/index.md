@@ -16,8 +16,8 @@ desc: 轮播图，常用于展示一组图片
 | onTransitionEnd(deprecated,使用 onChange) | 每次轮播完一帧的钩子函数                    | function                                                                            | null         | false    |
 | onChange                                  | 每次轮播完一帧的钩子函数                    | function                                                                            | null         | false    |
 | isInfinite                                | 是否无限滚动                                | bool                                                                                | false        | false    |
-| renderPage                                | 自定义面板指示点组件                        | (active:number,total:number) =>void;                                                | -            | false    |
-| showPager                                 | 是否显示自定义面板页数组件                  | (active:number,total:number) =>void;                                                | -            | false    |
+| renderPage                                | 自定义页数组件                              | (active:number,total:number) =>void;                                                | -            | false    |
+| showPager                                 | 是否显示自定义面板页数组件                  | boolean;                                                                            | false        | false    |
 | dots                                      | 是否显示面板指示点                          | boolean                                                                             | true         | false    |
 | dotsClass                                 | 面板指示点自定义 class                      | string                                                                              | -            | false    |
 | vertical                                  | 垂直显示                                    | boolean                                                                             | false        | false    |

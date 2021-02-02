@@ -9,6 +9,9 @@ export interface InfiniteLoaderPropTypes {
   endMessage?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
+  /**
+   * @deprecated
+   */
   height?: number;
   scrollableTarget?: React.ReactNode;
   hasChildren?: boolean;

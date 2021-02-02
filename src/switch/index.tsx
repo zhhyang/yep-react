@@ -4,7 +4,7 @@ import classNames from 'classnames';
 export interface SwitchProps {
   prefixCls?: string;
   className?: string;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
   currentStatus?: boolean;
   handleSwitch?: (checked: boolean) => void;
   onClick?: (value: boolean) => void;
@@ -63,7 +63,7 @@ export default class Switch extends React.PureComponent<SwitchProps> {
     });
 
     if (color && checked) {
-      style.backgroundColor = color;
+      style!.backgroundColor = color;
     }
 
     return (

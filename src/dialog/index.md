@@ -8,19 +8,19 @@ desc: 用于显示系统的重要信息，并请求用户进行操作反馈
 
 Dialog
 
-| 参数             | 说明                  | 类型    | 默认值     |
-| ---------------- | --------------------- | ------- | ---------- |
-| prefixCls        | 组件 class 前缀       | string  | Yep-dialog |
-| style            | 组件样式              | object  | {}         |
-| bodyStyle        | body 组件样式         | object  | {}         |
-| className        | 额外要添加的 CSS 类名 | string  | -          |
-| title            | 对话框的标题          | string  | -          |
-| footer           | 底部组件              | node    | -          |
-| onClose          | 关闭事件的回调函数    | func    | -          |
-| show             | 是否显示              | boolean | false      |
-| maskCloseable    | 点击蒙层是否关闭      | boolean | false      |
-| dialogTransition | 对话框动画            | string  | zoom       |
-| maskTransition   | 蒙层对话              | string  | fade       |
+| 参数             | 说明                  | 类型    | 默认值     | 是否必填 |
+| ---------------- | --------------------- | ------- | ---------- | -------- |
+| prefixCls        | 组件 class 前缀       | string  | Yep-dialog | false    |
+| style            | 组件样式              | object  | {}         | false    |
+| bodyStyle        | body 组件样式         | object  | {}         | false    |
+| className        | 额外要添加的 CSS 类名 | string  | -          | false    |
+| title            | 对话框的标题          | string  | -          | false    |
+| footer           | 底部组件              | node    | -          | false    |
+| onClose          | 关闭事件的回调函数    | func    | -          | false    |
+| show             | 是否显示              | boolean | false      | false    |
+| maskCloseable    | 点击蒙层是否关闭      | boolean | false      | false    |
+| dialogTransition | 对话框动画            | string  | zoom       | false    |
+| maskTransition   | 蒙层对话              | string  | fade       | false    |
 
 Dialog.confirm
 
