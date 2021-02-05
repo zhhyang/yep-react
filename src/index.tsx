@@ -62,3 +62,4 @@ export {default as NumberKeyboard} from './number-keyboard';
 export {default as PasswordInput} from './password-input';
 export {default as Avatar} from './avatar';
 export {default as Collapse} from './collapse';
+export {default as TabsBar} from './tabs-bar';
