@@ -5,6 +5,12 @@
   "main": "lib",
   "module": "es",
   "types": "es/index.d.ts",
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.scss"
+  ],
   "scripts": {
     "add": "node scripts/add.js",
     "compile": "yep-tools compile",
