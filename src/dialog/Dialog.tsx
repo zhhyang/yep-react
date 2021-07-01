@@ -16,6 +16,7 @@ export interface DialogProps {
   maskCloseable?: boolean;
   dialogTransition?: string;
   maskTransition?: string;
+  usePortal?: boolean;
 }
 
 interface DialogState {
@@ -33,6 +34,7 @@ export default class Dialog extends React.PureComponent<DialogProps, DialogState
     maskTransition: 'fade',
     dialogTransition: 'zoom',
     onClose: noop,
+    usePortal: true,
   };
 
   constructor(props: DialogProps) {
@@ -91,7 +93,17 @@ export default class Dialog extends React.PureComponent<DialogProps, DialogState
   }
 
   render() {
-    const {prefixCls, className, style, title, maskTransition, dialogTransition, footer} = this.props;
+    const {
+      prefixCls,
+      className,
+      style,
+      title,
+      maskTransition,
+      dialogTransition,
+      footer,
+      usePortal,
+      maskCloseable,
+    } = this.props;
 
     const cls = classNames(prefixCls, className, `${prefixCls}-transparent`);
 
@@ -100,8 +112,8 @@ export default class Dialog extends React.PureComponent<DialogProps, DialogState
         show={this.state.show}
         maskTransition={maskTransition}
         popupTransition={dialogTransition}
-        maskCloseable={false}
-        usePortal={true}
+        maskCloseable={maskCloseable}
+        usePortal={usePortal}
       >
         <div className={`${prefixCls}-wrap`} onClick={this.onMaskClick}>
           <div className={cls} style={style}>

@@ -21,6 +21,7 @@ Dialog
 | maskCloseable    | 点击蒙层是否关闭      | boolean | false      | false    |
 | dialogTransition | 对话框动画            | string  | zoom       | false    |
 | maskTransition   | 蒙层对话              | string  | fade       | false    |
+| usePortal        | 是否要挂载到 body     | boolean | true       | false    |
 
 Dialog.confirm
 
@@ -35,11 +36,12 @@ Dialog.confirm
 
 restProps:
 
-| 参数             | 说明                  | 类型    | 默认值 |
-| ---------------- | --------------------- | ------- | ------ |
-| style            | 组件样式              | object  | {}     |
-| bodyStyle        | body 组件样式         | object  | {}     |
-| className        | 额外要添加的 CSS 类名 | string  | -      |
-| maskCloseable    | 点击蒙层是否关闭      | boolean | false  |
-| dialogTransition | 对话框动画            | string  | zoom   |
-| maskTransition   | 蒙层对话              | string  | fade   |
+| 参数             | 说明                  | 类型    | 默认值 | 是否必填 |
+| ---------------- | --------------------- | ------- | ------ | -------- |
+| style            | 组件样式              | object  | {}     | false    |
+| bodyStyle        | body 组件样式         | object  | {}     | false    |
+| className        | 额外要添加的 CSS 类名 | string  | -      | false    |
+| maskCloseable    | 点击蒙层是否关闭      | boolean | false  | false    |
+| dialogTransition | 对话框动画            | string  | zoom   | false    |
+| maskTransition   | 蒙层对话              | string  | fade   | false    |
+| usePortal        | 是否要挂载到 body     | boolean | true   | false    |

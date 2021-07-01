@@ -1,15 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Dialog from './Dialog';
+import Dialog, {DialogProps} from './Dialog';
 
 export default function confirm(
-  title:string,
-  message:any,
+  title: string,
+  message: any,
   actions = [
     {text: 'Cancel', onClick: () => console.log('cancel'), className: ''},
     {text: 'Ok', onClick: () => console.log('ok'), className: ''},
   ],
-  restProps = {}
+  restProps: Omit<DialogProps, 'title'>
 ) {
   const prefixCls = 'Yep-dialog';
   let closed = false;
