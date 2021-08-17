@@ -7,6 +7,7 @@ export interface PopupDatePickerProps extends DatePickerProps {
   onOk?: (data: any) => void;
   onCancel?: () => void;
   show?: boolean;
+  title?: string;
 }
 class PopupDatePicker extends React.Component<PopupDatePickerProps, any> {
   static defaultProps = {
@@ -18,6 +19,7 @@ class PopupDatePicker extends React.Component<PopupDatePickerProps, any> {
     pickerValueProp: 'date',
     pickerValueChangeProp: 'onDateChange',
     title: '',
+    className: '',
   };
 
   scrollValue: HTMLDivElement;
@@ -53,12 +55,16 @@ class PopupDatePicker extends React.Component<PopupDatePickerProps, any> {
       value,
       use12Hours,
       onValueChange,
+      title,
+      className,
     } = this.props;
     return (
       <PickerPopup
         show={show}
         onCancel={onCancel}
         onOk={this.onOk}
+        title={title}
+        className={className}
         picker={
           <DatePicker
             minuteStep={minuteStep}

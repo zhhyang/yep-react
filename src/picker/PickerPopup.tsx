@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Popup from '../popup';
 import noop from '../_utils/noop';
+import classNames from 'classnames';
 
 export interface PickerPopupProps {
   /**
@@ -18,12 +19,14 @@ export interface PickerPopupProps {
   /**
    * 确定事件回调
    */
-  onOk?: (value:any) => void;
-  picker: any
+  onOk?: (value: any) => void;
+
+  className?: string;
+
+  picker: any;
 }
 export default class PickerPopup extends React.PureComponent<PickerPopupProps> {
-
-  picker:any;
+  picker: any;
 
   static defaultProps = {
     show: false,
@@ -38,16 +41,16 @@ export default class PickerPopup extends React.PureComponent<PickerPopupProps> {
     }
   };
 
-  saveRef = (picker:any) => {
+  saveRef = (picker: any) => {
     this.picker = picker;
   };
 
   render() {
-    const {show, onCancel, title, picker} = this.props;
+    const {show, onCancel, title, picker, className} = this.props;
 
     return (
       <Popup show={show} onCancel={onCancel}>
-        <div className="Yep-popup-picker-wrapper">
+        <div className={classNames('Yep-popup-picker-wrapper', className)}>
           <div className="Yep-popup-picker-header">
             <div className="Yep-popup-picker-header-item Yep-popup-picker-header-left" onClick={onCancel}>
               取消
