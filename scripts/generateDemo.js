@@ -40,7 +40,7 @@ import ComponentCard from '../../../demo/component/ComponentCard';
 const Content = ({history, location: {pathname, search}}) => {
     const componentName = pathname.split('/').reverse()[0];
     const currentComponent = comps.filter(cpm => cpm.name == componentName)[0];
-
+   
 
     const query = qs.parse(search, {ignoreQueryPrefix: true});
     return (
@@ -67,11 +67,11 @@ const Content = ({history, location: {pathname, search}}) => {
         </div>
       </Fragment>
     );
-
+  
 };
 
 export default withRouter(Content);
-
+  
   `;
 
 let lazyComponentsStr = '';
@@ -288,6 +288,7 @@ import {HashRouter as Router} from 'react-router-dom';
 import '../demo/base.scss';
 import '../demo/component/ComponentCard/style.scss';
 import router from './router';
+import '../dist/@jdcfe/yep-react.css';
 
 render(
   <Fragment>
