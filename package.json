@@ -103,7 +103,7 @@
     "jest": "^24.8.0",
     "jsonp": "^0.2.1",
     "lint-staged": "^7.1.2",
-    "marked": "^0.3.19",
+    "marked": "^4.0.10",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "open-browser-webpack-plugin": "^0.0.5",
