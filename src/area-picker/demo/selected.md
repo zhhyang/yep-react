@@ -48,7 +48,7 @@ const province = [
 
 const getArea = params => {
   return new Promise((resolve, reject) => {
-    jsonp(`//d.jd.com/area/get?fid=${params}&t=${Math.floor(Math.random() * 10000)}`, null, (err, ret) => {
+    jsonp(`https://fts.jd.com/area/get?fid=${params}&t=${Math.floor(Math.random() * 10000)}`, null, (err, ret) => {
       if (err) {
         reject(err);
       } else {
@@ -91,7 +91,11 @@ class Demo extends React.PureComponent {
           initialData={this.state.data}
           onOk={this.onOk}
           fetchAction={(city, index) => getArea(city.id)}
-          selected={[{id: 1, name: '北京'}, {name: '东城区', id: 2802}, {id: 54748, name: '建国门街道'}]}
+          selected={[
+            {id: 1, name: '北京'},
+            {name: '东城区', id: 2802},
+            {id: 54748, name: '建国门街道'},
+          ]}
         />
       </div>
     );

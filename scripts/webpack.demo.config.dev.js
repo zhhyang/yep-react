@@ -26,25 +26,20 @@ const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
       // Options for PostCSS as we reference these options twice
       // Adds vendor prefixing based on your specified browser support in
       // package.json
-      loader: require.resolve('postcss-loader'),
+      loader: 'postcss-loader',
       options: {
-        // Necessary for external CSS imports to work
-        // https://github.com/facebook/create-react-app/issues/2677
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          autoprefixer({
-            flexbox: 'no-2009',
-            overrideBrowserslist: [
-              'iOS >= 7',
-              'Android >= 4.1', //移动端项目，参考WeUI的配置
-            ],
-          }),
-          pxtorem({
-            rootValue: 100,
-            propList: ['*', '!border'],
-          }),
-        ],
+        postcssOptions: {
+          // Necessary for external CSS imports to work
+          // https://github.com/facebook/create-react-app/issues/2677
+          ident: 'postcss',
+          config: false,
+          plugins: [
+            pxtorem({
+              rootValue: 100,
+              propList: ['*'],
+            }),
+          ],
+        },
       },
     },
   ];
@@ -125,7 +120,6 @@ const config = {
         use: getStyleLoaders({
           importLoaders: 1,
           modules: true,
-          getLocalIdent: getCSSModuleLocalIdent,
         }),
       },
       // Opt-in support for SASS (using .scss or .sass extensions).
@@ -148,7 +142,6 @@ const config = {
           {
             importLoaders: 2,
             modules: true,
-            getLocalIdent: getCSSModuleLocalIdent,
           },
           'sass-loader',
           {

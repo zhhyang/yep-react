@@ -46,24 +46,26 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                autoprefixer({
-                  overrideBrowserslist: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-                pxtorem({
-                  rootValue: 100,
-                  propWhiteList: [],
-                }),
-              ],
+              postcssOptions: {
+                // Necessary for external CSS imports to work
+                // https://github.com/facebookincubator/create-react-app/issues/2677
+                ident: 'postcss',
+                plugins: () => [
+                  autoprefixer({
+                    overrideBrowserslist: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // React doesn't support IE8 anyway
+                    ],
+                    flexbox: 'no-2009',
+                  }),
+                  pxtorem({
+                    rootValue: 100,
+                    propWhiteList: [],
+                  }),
+                ],
+              },
             },
           },
         ],
@@ -77,20 +79,22 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                autoprefixer({
-                  overrideBrowserslist: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-              ],
+              postcssOptions: {
+                // Necessary for external CSS imports to work
+                // https://github.com/facebookincubator/create-react-app/issues/2677
+                ident: 'postcss',
+                plugins: () => [
+                  autoprefixer({
+                    overrideBrowserslist: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // React doesn't support IE8 anyway
+                    ],
+                    flexbox: 'no-2009',
+                  }),
+                ],
+              },
             },
           },
         ],
@@ -104,24 +108,25 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                autoprefixer({
-                  overrideBrowserslist: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-                pxtorem({
-                  rootValue: 100,
-                  propWhiteList: [],
-                }),
-              ],
+              postcssOptions: {
+                ident: 'postcss',
+                config: false,
+                plugins: [
+                  autoprefixer({
+                    overrideBrowserslist: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // React doesn't support IE8 anyway
+                    ],
+                    flexbox: 'no-2009',
+                  }),
+                  pxtorem({
+                    rootValue: 100,
+                    propWhiteList: [],
+                  }),
+                ],
+              },
             },
           },
           'sass-loader',
@@ -138,24 +143,26 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
+              postcssOptions: {
+                ident: 'postcss',
+                plugins: () => [
+                  autoprefixer({
+                    overrideBrowserslist: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // React doesn't support IE8 anyway
+                    ],
+                    flexbox: 'no-2009',
+                  }),
+                  pxtorem({
+                    rootValue: 100,
+                    propWhiteList: [],
+                  }),
+                ],
+              },
               // Necessary for external CSS imports to work
               // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                autoprefixer({
-                  overrideBrowserslist: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-                pxtorem({
-                  rootValue: 100,
-                  propWhiteList: [],
-                }),
-              ],
             },
           },
           'sass-loader',

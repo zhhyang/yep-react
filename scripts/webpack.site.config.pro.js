@@ -84,7 +84,6 @@ const config = {
         use: getStyleLoaders({
           importLoaders: 1,
           modules: true,
-          getLocalIdent: getCSSModuleLocalIdent,
         }),
       },
       // Opt-in support for SASS (using .scss or .sass extensions).
@@ -107,7 +106,6 @@ const config = {
           {
             importLoaders: 2,
             modules: true,
-            getLocalIdent: getCSSModuleLocalIdent,
           },
           'sass-loader',
           {
