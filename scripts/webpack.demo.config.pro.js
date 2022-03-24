@@ -50,7 +50,7 @@ const config = {
                 // Necessary for external CSS imports to work
                 // https://github.com/facebookincubator/create-react-app/issues/2677
                 ident: 'postcss',
-                plugins: () => [
+                plugins: [
                   autoprefixer({
                     overrideBrowserslist: [
                       '>1%',
@@ -83,7 +83,7 @@ const config = {
                 // Necessary for external CSS imports to work
                 // https://github.com/facebookincubator/create-react-app/issues/2677
                 ident: 'postcss',
-                plugins: () => [
+                plugins: [
                   autoprefixer({
                     overrideBrowserslist: [
                       '>1%',
@@ -145,7 +145,7 @@ const config = {
             options: {
               postcssOptions: {
                 ident: 'postcss',
-                plugins: () => [
+                plugins: [
                   autoprefixer({
                     overrideBrowserslist: [
                       '>1%',
