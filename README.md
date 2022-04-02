@@ -1,7 +1,7 @@
 <p align="center">
     <img alt="logo" src="https://storage.jd.com/imgtools/a88936e68d-2f02ea30-b2ac-11e9-b365-ffed7307867d.png" width="120" style="margin-bottom: 10px;">
 </p>
-<h3 align="center" style="margin: 30px 0 0;">React Component that implement JD App Design</h3>
+<h3 align="center" style="margin: 30px 0 0;">React Component that implement Mobile Design</h3>
 <p align="center"><img src="https://img.shields.io/npm/v/@jdcfe/yep-react.svg?style=flat-square" alt="npm version" /> <img alt="preview badge" src="https://img.shields.io/npm/dw/@jdcfe/yep-react"></p>
 
 <p align="center">
@@ -21,11 +21,11 @@
 
 ## Install & Start
 
-[quick start](https://yep-react.jd.com/#/doc/get-started)
+[quick start](https://zhhyang.github.io/yep-react/#/doc/get-started)
 
 ## React Version
 
-- `react^16.0.0`
+- `react^16.8.0`
 
 ## Browser Support
 
@@ -34,13 +34,13 @@
 
 ## Links
 
-- [Website](https://yep-react.jd.com/)
-- [Documentation](https://yep-react.jd.com/#/doc/get-started)
-- [Changelog](https://yep-react.jd.com/#/doc/CHANGELOG)
+- [Website](https://zhhyang.github.io/yep-react/)
+- [Documentation](https://zhhyang.github.io/yep-react/#/doc/get-started)
+- [Changelog](https://zhhyang.github.io/yep-react/#/doc/CHANGELOG)
 
 ## Contribution
 
-You can submit any ideas as [pull requests](https://github.com/jdf2e/yep-react/pulls) or as [GitHub issues](https://github.com/jdf2e/yep-react/issues).
+You can submit any ideas as [pull requests](https://github.com/zhhyang/yep-react/pulls) or as [GitHub issues](https://github.com/zhhyang/yep-react/issues).
 
 ## Preview
 
@@ -50,4 +50,4 @@ You can scan the following QR code to access the demo：
 
 ## License
 
-[MIT](https://github.com/jdf2e/yep-react/blob/master/LICENSE)
+[MIT](https://github.com/zhhyang/yep-react/blob/master/LICENSE)

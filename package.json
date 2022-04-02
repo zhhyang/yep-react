@@ -1,7 +1,7 @@
 {
   "name": "@jdcfe/yep-react",
   "version": "1.0.9",
-  "description": "一套符合京东移动端设计规范的React组件库",
+  "description": "一套移动端的React组件库",
   "main": "lib",
   "module": "es",
   "types": "es/index.d.ts",
@@ -115,10 +115,10 @@
     "prop-types": "^15.6.1",
     "qrcode.react": "^0.8.0",
     "qs": "^6.5.2",
-    "react": "^16.2.0",
+    "react": "^16.8.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dev-utils": "^6.1.1",
-    "react-dom": "^16.3.0",
+    "react-dom": "^16.8.0",
     "react-helmet": "^5.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -142,9 +142,8 @@
     "yaml-front-matter": "^4.0.0"
   },
   "peerDependencies": {
-    "prop-types": ">=15.5.0",
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
