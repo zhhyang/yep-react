@@ -1,7 +1,7 @@
 <p align="center">
     <img alt="logo" src="https://storage.jd.com/imgtools/a88936e68d-2f02ea30-b2ac-11e9-b365-ffed7307867d.png" width="120" style="margin-bottom: 10px;">
 </p>
-<h3 align="center" style="margin: 30px 0 0;">React Component that implement Mobile Design</h3>
+<h3 align="center" style="margin: 30px 0 0;">React Components that implement Mobile Design</h3>
 <p align="center"><img src="https://img.shields.io/npm/v/@jdcfe/yep-react.svg?style=flat-square" alt="npm version" /> <img alt="preview badge" src="https://img.shields.io/npm/dw/@jdcfe/yep-react"></p>
 
 <p align="center">
@@ -12,6 +12,7 @@
 
 ## Features
 
+- React@18
 - 50+ Reusable components
 - Extensive documentation and demos
 - Support babel-plugin-import
@@ -25,7 +26,7 @@
 
 ## React Version
 
-- `react^16.8.0`
+- `react^18.0.0`
 
 ## Browser Support
 
