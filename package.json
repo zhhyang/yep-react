@@ -1,6 +1,6 @@
 {
   "name": "@jdcfe/yep-react",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "一套移动端的React组件库",
   "main": "lib",
   "module": "es",

@@ -45,8 +45,14 @@ export default class Dialog extends React.PureComponent<DialogProps, DialogState
     this.close = this.close.bind(this);
     this.onMaskClick = this.onMaskClick.bind(this);
     this.state = {
-      show: props.show,
+      show: false,
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      show: this.props.show,
+    });
   }
 
   componentWillReceiveProps(nextProps: any) {
